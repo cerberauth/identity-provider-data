@@ -1,4 +1,5 @@
 {
+  "$schema": "https://schemas.cerberauth.com/content/draft/2024-09/features.schema.json",
   "name": "Identity and Access Management features",
   "featureList": [
     {
