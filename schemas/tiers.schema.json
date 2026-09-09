@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/tiers.schema.json",
+  "title": "Feature Tiers List",
+  "description": "Schema for list of feature tiers in CerberAuth identity provider data.",
+  "type": "array",
+  "items": {
+    "type": "string",
+    "enum": [
+      "basic",
+      "standard",
+      "advanced",
+      "enterprise"
+    ]
+  },
+  "uniqueItems": true
+}

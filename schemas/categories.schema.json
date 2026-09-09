@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/categories.schema.json",
+  "title": "Categories Definition List",
+  "description": "Schema for a list of category definitions in CerberAuth identity provider data.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "identifier": {
+        "type": "string",
+        "description": "Unique machine-readable identifier of the category.",
+        "pattern": "^[a-z0-9_]+$",
+        "minLength": 1
+      },
+      "translationKey": {
+        "type": "string",
+        "description": "Translation key corresponding to internationalized name and description in i18n data.",
+        "pattern": "^[a-z0-9_]+$",
+        "minLength": 1
+      }
+    },
+    "required": [
+      "identifier",
+      "translationKey"
+    ],
+    "additionalProperties": false
+  },
+  "uniqueItems": true
+}

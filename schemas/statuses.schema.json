@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/statuses.schema.json",
+  "title": "Feature Statuses List",
+  "description": "Schema for list of allowed feature support statuses in CerberAuth identity provider data.",
+  "type": "array",
+  "items": {
+    "type": "string",
+    "enum": [
+      "supported",
+      "not_supported",
+      "partial",
+      "deprecated",
+      "planned",
+      "unknown"
+    ]
+  },
+  "uniqueItems": true
+}

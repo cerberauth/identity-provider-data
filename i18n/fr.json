@@ -1,0 +1,59 @@
+{
+  "iam": {
+    "categories": {
+      "authentication_methods": "Méthodes d'authentification",
+      "mfa": "Authentification multi-facteurs (MFA)",
+      "integration_protocols": "Protocoles d'intégration",
+      "identity_federation": "Fédération d'identité",
+      "user_management": "Gestion des utilisateurs",
+      "access_control": "Contrôle d'accès et autorisation",
+      "security": "Sécurité",
+      "multi_tenancy": "Multi-Tenancy / Organisations",
+      "branding_ux": "Branding et UX",
+      "analytics": "Analytique et audit",
+      "compliance": "Conformité",
+      "developer_integration": "Intégration développeur",
+      "advanced": "Avancé / Différenciateurs",
+      "post_quantum_cryptography": "Cryptographie post-quantique"
+    },
+    "features": {
+      "username_and_password_authentication": {
+        "name": "Nom d'utilisateur et mot de passe",
+        "description": "La méthode d'authentification par nom d'utilisateur et mot de passe est utilisée par les utilisateurs pour s'authentifier avec leur nom d'utilisateur et leur mot de passe connus."
+      },
+      "social_sign_in_authentication": {
+        "name": "Connexion sociale",
+        "description": "La méthode d'authentification par connexion sociale est utilisée par les utilisateurs pour s'authentifier avec leur compte de média social."
+      },
+      "passkey_authentication": {
+        "name": "Passkey",
+        "description": "La méthode d'authentification par Passkey est utilisée par les utilisateurs pour s'authentifier avec leur passkey (FIDO2/WebAuthn)."
+      }
+    }
+  },
+  "oidc": {
+    "categories": {
+      "grant_types": "Grant Types",
+      "extensions": "Extensions",
+      "endpoints": "Endpoints",
+      "token_endpoint_authentication_methods": "Méthodes d'authentification du token endpoint",
+      "prompts": "Prompts",
+      "features": "Fonctionnalités",
+      "fapi": "Financial-grade API (FAPI)"
+    },
+    "features": {
+      "authorization_code_grant": {
+        "name": "Authorization Code",
+        "description": "Le grant type Authorization Code est utilisé par les clients confidentiels et publics pour échanger un authorization code contre un access token."
+      },
+      "refresh_token_grant": {
+        "name": "Refresh Token",
+        "description": "Le grant type Refresh Token est utilisé par les clients pour échanger un refresh token contre un access token lorsque l'access token a expiré."
+      },
+      "refresh_token_rotation_grace_period": {
+        "name": "Délai de grâce pour la rotation des refresh tokens",
+        "description": "Période de grâce/recouvrement (leeway/overlap) permettant à un refresh token de rotation précédemment utilisé de rester valide pendant une courte période afin de limiter les conditions de concurrence et les échecs de requêtes réseau."
+      }
+    }
+  }
+}

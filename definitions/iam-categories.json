@@ -1,0 +1,58 @@
+[
+  {
+    "identifier": "authentication_methods",
+    "translationKey": "authentication_methods"
+  },
+  {
+    "identifier": "mfa",
+    "translationKey": "mfa"
+  },
+  {
+    "identifier": "integration_protocols",
+    "translationKey": "integration_protocols"
+  },
+  {
+    "identifier": "identity_federation",
+    "translationKey": "identity_federation"
+  },
+  {
+    "identifier": "user_management",
+    "translationKey": "user_management"
+  },
+  {
+    "identifier": "access_control",
+    "translationKey": "access_control"
+  },
+  {
+    "identifier": "security",
+    "translationKey": "security"
+  },
+  {
+    "identifier": "multi_tenancy",
+    "translationKey": "multi_tenancy"
+  },
+  {
+    "identifier": "branding_ux",
+    "translationKey": "branding_ux"
+  },
+  {
+    "identifier": "analytics",
+    "translationKey": "analytics"
+  },
+  {
+    "identifier": "compliance",
+    "translationKey": "compliance"
+  },
+  {
+    "identifier": "developer_integration",
+    "translationKey": "developer_integration"
+  },
+  {
+    "identifier": "advanced",
+    "translationKey": "advanced"
+  },
+  {
+    "identifier": "post_quantum_cryptography",
+    "translationKey": "post_quantum_cryptography"
+  }
+]

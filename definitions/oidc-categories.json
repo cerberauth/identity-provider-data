@@ -1,0 +1,30 @@
+[
+  {
+    "identifier": "grant_type",
+    "translationKey": "grant_types"
+  },
+  {
+    "identifier": "extension",
+    "translationKey": "extensions"
+  },
+  {
+    "identifier": "endpoint",
+    "translationKey": "endpoints"
+  },
+  {
+    "identifier": "token_endpoint_authentication_method",
+    "translationKey": "token_endpoint_authentication_methods"
+  },
+  {
+    "identifier": "prompt",
+    "translationKey": "prompts"
+  },
+  {
+    "identifier": "feature",
+    "translationKey": "features"
+  },
+  {
+    "identifier": "fapi",
+    "translationKey": "fapi"
+  }
+]

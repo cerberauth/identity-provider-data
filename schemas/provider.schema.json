@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "title": "Identity Provider",
+  "description": "Schema for identity provider definitions in CerberAuth identity provider data.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri",
+      "description": "URI of the JSON Schema defining this document."
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the identity provider.",
+      "minLength": 1
+    },
+    "abstract": {
+      "type": "string",
+      "description": "Brief summary or overview of the identity provider.",
+      "minLength": 1
+    },
+    "identifier": {
+      "type": "string",
+      "description": "Unique machine-readable identifier (slug) of the identity provider.",
+      "pattern": "^[a-z0-9-]+$",
+      "minLength": 1
+    },
+    "icon": {
+      "type": "object",
+      "description": "Icon information for the identity provider.",
+      "properties": {
+        "contentUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL pointing to the icon/logo asset."
+        }
+      },
+      "required": [
+        "contentUrl"
+      ],
+      "additionalProperties": false
+    },
+    "website": {
+      "type": "string",
+      "format": "uri",
+      "description": "Official website URL of the provider."
+    },
+    "github": {
+      "type": "string",
+      "format": "uri",
+      "description": "GitHub repository URL of the provider."
+    },
+    "license": {
+      "type": "string",
+      "description": "License type or model of the identity provider (e.g. Proprietary, Apache-2.0, MIT).",
+      "minLength": 1
+    },
+    "nationality": {
+      "type": "string",
+      "description": "Country of origin or headquarters of the identity provider.",
+      "minLength": 1
+    },
+    "pricing": {
+      "type": "object",
+      "description": "Pricing details and plan tiers for the identity provider.",
+      "properties": {
+        "hasFreeTier": {
+          "type": "boolean",
+          "description": "Indicates whether a free tier, free edition, or free trial is available."
+        },
+        "freeTierLimit": {
+          "type": "string",
+          "description": "Details and limits associated with the free tier."
+        },
+        "pricingModel": {
+          "type": "string",
+          "description": "Primary pricing model classification.",
+          "enum": [
+            "mau",
+            "freemium",
+            "open-source",
+            "pay-as-you-go",
+            "per_user",
+            "subscription",
+            "usage",
+            "custom"
+          ]
+        },
+        "pricingUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the provider's official pricing page."
+        },
+        "plans": {
+          "type": "array",
+          "description": "List of available pricing plans.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the pricing plan.",
+                "minLength": 1
+              },
+              "price": {
+                "type": "string",
+                "description": "Price or pricing description for the plan.",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "name",
+              "price"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "hasFreeTier",
+        "pricingModel",
+        "pricingUrl",
+        "plans"
+      ],
+      "additionalProperties": false
+    },
+    "features": {
+      "type": "array",
+      "description": "List of Identity and Access Management (IAM) features supported by the provider.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "type": "string",
+            "description": "Unique identifier of the feature.",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "description": "Support status of the feature.",
+            "enum": [
+              "supported",
+              "not_supported",
+              "partial",
+              "deprecated",
+              "planned",
+              "unknown"
+            ]
+          },
+          "category": {
+            "type": "string",
+            "description": "Category identifier that this feature belongs to.",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "description": "Implementation details, limitations, or notes about the feature support."
+          },
+          "links": {
+            "type": "array",
+            "description": "Documentation or reference URLs for the feature.",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "plans": {
+            "type": "array",
+            "description": "List of plan names that include or enable this feature.",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "values": {
+            "type": "array",
+            "description": "Supported options, platforms, regions, or languages for this feature.",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "identifier",
+          "status"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "oidc": {
+      "type": "object",
+      "description": "OpenID Connect and OAuth 2.0 protocol specifications and capabilities.",
+      "properties": {
+        "features": {
+          "type": "array",
+          "description": "List of OIDC and OAuth features, grant types, endpoints, and profiles.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "identifier": {
+                "type": "string",
+                "description": "Unique identifier or URN of the OIDC feature or grant type.",
+                "minLength": 1
+              },
+              "status": {
+                "type": "string",
+                "description": "Support status of the OIDC feature.",
+                "enum": [
+                  "supported",
+                  "not_supported",
+                  "partial",
+                  "deprecated",
+                  "planned",
+                  "unknown"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "description": "Detailed description or implementation notes regarding OIDC support."
+              },
+              "links": {
+                "type": "array",
+                "description": "Documentation or RFC specification URLs for this OIDC feature.",
+                "items": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            },
+            "required": [
+              "identifier",
+              "status"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "features"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "name",
+    "abstract",
+    "identifier",
+    "icon",
+    "website",
+    "license",
+    "features",
+    "oidc"
+  ],
+  "additionalProperties": false
+}
