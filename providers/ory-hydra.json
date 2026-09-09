@@ -1,0 +1,224 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "Ory Hydra",
+  "abstract": "Ory Hydra is a cloud-native OAuth 2.0 and OpenID Connect server that secures APIs, microservices, and websites with low-latency token validation and revocation.",
+  "identifier": "ory-hydra",
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/ory.svg"
+  },
+  "website": "https://www.ory.sh/hydra",
+  "github": "https://github.com/ory/hydra",
+  "license": "Apache-2.0",
+  "nationality": "Germany",
+  "features": [],
+  "oidc": {
+    "features": [
+      {
+        "identifier": "implicit_grant",
+        "status": "supported"
+      },
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported"
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported"
+      },
+      {
+        "identifier": "par_extension",
+        "status": "not_supported",
+        "links": ["https://github.com/ory/hydra/discussions/3071"]
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "not_supported",
+        "links": ["https://github.com/ory/fosite/issues/822"]
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "not_supported",
+        "links": ["https://github.com/ory/hydra/discussions/3305"]
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "supported"
+      },
+      {
+        "identifier": "password_grant",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "supported"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "supported"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "supported",
+        "links": ["https://www.ory.sh/docs/reference/api#tag/oAuth2/operation/oAuth2Authorize"]
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported",
+        "links": ["https://www.ory.sh/docs/reference/api#tag/oAuth2/operation/oauth2TokenExchange"]
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "supported",
+        "links": ["https://www.ory.sh/docs/reference/api#tag/oidc/operation/getOidcUserInfo"]
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "supported",
+        "links": ["https://www.ory.sh/docs/reference/api#tag/oAuth2/operation/revokeOAuth2Token"]
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "supported",
+        "links": ["https://www.ory.sh/docs/reference/api#tag/oAuth2/operation/introspectOAuth2Token"]
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "supported",
+        "links": ["https://www.ory.com/docs/reference/api#tag/oAuth2/operation/oAuth2DeviceFlow"]
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported",
+        "links": ["https://www.ory.sh/docs/reference/api#tag/oidc/operation/discoverOidcConfiguration"]
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "supported",
+        "links": ["https://github.com/ory/hydra/releases/tag/v25.4.0"]
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "supported",
+        "links": ["https://www.ory.sh/docs/reference/api#tag/oAuth2/operation/createOAuth2Client"]
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "supported",
+        "links": ["https://www.ory.sh/docs/reference/api#tag/oAuth2/operation/createOAuth2Client"]
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "supported",
+        "links": ["https://www.ory.sh/docs/reference/api#tag/oAuth2/operation/createOAuth2Client"]
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "not_supported",
+        "links": ["https://www.ory.sh/docs/reference/api#tag/oAuth2/operation/createOAuth2Client"]
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "supported",
+        "links": ["https://www.ory.sh/docs/reference/api#tag/oAuth2/operation/createOAuth2Client"]
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "supported",
+        "links": ["https://www.ory.sh/docs/oauth2-oidc/authorization-code-flow#step-1-get-the-users-permission"]
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "supported",
+        "links": ["https://www.ory.sh/docs/oauth2-oidc/authorization-code-flow#step-1-get-the-users-permission"]
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "supported",
+        "links": ["https://www.ory.sh/docs/oauth2-oidc/authorization-code-flow#step-1-get-the-users-permission"]
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "not_supported",
+        "links": ["https://www.ory.sh/docs/oauth2-oidc/authorization-code-flow#step-1-get-the-users-permission"]
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "partial",
+        "description": "Uses registration prompt",
+        "links": ["https://www.ory.sh/docs/oauth2-oidc/authorization-code-flow#step-1-get-the-users-permission"]
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "supported"
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "supported",
+        "links": ["https://www.ory.com/docs/hydra/guides/graceful-token-refresh"]
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "supported",
+        "description": "Configurable via 'rotation_grace_period' (up to 180 days when combined with 'rotation_grace_reuse_count') so a rotated-out refresh token stays valid, optionally capped to a limited number of reuses.",
+        "links": ["https://www.ory.com/docs/hydra/guides/graceful-token-refresh"]
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "supported",
+        "links": ["https://www.ory.com/docs/oauth2-oidc/oidc-logout"]
+      },
+      {
+        "identifier": "dpop",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "not_supported",
+        "links": ["https://github.com/ory/hydra/discussions/3833"]
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "not_supported",
+        "links": ["https://github.com/ory/hydra/discussions/3833"]
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "not_supported",
+        "links": ["https://github.com/ory/hydra/discussions/3833"]
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "not_supported",
+        "links": ["https://github.com/ory/hydra/discussions/3833"]
+      },
+      {
+        "identifier": "jarm",
+        "status": "unknown"
+      }
+    ]
+  }
+}

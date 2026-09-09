@@ -1,0 +1,55 @@
+name: Validate
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Validate Schemas Syntax
+        uses: emmanuelgautier/validate-json@v2
+        with:
+          files: schemas/*.json
+
+      - name: Validate i18n
+        uses: emmanuelgautier/validate-json@v2
+        with:
+          files: i18n/*.json
+
+      - name: Validate Providers
+        uses: emmanuelgautier/validate-json@v2
+        with:
+          files: providers/*.json
+          schema: schemas/provider.schema.json
+
+      - name: Validate Categories Definitions
+        uses: emmanuelgautier/validate-json@v2
+        with:
+          files: definitions/*-categories.json
+          schema: schemas/categories.schema.json
+
+      - name: Validate Features Definitions
+        uses: emmanuelgautier/validate-json@v2
+        with:
+          files: definitions/*-features.json
+          schema: schemas/features.schema.json
+
+      - name: Validate Statuses Definition
+        uses: emmanuelgautier/validate-json@v2
+        with:
+          files: definitions/statuses.json
+          schema: schemas/statuses.schema.json
+
+      - name: Validate Tiers Definition
+        uses: emmanuelgautier/validate-json@v2
+        with:
+          files: definitions/tiers.json
+          schema: schemas/tiers.schema.json

@@ -1,0 +1,26 @@
+{
+  "name": "identity-provider-data",
+  "version": "1.0.0",
+  "description": "Structured data about identity providers: IAM / CIAM capabilities and OpenID Connect protocol support.",
+  "scripts": {
+    "format": "prettier --write \"**/*.json\"",
+    "format:check": "prettier --check \"**/*.json\"",
+    "validate": "node scripts/validate.js",
+    "test": "npm run validate && npm run format:check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cerberauth/identity-provider-data.git"
+  },
+  "author": "CerberAuth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cerberauth/identity-provider-data/issues"
+  },
+  "homepage": "https://github.com/cerberauth/identity-provider-data#readme",
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "prettier": "^3.9.8"
+  }
+}
