@@ -1,0 +1,1135 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "Spring Security",
+  "abstract": "Open-source authentication and authorization framework for Java applications built on Spring. Embedded directly in your application and backed by your own user store, with form login, passkeys, one-time token (magic link) login, multi-factor authentication through factor authorities, OAuth 2.0 / OpenID Connect login and resource server, and SAML 2.0 service provider support. Spring Authorization Server adds an OAuth 2.1 and OpenID Connect 1.0 provider. Core differentiator: it is a library, not a hosted service, so there is no vendor server or per-user pricing. It ships no user management, admin console or hosted UI, and everything from user storage to MFA enrollment is assembled by the application. Commercial support is available through Tanzu Spring.",
+  "identifier": "spring-security",
+  "type": "library",
+  "languages": ["Java", "Kotlin"],
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/spring-security.svg"
+  },
+  "website": "https://spring.io/projects/spring-security",
+  "github": "https://github.com/spring-projects/spring-security",
+  "license": "Apache-2.0",
+  "pricing": {
+    "hasFreeTier": true,
+    "freeTierLimit": "Unlimited (open-source library)",
+    "pricingModel": "open-source",
+    "pricingUrl": "https://spring.io/support",
+    "plans": [
+      {
+        "name": "Open source",
+        "price": "Free (Apache-2.0)"
+      },
+      {
+        "name": "Tanzu Spring commercial support",
+        "price": "Custom"
+      }
+    ]
+  },
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "category": "authentication_methods",
+      "status": "supported",
+      "description": "Form login, HTTP Basic and Digest, backed by UserDetailsService and a PasswordEncoder (DelegatingPasswordEncoder with bcrypt by default; argon2, scrypt and PBKDF2 also available). In-memory, JDBC and LDAP user stores are built in.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/index.html",
+        "https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html"
+      ]
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "category": "authentication_methods",
+      "status": "supported",
+      "description": "OAuth 2.0 Login with OpenID Connect or plain OAuth 2.0 providers through ClientRegistration entries. Common providers such as Google, GitHub, Facebook and Okta ship as presets and any other provider can be configured with its endpoints or issuer URI.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/oauth2/login/core.html",
+        "https://docs.spring.io/spring-security/reference/servlet/oauth2/index.html"
+      ]
+    },
+    {
+      "identifier": "passkey_authentication",
+      "category": "authentication_methods",
+      "status": "supported",
+      "description": "Passkeys (WebAuthn) through the spring-security-webauthn module and the webAuthn() DSL. Requires rpId and allowedOrigins, a registration step while authenticated, and in-memory or JDBC credential repositories.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/passkeys.html"]
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "category": "authentication_methods",
+      "status": "partial",
+      "description": "One-time token login (oneTimeTokenLogin()) issues a short-lived token for a username and the application delivers it by email through a OneTimeTokenGenerationSuccessHandler. It is a token or link flow, not a numeric OTP code, and no email delivery is built in.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/onetimetoken.html"]
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "category": "authentication_methods",
+      "status": "partial",
+      "description": "The same one-time token login can be delivered by SMS, but delivery is entirely application-supplied and there is no phone-number identity or verification built in.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/onetimetoken.html"]
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "category": "authentication_methods",
+      "status": "supported",
+      "description": "One-time token login with a configurable generate endpoint (POST /ott/generate) and submit page (/login/ott) that pre-fills the token from a link. Default expiry is 5 minutes. The default token service is in-memory, with JdbcOneTimeTokenService for production.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/onetimetoken.html"]
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "category": "authentication_methods",
+      "status": "partial",
+      "description": "The anonymous authentication filter gives unauthenticated requests an anonymous Authentication so authorization rules can target them. There are no persistent guest accounts or guest-to-registered upgrade flow.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/anonymous.html"]
+    },
+    {
+      "identifier": "totp_mfa",
+      "category": "mfa",
+      "status": "not_supported",
+      "description": "No built-in TOTP or authenticator-app support. It has to be implemented as a custom authentication mechanism that grants a FactorGrantedAuthority.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/mfa.html"]
+    },
+    {
+      "identifier": "hotp_mfa",
+      "category": "mfa",
+      "status": "not_supported",
+      "description": "No built-in HOTP support.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/mfa.html"]
+    },
+    {
+      "identifier": "u2f_mfa",
+      "category": "mfa",
+      "status": "not_supported",
+      "description": "No legacy U2F support. Hardware security keys are handled through WebAuthn.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/passkeys.html"]
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "category": "mfa",
+      "status": "supported",
+      "description": "WebAuthn / passkeys can be required as a factor through FactorGrantedAuthority.WEBAUTHN_AUTHORITY, alone or combined with password or one-time token factors. Documented in the 7.x multi-factor authentication guide.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/mfa.html",
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/passkeys.html"
+      ]
+    },
+    {
+      "identifier": "email_code_mfa",
+      "category": "mfa",
+      "status": "partial",
+      "description": "The one-time token factor (OTT_AUTHORITY) can be required as a second factor and delivered by email, but the application supplies delivery and the token is a link or token value rather than a short code.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/mfa.html",
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/onetimetoken.html"
+      ]
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "category": "mfa",
+      "status": "partial",
+      "description": "The one-time token factor can be delivered by SMS as a second factor, but delivery is application-supplied and nothing phone-specific is built in.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/mfa.html",
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/onetimetoken.html"
+      ]
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "category": "mfa",
+      "status": "not_supported",
+      "description": "No recovery code mechanism.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/mfa.html"]
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "category": "mfa",
+      "status": "not_supported",
+      "description": "No push notification factor.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/mfa.html"]
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "category": "mfa",
+      "status": "partial",
+      "description": "MFA can be applied conditionally: per request, per authority, per user through a RequiredAuthoritiesRepository, or only for users with a registered passkey. There is no built-in risk engine or signal-based scoring.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/mfa.html"]
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "category": "mfa",
+      "status": "not_supported",
+      "description": "No Cisco Duo integration is provided by Spring Security."
+    },
+    {
+      "identifier": "step_up_authentication",
+      "category": "mfa",
+      "status": "supported",
+      "description": "Requiring a specific factor authority on selected paths redirects users to obtain the missing factor. Factors can be time-bound with validDuration so users must re-authenticate after a set period.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/mfa.html"]
+    },
+    {
+      "identifier": "oidc_protocol",
+      "category": "integration_protocols",
+      "status": "supported",
+      "description": "Covers all three roles: OpenID Connect relying party (OAuth 2.0 Login), OAuth 2.0 resource server (JWT and opaque tokens), and OpenID Provider through the OAuth 2.1 / OIDC authorization server (Spring Authorization Server).",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/oauth2/index.html",
+        "https://docs.spring.io/spring-security/reference/servlet/oauth2/login/core.html",
+        "https://docs.spring.io/spring-authorization-server/reference/overview.html"
+      ]
+    },
+    {
+      "identifier": "saml2_protocol",
+      "category": "integration_protocols",
+      "status": "partial",
+      "description": "SAML 2.0 service provider (relying party) only: login, single logout and metadata, built on OpenSAML. Spring Security cannot act as a SAML identity provider.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/saml2/index.html",
+        "https://docs.spring.io/spring-security/reference/servlet/saml2/login/overview.html"
+      ]
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "category": "integration_protocols",
+      "status": "not_supported",
+      "description": "WS-Federation is not supported."
+    },
+    {
+      "identifier": "machine_to_machine",
+      "category": "integration_protocols",
+      "status": "supported",
+      "description": "The client credentials grant is supported on the OAuth 2.0 client side and on the authorization server. Resource servers validate the resulting JWT or opaque access tokens.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/oauth2/client/authorization-grants.html",
+        "https://docs.spring.io/spring-authorization-server/reference/overview.html",
+        "https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html"
+      ]
+    },
+    {
+      "identifier": "oidc_federation",
+      "category": "identity_federation",
+      "status": "supported",
+      "description": "Authenticate users against one or more external OpenID Connect providers with oauth2Login(). Multiple ClientRegistrations are offered on a generated provider picker page.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/oauth2/login/core.html"]
+    },
+    {
+      "identifier": "saml_federation",
+      "category": "identity_federation",
+      "status": "supported",
+      "description": "Multiple SAML 2.0 asserting parties can be registered, including from federation metadata with RelyingPartyRegistrations.collectionFromMetadataLocation(...). Metadata can be cached and refreshed.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/saml2/login/overview.html"]
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "category": "identity_federation",
+      "status": "supported",
+      "description": "LDAP authentication and authorities lookup are built in, with bind, password-compare and Active Directory-specific authentication providers.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/ldap.html"]
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "category": "identity_federation",
+      "status": "supported",
+      "description": "Microsoft Entra ID is usable as an external identity provider through generic OpenID Connect (issuer URI) or SAML 2.0 relying party configuration. There is no dedicated Entra ID module in Spring Security itself.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/oauth2/login/core.html",
+        "https://docs.spring.io/spring-security/reference/servlet/saml2/login/overview.html"
+      ]
+    },
+    {
+      "identifier": "bulk_user_import",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No import tooling. User storage is the application's own (UserDetailsService, JdbcUserDetailsManager or custom repositories).",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/user-details-service.html",
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/jdbc.html"
+      ]
+    },
+    {
+      "identifier": "password_hash_import",
+      "category": "user_management",
+      "status": "partial",
+      "description": "DelegatingPasswordEncoder validates the stored {id}hash format, so existing hashes from several algorithms can be kept and verified alongside new bcrypt hashes. There is no import tool.",
+      "links": ["https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html"]
+    },
+    {
+      "identifier": "bulk_user_export",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No export tooling."
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No bulk operations. UserDetailsManager only offers single-user create, update and delete.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/jdbc.html"]
+    },
+    {
+      "identifier": "upsert_on_import",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No import mechanism."
+    },
+    {
+      "identifier": "legacy_username_import",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No import mechanism."
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No import mechanism and no built-in MFA enrollment store apart from passkey credential repositories."
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No SCIM server."
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No SCIM client."
+    },
+    {
+      "identifier": "scim_groups",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No SCIM support."
+    },
+    {
+      "identifier": "jit_provisioning",
+      "category": "user_management",
+      "status": "partial",
+      "description": "Custom OAuth2UserService, OidcUserService or SAML response authentication converters can create or update a local user on first federated login. This is application code, not a configuration option.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/oauth2/login/core.html",
+        "https://docs.spring.io/spring-security/reference/servlet/saml2/login/overview.html"
+      ]
+    },
+    {
+      "identifier": "lazy_migration",
+      "category": "user_management",
+      "status": "partial",
+      "description": "A custom UserDetailsService or AuthenticationProvider can authenticate against a legacy store, and DaoAuthenticationProvider can re-encode passwords on login through UserDetailsPasswordService. There is no turnkey migration feature.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html",
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/user-details-service.html"
+      ]
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No profile or account management portal. Applications build their own."
+    },
+    {
+      "identifier": "account_linking",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No built-in account linking. Federated principals are mapped to local users in application code."
+    },
+    {
+      "identifier": "user_blocking",
+      "category": "user_management",
+      "status": "supported",
+      "description": "UserDetails flags (enabled, accountNonLocked, accountNonExpired, credentialsNonExpired) are enforced at authentication and produce DisabledException, LockedException and related failure events. There is no admin UI.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/user-details-service.html",
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/events.html"
+      ]
+    },
+    {
+      "identifier": "user_metadata",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "There is no built-in user profile or metadata store. Custom attributes are modelled in the application's UserDetails and database.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/user-details-service.html"
+      ]
+    },
+    {
+      "identifier": "app_metadata",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No built-in application metadata store.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/user-details-service.html"
+      ]
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No built-in metadata store, so no limits are defined."
+    },
+    {
+      "identifier": "user_search",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No user search API. Lookup is by username through UserDetailsService.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/user-details-service.html"
+      ]
+    },
+    {
+      "identifier": "rbac",
+      "category": "user_management",
+      "status": "supported",
+      "description": "Roles and authorities on every Authentication, enforced by request authorization rules (hasRole, hasAuthority) and method security, with role hierarchy support.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html",
+        "https://docs.spring.io/spring-security/reference/servlet/authorization/authorize-http-requests.html",
+        "https://docs.spring.io/spring-security/reference/servlet/authorization/method-security.html"
+      ]
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "category": "user_management",
+      "status": "partial",
+      "description": "Multi-tenant building blocks exist: multiple JWT issuers on a resource server, multiple SAML relying party registrations, and multiple issuers on the authorization server. There is no B2B organization or membership model.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/multitenancy.html",
+        "https://docs.spring.io/spring-security/reference/servlet/saml2/login/overview.html"
+      ]
+    },
+    {
+      "identifier": "password_strength_policy",
+      "category": "user_management",
+      "status": "partial",
+      "description": "A CompromisedPasswordChecker (Have I Been Pwned) is built in. There are no composition, length or history rules, which are left to the application.",
+      "links": ["https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html"]
+    },
+    {
+      "identifier": "username_restrictions",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No built-in username rules. Validation is up to the application."
+    },
+    {
+      "identifier": "progressive_profiling",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No profile forms or progressive profiling."
+    },
+    {
+      "identifier": "abac",
+      "category": "access_control",
+      "status": "supported",
+      "description": "Method security (@PreAuthorize, @PostAuthorize) evaluates Spring Expression Language and custom AuthorizationManagers against user, request and domain object attributes.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authorization/method-security.html",
+        "https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html"
+      ]
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "category": "access_control",
+      "status": "partial",
+      "description": "Domain object security (ACLs) assigns permissions on individual objects to principals. It is not a relationship-based (ReBAC / Zanzibar-style) engine.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authorization/acls.html"]
+    },
+    {
+      "identifier": "api_authorization",
+      "category": "access_control",
+      "status": "supported",
+      "description": "The resource server maps token scopes to SCOPE_ authorities and enforces them per request or method. Authorities can be customised with a JwtAuthenticationConverter.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html",
+        "https://docs.spring.io/spring-security/reference/servlet/authorization/authorize-http-requests.html"
+      ]
+    },
+    {
+      "identifier": "soc2_type2",
+      "category": "compliance",
+      "status": "unknown",
+      "description": "No certification is published for the open-source library. Compliance depends on how the host application is built and deployed."
+    },
+    {
+      "identifier": "iso_27001",
+      "category": "compliance",
+      "status": "unknown",
+      "description": "No certification is published for the open-source library. Compliance depends on the host application's environment."
+    },
+    {
+      "identifier": "hipaa_baa",
+      "category": "compliance",
+      "status": "unknown",
+      "description": "Not applicable to an open-source library. Any BAA would come from the host application's operator or a commercial support vendor."
+    },
+    {
+      "identifier": "pci_dss",
+      "category": "compliance",
+      "status": "unknown",
+      "description": "No PCI DSS attestation for the library. Compliance depends on the host application."
+    },
+    {
+      "identifier": "csa_star",
+      "category": "compliance",
+      "status": "unknown",
+      "description": "No CSA STAR listing for the library."
+    },
+    {
+      "identifier": "fedramp",
+      "category": "compliance",
+      "status": "unknown",
+      "description": "No FedRAMP authorization for the library. It is a component of the host application's boundary."
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "category": "compliance",
+      "status": "not_supported",
+      "description": "No data export feature. Personal data lives in the application's own stores."
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "category": "compliance",
+      "status": "partial",
+      "description": "UserDetailsManager (including JdbcUserDetailsManager) provides deleteUser, but there is no erasure workflow covering sessions, tokens, consents or application data.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/jdbc.html"]
+    },
+    {
+      "identifier": "consent_management",
+      "category": "compliance",
+      "status": "partial",
+      "description": "The authorization server stores OAuth 2.0 authorization consent per client and user (OAuth2AuthorizationConsentService), with a customisable consent page and device verification consent. No privacy or marketing consent management.",
+      "links": [
+        "https://docs.spring.io/spring-authorization-server/reference/core-model-components.html",
+        "https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"
+      ]
+    },
+    {
+      "identifier": "region_deployment",
+      "category": "compliance",
+      "status": "supported",
+      "description": "Runs wherever the host application is deployed, so data residency is set by the application and database hosting.",
+      "values": ["Self-hosted"]
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "category": "compliance",
+      "status": "supported",
+      "description": "Runs inside the application on any cloud or on-premises infrastructure. There is no separate vendor service to deploy.",
+      "values": ["On-premises", "Any cloud"]
+    },
+    {
+      "identifier": "audit_log_retention",
+      "category": "security",
+      "status": "not_supported",
+      "description": "Authentication and authorization events are published as Spring application events, but nothing is persisted. Storage and retention must be implemented in event listeners.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/events.html"]
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "category": "security",
+      "status": "not_supported",
+      "description": "No log streaming. Events can be forwarded by custom listeners to any sink.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/events.html"]
+    },
+    {
+      "identifier": "security_center",
+      "category": "security",
+      "status": "not_supported",
+      "description": "No security dashboard."
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "category": "security",
+      "status": "partial",
+      "description": "Database encryption is the host application's responsibility. The spring-security-crypto module provides Encryptors (AES-based) and key generators for application-level encryption.",
+      "links": ["https://docs.spring.io/spring-security/reference/features/integrations/cryptography.html"]
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "category": "security",
+      "status": "supported",
+      "description": "HTTPS redirect (requiresChannel), HSTS and other security headers, and secure cookie settings are built in. TLS itself is terminated by the container or a proxy.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/exploits/http.html",
+        "https://docs.spring.io/spring-security/reference/servlet/exploits/headers.html"
+      ]
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "category": "security",
+      "status": "partial",
+      "description": "Everything is self-hosted, so keys are customer-controlled. The authorization server and JWT support take signing keys from an application-supplied JWKSource or JwtEncoder, which can be backed by a keystore or external key service.",
+      "links": [
+        "https://docs.spring.io/spring-authorization-server/reference/core-model-components.html",
+        "https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html"
+      ]
+    },
+    {
+      "identifier": "bot_detection",
+      "category": "security",
+      "status": "not_supported",
+      "description": "No bot detection or CAPTCHA integration."
+    },
+    {
+      "identifier": "brute_force_protection",
+      "category": "security",
+      "status": "partial",
+      "description": "Locked accounts are enforced and failed attempts raise authentication failure events, but there is no built-in attempt counting, throttling or automatic lockout. Applications implement it on top of events.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/events.html",
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/user-details-service.html"
+      ]
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "category": "security",
+      "status": "not_supported",
+      "description": "No IP reputation or throttling."
+    },
+    {
+      "identifier": "breached_password_detection",
+      "category": "security",
+      "status": "supported",
+      "description": "HaveIBeenPwnedRestApiPasswordChecker, published as a CompromisedPasswordChecker bean, is applied by DaoAuthenticationProvider and rejects compromised passwords with a CompromisedPasswordException.",
+      "links": ["https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html"]
+    },
+    {
+      "identifier": "credential_guard",
+      "category": "security",
+      "status": "not_supported",
+      "description": "No dark web or credential leak monitoring beyond the Have I Been Pwned password check."
+    },
+    {
+      "identifier": "tenant_acl",
+      "category": "security",
+      "status": "partial",
+      "description": "Requests can be restricted to IP addresses or CIDR ranges with an IpAddressMatcher in authorization rules. This is per application, not a per-tenant IP ACL.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authorization/authorize-http-requests.html"]
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "category": "security",
+      "status": "not_supported",
+      "description": "No device fingerprinting."
+    },
+    {
+      "identifier": "per_org_branding",
+      "category": "multi_tenancy",
+      "status": "not_supported",
+      "description": "No organization model or branding."
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "category": "multi_tenancy",
+      "status": "not_supported",
+      "description": "No organization model. MFA requirements can be set per user with a RequiredAuthoritiesRepository.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/mfa.html"]
+    },
+    {
+      "identifier": "hosted_login_page",
+      "category": "branding_ux",
+      "status": "partial",
+      "description": "A basic default login page is generated for form login, one-time token, passkeys and OAuth 2.0 / SAML provider selection. It is served by the application itself and is meant to be replaced, not a separate hosted service.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/index.html"]
+    },
+    {
+      "identifier": "embedded_login",
+      "category": "branding_ux",
+      "status": "partial",
+      "description": "Login runs inside the application with no redirect to a vendor domain, through generated or custom pages. No embeddable login components are provided.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/index.html"]
+    },
+    {
+      "identifier": "white_label",
+      "category": "branding_ux",
+      "status": "supported",
+      "description": "No vendor branding is shown. Default pages are plain and every page can be replaced.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/index.html"]
+    },
+    {
+      "identifier": "localization",
+      "category": "branding_ux",
+      "status": "partial",
+      "description": "Authentication and authorization messages are resolved through a MessageSource with bundled translations for many languages. Custom login page text is up to the application.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/index.html"]
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "category": "branding_ux",
+      "status": "not_supported",
+      "description": "Only the generated default pages. No UI component library or SDK widgets."
+    },
+    {
+      "identifier": "login_analytics",
+      "category": "analytics",
+      "status": "not_supported",
+      "description": "No analytics dashboard. Authentication events can feed an external analytics tool.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/events.html"]
+    },
+    {
+      "identifier": "sdk_coverage",
+      "category": "developer_integration",
+      "status": "partial",
+      "description": "JVM only. Integrates with Spring MVC (servlet) and Spring WebFlux (reactive) applications, with a Kotlin DSL.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/index.html"],
+      "values": ["Java", "Kotlin", "Spring Boot", "Spring MVC", "Spring WebFlux"]
+    },
+    {
+      "identifier": "management_api",
+      "category": "developer_integration",
+      "status": "not_supported",
+      "description": "No management API for users or sessions. UserDetailsManager is a programmatic interface only. The authorization server can expose an OIDC client registration endpoint, disabled by default.",
+      "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "category": "developer_integration",
+      "status": "not_supported",
+      "description": "No built-in rate limiting."
+    },
+    {
+      "identifier": "actions_extensibility",
+      "category": "developer_integration",
+      "status": "supported",
+      "description": "Extension is through code: custom filters, AuthenticationProviders, success and failure handlers, event listeners, OAuth2TokenCustomizer, and replaceable services throughout.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/index.html",
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/events.html",
+        "https://docs.spring.io/spring-authorization-server/reference/core-model-components.html"
+      ]
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "category": "developer_integration",
+      "status": "not_supported",
+      "description": "Extensions are written in Java or Kotlin."
+    },
+    {
+      "identifier": "custom_domain",
+      "category": "developer_integration",
+      "status": "supported",
+      "description": "The application is served on its own domain, and the authorization server issuer is set through AuthorizationServerSettings.",
+      "links": ["https://docs.spring.io/spring-authorization-server/reference/configuration-model.html"]
+    },
+    {
+      "identifier": "deploy_cli",
+      "category": "developer_integration",
+      "status": "not_supported",
+      "description": "No CLI. Configuration is part of the application code and properties."
+    },
+    {
+      "identifier": "terraform_provider",
+      "category": "developer_integration",
+      "status": "not_supported",
+      "description": "No Terraform provider."
+    },
+    {
+      "identifier": "custom_database_connections",
+      "category": "developer_integration",
+      "status": "supported",
+      "description": "Users come from any UserDetailsService, with built-in JDBC support. Authorization server clients, authorizations and consents can use the JDBC implementations or custom repositories.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/user-details-service.html",
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/jdbc.html",
+        "https://docs.spring.io/spring-authorization-server/reference/core-model-components.html"
+      ]
+    },
+    {
+      "identifier": "native_webhooks",
+      "category": "developer_integration",
+      "status": "not_supported",
+      "description": "No webhooks. Events are in-process Spring application events that listeners can forward.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/events.html"]
+    },
+    {
+      "identifier": "universal_login_customization",
+      "category": "developer_integration",
+      "status": "supported",
+      "description": "The login page, one-time token submit page, passkey pages and consent page can each be replaced with application-owned views.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/authentication/index.html",
+        "https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"
+      ]
+    },
+    {
+      "identifier": "custom_email_provider",
+      "category": "developer_integration",
+      "status": "supported",
+      "description": "No email sender is included. The application delivers one-time tokens through any provider inside a OneTimeTokenGenerationSuccessHandler.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/onetimetoken.html"]
+    },
+    {
+      "identifier": "email_templates",
+      "category": "developer_integration",
+      "status": "not_supported",
+      "description": "No email templates. The application writes the message.",
+      "links": ["https://docs.spring.io/spring-security/reference/servlet/authentication/onetimetoken.html"]
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "category": "developer_integration",
+      "status": "supported",
+      "description": "OAuth2TokenCustomizer for JWT access tokens, opaque token claims and ID tokens, plus a userInfoMapper for the UserInfo endpoint, on the authorization server.",
+      "links": [
+        "https://docs.spring.io/spring-authorization-server/reference/core-model-components.html",
+        "https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"
+      ]
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "category": "advanced",
+      "status": "not_supported",
+      "description": "No visual or no-code flow builder."
+    },
+    {
+      "identifier": "identity_proofing",
+      "category": "advanced",
+      "status": "not_supported",
+      "description": "No identity verification or document proofing."
+    },
+    {
+      "identifier": "decentralized_identity",
+      "category": "advanced",
+      "status": "not_supported",
+      "description": "No verifiable credentials or decentralized identifier support."
+    },
+    {
+      "identifier": "billing_integration",
+      "category": "advanced",
+      "status": "not_supported",
+      "description": "No billing or subscription management."
+    },
+    {
+      "identifier": "agentic_identity",
+      "category": "advanced",
+      "status": "partial",
+      "description": "Generic OAuth 2.x building blocks apply to protecting agent and MCP endpoints: resource server with Protected Resource Metadata, and an authorization server with PKCE, dynamic client registration and DPoP. There is no MCP-specific module in Spring Security.",
+      "links": [
+        "https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/protected-resource-metadata.html",
+        "https://docs.spring.io/spring-authorization-server/reference/overview.html"
+      ]
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "category": "post_quantum_cryptography",
+      "status": "unknown",
+      "description": "TLS is terminated by the container, proxy or JDK, not by Spring Security."
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "category": "post_quantum_cryptography",
+      "status": "not_supported",
+      "description": "No post-quantum signature algorithms are documented for tokens or SAML."
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "category": "post_quantum_cryptography",
+      "status": "unknown",
+      "description": "No published post-quantum roadmap."
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "category": "post_quantum_cryptography",
+      "status": "not_supported",
+      "description": "Not documented."
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "category": "post_quantum_cryptography",
+      "status": "not_supported",
+      "description": "Not documented."
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "category": "post_quantum_cryptography",
+      "status": "not_supported",
+      "description": "Not documented."
+    }
+  ],
+  "oidc": {
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "description": "Authorization code flow in the authorization server, with optional user consent. Also supported by the OAuth 2.0 client and OIDC login.",
+        "links": [
+          "https://docs.spring.io/spring-authorization-server/reference/overview.html",
+          "https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"
+        ]
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported",
+        "description": "Refresh token grant on the token endpoint and in the OAuth 2.0 client.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "supported",
+        "description": "Client credentials grant on the token endpoint and in the OAuth 2.0 client.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "not_supported",
+        "description": "Not offered, consistent with OAuth 2.1.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/overview.html"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "supported",
+        "description": "OAuth 2.0 Token Exchange (RFC 8693) on the token endpoint. The OAuth 2.0 client can also request token exchange.",
+        "links": [
+          "https://docs.spring.io/spring-authorization-server/reference/overview.html",
+          "https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"
+        ]
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "not_supported",
+        "description": "Not listed among the supported grants.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/overview.html"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "supported",
+        "description": "OAuth 2.0 Device Authorization Grant (RFC 8628) with a device verification endpoint and consent.",
+        "links": [
+          "https://docs.spring.io/spring-authorization-server/reference/overview.html",
+          "https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"
+        ]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "not_supported",
+        "description": "The authorization server does not accept this grant. The OAuth 2.0 client can send it as an opt-in extension.",
+        "links": ["https://docs.spring.io/spring-security/reference/servlet/oauth2/client/authorization-grants.html"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "not_supported",
+        "description": "Not supported."
+      },
+      {
+        "identifier": "password_grant",
+        "status": "not_supported",
+        "description": "Not offered, consistent with OAuth 2.1.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/overview.html"]
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "supported",
+        "description": "OpenID Connect RP-Initiated Logout endpoint on the authorization server, validating post_logout_redirect_uri. The relying party side offers RP-initiated and back-channel logout.",
+        "links": [
+          "https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html",
+          "https://docs.spring.io/spring-security/reference/servlet/oauth2/login/logout.html"
+        ]
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported",
+        "description": "PKCE (RFC 7636) on the authorization server, with proof key requirements per client. Automatic PKCE for public clients in the OAuth 2.0 client.",
+        "links": [
+          "https://docs.spring.io/spring-authorization-server/reference/overview.html",
+          "https://docs.spring.io/spring-security/reference/servlet/oauth2/client/client-authentication.html"
+        ]
+      },
+      {
+        "identifier": "par_extension",
+        "status": "supported",
+        "description": "Pushed Authorization Requests (RFC 9126) endpoint on the authorization server.",
+        "links": [
+          "https://docs.spring.io/spring-authorization-server/reference/overview.html",
+          "https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"
+        ]
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "not_supported",
+        "description": "Not documented.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/overview.html"]
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "not_supported",
+        "description": "Not documented.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/overview.html"]
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "supported",
+        "description": "Authorization endpoint with consent handling and customisable consent page.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported",
+        "description": "Token endpoint for authorization code, refresh token, client credentials, device code and token exchange grants.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "supported",
+        "description": "OIDC UserInfo endpoint, with claims mapped from the ID token by requested scopes and customisable through userInfoMapper.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "supported",
+        "description": "Token revocation endpoint (RFC 7009).",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "supported",
+        "description": "Token introspection endpoint (RFC 7662).",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "supported",
+        "description": "Device authorization endpoint (RFC 8628).",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported",
+        "description": "OpenID Connect provider configuration endpoint, customisable through a metadata customizer.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "supported",
+        "description": "Authorization server metadata endpoint (RFC 8414).",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown",
+        "description": "Supported prompt values are not documented in the protocol endpoint reference.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown",
+        "description": "Supported prompt values are not documented in the protocol endpoint reference.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "unknown",
+        "description": "Supported prompt values are not documented in the protocol endpoint reference.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown",
+        "description": "Supported prompt values are not documented in the protocol endpoint reference.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown",
+        "description": "Supported prompt values are not documented in the protocol endpoint reference.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "supported",
+        "description": "Public clients, typically with PKCE.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/overview.html"]
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "supported",
+        "description": "Client secret in the HTTP Basic header.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/overview.html"]
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "supported",
+        "description": "Client secret in the request body.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/overview.html"]
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "supported",
+        "description": "JWT client assertion signed with the client secret (RFC 7523).",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/overview.html"]
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "supported",
+        "description": "JWT client assertion signed with the client's private key (RFC 7523).",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/overview.html"]
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "supported",
+        "description": "Mutual-TLS client authentication (RFC 8705), with both CA-issued (tls_client_auth) and self-signed certificate (self_signed_tls_client_auth) methods.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/overview.html"]
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "supported",
+        "description": "OIDC Dynamic Client Registration endpoint, disabled by default and protected by a bearer token carrying the client.create scope.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "partial",
+        "description": "A client configuration endpoint supports reading a registered client (client.read scope). Updating and deleting through the registration management protocol is not documented.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html"]
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "supported",
+        "description": "A new refresh token is issued on each use when reuseRefreshTokens is disabled in TokenSettings. Refresh tokens are reused by default.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/core-model-components.html"]
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "not_supported",
+        "description": "Not documented.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/core-model-components.html"]
+      },
+      {
+        "identifier": "dpop",
+        "status": "supported",
+        "description": "DPoP-bound access tokens (RFC 9449) are issued by the authorization server for all grant types, with cnf.jkt in JWT access tokens. The resource server validates DPoP proofs for JWT and opaque tokens.",
+        "links": [
+          "https://docs.spring.io/spring-authorization-server/reference/overview.html",
+          "https://docs.spring.io/spring-authorization-server/reference/protocol-endpoints.html",
+          "https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/dpop-tokens.html"
+        ]
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "not_supported",
+        "description": "No conformance claim."
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "not_supported",
+        "description": "No conformance claim."
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown",
+        "description": "Building blocks are present (PAR, PKCE, DPoP or mutual TLS, private_key_jwt) but no FAPI 2.0 conformance is claimed.",
+        "links": ["https://docs.spring.io/spring-authorization-server/reference/overview.html"]
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "not_supported",
+        "description": "No conformance claim."
+      },
+      {
+        "identifier": "jarm",
+        "status": "not_supported",
+        "description": "Not documented."
+      }
+    ]
+  }
+}
