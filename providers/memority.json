@@ -1,0 +1,1060 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "Memority",
+  "abstract": "French identity and access management vendor offering the Memority Identity Factory, a SaaS platform unifying identity governance and administration (IGA), SSO and federation, multi-factor authentication, and customer identity (CIAM) for employees, partners, customers, IoT, and non-human identities such as service accounts and AI agents. The platform is split into MY-Identity (lifecycle and rights governance), MY-Access (SSO and federation via SAML 2.0, WS-Federation, OAuth 2.0, and OpenID Connect, with risk-based adaptive authentication), MY-Keys (second-factor management: TOTP, WebAuthn/FIDO2, push, X.509), and MY-Discovery (shadow SaaS and ghost account discovery). Extensible through Groovy rules and actions and OAuth2-protected REST APIs. Hosted in Europe (Paris or Dublin) on AWS, S3NS (SecNumCloud 3.2), or GCP; ISO 27001 and ISO 27701 certified, with NIS2 and DORA compliance support. Pricing is quote-based.",
+  "identifier": "memority",
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/memority.svg"
+  },
+  "website": "https://www.memority.eu/en",
+  "license": "Proprietary",
+  "nationality": "France",
+  "pricing": {
+    "hasFreeTier": false,
+    "pricingModel": "custom",
+    "pricingUrl": "https://www.memority.eu/en/request-demo",
+    "plans": [
+      {
+        "name": "Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)",
+        "price": "Custom (quote on request; demo available)"
+      }
+    ]
+  },
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "status": "supported",
+      "description": "Login and password authentication, using either a password stored in Memority (Memority Password module) or one held in the customer's Active Directory or LDAP directory.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/supported-authentication-factors",
+        "https://doc.memority.eu/configuration-guide/latest/authentication-modules"
+      ]
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "status": "supported",
+      "description": "Customers can sign in with social networks (Meta, Google, X, FranceConnect, b.connect) or any OAuth2/OpenID Connect provider through delegation modules, with automatic profile data enrichment.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/federation",
+        "https://www.memority.eu/en/access-identity-management-customers/"
+      ]
+    },
+    {
+      "identifier": "passkey_authentication",
+      "status": "supported",
+      "description": "WebAuthn authentication, including Windows Hello and YubiKey, with a global setting restricting registration to platform, cross-platform, or all authenticators; passkeys are listed on the product pages.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/webauthn",
+        "https://doc.memority.eu/capabilities/latest/supported-authentication-factors"
+      ]
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "status": "partial",
+      "description": "An OTP-by-mail module (configurable length, lifetime, and send/validate quotas) can be used as an authentication mechanism; it is documented mainly as a fallback factor.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/authentication-modules",
+        "https://www.memority.eu/en/offers/my-access-manage-access"
+      ]
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "status": "partial",
+      "description": "An OTP-by-SMS module (configurable length, lifetime, and send/validate quotas) can be used as an authentication mechanism; it is documented mainly as a fallback factor.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/authentication-modules",
+        "https://www.memority.eu/en/offers/my-access-manage-access"
+      ]
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "totp_mfa",
+      "status": "supported",
+      "description": "TOTP is supported through the OATH module and Google or Microsoft Authenticator, as well as Memority's own browser and mobile OTP generators in MY-Keys Premium.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/supported-authentication-factors",
+        "https://doc.memority.eu/capabilities/latest/my-keys"
+      ]
+    },
+    {
+      "identifier": "hotp_mfa",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "u2f_mfa",
+      "status": "unknown",
+      "description": "FIDO2 and YubiKey are documented through the WebAuthn module; legacy U2F is not named explicitly.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/webauthn",
+        "https://doc.memority.eu/capabilities/latest/supported-authentication-factors"
+      ]
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "status": "supported",
+      "description": "WebAuthn (FIDO2) is an authentication module that can be chained as a second factor in a two-factor authentication mechanism.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/authentication-modules",
+        "https://doc.memority.eu/configuration-guide/latest/authentication-mechanisms"
+      ]
+    },
+    {
+      "identifier": "email_code_mfa",
+      "status": "supported",
+      "description": "OTP by mail module with configurable maximum registrations, OTP length (default 4), lifetime (default 1 minute), and send/validate quota policies.",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"]
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "status": "supported",
+      "description": "OTP by SMS module with configurable maximum registrations, OTP length (default 4), lifetime (default 1 minute), and send/validate quota policies.",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"]
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "status": "supported",
+      "description": "Mobile push authentication through the Memority MFA module in mobile mode with push enabled (MY-Keys Premium), alongside fingerprint biometrics on iOS and Android.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/authentication-modules",
+        "https://doc.memority.eu/capabilities/latest/my-keys"
+      ]
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "status": "supported",
+      "description": "Risk-based authentication computes a 0 to 100 risk score from device, location, and behavior, and only offers authentication mechanisms strong enough to bring the score under the application's tolerance.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/risk-based-authentication",
+        "https://doc.memority.eu/configuration-guide/latest/access-risk"
+      ]
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "status": "unknown",
+      "description": "Third-party MFA products can be connected through APIs, and RADIUS server or client authentication is supported; Cisco Duo is not named specifically.",
+      "links": [
+        "https://www.memority.eu/en/offers/my-keys-management-second-authentication-factors",
+        "https://doc.memority.eu/capabilities/latest/supported-authentication-factors"
+      ]
+    },
+    {
+      "identifier": "step_up_authentication",
+      "status": "supported",
+      "description": "Authentication mechanisms carry an authentication level, and risk-based authentication enforces step-up with a one-time password or another strong factor when the risk exceeds the threshold.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/risk-based-authentication",
+        "https://doc.memority.eu/configuration-guide/latest/authentication-mechanisms"
+      ]
+    },
+    {
+      "identifier": "oidc_protocol",
+      "status": "supported",
+      "description": "Memority acts as an OAuth2/OpenID Connect provider with per-application federations, JWT access tokens, standard and custom scopes, claims, and ACR/AMR values; it can also delegate to external OIDC providers.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/federation",
+        "https://doc.memority.eu/configuration-guide/latest/oauth2"
+      ]
+    },
+    {
+      "identifier": "saml2_protocol",
+      "status": "supported",
+      "description": "SAML 2.0 identity provider federations with configurable NameID, additional attributes, signed assertions, requests, and logout messages, and downloadable IdP metadata.",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "status": "supported",
+      "description": "WS-Federation relying-party federations with realm, assertion consumer URLs, NameID, additional attributes, and signed assertions.",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+    },
+    {
+      "identifier": "machine_to_machine",
+      "status": "supported",
+      "description": "The OAuth2 client credentials grant is supported for non-human identities such as services, connectors, and scripts.",
+      "links": [
+        "https://doc.memority.eu/setup-guide/latest/apis-usage",
+        "https://doc.memority.eu/configuration-guide/latest/federation"
+      ]
+    },
+    {
+      "identifier": "oidc_federation",
+      "status": "supported",
+      "description": "External OAuth2/OpenID Connect providers can be plugged in through a provider authentication module with account mapping, optional PKCE, and custom scopes; Memority can also act as an IdP proxy.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/authentication-modules",
+        "https://doc.memority.eu/capabilities/latest/federation"
+      ]
+    },
+    {
+      "identifier": "saml_federation",
+      "status": "supported",
+      "description": "External SAML 2.0 identity providers can be plugged in through a SAML2 provider authentication module (NameID format, REDIRECT or POST binding, signing certificate), and partners can authenticate through their own IdP.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/authentication-modules",
+        "https://doc.memority.eu/capabilities/latest/federation"
+      ]
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "status": "supported",
+      "description": "Active Directory and LDAP authentication modules (LDAPS, up to two servers for high availability) plus Kerberos transparent authentication, and AD/LDAP provisioning connectors.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/authentication-modules",
+        "https://doc.memority.eu/setup-guide/latest/activedirectory-provisioning"
+      ]
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "status": "supported",
+      "description": "Federation and provisioning for Office 365 and Azure domains (accounts and licenses); MY-Discovery also has a native Microsoft Entra ID connector.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/federation",
+        "https://www.memority.eu/en/offers/my-discovery-identity-visibility"
+      ]
+    },
+    {
+      "identifier": "bulk_user_import",
+      "status": "supported",
+      "description": "A native CSV import engine does mass creation, modification, and deletion of identities from multiple authoritative sources, and a REST bulk API handles batch operations.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/automated-provisioning-and-synchronization",
+        "https://doc.memority.eu/configuration-guide/latest/idm-rest-bulk-api-specification"
+      ]
+    },
+    {
+      "identifier": "password_hash_import",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "bulk_user_export",
+      "status": "partial",
+      "description": "Reports can be exported to CSV or XLSX and audit data can be pulled through a REST API; a dedicated bulk identity export is not documented.",
+      "links": ["https://doc.memority.eu/capabilities/latest/reporting"]
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "status": "supported",
+      "description": "The REST bulk API supports PATCH and DELETE on objects targeted by id, id list, or search expression, in transactional batches of 5000 operations by default.",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/idm-rest-bulk-api-specification"]
+    },
+    {
+      "identifier": "upsert_on_import",
+      "status": "supported",
+      "description": "The bulk API has a CREATE_OR_UPDATE operation, and CSV reconciliation uses correlation rules to match source rows to existing identities.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/idm-rest-bulk-api-specification",
+        "https://doc.memority.eu/capabilities/latest/automated-provisioning-and-synchronization"
+      ]
+    },
+    {
+      "identifier": "legacy_username_import",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "status": "unknown",
+      "description": "SCIM is not mentioned in the documentation; inbound identity flows use CSV reconciliation, native connectors, and the Memority REST APIs.",
+      "links": ["https://doc.memority.eu/capabilities/latest/automated-provisioning-and-synchronization"]
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "status": "unknown",
+      "description": "Provisioning uses native connectors (AWS, Google, Office 365, Salesforce, ServiceNow, LDAP, AD, SQL) and a generic REST connector whose methods the administrator defines; SCIM is not mentioned.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/automated-provisioning-and-synchronization",
+        "https://doc.memority.eu/setup-guide/latest/rest-provisioning"
+      ]
+    },
+    {
+      "identifier": "scim_groups",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "jit_provisioning",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "lazy_migration",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "status": "supported",
+      "description": "Users edit their profile, change or reset their password, enroll devices and MFA, and answer security questions from the self-service portal.",
+      "links": ["https://doc.memority.eu/capabilities/latest/self-service-features"]
+    },
+    {
+      "identifier": "account_linking",
+      "status": "partial",
+      "description": "Identities authenticated through an external OIDC or SAML provider are mapped to Memority identities through an account mapping attribute; manual linking by users is not documented.",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"]
+    },
+    {
+      "identifier": "user_blocking",
+      "status": "supported",
+      "description": "Identities can be suspended (blocked) as an emergency measure, deactivated, soft deleted, and reactivated.",
+      "links": ["https://doc.memority.eu/capabilities/latest/complete-identities-lifecycle"]
+    },
+    {
+      "identifier": "user_metadata",
+      "status": "supported",
+      "description": "Attributes are fully configurable per object type (Identity, Organization, Resource, Role, Role Publication), with translations, help texts, and reference tables.",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/data-model"]
+    },
+    {
+      "identifier": "app_metadata",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "user_search",
+      "status": "partial",
+      "description": "Search expressions drive bulk operations, conditions, and tenant-wide audit filters; the portal search model is not documented in detail.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/idm-rest-bulk-api-specification",
+        "https://doc.memority.eu/capabilities/latest/traceability"
+      ]
+    },
+    {
+      "identifier": "rbac",
+      "status": "supported",
+      "description": "Role-based access with role requests, approval workflows, role publication, and segregation-of-duties policies.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/manage-user-access-request",
+        "https://doc.memority.eu/configuration-guide/latest/policies"
+      ]
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "status": "partial",
+      "description": "Organizations are managed objects with several independent organization trees and internal, external, and partner identity types; tenant isolation is at application level.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/complete-identities-lifecycle",
+        "https://www.memority.eu/en/architecture-security"
+      ]
+    },
+    {
+      "identifier": "password_strength_policy",
+      "status": "supported",
+      "description": "Password policies set length (2 to 128), character classes and per-class minimums, repeated characters, regular expressions, history and reuse delay, expiry with grace period, and dictionaries.",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/password-policies"]
+    },
+    {
+      "identifier": "username_restrictions",
+      "status": "supported",
+      "description": "Logins may only contain a-z, A-Z, 0-9 and the characters . - _ + ~ @.",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication"]
+    },
+    {
+      "identifier": "progressive_profiling",
+      "status": "supported",
+      "description": "Progressive data collection during customer journeys, limited to what each step requires.",
+      "links": ["https://www.memority.eu/en/access-identity-management-customers/"]
+    },
+    {
+      "identifier": "abac",
+      "status": "supported",
+      "description": "Contextual access policies based on attributes, roles, schedules, geolocation, device, and user behavior; federations can restrict access through per-application access rights.",
+      "links": [
+        "https://www.memority.eu/en/offers/my-access-manage-access",
+        "https://doc.memority.eu/configuration-guide/latest/federation"
+      ]
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "status": "supported",
+      "description": "Rights can carry dimensions that limit their management scope (for example by organization or country), and API access is granted per API zone through the sys.api-zone-access right.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/delegated-administration",
+        "https://doc.memority.eu/configuration-guide/latest/api-guardian-guide"
+      ]
+    },
+    {
+      "identifier": "api_authorization",
+      "status": "supported",
+      "description": "API Guardian authorizes calls per API zone for callers presenting an OAuth2 access token, in addition to the rights required on the target service.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/api-guardian-guide",
+        "https://doc.memority.eu/setup-guide/latest/apis-usage"
+      ]
+    },
+    {
+      "identifier": "soc2_type2",
+      "status": "planned",
+      "description": "SOC 2 Type II is a stated compliance goal, not yet a held certification.",
+      "links": ["https://www.memority.eu/en/presentation"]
+    },
+    {
+      "identifier": "iso_27001",
+      "status": "supported",
+      "description": "Memority is certified ISO 27001, along with ISO 27701 and AirCyber Gold.",
+      "links": ["https://www.memority.eu/en/architecture-security", "https://www.memority.eu/en/presentation"]
+    },
+    {
+      "identifier": "hipaa_baa",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "pci_dss",
+      "status": "planned",
+      "description": "PCI-DSS compatibility is a stated compliance goal, not yet a held certification.",
+      "links": ["https://www.memority.eu/en/presentation"]
+    },
+    {
+      "identifier": "csa_star",
+      "status": "planned",
+      "description": "CSA STAR level 2 is a stated compliance goal, not yet a held certification.",
+      "links": ["https://www.memority.eu/en/presentation"]
+    },
+    {
+      "identifier": "fedramp",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "status": "partial",
+      "description": "Identities go through soft delete (archived for a configurable 6 to 12 months) and hard delete (irreversible wipe); GDPR-specific anonymization is not documented.",
+      "links": ["https://doc.memority.eu/capabilities/latest/complete-identities-lifecycle"]
+    },
+    {
+      "identifier": "consent_management",
+      "status": "supported",
+      "description": "Granular management and revocation of customer consent for data sharing with third parties, through the self-service portal.",
+      "links": [
+        "https://www.memority.eu/en/offers/my-access-manage-access",
+        "https://www.memority.eu/en/access-identity-management-customers/"
+      ]
+    },
+    {
+      "identifier": "region_deployment",
+      "status": "supported",
+      "description": "Hosting regions Paris and Dublin on a provider of choice among AWS, S3NS, and GCP; the S3NS cloud is SecNumCloud 3.2 qualified.",
+      "links": ["https://www.memority.eu/en/architecture-security"]
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "status": "partial",
+      "description": "A shared or dedicated platform option is offered, hosted on a public trusted cloud rather than customer-managed infrastructure.",
+      "links": ["https://www.memority.eu/en/architecture-security"]
+    },
+    {
+      "identifier": "audit_log_retention",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "status": "supported",
+      "description": "Audit events and dashboards are exposed through OAuth2-protected REST APIs for ingestion into a SIEM, GRC tool, or data lake, and platform logs can be forwarded to the customer's SOC.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/traceability",
+        "https://doc.memority.eu/capabilities/latest/reporting"
+      ]
+    },
+    {
+      "identifier": "security_center",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "status": "supported",
+      "description": "All servers use encryption at rest; secrets are held in HSM modules and passwords use a dedicated non-reversible attribute.",
+      "links": [
+        "https://www.memority.eu/en/architecture-security",
+        "https://doc.memority.eu/setup-guide/latest/security-best-practices"
+      ]
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "status": "supported",
+      "description": "All internal and external flows are encrypted; LDAPS and HTTPS are mandatory for provisioning connectors.",
+      "links": [
+        "https://www.memority.eu/en/architecture-security",
+        "https://doc.memority.eu/setup-guide/latest/security-best-practices"
+      ]
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "bot_detection",
+      "status": "partial",
+      "description": "A captcha can be displayed on the first page of public access flows such as password recovery; broader bot detection is not documented.",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/public-access"]
+    },
+    {
+      "identifier": "brute_force_protection",
+      "status": "partial",
+      "description": "OTP modules have send and validate quota policies limiting attempts per time window; account lockout is not documented.",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"]
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "breached_password_detection",
+      "status": "supported",
+      "description": "Password policies can enable leaked-password detection, with a block or allow strategy when the checking service is unavailable (disabled by default).",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/password-policies"]
+    },
+    {
+      "identifier": "credential_guard",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "tenant_acl",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "status": "partial",
+      "description": "Risk rules use IP address, browser, user agent, last use date, and known or unknown device status, and customers can manage trusted devices.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/access-risk",
+        "https://doc.memority.eu/capabilities/latest/self-service-features"
+      ]
+    },
+    {
+      "identifier": "per_org_branding",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "status": "partial",
+      "description": "MFA account policies apply to a population of users, and authentication mechanisms can be scoped with user conditions; they are not tied to organizations specifically.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/policies",
+        "https://doc.memority.eu/configuration-guide/latest/authentication-mechanisms"
+      ]
+    },
+    {
+      "identifier": "hosted_login_page",
+      "status": "supported",
+      "description": "Authentication pages and the self-service portals are hosted by Memority and can be customized to match the customer's brand.",
+      "links": [
+        "https://www.memority.eu/en/access-identity-management-customers/",
+        "https://doc.memority.eu/capabilities/latest/memority-portals"
+      ]
+    },
+    {
+      "identifier": "embedded_login",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "white_label",
+      "status": "partial",
+      "description": "Portals can be branded with logo, colors, and layout through themes and assets; the extent of white-labelling is not documented.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/memority-portals",
+        "https://doc.memority.eu/configuration-guide/latest/customization"
+      ]
+    },
+    {
+      "identifier": "localization",
+      "status": "supported",
+      "description": "Portals follow the authenticated user's language preference, and translations can be customized per tenant through internationalization keys.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/memority-portals",
+        "https://doc.memority.eu/configuration-guide/latest/customization"
+      ]
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "login_analytics",
+      "status": "supported",
+      "description": "Dashboards filterable by perimeter, role, or population, out-of-the-box authentication reports, and personal self-driven dashboards, with CSV and XLSX export.",
+      "links": ["https://doc.memority.eu/capabilities/latest/reporting"]
+    },
+    {
+      "identifier": "sdk_coverage",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "management_api",
+      "status": "supported",
+      "description": "An API-first platform with data, features, and configuration REST APIs, protected by OAuth2 through API Guardian, plus a Postman collection.",
+      "links": [
+        "https://doc.memority.eu/setup-guide/latest/apis-usage",
+        "https://doc.memority.eu/configuration-guide/latest/api-guardian-guide"
+      ]
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "actions_extensibility",
+      "status": "supported",
+      "description": "Groovy 2.5 rules and actions attach to business policies, object policies, features, and workflows, in a sandbox limited to 500 ms for synchronous rules and 1 minute for asynchronous ones.",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/rules-actions-api"]
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "status": "not_supported",
+      "description": "Groovy is the only supported scripting language for rules and actions.",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/rules-actions-api"]
+    },
+    {
+      "identifier": "custom_domain",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "deploy_cli",
+      "status": "partial",
+      "description": "Configurations are versioned XML that can be imported and exported across development, staging, and production, including from CI/CD pipelines; no dedicated CLI is documented.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/memority-portals",
+        "https://doc.memority.eu/configuration-guide/latest/system"
+      ]
+    },
+    {
+      "identifier": "terraform_provider",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "custom_database_connections",
+      "status": "partial",
+      "description": "Authentication can be delegated to an existing Active Directory or LDAP directory, or to external OIDC and SAML providers; scripted custom database connections are not documented.",
+      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"]
+    },
+    {
+      "identifier": "native_webhooks",
+      "status": "partial",
+      "description": "No event-subscription webhooks are documented; Groovy actions can call external HTTP APIs and notifications can be sent by email, SMS, or Google Chat.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/groovy-http-client",
+        "https://doc.memority.eu/configuration-guide/latest/notifications"
+      ]
+    },
+    {
+      "identifier": "universal_login_customization",
+      "status": "supported",
+      "description": "Login customization options include a remember-me switch (cookie valid 365 days by default) and a change-account button, alongside portal themes, assets, and fragments.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/authentication-customization",
+        "https://doc.memority.eu/configuration-guide/latest/customization"
+      ]
+    },
+    {
+      "identifier": "custom_email_provider",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "email_templates",
+      "status": "supported",
+      "description": "Reusable email templates and notification definitions fire on events such as object changes, password updates, workflow decisions, and feature executions.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/notifications",
+        "https://doc.memority.eu/setup-guide/latest/mail-notification-template"
+      ]
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "status": "supported",
+      "description": "Custom scopes and claims can be built from user attributes, attribute functions, or constants, with optional claims in JWT access tokens and ID tokens, and AMR and ACR values.",
+      "links": [
+        "https://doc.memority.eu/configuration-guide/latest/federation",
+        "https://doc.memority.eu/configuration-guide/latest/oauth2"
+      ]
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "status": "partial",
+      "description": "An advanced workflow engine drives approvals and provisioning, and login tasks gate portal access; no visual authentication flow builder is documented.",
+      "links": [
+        "https://doc.memority.eu/capabilities/latest/workflow",
+        "https://doc.memority.eu/configuration-guide/latest/login-tasks"
+      ]
+    },
+    {
+      "identifier": "identity_proofing",
+      "status": "supported",
+      "description": "Online identity verification (KYC) through partners such as Docaposte, IDnow, and Tessi, identity document upload, and e-signature of terms through Yousign and DocuSign.",
+      "links": [
+        "https://www.memority.eu/en/access-identity-management-customers/",
+        "https://doc.memority.eu/capabilities/latest/self-service-features"
+      ]
+    },
+    {
+      "identifier": "decentralized_identity",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "billing_integration",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "agentic_identity",
+      "status": "partial",
+      "description": "Non-human identities, including service accounts, software robots, and AI agents, are covered by the identity governance platform.",
+      "links": ["https://www.memority.eu/en/offers/my-identity-governing-identities"]
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "status": "unknown",
+      "description": "Not documented in Memority's public product, security, or technical documentation."
+    }
+  ],
+  "oidc": {
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "description": "The Authorization Code flow is an optional authorized flow per federation (enabled by default).",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported",
+        "description": "Refresh tokens are enabled per tenant (default validity 7 days) and per federation.",
+        "links": [
+          "https://doc.memority.eu/configuration-guide/latest/oauth2",
+          "https://doc.memority.eu/configuration-guide/latest/federation"
+        ]
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "supported",
+        "description": "The Client Credentials flow is supported, notably for non-human identities calling Memority APIs.",
+        "links": [
+          "https://doc.memority.eu/configuration-guide/latest/federation",
+          "https://doc.memority.eu/setup-guide/latest/apis-usage"
+        ]
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "supported",
+        "description": "The Implicit flow is an optional authorized flow per federation (enabled by default).",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "supported",
+        "description": "The Device Authorization Grant is supported, with a configurable user code (default 8 characters, 6 to 20, with a configurable alphabet).",
+        "links": [
+          "https://doc.memority.eu/configuration-guide/latest/oauth2",
+          "https://doc.memority.eu/configuration-guide/latest/federation"
+        ]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "supported",
+        "description": "The JWT Bearer flow is an optional authorized flow per federation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "password_grant",
+        "status": "supported",
+        "description": "The Resource Owner Password Credentials flow is an optional authorized flow per federation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "supported",
+        "description": "Federations declare authorized post-logout redirect URIs, and the id_token_hint can be verified against the client's JWKS URL.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "par_extension",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "supported",
+        "description": "The authorization endpoint is part of the OAuth2/OpenID Connect federation; endpoints are displayed from the federation form.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported",
+        "description": "A token endpoint serves access tokens (for example the client credentials flow at the tenant SSO path under /access_token).",
+        "links": [
+          "https://doc.memority.eu/setup-guide/latest/apis-usage",
+          "https://doc.memority.eu/configuration-guide/latest/federation"
+        ]
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "supported",
+        "description": "Supported as part of the Device Authorization Grant.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/oauth2"]
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "supported",
+        "description": "Federations can be declared as Public clients, which have no client secret.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "dpop",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      },
+      {
+        "identifier": "jarm",
+        "status": "unknown",
+        "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      }
+    ]
+  }
+}
