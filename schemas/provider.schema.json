@@ -26,6 +26,21 @@
       "pattern": "^[a-z0-9-]+$",
       "minLength": 1
     },
+    "type": {
+      "type": "string",
+      "description": "How the provider is delivered. \"platform\" is a standalone identity service or server (hosted or self-hosted) that applications integrate with over protocols such as OIDC or SAML. \"library\" is embedded in the host application's own codebase, runtime and database. Defaults to \"platform\" when omitted.",
+      "enum": ["platform", "library"]
+    },
+    "languages": {
+      "type": "array",
+      "description": "Programming languages or runtimes a library can be embedded in. Only meaningful when type is \"library\".",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
     "icon": {
       "type": "object",
       "description": "Icon information for the identity provider.",

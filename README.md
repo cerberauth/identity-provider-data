@@ -7,6 +7,9 @@ Connect protocol support.
 
 - `providers/<id>.json` — one file per provider. Shared metadata (name, abstract,
   website, license, nationality, icon, pricing) plus:
+  - `type` — optional, `platform` (default; standalone hosted or self-hosted
+    service/server) or `library` (embedded in the host application). Libraries
+    may also list the `languages` they can be embedded in.
   - `features` — the IAM / CIAM feature list.
   - `oidc.features` — the OpenID Connect feature list, kept in its own category.
 - `definitions/`
