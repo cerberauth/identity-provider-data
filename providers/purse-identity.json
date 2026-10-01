@@ -1,0 +1,895 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "Purse Identity",
+  "abstract": "Purse Identity, formerly ReachFive, is a SaaS, API-first customer identity and access management (CIAM) platform now part of Purse alongside its payment orchestration products. It combines authentication (password, social login, passkeys and FIDO2, passwordless by email magic link or SMS code), MFA by email or SMS with step-up and risk-based authentication, SSO and cross-domain sessions, and a consent and preference center with double opt-in and full traceability for GDPR. Fraud protection covers bots, credential stuffing, breached credentials, rate limiting and account lockout. It acts as a partially implemented OpenID Connect provider (authorization code with PKCE, implicit, ROPC, refresh tokens with rotation) and can act as an OpenID provider for partner sites. Delivered through hosted pages, JavaScript, iOS and Android SDKs, and a Management API. Pricing is quote-based.",
+  "identifier": "purse-identity",
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/purse-identity.png"
+  },
+  "website": "https://purse.eu/en/products/purse-identity",
+  "license": "Proprietary",
+  "nationality": "France",
+  "pricing": {
+    "hasFreeTier": false,
+    "pricingModel": "custom",
+    "pricingUrl": "https://purse.eu/en/products/purse-identity",
+    "plans": [
+      {
+        "name": "Purse Identity",
+        "price": "Custom pricing, quote on request"
+      }
+    ]
+  },
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "status": "supported",
+      "description": "Password authentication is supported through the Identity API and the JavaScript, iOS and Android SDKs, with a configurable password policy.",
+      "links": ["https://docs.identity.purse.eu/docs/password-management.html"]
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "status": "supported",
+      "description": "Social login is documented for Amazon, Apple, Facebook, Google (including One Tap), Instagram, LinkedIn, Microsoft, PayPal, TikTok, X, WeChat, Line, Kakao, Naver, QQ, Weibo, VKontakte, Yandex, FranceConnect and others. Custom identity providers can also be added.",
+      "links": [
+        "https://docs.identity.purse.eu/docs/social-login-overview.html",
+        "https://docs.identity.purse.eu/docs/custom-identity-providers.html"
+      ]
+    },
+    {
+      "identifier": "passkey_authentication",
+      "status": "supported",
+      "description": "Passkeys and FIDO2 biometric authentication are supported for passwordless login.",
+      "links": [
+        "https://docs.identity.purse.eu/docs/biometrics/passkeys.html",
+        "https://docs.identity.purse.eu/docs/fido2.html"
+      ]
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "status": "supported",
+      "description": "Passwordless sign-in by email magic link is configured in the console under Settings > Passwordless; the email template also exposes a verification code variable.",
+      "links": ["https://docs.identity.purse.eu/docs/otp.html"]
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "status": "supported",
+      "description": "Passwordless sign-in by SMS verification code (6 digits by default). It is only activated when phone numbers are unique per user, and the docs call it a less secure approach.",
+      "links": ["https://docs.identity.purse.eu/docs/otp.html"]
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "status": "supported",
+      "description": "Magic links are sent by email, or generated through the Management API /magic-link endpoint and embedded anywhere.",
+      "links": ["https://docs.identity.purse.eu/docs/otp.html"]
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "totp_mfa",
+      "status": "unknown",
+      "description": "The MFA guide only lists email and SMS as second factors, while the security overview mentions authenticator apps. TOTP support is not confirmed.",
+      "links": ["https://docs.identity.purse.eu/docs/mfa.html", "https://docs.identity.purse.eu/docs/security.html"]
+    },
+    {
+      "identifier": "hotp_mfa",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "u2f_mfa",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "email_code_mfa",
+      "status": "supported",
+      "description": "Email is one of the two documented second factors, delivering a link or verification code.",
+      "links": ["https://docs.identity.purse.eu/docs/mfa.html"]
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "status": "supported",
+      "description": "SMS is one of the two documented second factors, delivering a verification code.",
+      "links": ["https://docs.identity.purse.eu/docs/mfa.html"]
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "status": "supported",
+      "description": "Risk-based authentication scores each login from 0 to 100 (default threshold 30) using trusted device, IP address, operating system and geolocation, and triggers an MFA step-up above the threshold. It must be enabled by Professional Services and does not work with the ROPC flow.",
+      "links": ["https://docs.identity.purse.eu/docs/rba.html"]
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "step_up_authentication",
+      "status": "supported",
+      "description": "MFA step-up is supported for sensitive actions through the /identity/v1/mfa/stepup endpoint. MFA sessions last 1 to 720 hours (default 72).",
+      "links": [
+        "https://docs.identity.purse.eu/docs/mfa.html",
+        "https://docs.identity.purse.eu/docs/stepup-required.html"
+      ]
+    },
+    {
+      "identifier": "oidc_protocol",
+      "status": "partial",
+      "description": "Purse Identity is documented as a partially implemented OpenID Connect Provider: OAuth 2.0 authorization and token endpoints, ID tokens as JWT, discovery and a JWKS document. ID tokens are signed per client with HS256 (default) or RS256. The documentation does not say which parts of the protocol are missing.",
+      "links": ["https://docs.identity.purse.eu/docs/openid.html"]
+    },
+    {
+      "identifier": "saml2_protocol",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "machine_to_machine",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "oidc_federation",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "saml_federation",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "bulk_user_import",
+      "status": "supported",
+      "description": "User profiles can be imported in bulk from the console or through import jobs, including consents.",
+      "links": [
+        "https://docs.identity.purse.eu/docs/imports.html",
+        "https://docs.identity.purse.eu/docs/import-profiles-from-the-console.html"
+      ]
+    },
+    {
+      "identifier": "password_hash_import",
+      "status": "supported",
+      "description": "User passwords can be imported from the console as a dedicated import.",
+      "links": ["https://docs.identity.purse.eu/docs/import-passwords-from-the-console.html"]
+    },
+    {
+      "identifier": "bulk_user_export",
+      "status": "supported",
+      "description": "User profiles, user events and consent logs can be exported through export jobs.",
+      "links": [
+        "https://docs.identity.purse.eu/docs/exports.html",
+        "https://docs.identity.purse.eu/docs/export-user-profiles.html"
+      ]
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "status": "partial",
+      "description": "Bulk deletion of user profiles is documented; bulk updates are not documented outside import jobs.",
+      "links": ["https://docs.identity.purse.eu/docs/delete-users-bulk.html"]
+    },
+    {
+      "identifier": "upsert_on_import",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "legacy_username_import",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "status": "not_supported",
+      "description": "The SCIM API only provisions console (back-office) users; there is no SCIM provisioning of end-customer profiles.",
+      "links": ["https://docs.identity.purse.eu/docs/integration/scim.html"]
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "scim_groups",
+      "status": "not_supported",
+      "description": "SCIM groups only map to console roles; there is no SCIM group support for end customers.",
+      "links": ["https://docs.identity.purse.eu/docs/integration/scim.html"]
+    },
+    {
+      "identifier": "jit_provisioning",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "lazy_migration",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "account_linking",
+      "status": "supported",
+      "description": "Duplicate profiles are handled through configurable merging rules.",
+      "links": ["https://docs.identity.purse.eu/docs/merging-rules.html"]
+    },
+    {
+      "identifier": "user_blocking",
+      "status": "supported",
+      "description": "User accounts can be suspended.",
+      "links": ["https://docs.identity.purse.eu/docs/suspend-user.html"]
+    },
+    {
+      "identifier": "user_metadata",
+      "status": "supported",
+      "description": "Custom fields extend the user profile model.",
+      "links": ["https://docs.identity.purse.eu/docs/custom-fields.html"]
+    },
+    {
+      "identifier": "app_metadata",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "user_search",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "rbac",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "password_strength_policy",
+      "status": "supported",
+      "description": "A configurable password policy is available.",
+      "links": ["https://docs.identity.purse.eu/docs/password-management.html"]
+    },
+    {
+      "identifier": "username_restrictions",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "progressive_profiling",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "abac",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "api_authorization",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "soc2_type2",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "iso_27001",
+      "status": "supported",
+      "description": "ISO 27001 is listed on the product page.",
+      "links": ["https://purse.eu/en/products/purse-identity"]
+    },
+    {
+      "identifier": "hipaa_baa",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "pci_dss",
+      "status": "unknown",
+      "description": "A PCI DSS badge appears on the Purse website but its scope for Purse Identity is not explained.",
+      "links": ["https://purse.eu/en/products/purse-identity"]
+    },
+    {
+      "identifier": "csa_star",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "fedramp",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "consent_management",
+      "status": "supported",
+      "description": "Consents, consent groups, double opt-in, archived consents and consent logs are supported for GDPR and CCPA traceability.",
+      "links": ["https://docs.identity.purse.eu/docs/consents.html", "https://purse.eu/en/products/purse-identity"]
+    },
+    {
+      "identifier": "region_deployment",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "audit_log_retention",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "security_center",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "bot_detection",
+      "status": "supported",
+      "description": "Identity Fraud Protection detects bots and credential stuffing, and reCAPTCHA and CaptchaFox challenges are supported.",
+      "links": [
+        "https://docs.identity.purse.eu/docs/ifp.html",
+        "https://docs.identity.purse.eu/docs/captcha/recaptcha.html"
+      ]
+    },
+    {
+      "identifier": "brute_force_protection",
+      "status": "supported",
+      "description": "Accounts are locked for a period after repeated failed logins.",
+      "links": ["https://docs.identity.purse.eu/docs/user-account-lockout.html"]
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "status": "supported",
+      "description": "Rate limiting caps requests per user or IP, and Identity Fraud Protection blocks suspicious IPs in real time.",
+      "links": [
+        "https://docs.identity.purse.eu/docs/rate-limiting.html",
+        "https://docs.identity.purse.eu/docs/ifp.html"
+      ]
+    },
+    {
+      "identifier": "breached_password_detection",
+      "status": "supported",
+      "description": "Credentials are checked against known global breaches and users with a match are forced to reset their password.",
+      "links": ["https://docs.identity.purse.eu/docs/security/data-breach-detection.html"]
+    },
+    {
+      "identifier": "credential_guard",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "tenant_acl",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "status": "supported",
+      "description": "Risk-based authentication builds a device profile per user and tracks trusted devices (kept 90 days by default, configurable from 1 to 365 days).",
+      "links": ["https://docs.identity.purse.eu/docs/rba.html"]
+    },
+    {
+      "identifier": "per_org_branding",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "hosted_login_page",
+      "status": "supported",
+      "description": "Hosted Pages provide a hosted authentication experience.",
+      "links": ["https://docs.identity.purse.eu/docs/hosted-pages.html"]
+    },
+    {
+      "identifier": "embedded_login",
+      "status": "supported",
+      "description": "Embedded login is available through the Core and UI JavaScript SDKs, iOS and Android SDKs, and the Identity API.",
+      "links": [
+        "https://docs.identity.purse.eu/docs/auth-spa.html",
+        "https://docs.identity.purse.eu/docs/auth-web.html"
+      ]
+    },
+    {
+      "identifier": "white_label",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "localization",
+      "status": "supported",
+      "description": "Multiple languages are supported, with per-user locale management.",
+      "links": ["https://docs.identity.purse.eu/docs/global-consumers/languages.html"]
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "status": "supported",
+      "description": "A UI JavaScript SDK provides ready-made authentication and consent widgets.",
+      "links": ["https://docs.identity.purse.eu/docs/hosted-pages.html"]
+    },
+    {
+      "identifier": "login_analytics",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "sdk_coverage",
+      "status": "supported",
+      "description": "Official SDKs for JavaScript (Core, UI and legacy), iOS and Android, plus a Salesforce Commerce Cloud cartridge and a Shopify integration.",
+      "links": [
+        "https://docs.identity.purse.eu/docs/hosted-pages.html",
+        "https://docs.identity.purse.eu/docs/integration/shopify.html"
+      ]
+    },
+    {
+      "identifier": "management_api",
+      "status": "supported",
+      "description": "Management API and Identity API are published as OpenAPI references.",
+      "links": [
+        "https://docs.identity.purse.eu/openapi/management.html",
+        "https://docs.identity.purse.eu/openapi/identity.html"
+      ]
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "actions_extensibility",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "custom_domain",
+      "status": "supported",
+      "description": "Custom domains and certificate management are available from the console.",
+      "links": ["https://docs.identity.purse.eu/docs/console/custom-domains-and-certificate-management.html"]
+    },
+    {
+      "identifier": "deploy_cli",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "terraform_provider",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "custom_database_connections",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "native_webhooks",
+      "status": "supported",
+      "description": "User-event webhooks and Pub/Sub hooks are available, for events such as login_failed and account_locked.",
+      "links": [
+        "https://docs.identity.purse.eu/docs/webhooks.html",
+        "https://docs.identity.purse.eu/docs/pub-sub-hook.html"
+      ]
+    },
+    {
+      "identifier": "universal_login_customization",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "custom_email_provider",
+      "status": "supported",
+      "description": "A custom email provider can be configured.",
+      "links": ["https://docs.identity.purse.eu/docs/emails.html"]
+    },
+    {
+      "identifier": "email_templates",
+      "status": "supported",
+      "description": "Email and SMS templates are customizable, including Liquid templating in subjects.",
+      "links": [
+        "https://docs.identity.purse.eu/docs/email-templates.html",
+        "https://docs.identity.purse.eu/docs/sms-templates.html"
+      ]
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "identity_proofing",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "decentralized_identity",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "billing_integration",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "agentic_identity",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "status": "unknown",
+      "description": "Not documented in Purse Identity's public documentation."
+    }
+  ],
+  "oidc": {
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "description": "The authorization code flow is supported through the /oauth/authorize endpoint.",
+        "links": ["https://docs.identity.purse.eu/docs/flows/authorization-code.html"]
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported",
+        "description": "Refresh tokens are available for first-party and third-party clients with the offline_access scope. Default lifetime is 90 days, configurable from 1 to 365 days.",
+        "links": ["https://docs.identity.purse.eu/docs/refresh-tokens.html"]
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "supported",
+        "description": "The implicit flow can be configured for first-party clients only, and is ruled out when PKCE is enforced.",
+        "links": [
+          "https://docs.identity.purse.eu/docs/flows/implicit.html",
+          "https://docs.identity.purse.eu/docs/oaas.html"
+        ]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "password_grant",
+        "status": "supported",
+        "description": "The ROPC flow is available for first-party clients, can be disabled, and the documentation advises against it, especially for public clients.",
+        "links": [
+          "https://docs.identity.purse.eu/docs/flows/ropc.html",
+          "https://docs.identity.purse.eu/docs/oaas.html"
+        ]
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported",
+        "description": "PKCE is supported, can be enforced per client, and is the only authorization code option for third-party clients besides refresh tokens.",
+        "links": [
+          "https://docs.identity.purse.eu/docs/flows/authorization-code-pkce.html",
+          "https://docs.identity.purse.eu/docs/oaas.html"
+        ]
+      },
+      {
+        "identifier": "par_extension",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "supported",
+        "description": "The authorization endpoint is /oauth/authorize.",
+        "links": ["https://docs.identity.purse.eu/docs/oaas.html", "https://docs.identity.purse.eu/docs/openid.html"]
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported",
+        "description": "An OAuth 2.0 token endpoint is provided.",
+        "links": ["https://docs.identity.purse.eu/docs/openid.html"]
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "supported",
+        "description": "Authorized user data is available from /identity/v1/userinfo or by decoding the id_token.",
+        "links": ["https://docs.identity.purse.eu/docs/oaas.html"]
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "partial",
+        "description": "Refresh tokens can be revoked through the Identity API revokeToken operation; a standard RFC 7009 endpoint is not documented.",
+        "links": ["https://docs.identity.purse.eu/docs/refresh-tokens.html"]
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported",
+        "description": "The discovery document is served at /.well-known/openid-configuration, with signing keys at /jwks.json.",
+        "links": ["https://docs.identity.purse.eu/docs/openid.html", "https://docs.identity.purse.eu/docs/jwks.html"]
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "supported",
+        "description": "Refresh tokens are single-use. Reusing one invalidates the other tokens and the user session tied to that client_id.",
+        "links": ["https://docs.identity.purse.eu/docs/refresh-tokens.html"]
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "dpop",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      },
+      {
+        "identifier": "jarm",
+        "status": "unknown",
+        "description": "Not documented in Purse Identity's public documentation."
+      }
+    ]
+  }
+}
