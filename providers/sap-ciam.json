@@ -1,0 +1,1016 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "SAP CIAM",
+  "abstract": "SAP Customer Identity and Access Management (SAP CIAM), formerly Gigya and SAP Customer Data Cloud, is a multi-tenant SaaS customer identity platform on SAP Business Technology Platform. It covers registration and login (password, social, passwordless with FIDO passkeys, phone, email OTP, and magic links), two-factor and risk-based authentication, consent and preference management, and B2B contact and partner management. SAP CIAM can act as an OpenID Connect provider (authorization code, implicit, hybrid, client credentials, device, and token exchange flows) and relying party, and as a SAML identity provider and service provider. Sites are hosted in United States, European Union, Australian, or Chinese data centers, with global site groups for cross-region SSO. Pricing is subscription-based per block of 10,000 monthly active users, with optional enhanced security and consent add-ons.",
+  "identifier": "sap-ciam",
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/sap-ciam.svg"
+  },
+  "website": "https://www.sap.com/products/technology-platform/customer-identity.html",
+  "license": "Proprietary",
+  "nationality": "Germany",
+  "pricing": {
+    "hasFreeTier": false,
+    "pricingModel": "mau",
+    "pricingUrl": "https://www.sap.com/products/technology-platform/customer-identity.html",
+    "plans": [
+      {
+        "name": "SAP Customer Identity and Access Management for B2C Core",
+        "price": "USD 329 per month, in blocks of 10,000 active users (3 to 60 month contract)"
+      },
+      {
+        "name": "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "price": "USD 494 per month, in blocks of 10,000 active users (requires B2C Core)"
+      },
+      {
+        "name": "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "price": "USD 280 per month, in blocks of 10,000 active users (requires B2C Core)"
+      },
+      {
+        "name": "SAP Customer Identity and Access Management for B2B, contacts",
+        "price": "USD 5,456 per month, in blocks of 50,000 contacts"
+      }
+    ]
+  },
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "status": "supported",
+      "description": "Login, registration, and password management are included in the B2C Core plan.",
+      "links": [
+        "https://www.sap.com/products/technology-platform/customer-identity.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html"
+      ]
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "status": "supported",
+      "description": "Social Login lets users identify with their social networks; custom OpenID Connect and SAML providers can also be added as login buttons in screen-sets.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167afe370b21014bbc5a10ce4041860.html"
+      ]
+    },
+    {
+      "identifier": "passkey_authentication",
+      "status": "supported",
+      "description": "FIDO authentication is offered as a passwordless login method on mobile devices and common desktop browsers; the accounts.auth.fido.login method supports conditional mediation for discoverable credentials.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/e2ecb2a009e94460bc67d748ce06442f.html",
+        "https://www.sap.com/products/technology-platform/customer-identity.html"
+      ]
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "status": "supported",
+      "description": "Email OTP login sends a one-time code to the user by email; it requires email as the site login identifier.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/47006b8cd6ec4292b8fa6321a90328b7.html"
+      ]
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "status": "supported",
+      "description": "Phone Number Login provides passwordless authentication with a one-time code sent to the mobile phone; an SMS provider must be configured.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ace3f07635bd4c69b4349f9402075d7b.html"
+      ]
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "status": "supported",
+      "description": "Magic Link login emails a link that signs the user in; it is driven by the accounts.auth.magiclink.email.send and login APIs and requires a trusted landing page URL and a magic link email template.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/47006b8cd6ec4292b8fa6321a90328b7.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/465e0de25d684993a481515ff707d86f.html"
+      ]
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "totp_mfa",
+      "status": "supported",
+      "description": "An authenticator app can be enabled as a two-factor verification method in the console, and selected through risk-based authentication rules.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/0f7fe8d9e37c4c429323819b3d4d0f02.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/d19c6ec0bdf44f21ac2822dd879a0991.html"
+      ]
+    },
+    {
+      "identifier": "hotp_mfa",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "u2f_mfa",
+      "status": "unknown",
+      "description": "FIDO is documented as a passwordless login method; legacy U2F as a second factor is not named explicitly.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html"
+      ]
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "status": "unknown",
+      "description": "FIDO authentication is documented as a passwordless method; its use as a second factor is not described.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/e2ecb2a009e94460bc67d748ce06442f.html"
+      ]
+    },
+    {
+      "identifier": "email_code_mfa",
+      "status": "supported",
+      "description": "After the login and password are entered, a code is sent by email to complete two-factor authentication.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/d19c6ec0bdf44f21ac2822dd879a0991.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/0f7fe8d9e37c4c429323819b3d4d0f02.html"
+      ]
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "status": "supported",
+      "description": "After the login and password are entered, a code is sent by SMS or voice message to complete two-factor authentication; an SMS provider must be configured.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/d19c6ec0bdf44f21ac2822dd879a0991.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/0f7fe8d9e37c4c429323819b3d4d0f02.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/2d36f51bdad44b18a26b1efdddf43a8b.html"
+      ]
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "status": "supported",
+      "description": "Push authentication is a verification method that requires a configured Firebase application and a push-based risk-based authentication rule set.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/0f7fe8d9e37c4c429323819b3d4d0f02.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html"
+      ]
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "status": "supported",
+      "description": "Risk-Based Authentication rules decide which verification method (email, phone, TOTP, or push) applies to a session, and can trigger reCAPTCHA based on a risk score.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/65e7d0dd8df14405b7ff8209a2a067b0.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/0f7fe8d9e37c4c429323819b3d4d0f02.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/72aae0dec03a4f54a9e8a493a6bdb155.html"
+      ]
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "step_up_authentication",
+      "status": "partial",
+      "description": "Two-factor verification is documented for both user logins and profile updates, with the method driven by the auth level of the configured risk-based authentication rules.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/d19c6ec0bdf44f21ac2822dd879a0991.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/0f7fe8d9e37c4c429323819b3d4d0f02.html"
+      ]
+    },
+    {
+      "identifier": "oidc_protocol",
+      "status": "supported",
+      "description": "The platform can act as an OpenID Connect provider (authorization code, implicit, and hybrid flows) and as a relying party for third-party providers.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167afe370b21014bbc5a10ce4041860.html"
+      ]
+    },
+    {
+      "identifier": "saml2_protocol",
+      "status": "supported",
+      "description": "The web browser SSO profile is supported with HTTP POST and HTTP Redirect bindings; the platform can act as a SAML identity provider for any number of service providers, or as a SAML service provider.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/7a9fc28c370646eea22811dcb7e3bad1.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4158935f70b21014bbc5a10ce4041860.html"
+      ]
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "machine_to_machine",
+      "status": "supported",
+      "description": "The OIDC provider supports the client credentials grant, and server-to-server REST calls can use OAuth 2.0 access tokens.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4166c7e270b21014bbc5a10ce4041860.html"
+      ]
+    },
+    {
+      "identifier": "oidc_federation",
+      "status": "supported",
+      "description": "The site can be configured as an OIDC relying party to authenticate users through third-party OpenID Connect providers.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167afe370b21014bbc5a10ce4041860.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html"
+      ]
+    },
+    {
+      "identifier": "saml_federation",
+      "status": "supported",
+      "description": "The platform can act as a SAML service provider for external identity providers, and as a SAML identity provider for external service providers.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4158935f70b21014bbc5a10ce4041860.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/7a9fc28c370646eea22811dcb7e3bad1.html"
+      ]
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "bulk_user_import",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "password_hash_import",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "bulk_user_export",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "upsert_on_import",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "legacy_username_import",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "scim_groups",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "jit_provisioning",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "lazy_migration",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "account_linking",
+      "status": "supported",
+      "description": "Identities can be linked through the accounts.linkAccounts API and by adding connections for social, SAML, and OIDC identities when multiple identities are allowed by policy.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/2a4dabf377414d0b92a29ffba5f0970a.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/7a9fc28c370646eea22811dcb7e3bad1.html"
+      ]
+    },
+    {
+      "identifier": "user_blocking",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "user_metadata",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "app_metadata",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "user_search",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "rbac",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "status": "supported",
+      "description": "CIAM for B2B manages businesses, their members, and the relationships between them, with a group model that can be managed in the console.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4d83300f0ac949828f9604a8abb44065.html",
+        "https://www.sap.com/products/technology-platform/customer-identity.html"
+      ],
+      "plans": ["SAP Customer Identity and Access Management for B2B, contacts"]
+    },
+    {
+      "identifier": "password_strength_policy",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "username_restrictions",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "progressive_profiling",
+      "status": "supported",
+      "description": "Progressive Profiling is documented as a Customer Identity capability for gathering first-party profile data over time.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4d83300f0ac949828f9604a8abb44065.html",
+        "https://www.sap.com/products/technology-platform/customer-identity.html"
+      ]
+    },
+    {
+      "identifier": "abac",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "status": "supported",
+      "description": "CIAM for B2B provides fine-grained authorization based on smart policies, combined with authentication and identity management.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4d83300f0ac949828f9604a8abb44065.html"
+      ],
+      "plans": ["SAP Customer Identity and Access Management for B2B, contacts"]
+    },
+    {
+      "identifier": "api_authorization",
+      "status": "partial",
+      "description": "Permission scopes (prefixed perm:) can be assigned per OIDC relying party to control which Customer Data Cloud API endpoints an access token may call, limited to the platform's own account APIs.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/b3d9bb8ec786494b8cb61d89d0df896c.html"
+      ]
+    },
+    {
+      "identifier": "soc2_type2",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "iso_27001",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "hipaa_baa",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "pci_dss",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "csa_star",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "fedramp",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "consent_management",
+      "status": "supported",
+      "description": "Customer Consent captures and versions consent and preferences, with audit-ready records; the consent option adds unlimited terms of service and privacy policies, subscription and communication preference management, and a 7-year audit vault.",
+      "links": [
+        "https://www.sap.com/products/technology-platform/customer-identity.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4d83300f0ac949828f9604a8abb44065.html"
+      ],
+      "plans": ["SAP Customer Identity and Access Management for B2C Core, consent option"]
+    },
+    {
+      "identifier": "region_deployment",
+      "status": "supported",
+      "description": "Sites are created in the United States, European Union, Australia, or China data centers, with user data stored in the data center of the site; global site groups store user data by residency.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167afe370b21014bbc5a10ce4041860.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html"
+      ]
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "audit_log_retention",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "security_center",
+      "status": "supported",
+      "description": "The enhanced option adds a centralized security dashboard alongside AI/ML-based security and account takeover detection.",
+      "links": ["https://www.sap.com/products/technology-platform/customer-identity.html"],
+      "plans": ["SAP Customer Identity and Access Management for B2C Core, enhanced option"]
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "bot_detection",
+      "status": "supported",
+      "description": "Google reCAPTCHA v2 (invisible and checkbox), v3 as a risk-based authentication rule, and reCAPTCHA Enterprise are supported to block automated attacks.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/72aae0dec03a4f54a9e8a493a6bdb155.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html"
+      ]
+    },
+    {
+      "identifier": "brute_force_protection",
+      "status": "partial",
+      "description": "A CAPTCHA challenge is required once the failed-login threshold set in the site policy is reached; broader lockout behavior is not described.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/72aae0dec03a4f54a9e8a493a6bdb155.html"
+      ]
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "breached_password_detection",
+      "status": "supported",
+      "description": "Passwords are validated against the Have I Been Pwned database to detect or block compromised passwords, enabled in the console password settings.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/b790e3484ec54cd8991d41691026adeb.html"
+      ]
+    },
+    {
+      "identifier": "credential_guard",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "tenant_acl",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "per_org_branding",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "hosted_login_page",
+      "status": "supported",
+      "description": "Hosted Pages provide login, registration, and device registration pages backed by screen-sets, including a central login page.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/28ffca6ba4d547268688a8b14bcc1b82.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/c4cd7de1166045c3a23e9760eca93361.html"
+      ]
+    },
+    {
+      "identifier": "embedded_login",
+      "status": "supported",
+      "description": "The Web SDK renders screen-sets inside a container on the site's own pages.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/417fa48b70b21014bbc5a10ce4041860.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html"
+      ]
+    },
+    {
+      "identifier": "white_label",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "localization",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "status": "supported",
+      "description": "Default screen-sets such as Default-RegistrationLogin are provided out of the box and can be customized in the UI Builder.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/1953bd89795f4e769b34ef780acb8c29.html"
+      ]
+    },
+    {
+      "identifier": "login_analytics",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "sdk_coverage",
+      "status": "supported",
+      "description": "A JavaScript Web SDK and REST APIs are provided; native mobile use is also documented.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/417fa48b70b21014bbc5a10ce4041860.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/413128b070b21014bbc5a10ce4041860.html"
+      ]
+    },
+    {
+      "identifier": "management_api",
+      "status": "supported",
+      "description": "The Accounts REST API and the FIdM OIDC REST APIs cover account management and OIDC provider and relying party configuration.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/413128b070b21014bbc5a10ce4041860.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html"
+      ]
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "actions_extensibility",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "custom_domain",
+      "status": "supported",
+      "description": "A CNAME with SSL can be set up so that login pages and redirect URIs use the customer's own domain.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/c4cd7de1166045c3a23e9760eca93361.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167afe370b21014bbc5a10ce4041860.html"
+      ]
+    },
+    {
+      "identifier": "deploy_cli",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "terraform_provider",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "custom_database_connections",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "native_webhooks",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "universal_login_customization",
+      "status": "supported",
+      "description": "Login and registration screens are customized through screen-sets and hosted pages.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/28ffca6ba4d547268688a8b14bcc1b82.html"
+      ]
+    },
+    {
+      "identifier": "custom_email_provider",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "email_templates",
+      "status": "supported",
+      "description": "Email templates, including the magic link template, and SMS templates can be configured in the console.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/47006b8cd6ec4292b8fa6321a90328b7.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/2d36f51bdad44b18a26b1efdddf43a8b.html"
+      ]
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "status": "supported",
+      "description": "When acting as an OIDC provider, group information from the group and relationship schemas can be mapped into the OIDC settings, and custom scopes such as perm: scopes are supported.",
+      "links": [
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html",
+        "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/b3d9bb8ec786494b8cb61d89d0df896c.html"
+      ]
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "identity_proofing",
+      "status": "supported",
+      "description": "ID verification is included in the B2C Core plan.",
+      "links": ["https://www.sap.com/products/technology-platform/customer-identity.html"]
+    },
+    {
+      "identifier": "decentralized_identity",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "billing_integration",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "agentic_identity",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "status": "unknown",
+      "description": "Not documented in SAP CIAM's public product or technical documentation."
+    }
+  ],
+  "oidc": {
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "description": "The OIDC provider supports the authorization code flow, along with implicit and hybrid flows using the code, token, and id_token response types.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html"
+        ]
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported",
+        "description": "Refresh tokens are issued (for example in the device flow) and can be used to obtain a new access token, ID token, and refresh token; they keep the permissions of the original token.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html",
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/b3d9bb8ec786494b8cb61d89d0df896c.html"
+        ]
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "supported",
+        "description": "Requests go to the token endpoint with grant_type, client_id, and client_secret; only an access token is returned, without refresh or ID tokens.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html",
+          "https://datatracker.ietf.org/doc/html/rfc6749#section-4.4"
+        ]
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "supported",
+        "description": "The implicit flow is supported with the id_token and token response types.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html"
+        ]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "supported",
+        "description": "RFC 8693 token exchange can reduce or extend the permission scopes of an existing token, and supports an actor_token to add an act claim for single-level delegation.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/b3d9bb8ec786494b8cb61d89d0df896c.html",
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/715f24d459b5456990c622066b790da5.html"
+        ]
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "supported",
+        "description": "The OIDC device flow (RFC 8628) is supported for all relying parties, with configurable code expiry, polling interval, and verification URI.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html"
+        ]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "password_grant",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "supported",
+        "description": "The provider exposes an end_session_endpoint that accepts id_token_hint and a trusted post logout redirect URI, letting the user sign out of the RP only or of the OP and all connected RPs.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/1953bd89795f4e769b34ef780acb8c29.html"
+        ]
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "par_extension",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "supported",
+        "description": "The OIDC provider serves its endpoints under https://fidm.<data-center>/oidc/op/v1.0/<API key>/.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html",
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html"
+        ]
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported",
+        "description": "The token endpoint is available at https://fidm.<data-center>/oidc/op/v1.0/<API key>/token.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html"
+        ]
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "supported",
+        "description": "Access tokens can be used at the userinfo endpoint as specified in the OpenID Connect specification.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html"
+        ]
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "supported",
+        "description": "The device_authorization endpoint is listed in the OP metadata.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html"
+        ]
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported",
+        "description": "Metadata is published at the .well-known/openid-configuration URL of the provider, and can also be viewed from the console.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html",
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html"
+        ]
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "supported",
+        "description": "Confidential clients authenticate to the token endpoint with Basic authorization, as in the token exchange flow.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/715f24d459b5456990c622066b790da5.html"
+        ]
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "supported",
+        "description": "The client credentials example sends client_id and client_secret in the token request body.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html"
+        ]
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "unknown",
+        "description": "Relying parties are registered through the proprietary fidm.oidc.op.createRP API; RFC 7591 dynamic registration is not documented.",
+        "links": [
+          "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html"
+        ]
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "dpop",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      },
+      {
+        "identifier": "jarm",
+        "status": "unknown",
+        "description": "Not documented in SAP CIAM's public product or technical documentation."
+      }
+    ]
+  }
+}
