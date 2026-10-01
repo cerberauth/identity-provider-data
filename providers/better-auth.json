@@ -1,0 +1,1126 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "Better Auth",
+  "abstract": "Open-source, framework-agnostic authentication and authorization library for TypeScript. Embedded directly in your application and backed by your own database, with a plugin system covering 2FA, passkeys, organizations, SSO/SAML, SCIM, an OAuth 2.1 / OpenID Connect provider and MCP/agent auth. Core differentiator: it is a library, not a hosted service, so there is no vendor server, no per-user pricing and no redirect to a third-party domain. An optional paid Better Auth Infrastructure adds a dashboard, audit logs, security detections and managed email/SMS.",
+  "identifier": "better-auth",
+  "type": "library",
+  "languages": ["TypeScript", "JavaScript"],
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/better-auth.svg"
+  },
+  "website": "https://better-auth.com",
+  "github": "https://github.com/better-auth/better-auth",
+  "license": "MIT",
+  "pricing": {
+    "hasFreeTier": true,
+    "freeTierLimit": "Unlimited (open-source library) / Better Auth Infrastructure Starter: 1 dashboard seat, 10,000 audit logs/month",
+    "pricingModel": "open-source",
+    "pricingUrl": "https://better-auth.com/pricing",
+    "plans": [
+      {
+        "name": "Library (open source)",
+        "price": "Free (MIT)"
+      },
+      {
+        "name": "Infrastructure Starter",
+        "price": "$0/month"
+      },
+      {
+        "name": "Infrastructure Pro",
+        "price": "$20/month + usage"
+      },
+      {
+        "name": "Infrastructure Enterprise",
+        "price": "Custom"
+      }
+    ]
+  },
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "category": "authentication_methods",
+      "status": "supported",
+      "description": "Email/password sign-up and sign-in built in (scrypt hashing by default, pluggable via custom hash/verify), with email verification and password reset. The username plugin adds username-based sign-in with configurable length, validator and normalization.",
+      "links": [
+        "https://better-auth.com/docs/authentication/email-password",
+        "https://better-auth.com/docs/plugins/username"
+      ]
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "category": "authentication_methods",
+      "status": "supported",
+      "description": "Over 35 built-in social providers (Google, GitHub, Apple, Microsoft, Discord, LinkedIn, X, and more). Any other OAuth 2.0 / OIDC provider can be added with the Generic OAuth plugin.",
+      "links": ["https://better-auth.com/docs/concepts/oauth", "https://better-auth.com/docs/plugins/generic-oauth"]
+    },
+    {
+      "identifier": "passkey_authentication",
+      "category": "authentication_methods",
+      "status": "supported",
+      "description": "Passkeys (WebAuthn/FIDO2) via the passkey plugin, built on SimpleWebAuthn. Supports conditional UI / autofill and a passkey-first registration flow. Documented as a primary sign-in method only, not as a second factor.",
+      "links": ["https://better-auth.com/docs/plugins/passkey"]
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "category": "authentication_methods",
+      "status": "supported",
+      "description": "Email one-time codes via the Email OTP plugin (sign-in, email verification, password reset). The application supplies the email delivery function. Configurable code length, expiry, attempt limit and storage (plain, encrypted or hashed).",
+      "links": ["https://better-auth.com/docs/plugins/email-otp"]
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "category": "authentication_methods",
+      "status": "supported",
+      "description": "Phone number sign-up/sign-in with SMS one-time codes via the phone number plugin. The application supplies the SMS delivery function (any provider, including Twilio Verify through a custom verifyOTP). Also supports phone number plus password.",
+      "links": ["https://better-auth.com/docs/plugins/phone-number"]
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "category": "authentication_methods",
+      "status": "supported",
+      "description": "Email magic links via the magic link plugin. Single-use tokens (default 5 minutes), optional hashed token storage, built-in rate limit. The application supplies the email delivery function.",
+      "links": ["https://better-auth.com/docs/plugins/magic-link"]
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "category": "authentication_methods",
+      "status": "supported",
+      "description": "The anonymous plugin issues a session for a guest user with a generated placeholder identity. An onLinkAccount callback migrates data to the real account when the guest later signs in or up, and the anonymous record is removed by default.",
+      "links": ["https://better-auth.com/docs/plugins/anonymous"]
+    },
+    {
+      "identifier": "totp_mfa",
+      "category": "mfa",
+      "status": "supported",
+      "description": "TOTP authenticator apps via the two-factor plugin (30-second period, enrollment verification, configurable issuer, optional trusted devices for 30 days). Account lockout after repeated failed verifications is on by default.",
+      "links": ["https://better-auth.com/docs/plugins/2fa"]
+    },
+    {
+      "identifier": "hotp_mfa",
+      "category": "mfa",
+      "status": "not_supported",
+      "description": "The two-factor plugin documents TOTP and OTP only; no counter-based HOTP.",
+      "links": ["https://better-auth.com/docs/plugins/2fa"]
+    },
+    {
+      "identifier": "u2f_mfa",
+      "category": "mfa",
+      "status": "not_supported",
+      "description": "No FIDO U2F second factor is documented. Passkeys are offered as a sign-in method, not as a second factor.",
+      "links": ["https://better-auth.com/docs/plugins/2fa"]
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "category": "mfa",
+      "status": "not_supported",
+      "description": "The passkey plugin is documented as a passwordless sign-in method only; the two-factor plugin does not list WebAuthn as a second factor.",
+      "links": ["https://better-auth.com/docs/plugins/passkey", "https://better-auth.com/docs/plugins/2fa"]
+    },
+    {
+      "identifier": "email_code_mfa",
+      "category": "mfa",
+      "status": "supported",
+      "description": "Second-factor OTP codes delivered by email through the application-provided sendOTP function of the two-factor plugin.",
+      "links": ["https://better-auth.com/docs/plugins/2fa"]
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "category": "mfa",
+      "status": "supported",
+      "description": "Second-factor OTP codes delivered by SMS through the application-provided sendOTP function of the two-factor plugin. Requires an SMS provider chosen by the application.",
+      "links": ["https://better-auth.com/docs/plugins/2fa"]
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "category": "mfa",
+      "status": "supported",
+      "description": "Backup codes generated by the two-factor plugin. Each code is single-use and can be regenerated, which invalidates the previous set.",
+      "links": ["https://better-auth.com/docs/plugins/2fa"]
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "category": "mfa",
+      "status": "not_supported",
+      "description": "No push-based approval second factor is documented."
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "category": "mfa",
+      "status": "not_supported",
+      "description": "No risk-based adaptive MFA. Better Auth Infrastructure (Sentinel) can challenge or block risky sign-ins, but it does not trigger MFA step-up.",
+      "links": ["https://better-auth.com/docs/infrastructure/plugins/sentinel"]
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "category": "mfa",
+      "status": "not_supported",
+      "description": "No Cisco Duo integration is documented."
+    },
+    {
+      "identifier": "step_up_authentication",
+      "category": "mfa",
+      "status": "partial",
+      "description": "Sensitive endpoints require a fresh session (session.freshAge, default 1 day) and password re-entry for actions such as enabling 2FA or deleting an account. There is no ACR/AMR-based step-up policy; the OAuth provider advertises acr_values_supported as [\"0\"].",
+      "links": ["https://better-auth.com/docs/concepts/session-management"]
+    },
+    {
+      "identifier": "oidc_protocol",
+      "category": "integration_protocols",
+      "status": "supported",
+      "description": "Acts as an OpenID Connect provider through the OAuth 2.1 Provider plugin (authorization code with PKCE, refresh tokens, client credentials, discovery, UserInfo, RP-initiated and back-channel logout). The older OIDC Provider and MCP plugins build on the same capability. Also consumes OIDC providers as a relying party.",
+      "links": [
+        "https://better-auth.com/docs/plugins/oauth-provider",
+        "https://better-auth.com/docs/plugins/generic-oauth"
+      ]
+    },
+    {
+      "identifier": "saml2_protocol",
+      "category": "integration_protocols",
+      "status": "partial",
+      "description": "SAML 2.0 Service Provider only, through the SSO plugin (signed AuthnRequests, encrypted assertions, IdP-initiated SSO). Better Auth cannot act as a SAML identity provider.",
+      "links": ["https://better-auth.com/docs/plugins/sso"]
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "category": "integration_protocols",
+      "status": "not_supported",
+      "description": "WS-Federation is not supported."
+    },
+    {
+      "identifier": "machine_to_machine",
+      "category": "integration_protocols",
+      "status": "supported",
+      "description": "OAuth 2.0 client_credentials grant via the OAuth Provider plugin (fail-closed: scopes must be explicitly allowed per client), plus the API Key plugin for key-based service authentication.",
+      "links": ["https://better-auth.com/docs/plugins/oauth-provider", "https://better-auth.com/docs/plugins/api-key"]
+    },
+    {
+      "identifier": "oidc_federation",
+      "category": "identity_federation",
+      "status": "supported",
+      "description": "Generic OAuth plugin connects any OIDC provider through a discovery URL (ID token signature, issuer, audience and nonce validation, PKCE on by default). The SSO plugin registers per-domain OIDC providers at runtime.",
+      "links": ["https://better-auth.com/docs/plugins/generic-oauth", "https://better-auth.com/docs/plugins/sso"]
+    },
+    {
+      "identifier": "saml_federation",
+      "category": "identity_federation",
+      "status": "supported",
+      "description": "Inbound SAML 2.0 federation via the SSO plugin, with domain-based provider resolution, DNS domain verification, certificate rotation, InResponseTo validation, replay protection and deprecated-algorithm checks. Single Logout is not documented.",
+      "links": ["https://better-auth.com/docs/plugins/sso", "https://better-auth.com/docs/guides/saml-sso-with-okta"]
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "category": "identity_federation",
+      "status": "not_supported",
+      "description": "No built-in LDAP or on-premises Active Directory connector. Microsoft Entra ID is reachable over OIDC."
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "category": "identity_federation",
+      "status": "supported",
+      "description": "Microsoft social provider and a Microsoft Entra ID helper for the Generic OAuth plugin (ID token verification enabled automatically). Entra ID tenants can also be registered as OIDC/SAML providers through the SSO plugin.",
+      "links": [
+        "https://better-auth.com/docs/authentication/microsoft",
+        "https://better-auth.com/docs/plugins/generic-oauth"
+      ]
+    },
+    {
+      "identifier": "bulk_user_import",
+      "category": "user_management",
+      "status": "partial",
+      "description": "No dedicated bulk import endpoint. Migration guides and scripts cover importing users from Auth0, Clerk, Supabase Auth, WorkOS and Auth.js, and because data lives in the application database, users can also be loaded with SQL or the ORM.",
+      "links": [
+        "https://better-auth.com/docs/guides/auth0-migration-guide",
+        "https://better-auth.com/docs/guides/clerk-migration-guide",
+        "https://better-auth.com/docs/guides/supabase-migration-guide"
+      ]
+    },
+    {
+      "identifier": "password_hash_import",
+      "category": "user_management",
+      "status": "partial",
+      "description": "Imported users keep their existing hashes by overriding emailAndPassword.password.hash/verify with the legacy algorithm (for example bcrypt). The default algorithm is scrypt.",
+      "links": [
+        "https://better-auth.com/docs/authentication/email-password",
+        "https://better-auth.com/docs/guides/clerk-migration-guide"
+      ]
+    },
+    {
+      "identifier": "bulk_user_export",
+      "category": "user_management",
+      "status": "partial",
+      "description": "No dedicated export endpoint. User data lives in the application-owned database, and the admin plugin lists users with pagination.",
+      "links": ["https://better-auth.com/docs/plugins/admin"]
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "The admin plugin documents single-user operations only; no bulk update or delete.",
+      "links": ["https://better-auth.com/docs/plugins/admin"]
+    },
+    {
+      "identifier": "upsert_on_import",
+      "category": "user_management",
+      "status": "unknown",
+      "description": "No built-in import operation, so no documented upsert semantics."
+    },
+    {
+      "identifier": "legacy_username_import",
+      "category": "user_management",
+      "status": "unknown",
+      "description": "Not documented."
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "category": "user_management",
+      "status": "unknown",
+      "description": "Not documented. Two-factor secrets and backup codes are plain database records."
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "category": "user_management",
+      "status": "supported",
+      "description": "SCIM 2.0 server (RFC 7643/7644) via the SCIM plugin: Users and Groups resources, bearer-token connections, discovery endpoints, and managed token rotation. Requires a database adapter with interactive transactions. Better Auth Infrastructure adds a managed Directory Sync dashboard.",
+      "links": ["https://better-auth.com/docs/plugins/scim"]
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "The SCIM plugin is inbound only; Better Auth does not push users to downstream applications.",
+      "links": ["https://better-auth.com/docs/plugins/scim"]
+    },
+    {
+      "identifier": "scim_groups",
+      "category": "user_management",
+      "status": "supported",
+      "description": "SCIM Groups resource with direct memberships. Groups can be projected to application roles through role mapping.",
+      "links": [
+        "https://better-auth.com/docs/plugins/scim",
+        "https://better-auth.com/docs/plugins/scim/groups-and-roles"
+      ]
+    },
+    {
+      "identifier": "jit_provisioning",
+      "category": "user_management",
+      "status": "supported",
+      "description": "Users are created on first social or SSO sign-in. The SSO plugin offers provisionUser (per new user or on every login) and automatically adds users to the linked organization with a default or computed role.",
+      "links": ["https://better-auth.com/docs/plugins/sso"]
+    },
+    {
+      "identifier": "lazy_migration",
+      "category": "user_management",
+      "status": "unknown",
+      "description": "Not documented as a first-class feature; the custom password hash/verify hooks can be used to build it."
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "category": "user_management",
+      "status": "supported",
+      "description": "Built-in client APIs to update profile, change email (with verification), change or set password, list and revoke sessions, link and unlink accounts, and delete the account.",
+      "links": ["https://better-auth.com/docs/concepts/users-accounts"]
+    },
+    {
+      "identifier": "account_linking",
+      "category": "user_management",
+      "status": "supported",
+      "description": "Automatic linking of providers that confirm a verified email, trusted-provider list, manual linking (including with ID tokens), unlinking, and an option to disable implicit linking.",
+      "links": ["https://better-auth.com/docs/concepts/users-accounts"]
+    },
+    {
+      "identifier": "user_blocking",
+      "category": "user_management",
+      "status": "supported",
+      "description": "The admin plugin can ban and unban users with an optional reason and expiry. Banning blocks sign-in and revokes existing sessions.",
+      "links": ["https://better-auth.com/docs/plugins/admin"]
+    },
+    {
+      "identifier": "user_metadata",
+      "category": "user_management",
+      "status": "supported",
+      "description": "The user table can be extended with additional typed fields, and plugins add their own fields. Fields live in the application database and in the same schema as the rest of the application.",
+      "links": ["https://better-auth.com/docs/concepts/database"]
+    },
+    {
+      "identifier": "app_metadata",
+      "category": "user_management",
+      "status": "supported",
+      "description": "Additional fields can be declared as not settable by the end user (input: false) and written only by server code, which covers admin-only attributes. The admin plugin stores role and ban state this way.",
+      "links": ["https://better-auth.com/docs/concepts/database", "https://better-auth.com/docs/plugins/admin"]
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "category": "user_management",
+      "status": "unknown",
+      "description": "No imposed limits; fields are ordinary database columns, so limits depend on the chosen database."
+    },
+    {
+      "identifier": "user_search",
+      "category": "user_management",
+      "status": "supported",
+      "description": "The admin plugin lists users with search (contains, starts_with, ends_with on email or name), filters, sorting and offset pagination.",
+      "links": ["https://better-auth.com/docs/plugins/admin"]
+    },
+    {
+      "identifier": "rbac",
+      "category": "user_management",
+      "status": "supported",
+      "description": "Role-based access control with custom resources and actions via createAccessControl. Admin plugin roles are global, organization plugin roles are scoped per organization, and users can hold multiple roles.",
+      "links": ["https://better-auth.com/docs/plugins/admin", "https://better-auth.com/docs/plugins/organization"]
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "category": "user_management",
+      "status": "supported",
+      "description": "Organization plugin: organizations, members, invitations, teams, an active organization per session, per-organization roles with optional runtime-defined (dynamic) roles, lifecycle hooks and configurable limits.",
+      "links": ["https://better-auth.com/docs/plugins/organization"]
+    },
+    {
+      "identifier": "password_strength_policy",
+      "category": "user_management",
+      "status": "partial",
+      "description": "Default password length of 8 to 128 characters. The Have I Been Pwned plugin rejects breached passwords. No built-in composition rules or strength scoring; custom rules can be added with hooks.",
+      "links": [
+        "https://better-auth.com/docs/authentication/email-password",
+        "https://better-auth.com/docs/plugins/have-i-been-pwned"
+      ]
+    },
+    {
+      "identifier": "username_restrictions",
+      "category": "user_management",
+      "status": "supported",
+      "description": "The username plugin supports minimum length (default 3), maximum length (default 30), custom validators for the username and the display username, and configurable normalization (lowercase by default).",
+      "links": ["https://better-auth.com/docs/plugins/username"]
+    },
+    {
+      "identifier": "progressive_profiling",
+      "category": "user_management",
+      "status": "not_supported",
+      "description": "No built-in progressive profiling; the application owns the UI and can collect extra fields itself."
+    },
+    {
+      "identifier": "abac",
+      "category": "access_control",
+      "status": "not_supported",
+      "description": "Access control is role and permission based (resource to actions). There is no attribute-based policy engine.",
+      "links": ["https://better-auth.com/docs/plugins/organization"]
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "category": "access_control",
+      "status": "not_supported",
+      "description": "No relationship-based or policy-based authorization engine. Dynamic organization roles, teams and API key permissions cover coarser use cases.",
+      "links": ["https://better-auth.com/docs/plugins/organization", "https://better-auth.com/docs/plugins/api-key"]
+    },
+    {
+      "identifier": "api_authorization",
+      "category": "access_control",
+      "status": "supported",
+      "description": "The OAuth Provider plugin issues audience-bound JWT access tokens (RFC 8707 resource indicators) with per-resource scopes, introspection, and verifyAccessTokenRequest for resource servers. The API Key plugin supports per-key permissions, rate limits and expiry.",
+      "links": ["https://better-auth.com/docs/plugins/oauth-provider", "https://better-auth.com/docs/plugins/api-key"]
+    },
+    {
+      "identifier": "soc2_type2",
+      "category": "compliance",
+      "status": "unknown",
+      "description": "No certification is published for the open-source library or for Better Auth Infrastructure. The library runs inside the application, so compliance depends on how the host application is deployed."
+    },
+    {
+      "identifier": "iso_27001",
+      "category": "compliance",
+      "status": "unknown",
+      "description": "No certification is published for the open-source library or for Better Auth Infrastructure. The library runs inside the application, so compliance depends on how the host application is deployed."
+    },
+    {
+      "identifier": "hipaa_baa",
+      "category": "compliance",
+      "status": "unknown",
+      "description": "No certification is published for the open-source library or for Better Auth Infrastructure. The library runs inside the application, so compliance depends on how the host application is deployed."
+    },
+    {
+      "identifier": "pci_dss",
+      "category": "compliance",
+      "status": "unknown",
+      "description": "No certification is published for the open-source library or for Better Auth Infrastructure. The library runs inside the application, so compliance depends on how the host application is deployed."
+    },
+    {
+      "identifier": "csa_star",
+      "category": "compliance",
+      "status": "unknown",
+      "description": "No certification is published for the open-source library or for Better Auth Infrastructure. The library runs inside the application, so compliance depends on how the host application is deployed."
+    },
+    {
+      "identifier": "fedramp",
+      "category": "compliance",
+      "status": "unknown",
+      "description": "No certification is published for the open-source library or for Better Auth Infrastructure. The library runs inside the application, so compliance depends on how the host application is deployed."
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "category": "compliance",
+      "status": "partial",
+      "description": "No dedicated export endpoint. All user data lives in the application-owned database and can be exported by the application.",
+      "links": ["https://better-auth.com/docs/concepts/database"]
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "category": "compliance",
+      "status": "supported",
+      "description": "Account deletion (disabled by default) authorized by password, fresh session or an emailed verification link, with beforeDelete/afterDelete hooks. Deletion is a hard delete.",
+      "links": ["https://better-auth.com/docs/concepts/users-accounts"]
+    },
+    {
+      "identifier": "consent_management",
+      "category": "compliance",
+      "status": "partial",
+      "description": "OAuth consent for third-party clients can be listed, updated and revoked per user, with skip_consent for trusted clients. No privacy or marketing consent management.",
+      "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+    },
+    {
+      "identifier": "region_deployment",
+      "category": "compliance",
+      "status": "supported",
+      "description": "The library runs wherever the host application is deployed, so data residency is determined by the application and database hosting.",
+      "values": ["Self-hosted"]
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "category": "compliance",
+      "status": "supported",
+      "description": "Runs inside the application on any cloud or on-premises infrastructure. There is no separate Better Auth server to deploy.",
+      "values": ["On-premises", "Any cloud"]
+    },
+    {
+      "identifier": "audit_log_retention",
+      "category": "security",
+      "status": "partial",
+      "description": "The open-source library has no built-in audit log. Better Auth Infrastructure records user, session, account, organization and security events, with retention of 1 day (Starter), 7 days (Pro) and custom (Enterprise).",
+      "links": ["https://better-auth.com/docs/infrastructure/plugins/audit-logs", "https://better-auth.com/pricing"],
+      "plans": ["Starter", "Pro", "Enterprise"]
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "category": "security",
+      "status": "supported",
+      "description": "Log drain is part of Better Auth Infrastructure Enterprise and listed as a $25/month add-on.",
+      "links": ["https://better-auth.com/pricing"],
+      "plans": ["Enterprise"]
+    },
+    {
+      "identifier": "security_center",
+      "category": "security",
+      "status": "supported",
+      "description": "The Better Auth Infrastructure dashboard surfaces Sentinel security events: blocked requests, credential stuffing, impossible travel, geo-blocking, bots, suspicious IPs, velocity abuse and compromised passwords.",
+      "links": [
+        "https://better-auth.com/docs/infrastructure/plugins/sentinel",
+        "https://better-auth.com/docs/infrastructure/plugins/dashboard"
+      ],
+      "plans": ["Starter", "Pro", "Enterprise"]
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "category": "security",
+      "status": "partial",
+      "description": "Encryption of the database is the host application's responsibility. The library encrypts JWT private keys with AES-256-GCM by default and supports versioned secrets for rotation, but OAuth provider tokens stored in the account table are not encrypted by default.",
+      "links": ["https://better-auth.com/docs/reference/security", "https://better-auth.com/docs/plugins/jwt"]
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "category": "security",
+      "status": "supported",
+      "description": "Secure, httpOnly, SameSite=Lax cookies are issued automatically for HTTPS base URLs. TLS itself is terminated by the host application or its infrastructure.",
+      "links": ["https://better-auth.com/docs/reference/security"]
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "category": "security",
+      "status": "partial",
+      "description": "Everything is self-hosted, so secrets are customer-controlled. The JWT plugin supports custom signing functions backed by an external KMS (Google KMS, AWS KMS, Azure Key Vault) with a remote JWKS URL.",
+      "links": ["https://better-auth.com/docs/plugins/jwt"]
+    },
+    {
+      "identifier": "bot_detection",
+      "category": "security",
+      "status": "supported",
+      "description": "The captcha plugin protects sign-up, sign-in and password reset with reCAPTCHA v2/v3, Cloudflare Turnstile, hCaptcha, CaptchaFox or Vercel BotID. Better Auth Infrastructure (Sentinel) adds bot blocking.",
+      "links": [
+        "https://better-auth.com/docs/plugins/captcha",
+        "https://better-auth.com/docs/infrastructure/plugins/sentinel"
+      ]
+    },
+    {
+      "identifier": "brute_force_protection",
+      "category": "security",
+      "status": "supported",
+      "description": "Built-in rate limiting on all routes with stricter rules for sensitive ones (for example 3 requests per 10 seconds on email sign-in and on two-factor routes), account lockout on repeated failed 2FA attempts, and attempt limits on OTP codes.",
+      "links": ["https://better-auth.com/docs/concepts/rate-limit", "https://better-auth.com/docs/plugins/2fa"]
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "category": "security",
+      "status": "supported",
+      "description": "Per-IP rate limiting with configurable trusted proxy headers and IPv6 subnet grouping in the open-source library. Better Auth Infrastructure (Sentinel) adds blocking or challenging of known malicious IPs and geo allow/deny lists.",
+      "links": [
+        "https://better-auth.com/docs/concepts/rate-limit",
+        "https://better-auth.com/docs/infrastructure/plugins/sentinel"
+      ]
+    },
+    {
+      "identifier": "breached_password_detection",
+      "category": "security",
+      "status": "supported",
+      "description": "The Have I Been Pwned plugin rejects compromised passwords at sign-up and password change using k-anonymity (only a 5-character hash prefix is sent). Sentinel also checks passwords at sign-in.",
+      "links": [
+        "https://better-auth.com/docs/plugins/have-i-been-pwned",
+        "https://better-auth.com/docs/infrastructure/plugins/sentinel"
+      ]
+    },
+    {
+      "identifier": "credential_guard",
+      "category": "security",
+      "status": "partial",
+      "description": "Sentinel in Better Auth Infrastructure detects credential stuffing from failed-login velocity and issues a proof-of-work challenge or a block. There is no dark-web credential monitoring.",
+      "links": ["https://better-auth.com/docs/infrastructure/plugins/sentinel"],
+      "plans": ["Starter", "Pro", "Enterprise"]
+    },
+    {
+      "identifier": "tenant_acl",
+      "category": "security",
+      "status": "partial",
+      "description": "Sentinel in Better Auth Infrastructure supports country allow/deny lists and suspicious IP blocking. No TLS-fingerprint-based restrictions are documented.",
+      "links": ["https://better-auth.com/docs/infrastructure/plugins/sentinel"],
+      "plans": ["Starter", "Pro", "Enterprise"]
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "category": "security",
+      "status": "supported",
+      "description": "Sentinel uses a client-sent visitor ID (X-Visitor-Id header) for credential stuffing, free-trial abuse and device tracking detections.",
+      "links": ["https://better-auth.com/docs/infrastructure/plugins/sentinel"],
+      "plans": ["Starter", "Pro", "Enterprise"]
+    },
+    {
+      "identifier": "per_org_branding",
+      "category": "multi_tenancy",
+      "status": "not_supported",
+      "description": "No hosted pages to brand; the application owns all UI and can theme it per organization itself."
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "category": "multi_tenancy",
+      "status": "not_supported",
+      "description": "The organization plugin has no per-organization MFA policy. Organization hooks can be used to enforce one in application code.",
+      "links": ["https://better-auth.com/docs/plugins/organization"]
+    },
+    {
+      "identifier": "hosted_login_page",
+      "category": "branding_ux",
+      "status": "not_supported",
+      "description": "No hosted login page. Better Auth is headless: sign-in, consent and account-selection screens are built in the application."
+    },
+    {
+      "identifier": "embedded_login",
+      "category": "branding_ux",
+      "status": "supported",
+      "description": "Authentication runs in the host application on its own domain with a typed client SDK; there is no redirect to a vendor domain.",
+      "links": ["https://better-auth.com/docs/basic-usage"]
+    },
+    {
+      "identifier": "white_label",
+      "category": "branding_ux",
+      "status": "supported",
+      "description": "No vendor branding anywhere in the flow, since every screen and email is part of the host application."
+    },
+    {
+      "identifier": "localization",
+      "category": "branding_ux",
+      "status": "partial",
+      "description": "The i18n plugin translates API error messages (22 built-in languages, detection by header, cookie, session or callback). UI and email copy are owned by the application.",
+      "links": ["https://better-auth.com/docs/plugins/i18n"]
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "category": "branding_ux",
+      "status": "not_supported",
+      "description": "No official pre-built UI component kit; the client SDK is headless. Community UI libraries exist.",
+      "links": ["https://better-auth.com/docs/plugins/community-plugins"]
+    },
+    {
+      "identifier": "login_analytics",
+      "category": "analytics",
+      "status": "supported",
+      "description": "The Better Auth Infrastructure dashboard provides user, organization and session analytics and activity tracking. The open-source library does not include analytics.",
+      "links": ["https://better-auth.com/docs/infrastructure/introduction"],
+      "plans": ["Starter", "Pro", "Enterprise"]
+    },
+    {
+      "identifier": "sdk_coverage",
+      "category": "developer_integration",
+      "status": "partial",
+      "description": "TypeScript/JavaScript only. A framework-agnostic client plus official integrations for the frameworks listed. There is no SDK for non-JavaScript backends.",
+      "links": ["https://better-auth.com/docs/installation", "https://better-auth.com/docs/integrations/next"],
+      "values": [
+        "TypeScript",
+        "JavaScript",
+        "Next.js",
+        "Nuxt",
+        "SvelteKit",
+        "SolidStart",
+        "Astro",
+        "TanStack Start",
+        "React Router",
+        "Waku",
+        "Express",
+        "Hono",
+        "Fastify",
+        "Elysia",
+        "NestJS",
+        "Nitro",
+        "Encore",
+        "Convex",
+        "Expo",
+        "Electron",
+        "Lynx"
+      ]
+    },
+    {
+      "identifier": "management_api",
+      "category": "developer_integration",
+      "status": "supported",
+      "description": "Server-side auth.api exposes every endpoint as a typed function, and the admin and organization plugins cover user, session, organization, member and role management. There is no separate remotely hosted management API to authenticate against.",
+      "links": ["https://better-auth.com/docs/concepts/api", "https://better-auth.com/docs/plugins/admin"]
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "category": "developer_integration",
+      "status": "supported",
+      "description": "Configurable rate limiting (default 100 requests per 10 seconds in production) with per-route rules, wildcards, memory/database/secondary storage and custom storage. Server-side auth.api calls are exempt.",
+      "links": ["https://better-auth.com/docs/concepts/rate-limit"]
+    },
+    {
+      "identifier": "actions_extensibility",
+      "category": "developer_integration",
+      "status": "supported",
+      "description": "Request hooks (before/after), database hooks, per-plugin lifecycle hooks, and a plugin system for adding endpoints, schema and client behavior.",
+      "links": ["https://better-auth.com/docs/concepts/hooks", "https://better-auth.com/docs/concepts/plugins"]
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "category": "developer_integration",
+      "status": "supported",
+      "description": "All hooks, callbacks and plugins are written in TypeScript in the host application with end-to-end inferred types.",
+      "links": ["https://better-auth.com/docs/concepts/typescript"]
+    },
+    {
+      "identifier": "custom_domain",
+      "category": "developer_integration",
+      "status": "supported",
+      "description": "Authentication is served from the application's own domain. Better Auth Infrastructure additionally offers a custom dashboard domain as a $25/month add-on.",
+      "links": ["https://better-auth.com/pricing"]
+    },
+    {
+      "identifier": "deploy_cli",
+      "category": "developer_integration",
+      "status": "partial",
+      "description": "The Better Auth CLI generates and migrates the database schema, but it does not export or import tenant configuration. Configuration lives in application code and is deployed with it.",
+      "links": ["https://better-auth.com/docs/concepts/cli"]
+    },
+    {
+      "identifier": "terraform_provider",
+      "category": "developer_integration",
+      "status": "not_supported",
+      "description": "No Terraform provider. Configuration is application code."
+    },
+    {
+      "identifier": "custom_database_connections",
+      "category": "developer_integration",
+      "status": "supported",
+      "description": "Bring your own database: PostgreSQL, MySQL, SQLite, MS SQL, MongoDB, and Drizzle/Prisma/Kysely adapters, plus community adapters and a guide for writing custom adapters. Stateless (database-less) sessions and secondary storage such as Redis are supported.",
+      "links": [
+        "https://better-auth.com/docs/concepts/database",
+        "https://better-auth.com/docs/adapters/postgresql",
+        "https://better-auth.com/docs/guides/create-a-db-adapter"
+      ]
+    },
+    {
+      "identifier": "native_webhooks",
+      "category": "developer_integration",
+      "status": "not_supported",
+      "description": "No outbound webhooks. Request and database hooks run in-process and can call any HTTP endpoint.",
+      "links": ["https://better-auth.com/docs/concepts/hooks"]
+    },
+    {
+      "identifier": "universal_login_customization",
+      "category": "developer_integration",
+      "status": "not_supported",
+      "description": "There is no hosted login page to customize; the application owns the UI."
+    },
+    {
+      "identifier": "custom_email_provider",
+      "category": "developer_integration",
+      "status": "supported",
+      "description": "Email is sent through application-provided callbacks (sendVerificationEmail, sendResetPassword, sendMagicLink, sendVerificationOTP and others), so any provider can be used. Better Auth Infrastructure also offers a managed email service.",
+      "links": [
+        "https://better-auth.com/docs/concepts/email",
+        "https://better-auth.com/docs/infrastructure/services/email"
+      ]
+    },
+    {
+      "identifier": "email_templates",
+      "category": "developer_integration",
+      "status": "partial",
+      "description": "Core library sends no templated email; the application renders its own. Better Auth Infrastructure Pro adds hosted email templates.",
+      "links": ["https://better-auth.com/docs/infrastructure/services/email"],
+      "plans": ["Pro", "Enterprise"]
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "category": "developer_integration",
+      "status": "supported",
+      "description": "The OAuth Provider plugin supports customIdTokenClaims, customAccessTokenClaims, customUserInfoClaims and customTokenResponseFields. The JWT plugin supports a custom payload.",
+      "links": ["https://better-auth.com/docs/plugins/oauth-provider", "https://better-auth.com/docs/plugins/jwt"]
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "category": "advanced",
+      "status": "not_supported",
+      "description": "No visual flow builder; flows are code."
+    },
+    {
+      "identifier": "identity_proofing",
+      "category": "advanced",
+      "status": "not_supported",
+      "description": "No built-in identity proofing or document verification."
+    },
+    {
+      "identifier": "decentralized_identity",
+      "category": "advanced",
+      "status": "not_supported",
+      "description": "No W3C Verifiable Credentials or DID support. Sign In With Ethereum (SIWE) is available as a wallet-based sign-in method.",
+      "links": ["https://better-auth.com/docs/plugins/siwe"]
+    },
+    {
+      "identifier": "billing_integration",
+      "category": "advanced",
+      "status": "supported",
+      "description": "Payment plugins for Stripe, Polar, Autumn, Dodo Payments, Creem, Chargebee and Commet link customers and subscriptions to users and organizations.",
+      "links": ["https://better-auth.com/docs/plugins/stripe", "https://better-auth.com/docs/plugins/polar"]
+    },
+    {
+      "identifier": "agentic_identity",
+      "category": "advanced",
+      "status": "supported",
+      "description": "The MCP plugin and OAuth Provider (resource indicators, DPoP, Client ID Metadata Documents) support OAuth for MCP servers and AI agents. The Agent Auth plugin implements the Agent Auth Protocol (agent registration, capability grants, user approval via device authorization or CIBA, signed short-lived agent JWTs) but is under heavy development and may change.",
+      "links": [
+        "https://better-auth.com/docs/plugins/agent-auth",
+        "https://better-auth.com/docs/plugins/mcp",
+        "https://better-auth.com/docs/plugins/cimd"
+      ]
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "category": "post_quantum_cryptography",
+      "status": "unknown",
+      "description": "No documented position on post-quantum TLS. Better Auth is an embedded library; TLS is terminated by the host application or its infrastructure."
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "category": "post_quantum_cryptography",
+      "status": "not_supported",
+      "description": "The JWT plugin signs with EdDSA (default), ES256/ES512, RS256 and PS256, and the OAuth provider accepts the classical RS/PS/ES/EdDSA algorithms. No ML-DSA, SLH-DSA or FN-DSA support is documented.",
+      "links": ["https://better-auth.com/docs/plugins/jwt"]
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "category": "post_quantum_cryptography",
+      "status": "unknown",
+      "description": "No public post-quantum roadmap or crypto-agility statement was found."
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "category": "post_quantum_cryptography",
+      "status": "not_supported",
+      "description": "No ML-KEM or HPKE token encryption is documented."
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "category": "post_quantum_cryptography",
+      "status": "not_supported",
+      "description": "No post-quantum or hybrid certificate support is documented; the library does not terminate mTLS."
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "category": "post_quantum_cryptography",
+      "status": "not_supported",
+      "description": "No NIST SP 800-208 stateful hash-based signature support is documented."
+    }
+  ],
+  "oidc": {
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "description": "Authorization code flow with mandatory S256 PKCE and the RFC 9207 iss response parameter. Only response_type \"code\" is supported.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported",
+        "description": "Issued when the offline_access scope is granted. A new refresh token is issued on every refresh, with an optional reuse interval and token-family invalidation on replay.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "supported",
+        "description": "Fail-closed: an administrator must explicitly allow client_credentials_scopes and approve the client privilege before a client can use the grant.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "not_supported",
+        "description": "Only response_type \"code\" is supported; implicit and hybrid flows are not available.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "not_supported",
+        "description": "Not part of the documented grant types. Custom grants can be added through the extension API.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "not_supported",
+        "description": "The OAuth provider does not support CIBA as a grant type.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "supported",
+        "description": "Available through the optional oauthDeviceAuthorization() plugin on top of the OAuth Provider. Issues scoped, audience-bound JWT access tokens. Public clients register with token_endpoint_auth_method \"none\".",
+        "links": ["https://better-auth.com/docs/plugins/device-authorization"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "not_supported",
+        "description": "Not part of the documented grant types.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "not_supported",
+        "description": "Not part of the documented grant types.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "password_grant",
+        "status": "not_supported",
+        "description": "The resource owner password credentials grant is not supported.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "supported",
+        "description": "OpenID Connect RP-Initiated Logout at /oauth2/end-session for clients registered with enable_end_session. Honors id_token_hint and exactly-matched post_logout_redirect_uri. Back-channel logout is also supported when the JWT plugin is enabled.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported",
+        "description": "S256 is required for public clients; the plain method is rejected. Confidential clients created by an administrator can opt out with require_pkce: false.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "par_extension",
+        "status": "not_supported",
+        "description": "Pushed Authorization Requests are not documented.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "not_supported",
+        "description": "Rich Authorization Requests are not documented.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "not_supported",
+        "description": "JWT-Secured Authorization Requests (request objects) are not documented.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "supported",
+        "description": "Served at /oauth2/authorize.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported",
+        "description": "Served at /oauth2/token.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "supported",
+        "description": "Served at /oauth2/userinfo. Requires the openid scope. Claims follow granted scopes and the OIDC claims request parameter, and can be extended with customUserInfoClaims.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "supported",
+        "description": "Opaque access tokens are deleted on revocation, and revoking a refresh token removes the access tokens it minted. JWT access tokens cannot be revoked server-side, so short lifetimes are recommended.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "supported",
+        "description": "RFC 7662 at /oauth2/introspect. Callable by the client that obtained the token or by a linked resource server. Introspection authenticated with a bearer token or private_key_jwt is not yet implemented.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "supported",
+        "description": "RFC 8628 device authorization via the optional oauthDeviceAuthorization() plugin.",
+        "links": ["https://better-auth.com/docs/plugins/device-authorization"]
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported",
+        "description": "Served at /.well-known/openid-configuration when the openid scope is enabled, with helper routes for frameworks that do not forward well-known paths.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "supported",
+        "description": "RFC 8414 metadata served at /.well-known/oauth-authorization-server.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown",
+        "description": "Not documented.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown",
+        "description": "Not documented.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "supported",
+        "description": "Configurable consent page, skip_consent for trusted clients, and per-user consent management.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "supported",
+        "description": "Configurable account-selection page via selectAccount.page and oauth2Continue.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "supported",
+        "description": "prompt=create redirects to the configured sign-up page.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "supported",
+        "description": "Public clients with token_endpoint_auth_method \"none\" (PKCE required).",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "supported",
+        "description": "Supported (default for confidential clients).",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "supported",
+        "description": "Supported.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "not_supported",
+        "description": "Not listed among supported token endpoint authentication methods.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "supported",
+        "description": "Supported with RS256/384/512, PS256/384/512, ES256/384/512 and EdDSA keys, registered inline (jwks) or by jwks_uri.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "not_supported",
+        "description": "Mutual TLS client authentication is not supported.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "supported",
+        "description": "RFC 7591 at /oauth2/register. Disabled by default; can be enabled for authenticated, unauthenticated or initial-access-token registration. Client ID Metadata Documents (CIMD) are recommended for MCP clients.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider", "https://better-auth.com/docs/plugins/cimd"]
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "not_supported",
+        "description": "RFC 7592 registration management is not implemented.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "supported",
+        "description": "A new refresh token is issued on every refresh request. Reusing a rotated token after the grace interval is treated as replay and invalidates the whole token family.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "supported",
+        "description": "refreshTokenReuseInterval (seconds, default 0) lets a rotated token be reused briefly and return the same token response. The MCP plugin defaults it to 30 seconds.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider", "https://better-auth.com/docs/plugins/mcp"]
+      },
+      {
+        "identifier": "dpop",
+        "status": "supported",
+        "description": "RFC 9449 DPoP-bound access tokens, with advertised signing algorithms and per-resource dpopBoundAccessTokensRequired. Resource servers verify with verifyAccessTokenRequest.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "not_supported",
+        "description": "Not documented.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "not_supported",
+        "description": "Not documented. PAR, JAR, mTLS and JARM are not supported.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "not_supported",
+        "description": "Not documented. PAR is not supported.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "not_supported",
+        "description": "Not documented.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      },
+      {
+        "identifier": "jarm",
+        "status": "not_supported",
+        "description": "JWT Secured Authorization Response Mode is not documented.",
+        "links": ["https://better-auth.com/docs/plugins/oauth-provider"]
+      }
+    ]
+  }
+}
