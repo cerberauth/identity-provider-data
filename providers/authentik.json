@@ -1,0 +1,962 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "authentik",
+  "abstract": "Open-source identity provider and SSO platform for self-hosting, built around configurable flows and stages. Acts as an OpenID Connect (OpenID Certified), OAuth 2.0, SAML 2.0, WS-Federation, LDAP, RADIUS and SCIM provider, and can federate from LDAP, Active Directory, Kerberos, SAML, OAuth and social sources. Policies written in Python, an application proxy and a Terraform provider cover customization and automation. The core is MIT licensed, with an Enterprise edition adding Privileged Access Management, Entra ID and Google Workspace sync, mTLS and extended audit features. There is no hosted offering.",
+  "identifier": "authentik",
+  "status": "active",
+  "deploymentModels": ["self_hosted"],
+  "targetAudience": ["b2c", "b2b", "workforce", "developer"],
+  "tags": ["self-hosted", "homelab", "flows", "reverse-proxy", "python", "go"],
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/authentik.svg"
+  },
+  "website": "https://goauthentik.io",
+  "documentationUrl": "https://docs.goauthentik.io",
+  "changelogUrl": "https://docs.goauthentik.io/releases/",
+  "communityUrl": "https://goauthentik.io/discord",
+  "github": "https://github.com/goauthentik/authentik",
+  "repositories": [
+    {
+      "url": "https://github.com/goauthentik/authentik",
+      "platform": "github",
+      "role": "core",
+      "stars": 25815,
+      "contributors": 625,
+      "latestVersion": "version/2026.8.3",
+      "lastRelease": "2026-09-17",
+      "statsUpdatedAt": "2026-10-02"
+    },
+    {
+      "url": "https://github.com/goauthentik/helm",
+      "platform": "github",
+      "role": "infrastructure",
+      "stars": 185,
+      "contributors": 43,
+      "latestVersion": "authentik-2026.8.3",
+      "lastRelease": "2026-09-17",
+      "statsUpdatedAt": "2026-10-02"
+    }
+  ],
+  "license": "MIT",
+  "licenseUrl": "https://github.com/goauthentik/authentik/blob/main/LICENSE",
+  "openSource": {
+    "isOpenSource": true,
+    "model": "open_core"
+  },
+  "governance": "vendor_led",
+  "vendor": {
+    "name": "Authentik Security Inc.",
+    "url": "https://goauthentik.io"
+  },
+  "foundedYear": 2019,
+  "pricing": {
+    "hasFreeTier": true,
+    "freeTierLimit": "Open Source edition: unlimited users (self-hosted)",
+    "pricingModel": "per_user",
+    "pricingUrl": "https://goauthentik.io/pricing",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": false,
+    "currency": "USD",
+    "pricingLastVerified": "2026-10-02",
+    "plans": [
+      {
+        "name": "Open Source",
+        "price": "Free (self-hosted)",
+        "amount": 0
+      },
+      {
+        "name": "Enterprise",
+        "price": "US$5/user/month, billed annually (external users US$0.02/user/month)"
+      },
+      {
+        "name": "Enterprise Plus",
+        "price": "From US$20,000/year",
+        "featuresIncluded": ["fedramp"]
+      }
+    ]
+  },
+  "hosting": {
+    "selfHostRequirements": {
+      "runtime": "Python, Go",
+      "database": ["PostgreSQL"],
+      "container": ["Docker", "Kubernetes", "Helm"]
+    }
+  },
+  "supportChannels": ["email", "community"],
+  "lastVerified": "2026-10-02",
+  "sdks": [
+    {
+      "language": "Go",
+      "url": "https://github.com/goauthentik/client-go",
+      "official": true
+    },
+    {
+      "language": "Python",
+      "url": "https://github.com/goauthentik/client-python",
+      "official": true
+    },
+    {
+      "language": "TypeScript",
+      "url": "https://github.com/goauthentik/client-ts",
+      "official": true
+    },
+    {
+      "language": "Rust",
+      "url": "https://github.com/goauthentik/client-rust",
+      "official": true
+    }
+  ],
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "status": "supported",
+      "description": "Identification and Password stages in the default authentication flow.",
+      "links": [
+        "https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/password/",
+        "https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/identification/"
+      ]
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "status": "supported",
+      "description": "Social login sources such as Apple, Discord, GitHub, Twitch and X, plus generic OAuth and SAML sources.",
+      "links": ["https://docs.goauthentik.io/users-sources/sources/social-logins/"]
+    },
+    {
+      "identifier": "passkey_authentication",
+      "status": "supported",
+      "description": "WebAuthn / FIDO2 authenticator stage supports passkeys and security keys, and a passwordless flow can be built on it.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/authenticator_webauthn/"]
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "status": "partial",
+      "description": "The Email stage sends a one-time link, used out of the box for account recovery and enrollment. A login flow built on it needs custom flow configuration.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/email/"]
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "status": "not_supported",
+      "description": "Every session belongs to an authenticated user. There is no anonymous or guest login."
+    },
+    {
+      "identifier": "totp_mfa",
+      "status": "supported",
+      "description": "TOTP authenticator setup stage.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/authenticator_totp/"]
+    },
+    {
+      "identifier": "hotp_mfa",
+      "status": "not_supported",
+      "description": "Only time-based TOTP is offered. Static recovery codes are the only other OTP type."
+    },
+    {
+      "identifier": "u2f_mfa",
+      "status": "supported",
+      "description": "Security keys through the WebAuthn authenticator stage.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/authenticator_webauthn/"]
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "status": "supported",
+      "description": "WebAuthn / FIDO2 authenticators (security keys and passkeys) as a second factor.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/authenticator_webauthn/"]
+    },
+    {
+      "identifier": "email_code_mfa",
+      "status": "supported",
+      "description": "Email authenticator setup stage.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/authenticator_email/"]
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "status": "supported",
+      "description": "SMS authenticator setup stage, with Twilio or a generic HTTP gateway.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/authenticator_sms/"]
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "status": "supported",
+      "description": "Static authenticator stage generates single-use recovery tokens.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/authenticator_static/"]
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "status": "partial",
+      "description": "Push approval is available only through the Duo authenticator stage. There is no native authentik push app.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/authenticator_duo/"]
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "status": "partial",
+      "description": "Policies on GeoIP, ASN, network and reputation can decide whether the authenticator validation stage prompts for MFA. There is no built-in risk scoring engine.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/authenticator_validate/"]
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "status": "supported",
+      "description": "Duo authenticator setup stage.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/authenticator_duo/"]
+    },
+    {
+      "identifier": "step_up_authentication",
+      "status": "partial",
+      "description": "Flows and stage bindings can be attached to individual applications, and the validation stage supports a last-validation threshold to force re-authentication. There is no ACR-based step-up.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/authenticator_validate/"]
+    },
+    {
+      "identifier": "oidc_protocol",
+      "status": "supported",
+      "description": "OAuth2 / OpenID Connect provider. OpenID Certified as of 2026.8.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+    },
+    {
+      "identifier": "saml2_protocol",
+      "status": "supported",
+      "description": "SAML 2.0 identity provider.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/providers/saml/"]
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "status": "supported",
+      "description": "WS-Federation provider.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/providers/wsfed/"]
+    },
+    {
+      "identifier": "machine_to_machine",
+      "status": "supported",
+      "description": "Client credentials grant for service accounts and federated JWT authentication.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/machine_to_machine/"]
+    },
+    {
+      "identifier": "oidc_federation",
+      "status": "supported",
+      "description": "OAuth / OpenID Connect sources let users sign in with an external identity provider.",
+      "links": ["https://docs.goauthentik.io/users-sources/sources/protocols/oauth/"]
+    },
+    {
+      "identifier": "saml_federation",
+      "status": "supported",
+      "description": "SAML source for federating with an external SAML identity provider.",
+      "links": ["https://docs.goauthentik.io/users-sources/sources/protocols/saml/"]
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "status": "supported",
+      "description": "LDAP source with Active Directory and FreeIPA synchronization, and an LDAP provider to expose authentik as a directory.",
+      "links": [
+        "https://docs.goauthentik.io/users-sources/sources/protocols/ldap/",
+        "https://docs.goauthentik.io/users-sources/sources/directory-sync/active-directory/",
+        "https://docs.goauthentik.io/add-secure-apps/providers/ldap/"
+      ]
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "status": "supported",
+      "description": "Sign in with Entra ID through an OAuth source (open source). The Entra ID provider for outbound sync is Enterprise only.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/providers/entra/"]
+    },
+    {
+      "identifier": "bulk_user_import",
+      "status": "partial",
+      "description": "No CSV import in the UI. Users can be created through the REST API and blueprints, or synced from LDAP and SCIM sources.",
+      "links": ["https://docs.goauthentik.io/customize/blueprints/"]
+    },
+    {
+      "identifier": "password_hash_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_export",
+      "status": "partial",
+      "description": "Users can be listed and exported through the REST API. There is no one-click user export in the UI.",
+      "links": ["https://docs.goauthentik.io/developer-docs/api/"]
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "status": "partial",
+      "description": "Bulk deletion is available in the admin UI. Bulk updates go through the REST API or blueprints."
+    },
+    {
+      "identifier": "upsert_on_import",
+      "status": "partial",
+      "description": "Blueprints are declarative and idempotent, so re-applying them updates existing objects.",
+      "links": ["https://docs.goauthentik.io/customize/blueprints/"]
+    },
+    {
+      "identifier": "legacy_username_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "status": "supported",
+      "description": "SCIM source lets an external system provision users and groups into authentik.",
+      "links": ["https://docs.goauthentik.io/users-sources/sources/protocols/scim/"]
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "status": "supported",
+      "description": "SCIM provider pushes users and groups to downstream applications.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/providers/scim/"]
+    },
+    {
+      "identifier": "scim_groups",
+      "status": "supported",
+      "description": "Groups are synchronized in both the SCIM source and the SCIM provider.",
+      "links": [
+        "https://docs.goauthentik.io/users-sources/sources/protocols/scim/",
+        "https://docs.goauthentik.io/add-secure-apps/providers/scim/"
+      ]
+    },
+    {
+      "identifier": "jit_provisioning",
+      "status": "supported",
+      "description": "Sources create users on first login through an enrollment flow, with property mappings applied to the new user.",
+      "links": ["https://docs.goauthentik.io/users-sources/sources/property-mappings/"]
+    },
+    {
+      "identifier": "lazy_migration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "status": "supported",
+      "description": "User interface where users edit their profile, manage MFA devices and change their password, driven by a configurable user settings flow.",
+      "links": ["https://docs.goauthentik.io/users-sources/user/"]
+    },
+    {
+      "identifier": "account_linking",
+      "status": "supported",
+      "description": "Sources can link an external identity to an existing user by identifier, email or username.",
+      "links": ["https://docs.goauthentik.io/users-sources/sources//"]
+    },
+    {
+      "identifier": "user_blocking",
+      "status": "supported",
+      "description": "Users can be deactivated, which blocks login and revokes sessions.",
+      "links": ["https://docs.goauthentik.io/users-sources/user/"]
+    },
+    {
+      "identifier": "user_metadata",
+      "status": "supported",
+      "description": "Free-form JSON attributes on users, groups and other objects.",
+      "links": ["https://docs.goauthentik.io/users-sources/user/"]
+    },
+    {
+      "identifier": "app_metadata",
+      "status": "partial",
+      "description": "Attributes can be set on groups and applications, but there is no separate application-metadata store per user."
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_search",
+      "status": "supported",
+      "description": "Searchable user list in the admin interface and the REST API.",
+      "links": ["https://docs.goauthentik.io/users-sources/user/"]
+    },
+    {
+      "identifier": "rbac",
+      "status": "supported",
+      "description": "Roles assigned to groups, with global and object-level permissions.",
+      "links": [
+        "https://docs.goauthentik.io/users-sources/access-control/",
+        "https://docs.goauthentik.io/users-sources/roles/"
+      ]
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "status": "partial",
+      "description": "Brands give per-domain branding and flow selection inside one instance. Hard tenant isolation needs separate instances, with multi-instance support in Enterprise Plus.",
+      "links": ["https://docs.goauthentik.io/customize/"]
+    },
+    {
+      "identifier": "password_strength_policy",
+      "status": "supported",
+      "description": "Password policy supporting length, character classes, HaveIBeenPwned and zxcvbn checks. Password history checks are Enterprise.",
+      "links": ["https://docs.goauthentik.io/customize/policies/"]
+    },
+    {
+      "identifier": "username_restrictions",
+      "status": "partial",
+      "description": "Prompt-stage field validation and expression policies can enforce username rules. There is no dedicated setting."
+    },
+    {
+      "identifier": "progressive_profiling",
+      "status": "partial",
+      "description": "Prompt stages with policy bindings can collect extra attributes on later logins.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/prompt/"]
+    },
+    {
+      "identifier": "abac",
+      "status": "partial",
+      "description": "Expression policies written in Python can evaluate user, group, request and context attributes to allow or deny access.",
+      "links": ["https://docs.goauthentik.io/customize/policies/"]
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "status": "not_supported",
+      "description": "No relationship-based or fine-grained authorization engine."
+    },
+    {
+      "identifier": "api_authorization",
+      "status": "partial",
+      "description": "Scope mappings add scopes and claims to tokens. There is no resource-server permission model.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+    },
+    {
+      "identifier": "soc2_type2",
+      "status": "unknown"
+    },
+    {
+      "identifier": "iso_27001",
+      "status": "unknown"
+    },
+    {
+      "identifier": "hipaa_baa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pci_dss",
+      "status": "unknown"
+    },
+    {
+      "identifier": "csa_star",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fedramp",
+      "status": "partial",
+      "description": "FIPS-compliant build offered to help meet FedRAMP requirements. authentik is not itself FedRAMP authorized.",
+      "links": ["https://goauthentik.io/pricing"],
+      "plans": ["Enterprise Plus"]
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "status": "supported",
+      "description": "Users can be deleted from the admin UI, the API, or a User delete stage.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/user_delete/"]
+    },
+    {
+      "identifier": "consent_management",
+      "status": "supported",
+      "description": "Consent stage asks users to approve scopes, with configurable expiry per application.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/consent/"]
+    },
+    {
+      "identifier": "region_deployment",
+      "status": "not_supported",
+      "description": "authentik has no hosted offering. You choose the region by choosing where to deploy it."
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "status": "supported",
+      "description": "Self-hosted with Docker Compose, Kubernetes (Helm), or an AWS CloudFormation template.",
+      "links": ["https://docs.goauthentik.io/install-config/"],
+      "values": ["Docker", "Kubernetes", "AWS"]
+    },
+    {
+      "identifier": "audit_log_retention",
+      "status": "supported",
+      "description": "Events are stored for 365 days by default, with configurable retention.",
+      "links": ["https://docs.goauthentik.io/sys-mgmt/events/"]
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "status": "supported",
+      "description": "Events can go to webhook and email notification transports, or be forwarded from container logs.",
+      "links": [
+        "https://docs.goauthentik.io/sys-mgmt/events/log-forwarding/",
+        "https://docs.goauthentik.io/sys-mgmt/events/transports/"
+      ]
+    },
+    {
+      "identifier": "security_center",
+      "status": "partial",
+      "description": "Admin overview dashboard and event log. The login event map is Enterprise only.",
+      "links": ["https://docs.goauthentik.io/sys-mgmt/events/"]
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "status": "supported",
+      "description": "The server serves HTTPS directly, or sits behind a TLS-terminating reverse proxy.",
+      "links": ["https://docs.goauthentik.io/install-config/"]
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bot_detection",
+      "status": "supported",
+      "description": "Captcha stage supports reCAPTCHA, hCaptcha, Cloudflare Turnstile and others.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/captcha/"]
+    },
+    {
+      "identifier": "brute_force_protection",
+      "status": "supported",
+      "description": "Reputation policy scores IPs and usernames from failed logins and blocks access below a threshold.",
+      "links": ["https://docs.goauthentik.io/customize/policies/types/reputation/"]
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "status": "supported",
+      "description": "Reputation policy tracks per-IP scores. Network and GeoIP policies can also deny by address or location.",
+      "links": ["https://docs.goauthentik.io/customize/policies/types/reputation/"]
+    },
+    {
+      "identifier": "breached_password_detection",
+      "status": "supported",
+      "description": "Password policy can check passwords against HaveIBeenPwned.",
+      "links": ["https://docs.goauthentik.io/customize/policies/"]
+    },
+    {
+      "identifier": "credential_guard",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "tenant_acl",
+      "status": "partial",
+      "description": "Network-binding policies restrict access by IP or CIDR per flow, application or source.",
+      "links": ["https://docs.goauthentik.io/customize/policies/"]
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "status": "partial",
+      "description": "Chrome Enterprise Device Trust connector and endpoint stages check device posture (Enterprise).",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/authenticator_endpoint_gdtc/"]
+    },
+    {
+      "identifier": "per_org_branding",
+      "status": "supported",
+      "description": "Brands apply logo, title, CSS and default flows per domain.",
+      "links": ["https://docs.goauthentik.io/customize/"]
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "status": "partial",
+      "description": "A brand or application can use its own flow, and so its own MFA stages."
+    },
+    {
+      "identifier": "hosted_login_page",
+      "status": "supported",
+      "description": "Flow-driven login pages hosted by authentik.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/flow/"]
+    },
+    {
+      "identifier": "embedded_login",
+      "status": "partial",
+      "description": "The flow executor API lets a client render its own login UI, but there are no packaged embeddable components.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/flow/"]
+    },
+    {
+      "identifier": "white_label",
+      "status": "supported",
+      "description": "Branding, custom CSS and templates are available in the open source edition.",
+      "links": ["https://docs.goauthentik.io/customize/"]
+    },
+    {
+      "identifier": "localization",
+      "status": "supported",
+      "description": "Interface and flows are translated, and prompt fields can be localized."
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "login_analytics",
+      "status": "partial",
+      "description": "Admin overview charts for logins, failed logins and authorizations. CSV reports and the event map are Enterprise.",
+      "links": ["https://docs.goauthentik.io/sys-mgmt/events/"]
+    },
+    {
+      "identifier": "sdk_coverage",
+      "status": "partial",
+      "description": "Generated API clients for Go, Python, TypeScript and Rust. Applications integrate through standard OIDC and SAML libraries.",
+      "links": [
+        "https://github.com/goauthentik/client-go",
+        "https://github.com/goauthentik/client-ts",
+        "https://github.com/goauthentik/client-rust"
+      ]
+    },
+    {
+      "identifier": "management_api",
+      "status": "supported",
+      "description": "REST API with an OpenAPI schema covering everything the admin UI does.",
+      "links": ["https://docs.goauthentik.io/developer-docs/api/"]
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "actions_extensibility",
+      "status": "supported",
+      "description": "Python expression policies and property mappings run inside flows and token issuance.",
+      "links": ["https://docs.goauthentik.io/customize/policies/expression/"]
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "status": "not_supported",
+      "description": "Extensions are written in Python."
+    },
+    {
+      "identifier": "custom_domain",
+      "status": "supported",
+      "description": "Any domain can be bound to a brand.",
+      "links": ["https://docs.goauthentik.io/customize/"]
+    },
+    {
+      "identifier": "deploy_cli",
+      "status": "partial",
+      "description": "Blueprints describe configuration as YAML applied on startup or from a repository. There is no dedicated deploy CLI.",
+      "links": ["https://docs.goauthentik.io/customize/blueprints/"]
+    },
+    {
+      "identifier": "terraform_provider",
+      "status": "supported",
+      "description": "Official Terraform provider maintained by authentik.",
+      "links": [
+        "https://registry.terraform.io/providers/goauthentik/authentik/latest/docs",
+        "https://github.com/goauthentik/terraform-provider-authentik"
+      ]
+    },
+    {
+      "identifier": "custom_database_connections",
+      "status": "partial",
+      "description": "LDAP and SCIM sources can bring in users from an external directory. There is no custom database script connection.",
+      "links": ["https://docs.goauthentik.io/users-sources/sources/protocols/ldap/"]
+    },
+    {
+      "identifier": "native_webhooks",
+      "status": "supported",
+      "description": "Webhook notification transport sends events to any HTTP endpoint.",
+      "links": ["https://docs.goauthentik.io/sys-mgmt/events/transports/"]
+    },
+    {
+      "identifier": "universal_login_customization",
+      "status": "supported",
+      "description": "Flows, stages, policies, CSS and templates control the full login experience.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/flow/"]
+    },
+    {
+      "identifier": "custom_email_provider",
+      "status": "supported",
+      "description": "Any SMTP server, set through environment variables.",
+      "links": ["https://docs.goauthentik.io/install-config/email/"]
+    },
+    {
+      "identifier": "email_templates",
+      "status": "supported",
+      "description": "Customizable HTML email templates for the Email stage and notifications.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/stages/email/"]
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "status": "supported",
+      "description": "Scope property mappings in Python add claims to ID tokens and userinfo.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/providers/property-mappings/"]
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "status": "supported",
+      "description": "Flows chain stages with policy bindings to build login, enrollment, recovery and logout journeys, with a flow inspector for debugging.",
+      "links": ["https://docs.goauthentik.io/add-secure-apps/flows-stages/flow/"]
+    },
+    {
+      "identifier": "identity_proofing",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "decentralized_identity",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "billing_integration",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "agentic_identity",
+      "status": "partial",
+      "description": "Agent accounts for non-human identity are an Enterprise feature. Token exchange and dynamic client registration work with MCP-style clients.",
+      "links": [
+        "https://docs.goauthentik.io/add-secure-apps/providers/oauth2/token_exchange/",
+        "https://docs.goauthentik.io/add-secure-apps/providers/oauth2/dynamic-client-registration/"
+      ]
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "status": "unknown",
+      "category": "post_quantum_cryptography"
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "status": "unknown",
+      "category": "post_quantum_cryptography"
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "status": "unknown",
+      "category": "post_quantum_cryptography"
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "status": "unknown",
+      "category": "post_quantum_cryptography"
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "status": "unknown",
+      "category": "post_quantum_cryptography"
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "status": "unknown",
+      "category": "post_quantum_cryptography"
+    }
+  ],
+  "oidc": {
+    "certified": {
+      "profile": "Basic, Implicit, Hybrid, Config, Form Post, Back-Channel",
+      "version": "2026.8",
+      "certificationUrl": "https://openid.net/certification/certified-openid-connect-implementations/"
+    },
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported",
+        "description": "Requires the offline_access scope and its scope mapping.",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "supported",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/machine_to_machine/"]
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "supported",
+        "description": "Marked as legacy in the docs, which recommend the code flow with PKCE.",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "supported",
+        "description": "Impersonation and delegation. Delegation (on-behalf-of) needs 2026.8 or later.",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/token_exchange/"]
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "supported",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/device_code/"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "partial",
+        "description": "JWTs issued by federated providers can authenticate through the client credentials grant, rather than the standalone JWT bearer grant.",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/machine_to_machine/"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "password_grant",
+        "status": "partial",
+        "description": "Machine-to-machine clients can pass a username and app password to the client credentials grant. The standard password grant type is not documented.",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/machine_to_machine/"]
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "supported",
+        "description": "End-session endpoint, plus front-channel and back-channel logout.",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/frontchannel_and_backchannel_logout/"]
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+      },
+      {
+        "identifier": "par_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "supported",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "supported",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "supported",
+        "description": "Public and confidential clients can revoke their own tokens.",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "supported",
+        "description": "Confidential clients can introspect only the tokens they issued.",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "supported",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/device_code/"]
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported",
+        "description": "Per-provider discovery document at /application/o/<slug>/.well-known/openid-configuration.",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "supported"
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "supported"
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "supported"
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "supported",
+        "description": "Public clients.",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "supported",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "supported",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "supported",
+        "description": "Enabled through the goauthentik.io/oidc/dcr scope. Not yet covered by the OpenID certification.",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/dynamic-client-registration/"]
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "supported",
+        "description": "Depends on provider configuration.",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/"]
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dpop",
+        "status": "partial",
+        "description": "The bound_key scope binds the ID token to a client key. The access token is not sender-constrained.",
+        "links": ["https://docs.goauthentik.io/add-secure-apps/providers/oauth2/key-binding/"]
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jarm",
+        "status": "unknown"
+      }
+    ]
+  }
+}
