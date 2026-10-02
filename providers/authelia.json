@@ -3,24 +3,66 @@
   "name": "Authelia",
   "abstract": "Authelia is a community-driven, open-source (Apache 2.0) 2FA and single sign-on authentication server. It is a forward-auth companion for reverse proxies (nginx, Traefik, Caddy, Envoy, HAProxy, Skipper), authenticating against a file or LDAP backend and issuing access-control decisions to protect self-hosted applications, with an optional built-in OpenID Certified OpenID Connect 1.0 Provider. There is no commercial edition or SaaS offering; the project is entirely community-maintained.",
   "identifier": "authelia",
+  "status": "active",
+  "deploymentModels": ["self_hosted"],
+  "targetAudience": ["workforce"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/authelia.svg"
   },
   "website": "https://www.authelia.com",
   "github": "https://github.com/authelia/authelia",
-  "license": "Apache 2.0",
+  "repositories": [
+    {
+      "url": "https://github.com/authelia/authelia",
+      "platform": "github",
+      "role": "core",
+      "stars": 29153,
+      "contributors": 309,
+      "latestVersion": "v4.39.28",
+      "lastRelease": "2026-09-17",
+      "statsUpdatedAt": "2026-10-01"
+    },
+    {
+      "url": "https://github.com/authelia/chartrepo",
+      "platform": "github",
+      "role": "infrastructure",
+      "stars": 106,
+      "contributors": 37,
+      "latestVersion": "authelia-0.11.22",
+      "lastRelease": "2026-09-11",
+      "statsUpdatedAt": "2026-10-01"
+    }
+  ],
+  "license": "Apache-2.0",
+  "licenseUrl": "https://github.com/authelia/authelia/blob/master/LICENSE",
+  "openSource": {
+    "isOpenSource": true,
+    "model": "fully_open"
+  },
+  "foundedYear": 2016,
   "pricing": {
     "hasFreeTier": true,
     "freeTierLimit": "Unlimited (self-hosted, open source)",
     "pricingModel": "open-source",
     "pricingUrl": "https://www.authelia.com",
+    "hasEnterprisePlan": false,
+    "contactSalesRequired": false,
     "plans": [
       {
         "name": "Open Source (self-hosted)",
-        "price": "Free (Apache 2.0)"
+        "price": "Free (Apache 2.0)",
+        "amount": 0
       }
     ]
   },
+  "hosting": {
+    "selfHostRequirements": {
+      "runtime": "Go",
+      "database": ["SQLite", "PostgreSQL", "MySQL", "MariaDB"],
+      "container": ["Docker", "Kubernetes", "Helm"]
+    }
+  },
+  "lastVerified": "2026-09-21",
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -37,7 +79,8 @@
       "identifier": "passkey_authentication",
       "status": "supported",
       "description": "Passwordless logins via Passkeys, supported since v4.39.0, in addition to multi-credential WebAuthn security keys.",
-      "links": ["https://www.authelia.com/overview/authentication/security-key/"]
+      "links": ["https://www.authelia.com/overview/authentication/security-key/"],
+      "sinceVersion": "v4.39.0"
     },
     {
       "identifier": "email_passwordless_authentication",
@@ -550,40 +593,40 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "Authelia (written in Go) can terminate TLS itself in addition to the common reverse-proxy deployment, so the underlying stack is Go's crypto/tls, which supports the X25519MLKEM768 hybrid group since Go 1.24 (Feb 2025). However, the Authelia project has published no documentation, changelog entry, or statement claiming post-quantum/hybrid TLS key-exchange support, and self-hosted deployments usually rely on external reverse proxies. Without vendor evidence, status is unknown.",
       "links": ["https://www.authelia.com/configuration/miscellaneous/server/", "https://go.dev/blog/tls-key-exchange"]
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No evidence found of ML-DSA/Dilithium, SLH-DSA/SPHINCS+, or FN-DSA/Falcon support for OIDC ID token or JWT signing. Targeted GitHub searches of authelia/authelia issues/discussions for quantum-related terms returned no results.",
       "links": ["https://github.com/authelia/authelia"]
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "No public roadmap, blog post, whitepaper, or GitHub discussion found describing PQC migration plans or a crypto-agility/quantum-readiness statement from the Authelia project."
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
     }
   ],

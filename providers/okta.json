@@ -3,17 +3,35 @@
   "name": "Okta",
   "abstract": "Enterprise cloud identity platform from the USA offering workforce and customer identity. Features Universal Directory, Adaptive MFA, SSO to 7,000+ app integrations, lifecycle management, and zero-trust security. Native AD/LDAP integration, outbound SCIM provisioning, FIDO2 passkeys, and Okta Workflows no-code automation. FedRAMP and DoD IL4 authorized. SaaS-only deployment.",
   "identifier": "okta",
+  "status": "active",
+  "deploymentModels": ["saas"],
+  "targetAudience": ["workforce", "ciam"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/okta.svg"
   },
   "website": "https://www.okta.com",
   "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
   "nationality": "USA",
+  "vendor": {
+    "name": "Okta",
+    "url": "https://www.okta.com"
+  },
+  "foundedYear": 2009,
+  "headquarters": {
+    "country": "US",
+    "city": "San Francisco"
+  },
   "pricing": {
     "hasFreeTier": false,
     "freeTierLimit": "Developer Edition available for non-production use only",
     "pricingModel": "per_user",
     "pricingUrl": "https://www.okta.com/pricing/",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
+    "currency": "USD",
     "plans": [
       {
         "name": "Starter",
@@ -37,6 +55,87 @@
       }
     ]
   },
+  "hosting": {
+    "regions": ["US", "EU", "CA", "AU"]
+  },
+  "lastVerified": "2026-09-21",
+  "sdks": [
+    {
+      "language": "JavaScript",
+      "framework": "Auth JS",
+      "url": "https://github.com/okta/okta-auth-js",
+      "official": true
+    },
+    {
+      "language": "JavaScript",
+      "framework": "Sign-In Widget",
+      "url": "https://github.com/okta/okta-signin-widget",
+      "official": true
+    },
+    {
+      "language": "JavaScript",
+      "framework": "React",
+      "url": "https://github.com/okta/okta-react",
+      "official": true
+    },
+    {
+      "language": "TypeScript",
+      "framework": "Angular",
+      "url": "https://github.com/okta/okta-angular",
+      "official": true
+    },
+    {
+      "language": "JavaScript",
+      "framework": "Vue",
+      "url": "https://github.com/okta/okta-vue",
+      "official": true
+    },
+    {
+      "language": "JavaScript",
+      "framework": "Node.js",
+      "url": "https://github.com/okta/okta-sdk-nodejs",
+      "official": true
+    },
+    {
+      "language": "Python",
+      "url": "https://github.com/okta/okta-sdk-python",
+      "official": true
+    },
+    {
+      "language": "Java",
+      "url": "https://github.com/okta/okta-sdk-java",
+      "official": true
+    },
+    {
+      "language": "Java",
+      "framework": "Spring Boot",
+      "url": "https://github.com/okta/okta-spring-boot",
+      "official": true
+    },
+    {
+      "language": "Go",
+      "url": "https://github.com/okta/okta-sdk-golang",
+      "official": true
+    },
+    {
+      "language": "C#",
+      "framework": ".NET",
+      "url": "https://github.com/okta/okta-sdk-dotnet",
+      "official": true
+    },
+    {
+      "language": "Swift",
+      "framework": "iOS",
+      "url": "https://github.com/okta/okta-mobile-swift",
+      "official": true
+    },
+    {
+      "language": "Kotlin",
+      "framework": "Android",
+      "url": "https://github.com/okta/okta-mobile-kotlin",
+      "official": true
+    }
+  ],
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -403,8 +502,8 @@
       "identifier": "region_deployment",
       "status": "supported",
       "description": "Available in US, EU, Canada, and Australia regions for data residency requirements.",
-      "values": ["US", "EU", "Canada", "Australia"],
-      "links": ["https://www.okta.com/trust/"]
+      "links": ["https://www.okta.com/trust/"],
+      "values": ["US", "EU", "Canada", "Australia"]
     },
     {
       "identifier": "private_cloud_deployment",
@@ -650,21 +749,21 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "No public vendor statement found on PQC TLS support for Okta's authentication endpoints. Okta's published architecture describes self-managed 'cell-based' infrastructure hosted on AWS and GCP with its own load balancers, not a documented reliance on Cloudflare or CloudFront/Front Door - so no infra-inheritance argument applies either.",
       "links": ["https://www.okta.com/sites/default/files/2020-10/Okta's-Architecture-eBook.pdf"]
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Okta signs OIDC ID tokens and SAML assertions with RS256; no public documentation of ML-DSA/SLH-DSA signature support was found."
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "partial",
+      "category": "post_quantum_cryptography",
       "description": "Okta has published marketing/research content acknowledging the PQC threat (citing that 67% of financial-services orgs are evaluating PQC, discussing quantum-resistant needs for non-human identity) but no concrete internal roadmap or timeline for migrating Okta's own platform to NIST PQC standards was found.",
       "links": [
         "https://www.okta.com/blog/customers-and-partners/okta-ventures-request-for-builders-five-key-focus-areas-in-identity-and-security/",
@@ -673,20 +772,20 @@
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
     }
   ],

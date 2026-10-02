@@ -3,16 +3,37 @@
   "name": "Purse Identity",
   "abstract": "Purse Identity, formerly ReachFive, is a SaaS, API-first customer identity and access management (CIAM) platform now part of Purse alongside its payment orchestration products. It combines authentication (password, social login, passkeys and FIDO2, passwordless by email magic link or SMS code), MFA by email or SMS with step-up and risk-based authentication, SSO and cross-domain sessions, and a consent and preference center with double opt-in and full traceability for GDPR. Fraud protection covers bots, credential stuffing, breached credentials, rate limiting and account lockout. It acts as a partially implemented OpenID Connect provider (authorization code with PKCE, implicit, ROPC, refresh tokens with rotation) and can act as an OpenID provider for partner sites. Delivered through hosted pages, JavaScript, iOS and Android SDKs, and a Management API. Pricing is quote-based.",
   "identifier": "purse-identity",
+  "status": "active",
+  "deploymentModels": ["saas"],
+  "targetAudience": ["b2c", "ciam"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/purse-identity.png"
   },
   "website": "https://purse.eu/en/products/purse-identity",
   "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
   "nationality": "France",
+  "vendor": {
+    "name": "Purse",
+    "url": "https://purse.eu"
+  },
+  "foundedYear": 2015,
+  "headquarters": {
+    "country": "FR",
+    "city": "Lille"
+  },
+  "acquiredBy": {
+    "name": "Purse",
+    "year": 2024
+  },
   "pricing": {
     "hasFreeTier": false,
     "pricingModel": "custom",
     "pricingUrl": "https://purse.eu/en/products/purse-identity",
+    "hasEnterprisePlan": false,
+    "contactSalesRequired": true,
     "plans": [
       {
         "name": "Purse Identity",
@@ -20,6 +41,27 @@
       }
     ]
   },
+  "lastVerified": "2026-10-02",
+  "sdks": [
+    {
+      "language": "TypeScript",
+      "framework": "Web",
+      "url": "https://github.com/ReachFive/identity-web-core-sdk",
+      "official": true
+    },
+    {
+      "language": "Swift",
+      "framework": "iOS",
+      "url": "https://github.com/ReachFive/identity-ios-sdk",
+      "official": true
+    },
+    {
+      "language": "Kotlin",
+      "framework": "Android",
+      "url": "https://github.com/ReachFive/identity-android-sdk",
+      "official": true
+    }
+  ],
   "features": [
     {
       "identifier": "username_and_password_authentication",

@@ -3,41 +3,191 @@
   "name": "Ory",
   "abstract": "Open-source (Apache 2.0) microservice-based CIAM platform. Modular architecture: Ory Kratos (identity), Ory Hydra (OAuth2/OIDC, OpenID Certified), Ory Keto (Zanzibar-based FGA permissions), Ory Oathkeeper (Zero Trust proxy). Unique aDAU pricing model.",
   "identifier": "ory",
+  "status": "active",
+  "deploymentModels": ["saas", "self_hosted"],
+  "targetAudience": ["ciam", "developer"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/ory.svg"
   },
   "website": "https://www.ory.com",
   "github": "https://github.com/ory",
-  "license": "Apache 2.0",
+  "repositories": [
+    {
+      "url": "https://github.com/ory/kratos",
+      "platform": "github",
+      "role": "core",
+      "stars": 13902,
+      "contributors": 247,
+      "latestVersion": "v26.2.0",
+      "lastRelease": "2026-03-20",
+      "statsUpdatedAt": "2026-10-01"
+    },
+    {
+      "url": "https://github.com/ory/hydra",
+      "platform": "github",
+      "role": "core",
+      "stars": 17585,
+      "contributors": 326,
+      "latestVersion": "v26.2.0",
+      "lastRelease": "2026-03-20",
+      "statsUpdatedAt": "2026-10-01"
+    },
+    {
+      "url": "https://github.com/ory/keto",
+      "platform": "github",
+      "role": "core",
+      "stars": 5406,
+      "contributors": 87,
+      "latestVersion": "v26.2.0",
+      "lastRelease": "2026-03-20",
+      "statsUpdatedAt": "2026-10-01"
+    },
+    {
+      "url": "https://github.com/ory/oathkeeper",
+      "platform": "github",
+      "role": "core",
+      "stars": 3609,
+      "contributors": 125,
+      "latestVersion": "v26.2.0",
+      "lastRelease": "2026-03-20",
+      "statsUpdatedAt": "2026-10-01"
+    }
+  ],
+  "license": "Apache-2.0",
+  "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0",
+  "openSource": {
+    "isOpenSource": true,
+    "model": "open_core"
+  },
   "nationality": "Germany",
+  "vendor": {
+    "name": "Ory",
+    "url": "https://www.ory.com"
+  },
+  "foundedYear": 2015,
   "pricing": {
     "hasFreeTier": true,
     "freeTierLimit": "Unlimited (self-hosted) / $21 monthly credit (Ory Network)",
     "pricingModel": "mau",
     "pricingUrl": "https://www.ory.com/pricing",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
+    "currency": "USD",
     "plans": [
       {
         "name": "Open Source",
-        "price": "Free (self-hosted)"
+        "price": "Free (self-hosted)",
+        "amount": 0,
+        "featuresIncluded": [
+          "saml2_protocol",
+          "oidc_federation",
+          "saml_federation",
+          "inbound_scim_provisioning",
+          "outbound_scim_provisioning",
+          "scim_groups",
+          "organizations_multitenancy",
+          "region_deployment",
+          "audit_log_streaming"
+        ]
       },
       {
         "name": "Developer",
-        "price": "Free ($21 monthly credit)"
+        "price": "Free ($21 monthly credit)",
+        "amount": 0
       },
       {
         "name": "Production",
-        "price": "$770/year"
+        "price": "$770/year",
+        "amount": 770,
+        "period": "year",
+        "featuresIncluded": ["region_deployment"]
       },
       {
         "name": "Growth",
-        "price": "$9,350/year"
+        "price": "$9,350/year",
+        "amount": 9350,
+        "period": "year",
+        "featuresIncluded": ["oidc_federation", "region_deployment"]
       },
       {
         "name": "Enterprise",
-        "price": "Custom"
+        "price": "Custom",
+        "featuresIncluded": [
+          "saml2_protocol",
+          "oidc_federation",
+          "saml_federation",
+          "inbound_scim_provisioning",
+          "outbound_scim_provisioning",
+          "scim_groups",
+          "organizations_multitenancy",
+          "region_deployment",
+          "audit_log_streaming"
+        ]
       }
     ]
   },
+  "hosting": {
+    "regions": ["US", "EU"],
+    "selfHostRequirements": {
+      "runtime": "Go",
+      "database": ["PostgreSQL", "MySQL", "CockroachDB", "SQLite"],
+      "container": ["Docker", "Kubernetes", "Helm"]
+    }
+  },
+  "sla": {
+    "uptimePercent": 99.99,
+    "url": "https://www.ory.com/legal/service-level-agreement",
+    "scope": "Ory Network Enterprise plan"
+  },
+  "lastVerified": "2026-09-21",
+  "sdks": [
+    {
+      "language": "TypeScript",
+      "url": "https://github.com/ory/client-js",
+      "official": true
+    },
+    {
+      "language": "Go",
+      "url": "https://github.com/ory/client-go",
+      "official": true
+    },
+    {
+      "language": "Python",
+      "url": "https://github.com/ory/client-python",
+      "official": true
+    },
+    {
+      "language": "Java",
+      "url": "https://github.com/ory/client-java",
+      "official": true
+    },
+    {
+      "language": "PHP",
+      "url": "https://github.com/ory/client-php",
+      "official": true
+    },
+    {
+      "language": "Ruby",
+      "url": "https://github.com/ory/client-ruby",
+      "official": true
+    },
+    {
+      "language": "C#",
+      "framework": ".NET",
+      "url": "https://github.com/ory/client-dotnet",
+      "official": true
+    },
+    {
+      "language": "Rust",
+      "url": "https://github.com/ory/client-rust",
+      "official": true
+    },
+    {
+      "language": "Dart",
+      "url": "https://github.com/ory/client-dart",
+      "official": true
+    }
+  ],
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -155,8 +305,8 @@
       "identifier": "saml2_protocol",
       "status": "supported",
       "description": "SAML SSO via BoxyHQ acquisition (May 2025). Enterprise tier or Enterprise License. Self-hosted (Open Source) has no restrictions.",
-      "plans": ["Open Source", "Enterprise"],
-      "links": ["https://www.ory.com/docs/kratos/organizations"]
+      "links": ["https://www.ory.com/docs/kratos/organizations"],
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "ws_federation_protocol",
@@ -174,15 +324,15 @@
       "identifier": "oidc_federation",
       "status": "supported",
       "description": "OIDC-based B2B SSO available on Growth tier+. Self-hosted (Open Source) has no restrictions.",
-      "plans": ["Open Source", "Growth", "Enterprise"],
-      "links": ["https://www.ory.com/docs/kratos/organizations"]
+      "links": ["https://www.ory.com/docs/kratos/organizations"],
+      "plans": ["Open Source", "Growth", "Enterprise"]
     },
     {
       "identifier": "saml_federation",
       "status": "supported",
       "description": "SAML enterprise SSO available on Enterprise tier. Self-hosted (Open Source) has no restrictions.",
-      "plans": ["Open Source", "Enterprise"],
-      "links": ["https://www.ory.com/docs/kratos/organizations"]
+      "links": ["https://www.ory.com/docs/kratos/organizations"],
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "active_directory_ldap",
@@ -246,22 +396,22 @@
       "identifier": "inbound_scim_provisioning",
       "status": "supported",
       "description": "SCIM 2.0 provisioning via Ory Polis (BoxyHQ). Enterprise tier or Enterprise License. Self-hosted (Open Source) has no restrictions.",
-      "plans": ["Open Source", "Enterprise"],
-      "links": ["https://www.ory.com/docs/kratos/manage-identities/scim"]
+      "links": ["https://www.ory.com/docs/kratos/manage-identities/scim"],
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "outbound_scim_provisioning",
       "status": "supported",
       "description": "SCIM 2.0 outbound provisioning via Ory Polis. Enterprise tier. Launched April 2025.",
-      "plans": ["Open Source", "Enterprise"],
-      "links": ["https://changelog.ory.com/announcements/scim-provisioning-support"]
+      "links": ["https://changelog.ory.com/announcements/scim-provisioning-support"],
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "scim_groups",
       "status": "supported",
       "description": "SCIM group sync via Ory Polis. Enterprise tier. Self-hosted (Open Source) has no restrictions.",
-      "plans": ["Open Source", "Enterprise"],
-      "links": ["https://www.ory.com/docs/kratos/manage-identities/scim"]
+      "links": ["https://www.ory.com/docs/kratos/manage-identities/scim"],
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "jit_provisioning",
@@ -326,8 +476,8 @@
       "identifier": "organizations_multitenancy",
       "status": "supported",
       "description": "B2B Organizations via Ory Polis. Multi-tenant production environments require Enterprise tier on Ory Network. Self-hosted (Open Source) has no restrictions.",
-      "plans": ["Open Source", "Enterprise"],
-      "links": ["https://www.ory.com/docs/kratos/organizations"]
+      "links": ["https://www.ory.com/docs/kratos/organizations"],
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "password_strength_policy",
@@ -419,16 +569,16 @@
       "identifier": "region_deployment",
       "status": "supported",
       "description": "PII region storage selection on all paid tiers. Migrate PII storage regions supported. Self-hosted (Open Source) can deploy in any region.",
-      "values": ["US", "EU"],
+      "links": ["https://www.ory.com/docs/guides/custom-domains"],
       "plans": ["Open Source", "Production", "Growth", "Enterprise"],
-      "links": ["https://www.ory.com/docs/guides/custom-domains"]
+      "values": ["US", "EU"]
     },
     {
       "identifier": "private_cloud_deployment",
       "status": "supported",
       "description": "Self-hosted or Ory Enterprise License for dedicated deployment on AWS or Azure.",
-      "values": ["AWS", "Azure"],
-      "links": ["https://www.ory.com/docs/ecosystem/deployment"]
+      "links": ["https://www.ory.com/docs/ecosystem/deployment"],
+      "values": ["AWS", "Azure"]
     },
     {
       "identifier": "audit_log_retention",
@@ -440,8 +590,8 @@
       "identifier": "audit_log_streaming",
       "status": "supported",
       "description": "Live event streaming and event firehose to data lake on Enterprise tier. Self-hosted has no restrictions.",
-      "plans": ["Open Source", "Enterprise"],
-      "links": ["https://console.ory.com"]
+      "links": ["https://console.ory.com"],
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "security_center",
@@ -668,43 +818,43 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "Ory Kratos/Hydra are written in Go and can serve TLS natively, though Ory's own production docs recommend terminating TLS at a gateway/load balancer instead. While Go 1.24 (Feb 2025) enables X25519MLKEM768 in crypto/tls by default when native TLS is used, no Ory-specific statement or documentation confirms PQC TLS support. Without vendor evidence, status is unknown.",
       "links": ["https://github.com/golang/go/issues/69985", "https://www.ory.com/docs/hydra/self-hosted/production"]
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Ory Hydra signs tokens using standard RSA, ECDSA, and EdDSA cryptographic algorithms. Post-quantum signature algorithms (ML-DSA, SLH-DSA) are not supported.",
       "links": ["https://www.ory.com/docs/hydra/reference/configuration", "https://github.com/ory/hydra"]
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "No public roadmap, blog post, whitepaper, or GitHub discussion found describing PQC migration plans for Ory. Ory's public security page and trust center make no mention of post-quantum or quantum-safe cryptography.",
       "links": ["https://www.ory.com/security", "https://trust.ory.com/"]
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Ory does not support post-quantum encryption algorithms or HPKE (RFC 9180) for JWE token or credential encryption.",
       "links": ["https://www.ory.com/docs/hydra/", "https://www.ory.com/security"]
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Ory Hydra supports mTLS client authentication using standard X.509 RSA/ECDSA certificates. Post-quantum or hybrid certificates are not supported.",
       "links": ["https://www.ory.com/docs/hydra/guides/mutual-tls"]
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Ory does not support NIST SP 800-208 stateful hash-based signature schemes (LMS/HSS, XMSS).",
       "links": ["https://www.ory.com/security", "https://csrc.nist.gov/pubs/sp/800/208/final"]
     }

@@ -5,6 +5,7 @@
   "scripts": {
     "format": "prettier --write \"**/*.json\"",
     "format:check": "prettier --check \"**/*.json\"",
+    "stats": "node scripts/update-repository-stats.js && prettier --write \"providers/*.json\"",
     "validate": "node scripts/validate.js",
     "test": "npm run validate && npm run format:check"
   },

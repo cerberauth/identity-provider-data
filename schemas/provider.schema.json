@@ -41,6 +41,31 @@
       "minItems": 1,
       "uniqueItems": true
     },
+    "status": {
+      "type": "string",
+      "description": "Lifecycle status of the provider. \"active\" is maintained and sold. \"deprecated\" is still available but discouraged by its maintainer. \"end_of_life\" is discontinued or no longer maintained. \"acquired\" was bought and its product is being merged into the acquirer's offering. Defaults to \"active\" when omitted.",
+      "enum": ["active", "deprecated", "end_of_life", "acquired"]
+    },
+    "deploymentModels": {
+      "type": "array",
+      "description": "Ways the provider can be run. \"saas\" is vendor-hosted, \"self_hosted\" is run on infrastructure the customer operates, \"hybrid\" splits components between vendor and customer infrastructure, \"embedded\" runs inside the host application (libraries).",
+      "items": {
+        "type": "string",
+        "enum": ["saas", "self_hosted", "hybrid", "embedded"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "targetAudience": {
+      "type": "array",
+      "description": "Audiences the provider is built for.",
+      "items": {
+        "type": "string",
+        "enum": ["b2c", "b2b", "workforce", "ciam", "developer"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
     "icon": {
       "type": "object",
       "description": "Icon information for the identity provider.",
@@ -64,15 +89,170 @@
       "format": "uri",
       "description": "GitHub repository URL of the provider."
     },
+    "repositories": {
+      "type": "array",
+      "description": "Source repositories of the product. SDK repositories are listed in sdks instead of here unless they are the product itself.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Repository URL."
+          },
+          "platform": {
+            "type": "string",
+            "description": "Hosting platform of the repository.",
+            "enum": ["github", "gitlab", "codeberg", "bitbucket", "other"]
+          },
+          "role": {
+            "type": "string",
+            "description": "What the repository contains.",
+            "enum": ["core", "sdk", "infrastructure", "docs"]
+          },
+          "stars": {
+            "type": "integer",
+            "description": "Number of stars at statsUpdatedAt.",
+            "minimum": 0
+          },
+          "contributors": {
+            "type": "integer",
+            "description": "Number of contributors at statsUpdatedAt.",
+            "minimum": 0
+          },
+          "latestVersion": {
+            "type": "string",
+            "description": "Latest release tag at statsUpdatedAt.",
+            "minLength": 1
+          },
+          "lastRelease": {
+            "type": "string",
+            "format": "date",
+            "description": "Publication date of the latest release."
+          },
+          "statsUpdatedAt": {
+            "type": "string",
+            "format": "date",
+            "description": "Date stars, contributors, latestVersion and lastRelease were fetched. Refreshed by npm run stats."
+          }
+        },
+        "required": ["url", "platform", "role"],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
     "license": {
       "type": "string",
-      "description": "License type or model of the identity provider (e.g. Proprietary, Apache-2.0, MIT).",
-      "minLength": 1
+      "description": "SPDX license identifier or expression (e.g. Apache-2.0, MIT, AGPL-3.0-only). Use \"Proprietary\" for closed-source or commercial licenses that have no SPDX identifier.",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9.+-]+( (AND|OR|WITH) [A-Za-z0-9.+-]+)*$"
+    },
+    "licenseUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the license text or the LICENSE file of the project."
+    },
+    "openSource": {
+      "type": "object",
+      "description": "Open-source status of the product itself, as opposed to its SDKs.",
+      "properties": {
+        "isOpenSource": {
+          "type": "boolean",
+          "description": "Whether the core product is released under an OSI-approved license."
+        },
+        "model": {
+          "type": "string",
+          "description": "\"fully_open\" has no paid-only features in the open-source code. \"open_core\" keeps some features in a paid edition. \"source_available\" publishes the code under a non-open-source license.",
+          "enum": ["fully_open", "open_core", "source_available"]
+        }
+      },
+      "required": ["isOpenSource"],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "isOpenSource": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "required": ["model"],
+            "properties": {
+              "model": {
+                "enum": ["fully_open", "open_core"]
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
     },
     "nationality": {
       "type": "string",
       "description": "Country of origin or headquarters of the identity provider.",
       "minLength": 1
+    },
+    "vendor": {
+      "type": "object",
+      "description": "Company that currently develops and sells the product (e.g. Red Hat for Keycloak, Twilio for Stytch).",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Company name.",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Company website."
+        }
+      },
+      "required": ["name"],
+      "additionalProperties": false
+    },
+    "foundedYear": {
+      "type": "integer",
+      "description": "Year the company that originally built the product was founded, or the year the project started when it predates the company.",
+      "minimum": 1900,
+      "maximum": 2100
+    },
+    "headquarters": {
+      "type": "object",
+      "description": "Headquarters of the vendor. Omitted when sources disagree on it.",
+      "properties": {
+        "country": {
+          "type": "string",
+          "description": "ISO 3166-1 alpha-2 country code.",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "city": {
+          "type": "string",
+          "description": "City name.",
+          "minLength": 1
+        }
+      },
+      "required": ["country"],
+      "additionalProperties": false
+    },
+    "acquiredBy": {
+      "type": "object",
+      "description": "Company that acquired the company that originally built the product.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Acquirer name.",
+          "minLength": 1
+        },
+        "year": {
+          "type": "integer",
+          "description": "Year the acquisition was completed.",
+          "minimum": 1900,
+          "maximum": 2100
+        }
+      },
+      "required": ["name", "year"],
+      "additionalProperties": false
     },
     "pricing": {
       "type": "object",
@@ -86,6 +266,11 @@
           "type": "string",
           "description": "Details and limits associated with the free tier."
         },
+        "freeTierMau": {
+          "type": "integer",
+          "description": "Monthly active users included for free in the hosted offering. Omitted when unlimited, not counted in MAU, or there is no free tier.",
+          "minimum": 0
+        },
         "pricingModel": {
           "type": "string",
           "description": "Primary pricing model classification.",
@@ -95,6 +280,19 @@
           "type": "string",
           "format": "uri",
           "description": "URL to the provider's official pricing page."
+        },
+        "hasEnterprisePlan": {
+          "type": "boolean",
+          "description": "Whether a dedicated enterprise plan or tier is listed."
+        },
+        "contactSalesRequired": {
+          "type": "boolean",
+          "description": "Whether at least one plan is only available by contacting sales."
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO 4217 currency code of the amounts in the plans (e.g. USD, EUR).",
+          "pattern": "^[A-Z]{3}$"
         },
         "plans": {
           "type": "array",
@@ -111,15 +309,158 @@
                 "type": "string",
                 "description": "Price or pricing description for the plan.",
                 "minLength": 1
+              },
+              "amount": {
+                "type": "number",
+                "description": "Machine-readable flat fee of the plan in pricing.currency, charged every period. Omitted for per-unit, usage-based, ranged and custom prices, which stay in price.",
+                "minimum": 0
+              },
+              "period": {
+                "type": "string",
+                "description": "Billing period the amount covers. Required when amount is greater than zero.",
+                "enum": ["month", "year", "one_time"]
+              },
+              "mauIncluded": {
+                "type": "integer",
+                "description": "Monthly active users included in the plan price.",
+                "minimum": 0
+              },
+              "featuresIncluded": {
+                "type": "array",
+                "description": "Identifiers of the features that list this plan in their plans. Features available on every plan are not repeated here.",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
               }
             },
             "required": ["name", "price"],
-            "additionalProperties": false
+            "additionalProperties": false,
+            "if": {
+              "required": ["amount"],
+              "properties": {
+                "amount": {
+                  "exclusiveMinimum": 0
+                }
+              }
+            },
+            "then": {
+              "required": ["period"]
+            }
           }
         }
       },
       "required": ["hasFreeTier", "pricingModel", "pricingUrl", "plans"],
       "additionalProperties": false
+    },
+    "hosting": {
+      "type": "object",
+      "description": "Where and how the product can be hosted.",
+      "properties": {
+        "regions": {
+          "type": "array",
+          "description": "Data residency regions of the hosted offering. ISO 3166-1 alpha-2 country codes, or an area code: EU, APAC (Asia-Pacific), SAM (South America), MEA (Middle East and Africa).",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z]{2,4}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "selfHostRequirements": {
+          "type": "object",
+          "description": "What is needed to run the product on your own infrastructure.",
+          "properties": {
+            "runtime": {
+              "type": "string",
+              "description": "Language runtime or platform the product runs on (e.g. Go, Java 21+, .NET).",
+              "minLength": 1
+            },
+            "database": {
+              "type": "array",
+              "description": "Supported databases.",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "container": {
+              "type": "array",
+              "description": "Supported container and orchestration tooling (e.g. Docker, Helm, Kubernetes).",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "sla": {
+      "type": "object",
+      "description": "Contractual or published uptime commitment of the hosted offering.",
+      "properties": {
+        "uptimePercent": {
+          "type": "number",
+          "description": "Committed monthly uptime, in percent.",
+          "exclusiveMinimum": 0,
+          "maximum": 100
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Page describing the SLA."
+        },
+        "scope": {
+          "type": "string",
+          "description": "Plans or products the commitment applies to (e.g. \"Enterprise plan\").",
+          "minLength": 1
+        }
+      },
+      "required": ["uptimePercent", "url"],
+      "additionalProperties": false
+    },
+    "lastVerified": {
+      "type": "string",
+      "format": "date",
+      "description": "Date (YYYY-MM-DD) on which the data in this file was last checked against the provider."
+    },
+    "sdks": {
+      "type": "array",
+      "description": "Client, server and mobile SDKs the provider publishes for integrating with it.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string",
+            "description": "Programming language of the SDK.",
+            "minLength": 1
+          },
+          "framework": {
+            "type": "string",
+            "description": "Framework or platform the SDK targets (e.g. React, Android, Spring Boot).",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL of the SDK repository or documentation."
+          },
+          "official": {
+            "type": "boolean",
+            "description": "Whether the SDK is maintained by the provider itself."
+          }
+        },
+        "required": ["language", "url", "official"],
+        "additionalProperties": false
+      }
     },
     "features": {
       "type": "array",
@@ -169,6 +510,21 @@
               "type": "string",
               "minLength": 1
             }
+          },
+          "tier": {
+            "type": "string",
+            "description": "Provider-specific tier of the feature. Differs from the catalog tier in definitions/tiers.json.",
+            "enum": ["basic", "standard", "advanced", "enterprise"]
+          },
+          "sinceVersion": {
+            "type": "string",
+            "description": "Product version that introduced the feature.",
+            "minLength": 1
+          },
+          "betaStatus": {
+            "type": "string",
+            "description": "Release stage of the feature. Defaults to \"ga\" when omitted.",
+            "enum": ["ga", "beta", "preview", "experimental"]
           }
         },
         "required": ["identifier", "status"],
@@ -206,6 +562,21 @@
                   "type": "string",
                   "format": "uri"
                 }
+              },
+              "tier": {
+                "type": "string",
+                "description": "Provider-specific tier of the feature. Differs from the catalog tier in definitions/tiers.json.",
+                "enum": ["basic", "standard", "advanced", "enterprise"]
+              },
+              "sinceVersion": {
+                "type": "string",
+                "description": "Product version that introduced the feature.",
+                "minLength": 1
+              },
+              "betaStatus": {
+                "type": "string",
+                "description": "Release stage of the feature. Defaults to \"ga\" when omitted.",
+                "enum": ["ga", "beta", "preview", "experimental"]
               }
             },
             "required": ["identifier", "status"],

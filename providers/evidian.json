@@ -3,17 +3,36 @@
   "name": "Evidian",
   "abstract": "Enterprise Web Access Management (WAM) and Identity Governance and Administration (IGA) suite from France, part of the Eviden (Atos Group) cybersecurity portfolio. Flagship products include Web Access Manager (reverse-proxy Web SSO with SAML/OIDC/OAuth 2.0 federation), Identity Governance and Administration (provisioning, role management, access certification), Authentication Manager (smart card, OTP, biometric, and passwordless strong authentication for PCs), Enterprise SSO, and Orbion (cloud IDaaS). CSPN certified (French ANSSI scheme) and carries the \"Cybersecurity Made in Europe\" label. Available on-premises, in private cloud, or as SaaS via Orbion; pricing is quote-based.",
   "identifier": "evidian",
+  "status": "active",
+  "deploymentModels": ["saas", "self_hosted"],
+  "targetAudience": ["workforce"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/evidian.svg"
   },
   "website": "https://www.evidian.com",
   "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
   "nationality": "France",
+  "vendor": {
+    "name": "Evidian",
+    "url": "https://www.evidian.com"
+  },
+  "headquarters": {
+    "country": "FR"
+  },
+  "acquiredBy": {
+    "name": "Atos",
+    "year": 2014
+  },
   "pricing": {
     "hasFreeTier": false,
     "freeTierLimit": "Orbion (IDaaS) offers a free trial; on-premises Web Access Manager, IGA, and Authentication Manager have no free tier",
     "pricingModel": "custom",
     "pricingUrl": "https://www.evidian.com/company/get-a-quote/",
+    "hasEnterprisePlan": false,
+    "contactSalesRequired": true,
     "plans": [
       {
         "name": "Web Access Manager / IGA / Authentication Manager / Enterprise SSO",
@@ -25,6 +44,7 @@
       }
     ]
   },
+  "lastVerified": "2026-09-21",
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -606,21 +626,21 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "No public statement specific to the Evidian IAM/CIAM product regarding TLS post-quantum hybrid key exchange was found on evidian.com or in Eviden press materials.",
       "links": ["https://www.evidian.com/"]
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public documentation found showing Evidian IAM supports PQC signature algorithms (ML-DSA/Dilithium, SLH-DSA/SPHINCS+, Falcon) for SAML assertions, JWTs, or OIDC tokens."
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "Parent company Eviden (Atos) runs a company-wide quantum-safe security practice (post-quantum-ready digital identity announced April 2023, PQC HSMaaS launched October 2024), but the named 'post-quantum ready' products are IDnomic PKI and Cryptovision GreenShield - not Evidian IAM/CIAM itself. No publication commits the Evidian IAM product to a PQC migration roadmap, so without product evidence status is unknown.",
       "links": [
         "https://eviden.com/insights/press-releases/eviden-to-launch-first-post-quantum-ready-solutions-for-digital-identity/",
@@ -629,20 +649,20 @@
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
     }
   ],

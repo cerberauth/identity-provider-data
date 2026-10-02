@@ -3,22 +3,40 @@
   "name": "Curity",
   "abstract": "Proprietary enterprise CIAM and API security platform from Sweden. FAPI-certified, OpenID Foundation compliant, SOC 2 Type 2 and ISO 27001 certified. Unique strength in financial-grade API security, phantom tokens, and AI agent identity (Access Intelligence). Community Edition available; full feature set requires paid tier.",
   "identifier": "curity",
+  "status": "active",
+  "deploymentModels": ["self_hosted"],
+  "targetAudience": ["ciam", "workforce"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/curity.svg"
   },
   "website": "https://curity.io",
   "github": "https://github.com/curityio",
   "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
   "nationality": "Sweden",
+  "vendor": {
+    "name": "Curity",
+    "url": "https://curity.io"
+  },
+  "foundedYear": 2015,
+  "headquarters": {
+    "country": "SE",
+    "city": "Stockholm"
+  },
   "pricing": {
     "hasFreeTier": true,
     "freeTierLimit": "Community Edition: username/password, social login, complete OAuth Server",
     "pricingModel": "subscription",
     "pricingUrl": "https://curity.io/pricing/",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
     "plans": [
       {
         "name": "Community",
-        "price": "Free (self-hosted)"
+        "price": "Free (self-hosted)",
+        "amount": 0
       },
       {
         "name": "Standard",
@@ -30,6 +48,7 @@
       }
     ]
   },
+  "lastVerified": "2026-09-21",
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -393,8 +412,8 @@
       "identifier": "private_cloud_deployment",
       "status": "supported",
       "description": "Supports on-premise, Docker, Kubernetes (AWS EKS, Azure AKS, GCP GKE), and hybrid deployments.",
-      "values": ["AWS", "Azure", "GCP"],
-      "links": ["https://curity.io/product/"]
+      "links": ["https://curity.io/product/"],
+      "values": ["AWS", "Azure", "GCP"]
     },
     {
       "identifier": "audit_log_retention",
@@ -406,7 +425,8 @@
       "identifier": "audit_log_streaming",
       "status": "supported",
       "description": "Structured audit logs and OpenTelemetry metrics/tracing export supported in version 10.0+.",
-      "links": ["https://curity.io/news/curity-identity-server-10-0/"]
+      "links": ["https://curity.io/news/curity-identity-server-10-0/"],
+      "sinceVersion": "10.0"
     },
     {
       "identifier": "security_center",
@@ -629,41 +649,41 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Curity Identity Server is self-hosted software. Curity's own 'Quantum-safe API Security' blog post explicitly identifies TLS 1.3 handshakes as a currently-unresolved quantum vulnerability in Curity deployments and recommends terminating TLS at a reverse proxy/API gateway that already supports quantum-safe algorithms, implying Curity itself does not yet provide PQC-enabled TLS termination.",
       "links": ["https://curity.io/blog/quantum-safe-api-security/"]
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Curity's blog states plainly that 'future product versions will support quantum-safe signature algorithms,' confirming current versions do not support ML-DSA/SLH-DSA for token signing. As an interim workaround Curity recommends the phantom token pattern (opaque reference tokens instead of self-contained signed JWTs at the API edge).",
       "links": ["https://curity.io/blog/quantum-safe-api-security/"]
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "partial",
+      "category": "post_quantum_cryptography",
       "description": "Curity published a dedicated blog post naming the specific NIST algorithms (ML-KEM, ML-DSA, SLH-DSA) and stating a forward-looking, non-dated intent that 'future product versions will support quantum-safe signature algorithms' - more concrete than most peers, but with no committed timeline.",
       "links": ["https://curity.io/blog/quantum-safe-api-security/"]
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
     }
   ],

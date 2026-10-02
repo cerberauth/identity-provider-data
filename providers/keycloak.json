@@ -3,22 +3,54 @@
   "name": "Keycloak",
   "abstract": "Open-source (Apache 2.0) IAM/CIAM by Red Hat. Zero licensing cost with unlimited users. Most feature-rich open-source option with full SPI extensibility. Requires self-hosting and DevOps expertise.",
   "identifier": "keycloak",
+  "status": "active",
+  "deploymentModels": ["self_hosted"],
+  "targetAudience": ["workforce", "ciam"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/keycloak.svg"
   },
   "website": "https://www.keycloak.org",
   "github": "https://github.com/keycloak/keycloak",
-  "license": "Apache 2.0",
+  "repositories": [
+    {
+      "url": "https://github.com/keycloak/keycloak",
+      "platform": "github",
+      "role": "core",
+      "stars": 37090,
+      "contributors": 1944,
+      "latestVersion": "26.8.0",
+      "lastRelease": "2026-10-01",
+      "statsUpdatedAt": "2026-10-01"
+    }
+  ],
+  "license": "Apache-2.0",
+  "licenseUrl": "https://github.com/keycloak/keycloak/blob/main/LICENSE.txt",
+  "openSource": {
+    "isOpenSource": true,
+    "model": "fully_open"
+  },
   "nationality": "USA",
+  "vendor": {
+    "name": "Red Hat",
+    "url": "https://www.redhat.com"
+  },
+  "foundedYear": 2013,
+  "headquarters": {
+    "country": "US",
+    "city": "Raleigh"
+  },
   "pricing": {
     "hasFreeTier": true,
     "freeTierLimit": "Unlimited (self-hosted, open source)",
     "pricingModel": "open-source",
     "pricingUrl": "https://www.keycloak.org",
+    "hasEnterprisePlan": false,
+    "contactSalesRequired": false,
     "plans": [
       {
         "name": "Open Source",
-        "price": "Free (self-hosted)"
+        "price": "Free (self-hosted)",
+        "amount": 0
       },
       {
         "name": "Red Hat SSO",
@@ -26,6 +58,27 @@
       }
     ]
   },
+  "hosting": {
+    "selfHostRequirements": {
+      "runtime": "Java (Quarkus)",
+      "database": ["PostgreSQL", "MySQL", "MariaDB", "Oracle", "Microsoft SQL Server"],
+      "container": ["Docker", "Kubernetes"]
+    }
+  },
+  "lastVerified": "2026-09-21",
+  "sdks": [
+    {
+      "language": "JavaScript",
+      "url": "https://github.com/keycloak/keycloak-js",
+      "official": true
+    },
+    {
+      "language": "Java",
+      "framework": "Admin client",
+      "url": "https://github.com/keycloak/keycloak-client",
+      "official": true
+    }
+  ],
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -231,7 +284,9 @@
       "links": [
         "https://www.keycloak.org/2026/04/scim-as-experimental-feature",
         "https://github.com/Captain-P-Goldfish/scim-for-keycloak"
-      ]
+      ],
+      "sinceVersion": "26.6",
+      "betaStatus": "experimental"
     },
     {
       "identifier": "outbound_scim_provisioning",
@@ -249,7 +304,8 @@
       "links": [
         "https://www.keycloak.org/2026/04/scim-as-experimental-feature",
         "https://github.com/Captain-P-Goldfish/scim-for-keycloak"
-      ]
+      ],
+      "betaStatus": "experimental"
     },
     {
       "identifier": "jit_provisioning",
@@ -316,7 +372,8 @@
       "identifier": "organizations_multitenancy",
       "status": "supported",
       "description": "Organizations feature (since v26.0) and Realms for full tenant isolation.",
-      "links": ["https://www.keycloak.org/docs/latest/server_admin/index.html#_managing_organizations"]
+      "links": ["https://www.keycloak.org/docs/latest/server_admin/index.html#_managing_organizations"],
+      "sinceVersion": "26.0"
     },
     {
       "identifier": "password_strength_policy",
@@ -333,7 +390,8 @@
       "identifier": "progressive_profiling",
       "status": "supported",
       "description": "Progressive profiling supported since Keycloak v24.0.",
-      "links": ["https://www.keycloak.org/docs/latest/server_admin/index.html#user-profile"]
+      "links": ["https://www.keycloak.org/docs/latest/server_admin/index.html#user-profile"],
+      "sinceVersion": "24.0"
     },
     {
       "identifier": "abac",
@@ -418,8 +476,8 @@
       "identifier": "private_cloud_deployment",
       "status": "supported",
       "description": "Self-host on AWS (EC2, EKS, ROSA), Azure (VMs, AKS), GCP, or any other cloud.",
-      "values": ["AWS", "Azure", "GCP"],
-      "links": ["https://www.keycloak.org/guides#server"]
+      "links": ["https://www.keycloak.org/guides#server"],
+      "values": ["AWS", "Azure", "GCP"]
     },
     {
       "identifier": "audit_log_retention",
@@ -670,15 +728,15 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Keycloak runs on Quarkus/OpenJDK. OpenJDK's TLS provider (SunJSSE) does not yet support ML-KEM as a TLS 1.3 named group - that work is JEP 527 ('Post-Quantum Hybrid Key Exchange for TLS 1.3'), targeted for JDK 27, still in early-access. Keycloak's own docs also recommend terminating TLS at a reverse proxy (nginx/HAProxy/ALB) rather than on Keycloak itself, so PQC TLS support would depend on that proxy's stack, not Keycloak/JDK.",
       "links": ["https://openjdk.org/jeps/527", "https://www.keycloak.org/server/reverseproxy"]
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Keycloak maintainers opened a dedicated GitHub discussion evaluating ML-DSA/Dilithium, Falcon, and SLH-DSA/SPHINCS+ for token signing, but concluded standards aren't ready - JWK representation of PQC keys is unresolved, hybrid signatures aren't supported by JWS, and PQC-only signatures aren't yet recommended for production. No PQC signing algorithm is implemented.",
       "links": [
         "https://github.com/keycloak/keycloak/discussions/40496",
@@ -687,8 +745,8 @@
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "partial",
+      "category": "post_quantum_cryptography",
       "description": "Keycloak has an active, product-specific public roadmap: tracking issue #43690 'Post-Quantum Cryptography (PQC) readiness,' targeting milestone 27.0.0, explicitly scoped to add optional PQC algorithms without making them default or removing legacy algorithms. A follow-up research spike (#45168) was scheduled for milestone 26.7.0 - the most concrete, product-specific PQC roadmap found across all researched IAM vendors.",
       "links": [
         "https://github.com/keycloak/keycloak/issues/43690",
@@ -697,8 +755,8 @@
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Keycloak supports standard JWE encryption algorithms (RSA-OAEP, AES-GCM) but does not support Post-Quantum KEMs (such as ML-KEM) or HPKE (RFC 9180).",
       "links": [
         "https://www.keycloak.org/docs/latest/server_admin/index.html#_keys",
@@ -707,15 +765,15 @@
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Keycloak mTLS client authentication relies on standard classical X.509 RSA/ECDSA certificates. Post-quantum hybrid or PQC certificates are not supported.",
       "links": ["https://www.keycloak.org/server/enabletls", "https://github.com/keycloak/keycloak/issues/43690"]
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Keycloak does not support NIST SP 800-208 stateful hash-based signature schemes (LMS/HSS, XMSS).",
       "links": ["https://github.com/keycloak/keycloak/discussions/40496", "https://csrc.nist.gov/pubs/sp/800/208/final"]
     }

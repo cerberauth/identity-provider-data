@@ -3,22 +3,50 @@
   "name": "FusionAuth",
   "abstract": "Self-hosted CIAM with a free Community edition supporting unlimited users. Enterprise-grade compliance certifications (SOC 2, HIPAA, PCI-DSS). Includes gaming platform SSO, extensive Lambda extensibility, and Connectors for custom database migration.",
   "identifier": "fusionauth",
+  "status": "active",
+  "deploymentModels": ["saas", "self_hosted"],
+  "targetAudience": ["b2c", "b2b", "ciam", "developer"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/fusionauth.svg"
   },
   "website": "https://fusionauth.io",
   "github": "https://github.com/FusionAuth",
+  "repositories": [
+    {
+      "url": "https://github.com/FusionAuth/fusionauth-containers",
+      "platform": "github",
+      "role": "infrastructure",
+      "stars": 241,
+      "contributors": 37,
+      "statsUpdatedAt": "2026-10-01"
+    }
+  ],
   "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
   "nationality": "USA",
+  "vendor": {
+    "name": "FusionAuth",
+    "url": "https://fusionauth.io"
+  },
+  "headquarters": {
+    "country": "US",
+    "city": "Broomfield"
+  },
   "pricing": {
     "hasFreeTier": true,
     "freeTierLimit": "Unlimited (Community edition, self-hosted)",
     "pricingModel": "mau",
     "pricingUrl": "https://fusionauth.io/pricing",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
+    "currency": "USD",
     "plans": [
       {
         "name": "Community",
-        "price": "Free (self-hosted)"
+        "price": "Free (self-hosted)",
+        "amount": 0
       },
       {
         "name": "Starter",
@@ -34,6 +62,70 @@
       }
     ]
   },
+  "hosting": {
+    "selfHostRequirements": {
+      "runtime": "Java",
+      "database": ["PostgreSQL", "MySQL"],
+      "container": ["Docker", "Kubernetes"]
+    }
+  },
+  "lastVerified": "2026-09-21",
+  "sdks": [
+    {
+      "language": "Java",
+      "url": "https://github.com/FusionAuth/fusionauth-java-client",
+      "official": true
+    },
+    {
+      "language": "TypeScript",
+      "url": "https://github.com/FusionAuth/fusionauth-typescript-client",
+      "official": true
+    },
+    {
+      "language": "C#",
+      "framework": ".NET",
+      "url": "https://github.com/FusionAuth/fusionauth-netcore-client",
+      "official": true
+    },
+    {
+      "language": "Python",
+      "url": "https://github.com/FusionAuth/fusionauth-python-client",
+      "official": true
+    },
+    {
+      "language": "Ruby",
+      "url": "https://github.com/FusionAuth/fusionauth-ruby-client",
+      "official": true
+    },
+    {
+      "language": "PHP",
+      "url": "https://github.com/FusionAuth/fusionauth-php-client",
+      "official": true
+    },
+    {
+      "language": "Go",
+      "url": "https://github.com/FusionAuth/go-client",
+      "official": true
+    },
+    {
+      "language": "JavaScript",
+      "framework": "Web",
+      "url": "https://github.com/FusionAuth/fusionauth-javascript-sdk",
+      "official": true
+    },
+    {
+      "language": "Kotlin",
+      "framework": "Android",
+      "url": "https://github.com/FusionAuth/fusionauth-android-sdk",
+      "official": true
+    },
+    {
+      "language": "Swift",
+      "framework": "iOS",
+      "url": "https://github.com/FusionAuth/fusionauth-swift-sdk",
+      "official": true
+    }
+  ],
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -394,8 +486,8 @@
       "identifier": "private_cloud_deployment",
       "status": "supported",
       "description": "Deploy self-hosted on AWS, Azure, GCP, or use FusionAuth's dedicated Cloud offering on AWS.",
-      "values": ["AWS", "Azure", "GCP"],
-      "links": ["https://fusionauth.io/pricing"]
+      "links": ["https://fusionauth.io/pricing"],
+      "values": ["AWS", "Azure", "GCP"]
     },
     {
       "identifier": "audit_log_retention",
@@ -626,40 +718,40 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "FusionAuth is primarily self-hosted (customer-deployed on their own infrastructure, Hetzner, AWS, etc.), so there is no single vendor-controlled public login endpoint to evaluate. For FusionAuth Cloud (the managed offering), FusionAuth's trust center lists AWS as its only subprocessor, but there is no confirmation it sits behind CloudFront versus a bare ALB. No PQC-specific statement was found.",
       "links": ["https://trust.fusionauth.io/resources-details", "https://fusionauth.io/platform/self-hosting"]
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No evidence FusionAuth supports ML-DSA/Dilithium, SLH-DSA/SPHINCS+, or FN-DSA for JWT signing; documented algorithms are RSA/ECDSA-based (RS256, ES256, etc.)."
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "FusionAuth published an April Fools' Day blog post describing a fictional 'FusionAuth Quantum Vault' - explicitly satire, not a genuine PQC migration roadmap. No serious roadmap or crypto-agility statement was found elsewhere on FusionAuth's blog, docs, or trust center. Without genuine evidence, status is unknown.",
       "links": ["https://fusionauth.io/blog/quantum-computing"]
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
     }
   ],
