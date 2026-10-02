@@ -3,21 +3,42 @@
   "name": "Amazon Cognito",
   "abstract": "AWS-native CIAM with three feature tiers (Lite/Essentials/Plus). Offers the lowest per-MAU cost at scale and deep AWS ecosystem integration via Lambda triggers.",
   "identifier": "aws-cognito",
+  "status": "active",
+  "deploymentModels": ["saas"],
+  "targetAudience": ["b2c", "ciam", "developer"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/aws-cognito.svg"
   },
   "website": "https://aws.amazon.com/cognito/",
   "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
   "nationality": "USA",
+  "vendor": {
+    "name": "Amazon Web Services",
+    "url": "https://aws.amazon.com"
+  },
+  "foundedYear": 2006,
+  "headquarters": {
+    "country": "US",
+    "city": "Seattle"
+  },
   "pricing": {
     "hasFreeTier": true,
     "freeTierLimit": "50,000 MAU/month",
+    "freeTierMau": 50000,
     "pricingModel": "mau",
     "pricingUrl": "https://aws.amazon.com/cognito/pricing/",
+    "hasEnterprisePlan": false,
+    "contactSalesRequired": false,
+    "currency": "USD",
     "plans": [
       {
         "name": "Free",
-        "price": "Free (50K MAU)"
+        "price": "Free (50K MAU)",
+        "amount": 0,
+        "mauIncluded": 50000
       },
       {
         "name": "Lite",
@@ -33,6 +54,40 @@
       }
     ]
   },
+  "hosting": {
+    "regions": ["US", "EU", "APAC", "CA", "SAM", "MEA"]
+  },
+  "sla": {
+    "uptimePercent": 99.9,
+    "url": "https://aws.amazon.com/cognito/sla/"
+  },
+  "lastVerified": "2026-09-21",
+  "sdks": [
+    {
+      "language": "TypeScript",
+      "framework": "Amplify",
+      "url": "https://github.com/aws-amplify/amplify-js",
+      "official": true
+    },
+    {
+      "language": "Swift",
+      "framework": "iOS",
+      "url": "https://github.com/aws-amplify/amplify-swift",
+      "official": true
+    },
+    {
+      "language": "Java",
+      "framework": "Android",
+      "url": "https://github.com/aws-amplify/amplify-android",
+      "official": true
+    },
+    {
+      "language": "Dart",
+      "framework": "Flutter",
+      "url": "https://github.com/aws-amplify/amplify-flutter",
+      "official": true
+    }
+  ],
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -394,8 +449,8 @@
       "identifier": "region_deployment",
       "status": "supported",
       "description": "Deploy in 29+ AWS regions worldwide.",
-      "values": ["US", "EU", "AP", "CA", "SA", "ME", "AF"],
-      "links": ["https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/"]
+      "links": ["https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/"],
+      "values": ["US", "EU", "AP", "CA", "SA", "ME", "AF"]
     },
     {
       "identifier": "private_cloud_deployment",
@@ -634,8 +689,8 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "partial",
+      "category": "post_quantum_cryptography",
       "description": "Cognito's Hosted UI / managed login runs behind Amazon CloudFront. AWS announced (September 2025) that CloudFront TLS security policies now automatically enable hybrid post-quantum key exchange (ECDH + ML-KEM) for viewer-facing connections with no customer action required. This is infrastructure-level support inherited from CloudFront, not a Cognito-specific announcement.",
       "links": [
         "https://aws.amazon.com/about-aws/whats-new/2025/09/amazon-cloudfront-TLS-policy-post-quantum-support",
@@ -644,15 +699,15 @@
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Cognito User Pools sign ID/access tokens with RS256; no ML-DSA/Dilithium signing option is documented for token issuance. AWS KMS and AWS Private CA gained ML-DSA support in November 2025 for code signing and certificate issuance, but this is not wired into Cognito's OIDC token signing.",
       "links": ["https://aws.amazon.com/about-aws/whats-new/2025/11/aws-private-ca-post-quantum-digital-certificates/"]
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "partial",
+      "category": "post_quantum_cryptography",
       "description": "AWS publishes a detailed, ongoing company-wide PQC migration program covering KMS, ACM, Private CA, S3, CloudFront, Secrets Manager, and ALB/NLB. Amazon Cognito itself is not named in any of these service lists, so the roadmap is AWS-wide/infra-level rather than Cognito-specific.",
       "links": [
         "https://aws.amazon.com/security/post-quantum-cryptography/",
@@ -661,20 +716,20 @@
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
     }
   ],

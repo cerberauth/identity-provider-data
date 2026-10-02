@@ -3,13 +3,46 @@
   "name": "Ory Hydra",
   "abstract": "Ory Hydra is a cloud-native OAuth 2.0 and OpenID Connect server that secures APIs, microservices, and websites with low-latency token validation and revocation.",
   "identifier": "ory-hydra",
+  "status": "active",
+  "deploymentModels": ["saas", "self_hosted"],
+  "targetAudience": ["developer"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/ory.svg"
   },
   "website": "https://www.ory.sh/hydra",
   "github": "https://github.com/ory/hydra",
+  "repositories": [
+    {
+      "url": "https://github.com/ory/hydra",
+      "platform": "github",
+      "role": "core",
+      "stars": 17585,
+      "contributors": 326,
+      "latestVersion": "v26.2.0",
+      "lastRelease": "2026-03-20",
+      "statsUpdatedAt": "2026-10-01"
+    }
+  ],
   "license": "Apache-2.0",
+  "licenseUrl": "https://github.com/ory/hydra/blob/master/LICENSE",
+  "openSource": {
+    "isOpenSource": true,
+    "model": "open_core"
+  },
   "nationality": "Germany",
+  "vendor": {
+    "name": "Ory",
+    "url": "https://www.ory.com"
+  },
+  "foundedYear": 2015,
+  "hosting": {
+    "selfHostRequirements": {
+      "runtime": "Go",
+      "database": ["PostgreSQL", "MySQL", "CockroachDB", "SQLite"],
+      "container": ["Docker", "Kubernetes", "Helm"]
+    }
+  },
+  "lastVerified": "2026-09-21",
   "features": [],
   "oidc": {
     "features": [

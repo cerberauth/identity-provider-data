@@ -3,22 +3,43 @@
   "name": "WorkOS",
   "abstract": "Developer-first B2B identity platform from the USA designed for SaaS companies adding enterprise features. Flagship products include Enterprise SSO (SAML/OIDC with 20+ IdP integrations), Directory Sync (SCIM from Okta, Entra ID, Workday, Google Workspace), AuthKit (hosted login UI with passkeys and social login), Fine-Grained Authorization (hierarchical RBAC/ReBAC), Radar (bot and fraud protection), and Vault (BYOK encryption). Free up to 1 million MAUs. SaaS-only deployment.",
   "identifier": "workos",
+  "status": "active",
+  "deploymentModels": ["saas"],
+  "targetAudience": ["b2b", "developer"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/workos.svg"
   },
   "website": "https://workos.com",
   "github": "https://github.com/workos",
   "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
   "nationality": "USA",
+  "vendor": {
+    "name": "WorkOS",
+    "url": "https://workos.com"
+  },
+  "foundedYear": 2019,
+  "headquarters": {
+    "country": "US",
+    "city": "San Francisco"
+  },
   "pricing": {
     "hasFreeTier": true,
     "freeTierLimit": "1 million monthly active users",
+    "freeTierMau": 1000000,
     "pricingModel": "per_user",
     "pricingUrl": "https://workos.com/pricing",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
+    "currency": "USD",
     "plans": [
       {
         "name": "Free",
-        "price": "Free (up to 1M MAUs; includes AuthKit, SSO, Directory Sync)"
+        "price": "Free (up to 1M MAUs; includes AuthKit, SSO, Directory Sync)",
+        "amount": 0,
+        "mauIncluded": 1000000
       },
       {
         "name": "Growth",
@@ -34,7 +55,9 @@
       },
       {
         "name": "Custom Domain",
-        "price": "$99/month"
+        "price": "$99/month",
+        "amount": 99,
+        "period": "month"
       },
       {
         "name": "Enterprise",
@@ -42,6 +65,79 @@
       }
     ]
   },
+  "hosting": {
+    "regions": ["US"]
+  },
+  "sla": {
+    "uptimePercent": 99.99,
+    "url": "https://workos.com/pricing",
+    "scope": "Enterprise plan"
+  },
+  "lastVerified": "2026-09-21",
+  "sdks": [
+    {
+      "language": "JavaScript",
+      "framework": "Node.js",
+      "url": "https://github.com/workos/workos-node",
+      "official": true
+    },
+    {
+      "language": "TypeScript",
+      "framework": "Next.js",
+      "url": "https://github.com/workos/authkit-nextjs",
+      "official": true
+    },
+    {
+      "language": "TypeScript",
+      "framework": "React",
+      "url": "https://github.com/workos/authkit-react",
+      "official": true
+    },
+    {
+      "language": "Python",
+      "url": "https://github.com/workos/workos-python",
+      "official": true
+    },
+    {
+      "language": "Ruby",
+      "url": "https://github.com/workos/workos-ruby",
+      "official": true
+    },
+    {
+      "language": "PHP",
+      "url": "https://github.com/workos/workos-php",
+      "official": true
+    },
+    {
+      "language": "Go",
+      "url": "https://github.com/workos/workos-go",
+      "official": true
+    },
+    {
+      "language": "C#",
+      "framework": ".NET",
+      "url": "https://github.com/workos/workos-dotnet",
+      "official": true
+    },
+    {
+      "language": "Kotlin",
+      "framework": "JVM",
+      "url": "https://github.com/workos/workos-kotlin",
+      "official": true
+    },
+    {
+      "language": "Swift",
+      "framework": "iOS",
+      "url": "https://github.com/workos/workos-ios",
+      "official": true
+    },
+    {
+      "language": "Kotlin",
+      "framework": "Android",
+      "url": "https://github.com/workos/workos-android",
+      "official": true
+    }
+  ],
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -393,8 +489,8 @@
       "identifier": "region_deployment",
       "status": "partial",
       "description": "WorkOS infrastructure is primarily US-based. Personal data transferred outside the EEA is stored in the US. BYOK Vault allows encryption keys to remain in specific cloud regions (AWS KMS, Azure Key Vault, Google Cloud KMS).",
-      "values": ["US"],
-      "links": ["https://workos.com/legal/data-processing-addendum"]
+      "links": ["https://workos.com/legal/data-processing-addendum"],
+      "values": ["US"]
     },
     {
       "identifier": "private_cloud_deployment",
@@ -629,40 +725,40 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "partial",
+      "category": "post_quantum_cryptography",
       "description": "No direct vendor claim of PQC TLS support, but WorkOS's published subprocessor list names Cloudflare, Inc. alongside AWS, and WorkOS's public API (api.workos.com) responds with 'server: cloudflare' and a cf-ray header, confirming Cloudflare fronts WorkOS's API traffic. Cloudflare enabled hybrid PQC key exchange by default for TLS 1.3 in 2023-2024 - infra-inherited, not a WorkOS-specific commitment.",
       "links": ["https://trust.workos.com/subprocessors"]
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence WorkOS supports ML-DSA, SLH-DSA, or FN-DSA for JWT/SSO token signing."
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "No dedicated PQC roadmap found. A WorkOS blog post about NIST standards mentions quantum computing once, in passing, as an example of a future threat NIST is addressing generally - no WorkOS-specific commitment, timeline, or crypto-agility claim.",
       "links": ["https://workos.com/blog/what-is-nist"]
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
     }
   ],

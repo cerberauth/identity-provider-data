@@ -3,30 +3,66 @@
   "name": "Duende IdentityServer",
   "abstract": "Proprietary, self-hosted OpenID Connect/OAuth 2.1 and SAML 2.0 framework for ASP.NET Core, from Duende Software (USA), the commercial successor to IdentityServer4. Primarily a developer-first token service and authorization server rather than an out-of-the-box CIAM product: authentication UI, user store, MFA, and branding are built as part of your own ASP.NET Core application, using either the optional Duende User Management add-on or a custom store. FAPI 2.0 certified conformance. Edition-based subscription licensing (Lite, Standard, Advanced, Custom); free for development/testing and for qualifying open-source/small-company use under Community Edition.",
   "identifier": "duende",
+  "status": "active",
+  "deploymentModels": ["self_hosted"],
+  "targetAudience": ["developer"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/duende.svg"
   },
   "website": "https://duendesoftware.com",
   "github": "https://github.com/DuendeSoftware",
+  "repositories": [
+    {
+      "url": "https://github.com/DuendeSoftware/products",
+      "platform": "github",
+      "role": "core",
+      "stars": 1616,
+      "contributors": 341,
+      "latestVersion": "is-8.0.9",
+      "lastRelease": "2026-09-28",
+      "statsUpdatedAt": "2026-10-01"
+    }
+  ],
   "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false,
+    "model": "source_available"
+  },
   "nationality": "USA",
+  "vendor": {
+    "name": "Duende Software",
+    "url": "https://duendesoftware.com"
+  },
+  "foundedYear": 2020,
+  "headquarters": {
+    "country": "US"
+  },
   "pricing": {
     "hasFreeTier": true,
     "freeTierLimit": "Free for development, testing, and personal projects; Community Edition available for qualifying organizations",
     "pricingModel": "subscription",
     "pricingUrl": "https://duendesoftware.com/pricing",
+    "hasEnterprisePlan": false,
+    "contactSalesRequired": true,
+    "currency": "USD",
     "plans": [
       {
         "name": "Lite",
-        "price": "$5,750/year (1 deployment, 2 client IDs, 2 BFF front-ends, 10,000 User Management users)"
+        "price": "$5,750/year (1 deployment, 2 client IDs, 2 BFF front-ends, 10,000 User Management users)",
+        "amount": 5750,
+        "period": "year"
       },
       {
         "name": "Standard",
-        "price": "$12,500/year (1 deployment, 10 client IDs, 10 BFF front-ends, 100,000 User Management users)"
+        "price": "$12,500/year (1 deployment, 10 client IDs, 10 BFF front-ends, 100,000 User Management users)",
+        "amount": 12500,
+        "period": "year"
       },
       {
         "name": "Advanced",
-        "price": "$24,900/year (2 deployments, 30 client IDs, 30 BFF front-ends, 500,000 User Management users, SAML/Automatic Key Management/FGSC included)"
+        "price": "$24,900/year (2 deployments, 30 client IDs, 30 BFF front-ends, 500,000 User Management users, SAML/Automatic Key Management/FGSC included)",
+        "amount": 24900,
+        "period": "year"
       },
       {
         "name": "Custom",
@@ -34,6 +70,20 @@
       }
     ]
   },
+  "hosting": {
+    "selfHostRequirements": {
+      "runtime": ".NET (ASP.NET Core)"
+    }
+  },
+  "lastVerified": "2026-09-21",
+  "sdks": [
+    {
+      "language": "C#",
+      "framework": "ASP.NET Core",
+      "url": "https://github.com/DuendeSoftware/products",
+      "official": true
+    }
+  ],
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -583,15 +633,15 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Duende's own blog post on PQC in .NET 10 covers ML-KEM only as a general-purpose key-establishment primitive and application-level signing; it explicitly does not discuss TLS 1.3 hybrid key exchange for Kestrel/ASP.NET Core, and TLS termination for IdentityServer deployments is typically handled by the hosting environment, not documented as an IdentityServer feature.",
       "links": ["https://duendesoftware.com/blog/20260514-post-quantum-cryptography-in-dotnet-10"]
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "partial",
+      "category": "post_quantum_cryptography",
       "description": "Duende's official blog (May 2026) demonstrates using .NET 10's new ML-DSA/SLH-DSA/Composite ML-DSA APIs for token signing, noting IdentityServer's automatic key management is 'algorithm-agnostic' and thus architecturally compatible - presented as a developer guide, not an announced shipped feature. Separately, an independent third-party library, Strathweb.Dilithium (not an official Duende product, since 2023), plugs into IdentityServer's automatic key management to sign tokens with CRYSTALS-Dilithium and publish PQ public keys via JWKS, per a draft IETF JOSE PQC spec.",
       "links": [
         "https://duendesoftware.com/blog/20260514-post-quantum-cryptography-in-dotnet-10",
@@ -601,8 +651,8 @@
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "partial",
+      "category": "post_quantum_cryptography",
       "description": "Duende published a dedicated blog post, 'Post-Quantum Cryptography in .NET 10: A Practical Guide' (May 2026), discussing harvest-now-decrypt-later risk and encouraging early experimentation with .NET 10's PQC APIs within IdentityServer's algorithm-agnostic key management. It contains no committed timeline, version target, or formal roadmap for native/first-class PQC support in the product itself.",
       "links": [
         "https://duendesoftware.com/blog/20260514-post-quantum-cryptography-in-dotnet-10",
@@ -611,20 +661,20 @@
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
     }
   ],
@@ -744,7 +794,8 @@
         "description": "RFC 8414 Authorization Server Metadata implemented in v7.4.",
         "links": [
           "https://duendesoftware.com/blog/20251202-duende-identityserver-v74-release-now-available-securing-the-age-of-ai-and-dotnet-10-lts"
-        ]
+        ],
+        "sinceVersion": "7.4"
       },
       {
         "identifier": "none_prompt",
@@ -850,7 +901,8 @@
         "identifier": "fapi_2_0_security_profile",
         "status": "supported",
         "description": "Conformance-tested against the OpenID Foundation FAPI 2.0 suite since v7.3, with an automated Financial-Grade Security and Conformance report starting in v8.0.",
-        "links": ["https://duendesoftware.com/blog/20250814-duende-identityserver-7-3-release-fapi"]
+        "links": ["https://duendesoftware.com/blog/20250814-duende-identityserver-7-3-release-fapi"],
+        "sinceVersion": "7.3"
       },
       {
         "identifier": "fapi_2_0_message_signing",

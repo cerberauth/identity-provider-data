@@ -3,21 +3,42 @@
   "name": "Microsoft Entra External ID",
   "abstract": "Azure-native IAM platform (successor to Azure AD B2C). Simple per-MAU consumption pricing with a 50K free tier. FedRAMP High authorized with deep Microsoft ecosystem integration.",
   "identifier": "microsoft-entra-id",
+  "status": "active",
+  "deploymentModels": ["saas"],
+  "targetAudience": ["b2c", "b2b", "ciam"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/microsoft-entra-id.svg"
   },
   "website": "https://learn.microsoft.com/en-us/entra/external-id/",
   "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
   "nationality": "USA",
+  "vendor": {
+    "name": "Microsoft",
+    "url": "https://www.microsoft.com"
+  },
+  "foundedYear": 1975,
+  "headquarters": {
+    "country": "US",
+    "city": "Redmond"
+  },
   "pricing": {
     "hasFreeTier": true,
     "freeTierLimit": "50,000 MAU/month",
+    "freeTierMau": 50000,
     "pricingModel": "mau",
     "pricingUrl": "https://azure.microsoft.com/en-us/pricing/details/active-directory/external-identities/",
+    "hasEnterprisePlan": false,
+    "contactSalesRequired": false,
+    "currency": "USD",
     "plans": [
       {
         "name": "Free",
-        "price": "Free (50K MAU)"
+        "price": "Free (50K MAU)",
+        "amount": 0,
+        "mauIncluded": 50000
       },
       {
         "name": "P1",
@@ -29,6 +50,54 @@
       }
     ]
   },
+  "hosting": {
+    "regions": ["US", "EU", "AU", "JP", "CA", "IN", "BR", "APAC"]
+  },
+  "lastVerified": "2026-09-21",
+  "sdks": [
+    {
+      "language": "JavaScript",
+      "framework": "MSAL.js",
+      "url": "https://github.com/AzureAD/microsoft-authentication-library-for-js",
+      "official": true
+    },
+    {
+      "language": "C#",
+      "framework": "MSAL.NET",
+      "url": "https://github.com/AzureAD/microsoft-authentication-library-for-dotnet",
+      "official": true
+    },
+    {
+      "language": "Java",
+      "framework": "MSAL4J",
+      "url": "https://github.com/AzureAD/microsoft-authentication-library-for-java",
+      "official": true
+    },
+    {
+      "language": "Python",
+      "framework": "MSAL",
+      "url": "https://github.com/AzureAD/microsoft-authentication-library-for-python",
+      "official": true
+    },
+    {
+      "language": "Go",
+      "framework": "MSAL",
+      "url": "https://github.com/AzureAD/microsoft-authentication-library-for-go",
+      "official": true
+    },
+    {
+      "language": "Objective-C",
+      "framework": "iOS",
+      "url": "https://github.com/AzureAD/microsoft-authentication-library-for-objc",
+      "official": true
+    },
+    {
+      "language": "Java",
+      "framework": "Android",
+      "url": "https://github.com/AzureAD/microsoft-authentication-library-for-android",
+      "official": true
+    }
+  ],
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -379,15 +448,15 @@
       "identifier": "region_deployment",
       "status": "supported",
       "description": "Multiple Azure regions; additional geo options (AU, JP) as add-ons.",
-      "values": ["US", "EU", "AU", "JP", "CA", "IN", "BR", "AP"],
-      "links": ["https://azure.microsoft.com/en-us/explore/global-infrastructure/geographies/"]
+      "links": ["https://azure.microsoft.com/en-us/explore/global-infrastructure/geographies/"],
+      "values": ["US", "EU", "AU", "JP", "CA", "IN", "BR", "AP"]
     },
     {
       "identifier": "private_cloud_deployment",
       "status": "supported",
       "description": "Azure Government and sovereign cloud deployments available.",
-      "values": ["Azure"],
-      "links": ["https://learn.microsoft.com/en-us/azure/azure-government/"]
+      "links": ["https://learn.microsoft.com/en-us/azure/azure-government/"],
+      "values": ["Azure"]
     },
     {
       "identifier": "audit_log_retention",
@@ -614,12 +683,13 @@
       "identifier": "agentic_identity",
       "status": "partial",
       "description": "Microsoft Entra Agent ID (Preview, announced Ignite 2025) provides first-class identity constructs for AI agents: OAuth 2.0 client credentials and on-behalf-of flows, lifecycle management, Conditional Access for agents, and Identity Protection.",
-      "links": ["https://learn.microsoft.com/en-us/entra/agent-id/"]
+      "links": ["https://learn.microsoft.com/en-us/entra/agent-id/"],
+      "betaStatus": "preview"
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "partial",
+      "category": "post_quantum_cryptography",
       "description": "Microsoft's August 2025 quantum-safe security blog describes hybrid PQC (ECDHE + ML-KEM/Kyber) rolling out across Azure infrastructure including Front Door TLS connections and Azure Storage endpoints. No public statement confirms Entra ID's specific authentication endpoints (login.microsoftonline.com) have hybrid PQC enabled today - the evidence is at the broader Azure platform level.",
       "links": [
         "https://www.microsoft.com/en-us/security/blog/2025/08/20/quantum-safe-security-progress-towards-next-generation-cryptography/"
@@ -627,8 +697,8 @@
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "Entra ID issues ID tokens and SAML assertions signed with RSA (RS256); no PQC signature option is documented. Microsoft's SymCrypt library has integrated ML-KEM/ML-DSA at the platform-API level (GA on Windows/Azure), but this has not been surfaced in Entra ID token or certificate signing per public docs.",
       "links": [
         "https://techcommunity.microsoft.com/blog/microsoft-security-blog/post-quantum-cryptography-apis-now-generally-available-on-microsoft-platforms/4469093"
@@ -636,8 +706,8 @@
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "supported",
+      "category": "post_quantum_cryptography",
       "description": "Microsoft's Quantum Safe Program publicly names 'Microsoft Entra authentication, key and secret management, and signing services' as a Phase-2 'core infrastructure services' target for PQC migration, following Phase-1 SymCrypt library work (ML-KEM/ML-DSA). Microsoft targets migrating critical products/services by 2029 and full transition by 2033 - a vendor-specific, identity-naming roadmap, though it lacks Entra-specific milestone dates.",
       "links": [
         "https://www.microsoft.com/en-us/security/blog/2025/08/20/quantum-safe-security-progress-towards-next-generation-cryptography/",
@@ -646,20 +716,20 @@
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
     }
   ],

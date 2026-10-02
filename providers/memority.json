@@ -3,16 +3,31 @@
   "name": "Memority",
   "abstract": "French identity and access management vendor offering the Memority Identity Factory, a SaaS platform unifying identity governance and administration (IGA), SSO and federation, multi-factor authentication, and customer identity (CIAM) for employees, partners, customers, IoT, and non-human identities such as service accounts and AI agents. The platform is split into MY-Identity (lifecycle and rights governance), MY-Access (SSO and federation via SAML 2.0, WS-Federation, OAuth 2.0, and OpenID Connect, with risk-based adaptive authentication), MY-Keys (second-factor management: TOTP, WebAuthn/FIDO2, push, X.509), and MY-Discovery (shadow SaaS and ghost account discovery). Extensible through Groovy rules and actions and OAuth2-protected REST APIs. Hosted in Europe (Paris or Dublin) on AWS, S3NS (SecNumCloud 3.2), or GCP; ISO 27001 and ISO 27701 certified, with NIS2 and DORA compliance support. Pricing is quote-based.",
   "identifier": "memority",
+  "status": "active",
+  "deploymentModels": ["saas"],
+  "targetAudience": ["workforce", "ciam"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/memority.svg"
   },
   "website": "https://www.memority.eu/en",
   "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
   "nationality": "France",
+  "vendor": {
+    "name": "Memority",
+    "url": "https://www.memority.eu"
+  },
+  "headquarters": {
+    "country": "FR"
+  },
   "pricing": {
     "hasFreeTier": false,
     "pricingModel": "custom",
     "pricingUrl": "https://www.memority.eu/en/request-demo",
+    "hasEnterprisePlan": false,
+    "contactSalesRequired": true,
     "plans": [
       {
         "name": "Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)",
@@ -20,6 +35,7 @@
       }
     ]
   },
+  "lastVerified": "2026-10-02",
   "features": [
     {
       "identifier": "username_and_password_authentication",

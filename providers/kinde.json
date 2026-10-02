@@ -3,41 +3,192 @@
   "name": "Kinde",
   "abstract": "Developer-first CIAM platform built for modern SaaS. Ships authentication, billing, and access management in one SDK. Notable for making enterprise SSO (SAML) available on all paid plans rather than behind enterprise contracts, and a generous 10,500 MAU free tier.",
   "identifier": "kinde",
+  "status": "active",
+  "deploymentModels": ["saas"],
+  "targetAudience": ["b2c", "b2b", "developer"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/kinde.svg"
   },
   "website": "https://kinde.com",
   "github": "https://github.com/kinde-oss",
   "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
   "nationality": "Australia",
+  "vendor": {
+    "name": "Kinde",
+    "url": "https://kinde.com"
+  },
+  "foundedYear": 2021,
+  "headquarters": {
+    "country": "AU",
+    "city": "Sydney"
+  },
   "pricing": {
     "hasFreeTier": true,
     "freeTierLimit": "10,500 MAU",
+    "freeTierMau": 10500,
     "pricingModel": "mau",
     "pricingUrl": "https://kinde.com/pricing/",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
+    "currency": "USD",
     "plans": [
       {
         "name": "Free",
-        "price": "Free"
+        "price": "Free",
+        "amount": 0,
+        "mauIncluded": 10500
       },
       {
         "name": "Pro",
-        "price": "$25/month"
+        "price": "$25/month",
+        "amount": 25,
+        "period": "month",
+        "featuresIncluded": ["rbac", "native_webhooks"]
       },
       {
         "name": "Plus",
-        "price": "$75/month"
+        "price": "$75/month",
+        "amount": 75,
+        "period": "month",
+        "featuresIncluded": [
+          "saml2_protocol",
+          "oidc_federation",
+          "saml_federation",
+          "azure_ad_integration",
+          "rbac",
+          "api_authorization",
+          "native_webhooks"
+        ]
       },
       {
         "name": "Scale",
-        "price": "$250/month"
+        "price": "$250/month",
+        "amount": 250,
+        "period": "month",
+        "featuresIncluded": [
+          "saml2_protocol",
+          "oidc_federation",
+          "saml_federation",
+          "azure_ad_integration",
+          "inbound_scim_provisioning",
+          "rbac",
+          "api_authorization",
+          "per_org_mfa_policy",
+          "native_webhooks"
+        ]
       },
       {
         "name": "Enterprise",
-        "price": "Custom"
+        "price": "Custom",
+        "featuresIncluded": [
+          "saml2_protocol",
+          "oidc_federation",
+          "saml_federation",
+          "azure_ad_integration",
+          "inbound_scim_provisioning",
+          "rbac",
+          "api_authorization",
+          "per_org_mfa_policy",
+          "native_webhooks"
+        ]
       }
     ]
   },
+  "lastVerified": "2026-09-21",
+  "sdks": [
+    {
+      "language": "TypeScript",
+      "url": "https://github.com/kinde-oss/kinde-typescript-sdk",
+      "official": true
+    },
+    {
+      "language": "TypeScript",
+      "framework": "React",
+      "url": "https://github.com/kinde-oss/kinde-auth-react",
+      "official": true
+    },
+    {
+      "language": "TypeScript",
+      "framework": "Next.js",
+      "url": "https://github.com/kinde-oss/kinde-auth-nextjs",
+      "official": true
+    },
+    {
+      "language": "TypeScript",
+      "framework": "Remix",
+      "url": "https://github.com/kinde-oss/kinde-remix-sdk",
+      "official": true
+    },
+    {
+      "language": "TypeScript",
+      "framework": "SvelteKit",
+      "url": "https://github.com/kinde-oss/kinde-sveltekit-sdk",
+      "official": true
+    },
+    {
+      "language": "JavaScript",
+      "framework": "Express",
+      "url": "https://github.com/kinde-oss/kinde-node-express",
+      "official": true
+    },
+    {
+      "language": "Python",
+      "url": "https://github.com/kinde-oss/kinde-python-sdk",
+      "official": true
+    },
+    {
+      "language": "PHP",
+      "url": "https://github.com/kinde-oss/kinde-php-sdk",
+      "official": true
+    },
+    {
+      "language": "Ruby",
+      "url": "https://github.com/kinde-oss/kinde-ruby-sdk",
+      "official": true
+    },
+    {
+      "language": "Go",
+      "url": "https://github.com/kinde-oss/kinde-go",
+      "official": true
+    },
+    {
+      "language": "Java",
+      "url": "https://github.com/kinde-oss/kinde-java-sdk",
+      "official": true
+    },
+    {
+      "language": "C#",
+      "framework": ".NET",
+      "url": "https://github.com/kinde-oss/kinde-dotnet-sdk",
+      "official": true
+    },
+    {
+      "language": "Swift",
+      "framework": "iOS",
+      "url": "https://github.com/kinde-oss/kinde-sdk-ios",
+      "official": true
+    },
+    {
+      "language": "Kotlin",
+      "framework": "Android",
+      "url": "https://github.com/kinde-oss/kinde-sdk-android",
+      "official": true
+    },
+    {
+      "language": "Dart",
+      "framework": "Flutter",
+      "url": "https://github.com/kinde-oss/kinde-flutter-sdk",
+      "official": true
+    },
+    {
+      "language": "Elixir",
+      "url": "https://github.com/kinde-oss/kinde-elixir-sdk",
+      "official": true
+    }
+  ],
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -151,8 +302,8 @@
       "identifier": "saml2_protocol",
       "status": "supported",
       "description": "SAML 2.0 as Identity Provider for enterprise SSO. Available on Plus plan and above — notably not gated behind an enterprise contract.",
-      "plans": ["Plus", "Scale", "Enterprise"],
-      "links": ["https://docs.kinde.com/authenticate/enterprise-sso/saml-setup/"]
+      "links": ["https://docs.kinde.com/authenticate/enterprise-sso/saml-setup/"],
+      "plans": ["Plus", "Scale", "Enterprise"]
     },
     {
       "identifier": "ws_federation_protocol",
@@ -169,15 +320,15 @@
       "identifier": "oidc_federation",
       "status": "supported",
       "description": "Any OAuth 2.0 compatible identity provider can be connected as an enterprise SSO connection. Available on Plus plan and above.",
-      "plans": ["Plus", "Scale", "Enterprise"],
-      "links": ["https://docs.kinde.com/authenticate/about-auth/authentication-methods/"]
+      "links": ["https://docs.kinde.com/authenticate/about-auth/authentication-methods/"],
+      "plans": ["Plus", "Scale", "Enterprise"]
     },
     {
       "identifier": "saml_federation",
       "status": "supported",
       "description": "Per-organization SAML SSO enterprise connections. Available on Plus plan and above.",
-      "plans": ["Plus", "Scale", "Enterprise"],
-      "links": ["https://docs.kinde.com/authenticate/enterprise-sso/saml-setup/"]
+      "links": ["https://docs.kinde.com/authenticate/enterprise-sso/saml-setup/"],
+      "plans": ["Plus", "Scale", "Enterprise"]
     },
     {
       "identifier": "active_directory_ldap",
@@ -189,8 +340,8 @@
       "identifier": "azure_ad_integration",
       "status": "supported",
       "description": "Microsoft Entra ID via OAuth 2.0 and WS-Fed options as a social/enterprise connection. Available on Plus plan and above for SAML.",
-      "plans": ["Plus", "Scale", "Enterprise"],
-      "links": ["https://docs.kinde.com/authenticate/about-auth/authentication-methods/"]
+      "links": ["https://docs.kinde.com/authenticate/about-auth/authentication-methods/"],
+      "plans": ["Plus", "Scale", "Enterprise"]
     },
     {
       "identifier": "bulk_user_import",
@@ -237,8 +388,8 @@
       "identifier": "inbound_scim_provisioning",
       "status": "partial",
       "description": "SCIM inbound provisioning is on the roadmap and listed as 'coming soon' for Scale plan and above.",
-      "plans": ["Scale", "Enterprise"],
-      "links": ["https://updates.kinde.com/board/integrate-scim-identity-management"]
+      "links": ["https://updates.kinde.com/board/integrate-scim-identity-management"],
+      "plans": ["Scale", "Enterprise"]
     },
     {
       "identifier": "outbound_scim_provisioning",
@@ -304,8 +455,8 @@
       "identifier": "rbac",
       "status": "supported",
       "description": "Roles and permissions with per-organization assignment. Custom roles available on Pro plan and above.",
-      "plans": ["Pro", "Plus", "Scale", "Enterprise"],
-      "links": ["https://docs.kinde.com/manage-users/roles-and-permissions/about-roles-and-permissions/"]
+      "links": ["https://docs.kinde.com/manage-users/roles-and-permissions/about-roles-and-permissions/"],
+      "plans": ["Pro", "Plus", "Scale", "Enterprise"]
     },
     {
       "identifier": "organizations_multitenancy",
@@ -342,8 +493,8 @@
       "identifier": "api_authorization",
       "status": "supported",
       "description": "OAuth 2.0 scopes and audience-based API authorization. API scopes available on Plus plan and above.",
-      "plans": ["Plus", "Scale", "Enterprise"],
-      "links": ["https://docs.kinde.com/developer-tools/your-apis/register-manage-apis/"]
+      "links": ["https://docs.kinde.com/developer-tools/your-apis/register-manage-apis/"],
+      "plans": ["Plus", "Scale", "Enterprise"]
     },
     {
       "identifier": "soc2_type2",
@@ -487,8 +638,8 @@
       "identifier": "per_org_mfa_policy",
       "status": "supported",
       "description": "MFA can be enforced at the organization level on Scale plan and above, with the ability to exclude certain roles or connection types.",
-      "plans": ["Scale", "Enterprise"],
-      "links": ["https://docs.kinde.com/authenticate/multi-factor-auth/mfa-per-org/"]
+      "links": ["https://docs.kinde.com/authenticate/multi-factor-auth/mfa-per-org/"],
+      "plans": ["Scale", "Enterprise"]
     },
     {
       "identifier": "hosted_login_page",
@@ -581,8 +732,8 @@
       "identifier": "native_webhooks",
       "status": "supported",
       "description": "Webhook delivery for user events with JWT-signed payloads, idempotency headers, and automatic retry. Free plan: 1 webhook; Pro and above: unlimited.",
-      "plans": ["Pro", "Plus", "Scale", "Enterprise"],
-      "links": ["https://docs.kinde.com/integrate/webhooks/about-webhooks/"]
+      "links": ["https://docs.kinde.com/integrate/webhooks/about-webhooks/"],
+      "plans": ["Pro", "Plus", "Scale", "Enterprise"]
     },
     {
       "identifier": "universal_login_customization",
@@ -633,8 +784,8 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "partial",
+      "category": "post_quantum_cryptography",
       "description": "No vendor statement on PQC TLS support found. Kinde's security docs state all services are set up in AWS, and its public API (api.kinde.com) responds via AWS ELB with a CloudFront 'via' header - AWS CloudFront-fronted, not Cloudflare. AWS CloudFront enabled hybrid PQC key exchange (ML-KEM) by default on all existing TLS security policies in September 2025, but this is infra-inherited, not a Kinde-specific claim.",
       "links": [
         "https://docs.kinde.com/trust-center/security/security-at-kinde/",
@@ -643,34 +794,34 @@
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence of ML-DSA, SLH-DSA, or FN-DSA support for JWT signing. Kinde's security docs describe conventional TLS 1.2+ and AES-256/AWS KMS for data at rest, with no mention of PQC signature algorithms.",
       "links": ["https://docs.kinde.com/trust-center/security/security-at-kinde/"]
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "No public PQC roadmap, blog post, or crypto-agility statement was found for Kinde.",
       "links": ["https://trust.kinde.com/"]
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
     }
   ],

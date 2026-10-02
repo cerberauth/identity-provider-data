@@ -57,12 +57,47 @@ for (const schemaFile of schemaFiles) {
   }
 }
 
+// Provider rules that JSON Schema cannot express
+function checkProvider(provider) {
+  const errors = []
+  const plans = provider.pricing?.plans ?? []
+  if (!provider.pricing?.currency && plans.some((plan) => plan.amount > 0)) {
+    errors.push('/pricing/currency: required when a plan has a non-zero amount')
+  }
+  const planNames = new Set(plans.map((plan) => plan.name))
+  const featureIds = new Set(provider.features.map((feature) => feature.identifier))
+  for (const feature of provider.features) {
+    for (const planName of feature.plans ?? []) {
+      if (!planNames.has(planName)) {
+        errors.push(`/features/${feature.identifier}/plans: "${planName}" is not a plan in pricing.plans`)
+      }
+    }
+  }
+  for (const plan of plans) {
+    if (!plan.featuresIncluded) continue
+    const listed = new Set(
+      provider.features.filter((feature) => feature.plans?.includes(plan.name)).map((f) => f.identifier),
+    )
+    for (const id of plan.featuresIncluded) {
+      if (!featureIds.has(id)) errors.push(`/pricing/plans/${plan.name}/featuresIncluded: unknown feature "${id}"`)
+      else if (!listed.has(id))
+        errors.push(`/pricing/plans/${plan.name}/featuresIncluded: "${id}" does not list this plan in its plans`)
+    }
+    for (const id of listed) {
+      if (!plan.featuresIncluded.includes(id))
+        errors.push(`/pricing/plans/${plan.name}/featuresIncluded: missing "${id}"`)
+    }
+  }
+  return errors
+}
+
 // Validation mapping configuration
 const validationTargets = [
   {
     name: 'Providers',
     schemaFile: 'schemas/provider.schema.json',
     files: getFiles('providers', /\.json$/),
+    check: checkProvider,
   },
   {
     name: 'Categories definitions',
@@ -99,13 +134,18 @@ for (const target of validationTargets) {
     try {
       const data = readJsonFile(file)
       const valid = validate(data)
-      if (valid) {
+      const extraErrors = target.check ? target.check(data) : []
+      if (valid && extraErrors.length === 0) {
         logSuccess(`Valid: ${file}`)
+      } else if (valid) {
+        logError(`Validation failed for ${file}:`)
+        for (const message of extraErrors) console.error(`  - ${message}`)
       } else {
         logError(`Validation failed for ${file}:`)
         for (const error of validate.errors || []) {
           console.error(`  - ${error.instancePath || '/'}: ${error.message} (${JSON.stringify(error.params)})`)
         }
+        for (const message of extraErrors) console.error(`  - ${message}`)
       }
     } catch (err) {
       logError(err.message)

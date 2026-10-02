@@ -1,28 +1,73 @@
 {
   "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
   "name": "Zitadel",
-  "abstract": "Open-source (Apache 2.0) cloud-native CIAM and IAM platform from Switzerland. Designed for multi-tenant B2B SaaS with built-in Organizations for tenant isolation, branding, and per-org login policies. Supports OIDC, SAML 2.0, passkeys, TOTP, and JavaScript-based Actions for extensibility. Available as Zitadel Cloud (SaaS with free tier) or fully self-hosted on any infrastructure. SOC 2 Type II and ISO 27001 certified.",
+  "abstract": "Open-source (AGPL-3.0) cloud-native CIAM and IAM platform from Switzerland. Designed for multi-tenant B2B SaaS with built-in Organizations for tenant isolation, branding, and per-org login policies. Supports OIDC, SAML 2.0, passkeys, TOTP, and JavaScript-based Actions for extensibility. Available as Zitadel Cloud (SaaS with free tier) or fully self-hosted on any infrastructure. SOC 2 Type II and ISO 27001 certified.",
   "identifier": "zitadel",
+  "status": "active",
+  "deploymentModels": ["saas", "self_hosted"],
+  "targetAudience": ["b2c", "b2b", "developer"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/zitadel.svg"
   },
   "website": "https://zitadel.com",
   "github": "https://github.com/zitadel/zitadel",
-  "license": "Apache-2.0",
+  "repositories": [
+    {
+      "url": "https://github.com/zitadel/zitadel",
+      "platform": "github",
+      "role": "core",
+      "stars": 15151,
+      "contributors": 262,
+      "latestVersion": "v4.19.4",
+      "lastRelease": "2026-10-01",
+      "statsUpdatedAt": "2026-10-01"
+    },
+    {
+      "url": "https://github.com/zitadel/zitadel-charts",
+      "platform": "github",
+      "role": "infrastructure",
+      "stars": 161,
+      "contributors": 60,
+      "latestVersion": "zitadel-11.0.0-beta.8",
+      "lastRelease": "2026-09-28",
+      "statsUpdatedAt": "2026-10-01"
+    }
+  ],
+  "license": "AGPL-3.0-only",
+  "licenseUrl": "https://github.com/zitadel/zitadel/blob/main/LICENSE",
+  "openSource": {
+    "isOpenSource": true,
+    "model": "fully_open"
+  },
   "nationality": "Switzerland",
+  "vendor": {
+    "name": "ZITADEL",
+    "url": "https://zitadel.com"
+  },
+  "foundedYear": 2019,
+  "headquarters": {
+    "country": "CH",
+    "city": "St. Gallen"
+  },
   "pricing": {
     "hasFreeTier": true,
     "freeTierLimit": "Cloud: 100 Daily Active Users; Self-hosted: unlimited (open source)",
     "pricingModel": "freemium",
     "pricingUrl": "https://zitadel.com/pricing",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
+    "currency": "USD",
     "plans": [
       {
         "name": "Free",
-        "price": "US$0/month (100 DAU, cloud)"
+        "price": "US$0/month (100 DAU, cloud)",
+        "amount": 0
       },
       {
         "name": "Pro",
-        "price": "US$100/month (25,000 DAU, cloud)"
+        "price": "US$100/month (25,000 DAU, cloud)",
+        "amount": 100,
+        "period": "month"
       },
       {
         "name": "Enterprise",
@@ -30,10 +75,44 @@
       },
       {
         "name": "Open Source",
-        "price": "Free (self-hosted)"
+        "price": "Free (self-hosted)",
+        "amount": 0
       }
     ]
   },
+  "hosting": {
+    "regions": ["EU", "US", "CH", "AU"],
+    "selfHostRequirements": {
+      "runtime": "Go",
+      "database": ["PostgreSQL"],
+      "container": ["Docker", "Kubernetes", "Helm"]
+    }
+  },
+  "lastVerified": "2026-09-21",
+  "sdks": [
+    {
+      "language": "JavaScript",
+      "framework": "Node.js",
+      "url": "https://github.com/zitadel/zitadel-node",
+      "official": true
+    },
+    {
+      "language": "Go",
+      "url": "https://github.com/zitadel/zitadel-go",
+      "official": true
+    },
+    {
+      "language": "PHP",
+      "url": "https://github.com/zitadel/zitadel-php",
+      "official": true
+    },
+    {
+      "language": "Go",
+      "framework": "OIDC",
+      "url": "https://github.com/zitadel/oidc",
+      "official": true
+    }
+  ],
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -228,7 +307,8 @@
       "identifier": "inbound_scim_provisioning",
       "status": "supported",
       "description": "SCIM 2.0 server for inbound user provisioning. Enables automated user creation, updates, deactivation, and deprovisioning from external IdPs (e.g., Okta). Currently in preview.",
-      "links": ["https://zitadel.com/docs/guides/manage/user/scim2"]
+      "links": ["https://zitadel.com/docs/guides/manage/user/scim2"],
+      "betaStatus": "preview"
     },
     {
       "identifier": "outbound_scim_provisioning",
@@ -239,7 +319,8 @@
       "identifier": "scim_groups",
       "status": "partial",
       "description": "SCIM 2.0 implementation is primarily user-focused. Group synchronization support is limited in the current preview.",
-      "links": ["https://zitadel.com/docs/guides/manage/user/scim2"]
+      "links": ["https://zitadel.com/docs/guides/manage/user/scim2"],
+      "betaStatus": "preview"
     },
     {
       "identifier": "jit_provisioning",
@@ -388,15 +469,15 @@
       "identifier": "region_deployment",
       "status": "supported",
       "description": "Zitadel Cloud available in EU, US, Switzerland, and Australia regions for data residency requirements.",
-      "values": ["EU", "US", "Switzerland", "Australia"],
-      "links": ["https://zitadel.com/pricing"]
+      "links": ["https://zitadel.com/pricing"],
+      "values": ["EU", "US", "Switzerland", "Australia"]
     },
     {
       "identifier": "private_cloud_deployment",
       "status": "supported",
       "description": "Self-hosted deployment on any cloud provider (AWS, GCP, Azure) or on-premises via Docker or Kubernetes (Helm chart). Full data sovereignty.",
-      "values": ["AWS", "GCP", "Azure", "On-premises"],
-      "links": ["https://zitadel.com/docs/self-hosting/deploy/overview"]
+      "links": ["https://zitadel.com/docs/self-hosting/deploy/overview"],
+      "values": ["AWS", "GCP", "Azure", "On-premises"]
     },
     {
       "identifier": "audit_log_retention",
@@ -627,40 +708,40 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "Zitadel is written in Go and supports a native 'TLS enabled' mode where its Go HTTP/2 server serves HTTPS directly. While Go 1.24 (Feb 2025) enables X25519MLKEM768 hybrid key exchange by default in crypto/tls, no Zitadel-specific statement or documentation confirms PQC TLS support, and most self-hosted deployments use an external reverse proxy. Without vendor evidence, status is unknown.",
       "links": ["https://github.com/golang/go/issues/69985", "https://zitadel.com/docs/self-hosting/manage/tls_modes"]
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of ML-DSA/SLH-DSA/Falcon support for OIDC ID token or JWT signing in Zitadel. No GitHub issues or discussions proposing PQC signature algorithms were found in the zitadel/zitadel repository."
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "No public roadmap, blog post, or GitHub discussion found describing PQC migration plans for Zitadel. Zitadel's Trust Center does not surface any mention of post-quantum or quantum-safe cryptography in accessible content.",
       "links": ["https://trust.zitadel.com/"]
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
     }
   ],

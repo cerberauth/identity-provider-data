@@ -3,22 +3,43 @@
   "name": "Descope",
   "abstract": "No-code visual flow builder for authentication journeys. FedRAMP High authorized. Drag-and-drop orchestration with a connector marketplace rivaling enterprise orchestration platforms at a fraction of the cost.",
   "identifier": "descope",
+  "status": "active",
+  "deploymentModels": ["saas"],
+  "targetAudience": ["b2c", "b2b", "ciam", "developer"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/descope.svg"
   },
   "website": "https://www.descope.com",
   "github": "https://github.com/descope",
   "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
   "nationality": "USA",
+  "vendor": {
+    "name": "Descope",
+    "url": "https://www.descope.com"
+  },
+  "foundedYear": 2022,
+  "headquarters": {
+    "country": "US",
+    "city": "Los Altos"
+  },
   "pricing": {
     "hasFreeTier": true,
     "freeTierLimit": "7,500 MAU",
+    "freeTierMau": 7500,
     "pricingModel": "mau",
     "pricingUrl": "https://www.descope.com/pricing",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
+    "currency": "USD",
     "plans": [
       {
         "name": "Free",
-        "price": "Free"
+        "price": "Free",
+        "amount": 0,
+        "mauIncluded": 7500
       },
       {
         "name": "Growth",
@@ -30,6 +51,82 @@
       }
     ]
   },
+  "hosting": {
+    "regions": ["US", "EU"]
+  },
+  "sla": {
+    "uptimePercent": 99.99,
+    "url": "https://www.descope.com/sla",
+    "scope": "Paid plans"
+  },
+  "lastVerified": "2026-09-21",
+  "sdks": [
+    {
+      "language": "TypeScript",
+      "url": "https://github.com/descope/descope-js",
+      "official": true
+    },
+    {
+      "language": "JavaScript",
+      "framework": "Node.js",
+      "url": "https://github.com/descope/node-sdk",
+      "official": true
+    },
+    {
+      "language": "Python",
+      "url": "https://github.com/descope/python-sdk",
+      "official": true
+    },
+    {
+      "language": "Go",
+      "url": "https://github.com/descope/go-sdk",
+      "official": true
+    },
+    {
+      "language": "Java",
+      "url": "https://github.com/descope/descope-java",
+      "official": true
+    },
+    {
+      "language": "Ruby",
+      "url": "https://github.com/descope/descope-ruby-sdk",
+      "official": true
+    },
+    {
+      "language": "PHP",
+      "url": "https://github.com/descope/descope-php",
+      "official": true
+    },
+    {
+      "language": "C#",
+      "url": "https://github.com/descope/descope-dotnet",
+      "official": true
+    },
+    {
+      "language": "Swift",
+      "framework": "iOS",
+      "url": "https://github.com/descope/descope-swift",
+      "official": true
+    },
+    {
+      "language": "Kotlin",
+      "framework": "Android",
+      "url": "https://github.com/descope/descope-kotlin",
+      "official": true
+    },
+    {
+      "language": "Dart",
+      "framework": "Flutter",
+      "url": "https://github.com/descope/descope-flutter",
+      "official": true
+    },
+    {
+      "language": "TypeScript",
+      "framework": "React Native",
+      "url": "https://github.com/descope/descope-react-native",
+      "official": true
+    }
+  ],
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -377,8 +474,8 @@
       "identifier": "region_deployment",
       "status": "supported",
       "description": "Data residency in US and EU regions available on Growth plan.",
-      "values": ["US", "EU"],
-      "links": ["https://www.descope.com/security-compliance"]
+      "links": ["https://www.descope.com/security-compliance"],
+      "values": ["US", "EU"]
     },
     {
       "identifier": "private_cloud_deployment",
@@ -605,40 +702,40 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "partial",
+      "category": "post_quantum_cryptography",
       "description": "No public vendor statement on PQC TLS support found. Descope's public API (api.descope.com) responds with 'server: cloudflare', a cf-ray header, and a __cf_bm (Cloudflare Bot Management) cookie, indicating Descope's API is fronted by Cloudflare. Cloudflare enabled hybrid PQC key exchange by default for TLS 1.3 in 2023-2024, but this is infra-inherited, not a documented Descope-specific commitment.",
       "links": ["https://trust.descope.com/"]
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found that Descope supports ML-DSA, SLH-DSA, or FN-DSA for JWT, SAML, or OIDC signing. Descope's documented signing algorithms are conventional (RS256/ES256 family)."
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "No public roadmap, blog post, or trust-center statement describing a PQC/FIPS 203-205 migration plan or crypto-agility framework was found for Descope.",
       "links": ["https://www.descope.com/security-compliance"]
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
     }
   ],

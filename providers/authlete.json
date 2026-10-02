@@ -3,22 +3,40 @@
   "name": "Authlete",
   "abstract": "Headless OAuth 2.0 and OpenID Connect backend engine from Japan, founded 2015. Authlete is not a full-stack CIAM: it handles only the OAuth/OIDC protocol layer and token lifecycle management — authentication UI, user database, and MFA are customer-owned. Exceptionally strong protocol coverage: FAPI 1.0/2.0, CIBA, DPoP, PAR, JAR, mTLS, OpenID Identity Assurance, OID4VCI, and OpenID Federation. OpenID-certified across Basic, Implicit, Hybrid, FAPI 1.0 Advanced, FAPI-CIBA, FAPI 2.0, and multiple open banking profiles (UK, Australia CDR, Brazil, Saudi Arabia). ISO/IEC 27001 certified. Available as shared cloud, dedicated cloud, or self-managed.",
   "identifier": "authlete",
+  "status": "active",
+  "deploymentModels": ["saas", "self_hosted"],
+  "targetAudience": ["ciam", "developer"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/authlete.svg"
   },
   "website": "https://www.authlete.com",
   "github": "https://github.com/authlete",
   "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
   "nationality": "Japan",
+  "vendor": {
+    "name": "Authlete",
+    "url": "https://www.authlete.com"
+  },
+  "foundedYear": 2015,
+  "headquarters": {
+    "country": "JP"
+  },
   "pricing": {
     "hasFreeTier": false,
     "freeTierLimit": "30-day free trial (3 services, 100 client apps, shared cloud, no credit card required)",
     "pricingModel": "usage",
     "pricingUrl": "https://www.authlete.com/pricing/",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
+    "currency": "USD",
     "plans": [
       {
         "name": "Trial",
-        "price": "Free (30 days)"
+        "price": "Free (30 days)",
+        "amount": 0
       },
       {
         "name": "Business",
@@ -34,6 +52,45 @@
       }
     ]
   },
+  "lastVerified": "2026-09-21",
+  "sdks": [
+    {
+      "language": "Java",
+      "url": "https://github.com/authlete/authlete-java-common",
+      "official": true
+    },
+    {
+      "language": "Java",
+      "framework": "JAX-RS",
+      "url": "https://github.com/authlete/authlete-java-jaxrs",
+      "official": true
+    },
+    {
+      "language": "TypeScript",
+      "url": "https://github.com/authlete/authlete-typescript-sdk",
+      "official": true
+    },
+    {
+      "language": "Go",
+      "url": "https://github.com/authlete/authlete-go-sdk",
+      "official": true
+    },
+    {
+      "language": "Python",
+      "url": "https://github.com/authlete/authlete-python",
+      "official": true
+    },
+    {
+      "language": "PHP",
+      "url": "https://github.com/authlete/authlete-php",
+      "official": true
+    },
+    {
+      "language": "Ruby",
+      "url": "https://github.com/authlete/authlete-ruby-sdk",
+      "official": true
+    }
+  ],
   "features": [
     {
       "identifier": "username_and_password_authentication",
@@ -368,8 +425,8 @@
       "identifier": "private_cloud_deployment",
       "status": "supported",
       "description": "Enterprise Self-Managed plan allows full on-premises or private cloud deployment. Dedicated Cloud Enterprise plan offers single-tenant managed hosting.",
-      "values": ["AWS", "Azure", "GCP", "On-premises"],
-      "links": ["https://authlete.webflow.io/pricing"]
+      "links": ["https://authlete.webflow.io/pricing"],
+      "values": ["AWS", "Azure", "GCP", "On-premises"]
     },
     {
       "identifier": "audit_log_retention",
@@ -589,38 +646,38 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "Authlete is a hosted/cloud OAuth 2.0/OIDC backend service; no public documentation, blog post, or announcement addressing TLS-layer post-quantum hybrid key exchange was found on authlete.com or in press materials."
     },
     {
       "identifier": "pq_signature_algorithms",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of ML-DSA, SLH-DSA, or Falcon support for JWT/ID token signing in Authlete's knowledge base, API docs, or blog."
     },
     {
       "identifier": "pq_migration_roadmap",
-      "category": "post_quantum_cryptography",
       "status": "unknown",
+      "category": "post_quantum_cryptography",
       "description": "No public PQC roadmap, whitepaper, or statement located for Authlete."
     },
     {
       "identifier": "pq_token_encryption",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
     },
     {
       "identifier": "pq_mtls_certificates",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "category": "post_quantum_cryptography",
       "status": "not_supported",
+      "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
     }
   ],
