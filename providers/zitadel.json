@@ -93,6 +93,11 @@
       "container": ["Docker", "Kubernetes", "Helm"]
     }
   },
+  "sla": {
+    "uptimePercent": 99.5,
+    "url": "https://zitadel.com/docs/legal/service-description/service-level-description",
+    "scope": "ZITADEL Cloud paid plans (99.95% with the extended SLA)"
+  },
   "supportChannels": ["email", "community"],
   "migrationTools": [
     {

@@ -794,11 +794,11 @@
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
@@ -806,23 +806,23 @@
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "password_grant",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "rp_initiated_logout",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "pkce_extension",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "par_extension",
@@ -842,15 +842,16 @@
       },
       {
         "identifier": "token_endpoint",
-        "status": "unknown"
+        "status": "partial",
+        "description": "The Secure Token REST API refreshes ID tokens. It is not a standard OAuth 2.0 token endpoint."
       },
       {
         "identifier": "userinfo_endpoint",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "token_revocation_endpoint",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "token_introspection_endpoint",
@@ -858,59 +859,60 @@
       },
       {
         "identifier": "device_authorization_endpoint",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
-        "status": "unknown"
+        "status": "partial",
+        "description": "A minimal discovery document exists at securetoken.google.com/<project-id>/.well-known/openid-configuration. It only describes ID token verification."
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "none_prompt",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "login_prompt",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "consent_prompt",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "select_account_prompt",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "create_prompt",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "none_token_endpoint_auth",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "dynamic_client_registration",
@@ -918,39 +920,39 @@
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "refresh_token_rotation",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "dpop",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "fapi_1_0_advanced",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "jarm",
-        "status": "unknown"
+        "status": "not_supported"
       }
     ]
   }

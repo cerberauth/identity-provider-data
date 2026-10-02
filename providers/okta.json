@@ -64,6 +64,11 @@
   "hosting": {
     "regions": ["US", "EU", "CA", "AU"]
   },
+  "sla": {
+    "uptimePercent": 99.99,
+    "url": "https://www.businesswire.com/news/home/20200702005101/en/Okta-Raises-the-Industry-Bar-With-99.99-Uptime-for-Every-Customer",
+    "scope": "All customers"
+  },
   "supportChannels": ["email", "chat", "phone", "community"],
   "lastVerified": "2026-09-21",
   "sdks": [
