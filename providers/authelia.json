@@ -6,10 +6,14 @@
   "status": "active",
   "deploymentModels": ["self_hosted"],
   "targetAudience": ["workforce"],
+  "tags": ["self-hosted", "reverse-proxy", "forward-auth", "homelab"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/authelia.svg"
   },
   "website": "https://www.authelia.com",
+  "documentationUrl": "https://www.authelia.com/overview/prologue/introduction/",
+  "changelogUrl": "https://github.com/authelia/authelia/releases",
+  "communityUrl": "https://discord.authelia.com",
   "github": "https://github.com/authelia/authelia",
   "repositories": [
     {
@@ -39,6 +43,7 @@
     "isOpenSource": true,
     "model": "fully_open"
   },
+  "governance": "community",
   "foundedYear": 2016,
   "pricing": {
     "hasFreeTier": true,
@@ -62,6 +67,7 @@
       "container": ["Docker", "Kubernetes", "Helm"]
     }
   },
+  "supportChannels": ["community"],
   "lastVerified": "2026-09-21",
   "features": [
     {
@@ -878,6 +884,11 @@
         "description": "OAuth 2.0 JWT Secured Authorization Response Mode is listed as complete.",
         "links": ["https://www.authelia.com/integration/openid-connect/introduction/"]
       }
-    ]
+    ],
+    "certified": {
+      "profile": "Basic, Implicit, Hybrid, Config, Form Post",
+      "version": "4.39",
+      "certificationUrl": "https://www.certification.openid.net/plan-detail.html?plan=j7hr4L7yUvRiV&public=true"
+    }
   }
 }

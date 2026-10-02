@@ -3,13 +3,17 @@
   "name": "Gluu",
   "abstract": "Open-source identity and access management platform from Austin, Texas, built around the Linux Foundation's Janssen Project (Apache 2.0), which implements OAuth 2.0, OpenID Connect, SAML 2.0, FIDO2, SCIM 2.0, and UMA 2.0. Free to self-host; Gluu Flex is the commercial distribution adding a hosted control plane, Cedarling (an embeddable Cedar-based policy decision point for fine-grained ABAC), Agama Lab (a low-code authentication workflow designer), and enterprise support. Historically known as the Gluu Server; increasingly positioned around Zero Trust and AI agent/workload identity.",
   "identifier": "gluu",
+  "aliases": ["Gluu Server", "Gluu Flex"],
   "status": "active",
   "deploymentModels": ["self_hosted", "saas"],
   "targetAudience": ["workforce", "ciam"],
+  "tags": ["self-hosted", "federation", "enterprise-sso", "kubernetes"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/gluu.svg"
   },
   "website": "https://gluu.org",
+  "documentationUrl": "https://gluu.org/docs/gluu-server/",
+  "changelogUrl": "https://github.com/GluuFederation/flex/releases",
   "github": "https://github.com/JanssenProject/jans",
   "repositories": [
     {
@@ -39,6 +43,7 @@
     "isOpenSource": true,
     "model": "open_core"
   },
+  "governance": "vendor_led",
   "nationality": "USA",
   "vendor": {
     "name": "Gluu",
@@ -930,6 +935,11 @@
         "status": "unknown",
         "description": "JWT Secured Authorization Response Mode is not documented as a supported response mode."
       }
-    ]
+    ],
+    "certified": {
+      "profile": "Basic, Implicit, Hybrid, Config, Dynamic, Form Post, 3rd Party",
+      "version": "4.5",
+      "certificationUrl": "https://www.certification.openid.net/plan-detail.html?public=true&plan=V3cZ2tZoAuSUh"
+    }
   }
 }

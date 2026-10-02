@@ -3,17 +3,21 @@
   "name": "SAP CIAM",
   "abstract": "SAP Customer Identity and Access Management (SAP CIAM), formerly Gigya and SAP Customer Data Cloud, is a multi-tenant SaaS customer identity platform on SAP Business Technology Platform. It covers registration and login (password, social, passwordless with FIDO passkeys, phone, email OTP, and magic links), two-factor and risk-based authentication, consent and preference management, and B2B contact and partner management. SAP CIAM can act as an OpenID Connect provider (authorization code, implicit, hybrid, client credentials, device, and token exchange flows) and relying party, and as a SAML identity provider and service provider. Sites are hosted in United States, European Union, Australian, or Chinese data centers, with global site groups for cross-region SSO. Pricing is subscription-based per block of 10,000 monthly active users, with optional enhanced security and consent add-ons.",
   "identifier": "sap-ciam",
+  "aliases": ["SAP Customer Data Cloud", "Gigya"],
   "status": "active",
   "deploymentModels": ["saas"],
   "targetAudience": ["b2c", "b2b", "ciam"],
+  "tags": ["sap", "consent", "customer-identity", "marketing"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/sap-ciam.svg"
   },
   "website": "https://www.sap.com/products/technology-platform/customer-identity.html",
+  "documentationUrl": "https://help.sap.com/docs/sap-customer-data-cloud",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "Germany",
   "vendor": {
     "name": "SAP",

@@ -3,17 +3,21 @@
   "name": "CyberArk Identity",
   "abstract": "Enterprise workforce IAM platform from Israel offering SSO, Adaptive MFA, lifecycle management, and privileged access. Native AD/LDAP sync via on-prem connector, SAML/OIDC/WS-Federation IdP, FIDO2 certified, FedRAMP High authorized. Includes built-in UBA/risk analytics, SCIM 2.0 provisioning, and a no-code workflow automation add-on. SaaS-only deployment on AWS across 13 global regions.",
   "identifier": "cyberark",
+  "aliases": ["Idaptive"],
   "status": "active",
   "deploymentModels": ["saas"],
   "targetAudience": ["workforce"],
+  "tags": ["privileged-access", "workforce-identity", "adaptive-mfa", "zero-trust"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/cyberark.svg"
   },
   "website": "https://www.cyberark.com",
+  "communityUrl": "https://cyberark-customers.force.com/s/",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "Israel",
   "vendor": {
     "name": "CyberArk",

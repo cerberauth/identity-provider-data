@@ -3,17 +3,23 @@
   "name": "SailPoint Identity Security Cloud",
   "abstract": "Enterprise identity governance and administration (IGA) platform from the USA. SailPoint Identity Security Cloud (ISC) delivers AI-driven identity lifecycle management, access certification, role and entitlement management, and SCIM/SAML/OIDC federation. Primarily a workforce IGA solution, not a CIAM product. FedRAMP Moderate authorized, SOC 2 Type II and ISO 27001:2022 certified. SaaS (ISC) on AWS with US, EU, and UK regions; on-premises via IdentityIQ.",
   "identifier": "sailpoint",
+  "aliases": ["IdentityNow"],
   "status": "active",
   "deploymentModels": ["saas", "self_hosted"],
   "targetAudience": ["workforce"],
+  "tags": ["identity-governance", "access-certification", "lifecycle-management", "workforce-identity"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/sailpoint.svg"
   },
   "website": "https://www.sailpoint.com",
+  "documentationUrl": "https://documentation.sailpoint.com",
+  "statusPageUrl": "https://status.sailpoint.com",
+  "communityUrl": "https://community.sailpoint.com",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "USA",
   "vendor": {
     "name": "SailPoint",

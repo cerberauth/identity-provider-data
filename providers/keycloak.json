@@ -3,13 +3,18 @@
   "name": "Keycloak",
   "abstract": "Open-source (Apache 2.0) IAM/CIAM by Red Hat. Zero licensing cost with unlimited users. Most feature-rich open-source option with full SPI extensibility. Requires self-hosting and DevOps expertise.",
   "identifier": "keycloak",
+  "aliases": ["Red Hat SSO", "RH-SSO", "Red Hat build of Keycloak"],
   "status": "active",
   "deploymentModels": ["self_hosted"],
   "targetAudience": ["workforce", "ciam"],
+  "tags": ["self-hosted", "cncf", "java", "identity-brokering"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/keycloak.svg"
   },
   "website": "https://www.keycloak.org",
+  "documentationUrl": "https://www.keycloak.org/documentation",
+  "changelogUrl": "https://www.keycloak.org/docs/latest/release_notes/",
+  "communityUrl": "https://github.com/keycloak/keycloak/discussions",
   "github": "https://github.com/keycloak/keycloak",
   "repositories": [
     {
@@ -29,6 +34,7 @@
     "isOpenSource": true,
     "model": "fully_open"
   },
+  "governance": "foundation",
   "nationality": "USA",
   "vendor": {
     "name": "Red Hat",
@@ -65,6 +71,7 @@
       "container": ["Docker", "Kubernetes"]
     }
   },
+  "supportChannels": ["community"],
   "lastVerified": "2026-09-21",
   "sdks": [
     {

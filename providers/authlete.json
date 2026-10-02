@@ -6,15 +6,20 @@
   "status": "active",
   "deploymentModels": ["saas", "self_hosted"],
   "targetAudience": ["ciam", "developer"],
+  "tags": ["api-security", "oauth-server", "fapi", "open-banking"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/authlete.svg"
   },
   "website": "https://www.authlete.com",
+  "documentationUrl": "https://www.authlete.com/developers/",
+  "changelogUrl": "https://www.authlete.com/developers/relnotes/",
+  "statusPageUrl": "https://status.authlete.com",
   "github": "https://github.com/authlete",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "Japan",
   "vendor": {
     "name": "Authlete",
@@ -907,6 +912,11 @@
         "status": "supported",
         "links": ["https://www.authlete.com/developers/fapi2/ms/authres/"]
       }
-    ]
+    ],
+    "certified": {
+      "profile": "Basic, Implicit, Hybrid, Config, Dynamic, Form Post",
+      "version": "2.2",
+      "certificationUrl": "https://www.certification.openid.net/plan-detail.html?plan=hxZWWqXk8BvMV&public=true"
+    }
   }
 }

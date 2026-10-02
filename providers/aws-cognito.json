@@ -6,14 +6,20 @@
   "status": "active",
   "deploymentModels": ["saas"],
   "targetAudience": ["b2c", "ciam", "developer"],
+  "tags": ["aws", "user-pools", "identity-pools", "serverless"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/aws-cognito.svg"
   },
   "website": "https://aws.amazon.com/cognito/",
+  "documentationUrl": "https://docs.aws.amazon.com/cognito/",
+  "changelogUrl": "https://aws.amazon.com/about-aws/whats-new/security_identity_and_compliance/",
+  "statusPageUrl": "https://health.aws.amazon.com/health/status",
+  "communityUrl": "https://repost.aws/tags/TA4IvCeWI1TE66q4jEj4Z9zg/amazon-cognito",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "USA",
   "vendor": {
     "name": "Amazon Web Services",

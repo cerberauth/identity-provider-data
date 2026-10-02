@@ -6,14 +6,20 @@
   "status": "active",
   "deploymentModels": ["saas"],
   "targetAudience": ["b2c", "b2b", "ciam", "developer"],
+  "tags": ["saas", "developer-platform", "enterprise-sso", "customer-identity"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/auth0.svg"
   },
   "website": "https://auth0.com",
+  "documentationUrl": "https://auth0.com/docs",
+  "changelogUrl": "https://auth0.com/changelog",
+  "statusPageUrl": "https://status.auth0.com",
+  "communityUrl": "https://community.auth0.com",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "USA",
   "vendor": {
     "name": "Okta",
@@ -149,6 +155,7 @@
     "url": "https://auth0.com/docs/support/services-level-descriptions",
     "scope": "Enterprise plans"
   },
+  "supportChannels": ["email", "chat", "community"],
   "lastVerified": "2026-09-21",
   "sdks": [
     {
@@ -1415,6 +1422,10 @@
         "identifier": "jarm",
         "status": "unknown"
       }
-    ]
+    ],
+    "certified": {
+      "profile": "Basic, Implicit, Hybrid, Config, Form Post",
+      "certificationUrl": "https://openid.net/wordpress-content/uploads/2016/05/Auth0-Auth0-OP-Basic-24-May-2016.zip"
+    }
   }
 }

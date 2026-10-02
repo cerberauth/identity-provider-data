@@ -6,14 +6,19 @@
   "status": "active",
   "deploymentModels": ["saas"],
   "targetAudience": ["b2c", "b2b", "developer"],
+  "tags": ["headless", "api-first", "fraud-prevention", "b2b-saas"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/stytch.svg"
   },
   "website": "https://stytch.com",
+  "documentationUrl": "https://stytch.com/docs",
+  "changelogUrl": "https://stytch.com/docs/changelog",
+  "statusPageUrl": "https://status.stytch.com",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "USA",
   "vendor": {
     "name": "Twilio",
@@ -56,6 +61,16 @@
       }
     ]
   },
+  "migrationTools": [
+    {
+      "from": "Auth0",
+      "url": "https://stytch.com/docs/guides/migrations/auth0"
+    },
+    {
+      "from": "Firebase",
+      "url": "https://stytch.com/docs/guides/migrations/firebase"
+    }
+  ],
   "lastVerified": "2026-09-21",
   "sdks": [
     {
@@ -977,6 +992,184 @@
     }
   ],
   "oidc": {
-    "features": []
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "description": "Provided by Connected Apps, Stytch's OAuth 2.0 and OIDC provider."
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported"
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "supported"
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "password_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "unknown"
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported"
+      },
+      {
+        "identifier": "par_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "supported"
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dpop",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jarm",
+        "status": "unknown"
+      }
+    ]
   }
 }

@@ -6,15 +6,21 @@
   "status": "active",
   "deploymentModels": ["saas"],
   "targetAudience": ["b2c", "b2b", "developer"],
+  "tags": ["react", "nextjs", "prebuilt-ui", "user-management"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/clerk.svg"
   },
   "website": "https://clerk.com",
+  "documentationUrl": "https://clerk.com/docs",
+  "changelogUrl": "https://clerk.com/changelog",
+  "statusPageUrl": "https://status.clerk.com",
+  "communityUrl": "https://clerk.com/discord",
   "github": "https://github.com/clerkinc",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "USA",
   "vendor": {
     "name": "Clerk",
@@ -156,6 +162,21 @@
     "url": "https://clerk.com/pricing",
     "scope": "Enterprise plan"
   },
+  "supportChannels": ["email", "community"],
+  "migrationTools": [
+    {
+      "from": "Auth0",
+      "url": "https://clerk.com/docs/guides/development/migrating/overview"
+    },
+    {
+      "from": "Firebase",
+      "url": "https://clerk.com/docs/guides/development/migrating/firebase"
+    },
+    {
+      "from": "Cognito",
+      "url": "https://clerk.com/docs/guides/development/migrating/cognito"
+    }
+  ],
   "lastVerified": "2026-09-21",
   "sdks": [
     {

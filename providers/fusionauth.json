@@ -6,10 +6,15 @@
   "status": "active",
   "deploymentModels": ["saas", "self_hosted"],
   "targetAudience": ["b2c", "b2b", "ciam", "developer"],
+  "tags": ["self-hosted", "customer-identity", "developer-platform", "api-first"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/fusionauth.svg"
   },
   "website": "https://fusionauth.io",
+  "documentationUrl": "https://fusionauth.io/docs",
+  "changelogUrl": "https://fusionauth.io/docs/release-notes/",
+  "statusPageUrl": "https://status.fusionauth.io",
+  "communityUrl": "https://fusionauth.io/community/forum/",
   "github": "https://github.com/FusionAuth",
   "repositories": [
     {
@@ -25,6 +30,7 @@
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "USA",
   "vendor": {
     "name": "FusionAuth",
@@ -69,6 +75,24 @@
       "container": ["Docker", "Kubernetes"]
     }
   },
+  "migrationTools": [
+    {
+      "from": "Auth0",
+      "url": "https://fusionauth.io/docs/lifecycle/migrate-users/provider-specific/auth0"
+    },
+    {
+      "from": "Firebase",
+      "url": "https://fusionauth.io/docs/lifecycle/migrate-users/provider-specific/firebase"
+    },
+    {
+      "from": "Cognito",
+      "url": "https://fusionauth.io/docs/lifecycle/migrate-users/provider-specific/cognito"
+    },
+    {
+      "from": "Keycloak",
+      "url": "https://fusionauth.io/docs/lifecycle/migrate-users/provider-specific/keycloak"
+    }
+  ],
   "lastVerified": "2026-09-21",
   "sdks": [
     {

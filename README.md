@@ -32,9 +32,26 @@ Connect protocol support.
     `featuresIncluded` (the gated features whose `plans` name that plan; the validator keeps both in sync).
   - `features[]` and `oidc.features[]` may also carry `tier` (`basic`, `standard`, `advanced`, `enterprise`),
     `sinceVersion` and `betaStatus` (`ga`, `beta`, `preview`, `experimental`).
+  - `aliases`, `tags` — optional former or alternate names, and free-form lowercase search keywords.
+    Tags do not repeat capabilities that are already tracked as features.
+  - `documentationUrl`, `changelogUrl`, `statusPageUrl`, `communityUrl` — optional links, only set when the page exists.
+  - `governance` — optional, `vendor_led`, `foundation` or `community`.
+  - `supportChannels` — optional, any of `email`, `chat`, `phone`, `community`, `slack`.
+  - `userLimits` — optional `{ maxUsers, maxTenants }` hard limits, left out when there are none.
+  - `migrationTools` — optional list of `{ from, url }` guides for importing users from another provider.
+  - `pricing.pricingLastVerified` and `pricing.trialDays` — optional date the prices were last checked, and the
+    length of the free trial of paid plans. `pricingLastVerified` is only set when the pricing page was actually
+    rechecked, `lastVerified` covers the rest of the file.
+  - `oidc.discoveryUrl` — optional fixed public discovery document URL, left out when it depends on a tenant or domain.
+  - `oidc.certified` — optional `{ profile, version, certificationUrl }` OpenID Foundation OP certification.
+  - `addOnCost` on `features[]` and `oidc.features[]` — price of a paid add-on outside the plans. `oidc.features[].values`
+    lists supported options, like `features[].values`.
   - `sdks` — optional list of `{ language, framework, url, official }` SDKs.
   - `lastVerified` — optional date (`YYYY-MM-DD`) the file was last checked.
-  - `features` — the IAM / CIAM feature list.
+  - `nationality` — country of the vendor. Left out for community projects without a company behind them
+    (Authelia, Better Auth).
+  - `features` — the IAM / CIAM feature list. Every provider lists the 110 catalog features, except Ory Hydra, which is
+    an OAuth 2.0 / OIDC server only. Auth0 also carries `rules_deprecated` and `hooks_deprecated`, which are not in the catalog.
   - `oidc.features` — the OpenID Connect feature list, kept in its own category.
 - `definitions/`
   - `iam-categories.json`, `oidc-categories.json` — ordered category definitions

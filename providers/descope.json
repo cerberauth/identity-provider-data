@@ -6,15 +6,20 @@
   "status": "active",
   "deploymentModels": ["saas"],
   "targetAudience": ["b2c", "b2b", "ciam", "developer"],
+  "tags": ["no-code", "drag-and-drop-flows", "passwordless", "customer-identity"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/descope.svg"
   },
   "website": "https://www.descope.com",
+  "documentationUrl": "https://docs.descope.com",
+  "statusPageUrl": "https://status.descope.com",
+  "communityUrl": "https://www.descope.com/community",
   "github": "https://github.com/descope",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "USA",
   "vendor": {
     "name": "Descope",
@@ -59,6 +64,21 @@
     "url": "https://www.descope.com/sla",
     "scope": "Paid plans"
   },
+  "supportChannels": ["email", "slack", "community"],
+  "migrationTools": [
+    {
+      "from": "Auth0",
+      "url": "https://docs.descope.com/migrate/auth0"
+    },
+    {
+      "from": "Firebase",
+      "url": "https://docs.descope.com/migrate/firebase"
+    },
+    {
+      "from": "Cognito",
+      "url": "https://docs.descope.com/migrate/cognito"
+    }
+  ],
   "lastVerified": "2026-09-21",
   "sdks": [
     {
@@ -740,6 +760,183 @@
     }
   ],
   "oidc": {
-    "features": []
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported"
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported"
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "password_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "unknown"
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported"
+      },
+      {
+        "identifier": "par_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dpop",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jarm",
+        "status": "unknown"
+      }
+    ]
   }
 }

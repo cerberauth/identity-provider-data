@@ -3,17 +3,23 @@
   "name": "Ping Identity",
   "abstract": "Enterprise-grade IAM/CIAM with no-code DaVinci orchestration, PingOne Protect AI-driven security, and the broadest deployment flexibility (SaaS, self-hosted, hybrid).",
   "identifier": "ping-identity",
+  "aliases": ["PingOne"],
   "status": "active",
   "deploymentModels": ["saas", "self_hosted", "hybrid"],
   "targetAudience": ["workforce", "ciam"],
+  "tags": ["federation", "enterprise-sso", "workforce-identity", "customer-identity"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/ping-identity.svg"
   },
   "website": "https://www.pingidentity.com",
+  "documentationUrl": "https://docs.pingidentity.com",
+  "statusPageUrl": "https://status.pingidentity.com",
+  "communityUrl": "https://support.pingidentity.com",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "USA",
   "vendor": {
     "name": "Ping Identity",

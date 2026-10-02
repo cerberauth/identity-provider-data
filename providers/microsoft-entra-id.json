@@ -3,17 +3,23 @@
   "name": "Microsoft Entra External ID",
   "abstract": "Azure-native IAM platform (successor to Azure AD B2C). Simple per-MAU consumption pricing with a 50K free tier. FedRAMP High authorized with deep Microsoft ecosystem integration.",
   "identifier": "microsoft-entra-id",
+  "aliases": ["Azure AD B2C", "Azure AD External Identities"],
   "status": "active",
   "deploymentModels": ["saas"],
   "targetAudience": ["b2c", "b2b", "ciam"],
+  "tags": ["microsoft", "azure", "customer-identity", "conditional-access"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/microsoft-entra-id.svg"
   },
   "website": "https://learn.microsoft.com/en-us/entra/external-id/",
+  "documentationUrl": "https://learn.microsoft.com/en-us/entra/external-id/",
+  "changelogUrl": "https://learn.microsoft.com/en-us/entra/fundamentals/whats-new",
+  "communityUrl": "https://techcommunity.microsoft.com/category/microsoft-entra",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "USA",
   "vendor": {
     "name": "Microsoft",
@@ -960,6 +966,12 @@
         "identifier": "jarm",
         "status": "unknown"
       }
-    ]
+    ],
+    "discoveryUrl": "https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration",
+    "certified": {
+      "profile": "Basic, Implicit, Config, Form Post",
+      "version": "Azure Active Directory V2",
+      "certificationUrl": "https://openid.net/wordpress-content/uploads/2019/01/Microsoft-Azure_AD_v2-OP-Basic-07-Dec-2018.zip"
+    }
   }
 }

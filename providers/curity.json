@@ -6,15 +6,18 @@
   "status": "active",
   "deploymentModels": ["self_hosted"],
   "targetAudience": ["ciam", "workforce"],
+  "tags": ["api-security", "oauth-server", "claims", "financial-services"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/curity.svg"
   },
   "website": "https://curity.io",
+  "documentationUrl": "https://curity.io/docs/",
   "github": "https://github.com/curityio",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "Sweden",
   "vendor": {
     "name": "Curity",
@@ -47,6 +50,13 @@
         "price": "Custom (annual subscription)"
       }
     ]
+  },
+  "hosting": {
+    "selfHostRequirements": {
+      "runtime": "Java",
+      "database": ["PostgreSQL", "MySQL", "Oracle Database", "Microsoft SQL Server"],
+      "container": ["Docker", "Kubernetes", "Helm"]
+    }
   },
   "lastVerified": "2026-09-21",
   "features": [
@@ -909,6 +919,11 @@
         "status": "supported",
         "links": ["https://curity.io/resources/learn/jwt-secured-authorization-response-mode/"]
       }
-    ]
+    ],
+    "certified": {
+      "profile": "Basic, Implicit, Hybrid, Config, Dynamic, Form Post, 3rd Party",
+      "version": "4.3.0",
+      "certificationUrl": "https://openid.net/wordpress-content/uploads/2019/09/Curity-Curity_Identity_Server-OP-Basic-20-Sept-2019.tar"
+    }
   }
 }

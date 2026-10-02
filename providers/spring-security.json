@@ -3,15 +3,19 @@
   "name": "Spring Security",
   "abstract": "Open-source authentication and authorization framework for Java applications built on Spring. Embedded directly in your application and backed by your own user store, with form login, passkeys, one-time token (magic link) login, multi-factor authentication through factor authorities, OAuth 2.0 / OpenID Connect login and resource server, and SAML 2.0 service provider support. Spring Authorization Server adds an OAuth 2.1 and OpenID Connect 1.0 provider. Core differentiator: it is a library, not a hosted service, so there is no vendor server or per-user pricing. It ships no user management, admin console or hosted UI, and everything from user storage to MFA enrollment is assembled by the application. Commercial support is available through Tanzu Spring.",
   "identifier": "spring-security",
+  "aliases": ["Acegi Security"],
   "type": "library",
   "languages": ["Java", "Kotlin"],
   "status": "active",
   "deploymentModels": ["embedded"],
   "targetAudience": ["developer"],
+  "tags": ["java", "spring-boot", "embedded-library", "servlet"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/spring-security.svg"
   },
   "website": "https://spring.io/projects/spring-security",
+  "documentationUrl": "https://docs.spring.io/spring-security/reference/",
+  "changelogUrl": "https://github.com/spring-projects/spring-security/releases",
   "github": "https://github.com/spring-projects/spring-security",
   "repositories": [
     {
@@ -31,10 +35,12 @@
     "isOpenSource": true,
     "model": "fully_open"
   },
+  "governance": "vendor_led",
   "vendor": {
     "name": "Broadcom",
     "url": "https://www.broadcom.com"
   },
+  "nationality": "USA",
   "headquarters": {
     "country": "US",
     "city": "Palo Alto"
@@ -63,6 +69,7 @@
       "runtime": "Java 17+"
     }
   },
+  "supportChannels": ["community"],
   "lastVerified": "2026-10-02",
   "features": [
     {

@@ -6,6 +6,7 @@
   "status": "active",
   "deploymentModels": ["saas"],
   "targetAudience": ["b2c", "ciam"],
+  "tags": ["european", "digital-identity", "customer-identity", "wallet"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/purse-identity.png"
   },
@@ -14,6 +15,7 @@
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "France",
   "vendor": {
     "name": "Purse",

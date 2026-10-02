@@ -6,15 +6,21 @@
   "status": "active",
   "deploymentModels": ["saas"],
   "targetAudience": ["b2c", "b2b", "developer"],
+  "tags": ["saas", "feature-flags", "billing", "developer-platform"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/kinde.svg"
   },
   "website": "https://kinde.com",
+  "documentationUrl": "https://docs.kinde.com",
+  "changelogUrl": "https://updates.kinde.com",
+  "statusPageUrl": "https://status.kinde.com",
+  "communityUrl": "https://kinde.com/community/",
   "github": "https://github.com/kinde-oss",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "Australia",
   "vendor": {
     "name": "Kinde",

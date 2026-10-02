@@ -6,15 +6,20 @@
   "status": "active",
   "deploymentModels": ["saas"],
   "targetAudience": ["b2b", "developer"],
+  "tags": ["enterprise-ready", "sso-api", "directory-sync", "b2b-saas"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/workos.svg"
   },
   "website": "https://workos.com",
+  "documentationUrl": "https://workos.com/docs",
+  "changelogUrl": "https://workos.com/changelog",
+  "statusPageUrl": "https://status.workos.com",
   "github": "https://github.com/workos",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "USA",
   "vendor": {
     "name": "WorkOS",
@@ -73,6 +78,16 @@
     "url": "https://workos.com/pricing",
     "scope": "Enterprise plan"
   },
+  "migrationTools": [
+    {
+      "from": "Auth0",
+      "url": "https://workos.com/docs/migrate/auth0"
+    },
+    {
+      "from": "Firebase",
+      "url": "https://workos.com/docs/migrate/firebase"
+    }
+  ],
   "lastVerified": "2026-09-21",
   "sdks": [
     {
