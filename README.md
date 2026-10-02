@@ -50,8 +50,7 @@ Connect protocol support.
   - `lastVerified` — optional date (`YYYY-MM-DD`) the file was last checked.
   - `nationality` — country of the vendor. Left out for community projects without a company behind them
     (Authelia, Better Auth).
-  - `features` — the IAM / CIAM feature list. Every provider lists the 110 catalog features, except Ory Hydra, which is
-    an OAuth 2.0 / OIDC server only. Auth0 also carries `rules_deprecated` and `hooks_deprecated`, which are not in the catalog.
+  - `features` — the IAM / CIAM feature list. Every provider lists the 110 catalog features. Auth0 also carries `rules_deprecated` and `hooks_deprecated`, which are not in the catalog.
   - `oidc.features` — the OpenID Connect feature list, kept in its own category.
 - `definitions/`
   - `iam-categories.json`, `oidc-categories.json` — ordered category definitions

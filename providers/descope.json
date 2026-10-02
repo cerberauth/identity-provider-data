@@ -771,7 +771,8 @@
       },
       {
         "identifier": "client_credentials_grant",
-        "status": "unknown"
+        "status": "supported",
+        "description": "Inbound Apps and OIDC federated apps."
       },
       {
         "identifier": "implicit_grant",
@@ -779,19 +780,23 @@
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
-        "status": "unknown"
+        "status": "supported",
+        "description": "RFC 8693, gated by policies on Inbound Apps."
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
-        "status": "unknown"
+        "status": "supported",
+        "description": "Inbound Apps, confidential clients only. Off by default."
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
-        "status": "unknown"
+        "status": "supported",
+        "description": "Documented for OIDC federated apps."
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        "status": "unknown"
+        "status": "supported",
+        "description": "Inbound Apps, confidential clients only. Off by default."
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
@@ -803,7 +808,8 @@
       },
       {
         "identifier": "rp_initiated_logout",
-        "status": "unknown"
+        "status": "supported",
+        "description": "The /oauth2/v1/logout endpoint of OIDC federated apps."
       },
       {
         "identifier": "pkce_extension",
@@ -835,11 +841,12 @@
       },
       {
         "identifier": "token_revocation_endpoint",
-        "status": "unknown"
+        "status": "supported"
       },
       {
         "identifier": "token_introspection_endpoint",
-        "status": "unknown"
+        "status": "supported",
+        "description": "Documented for OIDC federated apps."
       },
       {
         "identifier": "device_authorization_endpoint",
@@ -855,7 +862,8 @@
       },
       {
         "identifier": "none_prompt",
-        "status": "unknown"
+        "status": "supported",
+        "description": "Silent authentication while the user has an active Descope session."
       },
       {
         "identifier": "login_prompt",
@@ -875,15 +883,16 @@
       },
       {
         "identifier": "none_token_endpoint_auth",
-        "status": "unknown"
+        "status": "supported",
+        "description": "Public clients using PKCE."
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
-        "status": "unknown"
+        "status": "supported"
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
-        "status": "unknown"
+        "status": "supported"
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
@@ -899,7 +908,8 @@
       },
       {
         "identifier": "dynamic_client_registration",
-        "status": "unknown"
+        "status": "supported",
+        "description": "Through MCP Server configuration. Inbound Apps no longer configure it directly."
       },
       {
         "identifier": "dynamic_client_registration_management",

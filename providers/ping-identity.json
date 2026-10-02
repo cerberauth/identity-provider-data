@@ -56,6 +56,13 @@
       }
     ]
   },
+  "hosting": {
+    "selfHostRequirements": {
+      "runtime": "Java 17 or 21 (PingFederate)",
+      "database": ["PostgreSQL", "Oracle Database", "Microsoft SQL Server", "MySQL"],
+      "container": ["Docker", "Kubernetes", "Helm"]
+    }
+  },
   "sla": {
     "uptimePercent": 99.99,
     "url": "https://www.pingidentity.com/en/support/faq.html",

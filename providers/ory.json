@@ -7,7 +7,7 @@
   "status": "active",
   "deploymentModels": ["saas", "self_hosted"],
   "targetAudience": ["ciam", "developer"],
-  "tags": ["open-source-saas", "headless", "cloud-native", "zero-trust"],
+  "tags": ["open-source-saas", "oauth-server", "headless", "cloud-native", "zero-trust"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/ory.svg"
   },
@@ -355,7 +355,7 @@
       "identifier": "azure_ad_integration",
       "status": "supported",
       "description": "Microsoft Entra ID via OIDC social login provider.",
-      "links": ["https://www.ory.com/docs/kratos/social-signin/azure"]
+      "links": ["https://www.ory.com/docs/kratos/social-signin/microsoft"]
     },
     {
       "identifier": "bulk_user_import",
@@ -675,7 +675,7 @@
       "identifier": "per_org_mfa_policy",
       "status": "partial",
       "description": "In Ory Network, MFA policies are defined at the project level. Per-organization MFA policy enforcement in B2B scenarios requires project segregation or custom webhook checks.",
-      "links": ["https://www.ory.com/docs/kratos/organizations/manage-organizations"]
+      "links": ["https://www.ory.com/docs/kratos/organizations"]
     },
     {
       "identifier": "hosted_login_page",
@@ -821,8 +821,8 @@
     {
       "identifier": "agentic_identity",
       "status": "partial",
-      "description": "Ory positions for agentic AI identity. OAuth2 M2M via Ory Hydra for agent authentication.",
-      "links": ["https://www.ory.com/docs/hydra/"]
+      "description": "Ory positions for agentic AI identity. OAuth2 M2M via Ory Hydra for agent authentication, device authorization grant for agentic authorization, and RFC 8693 token exchange on Ory Network and Ory Enterprise License.",
+      "links": ["https://www.ory.com/hydra", "https://github.com/ory/hydra/releases/tag/v25.4.0"]
     },
     {
       "identifier": "pq_hybrid_key_exchange",
@@ -856,8 +856,8 @@
       "identifier": "pq_mtls_certificates",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "Ory Hydra supports mTLS client authentication using standard X.509 RSA/ECDSA certificates. Post-quantum or hybrid certificates are not supported.",
-      "links": ["https://www.ory.com/docs/hydra/guides/mutual-tls"]
+      "description": "Ory Hydra does not support mTLS client authentication or certificate-bound access tokens (RFC 8705), so post-quantum or hybrid certificates do not apply. mTLS can only be terminated at a proxy in front of Hydra.",
+      "links": ["https://github.com/ory/hydra/discussions/2529", "https://github.com/ory/fosite/issues/661"]
     },
     {
       "identifier": "pq_stateful_hash_signatures",
@@ -902,7 +902,9 @@
       },
       {
         "identifier": "password_grant",
-        "status": "not_supported"
+        "status": "partial",
+        "description": "Resource owner password credentials grant is available on Ory Network and Ory Enterprise License, not in the open-source edition.",
+        "links": ["https://www.ory.com/hydra"]
       },
       {
         "identifier": "refresh_token_grant",
@@ -914,7 +916,9 @@
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
-        "status": "not_supported"
+        "status": "partial",
+        "description": "RFC 8693 token exchange is available on Ory Network and Ory Enterprise License, not in the open-source edition.",
+        "links": ["https://www.ory.com/hydra"]
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
@@ -975,7 +979,7 @@
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
@@ -1029,7 +1033,8 @@
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "unknown"
+        "status": "supported",
+        "description": "RFC 7592 management endpoints, disabled by default."
       },
       {
         "identifier": "refresh_token_rotation",
@@ -1049,7 +1054,7 @@
       },
       {
         "identifier": "dpop",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "fapi_1_0_baseline",
@@ -1073,7 +1078,7 @@
       },
       {
         "identifier": "jarm",
-        "status": "unknown"
+        "status": "not_supported"
       }
     ]
   }

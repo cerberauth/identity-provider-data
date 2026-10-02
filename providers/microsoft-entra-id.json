@@ -59,6 +59,11 @@
   "hosting": {
     "regions": ["US", "EU", "AU", "JP", "CA", "IN", "BR", "APAC"]
   },
+  "sla": {
+    "uptimePercent": 99.99,
+    "url": "https://techcommunity.microsoft.com/blog/microsoft-entra-blog/99-99-uptime-for-azure-active-directory/1999628",
+    "scope": "Entra ID paid editions"
+  },
   "lastVerified": "2026-09-21",
   "sdks": [
     {

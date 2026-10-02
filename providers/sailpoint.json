@@ -48,7 +48,11 @@
     ]
   },
   "hosting": {
-    "regions": ["US", "EU", "GB"]
+    "regions": ["US", "EU", "GB"],
+    "selfHostRequirements": {
+      "runtime": "Java 11 or 17 on Tomcat, WebLogic, JBoss or WebSphere Liberty (IdentityIQ)",
+      "database": ["PostgreSQL", "MySQL", "Microsoft SQL Server", "Oracle Database", "IBM Db2"]
+    }
   },
   "lastVerified": "2026-09-21",
   "sdks": [

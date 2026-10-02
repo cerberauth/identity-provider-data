@@ -961,7 +961,8 @@
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
-        "status": "unknown"
+        "status": "not_supported",
+        "description": "SuperTokens documents the device code grant as not supported natively."
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
@@ -977,7 +978,8 @@
       },
       {
         "identifier": "rp_initiated_logout",
-        "status": "unknown"
+        "status": "supported",
+        "description": "Handled by the OAuth2 provider logout API."
       },
       {
         "identifier": "pkce_extension",
@@ -1069,19 +1071,21 @@
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "dynamic_client_registration",
-        "status": "unknown"
+        "status": "not_supported",
+        "description": "Clients are created through the Core admin API."
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "refresh_token_rotation",
-        "status": "unknown"
+        "status": "supported",
+        "description": "Enabled per client."
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
@@ -1089,7 +1093,7 @@
       },
       {
         "identifier": "dpop",
-        "status": "unknown"
+        "status": "not_supported"
       },
       {
         "identifier": "fapi_1_0_baseline",
@@ -1109,7 +1113,7 @@
       },
       {
         "identifier": "jarm",
-        "status": "unknown"
+        "status": "not_supported"
       }
     ]
   }
