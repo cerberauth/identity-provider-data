@@ -3,13 +3,18 @@
   "name": "Ory Hydra",
   "abstract": "Ory Hydra is a cloud-native OAuth 2.0 and OpenID Connect server that secures APIs, microservices, and websites with low-latency token validation and revocation.",
   "identifier": "ory-hydra",
+  "aliases": ["ORY Hydra"],
   "status": "active",
   "deploymentModels": ["saas", "self_hosted"],
   "targetAudience": ["developer"],
+  "tags": ["oauth-server", "headless", "cloud-native", "go"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/ory.svg"
   },
   "website": "https://www.ory.sh/hydra",
+  "documentationUrl": "https://www.ory.sh/docs/hydra",
+  "changelogUrl": "https://github.com/ory/hydra/releases",
+  "communityUrl": "https://slack.ory.sh",
   "github": "https://github.com/ory/hydra",
   "repositories": [
     {
@@ -29,12 +34,28 @@
     "isOpenSource": true,
     "model": "open_core"
   },
+  "governance": "vendor_led",
   "nationality": "Germany",
   "vendor": {
     "name": "Ory",
     "url": "https://www.ory.com"
   },
   "foundedYear": 2015,
+  "pricing": {
+    "hasFreeTier": true,
+    "freeTierLimit": "Unlimited (self-hosted, open source)",
+    "pricingModel": "open-source",
+    "pricingUrl": "https://www.ory.com/pricing",
+    "hasEnterprisePlan": false,
+    "contactSalesRequired": false,
+    "plans": [
+      {
+        "name": "Open Source (self-hosted)",
+        "price": "Free (Apache 2.0)",
+        "amount": 0
+      }
+    ]
+  },
   "hosting": {
     "selfHostRequirements": {
       "runtime": "Go",
@@ -42,6 +63,7 @@
       "container": ["Docker", "Kubernetes", "Helm"]
     }
   },
+  "supportChannels": ["slack", "community"],
   "lastVerified": "2026-09-21",
   "features": [],
   "oidc": {

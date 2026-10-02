@@ -6,14 +6,20 @@
   "status": "active",
   "deploymentModels": ["saas"],
   "targetAudience": ["workforce", "ciam"],
+  "tags": ["saas", "workforce-identity", "enterprise-sso", "lifecycle-management"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/okta.svg"
   },
   "website": "https://www.okta.com",
+  "documentationUrl": "https://developer.okta.com/docs/",
+  "changelogUrl": "https://developer.okta.com/docs/release-notes/",
+  "statusPageUrl": "https://status.okta.com",
+  "communityUrl": "https://devforum.okta.com",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "USA",
   "vendor": {
     "name": "Okta",
@@ -58,6 +64,7 @@
   "hosting": {
     "regions": ["US", "EU", "CA", "AU"]
   },
+  "supportChannels": ["email", "chat", "phone", "community"],
   "lastVerified": "2026-09-21",
   "sdks": [
     {

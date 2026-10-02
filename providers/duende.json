@@ -3,13 +3,18 @@
   "name": "Duende IdentityServer",
   "abstract": "Proprietary, self-hosted OpenID Connect/OAuth 2.1 and SAML 2.0 framework for ASP.NET Core, from Duende Software (USA), the commercial successor to IdentityServer4. Primarily a developer-first token service and authorization server rather than an out-of-the-box CIAM product: authentication UI, user store, MFA, and branding are built as part of your own ASP.NET Core application, using either the optional Duende User Management add-on or a custom store. FAPI 2.0 certified conformance. Edition-based subscription licensing (Lite, Standard, Advanced, Custom); free for development/testing and for qualifying open-source/small-company use under Community Edition.",
   "identifier": "duende",
+  "aliases": ["IdentityServer"],
   "status": "active",
   "deploymentModels": ["self_hosted"],
   "targetAudience": ["developer"],
+  "tags": ["dotnet", "aspnet-core", "oauth-server", "embeddable"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/duende.svg"
   },
   "website": "https://duendesoftware.com",
+  "documentationUrl": "https://docs.duendesoftware.com/identityserver/",
+  "changelogUrl": "https://github.com/DuendeSoftware/products/releases",
+  "communityUrl": "https://github.com/DuendeSoftware/community/discussions",
   "github": "https://github.com/DuendeSoftware",
   "repositories": [
     {
@@ -28,6 +33,7 @@
     "isOpenSource": false,
     "model": "source_available"
   },
+  "governance": "vendor_led",
   "nationality": "USA",
   "vendor": {
     "name": "Duende Software",
@@ -913,6 +919,11 @@
         "status": "not_supported",
         "description": "JWT-secured authorization requests (JAR) are supported, but JWT-secured authorization responses (JARM) are not documented as supported."
       }
-    ]
+    ],
+    "certified": {
+      "profile": "Basic, Implicit, Hybrid, Config, Form Post",
+      "version": "7",
+      "certificationUrl": "https://www.certification.openid.net/plan-detail.html?plan=cuD1a1E1xckHB&public=true"
+    }
   }
 }

@@ -6,6 +6,7 @@
   "status": "active",
   "deploymentModels": ["saas", "self_hosted"],
   "targetAudience": ["workforce"],
+  "tags": ["iam-suite", "workforce-identity", "enterprise-sso", "european"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/evidian.svg"
   },
@@ -14,6 +15,7 @@
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "France",
   "vendor": {
     "name": "Evidian",

@@ -8,10 +8,13 @@
   "status": "active",
   "deploymentModels": ["embedded"],
   "targetAudience": ["b2c", "b2b", "developer"],
+  "tags": ["typescript", "framework-agnostic", "plugins", "self-hosted"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/better-auth.svg"
   },
   "website": "https://better-auth.com",
+  "documentationUrl": "https://www.better-auth.com/docs",
+  "communityUrl": "https://discord.gg/better-auth",
   "github": "https://github.com/better-auth/better-auth",
   "repositories": [
     {
@@ -31,6 +34,7 @@
     "isOpenSource": true,
     "model": "open_core"
   },
+  "governance": "vendor_led",
   "vendor": {
     "name": "Better Auth",
     "url": "https://better-auth.com"
@@ -92,6 +96,31 @@
       }
     ]
   },
+  "hosting": {
+    "selfHostRequirements": {
+      "runtime": "Node.js, Bun or Deno",
+      "database": ["PostgreSQL", "MySQL", "SQLite", "Microsoft SQL Server", "MongoDB"]
+    }
+  },
+  "supportChannels": ["community"],
+  "migrationTools": [
+    {
+      "from": "Auth0",
+      "url": "https://www.better-auth.com/docs/guides/auth0-migration-guide"
+    },
+    {
+      "from": "Clerk",
+      "url": "https://www.better-auth.com/docs/guides/clerk-migration-guide"
+    },
+    {
+      "from": "Supabase",
+      "url": "https://www.better-auth.com/docs/guides/supabase-migration-guide"
+    },
+    {
+      "from": "NextAuth.js",
+      "url": "https://www.better-auth.com/docs/guides/next-auth-migration-guide"
+    }
+  ],
   "lastVerified": "2026-10-02",
   "features": [
     {
@@ -563,7 +592,8 @@
       "description": "Log drain is part of Better Auth Infrastructure Enterprise and listed as a $25/month add-on.",
       "links": ["https://better-auth.com/pricing"],
       "plans": ["Infrastructure Enterprise"],
-      "tier": "enterprise"
+      "tier": "enterprise",
+      "addOnCost": "$25/month"
     },
     {
       "identifier": "security_center",
@@ -775,7 +805,8 @@
       "status": "supported",
       "category": "developer_integration",
       "description": "Authentication is served from the application's own domain. Better Auth Infrastructure additionally offers a custom dashboard domain as a $25/month add-on.",
-      "links": ["https://better-auth.com/pricing"]
+      "links": ["https://better-auth.com/pricing"],
+      "addOnCost": "$25/month"
     },
     {
       "identifier": "deploy_cli",

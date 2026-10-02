@@ -6,15 +6,19 @@
   "status": "active",
   "deploymentModels": ["saas"],
   "targetAudience": ["b2b", "b2c", "developer"],
+  "tags": ["b2b-saas", "self-service-admin", "embedded-ui", "multi-tenancy"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/frontegg.svg"
   },
   "website": "https://frontegg.com",
+  "documentationUrl": "https://developers.frontegg.com",
+  "statusPageUrl": "https://status.frontegg.com",
   "github": "https://github.com/frontegg",
   "license": "Proprietary",
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "Israel",
   "vendor": {
     "name": "Frontegg",

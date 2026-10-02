@@ -26,6 +26,16 @@
       "pattern": "^[a-z0-9-]+$",
       "minLength": 1
     },
+    "aliases": {
+      "type": "array",
+      "description": "Former or alternate names of the product (e.g. \"Red Hat SSO\" for Keycloak, \"Azure AD B2C\" for Entra External ID).",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
     "type": {
       "type": "string",
       "description": "How the provider is delivered. \"platform\" is a standalone identity service or server (hosted or self-hosted) that applications integrate with over protocols such as OIDC or SAML. \"library\" is embedded in the host application's own codebase, runtime and database. Defaults to \"platform\" when omitted.",
@@ -66,6 +76,16 @@
       "minItems": 1,
       "uniqueItems": true
     },
+    "tags": {
+      "type": "array",
+      "description": "Free-form lowercase search keywords. Capabilities that are already tracked as features are not repeated here.",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
     "icon": {
       "type": "object",
       "description": "Icon information for the identity provider.",
@@ -83,6 +103,26 @@
       "type": "string",
       "format": "uri",
       "description": "Official website URL of the provider."
+    },
+    "documentationUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Entry point of the product documentation."
+    },
+    "changelogUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Release notes or changelog."
+    },
+    "statusPageUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Public status page of the hosted offering."
+    },
+    "communityUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Community forum, chat server or discussion board."
     },
     "github": {
       "type": "string",
@@ -187,6 +227,11 @@
         }
       ],
       "additionalProperties": false
+    },
+    "governance": {
+      "type": "string",
+      "description": "Who steers the project. \"vendor_led\" is decided by the vendor that sells it, \"foundation\" is hosted by a neutral foundation, \"community\" is run by independent maintainers without a commercial owner.",
+      "enum": ["vendor_led", "foundation", "community"]
     },
     "nationality": {
       "type": "string",
@@ -293,6 +338,16 @@
           "type": "string",
           "description": "ISO 4217 currency code of the amounts in the plans (e.g. USD, EUR).",
           "pattern": "^[A-Z]{3}$"
+        },
+        "pricingLastVerified": {
+          "type": "string",
+          "format": "date",
+          "description": "Date (YYYY-MM-DD) on which the prices were last checked against the pricing page. Set it only when the pricing page was actually rechecked; lastVerified covers the rest of the file."
+        },
+        "trialDays": {
+          "type": "integer",
+          "description": "Length in days of the free trial of the paid plans. Omitted when there is no time-limited trial.",
+          "minimum": 1
         },
         "plans": {
           "type": "array",
@@ -427,6 +482,55 @@
       "required": ["uptimePercent", "url"],
       "additionalProperties": false
     },
+    "supportChannels": {
+      "type": "array",
+      "description": "Ways to get support. Only channels offered to at least one plan are listed. \"community\" covers public forums, discussions and Discord, \"slack\" is a dedicated Slack workspace or shared channel.",
+      "items": {
+        "type": "string",
+        "enum": ["email", "chat", "phone", "community", "slack"]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "userLimits": {
+      "type": "object",
+      "description": "Hard limits of the product. Omitted when there is none.",
+      "properties": {
+        "maxUsers": {
+          "type": "integer",
+          "description": "Maximum number of users per tenant or installation.",
+          "minimum": 1
+        },
+        "maxTenants": {
+          "type": "integer",
+          "description": "Maximum number of tenants, organizations or user pools.",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "migrationTools": {
+      "type": "array",
+      "description": "Guides or tools for importing users from another provider.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "description": "Name of the provider users are imported from.",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Guide or tool page."
+          }
+        },
+        "required": ["from", "url"],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
     "lastVerified": {
       "type": "string",
       "format": "date",
@@ -525,6 +629,11 @@
             "type": "string",
             "description": "Release stage of the feature. Defaults to \"ga\" when omitted.",
             "enum": ["ga", "beta", "preview", "experimental"]
+          },
+          "addOnCost": {
+            "type": "string",
+            "description": "Price of the feature when it is a paid add-on outside the plans (e.g. \"$25/month\").",
+            "minLength": 1
           }
         },
         "required": ["identifier", "status"],
@@ -577,11 +686,52 @@
                 "type": "string",
                 "description": "Release stage of the feature. Defaults to \"ga\" when omitted.",
                 "enum": ["ga", "beta", "preview", "experimental"]
+              },
+              "addOnCost": {
+                "type": "string",
+                "description": "Price of the feature when it is a paid add-on outside the plans (e.g. \"$25/month\").",
+                "minLength": 1
+              },
+              "values": {
+                "type": "array",
+                "description": "Supported options for this feature (e.g. signing algorithms).",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
               }
             },
             "required": ["identifier", "status"],
             "additionalProperties": false
           }
+        },
+        "discoveryUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "OpenID Connect discovery document of the hosted offering, when it is a fixed public URL. Omitted when the URL depends on a tenant or a self-hosted domain."
+        },
+        "certified": {
+          "type": "object",
+          "description": "OpenID Foundation certification of the product as an OpenID Provider.",
+          "properties": {
+            "profile": {
+              "type": "string",
+              "description": "Certified OP profiles, as listed by the OpenID Foundation (e.g. \"Basic, Implicit, Hybrid, Config\").",
+              "minLength": 1
+            },
+            "version": {
+              "type": "string",
+              "description": "Certified product version.",
+              "minLength": 1
+            },
+            "certificationUrl": {
+              "type": "string",
+              "format": "uri",
+              "description": "Certification page or published test results."
+            }
+          },
+          "required": ["profile", "certificationUrl"],
+          "additionalProperties": false
         }
       },
       "required": ["features"],

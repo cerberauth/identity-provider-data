@@ -6,6 +6,7 @@
   "status": "active",
   "deploymentModels": ["saas"],
   "targetAudience": ["workforce", "ciam"],
+  "tags": ["european", "digital-identity", "customer-identity", "consent"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/memority.svg"
   },
@@ -14,6 +15,7 @@
   "openSource": {
     "isOpenSource": false
   },
+  "governance": "vendor_led",
   "nationality": "France",
   "vendor": {
     "name": "Memority",

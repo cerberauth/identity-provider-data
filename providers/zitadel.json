@@ -6,10 +6,14 @@
   "status": "active",
   "deploymentModels": ["saas", "self_hosted"],
   "targetAudience": ["b2c", "b2b", "developer"],
+  "tags": ["self-hosted", "multi-tenancy", "event-sourcing", "go"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/zitadel.svg"
   },
   "website": "https://zitadel.com",
+  "documentationUrl": "https://zitadel.com/docs",
+  "statusPageUrl": "https://status.zitadel.com",
+  "communityUrl": "https://zitadel.com/chat",
   "github": "https://github.com/zitadel/zitadel",
   "repositories": [
     {
@@ -39,6 +43,7 @@
     "isOpenSource": true,
     "model": "fully_open"
   },
+  "governance": "vendor_led",
   "nationality": "Switzerland",
   "vendor": {
     "name": "ZITADEL",
@@ -88,6 +93,21 @@
       "container": ["Docker", "Kubernetes", "Helm"]
     }
   },
+  "supportChannels": ["email", "community"],
+  "migrationTools": [
+    {
+      "from": "Auth0",
+      "url": "https://zitadel.com/docs/guides/migrate/sources/auth0"
+    },
+    {
+      "from": "Keycloak",
+      "url": "https://zitadel.com/docs/guides/migrate/sources/keycloak"
+    },
+    {
+      "from": "Firebase",
+      "url": "https://zitadel.com/docs/guides/migrate/sources/firebase"
+    }
+  ],
   "lastVerified": "2026-09-21",
   "sdks": [
     {
@@ -952,6 +972,11 @@
         "identifier": "jarm",
         "status": "not_supported"
       }
-    ]
+    ],
+    "certified": {
+      "profile": "Basic",
+      "version": "1.53.1",
+      "certificationUrl": "https://www.certification.openid.net/plan-detail.html?public=true&plan=w3ddtJcy0tpHL"
+    }
   }
 }
