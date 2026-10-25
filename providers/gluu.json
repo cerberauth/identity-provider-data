@@ -113,8 +113,7 @@
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
-      "description": "Inbound identity from Google, Facebook, Apple, and other providers historically via the Passport.js module; configurable today via Agama or custom interception scripts.",
-      "links": ["https://docs.jans.io/v1.1.4/admin/recipes/social-login/"]
+      "description": "Inbound identity from Google, Facebook, Apple, and other providers historically via the Passport.js module; configurable today via Agama or custom interception scripts."
     },
     {
       "identifier": "passkey_authentication",
@@ -310,8 +309,7 @@
     {
       "identifier": "jit_provisioning",
       "status": "supported",
-      "description": "Just-in-time user creation on first federated (social/SAML/OIDC) login via interception scripts or Agama flows.",
-      "links": ["https://docs.jans.io/v1.1.4/admin/recipes/social-login/"]
+      "description": "Just-in-time user creation on first federated (social/SAML/OIDC) login via interception scripts or Agama flows."
     },
     {
       "identifier": "lazy_migration",
@@ -887,12 +885,12 @@
       {
         "identifier": "dynamic_client_registration",
         "status": "supported",
-        "links": ["https://docs.jans.io/v1.7.0/janssen-server/auth-server/endpoints/client-registration/"]
+        "links": ["https://docs.jans.io/stable/janssen-server/auth-server/endpoints/client-registration/"]
       },
       {
         "identifier": "dynamic_client_registration_management",
         "status": "supported",
-        "links": ["https://docs.jans.io/v1.7.0/janssen-server/auth-server/endpoints/client-registration/"]
+        "links": ["https://docs.jans.io/stable/janssen-server/auth-server/endpoints/client-registration/"]
       },
       {
         "identifier": "refresh_token_rotation",

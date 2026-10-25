@@ -138,7 +138,7 @@
       "identifier": "username_and_password_authentication",
       "status": "supported",
       "description": "Email-and-password authentication with configurable strength policy (predefined Easy/Medium levels or custom rules for length, casing, digits, special characters), password history, and expiration settings.",
-      "links": ["https://developers.frontegg.com/guides/authentication/credentials/passwords/overview"]
+      "links": ["https://developers.frontegg.com/ciam/guides/authentication/credentials/passwords/overview"]
     },
     {
       "identifier": "social_sign_in_authentication",
@@ -156,7 +156,7 @@
       "identifier": "email_passwordless_authentication",
       "status": "supported",
       "description": "Magic links and email-based magic codes (OTP) for passwordless sign-in. Default link/code expiration is 5 minutes, configurable between 1 minute and 1 hour; single-use tokens.",
-      "links": ["https://developers.frontegg.com/guides/authentication/credentials/passwordless"]
+      "links": ["https://developers.frontegg.com/ciam/guides/authentication/credentials/passwordless"]
     },
     {
       "identifier": "phone_passwordless_authentication",
@@ -168,7 +168,7 @@
       "identifier": "magic_link_authentication",
       "status": "supported",
       "description": "Clickable one-time login links delivered by email; user enters their email, receives a link, and is logged in on click. Customizable email templates.",
-      "links": ["https://developers.frontegg.com/guides/authentication/credentials/passwordless"]
+      "links": ["https://developers.frontegg.com/ciam/guides/authentication/credentials/passwordless"]
     },
     {
       "identifier": "anonymous_authentication",
@@ -257,7 +257,7 @@
       "identifier": "machine_to_machine",
       "status": "supported",
       "description": "Client Credentials-based M2M tokens for user-context and tenant-context service-to-service authentication, managed via Client ID/API key pairs.",
-      "links": ["https://developers.frontegg.com/guides/authentication/m2m/overview"]
+      "links": ["https://developers.frontegg.com/ciam/guides/authentication/m2m/overview"]
     },
     {
       "identifier": "oidc_federation",
@@ -286,13 +286,13 @@
       "identifier": "bulk_user_import",
       "status": "supported",
       "description": "Bulk user migration via API (up to 1,000 users per batch) or CSV upload.",
-      "links": ["https://developers.frontegg.com/guides/management/migrations/api-migration"]
+      "links": ["https://developers.frontegg.com/ciam/guides/management/migrations/api-migration"]
     },
     {
       "identifier": "password_hash_import",
       "status": "supported",
       "description": "Bulk migration supports importing existing password hashes in Bcrypt, Scrypt, Firebase (Firebase Scrypt), Argon2 and PBKDF2 formats; unsupported hash types fall back to a forced password reset on next login.",
-      "links": ["https://developers.frontegg.com/guides/management/migrations/api-migration"]
+      "links": ["https://developers.frontegg.com/ciam/guides/management/migrations/api-migration"]
     },
     {
       "identifier": "bulk_user_export",
@@ -348,13 +348,13 @@
       "identifier": "self_service_profile_management",
       "status": "supported",
       "description": "An embeddable self-service Admin Portal lets end users and tenant admins manage profile, security, SSO, SCIM and members without developer effort.",
-      "links": ["https://developers.frontegg.com/guides/admin-portal/intro"]
+      "links": ["https://developers.frontegg.com/ciam/guides/admin-portal/intro"]
     },
     {
       "identifier": "account_linking",
       "status": "supported",
       "description": "Users are automatically merged when they authenticate with different login methods (e.g., password and social login) using the same email address.",
-      "links": ["https://developers.frontegg.com/guides/management/manage-users/overview"]
+      "links": ["https://developers.frontegg.com/ciam/guides/management/manage-users/overview"]
     },
     {
       "identifier": "user_blocking",
@@ -368,13 +368,13 @@
       "identifier": "user_metadata",
       "status": "supported",
       "description": "A general-purpose metadata property is available for storing custom user data.",
-      "links": ["https://developers.frontegg.com/guides/management/manage-users/overview"]
+      "links": ["https://developers.frontegg.com/ciam/guides/management/manage-users/overview"]
     },
     {
       "identifier": "app_metadata",
       "status": "supported",
       "description": "Secure user metadata (vendorMetadata) stores sensitive, internal/admin-only data on the user object, analogous to app metadata.",
-      "links": ["https://developers.frontegg.com/guides/management/manage-users/overview"]
+      "links": ["https://developers.frontegg.com/ciam/guides/management/manage-users/overview"]
     },
     {
       "identifier": "metadata_size_limits",
@@ -384,25 +384,25 @@
       "identifier": "user_search",
       "status": "supported",
       "description": "Exact and fuzzy search across user fields (name, email, metadata, ID) via the Management API.",
-      "links": ["https://developers.frontegg.com/guides/management/manage-users/overview"]
+      "links": ["https://developers.frontegg.com/ciam/guides/management/manage-users/overview"]
     },
     {
       "identifier": "rbac",
       "status": "supported",
       "description": "Role-based access control with custom roles and permissions, assignable globally or per tenant, integrated into the broader Entitlements engine.",
-      "links": ["https://developers.frontegg.com/guides/authorization/rbac/roles"]
+      "links": ["https://developers.frontegg.com/ciam/guides/authorization/rbac/roles"]
     },
     {
       "identifier": "organizations_multitenancy",
       "status": "supported",
       "description": "Accounts (tenants) are Frontegg's core multi-tenancy primitive, extended by Account Hierarchies that let a parent account nest sub-accounts with cascading roles.",
-      "links": ["https://developers.frontegg.com/guides/management/manage-accounts/hierarchies"]
+      "links": ["https://developers.frontegg.com/ciam/guides/management/manage-accounts/hierarchies"]
     },
     {
       "identifier": "password_strength_policy",
       "status": "supported",
       "description": "Predefined strength levels (Easy/Medium) or custom rules for length, casing, digits and special characters, configurable at environment or account level, plus password history and expiration.",
-      "links": ["https://developers.frontegg.com/guides/authentication/credentials/passwords/overview"]
+      "links": ["https://developers.frontegg.com/ciam/guides/authentication/credentials/passwords/overview"]
     },
     {
       "identifier": "username_restrictions",
@@ -428,7 +428,7 @@
       "identifier": "api_authorization",
       "status": "supported",
       "description": "M2M and user API tokens carry scoped roles/permissions; tenant-level Client Credentials tokens support account-wide API authorization.",
-      "links": ["https://developers.frontegg.com/guides/authentication/m2m/overview"]
+      "links": ["https://developers.frontegg.com/ciam/guides/authentication/m2m/overview"]
     },
     {
       "identifier": "soc2_type2",
@@ -535,7 +535,7 @@
       "identifier": "brute_force_protection",
       "status": "supported",
       "description": "Built-in brute-force protection with visibility into attempts via Analytics → Security Events.",
-      "links": ["https://developers.frontegg.com/guides/security-center/security-rules/brute-force"]
+      "links": ["https://developers.frontegg.com/ciam/guides/security-center/security-rules/brute-force"]
     },
     {
       "identifier": "suspicious_ip_throttling",
@@ -562,7 +562,7 @@
       "identifier": "device_fingerprinting",
       "status": "supported",
       "description": "Device fingerprinting and new-device detection are built-in security rules feeding into the Security Center risk signals.",
-      "links": ["https://developers.frontegg.com/guides/security-center/security-rules/device-fingerprint"]
+      "links": ["https://developers.frontegg.com/ciam/guides/security-center/security-rules/device-fingerprint"]
     },
     {
       "identifier": "per_org_branding",
@@ -598,19 +598,19 @@
       "identifier": "localization",
       "status": "supported",
       "description": "Built-in support for 25 languages across the login box and self-service portal, with per-language overrides via a localizations configuration object.",
-      "links": ["https://developers.frontegg.com/sdks/customizations/overview"]
+      "links": ["https://developers.frontegg.com/ciam/sdks/overview"]
     },
     {
       "identifier": "prebuilt_ui_components",
       "status": "supported",
       "description": "Prebuilt Login Box and Admin Portal UI components ship via official React, Angular, Vue and vanilla JS SDKs.",
-      "links": ["https://developers.frontegg.com/guides/admin-portal/intro"]
+      "links": ["https://developers.frontegg.com/ciam/guides/admin-portal/intro"]
     },
     {
       "identifier": "login_analytics",
       "status": "supported",
       "description": "Analytics dashboards including Security Events (brute force, suspicious IP, MFA activity) in the Frontegg portal.",
-      "links": ["https://developers.frontegg.com/guides/security-center/security-rules/brute-force"]
+      "links": ["https://developers.frontegg.com/ciam/guides/security-center/security-rules/brute-force"]
     },
     {
       "identifier": "sdk_coverage",
@@ -623,7 +623,7 @@
       "identifier": "management_api",
       "status": "supported",
       "description": "Comprehensive REST Management API covering users, accounts/tenants, SSO, SCIM, RBAC, entitlements, M2M tokens and audits.",
-      "links": ["https://developers.frontegg.com/api/overview"]
+      "links": ["https://developers.frontegg.com/ciam/api/overview"]
     },
     {
       "identifier": "authentication_api_rate_limits",
@@ -633,7 +633,7 @@
       "identifier": "actions_extensibility",
       "status": "supported",
       "description": "Native and fully custom webhooks let applications subscribe to authentication and lifecycle events, with per-webhook delivery logs.",
-      "links": ["https://developers.frontegg.com/guides/integrations/third-party/custom-webhooks"]
+      "links": ["https://developers.frontegg.com/ciam/guides/integrations/third-party/custom-webhooks"]
     },
     {
       "identifier": "typescript_in_actions",
@@ -789,7 +789,7 @@
       {
         "identifier": "client_credentials_grant",
         "status": "supported",
-        "links": ["https://developers.frontegg.com/guides/authentication/m2m/overview"]
+        "links": ["https://developers.frontegg.com/ciam/guides/authentication/m2m/overview"]
       },
       {
         "identifier": "password_grant",

@@ -381,7 +381,7 @@
       "identifier": "oidc_federation",
       "status": "supported",
       "description": "OIDC enterprise SSO connections per organization. Available on Pro plan and above.",
-      "links": ["https://clerk.com/docs/authentication/enterprise-connections/oidc/overview"],
+      "links": ["https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/overview"],
       "plans": ["Pro", "Business", "Enterprise"]
     },
     {
@@ -449,7 +449,6 @@
       "identifier": "inbound_scim_provisioning",
       "status": "partial",
       "description": "SCIM available as part of the B2B Auth add-on. Available on Pro plan and above.",
-      "links": ["https://clerk.com/docs/organizations/scim-introduction"],
       "plans": ["Pro", "Business", "Enterprise"]
     },
     {
@@ -628,14 +627,12 @@
       "identifier": "audit_log_retention",
       "status": "supported",
       "description": "Audit logs available on Pro plan and above.",
-      "links": ["https://clerk.com/docs/security/audit-log"],
       "plans": ["Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "audit_log_streaming",
       "status": "not_supported",
-      "description": "Audit log streaming to external SIEM or data pipelines is not supported. Audit logs are viewable in the Clerk Dashboard only.",
-      "links": ["https://clerk.com/docs/security/audit-log"]
+      "description": "Audit log streaming to external SIEM or data pipelines is not supported. Audit logs are viewable in the Clerk Dashboard only."
     },
     {
       "identifier": "security_center",
@@ -667,7 +664,7 @@
     {
       "identifier": "brute_force_protection",
       "status": "supported",
-      "links": ["https://clerk.com/docs/security/user-lockout"]
+      "links": ["https://clerk.com/docs/guides/protect/user-lockout"]
     },
     {
       "identifier": "suspicious_ip_throttling",
@@ -814,12 +811,12 @@
       "identifier": "custom_email_provider",
       "status": "partial",
       "description": "Clerk's built-in email delivery (SendGrid) can be disabled. Custom email delivery is handled by listening to the emails.created webhook and managing dispatch yourself. No native SMTP configuration.",
-      "links": ["https://clerk.com/docs/customization/email-sms-templates"]
+      "links": ["https://clerk.com/docs/guides/customizing-clerk/email-sms-templates"]
     },
     {
       "identifier": "email_templates",
       "status": "supported",
-      "links": ["https://clerk.com/docs/customization/email-sms-templates"]
+      "links": ["https://clerk.com/docs/guides/customizing-clerk/email-sms-templates"]
     },
     {
       "identifier": "custom_oidc_claims",

@@ -586,10 +586,7 @@
       "status": "partial",
       "category": "user_management",
       "description": "Combined metadata hard limits: 16 MB total, 1 MB searchable, 32 KB per Actions session. Recommended to keep individual fields under 2 KB for search performance. These overlapping limits are a common source of production surprises.",
-      "links": [
-        "https://auth0.com/docs/manage-users/user-accounts/metadata/metadata-fields-data",
-        "https://community.auth0.com/t/meaning-of-the-action-limitation-of-32kb-for-user-metadata-and-app-metadata-per-session/107007"
-      ]
+      "links": ["https://auth0.com/docs/manage-users/user-accounts/metadata/metadata-fields-data"]
     },
     {
       "identifier": "user_search",
@@ -598,7 +595,7 @@
       "description": "Lucene query syntax. Max 1,000 results returned (10 pages × 100). 2-second query timeout (returns 503 on exceed). No wildcards or ranges on metadata fields. ~72 OR terms maximum before errors. Not suitable for login flows or event-driven polling.",
       "links": [
         "https://auth0.com/docs/manage-users/user-search/user-search-query-syntax",
-        "https://dev.auth0.com/docs/manage-users/user-search/user-search-best-practices"
+        "https://auth0.com/docs/manage-users/user-search/user-search-best-practices"
       ]
     },
     {
@@ -608,7 +605,7 @@
       "description": "Supported with hard limits: 1,000 roles per tenant, 50 roles per user, 1,000 permissions per user. No built-in fine-grained ABAC. Large permission sets can cause access tokens to exceed HTTP header size limits. RBAC per organization excluded from B2B Free plan.",
       "links": [
         "https://auth0.com/docs/manage-users/access-control/rbac",
-        "https://dev.auth0.com/docs/troubleshoot/customer-support/operational-policies/entity-limit-policy"
+        "https://auth0.com/docs/troubleshoot/customer-support/operational-policies/entity-limit-policy"
       ]
     },
     {
@@ -706,7 +703,7 @@
       "category": "compliance",
       "description": "OAuth consent dialog supported for third-party application scopes. No dedicated consent management module for custom consent purposes (marketing opt-in, ToS acceptance). Custom consent must be stored in user_metadata or an external system. Auth0 Forms can handle Terms of Service acceptance flows.",
       "links": [
-        "https://auth0.com/docs/configure/applications/confidential-public-apps/user-consent-and-third-party-applications"
+        "https://auth0.com/docs/get-started/applications/third-party-applications/user-consent-and-third-party-applications"
       ]
     },
     {
@@ -780,7 +777,7 @@
       "status": "supported",
       "category": "security",
       "description": "ML-based detection with Auth Challenge (CAPTCHA-free), reCAPTCHA, hCaptcha, and Friendly Captcha. Enhanced bot detection requires Professional plan or above. IP allowlist supports up to 100 entries.",
-      "links": ["https://auth0.com/docs/anomaly-detection/bot-detection"]
+      "links": ["https://auth0.com/docs/secure/attack-protection/bot-detection"]
     },
     {
       "identifier": "brute_force_protection",
@@ -912,7 +909,7 @@
       "description": "Custom domains supported on all plans (Free requires credit card on file). Only 1 custom domain per tenant — per-organization custom domains are not supported. Auth0-managed TLS certificates on paid plans; self-managed certificates require Enterprise. Social provider dev keys do not work with custom domains.",
       "links": [
         "https://auth0.com/docs/customize/custom-domains",
-        "https://dev.auth0.com/docs/customize/custom-domains/self-managed-certificates"
+        "https://auth0.com/docs/customize/custom-domains/self-managed-certificates"
       ]
     },
     {
@@ -973,19 +970,14 @@
       "status": "supported",
       "category": "developer_integration",
       "description": "Custom claims added to access and ID tokens via Actions using api.accessToken.setCustomClaim(). Both namespaced and non-namespaced claims now supported. Up to 1,000 custom scopes per API resource server.",
-      "links": [
-        "https://auth0.com/docs/troubleshoot/product-lifecycle/deprecations-and-migrations/custom-claims-migration"
-      ]
+      "links": ["https://auth0.com/docs/troubleshoot/product-lifecycle/past-migrations/custom-claims-migration"]
     },
     {
       "identifier": "anonymous_authentication",
       "status": "not_supported",
       "category": "authentication_methods",
       "description": "Auth0 does not support anonymous/guest authentication. Users must always authenticate with a registered credential. Workarounds require custom M2M tokens or external logic.",
-      "links": [
-        "https://community.auth0.com/t/anonymous-user-flow/73792",
-        "https://community.auth0.com/t/guest-access-for-unauthenticated-user/37145"
-      ]
+      "links": ["https://community.auth0.com/t/anonymous-user-flow/73792"]
     },
     {
       "identifier": "machine_to_machine",
@@ -1034,16 +1026,13 @@
       "status": "supported",
       "category": "multi_tenancy",
       "description": "Per-organization logo, primary color, and background color via the Organizations API. Custom domain per org requires a workaround.",
-      "links": [
-        "https://auth0.com/docs/manage-users/organizations/configure-organizations/display-organization-login-page"
-      ]
+      "links": ["https://auth0.com/docs/manage-users/organizations/login-flows-for-organizations"]
     },
     {
       "identifier": "per_org_mfa_policy",
       "status": "supported",
       "category": "multi_tenancy",
       "description": "MFA policies can be enforced per organization via Actions and organization-level configuration. Enterprise plan required.",
-      "links": ["https://auth0.com/docs/manage-users/organizations/configure-organizations/use-mfa-in-organizations"],
       "plans": ["Enterprise"],
       "tier": "enterprise"
     },
@@ -1052,7 +1041,7 @@
       "status": "supported",
       "category": "branding_ux",
       "description": "Auth0's Advanced Custom UI Layer (ACUL) allows embedding the auth flow via a client-rendered React SDK. Classic embedded login was deprecated.",
-      "links": ["https://auth0.com/docs/customize/login-pages/universal-login/advanced-customization"]
+      "links": ["https://auth0.com/docs/customize/login-pages/universal-login"]
     },
     {
       "identifier": "white_label",
@@ -1067,7 +1056,7 @@
       "status": "supported",
       "category": "branding_ux",
       "description": "Universal Login supports 40+ languages via text dictionaries. Custom locale overrides supported.",
-      "links": ["https://auth0.com/docs/customize/login-pages/universal-login/customize-text"]
+      "links": ["https://auth0.com/docs/customize/login-pages/universal-login/customize-text-elements"]
     },
     {
       "identifier": "prebuilt_ui_components",
@@ -1091,7 +1080,7 @@
       "status": "supported",
       "category": "analytics",
       "description": "Dashboard with login success/failure rates, active users, and sign-up trends. Available on Professional plan and above.",
-      "links": ["https://auth0.com/docs/deploy-monitor/monitor-auth0"]
+      "links": ["https://auth0.com/docs/deploy-monitor/monitor"]
     },
     {
       "identifier": "nocode_flow_builder",
@@ -1104,20 +1093,13 @@
       "identifier": "identity_proofing",
       "status": "not_supported",
       "category": "advanced",
-      "description": "Auth0 does not offer native built-in identity document verification or biometric liveness proofing. Identity verification is supported via third-party integrations in the Auth0 Marketplace (such as Persona, Veriff, Trulioo, and IDology).",
-      "links": [
-        "https://marketplace.auth0.com/categories/identity-verification",
-        "https://auth0.com/docs/secure/identity-verification"
-      ]
+      "description": "Auth0 does not offer native built-in identity document verification or biometric liveness proofing. Identity verification is supported via third-party integrations in the Auth0 Marketplace (such as Persona, Veriff, Trulioo, and IDology)."
     },
     {
       "identifier": "decentralized_identity",
       "status": "not_supported",
       "category": "advanced",
-      "description": "Auth0 does not natively support W3C Verifiable Credentials, Decentralized Identifiers (DIDs), or decentralized wallet-based authentication flows.",
-      "links": [
-        "https://auth0.com/blog/decentralized-identity-how-it-works-and-what-it-means-for-identity-professionals/"
-      ]
+      "description": "Auth0 does not natively support W3C Verifiable Credentials, Decentralized Identifiers (DIDs), or decentralized wallet-based authentication flows."
     },
     {
       "identifier": "billing_integration",
@@ -1131,10 +1113,7 @@
       "status": "not_supported",
       "category": "compliance",
       "description": "Auth0 (the developer CIAM platform) is not FedRAMP authorized. FedRAMP High JAB authorization is held separately by Okta for Government, a dedicated workforce identity product.",
-      "links": [
-        "https://auth0.com/docs/secure/data-privacy-and-compliance",
-        "https://marketplace.fedramp.gov/products/FR1804247076"
-      ]
+      "links": ["https://auth0.com/docs/secure/data-privacy-and-compliance"]
     },
     {
       "identifier": "agentic_identity",
@@ -1178,7 +1157,7 @@
       "category": "post_quantum_cryptography",
       "description": "Auth0 supports classical encryption algorithms (AES-GCM, RSA-OAEP) for tokens and data at rest, but does not support Post-Quantum KEMs (such as ML-KEM / Kyber) or Hybrid HPKE (RFC 9180).",
       "links": [
-        "https://auth0.com/docs/secure/security-guidance/data-encryption",
+        "https://auth0.com/docs/secure/security-guidance/data-security",
         "https://auth0.com/blog/post-quantum-cryptography/"
       ]
     },

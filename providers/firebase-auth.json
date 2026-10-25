@@ -169,7 +169,7 @@
       "identifier": "totp_mfa",
       "status": "supported",
       "description": "TOTP MFA available via Firebase Identity Platform (requires upgrade from base Firebase Auth).",
-      "links": ["https://cloud.google.com/identity-platform/docs/web/mfa-totp"]
+      "links": ["https://cloud.google.com/identity-platform/docs/web/mfa"]
     },
     {
       "identifier": "hotp_mfa",
@@ -214,7 +214,7 @@
       "identifier": "adaptive_mfa",
       "status": "not_supported",
       "description": "Not supported natively. Implement via custom Blocking Functions.",
-      "links": ["https://firebase.google.com/docs/auth/admin/blocking-functions"]
+      "links": ["https://firebase.google.com/docs/auth/extend-with-blocking-functions"]
     },
     {
       "identifier": "cisco_duo_mfa",
@@ -338,13 +338,13 @@
       "identifier": "jit_provisioning",
       "status": "supported",
       "description": "Users are created automatically on first sign-in via social/SAML/OIDC providers. Blocking functions allow custom logic during this flow.",
-      "links": ["https://firebase.google.com/docs/auth/admin/blocking-functions"]
+      "links": ["https://firebase.google.com/docs/auth/extend-with-blocking-functions"]
     },
     {
       "identifier": "lazy_migration",
       "status": "partial",
       "description": "Gradual migration via blocking functions that call an existing auth system.",
-      "links": ["https://firebase.google.com/docs/auth/admin/blocking-functions"]
+      "links": ["https://firebase.google.com/docs/auth/extend-with-blocking-functions"]
     },
     {
       "identifier": "self_service_profile_management",
@@ -396,7 +396,7 @@
       "identifier": "organizations_multitenancy",
       "status": "partial",
       "description": "Multi-tenancy via separate Identity Platform tenants. Basic B2B model, no native organization abstraction.",
-      "links": ["https://cloud.google.com/identity-platform/docs/multi-tenancy-overview"]
+      "links": ["https://cloud.google.com/identity-platform/docs/multi-tenancy"]
     },
     {
       "identifier": "password_strength_policy",
@@ -414,7 +414,7 @@
       "identifier": "progressive_profiling",
       "status": "not_supported",
       "description": "No built-in progressive profiling flow. Can be implemented with custom UI and Blocking Functions.",
-      "links": ["https://firebase.google.com/docs/auth/admin/blocking-functions"]
+      "links": ["https://firebase.google.com/docs/auth/extend-with-blocking-functions"]
     },
     {
       "identifier": "abac",
@@ -521,8 +521,7 @@
     {
       "identifier": "customer_managed_keys",
       "status": "supported",
-      "description": "Customer-managed encryption keys (CMEK) available via Identity Platform on Cloud KMS.",
-      "links": ["https://cloud.google.com/identity-platform/docs/customer-managed-encryption-keys"]
+      "description": "Customer-managed encryption keys (CMEK) available via Identity Platform on Cloud KMS."
     },
     {
       "identifier": "bot_detection",
@@ -540,7 +539,7 @@
       "identifier": "suspicious_ip_throttling",
       "status": "not_supported",
       "description": "No built-in suspicious-IP throttling dashboard or policy. Implement via Blocking Functions or App Check with reCAPTCHA Enterprise.",
-      "links": ["https://firebase.google.com/docs/auth/admin/blocking-functions"]
+      "links": ["https://firebase.google.com/docs/auth/extend-with-blocking-functions"]
     },
     {
       "identifier": "breached_password_detection",
@@ -558,7 +557,7 @@
       "identifier": "tenant_acl",
       "status": "not_supported",
       "description": "No tenant-level access control lists. Per-tenant isolation is achieved via Identity Platform multi-tenancy, but fine-grained tenant ACLs are not supported natively.",
-      "links": ["https://cloud.google.com/identity-platform/docs/multi-tenancy-overview"]
+      "links": ["https://cloud.google.com/identity-platform/docs/multi-tenancy"]
     },
     {
       "identifier": "device_fingerprinting",
@@ -576,7 +575,7 @@
       "identifier": "per_org_mfa_policy",
       "status": "not_supported",
       "description": "MFA policies cannot be configured per tenant/organization in Identity Platform multi-tenancy.",
-      "links": ["https://cloud.google.com/identity-platform/docs/multi-tenancy-overview"]
+      "links": ["https://cloud.google.com/identity-platform/docs/multi-tenancy"]
     },
     {
       "identifier": "hosted_login_page",
@@ -635,7 +634,7 @@
       "identifier": "actions_extensibility",
       "status": "supported",
       "description": "Blocking functions (beforeCreate, beforeSignIn) for custom auth logic. Cloud Functions for post-event hooks.",
-      "links": ["https://firebase.google.com/docs/auth/admin/blocking-functions"]
+      "links": ["https://firebase.google.com/docs/auth/extend-with-blocking-functions"]
     },
     {
       "identifier": "typescript_in_actions",
@@ -669,7 +668,7 @@
       "identifier": "native_webhooks",
       "status": "supported",
       "description": "Blocking functions and Cloud Functions Firestore triggers act as event hooks.",
-      "links": ["https://firebase.google.com/docs/auth/admin/blocking-functions"]
+      "links": ["https://firebase.google.com/docs/auth/extend-with-blocking-functions"]
     },
     {
       "identifier": "universal_login_customization",

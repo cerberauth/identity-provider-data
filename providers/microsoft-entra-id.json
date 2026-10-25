@@ -370,7 +370,7 @@
     {
       "identifier": "rbac",
       "status": "supported",
-      "links": ["https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/custom-roles-overview"]
+      "links": ["https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/custom-overview"]
     },
     {
       "identifier": "organizations_multitenancy",
@@ -395,7 +395,7 @@
       "identifier": "progressive_profiling",
       "status": "partial",
       "description": "Progressive profiling via custom user flows.",
-      "links": ["https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-user-flow-add-attributes"]
+      "links": ["https://learn.microsoft.com/en-us/entra/external-id/customers/how-to-define-custom-attributes"]
     },
     {
       "identifier": "abac",
@@ -443,7 +443,7 @@
     {
       "identifier": "gdpr_data_export",
       "status": "supported",
-      "links": ["https://learn.microsoft.com/en-us/microsoft-365/admin/misc/gdpr-compliance"]
+      "links": ["https://learn.microsoft.com/en-us/compliance/regulatory/gdpr"]
     },
     {
       "identifier": "gdpr_right_to_erasure",
@@ -478,7 +478,7 @@
       "identifier": "audit_log_streaming",
       "status": "supported",
       "description": "Stream to Azure Monitor, Azure Event Hubs, and Azure Log Analytics.",
-      "links": ["https://learn.microsoft.com/en-us/entra/identity/monitoring-health/concept-log-monitoring"]
+      "links": ["https://learn.microsoft.com/en-us/entra/identity/monitoring-health/concept-audit-logs"]
     },
     {
       "identifier": "security_center",
@@ -647,7 +647,7 @@
       "identifier": "native_webhooks",
       "status": "partial",
       "description": "REST API connectors in user flows fire HTTP calls at specific points in the auth flow.",
-      "links": ["https://learn.microsoft.com/en-us/entra/external-id/customers/reference-user-flow-api-connectors"]
+      "links": ["https://learn.microsoft.com/en-us/entra/external-id/customers/concept-custom-extensions"]
     },
     {
       "identifier": "universal_login_customization",

@@ -319,7 +319,7 @@
       "identifier": "user_metadata",
       "status": "partial",
       "description": "Custom 'extra properties' can be bound to access tokens at issuance time, encoding user-level metadata. Authlete does not store a user profile; the customer's auth layer provides metadata at token request time.",
-      "links": ["https://authlete.webflow.io/developers/overview"]
+      "links": ["https://developers.authlete.com/get-started/introduction-to-authlete/overview"]
     },
     {
       "identifier": "app_metadata",
@@ -626,7 +626,7 @@
       "identifier": "custom_oidc_claims",
       "status": "supported",
       "description": "Custom claims injected into access tokens and ID tokens via 'extra properties' and scope attributes at token issuance time. The customer's auth server provides claim values when calling Authlete APIs.",
-      "links": ["https://authlete.webflow.io/developers/overview"]
+      "links": ["https://developers.authlete.com/get-started/introduction-to-authlete/overview"]
     },
     {
       "identifier": "nocode_flow_builder",

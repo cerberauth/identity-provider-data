@@ -247,7 +247,7 @@
       "status": "partial",
       "category": "mfa",
       "description": "Stytch has no native push notification MFA app or SDK. Push-based MFA can be achieved by configuring Cisco Duo or another push MFA provider as an upstream SAML or OIDC identity provider within Stytch's B2B SSO flow, allowing Duo to handle the push challenge before issuing a SAML assertion to Stytch. This is an integration pattern, not a built-in Stytch MFA factor.",
-      "links": ["https://duo.com/docs/sso-stytch", "https://stytch.com/docs/b2b/guides/saml/overview"]
+      "links": ["https://stytch.com/docs/b2b/guides/saml/overview"]
     },
     {
       "identifier": "adaptive_mfa",
@@ -264,7 +264,7 @@
       "status": "partial",
       "category": "mfa",
       "description": "Cisco Duo can be integrated with Stytch via SAML or OIDC federation in the B2B product, where Duo acts as the upstream identity provider and handles MFA challenges (including Duo Push) before returning a signed SAML assertion to Stytch. This is a federation integration pattern, not a native Duo API integration. Stytch does not call the Duo API directly; the user is redirected to Duo's hosted authentication page.",
-      "links": ["https://duo.com/docs/sso-stytch", "https://stytch.com/docs/b2b/guides/saml/overview"]
+      "links": ["https://stytch.com/docs/b2b/guides/saml/overview"]
     },
     {
       "identifier": "step_up_authentication",
@@ -558,22 +558,19 @@
       "identifier": "soc2_type2",
       "status": "supported",
       "category": "compliance",
-      "description": "Stytch maintains SOC 2 Type II certification covering the Security trust service criterion. Annual independent audit. SOC 2 report is available under NDA to customers on Growth and Enterprise plans.",
-      "links": ["https://stytch.com/security"]
+      "description": "Stytch maintains SOC 2 Type II certification covering the Security trust service criterion. Annual independent audit. SOC 2 report is available under NDA to customers on Growth and Enterprise plans."
     },
     {
       "identifier": "iso_27001",
       "status": "partial",
       "category": "compliance",
-      "description": "ISO 27001 certification status could not be confirmed from publicly available Stytch documentation as of mid-2025. Stytch's security page highlights SOC 2 Type II and HIPAA as primary compliance frameworks. Customers with ISO 27001 requirements should contact Stytch directly to request current certification status.",
-      "links": ["https://stytch.com/security"]
+      "description": "ISO 27001 certification status could not be confirmed from publicly available Stytch documentation as of mid-2025. Stytch's security page highlights SOC 2 Type II and HIPAA as primary compliance frameworks. Customers with ISO 27001 requirements should contact Stytch directly to request current certification status."
     },
     {
       "identifier": "hipaa_baa",
       "status": "supported",
       "category": "compliance",
       "description": "Stytch offers a HIPAA Business Associate Agreement (BAA) for customers handling protected health information. The BAA is available on Growth and Enterprise plans. Stytch's infrastructure is designed to support HIPAA-compliant deployments. Customers must request the BAA through the Stytch team.",
-      "links": ["https://stytch.com/security"],
       "plans": ["Growth", "Enterprise"]
     },
     {
@@ -587,8 +584,7 @@
       "identifier": "csa_star",
       "status": "not_supported",
       "category": "compliance",
-      "description": "CSA STAR certification is not listed among Stytch's published compliance certifications. Stytch's publicly documented compliance posture focuses on SOC 2 Type II and HIPAA.",
-      "links": ["https://stytch.com/security"]
+      "description": "CSA STAR certification is not listed among Stytch's published compliance certifications. Stytch's publicly documented compliance posture focuses on SOC 2 Type II and HIPAA."
     },
     {
       "identifier": "fedramp",
@@ -622,8 +618,7 @@
       "identifier": "region_deployment",
       "status": "not_supported",
       "category": "compliance",
-      "description": "Stytch's multi-tenant SaaS infrastructure is hosted in the United States (AWS us-east-1 primary). There is no self-service option to select an EU, APAC, or other regional deployment for data residency requirements. Enterprise customers with strict data residency requirements should discuss private deployment options with Stytch.",
-      "links": ["https://stytch.com/security"]
+      "description": "Stytch's multi-tenant SaaS infrastructure is hosted in the United States (AWS us-east-1 primary). There is no self-service option to select an EU, APAC, or other regional deployment for data residency requirements. Enterprise customers with strict data residency requirements should discuss private deployment options with Stytch."
     },
     {
       "identifier": "private_cloud_deployment",
@@ -644,7 +639,6 @@
       "status": "supported",
       "category": "security",
       "description": "Audit log streaming to external platforms (Datadog, Splunk, custom SIEM via webhooks) is supported on Enterprise plans. Events are delivered in real time or near-real time. Streaming is configured via the Stytch dashboard or API. Available on Enterprise plan.",
-      "links": ["https://stytch.com/security"],
       "plans": ["Enterprise"],
       "tier": "enterprise"
     },
@@ -659,15 +653,14 @@
       "identifier": "encryption_at_rest",
       "status": "supported",
       "category": "security",
-      "description": "All user data, credentials, and session data stored by Stytch are encrypted at rest using AES-256. Stytch's infrastructure is hosted on AWS with native AWS KMS-managed encryption for storage volumes and RDS instances.",
-      "links": ["https://stytch.com/security"]
+      "description": "All user data, credentials, and session data stored by Stytch are encrypted at rest using AES-256. Stytch's infrastructure is hosted on AWS with native AWS KMS-managed encryption for storage volumes and RDS instances."
     },
     {
       "identifier": "encryption_in_transit",
       "status": "supported",
       "category": "security",
       "description": "All API communications with Stytch require HTTPS with TLS 1.2 or higher. TLS 1.3 is supported and preferred. Stytch-issued JWTs for sessions and access tokens use RS256 (RSA-SHA256) signing. Public JWKS endpoints allow local token verification without calling back to Stytch on every request.",
-      "links": ["https://stytch.com/security", "https://stytch.com/docs/consumer/guides/sessions/jwts"]
+      "links": ["https://stytch.com/docs/consumer/guides/sessions/jwts"]
     },
     {
       "identifier": "customer_managed_keys",
@@ -688,7 +681,7 @@
       "status": "supported",
       "category": "security",
       "description": "Brute force protection is built into all Stytch authentication endpoints. Repeated failed authentication attempts from the same IP or for the same email address trigger rate limiting and lockouts. For passwords specifically, Stytch applies progressive delays and temporary lockouts after repeated failures. Email and SMS OTP codes expire (default 10 minutes) and are single-use, inherently limiting brute force surface. Available on all plans.",
-      "links": ["https://stytch.com/docs/consumer/guides/passwords/overview", "https://stytch.com/security"]
+      "links": ["https://stytch.com/docs/consumer/guides/passwords/overview"]
     },
     {
       "identifier": "suspicious_ip_throttling",

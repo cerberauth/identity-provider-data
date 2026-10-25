@@ -261,7 +261,7 @@
       "identifier": "machine_to_machine",
       "status": "supported",
       "description": "Service users with OAuth 2.0 client credentials grant for M2M and backend-to-backend authentication.",
-      "links": ["https://zitadel.com/docs/guides/integrate/service-users/authenticate-service-users"]
+      "links": ["https://zitadel.com/docs/guides/integrate/service-accounts/authenticate-service-accounts"]
     },
     {
       "identifier": "oidc_federation",
@@ -285,7 +285,7 @@
       "identifier": "azure_ad_integration",
       "status": "supported",
       "description": "Built-in Entra ID (Azure AD) identity provider templates for both OIDC and SAML 2.0 federation.",
-      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/azure-ad"]
+      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/azure-ad-oidc"]
     },
     {
       "identifier": "bulk_user_import",
@@ -656,7 +656,7 @@
       "identifier": "custom_domain",
       "status": "supported",
       "description": "Custom domain supported on Pro and Enterprise plans for Zitadel Cloud; fully supported in self-hosted.",
-      "links": ["https://zitadel.com/docs/guides/manage/cloud/instances"]
+      "links": ["https://zitadel.com/docs/concepts/structure/instance"]
     },
     {
       "identifier": "deploy_cli",
@@ -690,8 +690,7 @@
     {
       "identifier": "custom_email_provider",
       "status": "supported",
-      "description": "Custom SMTP server configuration for sending transactional emails from your own domain.",
-      "links": ["https://zitadel.com/docs/guides/manage/cloud/smtp"]
+      "description": "Custom SMTP server configuration for sending transactional emails from your own domain."
     },
     {
       "identifier": "email_templates",
@@ -729,7 +728,7 @@
       "identifier": "agentic_identity",
       "status": "partial",
       "description": "Service users with OAuth 2.0 client credentials grant and JWT profile support machine and AI agent authentication. No dedicated MCP server auth or agentic identity features.",
-      "links": ["https://zitadel.com/docs/guides/integrate/service-users/authenticate-service-users"]
+      "links": ["https://zitadel.com/docs/guides/integrate/service-accounts/authenticate-service-accounts"]
     },
     {
       "identifier": "pq_hybrid_key_exchange",
