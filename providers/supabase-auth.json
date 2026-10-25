@@ -175,7 +175,7 @@
       "status": "supported",
       "category": "authentication_methods",
       "description": "Email and password authentication available on all plans. Supports sign-up, sign-in, password reset via email, and email confirmation flows. Passwords stored as bcrypt hashes. Email enumeration protection is configurable.",
-      "links": ["https://supabase.com/docs/guides/auth/password-based/email-password"]
+      "links": ["https://supabase.com/docs/guides/auth/passwords"]
     },
     {
       "identifier": "social_sign_in_authentication",
@@ -196,28 +196,28 @@
       "status": "supported",
       "category": "authentication_methods",
       "description": "Email OTP (6-digit one-time code) for passwordless sign-in. Rate limited to 30 OTPs per hour project-wide and 60-second window per user before a new OTP can be requested. Requires custom SMTP for production (built-in SMTP limited to 2 emails/hour).",
-      "links": ["https://supabase.com/docs/guides/auth/passwordless/email-otp"]
+      "links": ["https://supabase.com/docs/guides/auth/auth-email-passwordless"]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "Phone OTP via SMS for passwordless sign-in. Supports Twilio, Messagebird, Vonage, and custom SMS hooks. SMS costs are separate from Supabase billing. Requires a configured SMS provider.",
-      "links": ["https://supabase.com/docs/guides/auth/passwordless/phone"]
+      "links": ["https://supabase.com/docs/guides/auth/phone-login"]
     },
     {
       "identifier": "magic_link_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "Email magic link (one-time URL) for passwordless sign-in. Same rate limits as email OTP: 30 per hour project-wide, 60-second per-user cooldown. Requires custom SMTP for production use.",
-      "links": ["https://supabase.com/docs/guides/auth/passwordless/magic-link"]
+      "links": ["https://supabase.com/docs/guides/auth/auth-email-passwordless"]
     },
     {
       "identifier": "anonymous_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "Anonymous sign-ins create a real user record in auth.users without credentials. Anonymous users can be converted to permanent accounts by linking an email, phone, or OAuth identity. Rate limited to 30 anonymous sign-ins per hour per IP address. Available on all plans.",
-      "links": ["https://supabase.com/docs/guides/auth/anonymous-auth"]
+      "links": ["https://supabase.com/docs/guides/auth/auth-anonymous"]
     },
     {
       "identifier": "totp_mfa",
@@ -330,7 +330,7 @@
       "status": "not_supported",
       "category": "identity_federation",
       "description": "Supabase Auth does not support configuring external OIDC providers as enterprise IdP connections for SSO federation. Only SAML 2.0 is supported for enterprise SSO. Custom OAuth2/OIDC providers can be added for social login but not for federated enterprise identity.",
-      "links": ["https://supabase.com/docs/guides/auth/sso"]
+      "links": ["https://supabase.com/docs/guides/platform/sso"]
     },
     {
       "identifier": "saml_federation",
@@ -512,7 +512,7 @@
       "status": "supported",
       "category": "user_management",
       "description": "Password policy configurable in the Auth settings: minimum length, require uppercase/lowercase/numbers/special characters, and minimum password strength (using zxcvbn scoring). Leaked password protection (Have I Been Pwned integration) available on Pro+ plans.",
-      "links": ["https://supabase.com/docs/guides/auth/password-based/email-password"]
+      "links": ["https://supabase.com/docs/guides/auth/passwords"]
     },
     {
       "identifier": "username_restrictions",
@@ -599,7 +599,7 @@
       "status": "supported",
       "category": "compliance",
       "description": "User data export possible via SQL queries on auth.users and associated tables, and via the Admin API. GDPR data portability (Article 20) supported through direct database access.",
-      "links": ["https://supabase.com/docs/guides/platform/gdpr-and-privacy"]
+      "links": ["https://supabase.com/docs/guides/security/gdpr-compliance"]
     },
     {
       "identifier": "gdpr_right_to_erasure",
@@ -613,7 +613,7 @@
       "status": "not_supported",
       "category": "compliance",
       "description": "No built-in consent management or cookie consent flows. Must be implemented at the application layer.",
-      "links": ["https://supabase.com/docs/guides/platform/gdpr-and-privacy"]
+      "links": ["https://supabase.com/docs/guides/security/gdpr-compliance"]
     },
     {
       "identifier": "region_deployment",
@@ -700,7 +700,7 @@
       "status": "partial",
       "category": "security",
       "description": "Leaked password protection available on Pro+ plans. Checks passwords against the Have I Been Pwned database during sign-up and password changes. Not available on Free plan.",
-      "links": ["https://supabase.com/docs/guides/auth/password-based/email-password"],
+      "links": ["https://supabase.com/docs/guides/auth/passwords"],
       "plans": ["Pro", "Team", "Enterprise"]
     },
     {
@@ -708,7 +708,7 @@
       "status": "not_supported",
       "category": "security",
       "description": "No proactive continuous monitoring for compromised credentials beyond the standard leaked password protection check at sign-up/password-change.",
-      "links": ["https://supabase.com/docs/guides/auth/password-based/email-password"]
+      "links": ["https://supabase.com/docs/guides/auth/passwords"]
     },
     {
       "identifier": "tenant_acl",

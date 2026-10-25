@@ -308,7 +308,7 @@
       "identifier": "saml2_protocol",
       "status": "supported",
       "description": "SAML 2.0 as Identity Provider for enterprise SSO. Available on Plus plan and above — notably not gated behind an enterprise contract.",
-      "links": ["https://docs.kinde.com/authenticate/enterprise-sso/saml-setup/"],
+      "links": ["https://docs.kinde.com/authenticate/enterprise-connections/custom-saml/"],
       "plans": ["Plus", "Scale", "Enterprise"]
     },
     {
@@ -333,7 +333,7 @@
       "identifier": "saml_federation",
       "status": "supported",
       "description": "Per-organization SAML SSO enterprise connections. Available on Plus plan and above.",
-      "links": ["https://docs.kinde.com/authenticate/enterprise-sso/saml-setup/"],
+      "links": ["https://docs.kinde.com/authenticate/enterprise-connections/custom-saml/"],
       "plans": ["Plus", "Scale", "Enterprise"]
     },
     {
@@ -411,7 +411,7 @@
       "identifier": "jit_provisioning",
       "status": "supported",
       "description": "Users are automatically created on first login via enterprise SSO connections.",
-      "links": ["https://docs.kinde.com/authenticate/enterprise-sso/saml-setup/"]
+      "links": ["https://docs.kinde.com/authenticate/enterprise-connections/custom-saml/"]
     },
     {
       "identifier": "lazy_migration",
@@ -461,14 +461,14 @@
       "identifier": "rbac",
       "status": "supported",
       "description": "Roles and permissions with per-organization assignment. Custom roles available on Pro plan and above.",
-      "links": ["https://docs.kinde.com/manage-users/roles-and-permissions/about-roles-and-permissions/"],
+      "links": ["https://docs.kinde.com/manage-users/roles-and-permissions/user-roles/"],
       "plans": ["Pro", "Plus", "Scale", "Enterprise"]
     },
     {
       "identifier": "organizations_multitenancy",
       "status": "supported",
       "description": "Full B2B organizations model with member management, roles, invitations, and per-org SSO configuration.",
-      "links": ["https://docs.kinde.com/manage-your-account/organizations/about-organizations/"]
+      "links": ["https://docs.kinde.com/build/organizations/add-and-manage-organizations/"]
     },
     {
       "identifier": "password_strength_policy",
@@ -638,7 +638,7 @@
       "identifier": "per_org_branding",
       "status": "supported",
       "description": "Custom domains and branding can be configured per organization.",
-      "links": ["https://docs.kinde.com/manage-your-account/organizations/about-organizations/"]
+      "links": ["https://docs.kinde.com/build/organizations/add-and-manage-organizations/"]
     },
     {
       "identifier": "per_org_mfa_policy",
@@ -692,7 +692,7 @@
     {
       "identifier": "management_api",
       "status": "supported",
-      "links": ["https://docs.kinde.com/api/"]
+      "links": ["https://docs.kinde.com/developer-tools/kinde-api/connect-to-kinde-api/"]
     },
     {
       "identifier": "authentication_api_rate_limits",
@@ -719,8 +719,7 @@
     {
       "identifier": "deploy_cli",
       "status": "supported",
-      "description": "Kinde CLI supports infrastructure-as-code workflows for managing environments, feature flags, and permissions via version control.",
-      "links": ["https://docs.kinde.com/developer-tools/kinde-cli/"]
+      "description": "Kinde CLI supports infrastructure-as-code workflows for managing environments, feature flags, and permissions via version control."
     },
     {
       "identifier": "terraform_provider",

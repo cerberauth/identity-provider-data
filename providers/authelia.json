@@ -393,13 +393,13 @@
       "identifier": "audit_log_retention",
       "status": "supported",
       "description": "Structured logs of authentication and authorization events; retention is operator-configured.",
-      "links": ["https://www.authelia.com/reference/guides/logging/"]
+      "links": ["https://www.authelia.com/configuration/miscellaneous/logging/"]
     },
     {
       "identifier": "audit_log_streaming",
       "status": "partial",
       "description": "Logs can be written to file or stdout for collection by external log shippers/SIEM; no native streaming integration.",
-      "links": ["https://www.authelia.com/reference/guides/logging/"]
+      "links": ["https://www.authelia.com/configuration/miscellaneous/logging/"]
     },
     {
       "identifier": "security_center",
@@ -602,7 +602,7 @@
       "status": "unknown",
       "category": "post_quantum_cryptography",
       "description": "Authelia (written in Go) can terminate TLS itself in addition to the common reverse-proxy deployment, so the underlying stack is Go's crypto/tls, which supports the X25519MLKEM768 hybrid group since Go 1.24 (Feb 2025). However, the Authelia project has published no documentation, changelog entry, or statement claiming post-quantum/hybrid TLS key-exchange support, and self-hosted deployments usually rely on external reverse proxies. Without vendor evidence, status is unknown.",
-      "links": ["https://www.authelia.com/configuration/miscellaneous/server/", "https://go.dev/blog/tls-key-exchange"]
+      "links": ["https://www.authelia.com/configuration/miscellaneous/server/"]
     },
     {
       "identifier": "pq_signature_algorithms",

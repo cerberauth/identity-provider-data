@@ -152,25 +152,27 @@
     {
       "identifier": "username_and_password_authentication",
       "status": "supported",
-      "links": ["https://help.okta.com/en-us/content/topics/security/general-authentication.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/security_authentication.htm"]
     },
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
       "description": "Pre-built social IdP integrations for Google, Facebook, Apple, LinkedIn, Microsoft, GitHub, and any generic OIDC/SAML provider via the App Integration Network.",
-      "links": ["https://help.okta.com/en-us/content/topics/integrations/social-login-main.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/idp-social.htm"]
     },
     {
       "identifier": "passkey_authentication",
       "status": "supported",
       "description": "FIDO2/WebAuthn passkeys as a first-factor passwordless method via Okta Identity Engine. Supports platform authenticators (Face ID, Touch ID, Windows Hello) and roaming security keys. Also available through Okta FastPass for device-bound authentication.",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/authenticators/configure-webauthn.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/mfa-webauthn.htm"]
     },
     {
       "identifier": "email_passwordless_authentication",
       "status": "supported",
       "description": "Email magic link or one-time passcode for passwordless sign-in via the Email Authenticator.",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/authenticators/configure-email.htm"]
+      "links": [
+        "https://help.okta.com/oie/en-us/content/topics/identity-engine/authenticators/configure-email-authenticator.htm"
+      ]
     },
     {
       "identifier": "phone_passwordless_authentication",
@@ -182,7 +184,9 @@
       "identifier": "magic_link_authentication",
       "status": "supported",
       "description": "Email magic link for passwordless sign-in via the Email Authenticator. Users receive a link that signs them in without entering a password.",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/authenticators/configure-email.htm"]
+      "links": [
+        "https://help.okta.com/oie/en-us/content/topics/identity-engine/authenticators/configure-email-authenticator.htm"
+      ]
     },
     {
       "identifier": "anonymous_authentication",
@@ -204,19 +208,21 @@
       "identifier": "u2f_mfa",
       "status": "supported",
       "description": "FIDO2/WebAuthn security keys (YubiKey, etc.) as a second factor.",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/authenticators/configure-webauthn.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/mfa-webauthn.htm"]
     },
     {
       "identifier": "webauthn_mfa",
       "status": "supported",
       "description": "WebAuthn as second factor, supporting both platform authenticators and roaming security keys.",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/authenticators/configure-webauthn.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/mfa-webauthn.htm"]
     },
     {
       "identifier": "email_code_mfa",
       "status": "supported",
       "description": "One-time passcode sent via email as a second factor.",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/authenticators/configure-email.htm"]
+      "links": [
+        "https://help.okta.com/oie/en-us/content/topics/identity-engine/authenticators/configure-email-authenticator.htm"
+      ]
     },
     {
       "identifier": "phone_code_mfa",
@@ -267,7 +273,7 @@
       "identifier": "ws_federation_protocol",
       "status": "supported",
       "description": "WS-Federation support for Microsoft AD FS integration. Okta can act as a WS-Federation Identity Provider for SharePoint, Dynamics, and other WS-Fed-aware apps.",
-      "links": ["https://help.okta.com/en-us/content/topics/microsoft/configure-ws-fed-app.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/apps/apps_configuring_ws-federation.htm"]
     },
     {
       "identifier": "machine_to_machine",
@@ -279,13 +285,13 @@
       "identifier": "oidc_federation",
       "status": "supported",
       "description": "Generic OIDC identity provider federation for connecting per-tenant enterprise IdPs. Pre-built templates for Google Workspace, Salesforce, LinkedIn, GitHub, and others.",
-      "links": ["https://help.okta.com/en-us/content/topics/integrations/social-login-main.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/idp-social.htm"]
     },
     {
       "identifier": "saml_federation",
       "status": "supported",
       "description": "SAML 2.0 identity provider federation via Okta's Identity Provider Routing Rules for per-tenant enterprise SSO.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/idp-discovery.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/configure-routing-rules.htm"]
     },
     {
       "identifier": "active_directory_ldap",
@@ -297,13 +303,13 @@
       "identifier": "azure_ad_integration",
       "status": "supported",
       "description": "Native Okta integration with Microsoft Entra ID (Azure AD) for bidirectional user sync, OIDC federation, and SAML SSO.",
-      "links": ["https://help.okta.com/en-us/content/topics/integrations/microsoft.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/apps/apps_moving_microsoft.htm"]
     },
     {
       "identifier": "bulk_user_import",
       "status": "supported",
       "description": "Bulk user import via CSV upload in the admin console or via the Users API.",
-      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-bulk-imports.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-import-users-main.htm"]
     },
     {
       "identifier": "password_hash_import",
@@ -348,19 +354,19 @@
       "identifier": "outbound_scim_provisioning",
       "status": "supported",
       "description": "Okta acts as a SCIM 2.0 client to push user lifecycle changes (create, update, deactivate) to SCIM-enabled downstream applications. Core feature of Okta Lifecycle Management.",
-      "links": ["https://help.okta.com/en-us/content/topics/apps/apps-provisioning.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/apps/provisioning_deprovisioning_overview.htm"]
     },
     {
       "identifier": "scim_groups",
       "status": "supported",
       "description": "Group Push synchronizes Okta groups to SCIM-enabled apps for access control.",
-      "links": ["https://help.okta.com/en-us/content/topics/apps/apps-provisioning.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/apps/provisioning_deprovisioning_overview.htm"]
     },
     {
       "identifier": "jit_provisioning",
       "status": "supported",
       "description": "Just-in-time user provisioning creates Okta user accounts on first login via federated IdP without pre-provisioning.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/idp-jit-provisioning.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-add-users-jit.htm"]
     },
     {
       "identifier": "lazy_migration",
@@ -372,13 +378,15 @@
       "identifier": "self_service_profile_management",
       "status": "supported",
       "description": "Okta End-User Dashboard for managing profile information, connected apps, MFA device enrollment, and security settings.",
-      "links": ["https://help.okta.com/en-us/content/topics/end-user/euoverview.htm"]
+      "links": ["https://help.okta.com/eu/en-us/content/topics/end-user/ov-overview.htm"]
     },
     {
       "identifier": "account_linking",
       "status": "supported",
       "description": "Link multiple authentication identities (social, enterprise, local) to a single Okta user account via profile enrollment policies.",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/policies/about-profile-enrollment.htm"]
+      "links": [
+        "https://help.okta.com/oie/en-us/content/topics/identity-engine/policies/about-profile-enrollment-policies.htm"
+      ]
     },
     {
       "identifier": "user_blocking",
@@ -389,14 +397,12 @@
     {
       "identifier": "user_metadata",
       "status": "supported",
-      "description": "Universal Directory custom attributes: store arbitrary user-editable profile attributes beyond the standard Okta schema.",
-      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-extend-profiles.htm"]
+      "description": "Universal Directory custom attributes: store arbitrary user-editable profile attributes beyond the standard Okta schema."
     },
     {
       "identifier": "app_metadata",
       "status": "supported",
-      "description": "Per-user app profile attributes store app-specific metadata not exposed to end users.",
-      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-extend-profiles.htm"]
+      "description": "Per-user app profile attributes store app-specific metadata not exposed to end users."
     },
     {
       "identifier": "metadata_size_limits",
@@ -425,8 +431,7 @@
     {
       "identifier": "password_strength_policy",
       "status": "supported",
-      "description": "Configurable password policies: minimum length, complexity requirements, history, lockout, and expiration at the org or group level.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/default-policy.htm"]
+      "description": "Configurable password policies: minimum length, complexity requirements, history, lockout, and expiration at the org or group level."
     },
     {
       "identifier": "username_restrictions",
@@ -438,7 +443,9 @@
       "identifier": "progressive_profiling",
       "status": "supported",
       "description": "Progressive profiling via Identity Engine Profile Enrollment Policies: collect additional user attributes at sign-up or on subsequent logins based on policy conditions.",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/policies/about-profile-enrollment.htm"]
+      "links": [
+        "https://help.okta.com/oie/en-us/content/topics/identity-engine/policies/about-profile-enrollment-policies.htm"
+      ]
     },
     {
       "identifier": "abac",
@@ -489,8 +496,7 @@
     {
       "identifier": "fedramp",
       "status": "supported",
-      "description": "FedRAMP Authorized (Class C and Class D) via Okta Government product. Also holds DoD IL4 authorization.",
-      "links": ["https://www.okta.com/solutions/federal/"]
+      "description": "FedRAMP Authorized (Class C and Class D) via Okta Government product. Also holds DoD IL4 authorization."
     },
     {
       "identifier": "gdpr_data_export",
@@ -507,8 +513,7 @@
     {
       "identifier": "consent_management",
       "status": "supported",
-      "description": "OAuth 2.0 consent screen presented during authorization. Privacy consent management available via Okta's Privacy module.",
-      "links": ["https://help.okta.com/en-us/content/topics/privacy/privacy-consent.htm"]
+      "description": "OAuth 2.0 consent screen presented during authorization. Privacy consent management available via Okta's Privacy module."
     },
     {
       "identifier": "region_deployment",
@@ -532,13 +537,13 @@
       "identifier": "audit_log_streaming",
       "status": "supported",
       "description": "Log Streaming natively pushes System Log events to AWS EventBridge, Splunk Cloud, and Sumo Logic in real time.",
-      "links": ["https://help.okta.com/en-us/content/topics/reports/log-streaming-main.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/reports/log-streaming/about-log-streams.htm"]
     },
     {
       "identifier": "security_center",
       "status": "supported",
       "description": "Security Dashboard with authentication analytics and ThreatInsight threat monitoring, showing suspicious activity, attack patterns, and blocked sign-in attempts.",
-      "links": ["https://help.okta.com/en-us/content/topics/reports/reports-security-dashboard.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/dashboard/monitor-org-security.htm"]
     },
     {
       "identifier": "encryption_at_rest",
@@ -556,7 +561,7 @@
       "identifier": "customer_managed_keys",
       "status": "partial",
       "description": "Bring-your-own-key (BYOK) available for Enterprise tier customers with AWS KMS-managed encryption keys. Not available on standard tiers.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/key-management.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/apps/manage-signing-certificates.htm"]
     },
     {
       "identifier": "bot_detection",
@@ -567,8 +572,7 @@
     {
       "identifier": "brute_force_protection",
       "status": "supported",
-      "description": "Configurable account lockout after failed attempts. ThreatInsight adds IP-level blocking for coordinated brute force attacks.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/default-policy.htm"]
+      "description": "Configurable account lockout after failed attempts. ThreatInsight adds IP-level blocking for coordinated brute force attacks."
     },
     {
       "identifier": "suspicious_ip_throttling",
@@ -598,19 +602,19 @@
       "identifier": "device_fingerprinting",
       "status": "supported",
       "description": "Okta Device Trust tracks registered devices and evaluates device health signals (managed status, OS version, disk encryption) in authentication policies. Device context is available as a risk signal in Adaptive MFA.",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/devices/device-mgmt.htm"]
+      "links": ["https://help.okta.com/oie/en-us/content/topics/identity-engine/devices/config-device-mgmt-mobile.htm"]
     },
     {
       "identifier": "per_org_branding",
       "status": "supported",
       "description": "Custom branding (logo, colors, background, domain) configurable per application. Supports separate branded experiences for different B2B tenants.",
-      "links": ["https://help.okta.com/en-us/content/topics/settings/settings-customization.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/settings/customizations-index.htm"]
     },
     {
       "identifier": "per_org_mfa_policy",
       "status": "supported",
       "description": "Authentication policies configurable per application and per group, allowing different MFA requirements for different tenants or user populations.",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/policies/policies-overview.htm"]
+      "links": ["https://help.okta.com/oie/en-us/content/topics/identity-engine/policies/about-policies.htm"]
     },
     {
       "identifier": "hosted_login_page",
@@ -628,7 +632,7 @@
       "identifier": "white_label",
       "status": "supported",
       "description": "Full white-labeling: custom logos, colors, fonts, domain, and removal of Okta branding from the sign-in experience.",
-      "links": ["https://help.okta.com/en-us/content/topics/settings/settings-customization.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/settings/customizations-index.htm"]
     },
     {
       "identifier": "localization",
@@ -646,7 +650,7 @@
       "identifier": "login_analytics",
       "status": "supported",
       "description": "System Log reports, Security Dashboard, and Reports section provide authentication success rates, active users, MFA adoption, suspicious activity, and sign-in funnel metrics.",
-      "links": ["https://help.okta.com/en-us/content/topics/reports/rpt-overview.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/reports/report-types.htm"]
     },
     {
       "identifier": "sdk_coverage",
@@ -711,19 +715,19 @@
       "identifier": "universal_login_customization",
       "status": "supported",
       "description": "Okta-hosted Sign-In Page supports full HTML/CSS/JavaScript customization including Okta Sign-In Widget configuration.",
-      "links": ["https://help.okta.com/en-us/content/topics/settings/settings-customization.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/settings/customizations-index.htm"]
     },
     {
       "identifier": "custom_email_provider",
       "status": "partial",
       "description": "Custom email sender domain supported via verified domain configuration. Sending via a fully custom SMTP relay requires additional setup and is not available on all tiers.",
-      "links": ["https://help.okta.com/en-us/content/topics/settings/settings-email.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/settings/settings_email.htm"]
     },
     {
       "identifier": "email_templates",
       "status": "supported",
       "description": "Fully customizable email templates for OTP, activation, password reset, and notification flows via the Email Template editor.",
-      "links": ["https://help.okta.com/en-us/content/topics/settings/settings-email.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/settings/settings_email.htm"]
     },
     {
       "identifier": "custom_oidc_claims",
@@ -740,8 +744,7 @@
     {
       "identifier": "identity_proofing",
       "status": "supported",
-      "description": "Okta Identity Verification add-on: government-issued document verification and biometric liveness checks powered by Persona.",
-      "links": ["https://www.okta.com/products/identity-verification/"]
+      "description": "Okta Identity Verification add-on: government-issued document verification and biometric liveness checks powered by Persona."
     },
     {
       "identifier": "decentralized_identity",
@@ -756,8 +759,7 @@
     {
       "identifier": "agentic_identity",
       "status": "partial",
-      "description": "Okta for AI Agents provides OAuth 2.0 M2M tokens and Cross App Access Protocol (CAAP) for AI agent authentication. Dedicated agentic identity features (agent governance, MCP server auth) are actively being developed.",
-      "links": ["https://www.okta.com/okta-for-ai/"]
+      "description": "Okta for AI Agents provides OAuth 2.0 M2M tokens and Cross App Access Protocol (CAAP) for AI agent authentication. Dedicated agentic identity features (agent governance, MCP server auth) are actively being developed."
     },
     {
       "identifier": "pq_hybrid_key_exchange",

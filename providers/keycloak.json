@@ -421,37 +421,37 @@
       "identifier": "soc2_type2",
       "status": "unknown",
       "description": "Keycloak is open-source self-hosted software. SOC 2 Type II compliance depends entirely on the hosting infrastructure, cloud provider, and operational controls of the deploying organization.",
-      "links": ["https://www.keycloak.org/security", "https://access.redhat.com/articles/2483861"]
+      "links": ["https://www.keycloak.org/security"]
     },
     {
       "identifier": "iso_27001",
       "status": "unknown",
       "description": "Keycloak is open-source software. ISO 27001 certification applies to the organization and cloud environment operating Keycloak rather than the standalone software codebase.",
-      "links": ["https://www.keycloak.org/security", "https://access.redhat.com/articles/2483861"]
+      "links": ["https://www.keycloak.org/security"]
     },
     {
       "identifier": "hipaa_baa",
       "status": "unknown",
       "description": "Keycloak is self-hosted software. HIPAA compliance and BAA agreements are established with the underlying cloud hosting provider and operating entity.",
-      "links": ["https://www.keycloak.org/security", "https://access.redhat.com/articles/2483861"]
+      "links": ["https://www.keycloak.org/security"]
     },
     {
       "identifier": "pci_dss",
       "status": "unknown",
       "description": "Keycloak is open-source software. PCI DSS compliance validation depends on the hosting architecture and deployment security controls.",
-      "links": ["https://www.keycloak.org/security", "https://access.redhat.com/articles/2483861"]
+      "links": ["https://www.keycloak.org/security"]
     },
     {
       "identifier": "csa_star",
       "status": "unknown",
       "description": "Keycloak is open-source software. CSA STAR certification applies to cloud service providers hosting the software.",
-      "links": ["https://www.keycloak.org/security", "https://access.redhat.com/articles/2483861"]
+      "links": ["https://www.keycloak.org/security"]
     },
     {
       "identifier": "fedramp",
       "status": "unknown",
       "description": "Keycloak is open-source software. It is frequently deployed within FedRAMP-authorized cloud environments (e.g., AWS GovCloud, Red Hat OpenShift), but the open-source project itself does not hold a centralized FedRAMP authorization.",
-      "links": ["https://www.keycloak.org/security", "https://access.redhat.com/articles/2483861"]
+      "links": ["https://www.keycloak.org/security"]
     },
     {
       "identifier": "gdpr_data_export",
@@ -618,7 +618,7 @@
       "identifier": "sdk_coverage",
       "status": "supported",
       "description": "Keycloak adapters for Java (Spring Boot, Quarkus), JavaScript, Node.js, Go, Python, PHP. Keycloak SDKs via community.",
-      "links": ["https://www.keycloak.org/docs/latest/securing_apps/index.html"]
+      "links": ["https://www.keycloak.org/securing-apps/overview"]
     },
     {
       "identifier": "management_api",
@@ -795,12 +795,12 @@
       {
         "identifier": "authorization_code_grant",
         "status": "supported",
-        "links": ["https://www.keycloak.org/docs/latest/securing_apps/#authorization-code"]
+        "links": ["https://www.keycloak.org/securing-apps/oidc-layers"]
       },
       {
         "identifier": "pkce_extension",
         "status": "supported",
-        "links": ["https://www.keycloak.org/docs/latest/securing_apps/#_pkce"]
+        "links": ["https://www.keycloak.org/securing-apps/oidc-layers"]
       },
       {
         "identifier": "par_extension",
@@ -820,12 +820,12 @@
       {
         "identifier": "client_credentials_grant",
         "status": "supported",
-        "links": ["https://www.keycloak.org/docs/latest/securing_apps/#client-credentials"]
+        "links": ["https://www.keycloak.org/securing-apps/oidc-layers"]
       },
       {
         "identifier": "password_grant",
         "status": "supported",
-        "links": ["https://www.keycloak.org/docs/latest/securing_apps/#_resource_owner_password_credentials_flow"]
+        "links": ["https://www.keycloak.org/securing-apps/oidc-layers"]
       },
       {
         "identifier": "refresh_token_grant",
@@ -840,14 +840,12 @@
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
         "status": "supported",
-        "links": ["https://www.keycloak.org/docs/latest/securing_apps/#device-authorization-grant"]
+        "links": ["https://www.keycloak.org/securing-apps/oidc-layers"]
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
         "status": "supported",
-        "links": [
-          "https://www.keycloak.org/docs/latest/securing_apps/#_client_initiated_backchannel_authentication_grant"
-        ]
+        "links": ["https://www.keycloak.org/securing-apps/oidc-layers"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
@@ -957,7 +955,7 @@
       {
         "identifier": "dynamic_client_registration",
         "status": "supported",
-        "links": ["https://www.keycloak.org/docs/latest/securing_apps/#dynamic-client-registration-endpoint"]
+        "links": ["https://www.keycloak.org/securing-apps/client-registration"]
       },
       {
         "identifier": "dynamic_client_registration_management",

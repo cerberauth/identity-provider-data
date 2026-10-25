@@ -156,7 +156,7 @@
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
-      "links": ["https://docs.descope.com/auth-methods/social"]
+      "links": ["https://docs.descope.com/auth-methods/oauth"]
     },
     {
       "identifier": "passkey_authentication",
@@ -166,12 +166,12 @@
     {
       "identifier": "email_passwordless_authentication",
       "status": "supported",
-      "links": ["https://docs.descope.com/auth-methods/email-otp"]
+      "links": ["https://docs.descope.com/auth-methods/otp"]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "supported",
-      "links": ["https://docs.descope.com/auth-methods/sms-otp"]
+      "links": ["https://docs.descope.com/auth-methods/otp"]
     },
     {
       "identifier": "magic_link_authentication",
@@ -187,7 +187,7 @@
     {
       "identifier": "totp_mfa",
       "status": "supported",
-      "links": ["https://docs.descope.com/auth-methods/totp"]
+      "links": ["https://docs.descope.com/auth-methods/auth-apps"]
     },
     {
       "identifier": "hotp_mfa",
@@ -209,12 +209,12 @@
     {
       "identifier": "email_code_mfa",
       "status": "supported",
-      "links": ["https://docs.descope.com/auth-methods/email-otp"]
+      "links": ["https://docs.descope.com/auth-methods/otp"]
     },
     {
       "identifier": "phone_code_mfa",
       "status": "supported",
-      "links": ["https://docs.descope.com/auth-methods/sms-otp"]
+      "links": ["https://docs.descope.com/auth-methods/otp"]
     },
     {
       "identifier": "recovery_code_mfa",
@@ -249,12 +249,12 @@
     {
       "identifier": "oidc_protocol",
       "status": "supported",
-      "links": ["https://docs.descope.com/sso/oidc"]
+      "links": ["https://docs.descope.com/auth-methods/sso/oidc"]
     },
     {
       "identifier": "saml2_protocol",
       "status": "supported",
-      "links": ["https://docs.descope.com/sso/saml"]
+      "links": ["https://docs.descope.com/auth-methods/sso/saml"]
     },
     {
       "identifier": "ws_federation_protocol",
@@ -266,7 +266,7 @@
       "identifier": "machine_to_machine",
       "status": "supported",
       "description": "M2M authentication available on Pro plan.",
-      "links": ["https://docs.descope.com/auth-methods/m2m"]
+      "links": ["https://docs.descope.com/management/m2m-access-keys"]
     },
     {
       "identifier": "oidc_federation",
@@ -363,7 +363,7 @@
     {
       "identifier": "self_service_profile_management",
       "status": "supported",
-      "links": ["https://docs.descope.com/sdks"]
+      "links": ["https://docs.descope.com/getting-started"]
     },
     {
       "identifier": "account_linking",
@@ -406,12 +406,12 @@
       "identifier": "organizations_multitenancy",
       "status": "supported",
       "description": "Native multi-tenant model with tenants and organization management.",
-      "links": ["https://docs.descope.com/tenants"]
+      "links": ["https://docs.descope.com/management/tenant-management"]
     },
     {
       "identifier": "password_strength_policy",
       "status": "supported",
-      "links": ["https://docs.descope.com/auth-hosting/branding"]
+      "links": ["https://docs.descope.com/management/styles"]
     },
     {
       "identifier": "username_restrictions",
@@ -506,13 +506,13 @@
       "identifier": "audit_log_retention",
       "status": "supported",
       "description": "Audit logs available on Pro plan.",
-      "links": ["https://docs.descope.com/audit"]
+      "links": ["https://docs.descope.com/audit-trails-and-integrations"]
     },
     {
       "identifier": "audit_log_streaming",
       "status": "supported",
       "description": "Log streaming to external systems on Growth plan.",
-      "links": ["https://docs.descope.com/audit"]
+      "links": ["https://docs.descope.com/audit-trails-and-integrations"]
     },
     {
       "identifier": "security_center",
@@ -537,22 +537,22 @@
     {
       "identifier": "bot_detection",
       "status": "supported",
-      "links": ["https://docs.descope.com/security"]
+      "links": ["https://docs.descope.com/security-best-practices/session-token-storage"]
     },
     {
       "identifier": "brute_force_protection",
       "status": "supported",
-      "links": ["https://docs.descope.com/security"]
+      "links": ["https://docs.descope.com/security-best-practices/session-token-storage"]
     },
     {
       "identifier": "suspicious_ip_throttling",
       "status": "supported",
-      "links": ["https://docs.descope.com/security"]
+      "links": ["https://docs.descope.com/security-best-practices/session-token-storage"]
     },
     {
       "identifier": "breached_password_detection",
       "status": "supported",
-      "links": ["https://docs.descope.com/security"]
+      "links": ["https://docs.descope.com/security-best-practices/session-token-storage"]
     },
     {
       "identifier": "credential_guard",
@@ -570,19 +570,19 @@
       "identifier": "device_fingerprinting",
       "status": "supported",
       "description": "Device fingerprinting for risk-based decisions. Available on Pro plan.",
-      "links": ["https://docs.descope.com/security"]
+      "links": ["https://docs.descope.com/security-best-practices/session-token-storage"]
     },
     {
       "identifier": "per_org_branding",
       "status": "supported",
       "description": "Per-tenant branding on Pro plan.",
-      "links": ["https://docs.descope.com/tenants"]
+      "links": ["https://docs.descope.com/management/tenant-management"]
     },
     {
       "identifier": "per_org_mfa_policy",
       "status": "supported",
       "description": "Per-tenant MFA policies on Pro plan.",
-      "links": ["https://docs.descope.com/tenants"]
+      "links": ["https://docs.descope.com/management/tenant-management"]
     },
     {
       "identifier": "hosted_login_page",
@@ -593,24 +593,24 @@
       "identifier": "embedded_login",
       "status": "supported",
       "description": "Embeddable Descope web components and React/Vue/Angular SDKs.",
-      "links": ["https://docs.descope.com/sdks"]
+      "links": ["https://docs.descope.com/getting-started"]
     },
     {
       "identifier": "white_label",
       "status": "supported",
       "description": "Full white-labeling on Pro plan.",
-      "links": ["https://docs.descope.com/auth-hosting/branding"]
+      "links": ["https://docs.descope.com/management/styles"]
     },
     {
       "identifier": "localization",
       "status": "supported",
-      "links": ["https://docs.descope.com/auth-hosting/localization"]
+      "links": ["https://docs.descope.com/management/localization"]
     },
     {
       "identifier": "prebuilt_ui_components",
       "status": "supported",
       "description": "Descope Flow components for React, Vue, Angular, and Web Components.",
-      "links": ["https://docs.descope.com/sdks"]
+      "links": ["https://docs.descope.com/getting-started"]
     },
     {
       "identifier": "login_analytics",
@@ -622,7 +622,7 @@
       "identifier": "sdk_coverage",
       "status": "supported",
       "description": "SDKs for React, Vue, Angular, React Native, iOS, Android, Node.js, Python, Go, and more.",
-      "links": ["https://docs.descope.com/sdks"]
+      "links": ["https://docs.descope.com/getting-started"]
     },
     {
       "identifier": "management_api",
@@ -672,12 +672,12 @@
     {
       "identifier": "native_webhooks",
       "status": "supported",
-      "links": ["https://docs.descope.com/webhooks"]
+      "links": ["https://docs.descope.com/flows/use-cases/backend-webhooks"]
     },
     {
       "identifier": "universal_login_customization",
       "status": "supported",
-      "links": ["https://docs.descope.com/auth-hosting/branding"]
+      "links": ["https://docs.descope.com/management/styles"]
     },
     {
       "identifier": "custom_email_provider",
@@ -688,7 +688,7 @@
     {
       "identifier": "email_templates",
       "status": "supported",
-      "links": ["https://docs.descope.com/auth-hosting/branding"]
+      "links": ["https://docs.descope.com/management/styles"]
     },
     {
       "identifier": "custom_oidc_claims",

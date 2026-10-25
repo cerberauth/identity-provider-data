@@ -481,8 +481,7 @@
     {
       "identifier": "audit_log_streaming",
       "status": "supported",
-      "description": "SIEM integration via TLS-encrypted syslog and REST API streaming. Documented integrations include Splunk, QRadar, and generic syslog receivers.",
-      "links": ["https://docs.cyberark.com/identity/latest/en/content/integrations/siem/siem-overview.htm"]
+      "description": "SIEM integration via TLS-encrypted syslog and REST API streaming. Documented integrations include Splunk, QRadar, and generic syslog receivers."
     },
     {
       "identifier": "security_center",

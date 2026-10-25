@@ -285,10 +285,7 @@
     {
       "identifier": "mfa_enrollment_import",
       "status": "supported",
-      "description": "TOTP secrets and phone numbers can be set via the PingOne MFA API during migration.",
-      "links": [
-        "https://docs.pingidentity.com/pingone/getting_started_with_pingone/p1_mfa_enrolling_user_authentication_device_api.html"
-      ]
+      "description": "TOTP secrets and phone numbers can be set via the PingOne MFA API during migration."
     },
     {
       "identifier": "inbound_scim_provisioning",
@@ -315,7 +312,7 @@
     {
       "identifier": "lazy_migration",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingoneaic/latest/self-service/pass-through-authentication.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/identities/pass-through-authentication.html"]
     },
     {
       "identifier": "self_service_profile_management",
@@ -638,7 +635,7 @@
     {
       "identifier": "custom_database_connections",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingoneaic/latest/self-service/pass-through-authentication.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/identities/pass-through-authentication.html"]
     },
     {
       "identifier": "native_webhooks",
@@ -748,57 +745,69 @@
       {
         "identifier": "implicit_grant",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/developer/msk1601508083227"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_grant_types.html"]
       },
       {
         "identifier": "authorization_code_grant",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/developer/yhk1601508082481"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_grant_types.html"]
       },
       {
         "identifier": "client_credentials_grant",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/developer/ixj1601508083821"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_grant_types.html"]
       },
       {
         "identifier": "password_grant",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/developer/kwc1601508084434"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_grant_types.html"]
       },
       {
         "identifier": "refresh_token_grant",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/developer/ewx1601508085611"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_refresh_tokens.html"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/pingfederate-111/pf_oauth_grant_type_param"]
+        "links": [
+          "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_oauth_grant_type_param.html"
+        ]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/pingfederate-111/pf_oauth_grant_type_param"]
+        "links": [
+          "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_oauth_grant_type_param.html"
+        ]
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/pingfederate-111/pf_oauth_grant_type_param"]
+        "links": [
+          "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_oauth_grant_type_param.html"
+        ]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/pingfederate-111/pf_oauth_grant_type_param"]
+        "links": [
+          "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_oauth_grant_type_param.html"
+        ]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/pingfederate-111/pf_oauth_grant_type_param"]
+        "links": [
+          "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_oauth_grant_type_param.html"
+        ]
       },
       {
         "identifier": "pkce_extension",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/pingfederate-111/pf_authoriz_endpoint"]
+        "links": [
+          "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_authorization_endpoint.html"
+        ]
       },
       {
         "identifier": "par_extension",
@@ -818,7 +827,7 @@
         "identifier": "jar_extension",
         "status": "supported",
         "links": [
-          "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_authoriz_endpoint.html"
+          "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_authorization_endpoint.html"
         ]
       },
       {
@@ -872,7 +881,7 @@
         "identifier": "oauth_authorization_server_metadata_endpoint",
         "status": "supported",
         "links": [
-          "https://docs.pingidentity.com/pingfederate/12.3/developers_reference_guide/pf_oauth_authorization_server_metadata_endpoint_endpoint.html"
+          "https://docs.pingidentity.com/pingfederate/12.3/developers_reference_guide/pf_oauth_authorization_server_metadata_endpoint.html"
         ]
       },
       {
@@ -913,27 +922,27 @@
       {
         "identifier": "none_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/pingone/pingone_c_token_endpoint_authentication_methods"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"]
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/pingone/pingone_c_token_endpoint_authentication_methods"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"]
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/pingone/pingone_c_token_endpoint_authentication_methods"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"]
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/pingone/pingone_c_token_endpoint_authentication_methods"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"]
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/pingone/pingone_c_token_endpoint_authentication_methods"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"]
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
@@ -968,15 +977,11 @@
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "supported",
-        "links": ["https://docs.pingidentity.com/r/en-us/pingfederate-113/pf_configure_roll_interval"]
+        "status": "supported"
       },
       {
         "identifier": "dpop",
-        "status": "supported",
-        "links": [
-          "https://docs.pingidentity.com/pingfederate/13.0/administrators_reference_guide/help_oauthclientsettingstasklet_oauthclientsettings.html"
-        ]
+        "status": "supported"
       },
       {
         "identifier": "fapi_1_0_baseline",

@@ -153,10 +153,7 @@
     {
       "identifier": "push_notification_mfa",
       "status": "supported",
-      "description": "Push notification MFA is supported via the native Cisco Duo integration for the administrator interface. External IdP integrations (PingFederate) may provide push for end-user logins.",
-      "links": [
-        "https://community.sailpoint.com/t5/Customer-Success-Engineering-FAQ/What-types-of-multi-factor-authentication-MFA-integrations-does/ta-p/241540"
-      ]
+      "description": "Push notification MFA is supported via the native Cisco Duo integration for the administrator interface. External IdP integrations (PingFederate) may provide push for end-user logins."
     },
     {
       "identifier": "adaptive_mfa",
@@ -167,10 +164,7 @@
     {
       "identifier": "cisco_duo_mfa",
       "status": "supported",
-      "description": "Cisco Duo Security is documented as a supported MFA integration for the ISC administrator interface.",
-      "links": [
-        "https://community.sailpoint.com/t5/Customer-Success-Engineering-FAQ/What-types-of-multi-factor-authentication-MFA-integrations-does/ta-p/241540"
-      ]
+      "description": "Cisco Duo Security is documented as a supported MFA integration for the ISC administrator interface."
     },
     {
       "identifier": "step_up_authentication",
@@ -343,7 +337,7 @@
       "identifier": "organizations_multitenancy",
       "status": "partial",
       "description": "Each ISC deployment is a single tenant. Multi-tenant B2B use cases require separate ISC tenants per organization. There is no first-class sub-organization isolation model within a single ISC tenant.",
-      "links": ["https://developer.sailpoint.com/docs/api/v2024/tenant-context/"]
+      "links": ["https://developer.sailpoint.com/docs/api/tenant-context"]
     },
     {
       "identifier": "password_strength_policy",
@@ -525,7 +519,7 @@
       "identifier": "management_api",
       "status": "supported",
       "description": "Comprehensive REST management API (v2024/v2025) covering identities, sources, roles, access profiles, entitlements, certifications, provisioning, and platform configuration.",
-      "links": ["https://developer.sailpoint.com/docs/api/v2025/identity-security-cloud-v-2025-api/"]
+      "links": ["https://developer.sailpoint.com/docs/api/identity-security-cloud-api"]
     },
     {
       "identifier": "authentication_api_rate_limits",
@@ -650,7 +644,7 @@
       "description": "Audit logs can be streamed to SIEM platforms via the ISC Search API. Documented integrations include Splunk (native ISC AuditEvent Add-on), Elastic (native integration), and generic syslog/API-based ingestion for QRadar and others.",
       "links": [
         "https://www.elastic.co/docs/reference/integrations/sailpoint_identity_sc",
-        "https://community.sailpoint.com/t5/Identity-Security-Cloud-Wiki/SailPoint-Identity-Security-Cloud-AuditEvent-Add-on-for-Splunk/ta-p/77123"
+        "https://community.sailpoint.com/knowledge/SailPoint-Identity-Security-Cloud-AuditEvent-Add-on-for-Splunk"
       ]
     },
     {

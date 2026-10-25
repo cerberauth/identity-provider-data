@@ -285,7 +285,7 @@
       "identifier": "active_directory_ldap",
       "status": "supported",
       "description": "LDAP connector: 1 on Starter, 5 on Essentials, unlimited on Enterprise.",
-      "links": ["https://fusionauth.io/docs/lifecycle/authenticate-users/identity-providers/overview-ldap"]
+      "links": ["https://fusionauth.io/docs/lifecycle/migrate-users/connectors/ldap-connector"]
     },
     {
       "identifier": "azure_ad_integration",
@@ -340,7 +340,7 @@
       "identifier": "inbound_scim_provisioning",
       "status": "supported",
       "description": "Inbound SCIM 2.0 provisioning.",
-      "links": ["https://fusionauth.io/docs/lifecycle/provision-users/scim/"]
+      "links": ["https://fusionauth.io/docs/lifecycle/migrate-users/scim"]
     },
     {
       "identifier": "outbound_scim_provisioning",
@@ -419,7 +419,7 @@
     {
       "identifier": "password_strength_policy",
       "status": "supported",
-      "links": ["https://fusionauth.io/docs/operate/secure-and-monitor/password-and-breach-settings"]
+      "links": ["https://fusionauth.io/docs/operate/secure/breached-password-detection"]
     },
     {
       "identifier": "username_restrictions",
@@ -430,7 +430,7 @@
     {
       "identifier": "progressive_profiling",
       "status": "supported",
-      "links": ["https://fusionauth.io/docs/lifecycle/register-users/registration-forms"]
+      "links": ["https://fusionauth.io/docs/apis/custom-forms/forms"]
     },
     {
       "identifier": "abac",
@@ -488,17 +488,17 @@
     {
       "identifier": "gdpr_data_export",
       "status": "supported",
-      "links": ["https://fusionauth.io/docs/operate/secure-and-monitor/gdpr"]
+      "links": ["https://fusionauth.io/docs/reference/gdpr"]
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "supported",
-      "links": ["https://fusionauth.io/docs/operate/secure-and-monitor/gdpr"]
+      "links": ["https://fusionauth.io/docs/reference/gdpr"]
     },
     {
       "identifier": "consent_management",
       "status": "supported",
-      "links": ["https://fusionauth.io/docs/lifecycle/authenticate-users/consent/"]
+      "links": ["https://fusionauth.io/docs/apis/consents"]
     },
     {
       "identifier": "region_deployment",
@@ -516,13 +516,13 @@
     {
       "identifier": "audit_log_retention",
       "status": "supported",
-      "links": ["https://fusionauth.io/docs/operate/secure-and-monitor/audit-logs"]
+      "links": ["https://fusionauth.io/docs/apis/audit-logs"]
     },
     {
       "identifier": "audit_log_streaming",
       "status": "partial",
       "description": "Log streaming via syslog and webhook-based event streaming.",
-      "links": ["https://fusionauth.io/docs/operate/secure-and-monitor/audit-logs"]
+      "links": ["https://fusionauth.io/docs/apis/audit-logs"]
     },
     {
       "identifier": "security_center",
@@ -551,13 +551,12 @@
     {
       "identifier": "bot_detection",
       "status": "supported",
-      "description": "CAPTCHA integrations (Google reCAPTCHA, hCaptcha) for login flows.",
-      "links": ["https://fusionauth.io/docs/operate/secure-and-monitor/captcha"]
+      "description": "CAPTCHA integrations (Google reCAPTCHA, hCaptcha) for login flows."
     },
     {
       "identifier": "brute_force_protection",
       "status": "supported",
-      "links": ["https://fusionauth.io/docs/operate/secure-and-monitor/login-prevention"]
+      "links": ["https://fusionauth.io/docs/operate/secure/advanced-threat-detection"]
     },
     {
       "identifier": "suspicious_ip_throttling",
@@ -567,7 +566,7 @@
     {
       "identifier": "breached_password_detection",
       "status": "supported",
-      "links": ["https://fusionauth.io/docs/operate/secure-and-monitor/password-and-breach-settings"]
+      "links": ["https://fusionauth.io/docs/operate/secure/breached-password-detection"]
     },
     {
       "identifier": "credential_guard",
@@ -628,7 +627,7 @@
     {
       "identifier": "login_analytics",
       "status": "supported",
-      "links": ["https://fusionauth.io/docs/operate/secure-and-monitor/"]
+      "links": ["https://fusionauth.io/docs/operate/secure"]
     },
     {
       "identifier": "sdk_coverage",
@@ -661,8 +660,7 @@
     },
     {
       "identifier": "custom_domain",
-      "status": "supported",
-      "links": ["https://fusionauth.io/docs/operate/deploy/custom-domain"]
+      "status": "supported"
     },
     {
       "identifier": "deploy_cli",
