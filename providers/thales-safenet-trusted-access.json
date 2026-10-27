@@ -1,0 +1,661 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "Thales SafeNet Trusted Access",
+  "abstract": "Cloud-based access management and authentication service from Thales, with single sign-on and multifactor authentication for workforce applications, part of the SafeNet line of authentication products. Offers a free trial for 10 users and is sold per user. Thales also sells hardware tokens and authenticators alongside it. Entrust Identity as a Service is a separate competing product, still sold separately according to recent listings.",
+  "identifier": "thales-safenet-trusted-access",
+  "aliases": ["SafeNet Trusted Access", "STA"],
+  "status": "active",
+  "deploymentModels": ["saas"],
+  "targetAudience": ["workforce"],
+  "tags": ["thales", "safenet", "tokens", "sso"],
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/thales.svg"
+  },
+  "website": "https://cpl.thalesgroup.com/access-management/safenet-trusted-access",
+  "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
+  "governance": "vendor_led",
+  "nationality": "France",
+  "vendor": {
+    "name": "Thales",
+    "url": "https://www.thalesgroup.com"
+  },
+  "pricing": {
+    "hasFreeTier": false,
+    "pricingModel": "per_user",
+    "pricingUrl": "https://cpl.thalesgroup.com/access-management/safenet-trusted-access",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
+    "plans": [
+      {
+        "name": "Per user",
+        "price": "Contact sales. Free trial for 10 users"
+      }
+    ]
+  },
+  "lastVerified": "2026-10-24",
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "passkey_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "totp_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "hotp_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "u2f_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "email_code_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "step_up_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "oidc_protocol",
+      "status": "unknown"
+    },
+    {
+      "identifier": "saml2_protocol",
+      "status": "unknown"
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "status": "unknown"
+    },
+    {
+      "identifier": "machine_to_machine",
+      "status": "unknown"
+    },
+    {
+      "identifier": "oidc_federation",
+      "status": "unknown"
+    },
+    {
+      "identifier": "saml_federation",
+      "status": "unknown"
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "status": "unknown"
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "password_hash_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "status": "unknown"
+    },
+    {
+      "identifier": "upsert_on_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "legacy_username_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "scim_groups",
+      "status": "unknown"
+    },
+    {
+      "identifier": "jit_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "lazy_migration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "status": "unknown"
+    },
+    {
+      "identifier": "account_linking",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_blocking",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "app_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_search",
+      "status": "unknown"
+    },
+    {
+      "identifier": "rbac",
+      "status": "unknown"
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "password_strength_policy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "username_restrictions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "progressive_profiling",
+      "status": "unknown"
+    },
+    {
+      "identifier": "abac",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "api_authorization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "soc2_type2",
+      "status": "unknown"
+    },
+    {
+      "identifier": "iso_27001",
+      "status": "unknown"
+    },
+    {
+      "identifier": "hipaa_baa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pci_dss",
+      "status": "unknown"
+    },
+    {
+      "identifier": "csa_star",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fedramp",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "status": "unknown"
+    },
+    {
+      "identifier": "consent_management",
+      "status": "unknown"
+    },
+    {
+      "identifier": "region_deployment",
+      "status": "unknown"
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "status": "unknown"
+    },
+    {
+      "identifier": "audit_log_retention",
+      "status": "unknown"
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "status": "unknown"
+    },
+    {
+      "identifier": "security_center",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "status": "unknown"
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bot_detection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "brute_force_protection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "status": "unknown"
+    },
+    {
+      "identifier": "breached_password_detection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "credential_guard",
+      "status": "unknown"
+    },
+    {
+      "identifier": "tenant_acl",
+      "status": "unknown"
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "status": "unknown"
+    },
+    {
+      "identifier": "per_org_branding",
+      "status": "unknown"
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "hosted_login_page",
+      "status": "unknown"
+    },
+    {
+      "identifier": "embedded_login",
+      "status": "unknown"
+    },
+    {
+      "identifier": "white_label",
+      "status": "unknown"
+    },
+    {
+      "identifier": "localization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "status": "unknown"
+    },
+    {
+      "identifier": "login_analytics",
+      "status": "unknown"
+    },
+    {
+      "identifier": "sdk_coverage",
+      "status": "unknown"
+    },
+    {
+      "identifier": "management_api",
+      "status": "unknown"
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "actions_extensibility",
+      "status": "unknown"
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_domain",
+      "status": "unknown"
+    },
+    {
+      "identifier": "deploy_cli",
+      "status": "unknown"
+    },
+    {
+      "identifier": "terraform_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_database_connections",
+      "status": "unknown"
+    },
+    {
+      "identifier": "native_webhooks",
+      "status": "unknown"
+    },
+    {
+      "identifier": "universal_login_customization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_email_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "email_templates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "status": "unknown"
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "status": "unknown"
+    },
+    {
+      "identifier": "identity_proofing",
+      "status": "unknown"
+    },
+    {
+      "identifier": "decentralized_identity",
+      "status": "unknown"
+    },
+    {
+      "identifier": "billing_integration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "agentic_identity",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "status": "unknown"
+    }
+  ],
+  "oidc": {
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "password_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "unknown"
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "par_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dpop",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jarm",
+        "status": "unknown"
+      }
+    ]
+  }
+}

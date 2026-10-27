@@ -1,0 +1,758 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "Casdoor",
+  "abstract": "Open-source identity and access management platform written in Go, with a web UI. Acts as an OAuth 2.0, OIDC, SAML, CAS, LDAP, RADIUS and SCIM identity provider, with password, email and SMS code, WebAuthn and passkey sign-in, 70+ built-in social providers and TOTP, WebAuthn, email and SMS multi-factor authentication. Supports multiple organizations per instance, each with its own users, groups, roles, applications and branding, and Casbin-based ACL, RBAC and ABAC permissions. Positioned as an agent-first IAM that exposes its management API as an MCP server and acts as an OAuth 2.1 authorization server for MCP servers. Self-hosted as a single Go binary with a SQL database under Apache-2.0, or managed on Casdoor Cloud.",
+  "identifier": "casdoor",
+  "status": "active",
+  "deploymentModels": ["saas", "self_hosted"],
+  "targetAudience": ["b2b", "workforce", "developer"],
+  "tags": ["go", "casbin", "mcp", "cas", "radius", "multi-tenant"],
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/casdoor.svg"
+  },
+  "website": "https://casdoor.ai",
+  "documentationUrl": "https://casdoor.ai/docs/overview/",
+  "changelogUrl": "https://github.com/casdoor/casdoor/releases",
+  "github": "https://github.com/casdoor/casdoor",
+  "license": "Apache-2.0",
+  "licenseUrl": "https://github.com/casdoor/casdoor/blob/master/LICENSE",
+  "openSource": {
+    "isOpenSource": true,
+    "model": "fully_open"
+  },
+  "governance": "vendor_led",
+  "pricing": {
+    "hasFreeTier": false,
+    "freeTierLimit": "Self-hosting is free. Casdoor Cloud gives new accounts $20 of credit for 30 days.",
+    "pricingModel": "subscription",
+    "pricingUrl": "https://casdoor.com/pricing",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": false,
+    "currency": "USD",
+    "pricingLastVerified": "2026-10-24",
+    "trialDays": 30,
+    "plans": [
+      {
+        "name": "Self-hosted",
+        "price": "Free",
+        "amount": 0
+      },
+      {
+        "name": "Basic",
+        "price": "$29/month, or $24/month billed annually. Pay-as-you-go at $0.06/hour",
+        "amount": 29,
+        "period": "month"
+      },
+      {
+        "name": "Premium",
+        "price": "$79/month, or $65/month billed annually. Pay-as-you-go at $0.16/hour",
+        "amount": 79,
+        "period": "month"
+      },
+      {
+        "name": "Enterprise",
+        "price": "$249/month, or $199/month billed annually. Pay-as-you-go at $0.50/hour",
+        "amount": 249,
+        "period": "month"
+      }
+    ]
+  },
+  "hosting": {
+    "selfHostRequirements": {
+      "runtime": "Go",
+      "database": ["MySQL", "PostgreSQL", "SQL Server", "Oracle", "SQLite"]
+    }
+  },
+  "supportChannels": ["email", "community"],
+  "lastVerified": "2026-10-24",
+  "repositories": [
+    {
+      "url": "https://github.com/casdoor/casdoor",
+      "platform": "github",
+      "role": "core",
+      "stars": 14653,
+      "contributors": 325,
+      "latestVersion": "v4.23.0",
+      "lastRelease": "2026-10-21",
+      "statsUpdatedAt": "2026-10-24"
+    }
+  ],
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "status": "supported",
+      "description": "Password sign-in per application.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "status": "supported",
+      "description": "70+ built-in OAuth providers, including Google, GitHub, Microsoft, WeChat, DingTalk and Lark.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "passkey_authentication",
+      "status": "supported",
+      "description": "WebAuthn and passkey sign-in.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "status": "supported",
+      "description": "Sign-in with a code sent by email.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "status": "supported",
+      "description": "Sign-in with a code sent by SMS.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "totp_mfa",
+      "status": "supported",
+      "description": "Authenticator app one-time passwords.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "hotp_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "u2f_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "status": "supported",
+      "description": "WebAuthn and passkeys as a second factor.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "email_code_mfa",
+      "status": "supported",
+      "description": "One-time code sent by email.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "status": "supported",
+      "description": "One-time code sent by SMS.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "step_up_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "oidc_protocol",
+      "status": "supported",
+      "description": "OAuth 2.0 and OpenID Connect provider.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "saml2_protocol",
+      "status": "supported",
+      "description": "SAML identity provider, included on every Casdoor Cloud plan.",
+      "links": ["https://casdoor.ai/docs/overview/", "https://casdoor.com/pricing"]
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "status": "unknown"
+    },
+    {
+      "identifier": "machine_to_machine",
+      "status": "unknown"
+    },
+    {
+      "identifier": "oidc_federation",
+      "status": "supported",
+      "description": "Sign-in through any OIDC identity provider.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "saml_federation",
+      "status": "supported",
+      "description": "Sign-in through any SAML identity provider.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "status": "supported",
+      "description": "Serves LDAP, and syncers import and keep users in sync from LDAP and Active Directory.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "password_hash_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "status": "unknown"
+    },
+    {
+      "identifier": "upsert_on_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "legacy_username_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "status": "supported",
+      "description": "SCIM user provisioning, included on every Casdoor Cloud plan.",
+      "links": ["https://casdoor.ai/docs/overview/", "https://casdoor.com/pricing"]
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "scim_groups",
+      "status": "unknown"
+    },
+    {
+      "identifier": "jit_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "lazy_migration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "status": "unknown"
+    },
+    {
+      "identifier": "account_linking",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_blocking",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "app_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_search",
+      "status": "unknown"
+    },
+    {
+      "identifier": "rbac",
+      "status": "supported",
+      "description": "Roles and permissions through Casbin, with an API to check them.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "status": "supported",
+      "description": "Multiple organizations per instance, each with its own users, groups, roles, applications and branding.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "password_strength_policy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "username_restrictions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "progressive_profiling",
+      "status": "unknown"
+    },
+    {
+      "identifier": "abac",
+      "status": "supported",
+      "description": "Casbin supports ABAC models next to ACL and RBAC.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "api_authorization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "soc2_type2",
+      "status": "not_supported",
+      "description": "Casdoor Cloud does not currently hold SOC 2.",
+      "links": ["https://casdoor.com/pricing"]
+    },
+    {
+      "identifier": "iso_27001",
+      "status": "not_supported",
+      "description": "Casdoor Cloud does not currently hold ISO 27001.",
+      "links": ["https://casdoor.com/pricing"]
+    },
+    {
+      "identifier": "hipaa_baa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pci_dss",
+      "status": "unknown"
+    },
+    {
+      "identifier": "csa_star",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fedramp",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "status": "unknown"
+    },
+    {
+      "identifier": "consent_management",
+      "status": "unknown"
+    },
+    {
+      "identifier": "region_deployment",
+      "status": "supported",
+      "description": "Casdoor Cloud runs in Singapore or Japan on Basic, and in 23 regions on Premium and Enterprise.",
+      "links": ["https://casdoor.com/pricing"]
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "status": "supported",
+      "description": "Single Go binary with a SQL database. Cloud instances can be exported to a self-hosted deployment.",
+      "links": ["https://casdoor.ai/docs/overview/", "https://casdoor.com/pricing"]
+    },
+    {
+      "identifier": "audit_log_retention",
+      "status": "unknown"
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "status": "unknown"
+    },
+    {
+      "identifier": "security_center",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "status": "unknown"
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bot_detection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "brute_force_protection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "status": "unknown"
+    },
+    {
+      "identifier": "breached_password_detection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "credential_guard",
+      "status": "unknown"
+    },
+    {
+      "identifier": "tenant_acl",
+      "status": "unknown"
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "status": "unknown"
+    },
+    {
+      "identifier": "per_org_branding",
+      "status": "supported",
+      "description": "Each organization has its own branding.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "status": "supported",
+      "description": "An organization can make MFA optional or required.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "hosted_login_page",
+      "status": "supported",
+      "description": "Sign-in and sign-up pages configured per application without code.",
+      "links": ["https://casdoor.ai/docs/overview/"]
+    },
+    {
+      "identifier": "embedded_login",
+      "status": "unknown"
+    },
+    {
+      "identifier": "white_label",
+      "status": "unknown"
+    },
+    {
+      "identifier": "localization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "status": "unknown"
+    },
+    {
+      "identifier": "login_analytics",
+      "status": "unknown"
+    },
+    {
+      "identifier": "sdk_coverage",
+      "status": "unknown"
+    },
+    {
+      "identifier": "management_api",
+      "status": "unknown"
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "actions_extensibility",
+      "status": "unknown"
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_domain",
+      "status": "supported",
+      "description": "Custom domain with managed TLS on Premium and Enterprise. Basic uses a casdoor.com subdomain.",
+      "links": ["https://casdoor.com/pricing"]
+    },
+    {
+      "identifier": "deploy_cli",
+      "status": "unknown"
+    },
+    {
+      "identifier": "terraform_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_database_connections",
+      "status": "unknown"
+    },
+    {
+      "identifier": "native_webhooks",
+      "status": "unknown"
+    },
+    {
+      "identifier": "universal_login_customization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_email_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "email_templates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "status": "unknown"
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "status": "unknown"
+    },
+    {
+      "identifier": "identity_proofing",
+      "status": "unknown"
+    },
+    {
+      "identifier": "decentralized_identity",
+      "status": "unknown"
+    },
+    {
+      "identifier": "billing_integration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "agentic_identity",
+      "status": "supported",
+      "description": "Exposes its management API as an MCP server and acts as an OAuth 2.1 authorization server for MCP servers.",
+      "links": ["https://casdoor.ai/docs/overview/", "https://github.com/casdoor/casdoor"]
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "status": "unknown"
+    }
+  ],
+  "oidc": {
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "description": "The only grant flow described in the overview.",
+        "links": ["https://casdoor.ai/docs/overview/"]
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "password_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "unknown"
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "par_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dpop",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jarm",
+        "status": "unknown"
+      }
+    ]
+  }
+}

@@ -1,0 +1,803 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "WSO2 Identity Server",
+  "abstract": "Open-source identity and access management server from WSO2, also offered as the SaaS WSO2 Identity Platform (formerly Asgardeo). Covers passwordless, social and enterprise login, adaptive and multi-factor authentication, OIDC, SAML 2.0 and WS-Federation, SCIM 2.0 provisioning, B2B organizations with delegated administration, role-based access control, scripted conditional authentication, webhooks and pre-flow actions. Recent releases add identity for AI agents and MCP servers. Run it self-hosted on Kubernetes or VMs with MySQL, PostgreSQL, SQL Server, Oracle or DB2 under Apache-2.0 with commercial support, or use the multi-tenant SaaS with a Free plan up to 15,000 monthly active users.",
+  "identifier": "wso2-identity-server",
+  "aliases": ["Asgardeo", "WSO2 Identity Platform"],
+  "status": "active",
+  "deploymentModels": ["saas", "self_hosted", "hybrid"],
+  "targetAudience": ["b2b", "workforce", "ciam", "developer"],
+  "tags": ["java", "adaptive-authentication", "mcp", "ai-agents", "verifiable-credentials"],
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/wso2-identity-server.svg"
+  },
+  "website": "https://wso2.com/identity-server/",
+  "documentationUrl": "https://is.docs.wso2.com/en/latest/",
+  "changelogUrl": "https://github.com/wso2/product-is/releases",
+  "github": "https://github.com/wso2/product-is",
+  "license": "Apache-2.0",
+  "licenseUrl": "https://github.com/wso2/product-is/blob/master/LICENSE",
+  "openSource": {
+    "isOpenSource": true,
+    "model": "fully_open"
+  },
+  "governance": "vendor_led",
+  "vendor": {
+    "name": "WSO2",
+    "url": "https://wso2.com"
+  },
+  "pricing": {
+    "hasFreeTier": true,
+    "freeTierLimit": "Free plan: up to 15,000 MAU, 5 applications, 5,000 M2M tokens, 1 B2B organization, 1 social login, 1 MFA method, 7 days of audit logs",
+    "freeTierMau": 15000,
+    "pricingModel": "subscription",
+    "pricingUrl": "https://wso2.com/asgardeo/pricing/",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
+    "currency": "USD",
+    "pricingLastVerified": "2026-10-24",
+    "plans": [
+      {
+        "name": "Free",
+        "price": "Free",
+        "amount": 0,
+        "mauIncluded": 15000
+      },
+      {
+        "name": "Growth",
+        "price": "From $25/month with 3,500 MAU included, then billed per unit. Extra enterprise connections and B2B organizations $35/month each. Capped at $2,000/month",
+        "mauIncluded": 3500,
+        "featuresIncluded": ["outbound_scim_provisioning", "actions_extensibility", "custom_domain", "native_webhooks"]
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom, annual contract",
+        "featuresIncluded": ["outbound_scim_provisioning", "actions_extensibility", "custom_domain", "native_webhooks"]
+      }
+    ]
+  },
+  "hosting": {
+    "selfHostRequirements": {
+      "runtime": "Java",
+      "database": ["MySQL", "PostgreSQL", "SQL Server", "Oracle", "IBM DB2", "MariaDB"],
+      "container": ["Kubernetes", "OpenShift"]
+    }
+  },
+  "sla": {
+    "uptimePercent": 99.99,
+    "url": "https://wso2.com/asgardeo/pricing/",
+    "scope": "Enterprise plan of the SaaS (99.999% as an add-on)"
+  },
+  "supportChannels": ["email", "community"],
+  "lastVerified": "2026-10-24",
+  "repositories": [
+    {
+      "url": "https://github.com/wso2/product-is",
+      "platform": "github",
+      "role": "core",
+      "stars": 887,
+      "contributors": 759,
+      "latestVersion": "v7.3.0",
+      "lastRelease": "2026-05-13",
+      "statsUpdatedAt": "2026-10-24"
+    }
+  ],
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "status": "supported",
+      "description": "Facebook, Google, GitHub, Microsoft, Apple, X and others. The Free plan allows 1 social login.",
+      "links": ["https://is.docs.wso2.com/en/latest/", "https://wso2.com/asgardeo/pricing/"]
+    },
+    {
+      "identifier": "passkey_authentication",
+      "status": "supported",
+      "description": "Passkey sign-in.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "status": "supported",
+      "description": "Email OTP sign-in.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "status": "supported",
+      "description": "SMS OTP sign-in.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "status": "supported",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "totp_mfa",
+      "status": "supported",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "hotp_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "u2f_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "status": "supported",
+      "description": "Passkey as a second factor.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "email_code_mfa",
+      "status": "supported",
+      "description": "Email OTP.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "status": "supported",
+      "description": "SMS OTP.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "status": "supported",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "status": "supported",
+      "description": "Conditional authentication scripts can require MFA based on role, group, IP, device, login attempts, user store or risk. Advanced adaptive authentication is an Enterprise feature of the SaaS.",
+      "links": ["https://is.docs.wso2.com/en/latest/", "https://wso2.com/asgardeo/pricing/"]
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "step_up_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "oidc_protocol",
+      "status": "supported",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "saml2_protocol",
+      "status": "supported",
+      "description": "SAML 2.0 with artifact binding and back-channel logout.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "status": "supported",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "machine_to_machine",
+      "status": "supported",
+      "description": "M2M tokens are metered on the SaaS plans.",
+      "links": ["https://is.docs.wso2.com/en/latest/", "https://wso2.com/asgardeo/pricing/"]
+    },
+    {
+      "identifier": "oidc_federation",
+      "status": "supported",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "saml_federation",
+      "status": "supported",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "status": "supported",
+      "description": "JDBC, LDAP and Active Directory user stores, and on-premises directory sync for the SaaS.",
+      "links": ["https://is.docs.wso2.com/en/latest/", "https://wso2.com/asgardeo/pricing/"]
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "password_hash_import",
+      "status": "partial",
+      "description": "User migration covers accounts and passwords. Supported hash formats were not verified.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "bulk_user_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "status": "unknown"
+    },
+    {
+      "identifier": "upsert_on_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "legacy_username_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "status": "supported",
+      "description": "SCIM 2.0 APIs.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "status": "supported",
+      "description": "Outbound provisioning. On the SaaS it needs Growth, capped at 1,000 per month.",
+      "links": ["https://is.docs.wso2.com/en/latest/", "https://wso2.com/asgardeo/pricing/"],
+      "plans": ["Growth", "Enterprise"]
+    },
+    {
+      "identifier": "scim_groups",
+      "status": "unknown"
+    },
+    {
+      "identifier": "jit_provisioning",
+      "status": "supported",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "lazy_migration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "status": "unknown"
+    },
+    {
+      "identifier": "account_linking",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_blocking",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "app_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_search",
+      "status": "unknown"
+    },
+    {
+      "identifier": "rbac",
+      "status": "supported",
+      "description": "Roles and groups, with role-based access control for APIs.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "status": "supported",
+      "description": "B2B organizations with delegated administration and organization discovery. The Free plan has 1 organization, Growth 2, and Enterprise supports nested hierarchies.",
+      "links": ["https://is.docs.wso2.com/en/latest/", "https://wso2.com/asgardeo/pricing/"]
+    },
+    {
+      "identifier": "password_strength_policy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "username_restrictions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "progressive_profiling",
+      "status": "unknown"
+    },
+    {
+      "identifier": "abac",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "status": "supported",
+      "description": "Listed as an Enterprise add-on of the SaaS.",
+      "links": ["https://wso2.com/asgardeo/pricing/"]
+    },
+    {
+      "identifier": "api_authorization",
+      "status": "supported",
+      "description": "Role-based access control for APIs, and Rich Authorization Requests.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "soc2_type2",
+      "status": "partial",
+      "description": "Price list says SOC 2 is included on every SaaS plan. The report type is not stated.",
+      "links": ["https://wso2.com/asgardeo/pricing/"]
+    },
+    {
+      "identifier": "iso_27001",
+      "status": "supported",
+      "description": "Included on every SaaS plan.",
+      "links": ["https://wso2.com/asgardeo/pricing/"]
+    },
+    {
+      "identifier": "hipaa_baa",
+      "status": "partial",
+      "description": "HIPAA attestation is an Enterprise add-on that needs a private cloud.",
+      "links": ["https://wso2.com/asgardeo/pricing/"]
+    },
+    {
+      "identifier": "pci_dss",
+      "status": "partial",
+      "description": "PCI DSS attestation is an Enterprise add-on that needs a private cloud.",
+      "links": ["https://wso2.com/asgardeo/pricing/"]
+    },
+    {
+      "identifier": "csa_star",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fedramp",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "status": "unknown"
+    },
+    {
+      "identifier": "consent_management",
+      "status": "supported",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "region_deployment",
+      "status": "supported",
+      "description": "Data residency add-on, and multi-region and multi-cloud options on the SaaS.",
+      "links": ["https://wso2.com/asgardeo/pricing/"]
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "status": "supported",
+      "description": "Self-hosted on-premises, in a private or public cloud, on Kubernetes, VMs, bare metal or air-gapped. The SaaS also offers a private cloud on AWS or Azure.",
+      "links": ["https://wso2.com/identity-server/", "https://wso2.com/asgardeo/pricing/"]
+    },
+    {
+      "identifier": "audit_log_retention",
+      "status": "supported",
+      "description": "SaaS retention is 7 days on Free and 30 days on Growth and Enterprise.",
+      "links": ["https://wso2.com/asgardeo/pricing/"]
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "status": "unknown"
+    },
+    {
+      "identifier": "security_center",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "status": "unknown"
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bot_detection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "brute_force_protection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "status": "unknown"
+    },
+    {
+      "identifier": "breached_password_detection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "credential_guard",
+      "status": "unknown"
+    },
+    {
+      "identifier": "tenant_acl",
+      "status": "unknown"
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "status": "unknown"
+    },
+    {
+      "identifier": "per_org_branding",
+      "status": "supported",
+      "description": "Organization-level branding and login settings.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "hosted_login_page",
+      "status": "supported",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "embedded_login",
+      "status": "unknown"
+    },
+    {
+      "identifier": "white_label",
+      "status": "unknown"
+    },
+    {
+      "identifier": "localization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "status": "unknown"
+    },
+    {
+      "identifier": "login_analytics",
+      "status": "unknown"
+    },
+    {
+      "identifier": "sdk_coverage",
+      "status": "supported",
+      "description": "React and Next.js SDKs, plus quickstarts for Vue, Nuxt, Angular, JavaScript, Express.js, .NET and Spring Boot.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "management_api",
+      "status": "unknown"
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "actions_extensibility",
+      "status": "supported",
+      "description": "Pre-flow actions for access token, ID token, password update and profile update, plus custom authenticators. Growth and above on the SaaS.",
+      "links": ["https://is.docs.wso2.com/en/latest/", "https://wso2.com/asgardeo/pricing/"],
+      "plans": ["Growth", "Enterprise"]
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_domain",
+      "status": "supported",
+      "description": "Growth and above on the SaaS.",
+      "links": ["https://wso2.com/asgardeo/pricing/"],
+      "plans": ["Growth", "Enterprise"]
+    },
+    {
+      "identifier": "deploy_cli",
+      "status": "unknown"
+    },
+    {
+      "identifier": "terraform_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_database_connections",
+      "status": "unknown"
+    },
+    {
+      "identifier": "native_webhooks",
+      "status": "supported",
+      "description": "Growth and above on the SaaS.",
+      "links": ["https://is.docs.wso2.com/en/latest/", "https://wso2.com/asgardeo/pricing/"],
+      "plans": ["Growth", "Enterprise"]
+    },
+    {
+      "identifier": "universal_login_customization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_email_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "email_templates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "status": "supported",
+      "description": "Access token and ID token pre-flow actions can change claims.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "status": "unknown"
+    },
+    {
+      "identifier": "identity_proofing",
+      "status": "supported",
+      "description": "Integrations with identity verification providers.",
+      "links": ["https://is.docs.wso2.com/en/latest/"]
+    },
+    {
+      "identifier": "decentralized_identity",
+      "status": "supported",
+      "description": "Verifiable credentials with OID4VCI, and EUDI wallets as an Enterprise add-on.",
+      "links": ["https://is.docs.wso2.com/en/latest/", "https://wso2.com/asgardeo/pricing/"]
+    },
+    {
+      "identifier": "billing_integration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "agentic_identity",
+      "status": "supported",
+      "description": "Agent identity registration, credentials and authentication, MCP client registration, securing MCP servers, and token exchange for agents.",
+      "links": ["https://is.docs.wso2.com/en/latest/", "https://wso2.com/identity-server/"]
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "status": "partial",
+      "description": "The product page cites post-quantum hybrid key agreement for TLS 1.3.",
+      "links": ["https://wso2.com/identity-server/"]
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "status": "unknown"
+    }
+  ],
+  "oidc": {
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "links": ["https://is.docs.wso2.com/en/latest/"]
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "supported",
+        "links": ["https://wso2.com/asgardeo/pricing/"]
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "supported",
+        "links": ["https://is.docs.wso2.com/en/latest/"]
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "supported",
+        "links": ["https://is.docs.wso2.com/en/latest/"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "supported",
+        "links": ["https://is.docs.wso2.com/en/latest/"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "supported",
+        "links": ["https://is.docs.wso2.com/en/latest/"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "password_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "supported",
+        "description": "Back-channel and front-channel logout.",
+        "links": ["https://is.docs.wso2.com/en/latest/"]
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported",
+        "links": ["https://is.docs.wso2.com/en/latest/"]
+      },
+      {
+        "identifier": "par_extension",
+        "status": "supported",
+        "links": ["https://is.docs.wso2.com/en/latest/"]
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "supported",
+        "links": ["https://is.docs.wso2.com/en/latest/"]
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dpop",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jarm",
+        "status": "supported",
+        "links": ["https://is.docs.wso2.com/en/latest/"]
+      }
+    ]
+  }
+}

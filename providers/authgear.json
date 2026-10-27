@@ -1,0 +1,810 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "Authgear",
+  "abstract": "Open-source customer identity platform written in Go, available as Authgear Cloud or self-hosted on PostgreSQL under Apache-2.0. Covers password, passwordless OTP, magic link, passkey, biometric and social sign-in, TOTP and SMS or email MFA, OIDC and SAML SSO, an OAuth provider for MCP and AI agents, roles and groups, an Authentication Flow API for custom UIs, events and hooks, and fraud, bot and brute-force protection. Cloud pricing is flat monthly tiers with a free plan, built by Oursky in Hong Kong.",
+  "identifier": "authgear",
+  "status": "active",
+  "deploymentModels": ["saas", "self_hosted"],
+  "targetAudience": ["b2c", "b2b", "ciam", "developer"],
+  "tags": ["go", "mcp", "auth0-alternative", "keycloak-alternative"],
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/authgear.svg"
+  },
+  "website": "https://www.authgear.com",
+  "documentationUrl": "https://docs.authgear.com",
+  "changelogUrl": "https://github.com/authgear/authgear-server/releases",
+  "github": "https://github.com/authgear/authgear-server",
+  "license": "Apache-2.0",
+  "licenseUrl": "https://github.com/authgear/authgear-server/blob/main/LICENSE.txt",
+  "openSource": {
+    "isOpenSource": true,
+    "model": "fully_open"
+  },
+  "governance": "vendor_led",
+  "nationality": "Hong Kong",
+  "vendor": {
+    "name": "Oursky",
+    "url": "https://www.oursky.com"
+  },
+  "headquarters": {
+    "country": "HK"
+  },
+  "pricing": {
+    "hasFreeTier": true,
+    "freeTierLimit": "Free plan: unlimited MAU, 2 applications, 2 admin seats, 1 day of logs, 100 SMS or WhatsApp messages per month",
+    "pricingModel": "subscription",
+    "pricingUrl": "https://www.authgear.com/pricing",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
+    "currency": "USD",
+    "pricingLastVerified": "2026-10-24",
+    "plans": [
+      {
+        "name": "Free",
+        "price": "Free",
+        "amount": 0
+      },
+      {
+        "name": "Developers",
+        "price": "$50/month",
+        "amount": 50,
+        "period": "month"
+      },
+      {
+        "name": "Business",
+        "price": "$500/month with 25,000 MAU included, then $50 per extra 5,000 MAU. SMS and WhatsApp OTP at $0.02 per message in the US and Canada, $0.10 elsewhere"
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom"
+      }
+    ]
+  },
+  "hosting": {
+    "regions": ["US"],
+    "selfHostRequirements": {
+      "runtime": "Go",
+      "database": ["PostgreSQL"],
+      "container": ["Docker", "Kubernetes"]
+    }
+  },
+  "supportChannels": ["email", "slack", "community"],
+  "repositories": [
+    {
+      "url": "https://github.com/authgear/authgear-server",
+      "platform": "github",
+      "role": "core",
+      "stars": 2124,
+      "contributors": 51,
+      "latestVersion": "2026-10-22.0",
+      "lastRelease": "2026-10-22",
+      "statsUpdatedAt": "2026-10-24"
+    }
+  ],
+  "sdks": [
+    {
+      "language": "JavaScript",
+      "framework": "Web, React, Vue, Angular",
+      "url": "https://github.com/authgear/authgear-sdk-js",
+      "official": true
+    },
+    {
+      "language": "Swift",
+      "framework": "iOS",
+      "url": "https://github.com/authgear/authgear-sdk-ios",
+      "official": true
+    },
+    {
+      "language": "Kotlin",
+      "framework": "Android",
+      "url": "https://github.com/authgear/authgear-sdk-android",
+      "official": true
+    },
+    {
+      "language": "Dart",
+      "framework": "Flutter",
+      "url": "https://github.com/authgear/authgear-sdk-flutter",
+      "official": true
+    },
+    {
+      "language": "TypeScript",
+      "framework": "React Native",
+      "url": "https://github.com/authgear/authgear-sdk-js/tree/main/packages/authgear-react-native",
+      "official": true
+    }
+  ],
+  "lastVerified": "2026-10-24",
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "status": "supported",
+      "description": "Email, phone or username as login ID with a password.",
+      "links": ["https://docs.authgear.com/authentication-and-access/authentication/passwords/password-policy"]
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "status": "supported",
+      "description": "Google, Apple, Azure AD and other social and enterprise providers.",
+      "links": ["https://docs.authgear.com/authentication-and-access/social-enterprise-login-providers"]
+    },
+    {
+      "identifier": "passkey_authentication",
+      "status": "supported",
+      "links": ["https://docs.authgear.com/authentication-and-access/authentication/passkeys"]
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "status": "supported",
+      "description": "Email OTP login."
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "status": "supported",
+      "description": "SMS and WhatsApp OTP login."
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "status": "supported",
+      "links": ["https://docs.authgear.com/authentication-and-access/authentication/add-email-magic-link-login"]
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "status": "supported",
+      "description": "Anonymous users in the mobile SDKs."
+    },
+    {
+      "identifier": "totp_mfa",
+      "status": "supported",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/authentication/enable-two-factor-authentication-2fa"
+      ]
+    },
+    {
+      "identifier": "hotp_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "u2f_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "email_code_mfa",
+      "status": "supported",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/authentication/enable-two-factor-authentication-2fa"
+      ]
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "status": "supported",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/authentication/enable-two-factor-authentication-2fa"
+      ]
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "status": "supported",
+      "description": "Recovery codes for 2FA."
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "step_up_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "oidc_protocol",
+      "status": "supported",
+      "description": "Authgear is an OpenID Connect provider.",
+      "links": ["https://docs.authgear.com/get-started/oidc-provider"]
+    },
+    {
+      "identifier": "saml2_protocol",
+      "status": "supported",
+      "links": ["https://docs.authgear.com/get-started/single-sign-on-with-saml"]
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "status": "unknown"
+    },
+    {
+      "identifier": "machine_to_machine",
+      "status": "supported",
+      "links": ["https://docs.authgear.com/get-started/m2m-applications"]
+    },
+    {
+      "identifier": "oidc_federation",
+      "status": "supported",
+      "description": "Generic OIDC enterprise connections.",
+      "links": ["https://docs.authgear.com/authentication-and-access/social-enterprise-login-providers"]
+    },
+    {
+      "identifier": "saml_federation",
+      "status": "unknown"
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "status": "unknown"
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "status": "supported",
+      "description": "Azure AD and Azure AD B2C connections.",
+      "links": ["https://docs.authgear.com/authentication-and-access/social-enterprise-login-providers"]
+    },
+    {
+      "identifier": "bulk_user_import",
+      "status": "supported",
+      "description": "CSV and ndjson import API.",
+      "links": ["https://docs.authgear.com/admin-and-operations/user-management/import-users-using-user-import-api"]
+    },
+    {
+      "identifier": "password_hash_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_export",
+      "status": "supported",
+      "links": ["https://docs.authgear.com/admin-and-operations/user-management/export-users-using-the-user-export-api"]
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "status": "unknown"
+    },
+    {
+      "identifier": "upsert_on_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "legacy_username_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "scim_groups",
+      "status": "unknown"
+    },
+    {
+      "identifier": "jit_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "lazy_migration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "status": "unknown"
+    },
+    {
+      "identifier": "account_linking",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_blocking",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "app_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_search",
+      "status": "unknown"
+    },
+    {
+      "identifier": "rbac",
+      "status": "supported",
+      "description": "Roles and groups.",
+      "links": ["https://docs.authgear.com/admin-and-operations/user-management/manage-users-roles-and-groups"]
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "password_strength_policy",
+      "status": "supported",
+      "links": ["https://docs.authgear.com/authentication-and-access/authentication/passwords/password-policy"]
+    },
+    {
+      "identifier": "username_restrictions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "progressive_profiling",
+      "status": "unknown"
+    },
+    {
+      "identifier": "abac",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "api_authorization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "soc2_type2",
+      "status": "supported",
+      "description": "Stated on the pricing page.",
+      "links": ["https://www.authgear.com/pricing"]
+    },
+    {
+      "identifier": "iso_27001",
+      "status": "supported",
+      "description": "Stated on the pricing page.",
+      "links": ["https://www.authgear.com/pricing"]
+    },
+    {
+      "identifier": "hipaa_baa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pci_dss",
+      "status": "unknown"
+    },
+    {
+      "identifier": "csa_star",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fedramp",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "status": "supported",
+      "description": "Account deletion.",
+      "links": ["https://docs.authgear.com/admin-and-operations/user-management/account-deletion"]
+    },
+    {
+      "identifier": "consent_management",
+      "status": "unknown"
+    },
+    {
+      "identifier": "region_deployment",
+      "status": "partial",
+      "description": "Hosted in the USA on Google Cloud. An EU region is announced as coming soon, and data residency is an Enterprise feature.",
+      "links": ["https://www.authgear.com/pricing"]
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "status": "supported",
+      "description": "Private cloud on the Enterprise plan, or self-hosting.",
+      "links": ["https://www.authgear.com/pricing"]
+    },
+    {
+      "identifier": "audit_log_retention",
+      "status": "supported",
+      "description": "1 day on Free and Developers, 60 days on Business, 180 days on Enterprise.",
+      "links": ["https://docs.authgear.com/admin-and-operations/monitor/audit-log"]
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "status": "unknown"
+    },
+    {
+      "identifier": "security_center",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "status": "unknown"
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bot_detection",
+      "status": "supported",
+      "links": ["https://docs.authgear.com/security/bot-protection"]
+    },
+    {
+      "identifier": "brute_force_protection",
+      "status": "supported",
+      "description": "Rate limiting and account lockout.",
+      "links": ["https://docs.authgear.com/security/brute-force-protection"]
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "status": "partial",
+      "description": "Fraud protection covers SMS pumping and IP-based checks.",
+      "links": ["https://docs.authgear.com/security/fraud-protection"]
+    },
+    {
+      "identifier": "breached_password_detection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "credential_guard",
+      "status": "unknown"
+    },
+    {
+      "identifier": "tenant_acl",
+      "status": "unknown"
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "status": "unknown"
+    },
+    {
+      "identifier": "per_org_branding",
+      "status": "unknown"
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "hosted_login_page",
+      "status": "supported",
+      "description": "Built-in UI with branding and CSS or HTML customization.",
+      "links": ["https://docs.authgear.com/customization/built-in-ui/branding"]
+    },
+    {
+      "identifier": "embedded_login",
+      "status": "supported",
+      "description": "Authentication Flow API for custom UI.",
+      "links": ["https://docs.authgear.com/customization/custom-ui/authentication-flow-api"]
+    },
+    {
+      "identifier": "white_label",
+      "status": "unknown"
+    },
+    {
+      "identifier": "localization",
+      "status": "supported",
+      "links": ["https://docs.authgear.com/customization/built-in-ui/languages-and-localization"]
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "status": "unknown"
+    },
+    {
+      "identifier": "login_analytics",
+      "status": "supported",
+      "links": ["https://docs.authgear.com/admin-and-operations/monitor/analytics"]
+    },
+    {
+      "identifier": "sdk_coverage",
+      "status": "supported",
+      "description": "React, Vue, Angular, JavaScript, iOS, Android, React Native, Flutter, Ionic and Xamarin.",
+      "links": ["https://docs.authgear.com/get-started/start-building"]
+    },
+    {
+      "identifier": "management_api",
+      "status": "supported",
+      "description": "GraphQL Admin API.",
+      "links": ["https://docs.authgear.com/reference/apis/admin-api"]
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "actions_extensibility",
+      "status": "supported",
+      "description": "Events and hooks call external endpoints or hosted TypeScript.",
+      "links": ["https://docs.authgear.com/customization/events-hooks"]
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "status": "supported",
+      "links": ["https://docs.authgear.com/customization/events-hooks"]
+    },
+    {
+      "identifier": "custom_domain",
+      "status": "supported"
+    },
+    {
+      "identifier": "deploy_cli",
+      "status": "unknown"
+    },
+    {
+      "identifier": "terraform_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_database_connections",
+      "status": "unknown"
+    },
+    {
+      "identifier": "native_webhooks",
+      "status": "supported",
+      "links": ["https://docs.authgear.com/customization/events-hooks"]
+    },
+    {
+      "identifier": "universal_login_customization",
+      "status": "supported",
+      "links": ["https://docs.authgear.com/customization/built-in-ui/branding"]
+    },
+    {
+      "identifier": "custom_email_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "email_templates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "status": "unknown"
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "status": "unknown"
+    },
+    {
+      "identifier": "identity_proofing",
+      "status": "unknown"
+    },
+    {
+      "identifier": "decentralized_identity",
+      "status": "unknown"
+    },
+    {
+      "identifier": "billing_integration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "agentic_identity",
+      "status": "supported",
+      "description": "OAuth for AI agents and MCP servers using CIMD and DCR.",
+      "links": ["https://docs.authgear.com/get-started/auth-for-mcp"]
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "status": "unknown"
+    }
+  ],
+  "oidc": {
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported"
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported"
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "supported",
+        "description": "Machine-to-machine applications.",
+        "links": ["https://docs.authgear.com/get-started/m2m-applications"]
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "password_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "unknown"
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported"
+      },
+      {
+        "identifier": "par_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported"
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "supported",
+        "description": "DCR for MCP clients.",
+        "links": ["https://docs.authgear.com/get-started/auth-for-mcp"]
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dpop",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jarm",
+        "status": "unknown"
+      }
+    ]
+  }
+}
