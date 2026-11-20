@@ -738,6 +738,31 @@
       "status": "not_supported",
       "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
+    },
+    {
+      "identifier": "macaroon_tokens",
+      "status": "supported",
+      "category": "token_formats",
+      "description": "PingAM and PingOne Advanced Identity Cloud natively support Macaroon access and refresh tokens (including Macaroon V2). Macaroons support attenuation via first-party and third-party caveats and can be inspected or restricted using the /json/token/macaroon endpoint.",
+      "links": [
+        "https://docs.pingidentity.com/advanced-identity-cloud/am-tokens/macaroons.html",
+        "https://docs.pingidentity.com/pingam/7.5/oauth2-oidc/macaroons.html"
+      ]
+    },
+    {
+      "identifier": "paseto_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "cwt_cose_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "biscuit_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
     }
   ],
   "oidc": {

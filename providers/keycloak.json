@@ -783,6 +783,28 @@
       "category": "post_quantum_cryptography",
       "description": "Keycloak does not support NIST SP 800-208 stateful hash-based signature schemes (LMS/HSS, XMSS).",
       "links": ["https://github.com/keycloak/keycloak/discussions/40496", "https://csrc.nist.gov/pubs/sp/800/208/final"]
+    },
+    {
+      "identifier": "macaroon_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "paseto_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "cwt_cose_tokens",
+      "status": "supported",
+      "category": "token_formats",
+      "description": "Keycloak supports CWT (CBOR Web Token) proofs and COSE algorithm mappings in its OID4VCI (OpenID for Verifiable Credential Issuance) and ISO/IEC 18013-5 mdoc mobile credential modules (ProofTypeCWT and MdocAlgorithm).",
+      "links": ["https://www.keycloak.org/docs/latest/server_admin/index.html", "https://github.com/keycloak/keycloak"]
+    },
+    {
+      "identifier": "biscuit_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
     }
   ],
   "oidc": {

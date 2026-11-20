@@ -775,6 +775,28 @@
       "status": "not_supported",
       "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
+    },
+    {
+      "identifier": "macaroon_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "paseto_tokens",
+      "status": "not_supported",
+      "category": "token_formats",
+      "description": "FusionAuth does not support PASETO tokens. An open feature request exists (Issue #773), but token issuance remains strictly based on standard JWTs and opaque tokens.",
+      "links": ["https://github.com/FusionAuth/fusionauth-issues/issues/773"]
+    },
+    {
+      "identifier": "cwt_cose_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "biscuit_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
     }
   ],
   "oidc": {

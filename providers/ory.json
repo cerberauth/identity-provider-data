@@ -865,6 +865,26 @@
       "category": "post_quantum_cryptography",
       "description": "Ory does not support NIST SP 800-208 stateful hash-based signature schemes (LMS/HSS, XMSS).",
       "links": ["https://www.ory.com/security", "https://csrc.nist.gov/pubs/sp/800/208/final"]
+    },
+    {
+      "identifier": "macaroon_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "paseto_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "cwt_cose_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "biscuit_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
     }
   ],
   "oidc": {

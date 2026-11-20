@@ -14,7 +14,8 @@
       "compliance": "Conformité",
       "developer_integration": "Intégration développeur",
       "advanced": "Avancé / Différenciateurs",
-      "post_quantum_cryptography": "Cryptographie post-quantique"
+      "post_quantum_cryptography": "Cryptographie post-quantique",
+      "token_formats": "Formats de jetons et alternatives aux JWT"
     },
     "features": {
       "username_and_password_authentication": {
@@ -28,6 +29,22 @@
       "passkey_authentication": {
         "name": "Passkey",
         "description": "La méthode d'authentification par Passkey est utilisée par les utilisateurs pour s'authentifier avec leur passkey (FIDO2/WebAuthn)."
+      },
+      "macaroon_tokens": {
+        "name": "Jetons Macaroon",
+        "description": "Prise en charge des jetons Macaroon comme alternative aux JWT, offrant une autorisation décentralisée avec avertissements contextuels (caveats) et atténuation hors ligne."
+      },
+      "paseto_tokens": {
+        "name": "Platform-Agnostic Security Tokens (PASETO)",
+        "description": "Prise en charge des jetons de sécurité indépendants de la plateforme (PASETO) comme alternative sécurisée aux JWT/JOSE, évitant les vulnérabilités liées à l'agilité des algorithmes."
+      },
+      "cwt_cose_tokens": {
+        "name": "CBOR Web Token (CWT) et COSE",
+        "description": "Prise en charge des jetons web CBOR (CWT - RFC 8392) et du chiffrement/signature d'objets CBOR (COSE - RFC 9052) comme alternative binaire compacte aux JWT et à JOSE."
+      },
+      "biscuit_tokens": {
+        "name": "Jetons Biscuit",
+        "description": "Prise en charge des jetons d'autorisation Biscuit comme alternative aux JWT, offrant une autorisation basée sur les capacités, une atténuation cryptographique hors ligne et des règles Datalog intégrées."
       }
     }
   },

@@ -14,7 +14,8 @@
       "compliance": "Compliance",
       "developer_integration": "Developer Integration",
       "advanced": "Advanced / Differentiators",
-      "post_quantum_cryptography": "Post-Quantum Cryptography"
+      "post_quantum_cryptography": "Post-Quantum Cryptography",
+      "token_formats": "Token Formats & JWT Alternatives"
     },
     "features": {
       "username_and_password_authentication": {
@@ -456,6 +457,22 @@
       "pq_stateful_hash_signatures": {
         "name": "Post-Quantum Stateful Hash Signatures",
         "description": "Support for NIST SP 800-208 stateful hash-based signature schemes (LMS/HSS, XMSS/XMSS^MT) in high-security firmware, software updates, or root-of-trust authentication."
+      },
+      "macaroon_tokens": {
+        "name": "Macaroon Tokens",
+        "description": "Support for Macaroon tokens as a bearer credential alternative to JWTs, providing decentralized authorization with contextual caveats and offline permission attenuation."
+      },
+      "paseto_tokens": {
+        "name": "Platform-Agnostic Security Tokens (PASETO)",
+        "description": "Support for Platform-Agnostic Security Tokens (PASETO) as a secure alternative to JWT/JOSE, providing tamper-proof tokens with strong cryptographic defaults and avoiding algorithm agility vulnerabilities."
+      },
+      "cwt_cose_tokens": {
+        "name": "CBOR Web Token (CWT) and COSE",
+        "description": "Support for CBOR Web Tokens (CWT - RFC 8392) and CBOR Object Signing and Encryption (COSE - RFC 9052) as a compact binary serialization alternative to JSON Web Tokens (JWT) and JOSE."
+      },
+      "biscuit_tokens": {
+        "name": "Biscuit Tokens",
+        "description": "Support for Biscuit authorization tokens as an alternative to JWTs, featuring decentralized capability-based authorization, offline cryptographic attenuation, and embedded Datalog-based policy verification."
       }
     }
   },
