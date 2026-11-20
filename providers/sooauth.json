@@ -1,0 +1,888 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "Sooauth",
+  "abstract": "Open-source, lightweight OpenID Provider in a single Go binary, aimed at indie developers and teams building with AI coding assistants. Apps sign users in through hosted pages using the authorization code flow with PKCE and verify JWTs against a JWKS endpoint, so no auth tables live in the app database. It supports passwords, passkeys, Google and GitHub sign-in, TOTP with backup codes, refresh token rotation, signed webhooks, per-project theming and custom email providers. Each project is an isolated tenant. Available as a cloud service at auth.sooauth.com (free during public beta) or self-hosted with Docker, PostgreSQL and Redis under AGPL-3.0. SAML, SCIM and audit exports are only offered on the Enterprise plan.",
+  "identifier": "sooauth",
+  "status": "active",
+  "deploymentModels": ["saas", "self_hosted"],
+  "targetAudience": ["b2c", "developer"],
+  "tags": ["go", "lightweight", "indie-hackers", "ai-assisted-development", "llms-txt"],
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/sooauth.svg"
+  },
+  "website": "https://sooauth.com",
+  "documentationUrl": "https://sooauth.com/docs",
+  "changelogUrl": "https://github.com/sooapps/sooauth/releases",
+  "communityUrl": "https://github.com/sooapps/sooauth/discussions",
+  "github": "https://github.com/sooapps/sooauth",
+  "repositories": [
+    {
+      "url": "https://github.com/sooapps/sooauth",
+      "platform": "github",
+      "role": "core",
+      "stars": 1,
+      "contributors": 2,
+      "latestVersion": "v1.0.0",
+      "lastRelease": "2026-09-08",
+      "statsUpdatedAt": "2026-10-03"
+    }
+  ],
+  "license": "AGPL-3.0-only",
+  "licenseUrl": "https://github.com/sooapps/sooauth/blob/main/LICENSE",
+  "openSource": {
+    "isOpenSource": true,
+    "model": "open_core"
+  },
+  "governance": "vendor_led",
+  "nationality": "Turkey",
+  "vendor": {
+    "name": "Sooapps Yazılım Danışmanlık Ltd. Şti.",
+    "url": "https://sooapps.com"
+  },
+  "headquarters": {
+    "country": "TR",
+    "city": "Gebze"
+  },
+  "pricing": {
+    "hasFreeTier": true,
+    "freeTierLimit": "Self-hosted Community edition is free with unlimited users. The cloud is free during the public beta.",
+    "pricingModel": "freemium",
+    "pricingUrl": "https://sooauth.com/#pricing",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
+    "currency": "USD",
+    "pricingLastVerified": "2026-10-03",
+    "plans": [
+      {
+        "name": "Community",
+        "price": "Free, self-hosted, unlimited users",
+        "amount": 0
+      },
+      {
+        "name": "Hosted Cloud",
+        "price": "Free during public beta",
+        "amount": 0
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "featuresIncluded": ["private_cloud_deployment"]
+      }
+    ]
+  },
+  "hosting": {
+    "selfHostRequirements": {
+      "runtime": "Go",
+      "database": ["PostgreSQL", "Redis"],
+      "container": ["Docker"]
+    }
+  },
+  "supportChannels": ["email", "community", "slack"],
+  "lastVerified": "2026-10-03",
+  "sdks": [
+    {
+      "language": "JavaScript",
+      "framework": "Browser, React and Next.js middleware (@sooauth/sdk-js)",
+      "url": "https://github.com/sooapps/sooauth/tree/main/sdks/js",
+      "official": true
+    }
+  ],
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "status": "supported",
+      "description": "Passwords hashed with Argon2id. Projects choose the allowed identifiers (email, username or phone) and whether password is the primary sign-in mode.",
+      "links": [
+        "https://github.com/sooapps/sooauth/blob/main/server/internal/crypto/password/password.go",
+        "https://github.com/sooapps/sooauth/blob/main/server/migrations/00023_tenant_auth_config_and_registration_schema.sql"
+      ]
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "status": "partial",
+      "description": "Google and GitHub only. Facebook and X appear in the provider settings and pricing page, but the server only implements the Google and GitHub OAuth flows. No custom OAuth or OIDC providers.",
+      "links": [
+        "https://github.com/sooapps/sooauth/blob/main/server/internal/social/service.go",
+        "https://github.com/sooapps/sooauth/blob/main/server/internal/httpserver/server.go"
+      ]
+    },
+    {
+      "identifier": "passkey_authentication",
+      "status": "supported",
+      "description": "WebAuthn passkey registration and sign-in from the hosted pages, with passkeys listed and removed from the account page.",
+      "links": [
+        "https://github.com/sooapps/sooauth/blob/main/server/internal/passkeys/service.go",
+        "https://github.com/sooapps/sooauth#readme"
+      ]
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "status": "partial",
+      "description": "An OTP endpoint stores a 6-digit code for 5 minutes and emits an otp.sent webhook, but the server does not deliver the code by email and the webhook payload does not carry it.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/httpserver/app_auth.go"]
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "status": "not_supported",
+      "description": "Phone numbers can be used as a login identifier with a password, but there is no SMS delivery.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/httpserver/app_auth.go"]
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "status": "not_supported",
+      "description": "Emails carry verification and password reset links or codes only. There is no sign-in link."
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "totp_mfa",
+      "status": "supported",
+      "description": "TOTP authenticator apps (6 digits, 30 second period) enrolled from the account page with a QR code.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/mfa/service.go"]
+    },
+    {
+      "identifier": "hotp_mfa",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "u2f_mfa",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "status": "not_supported",
+      "description": "Passkeys are a primary sign-in method. TOTP is the only second factor.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/mfa/service.go"]
+    },
+    {
+      "identifier": "email_code_mfa",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "status": "not_supported",
+      "description": "No SMS delivery."
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "status": "supported",
+      "description": "Backup codes are generated when TOTP is enabled.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/mfa/service.go"]
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "step_up_authentication",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "oidc_protocol",
+      "status": "supported",
+      "description": "OpenID Provider with discovery, authorization, token, userinfo and JWKS endpoints, RS256 ID tokens and the openid, email and profile scopes.",
+      "links": ["https://auth.sooauth.com/.well-known/openid-configuration", "https://sooauth.com/docs/integrate-oidc"]
+    },
+    {
+      "identifier": "saml2_protocol",
+      "status": "not_supported",
+      "description": "Not in the open-source server. The pricing page lists SAML 2.0 enterprise SSO as part of the Enterprise plan.",
+      "links": ["https://sooauth.com/#pricing"]
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "machine_to_machine",
+      "status": "not_supported",
+      "description": "Only the authorization_code and refresh_token grants are available.",
+      "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+    },
+    {
+      "identifier": "oidc_federation",
+      "status": "not_supported",
+      "description": "Only the built-in Google and GitHub providers. No generic OIDC identity providers.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/social/service.go"]
+    },
+    {
+      "identifier": "saml_federation",
+      "status": "not_supported",
+      "description": "Not in the open-source server. The pricing page lists SAML SSO with Okta and Azure AD as part of the Enterprise plan.",
+      "links": ["https://sooauth.com/#pricing"]
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "status": "not_supported",
+      "description": "No Microsoft sign-in. Azure AD SSO is only mentioned for the Enterprise plan.",
+      "links": ["https://sooauth.com/#pricing"]
+    },
+    {
+      "identifier": "bulk_user_import",
+      "status": "not_supported",
+      "description": "No import API or command. The pricing page offers migration help from Auth0, Clerk or Firebase on the Enterprise plan.",
+      "links": ["https://sooauth.com/#pricing"]
+    },
+    {
+      "identifier": "password_hash_import",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "bulk_user_export",
+      "status": "unknown",
+      "description": "The website says Cloud data can be exported to move to a self-hosted instance, but no export endpoint is documented.",
+      "links": ["https://sooauth.com/#pricing"]
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "upsert_on_import",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "legacy_username_import",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "status": "not_supported",
+      "description": "Not in the open-source server. The pricing page lists SCIM provisioning as part of the Enterprise plan.",
+      "links": ["https://sooauth.com/#pricing"]
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "scim_groups",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "jit_provisioning",
+      "status": "supported",
+      "description": "An account is created on the first Google or GitHub sign-in.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/social/service.go"]
+    },
+    {
+      "identifier": "lazy_migration",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "status": "supported",
+      "description": "Hosted account page to change or set the password, enable TOTP, manage passkeys, link and unlink social identities, and revoke sessions.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/httpserver/account.go"]
+    },
+    {
+      "identifier": "account_linking",
+      "status": "supported",
+      "description": "Signed-in users link and unlink Google and GitHub identities from the account page.",
+      "links": [
+        "https://github.com/sooapps/sooauth/blob/main/server/internal/httpserver/account.go",
+        "https://github.com/sooapps/sooauth/blob/main/server/internal/social/service.go"
+      ]
+    },
+    {
+      "identifier": "user_blocking",
+      "status": "supported",
+      "description": "Users can be disabled and re-enabled from the dashboard, which blocks sign-in.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/httpserver/admin.go"]
+    },
+    {
+      "identifier": "user_metadata",
+      "status": "partial",
+      "description": "Users carry a JSON metadata column filled from the configurable registration form fields.",
+      "links": [
+        "https://github.com/sooapps/sooauth/blob/main/server/migrations/00023_tenant_auth_config_and_registration_schema.sql"
+      ]
+    },
+    {
+      "identifier": "app_metadata",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_search",
+      "status": "unknown"
+    },
+    {
+      "identifier": "rbac",
+      "status": "not_supported",
+      "description": "No roles or permissions. Projects only separate users per application."
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "status": "partial",
+      "description": "Each project is an isolated tenant with its own users, OAuth client, providers and theme. There are no organizations inside a project.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/store/tenants.go"]
+    },
+    {
+      "identifier": "password_strength_policy",
+      "status": "supported",
+      "description": "Per-project minimum length (8 to 128) and optional uppercase, number and special character requirements.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/passwordpolicy/policy.go"]
+    },
+    {
+      "identifier": "username_restrictions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "progressive_profiling",
+      "status": "partial",
+      "description": "Custom registration fields are collected at sign-up, including fields with options loaded from an external API. Fields are not requested later.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/fields/dynamic_options.go"]
+    },
+    {
+      "identifier": "abac",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "api_authorization",
+      "status": "partial",
+      "description": "Backends verify the signed JWT access token against the JWKS endpoint. There are no API resources, audiences or custom scopes.",
+      "links": ["https://github.com/sooapps/sooauth#readme"]
+    },
+    {
+      "identifier": "soc2_type2",
+      "status": "not_supported",
+      "description": "The pricing page offers SOC 2 support on the Enterprise plan, but no report is published.",
+      "links": ["https://sooauth.com/#pricing"]
+    },
+    {
+      "identifier": "iso_27001",
+      "status": "unknown"
+    },
+    {
+      "identifier": "hipaa_baa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pci_dss",
+      "status": "unknown"
+    },
+    {
+      "identifier": "csa_star",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fedramp",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "status": "partial",
+      "description": "Users can be deleted from the dashboard. There is no self-service account deletion.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/httpserver/admin.go"]
+    },
+    {
+      "identifier": "consent_management",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "region_deployment",
+      "status": "partial",
+      "description": "The cloud runs as a single instance. Self-hosted instances run in any region, and the Enterprise plan offers a dedicated multi-region cluster.",
+      "links": ["https://sooauth.com/#pricing"]
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "status": "supported",
+      "description": "Dedicated cluster on the Enterprise plan.",
+      "links": ["https://sooauth.com/#pricing"],
+      "plans": ["Enterprise"]
+    },
+    {
+      "identifier": "audit_log_retention",
+      "status": "partial",
+      "description": "Security events (sign-ins, refresh token reuse and others) are stored in PostgreSQL and listed in the dashboard. Retention is not configurable.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/store/audit.go"]
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "status": "not_supported",
+      "description": "Audit exports are only mentioned for the Enterprise plan.",
+      "links": ["https://sooauth.com/#pricing"]
+    },
+    {
+      "identifier": "security_center",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "status": "partial",
+      "description": "Secrets such as email provider API keys are encrypted in the database.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/crypto/encryption/encryption.go"]
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "status": "unknown"
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "bot_detection",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "brute_force_protection",
+      "status": "supported",
+      "description": "Redis rate limits on sign-in (20 per minute per IP, 8 per identifier), sign-up and verification email resends.",
+      "links": [
+        "https://github.com/sooapps/sooauth/blob/main/server/internal/auth/service.go",
+        "https://github.com/sooapps/sooauth/blob/main/server/internal/ratelimit/limiter.go"
+      ]
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "status": "partial",
+      "description": "Per-IP rate limits only. No IP reputation checks.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/auth/service.go"]
+    },
+    {
+      "identifier": "breached_password_detection",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "credential_guard",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "tenant_acl",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "per_org_branding",
+      "status": "partial",
+      "description": "Theme and branding are set per project, not per organization.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/httpserver/admin.go"]
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "hosted_login_page",
+      "status": "supported",
+      "description": "Hosted sign-in, sign-up, password reset, email verification and account pages.",
+      "links": [
+        "https://github.com/sooapps/sooauth/blob/main/server/internal/pages/templates/sign-in.html",
+        "https://github.com/sooapps/sooauth#readme"
+      ]
+    },
+    {
+      "identifier": "embedded_login",
+      "status": "supported",
+      "description": "An embeddable widget script and the JavaScript SDK password modal sign users in without a redirect.",
+      "links": [
+        "https://github.com/sooapps/sooauth/blob/main/server/internal/widget/widget.go",
+        "https://github.com/sooapps/sooauth/tree/main/sdks/js"
+      ]
+    },
+    {
+      "identifier": "white_label",
+      "status": "partial",
+      "description": "Custom theme colors and hiding the Sooauth branding are paid plan features on the cloud. Self-hosted instances can be fully rebranded.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/billing/plans.go"]
+    },
+    {
+      "identifier": "localization",
+      "status": "partial",
+      "description": "Hosted pages are translated into English and Turkish, with a per-project default locale.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/i18n/i18n.go"]
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "status": "partial",
+      "description": "An embeddable sign-in widget and a React password modal in the JavaScript SDK.",
+      "links": [
+        "https://github.com/sooapps/sooauth/blob/main/server/internal/widget/widget.go",
+        "https://github.com/sooapps/sooauth/tree/main/sdks/js"
+      ]
+    },
+    {
+      "identifier": "login_analytics",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "sdk_coverage",
+      "status": "partial",
+      "description": "Official JavaScript SDK (@sooauth/sdk-js) with React helpers and middleware. Other languages use standard OIDC and JWKS libraries.",
+      "links": ["https://github.com/sooapps/sooauth/tree/main/sdks/js", "https://github.com/sooapps/sooauth#readme"]
+    },
+    {
+      "identifier": "management_api",
+      "status": "partial",
+      "description": "The dashboard JSON API manages users, sessions, providers, theme, email and webhooks, but it is authenticated by the dashboard session and is not documented as a public API. There are no API keys.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/httpserver/server.go"]
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "status": "supported",
+      "description": "Fixed limits on sign-in, sign-up and verification resend endpoints.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/auth/service.go"]
+    },
+    {
+      "identifier": "actions_extensibility",
+      "status": "partial",
+      "description": "Webhooks only, with no inline code hooks.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/webhooks/dispatcher.go"]
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "custom_domain",
+      "status": "partial",
+      "description": "Self-hosted instances run on any domain through BASE_URL. Custom domains are not offered on the cloud.",
+      "links": ["https://sooauth.com/docs/self-host"]
+    },
+    {
+      "identifier": "deploy_cli",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "terraform_provider",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "custom_database_connections",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "native_webhooks",
+      "status": "supported",
+      "description": "Signed webhooks per project for events such as user.created, session.revoked and otp.sent, with test sends and a delivery log in the dashboard.",
+      "links": [
+        "https://github.com/sooapps/sooauth/blob/main/server/internal/webhooks/dispatcher.go",
+        "https://github.com/sooapps/sooauth/blob/main/server/internal/webhooks/signing.go"
+      ]
+    },
+    {
+      "identifier": "universal_login_customization",
+      "status": "partial",
+      "description": "Accent color and logo of the hosted pages are configurable from the dashboard. The page templates themselves are not editable.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/httpserver/admin.go"]
+    },
+    {
+      "identifier": "custom_email_provider",
+      "status": "supported",
+      "description": "Per-project SMTP, Resend, Postmark or Amazon SES.",
+      "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/mail/providers.go"]
+    },
+    {
+      "identifier": "email_templates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "identity_proofing",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "decentralized_identity",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "billing_integration",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "agentic_identity",
+      "status": "not_supported",
+      "description": "Ships AI coding assistant rules and llms.txt files to help integration, but has no identity features for AI agents.",
+      "links": ["https://sooauth.com/llms-full.txt"]
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "status": "not_supported"
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "status": "unknown"
+    }
+  ],
+  "oidc": {
+    "discoveryUrl": "https://auth.sooauth.com/.well-known/openid-configuration",
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "description": "Authorization code flow with PKCE required.",
+        "links": [
+          "https://auth.sooauth.com/.well-known/openid-configuration",
+          "https://sooauth.com/docs/integrate-oidc"
+        ]
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported",
+        "description": "Refresh tokens last 30 days, or 24 hours without remember me.",
+        "links": [
+          "https://auth.sooauth.com/.well-known/openid-configuration",
+          "https://github.com/sooapps/sooauth/blob/main/server/internal/auth/service.go"
+        ]
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "not_supported",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "not_supported",
+        "description": "Only the code response type is supported.",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "password_grant",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "not_supported",
+        "description": "Sign-out is a Sooauth-specific POST /auth/sign-out endpoint. There is no end_session_endpoint.",
+        "links": ["https://sooauth.com/llms-full.txt"]
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported",
+        "description": "Required on every authorization request, S256 only.",
+        "links": [
+          "https://auth.sooauth.com/.well-known/openid-configuration",
+          "https://github.com/sooapps/sooauth/blob/main/server/internal/oidc/service.go"
+        ]
+      },
+      {
+        "identifier": "par_extension",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "supported",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "supported",
+        "description": "Returns sub, email and email_verified.",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration", "https://sooauth.com/llms-full.txt"]
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "not_supported",
+        "description": "Sessions are revoked from the account page or dashboard, with no RFC 7009 endpoint.",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "not_supported",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "not_supported",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "not_supported",
+        "description": "There is no consent screen."
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "supported",
+        "description": "Public clients with PKCE.",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "not_supported",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "supported",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "not_supported",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "not_supported",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "not_supported",
+        "links": ["https://auth.sooauth.com/.well-known/openid-configuration"]
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "not_supported",
+        "description": "The OAuth client of each project is created in the dashboard."
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "supported",
+        "description": "Refresh tokens rotate on use. Reusing an old token revokes the whole token family and is written to the audit log.",
+        "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/auth/service.go"]
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "not_supported",
+        "description": "Any reuse of a rotated token revokes the family.",
+        "links": ["https://github.com/sooapps/sooauth/blob/main/server/internal/auth/service.go"]
+      },
+      {
+        "identifier": "dpop",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "jarm",
+        "status": "not_supported"
+      }
+    ]
+  }
+}

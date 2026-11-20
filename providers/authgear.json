@@ -1,0 +1,1024 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "Authgear",
+  "abstract": "Open-source authentication and user management platform for consumer apps, built on OpenID Connect and OAuth 2.0 and able to act as a SAML identity provider. Offers a hosted, brandable sign-up and login experience with passkeys, passwordless OTP and magic links over email, SMS and WhatsApp, social and enterprise login, two-factor authentication, roles and groups, and a GraphQL Admin API. TypeScript hooks and webhooks cover extensibility, and SDKs span web and mobile frameworks. It can also authorize AI agents in front of MCP servers. Available as Authgear Cloud with Free, Developers, Business and Enterprise plans, or self-hosted under the Apache-2.0 license, including the one-time-fee Authgear ONCE edition.",
+  "identifier": "authgear",
+  "status": "active",
+  "deploymentModels": ["saas", "self_hosted", "hybrid"],
+  "targetAudience": ["b2c", "ciam", "developer"],
+  "tags": ["go", "mobile", "consumer", "ai-agents", "mcp", "siwe"],
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/authgear.svg"
+  },
+  "website": "https://www.authgear.com",
+  "documentationUrl": "https://docs.authgear.com",
+  "changelogUrl": "https://github.com/authgear/authgear-server/releases",
+  "communityUrl": "https://discord.gg/Kdn5vcYwAS",
+  "github": "https://github.com/authgear/authgear-server",
+  "repositories": [
+    {
+      "url": "https://github.com/authgear/authgear-server",
+      "platform": "github",
+      "role": "core",
+      "stars": 2091,
+      "contributors": 50,
+      "latestVersion": "2026-09-23.0",
+      "lastRelease": "2026-09-23",
+      "statsUpdatedAt": "2026-10-03"
+    },
+    {
+      "url": "https://github.com/authgear/authgear-sdk-js",
+      "platform": "github",
+      "role": "sdk",
+      "stars": 10,
+      "contributors": 20,
+      "statsUpdatedAt": "2026-10-03"
+    },
+    {
+      "url": "https://github.com/authgear/helm-charts",
+      "platform": "github",
+      "role": "infrastructure",
+      "stars": 1,
+      "contributors": 6,
+      "latestVersion": "authgear-10.36.0",
+      "lastRelease": "2026-09-18",
+      "statsUpdatedAt": "2026-10-03"
+    },
+    {
+      "url": "https://github.com/authgear/docs",
+      "platform": "github",
+      "role": "docs",
+      "stars": 1,
+      "contributors": 13,
+      "statsUpdatedAt": "2026-10-03"
+    }
+  ],
+  "license": "Apache-2.0",
+  "licenseUrl": "https://github.com/authgear/authgear-server/blob/main/LICENSE.txt",
+  "openSource": {
+    "isOpenSource": true,
+    "model": "fully_open"
+  },
+  "governance": "vendor_led",
+  "vendor": {
+    "name": "Skymakers Digital Ltd.",
+    "url": "https://www.authgear.com"
+  },
+  "foundedYear": 2020,
+  "pricing": {
+    "hasFreeTier": true,
+    "freeTierLimit": "Free plan: unlimited MAU, 2 applications, 2 admin seats, 1 day of audit logs, 100 SMS and WhatsApp OTP messages per month",
+    "pricingModel": "subscription",
+    "pricingUrl": "https://www.authgear.com/pricing",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
+    "currency": "USD",
+    "pricingLastVerified": "2026-10-03",
+    "plans": [
+      {
+        "name": "Free",
+        "price": "Free",
+        "amount": 0,
+        "period": "month"
+      },
+      {
+        "name": "Developers",
+        "price": "$50/month, plus $100 per extra environment or application and $50 per extra admin seat. SMS and WhatsApp are billed per message ($0.02 US/Canada, $0.10 elsewhere)",
+        "amount": 50,
+        "period": "month",
+        "featuresIncluded": ["custom_domain"]
+      },
+      {
+        "name": "Business",
+        "price": "$500/month with 25,000 MAU, then $50 per 5,000 MAU, plus the same add-ons and message rates as Developers",
+        "amount": 500,
+        "period": "month",
+        "mauIncluded": 25000,
+        "featuresIncluded": ["custom_domain"]
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom",
+        "featuresIncluded": ["custom_domain"]
+      }
+    ]
+  },
+  "hosting": {
+    "regions": ["US"],
+    "selfHostRequirements": {
+      "runtime": "Go",
+      "database": ["PostgreSQL"],
+      "container": ["Docker", "Helm"]
+    }
+  },
+  "supportChannels": ["email", "community", "slack"],
+  "migrationTools": [
+    {
+      "from": "Auth0",
+      "url": "https://docs.authgear.com/admin-and-operations/migration"
+    }
+  ],
+  "lastVerified": "2026-10-03",
+  "sdks": [
+    {
+      "language": "JavaScript",
+      "framework": "Web, React, Vue and Angular",
+      "url": "https://github.com/authgear/authgear-sdk-js",
+      "official": true
+    },
+    {
+      "language": "TypeScript",
+      "framework": "React Native",
+      "url": "https://github.com/authgear/authgear-sdk-js",
+      "official": true
+    },
+    {
+      "language": "TypeScript",
+      "framework": "Next.js",
+      "url": "https://github.com/authgear/authgear-sdk-nextjs",
+      "official": true
+    },
+    {
+      "language": "Swift",
+      "framework": "iOS",
+      "url": "https://github.com/authgear/authgear-sdk-ios",
+      "official": true
+    },
+    {
+      "language": "Kotlin",
+      "framework": "Android",
+      "url": "https://github.com/authgear/authgear-sdk-android",
+      "official": true
+    },
+    {
+      "language": "Dart",
+      "framework": "Flutter",
+      "url": "https://github.com/authgear/authgear-sdk-flutter",
+      "official": true
+    },
+    {
+      "language": "C#",
+      "framework": "Xamarin",
+      "url": "https://github.com/authgear/authgear-sdk-xamarin",
+      "official": true
+    }
+  ],
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "status": "supported",
+      "description": "Email, phone number or username with a password. Login ID types and the sign-up flow are configurable.",
+      "links": ["https://docs.authgear.com/authentication-and-access/authentication/passwords"]
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "status": "supported",
+      "description": "Apple, Google, Facebook, GitHub, LinkedIn and WeChat (mobile and web) connectors.",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/social-enterprise-login-providers/social-login-providers"
+      ]
+    },
+    {
+      "identifier": "passkey_authentication",
+      "status": "supported",
+      "description": "WebAuthn passkeys, including hardware security keys, enabled with one toggle in the login methods.",
+      "links": ["https://docs.authgear.com/authentication-and-access/authentication/passkeys"]
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "status": "supported",
+      "description": "One-time code or login link sent by email.",
+      "links": ["https://docs.authgear.com/authentication-and-access/authentication/add-email-magic-link-login"]
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "status": "supported",
+      "description": "One-time code sent by SMS or WhatsApp. The Free plan includes 100 messages a month, then messages are billed per message.",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/authentication/whatsapp-otp-login",
+        "https://www.authgear.com/pricing"
+      ]
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "status": "supported",
+      "description": "Email login links, valid for 20 minutes by default.",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/authentication/add-email-magic-link-login",
+        "https://docs.authgear.com/reference/rate-limits"
+      ]
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "status": "supported",
+      "description": "Anonymous users that can later be promoted to regular users. Not available to OIDC/SAML client applications.",
+      "links": ["https://docs.authgear.com/authentication-and-access/authentication/anonymous-users"]
+    },
+    {
+      "identifier": "totp_mfa",
+      "status": "supported",
+      "description": "Authenticator apps such as Google Authenticator and Authy.",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/authentication/enable-two-factor-authentication-2fa"
+      ]
+    },
+    {
+      "identifier": "hotp_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "u2f_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "email_code_mfa",
+      "status": "supported",
+      "description": "One-time code or login link sent by email.",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/authentication/enable-two-factor-authentication-2fa"
+      ]
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "status": "supported",
+      "description": "One-time code sent by SMS.",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/authentication/enable-two-factor-authentication-2fa"
+      ]
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "status": "supported",
+      "description": "Recovery codes are covered by the account lockout policy, next to passwords and OTPs.",
+      "links": ["https://docs.authgear.com/reference/rate-limits/account-lockout"]
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "status": "partial",
+      "description": "The pricing page lists adaptive MFA, but the documentation only describes optional or mandatory 2FA with a \"do not ask again on this device\" setting.",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/authentication/enable-two-factor-authentication-2fa",
+        "https://www.authgear.com/pricing"
+      ]
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "step_up_authentication",
+      "status": "supported",
+      "description": "Re-authentication built on the OIDC auth_time claim and the SDKs, to protect sensitive operations.",
+      "links": ["https://docs.authgear.com/authentication-and-access/authentication/reauthentication"]
+    },
+    {
+      "identifier": "oidc_protocol",
+      "status": "supported",
+      "description": "Authgear acts as an OpenID Connect provider for web, mobile, SPA and third-party applications.",
+      "links": [
+        "https://docs.authgear.com/get-started/oidc-provider",
+        "https://docs.authgear.com/reference/apis/oauth-2.0-and-openid-connect-oidc"
+      ]
+    },
+    {
+      "identifier": "saml2_protocol",
+      "status": "supported",
+      "description": "Authgear acts as a SAML 2.0 identity provider for applications such as Salesforce, Dropbox and Figma. Included on every plan.",
+      "links": ["https://docs.authgear.com/get-started/single-sign-on-with-saml", "https://www.authgear.com/pricing"]
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "status": "unknown"
+    },
+    {
+      "identifier": "machine_to_machine",
+      "status": "supported",
+      "description": "M2M applications use the client credentials grant against API resources and scopes.",
+      "links": ["https://docs.authgear.com/get-started/m2m-applications"]
+    },
+    {
+      "identifier": "oidc_federation",
+      "status": "partial",
+      "description": "Pre-built enterprise connectors for Microsoft Entra ID, AD FS and Azure AD B2C. A generic OIDC connector is not documented.",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/social-enterprise-login-providers/enterprise-login-providers"
+      ]
+    },
+    {
+      "identifier": "saml_federation",
+      "status": "unknown"
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "status": "supported",
+      "description": "AD FS connector, and LDAP listed as an enterprise connection in the project README.",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/social-enterprise-login-providers/enterprise-login-providers/adfs",
+        "https://github.com/authgear/authgear-server/blob/main/README.md"
+      ]
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "status": "supported",
+      "description": "Microsoft Entra ID (Azure AD), Azure AD B2C and AD FS connectors.",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/social-enterprise-login-providers/enterprise-login-providers/azureadv2",
+        "https://docs.authgear.com/authentication-and-access/social-enterprise-login-providers/enterprise-login-providers/azureadb2c"
+      ]
+    },
+    {
+      "identifier": "bulk_user_import",
+      "status": "supported",
+      "description": "Asynchronous User Import API that takes many records in one request and reports a status per task.",
+      "links": ["https://docs.authgear.com/admin-and-operations/user-management/import-users-using-user-import-api"]
+    },
+    {
+      "identifier": "password_hash_import",
+      "status": "supported",
+      "description": "Bcrypt password hashes can be imported with each user record. No other hash algorithm is documented.",
+      "links": ["https://docs.authgear.com/admin-and-operations/user-management/import-users-using-user-import-api"],
+      "values": ["Bcrypt"]
+    },
+    {
+      "identifier": "bulk_user_export",
+      "status": "supported",
+      "description": "Asynchronous User Export API that writes users to a CSV or ndjson file.",
+      "links": ["https://docs.authgear.com/admin-and-operations/user-management/export-users-using-the-user-export-api"]
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "status": "unknown"
+    },
+    {
+      "identifier": "upsert_on_import",
+      "status": "supported",
+      "description": "The import task summary reports inserted, updated, skipped and failed records.",
+      "links": ["https://docs.authgear.com/admin-and-operations/user-management/import-users-using-user-import-api"]
+    },
+    {
+      "identifier": "legacy_username_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "scim_groups",
+      "status": "unknown"
+    },
+    {
+      "identifier": "jit_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "lazy_migration",
+      "status": "supported",
+      "description": "Rolling and zero-downtime migration strategies move users gradually, and zero-downtime migration creates Authgear sessions from legacy access tokens.",
+      "links": [
+        "https://docs.authgear.com/admin-and-operations/migration",
+        "https://docs.authgear.com/admin-and-operations/migration/zero-downtime-migration"
+      ]
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "status": "supported",
+      "description": "Pre-built account settings page for profile, email and phone verification, password and 2FA.",
+      "links": ["https://docs.authgear.com/customization/built-in-ui/user-settings"]
+    },
+    {
+      "identifier": "account_linking",
+      "status": "supported",
+      "description": "Social and enterprise identities are linked by email or through the Account Management API.",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/social-enterprise-login-providers/account-linking",
+        "https://docs.authgear.com/customization/custom-ui/manually-link-oauth-provider-using-account-management-api"
+      ]
+    },
+    {
+      "identifier": "user_blocking",
+      "status": "supported",
+      "description": "Users can be disabled from the portal or the Admin API, with an optional valid period for accounts.",
+      "links": [
+        "https://docs.authgear.com/admin-and-operations/user-management/disable-user",
+        "https://docs.authgear.com/admin-and-operations/user-management/account-valid-period"
+      ]
+    },
+    {
+      "identifier": "user_metadata",
+      "status": "supported",
+      "description": "Custom attributes on the user profile, readable and writable from the portal and Admin API.",
+      "links": ["https://docs.authgear.com/integration/user-profiles/profile-custom-attributes"]
+    },
+    {
+      "identifier": "app_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_search",
+      "status": "supported",
+      "description": "User search in the portal and through the Admin API.",
+      "links": ["https://docs.authgear.com/reference/apis/admin-api/api-examples/search-for-users"]
+    },
+    {
+      "identifier": "rbac",
+      "status": "supported",
+      "description": "Roles and groups. A user inherits the roles of its groups, and roles are added to the UserInfo response and JWT access tokens.",
+      "links": ["https://docs.authgear.com/admin-and-operations/user-management/manage-users-roles-and-groups"]
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "password_strength_policy",
+      "status": "supported",
+      "description": "Minimum length, character requirements, zxcvbn strength level, excluded keywords, password reuse prevention and expiry.",
+      "links": [
+        "https://docs.authgear.com/authentication-and-access/authentication/passwords/password-policy",
+        "https://docs.authgear.com/authentication-and-access/authentication/passwords/password-expiry"
+      ]
+    },
+    {
+      "identifier": "username_restrictions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "progressive_profiling",
+      "status": "unknown"
+    },
+    {
+      "identifier": "abac",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "api_authorization",
+      "status": "supported",
+      "description": "API resources with scopes, requested with the resource indicator. Access tokens are JWTs with the resource as audience.",
+      "links": [
+        "https://docs.authgear.com/get-started/backend-api",
+        "https://docs.authgear.com/reference/tokens/jwt-access-token"
+      ]
+    },
+    {
+      "identifier": "soc2_type2",
+      "status": "supported",
+      "description": "Authgear states it is SOC 2 Type II compliant.",
+      "links": ["https://www.authgear.com/pricing", "https://www.authgear.com"]
+    },
+    {
+      "identifier": "iso_27001",
+      "status": "supported",
+      "description": "Authgear states it is ISO 27001 compliant.",
+      "links": ["https://www.authgear.com/pricing", "https://www.authgear.com"]
+    },
+    {
+      "identifier": "hipaa_baa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pci_dss",
+      "status": "unknown"
+    },
+    {
+      "identifier": "csa_star",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fedramp",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "status": "partial",
+      "description": "The User Export API writes user data to CSV or ndjson. No dedicated per-user data subject access export is documented.",
+      "links": ["https://docs.authgear.com/admin-and-operations/user-management/export-users-using-the-user-export-api"]
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "status": "supported",
+      "description": "Accounts can be deleted by the user or an admin, immediately or after a scheduled delay.",
+      "links": ["https://docs.authgear.com/admin-and-operations/user-management/account-deletion"]
+    },
+    {
+      "identifier": "consent_management",
+      "status": "partial",
+      "description": "Consent screen for third-party and dynamic clients, where users approve the requested scopes. No consent record management for other purposes.",
+      "links": ["https://docs.authgear.com/get-started/auth-for-mcp"]
+    },
+    {
+      "identifier": "region_deployment",
+      "status": "partial",
+      "description": "Authgear Cloud runs on Google Cloud in the USA. An EU region is announced as coming soon, and data residency is an Enterprise option. Self-hosting can keep data in any region.",
+      "links": ["https://www.authgear.com/pricing"]
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "status": "supported",
+      "description": "Self-hosting with Helm or Docker Compose, the one-time-fee Authgear ONCE edition for a single Linux VM, and private cloud on the Enterprise plan.",
+      "links": [
+        "https://docs.authgear.com/deployment/helm",
+        "https://docs.authgear.com/authgear-once/what-is-authgear-once",
+        "https://www.authgear.com/pricing"
+      ],
+      "values": ["Docker", "Helm", "Authgear ONCE", "Private cloud"]
+    },
+    {
+      "identifier": "audit_log_retention",
+      "status": "supported",
+      "description": "Retention is 1 day on Free and Developers, 60 days on Business and 180 days on Enterprise.",
+      "links": ["https://docs.authgear.com/admin-and-operations/monitor/audit-log", "https://www.authgear.com/pricing"]
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "status": "unknown"
+    },
+    {
+      "identifier": "security_center",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "status": "unknown"
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bot_detection",
+      "status": "supported",
+      "description": "CAPTCHA challenges with Google reCAPTCHA v2 or Cloudflare Turnstile, for all flows or chosen authenticators, plus SMS pumping fraud detection.",
+      "links": [
+        "https://docs.authgear.com/security/bot-protection",
+        "https://docs.authgear.com/security/fraud-protection"
+      ]
+    },
+    {
+      "identifier": "brute_force_protection",
+      "status": "supported",
+      "description": "Account lockout by IP address or account, with a configurable threshold and a lockout duration that doubles up to a maximum.",
+      "links": [
+        "https://docs.authgear.com/security/brute-force-protection",
+        "https://docs.authgear.com/reference/rate-limits/account-lockout"
+      ]
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "status": "partial",
+      "description": "Default per-IP rate limits on sign-up, password, TOTP and messaging endpoints, and an IP blocklist. Throttling is not adaptive to suspicious behavior.",
+      "links": ["https://docs.authgear.com/reference/rate-limits", "https://docs.authgear.com/security/ip-blocklist"]
+    },
+    {
+      "identifier": "breached_password_detection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "credential_guard",
+      "status": "unknown"
+    },
+    {
+      "identifier": "tenant_acl",
+      "status": "partial",
+      "description": "IP blocklist by address, CIDR range or GeoIP region. There is no allowlist-based restriction.",
+      "links": ["https://docs.authgear.com/security/ip-blocklist"]
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "status": "unknown"
+    },
+    {
+      "identifier": "per_org_branding",
+      "status": "unknown"
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "hosted_login_page",
+      "status": "supported",
+      "description": "AuthUI, a hosted and brandable sign-up and login page with light and dark modes.",
+      "links": ["https://docs.authgear.com/customization/built-in-ui"]
+    },
+    {
+      "identifier": "embedded_login",
+      "status": "partial",
+      "description": "The Authentication Flow API lets you build a custom login UI on top of Authgear, including for native apps. There is no embeddable component library.",
+      "links": [
+        "https://docs.authgear.com/customization/custom-ui",
+        "https://docs.authgear.com/customization/custom-ui/authentication-flow-api"
+      ]
+    },
+    {
+      "identifier": "white_label",
+      "status": "partial",
+      "description": "The Free plan keeps Authgear branding and custom domains need a paid plan. Which paid plans remove the branding is not stated in text.",
+      "links": ["https://www.authgear.com/pricing", "https://docs.authgear.com/customization/custom-domain"]
+    },
+    {
+      "identifier": "localization",
+      "status": "supported",
+      "description": "Several built-in languages, with custom translation files for others.",
+      "links": [
+        "https://docs.authgear.com/customization/built-in-ui/languages-and-localization",
+        "https://docs.authgear.com/customization/built-in-ui/localization"
+      ]
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "status": "unknown"
+    },
+    {
+      "identifier": "login_analytics",
+      "status": "partial",
+      "description": "Active and total users, sign-up conversion and sign-up methods. Authentication success rates are not shown.",
+      "links": ["https://docs.authgear.com/admin-and-operations/monitor/analytics"]
+    },
+    {
+      "identifier": "sdk_coverage",
+      "status": "supported",
+      "description": "Web, React, Vue, Angular, Next.js, React Native, Flutter, iOS, Android, Ionic and Xamarin SDKs, plus guides for Express, Flask, Spring Boot, ASP.NET Core, Laravel and PHP.",
+      "links": ["https://docs.authgear.com/get-started/start-building", "https://github.com/authgear/authgear-sdk-js"]
+    },
+    {
+      "identifier": "management_api",
+      "status": "supported",
+      "description": "GraphQL Admin API with a GraphiQL explorer, plus REST user import and export endpoints.",
+      "links": ["https://docs.authgear.com/reference/apis/admin-api"]
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "status": "supported",
+      "description": "Documented per-IP and per-user limits on authentication, verification, recovery and messaging endpoints.",
+      "links": ["https://docs.authgear.com/reference/rate-limits"]
+    },
+    {
+      "identifier": "actions_extensibility",
+      "status": "supported",
+      "description": "Blocking hooks can allow or reject operations such as user pre-create, and non-blocking hooks react to events. Handlers are webhooks or Deno scripts.",
+      "links": [
+        "https://docs.authgear.com/customization/events-hooks",
+        "https://docs.authgear.com/customization/events-hooks/blocking-events"
+      ]
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "status": "supported",
+      "description": "Hooks can be written in TypeScript and run on Deno.",
+      "links": ["https://docs.authgear.com/customization/events-hooks/denohooks"]
+    },
+    {
+      "identifier": "custom_domain",
+      "status": "supported",
+      "description": "Custom domain with a certificate managed by Authgear. Needs a paid plan.",
+      "links": ["https://docs.authgear.com/customization/custom-domain", "https://www.authgear.com/pricing"],
+      "plans": ["Developers", "Business", "Enterprise"]
+    },
+    {
+      "identifier": "deploy_cli",
+      "status": "unknown"
+    },
+    {
+      "identifier": "terraform_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_database_connections",
+      "status": "unknown"
+    },
+    {
+      "identifier": "native_webhooks",
+      "status": "supported",
+      "description": "Webhooks for blocking and non-blocking events such as user sign-up.",
+      "links": ["https://docs.authgear.com/customization/events-hooks/webhooks"]
+    },
+    {
+      "identifier": "universal_login_customization",
+      "status": "supported",
+      "description": "Branding of the built-in UI, custom text, and fully custom UI through the Authentication Flow API.",
+      "links": [
+        "https://docs.authgear.com/customization/built-in-ui/branding",
+        "https://docs.authgear.com/customization/custom-ui"
+      ]
+    },
+    {
+      "identifier": "custom_email_provider",
+      "status": "supported",
+      "description": "Custom email provider, and custom SMS provider through Twilio or a webhook script.",
+      "links": [
+        "https://docs.authgear.com/customization/custom-email-provider",
+        "https://docs.authgear.com/customization/custom-sms-provider"
+      ]
+    },
+    {
+      "identifier": "email_templates",
+      "status": "supported",
+      "description": "Custom email and SMS templates.",
+      "links": ["https://docs.authgear.com/customization/custom-email-and-sms-templates"]
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "status": "supported",
+      "description": "Custom fields can be added to JWT access tokens and ID tokens with hooks.",
+      "links": ["https://docs.authgear.com/integration/user-profiles/add-custom-fields-to-a-jwt-access-token"]
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "status": "partial",
+      "description": "Signup and login flows are defined in YAML in the advanced configuration. The marketing site mentions a visual builder, which is not in the documentation.",
+      "links": ["https://docs.authgear.com/authentication-and-access/authentication/custom-authentication-flow"]
+    },
+    {
+      "identifier": "identity_proofing",
+      "status": "unknown"
+    },
+    {
+      "identifier": "decentralized_identity",
+      "status": "partial",
+      "description": "Sign in with Ethereum (SIWE) wallet login is available as an identity type. W3C verifiable credentials are not supported.",
+      "links": ["https://docs.authgear.com/reference/rate-limits", "https://github.com/authgear/authgear-server"]
+    },
+    {
+      "identifier": "billing_integration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "agentic_identity",
+      "status": "supported",
+      "description": "Authorization server for MCP servers, with Client ID Metadata Documents and Dynamic Client Registration for agents, a consent screen and audience-bound access tokens.",
+      "links": [
+        "https://docs.authgear.com/get-started/auth-for-mcp",
+        "https://docs.authgear.com/get-started/m2m-applications"
+      ]
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "status": "unknown"
+    }
+  ],
+  "oidc": {
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "links": ["https://docs.authgear.com/get-started/oidc-provider"]
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported",
+        "description": "Needs the offline_access scope.",
+        "links": ["https://docs.authgear.com/reference/tokens/refresh-token"]
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "supported",
+        "description": "Used by machine-to-machine applications.",
+        "links": ["https://docs.authgear.com/get-started/m2m-applications"]
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "not_supported",
+        "description": "The discovery document only advertises the code and none response types.",
+        "links": ["https://github.com/authgear/authgear-server/blob/main/pkg/lib/oauth/metadata.go"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "supported",
+        "description": "Always allowed for clients, and used for device secret and pre-authenticated URL tokens.",
+        "links": ["https://github.com/authgear/authgear-server/blob/main/pkg/lib/oauth/grant_type.go"]
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "password_grant",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "supported",
+        "description": "End session endpoint.",
+        "links": ["https://docs.authgear.com/reference/apis/oauth-2.0-and-openid-connect-oidc"]
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported",
+        "description": "S256 only.",
+        "links": ["https://github.com/authgear/authgear-server/blob/main/pkg/lib/oauth/metadata.go"]
+      },
+      {
+        "identifier": "par_extension",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "supported",
+        "links": ["https://docs.authgear.com/reference/apis/oauth-2.0-and-openid-connect-oidc"]
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported",
+        "links": ["https://docs.authgear.com/reference/apis/oauth-2.0-and-openid-connect-oidc"]
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "supported",
+        "links": ["https://docs.authgear.com/reference/apis/oauth-2.0-and-openid-connect-oidc/userinfo"]
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "supported",
+        "links": ["https://github.com/authgear/authgear-server/blob/main/pkg/lib/oauth/metadata.go"]
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "not_supported",
+        "description": "The discovery document has no introspection endpoint. Access tokens are JWTs validated with the JWKS.",
+        "links": ["https://docs.authgear.com/get-started/backend-api/jwt"]
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "not_supported"
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported",
+        "description": "Per-project document at /.well-known/openid-configuration.",
+        "links": ["https://docs.authgear.com/reference/apis/oauth-2.0-and-openid-connect-oidc"]
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "supported",
+        "links": ["https://github.com/authgear/authgear-server/blob/main/pkg/lib/oauth/handler/handler_authz.go"]
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "supported",
+        "description": "Also implied by max_age when the session is older than the requested age.",
+        "links": ["https://github.com/authgear/authgear-server/blob/main/pkg/lib/oauth/prompt.go"]
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "supported",
+        "description": "Public clients such as SPAs and native apps, using PKCE.",
+        "links": ["https://github.com/authgear/authgear-server/blob/main/pkg/lib/oauth/metadata.go"]
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "supported",
+        "links": ["https://github.com/authgear/authgear-server/blob/main/pkg/lib/oauth/metadata.go"]
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "supported",
+        "description": "Used in the machine-to-machine examples.",
+        "links": ["https://docs.authgear.com/get-started/m2m-applications"]
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "supported",
+        "description": "Optional, off by default. Supports an initial access token requirement, and Client ID Metadata Documents as an alternative for AI agents.",
+        "links": [
+          "https://docs.authgear.com/get-started/auth-for-mcp/dynamic-client-registration",
+          "https://docs.authgear.com/get-started/auth-for-mcp/client-id-metadata-document"
+        ]
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dpop",
+        "status": "partial",
+        "description": "DPoP binds refresh tokens, and is validated for Native App applications with the mobile SDKs. Web SDKs do not support it.",
+        "links": ["https://docs.authgear.com/security/sender-constraining"]
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jarm",
+        "status": "unknown"
+      }
+    ]
+  }
+}
