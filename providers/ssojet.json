@@ -1,0 +1,867 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "SSOJet",
+  "abstract": "Enterprise SSO layer for B2B SaaS, built in the USA. Adds SAML and OIDC single sign-on to 100+ identity providers, SCIM directory sync, a self-serve IT admin portal and audit logs without replacing an existing login system such as Auth0, Firebase or Cognito. Also offers its own hosted login with passkeys, magic links, email and SMS codes, social login and MFA, organizations with RBAC, webhooks and M2M authentication. The Free plan has unlimited users and organizations but no SSO or SCIM connections; the Business plan is priced per connection, and Enterprise adds a dedicated private cloud and data residency. SaaS only.",
+  "identifier": "ssojet",
+  "status": "active",
+  "deploymentModels": ["saas"],
+  "targetAudience": ["b2b", "developer"],
+  "tags": ["enterprise-sso", "sso-api", "directory-sync", "b2b-saas", "per-connection-pricing", "mcp"],
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/ssojet.svg"
+  },
+  "website": "https://ssojet.com",
+  "documentationUrl": "https://ssojet.com/docs/en/",
+  "github": "https://github.com/ssojet",
+  "repositories": [
+    {
+      "url": "https://github.com/ssojet/ssojet-auth-js",
+      "platform": "github",
+      "role": "sdk",
+      "stars": 0,
+      "contributors": 2,
+      "statsUpdatedAt": "2026-10-03"
+    },
+    {
+      "url": "https://github.com/ssojet/ssojet-server-js",
+      "platform": "github",
+      "role": "sdk",
+      "stars": 0,
+      "contributors": 2,
+      "statsUpdatedAt": "2026-10-03"
+    }
+  ],
+  "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
+  "governance": "vendor_led",
+  "nationality": "USA",
+  "vendor": {
+    "name": "SSOJet",
+    "url": "https://ssojet.com"
+  },
+  "foundedYear": 2024,
+  "headquarters": {
+    "country": "US",
+    "city": "San Francisco"
+  },
+  "pricing": {
+    "hasFreeTier": true,
+    "freeTierLimit": "Free forever: unlimited users, MAUs and organizations, but no SSO or SCIM connections",
+    "pricingModel": "subscription",
+    "pricingUrl": "https://ssojet.com/pricing/",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": true,
+    "currency": "USD",
+    "pricingLastVerified": "2026-10-03",
+    "trialDays": 30,
+    "plans": [
+      {
+        "name": "Free",
+        "price": "Free",
+        "amount": 0
+      },
+      {
+        "name": "Business",
+        "price": "From $79/month billed annually ($99 billed monthly) for 2 connections, about $39.50 per extra connection (10 connections $334/month, 100 connections $2,548/month). SAML, OIDC and SCIM each count as one connection; unlimited MAUs. 50% off for 12 months for qualified startups, non-profits and open-source projects",
+        "featuresIncluded": [
+          "oidc_federation",
+          "saml_federation",
+          "azure_ad_integration",
+          "inbound_scim_provisioning",
+          "scim_groups",
+          "jit_provisioning",
+          "audit_log_retention",
+          "tenant_acl",
+          "custom_domain",
+          "email_templates"
+        ]
+      },
+      {
+        "name": "Enterprise",
+        "price": "Custom (unlimited SSO and SCIM connections, dedicated private cloud, 11 data regions, 99.99% uptime SLA, 1-hour support SLA)",
+        "featuresIncluded": [
+          "machine_to_machine",
+          "oidc_federation",
+          "saml_federation",
+          "azure_ad_integration",
+          "inbound_scim_provisioning",
+          "scim_groups",
+          "jit_provisioning",
+          "soc2_type2",
+          "iso_27001",
+          "hipaa_baa",
+          "region_deployment",
+          "private_cloud_deployment",
+          "audit_log_retention",
+          "tenant_acl",
+          "device_fingerprinting",
+          "custom_domain",
+          "email_templates"
+        ]
+      }
+    ]
+  },
+  "sla": {
+    "uptimePercent": 99.99,
+    "url": "https://ssojet.com/pricing/",
+    "scope": "Enterprise plan"
+  },
+  "supportChannels": ["email", "community"],
+  "migrationTools": [
+    {
+      "from": "Any provider",
+      "url": "https://ssojet.com/docs/en/references/migration/data-migration-overview"
+    }
+  ],
+  "lastVerified": "2026-10-03",
+  "sdks": [
+    {
+      "language": "JavaScript",
+      "framework": "Browser auth SDK",
+      "url": "https://github.com/ssojet/ssojet-auth-js",
+      "official": true
+    },
+    {
+      "language": "JavaScript",
+      "framework": "Node.js server SDK",
+      "url": "https://github.com/ssojet/ssojet-server-js",
+      "official": true
+    },
+    {
+      "language": "JavaScript",
+      "framework": "Hono",
+      "url": "https://github.com/ssojet/ssojet-hono",
+      "official": true
+    }
+  ],
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "status": "supported",
+      "description": "Google, Microsoft, GitHub, Apple, Slack, Discord, LinkedIn, Facebook, GitLab, Amazon, Hugging Face and X, plus Google One Tap. Included on the Free plan.",
+      "links": ["https://ssojet.com/docs/en/authentication/social-authentication"]
+    },
+    {
+      "identifier": "passkey_authentication",
+      "status": "supported",
+      "description": "Phishing-resistant WebAuthn passkey login. Included on the Free plan.",
+      "links": ["https://ssojet.com/docs/en/authentication/passkeys-authentication"]
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "status": "supported",
+      "description": "Passwordless login with one-time email codes.",
+      "links": ["https://ssojet.com/docs/en/authentication/one-time-email-otp"]
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "status": "supported",
+      "description": "Passwordless login with one-time SMS codes.",
+      "links": ["https://ssojet.com/docs/en/authentication/one-time-sms-otp"]
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "status": "supported",
+      "description": "Passwordless email sign-in with one-time links. Included on the Free plan.",
+      "links": ["https://ssojet.com/docs/en/authentication/magicklink"]
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "totp_mfa",
+      "status": "supported",
+      "description": "Authenticator apps are listed as an MFA factor. The page does not use the term TOTP.",
+      "links": ["https://ssojet.com/docs/en/authentication/mfa"]
+    },
+    {
+      "identifier": "hotp_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "u2f_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "status": "partial",
+      "description": "Passkeys are listed as an MFA factor \"where applicable\". WebAuthn security keys are not named.",
+      "links": ["https://ssojet.com/docs/en/authentication/mfa"]
+    },
+    {
+      "identifier": "email_code_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "step_up_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "oidc_protocol",
+      "status": "supported",
+      "description": "SSOJet hosts the login and signs ID and access tokens as JWTs with RS256. Apps integrate through OIDC guides for Next.js, React, Angular, Vue, Node.js, Express, Go, Python, PHP, iOS and Android.",
+      "links": ["https://ssojet.com/docs/en/getting-started", "https://ssojet.com/docs/en/references/jwks"]
+    },
+    {
+      "identifier": "saml2_protocol",
+      "status": "unknown"
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "status": "unknown"
+    },
+    {
+      "identifier": "machine_to_machine",
+      "status": "supported",
+      "description": "OAuth 2.0 client credentials flow, enabled per application under grant types. The pricing page lists M2M auth on the Enterprise plan only, while its FAQ mentions it on Business.",
+      "links": [
+        "https://ssojet.com/docs/en/authentication/machine-to-machine-authentication",
+        "https://ssojet.com/pricing/"
+      ],
+      "plans": ["Enterprise"]
+    },
+    {
+      "identifier": "oidc_federation",
+      "status": "supported",
+      "description": "Enterprise SSO connections to customer OIDC identity providers. Each SSO or SCIM connection is billed as one connection.",
+      "links": ["https://ssojet.com/docs/en/enterprise-sso/oidc-configuration", "https://ssojet.com/pricing/"],
+      "plans": ["Business", "Enterprise"]
+    },
+    {
+      "identifier": "saml_federation",
+      "status": "supported",
+      "description": "SAML 2.0 enterprise SSO with SP-initiated and IdP-initiated flows and signed assertions. Guides for Okta, Entra ID, Google Workspace, OneLogin, CyberArk and Duo. Not available on the Free plan.",
+      "links": ["https://ssojet.com/docs/en/enterprise-sso", "https://docs.ssojet.com/en/how-to-guides/sso/overview/"],
+      "plans": ["Business", "Enterprise"]
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "status": "unknown"
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "status": "supported",
+      "description": "Microsoft Entra ID is a documented SAML SSO and SCIM identity provider integration.",
+      "links": ["https://ssojet.com/docs/en/enterprise-sso"],
+      "plans": ["Business", "Enterprise"]
+    },
+    {
+      "identifier": "bulk_user_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "password_hash_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "status": "unknown"
+    },
+    {
+      "identifier": "upsert_on_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "legacy_username_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "status": "supported",
+      "description": "SCIM 2.0 server with a base URL and bearer token to hand to the customer IT admin. Handles user create, update and deactivate. Guides for Okta, OneLogin, Entra ID, JumpCloud and CyberArk.",
+      "links": ["https://ssojet.com/docs/en/scim", "https://docs.ssojet.com/en/how-to-guides/scim/okta-scim/"],
+      "plans": ["Business", "Enterprise"]
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "scim_groups",
+      "status": "supported",
+      "description": "Group create, update and membership change events are handled.",
+      "links": ["https://ssojet.com/docs/en/scim"],
+      "plans": ["Business", "Enterprise"]
+    },
+    {
+      "identifier": "jit_provisioning",
+      "status": "supported",
+      "description": "Just-in-time provisioning on the Business plan and above.",
+      "links": ["https://ssojet.com/pricing/"],
+      "plans": ["Business", "Enterprise"]
+    },
+    {
+      "identifier": "lazy_migration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "status": "unknown"
+    },
+    {
+      "identifier": "account_linking",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_blocking",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "app_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_search",
+      "status": "unknown"
+    },
+    {
+      "identifier": "rbac",
+      "status": "supported",
+      "description": "Per-organization role-based access control, included on the Free plan.",
+      "links": ["https://ssojet.com/docs/en/organizations", "https://ssojet.com/pricing/"]
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "status": "supported",
+      "description": "Organizations model multi-tenant identity, member roles and admin access. The Free plan has unlimited organizations.",
+      "links": ["https://ssojet.com/docs/en/organizations"]
+    },
+    {
+      "identifier": "password_strength_policy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "username_restrictions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "progressive_profiling",
+      "status": "unknown"
+    },
+    {
+      "identifier": "abac",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "api_authorization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "soc2_type2",
+      "status": "supported",
+      "description": "SSOJet claims SOC 2 Type II. The pricing page lists SOC 2 as included on Enterprise only.",
+      "links": ["https://ssojet.com/docs/en/references/security-compliances", "https://ssojet.com/pricing/"],
+      "plans": ["Enterprise"]
+    },
+    {
+      "identifier": "iso_27001",
+      "status": "partial",
+      "description": "The homepage and pricing page list ISO 27001 on Enterprise, but the security page only says \"ISO 27001 alignment\".",
+      "links": ["https://ssojet.com/docs/en/references/security-compliances", "https://ssojet.com/pricing/"],
+      "plans": ["Enterprise"]
+    },
+    {
+      "identifier": "hipaa_baa",
+      "status": "supported",
+      "description": "HIPAA/BAA is included on Enterprise and sold as an add-on on Business.",
+      "links": ["https://ssojet.com/pricing/"],
+      "plans": ["Enterprise"]
+    },
+    {
+      "identifier": "pci_dss",
+      "status": "unknown"
+    },
+    {
+      "identifier": "csa_star",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fedramp",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "status": "unknown"
+    },
+    {
+      "identifier": "consent_management",
+      "status": "unknown"
+    },
+    {
+      "identifier": "region_deployment",
+      "status": "supported",
+      "description": "Data residency in 11 regions on the Enterprise plan.",
+      "links": ["https://ssojet.com/pricing/"],
+      "plans": ["Enterprise"]
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "status": "supported",
+      "description": "Dedicated private cloud with Dev, Staging and Prod environments on the Enterprise plan.",
+      "links": ["https://ssojet.com/pricing/"],
+      "plans": ["Enterprise"]
+    },
+    {
+      "identifier": "audit_log_retention",
+      "status": "partial",
+      "description": "Audit logs track authentication attempts, admin actions and configuration changes, and can be exported on demand. No retention period is published.",
+      "links": ["https://ssojet.com/docs/en/references/security-compliances", "https://ssojet.com/pricing/"],
+      "plans": ["Business", "Enterprise"]
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "status": "unknown"
+    },
+    {
+      "identifier": "security_center",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "status": "supported",
+      "description": "Listed under security controls, without algorithm details.",
+      "links": ["https://ssojet.com/docs/en/references/security-compliances"]
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "status": "supported",
+      "description": "Listed under security controls, without protocol details.",
+      "links": ["https://ssojet.com/docs/en/references/security-compliances"]
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bot_detection",
+      "status": "supported",
+      "description": "Bot protection is included on the Free plan.",
+      "links": ["https://ssojet.com/pricing/"]
+    },
+    {
+      "identifier": "brute_force_protection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "status": "unknown"
+    },
+    {
+      "identifier": "breached_password_detection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "credential_guard",
+      "status": "unknown"
+    },
+    {
+      "identifier": "tenant_acl",
+      "status": "supported",
+      "description": "IP and country allowlists on the Business plan and above.",
+      "links": ["https://ssojet.com/pricing/"],
+      "plans": ["Business", "Enterprise"]
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "status": "supported",
+      "description": "Device fingerprinting and fraud detection on the Enterprise plan.",
+      "links": ["https://ssojet.com/pricing/"],
+      "plans": ["Enterprise"]
+    },
+    {
+      "identifier": "per_org_branding",
+      "status": "unknown"
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "hosted_login_page",
+      "status": "supported",
+      "description": "Branded hosted login page on a custom domain, included on the Free plan.",
+      "links": ["https://ssojet.com/docs/en/getting-started", "https://ssojet.com/pricing/"]
+    },
+    {
+      "identifier": "embedded_login",
+      "status": "unknown"
+    },
+    {
+      "identifier": "white_label",
+      "status": "partial",
+      "description": "Branded login page, team widget and IT admin portal. Whitelabel APIs are Enterprise only.",
+      "links": ["https://ssojet.com/pricing/"]
+    },
+    {
+      "identifier": "localization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "status": "unknown"
+    },
+    {
+      "identifier": "login_analytics",
+      "status": "unknown"
+    },
+    {
+      "identifier": "sdk_coverage",
+      "status": "supported",
+      "description": "Guides and SDKs for Next.js, React, Angular, Vue, Node.js, Express, Go, Python, PHP, iOS and Android, plus Ruby and .NET mentioned on the homepage.",
+      "links": ["https://ssojet.com/docs/en/getting-started", "https://github.com/ssojet"]
+    },
+    {
+      "identifier": "management_api",
+      "status": "supported",
+      "description": "REST API with JSON responses and a separate API reference site.",
+      "links": ["https://api-docs.ssojet.com/"]
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "actions_extensibility",
+      "status": "unknown"
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_domain",
+      "status": "supported",
+      "description": "Custom domain (CNAME) for the hosted login and admin portal.",
+      "links": ["https://ssojet.com/pricing/"],
+      "plans": ["Business", "Enterprise"]
+    },
+    {
+      "identifier": "deploy_cli",
+      "status": "unknown"
+    },
+    {
+      "identifier": "terraform_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_database_connections",
+      "status": "unknown"
+    },
+    {
+      "identifier": "native_webhooks",
+      "status": "supported",
+      "description": "Webhooks and an events system with event types and consumption guides. Included on the Free plan.",
+      "links": ["https://ssojet.com/docs/en/integrations/webhooks", "https://ssojet.com/docs/en/events"]
+    },
+    {
+      "identifier": "universal_login_customization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_email_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "email_templates",
+      "status": "supported",
+      "description": "Custom email templates on the Business plan and above.",
+      "links": ["https://ssojet.com/pricing/"],
+      "plans": ["Business", "Enterprise"]
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "status": "unknown"
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "status": "unknown"
+    },
+    {
+      "identifier": "identity_proofing",
+      "status": "unknown"
+    },
+    {
+      "identifier": "decentralized_identity",
+      "status": "unknown"
+    },
+    {
+      "identifier": "billing_integration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "agentic_identity",
+      "status": "partial",
+      "description": "Remote MCP server, agent skills and an LLM integration guide help developers and AI agents implement SSOJet. Authorization flows for MCP servers were not verified.",
+      "links": ["https://github.com/ssojet/remote-mcp-ssojet", "https://github.com/ssojet/skills"]
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "status": "unknown"
+    }
+  ],
+  "oidc": {
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "description": "Documented through OIDC login and callback flows for web, SPA and native apps (AppAuth).",
+        "links": ["https://ssojet.com/docs/en/getting-started"]
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported",
+        "description": "Refresh tokens have a dedicated reference page.",
+        "links": ["https://ssojet.com/docs/en/references/refresh-tokens"]
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "supported",
+        "description": "Enabled per application under grant types. Tokens are issued by POST https://api.ssojet.com/api/v1/oauth2/token with expires_in 3600.",
+        "links": ["https://ssojet.com/docs/en/authentication/machine-to-machine-authentication"]
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "password_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "unknown"
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported",
+        "description": "PKCE-based browser login is documented for React apps.",
+        "links": ["https://ssojet.com/docs/en/getting-started"]
+      },
+      {
+        "identifier": "par_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported",
+        "description": "Served at https://api.ssojet.com/api/v1/oauth2/token.",
+        "links": ["https://ssojet.com/docs/en/authentication/machine-to-machine-authentication"]
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported",
+        "description": "Per-project document at https://{project}.auth.ssojet.com/.well-known/openid-configuration, with keys at /.well-known/jwks.json.",
+        "links": ["https://ssojet.com/docs/en/references/jwks"]
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "partial",
+        "description": "Client credentials are sent in a JSON request body. HTTP Basic and form-encoded bodies are not documented.",
+        "links": ["https://ssojet.com/docs/en/authentication/machine-to-machine-authentication"]
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dpop",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jarm",
+        "status": "unknown"
+      }
+    ]
+  }
+}

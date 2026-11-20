@@ -1,0 +1,703 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "Strivacity",
+  "abstract": "Customer identity and access management (CIAM) platform for customers, partners and AI agents, delivered as a single product on a dedicated single-instance cloud. Covers self-service registration and account management, passwordless sign-in and passkeys, adaptive MFA, social login and SSO over OIDC and SAML, and organizations for B2B, B2B2x and B2P use cases. Identity orchestration with a no-code journey canvas can be configured or coded through hosted, embedded and native modes and SDKs. Fraud prevention (bot, behavior, device and breached-password detection) and identity verification are built in, with data residency included and a 99.99% standard SLA. Pricing is MAU-based and starts at $17,000 per year.",
+  "identifier": "strivacity",
+  "status": "active",
+  "deploymentModels": ["saas"],
+  "targetAudience": ["b2c", "b2b", "ciam"],
+  "tags": ["fraud-prevention", "identity-orchestration", "data-residency", "dedicated-instance"],
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/strivacity.svg"
+  },
+  "website": "https://www.strivacity.com",
+  "documentationUrl": "https://docs.strivacity.com",
+  "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
+  "governance": "vendor_led",
+  "nationality": "USA",
+  "vendor": {
+    "name": "Strivacity",
+    "url": "https://www.strivacity.com"
+  },
+  "foundedYear": 2019,
+  "headquarters": {
+    "country": "US",
+    "city": "Herndon"
+  },
+  "pricing": {
+    "hasFreeTier": false,
+    "pricingModel": "mau",
+    "pricingUrl": "https://www.strivacity.com/products/pricing",
+    "currency": "USD",
+    "hasEnterprisePlan": false,
+    "contactSalesRequired": true,
+    "plans": [
+      {
+        "name": "Platform",
+        "price": "Starts at $17,000/year, MAU-based; includes a dedicated cloud instance, sandbox, unlimited apps, integrations and organizations; identity fraud detection, document verification and knowledge-based verification are billed per transaction",
+        "amount": 17000,
+        "period": "year"
+      }
+    ],
+    "pricingLastVerified": "2026-10-03"
+  },
+  "sla": {
+    "uptimePercent": 99.99,
+    "url": "https://www.strivacity.com/products/pricing",
+    "scope": "Standard SLA"
+  },
+  "lastVerified": "2026-10-03",
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "status": "supported"
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "status": "supported"
+    },
+    {
+      "identifier": "passkey_authentication",
+      "status": "supported"
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "status": "supported"
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "totp_mfa",
+      "status": "supported",
+      "description": "Soft token (authenticator app) is one of the MFA methods."
+    },
+    {
+      "identifier": "hotp_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "u2f_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "status": "supported",
+      "description": "FIDO2 biometrics and security keys are supported as MFA methods."
+    },
+    {
+      "identifier": "email_code_mfa",
+      "status": "supported"
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "status": "supported",
+      "description": "SMS and voice one-time codes."
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "status": "supported"
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "status": "supported",
+      "description": "Adaptive access policies and adaptive rules trigger MFA based on risk."
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "step_up_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "oidc_protocol",
+      "status": "supported"
+    },
+    {
+      "identifier": "saml2_protocol",
+      "status": "supported",
+      "description": "SAML2 application clients, with metadata endpoint and SAML logout."
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "status": "unknown"
+    },
+    {
+      "identifier": "machine_to_machine",
+      "status": "unknown"
+    },
+    {
+      "identifier": "oidc_federation",
+      "status": "unknown"
+    },
+    {
+      "identifier": "saml_federation",
+      "status": "supported",
+      "description": "SAML2 external identity providers."
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "status": "unknown"
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_import",
+      "status": "supported",
+      "description": "Bulk import with an import validator."
+    },
+    {
+      "identifier": "password_hash_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "status": "unknown"
+    },
+    {
+      "identifier": "upsert_on_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "legacy_username_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "scim_groups",
+      "status": "unknown"
+    },
+    {
+      "identifier": "jit_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "lazy_migration",
+      "status": "supported",
+      "description": "Just-in-time customer migration."
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "status": "supported"
+    },
+    {
+      "identifier": "account_linking",
+      "status": "supported"
+    },
+    {
+      "identifier": "user_blocking",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "app_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_search",
+      "status": "unknown"
+    },
+    {
+      "identifier": "rbac",
+      "status": "supported",
+      "description": "Admin roles, organization roles and groups."
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "status": "supported",
+      "description": "Unlimited organizations for B2B, B2B2x and B2P use cases."
+    },
+    {
+      "identifier": "password_strength_policy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "username_restrictions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "progressive_profiling",
+      "status": "supported"
+    },
+    {
+      "identifier": "abac",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "api_authorization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "soc2_type2",
+      "status": "unknown"
+    },
+    {
+      "identifier": "iso_27001",
+      "status": "unknown"
+    },
+    {
+      "identifier": "hipaa_baa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pci_dss",
+      "status": "unknown"
+    },
+    {
+      "identifier": "csa_star",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fedramp",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "status": "unknown"
+    },
+    {
+      "identifier": "consent_management",
+      "status": "supported",
+      "description": "Versioned, auditable consent records."
+    },
+    {
+      "identifier": "region_deployment",
+      "status": "supported",
+      "description": "Same-country hosting and automated regional routing; included at no extra charge."
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "status": "unknown"
+    },
+    {
+      "identifier": "audit_log_retention",
+      "status": "unknown"
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "status": "supported",
+      "description": "Event streaming to Splunk, Elasticsearch and generic HTTPS endpoints."
+    },
+    {
+      "identifier": "security_center",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "status": "unknown"
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bot_detection",
+      "status": "supported"
+    },
+    {
+      "identifier": "brute_force_protection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "status": "unknown"
+    },
+    {
+      "identifier": "breached_password_detection",
+      "status": "supported"
+    },
+    {
+      "identifier": "credential_guard",
+      "status": "unknown"
+    },
+    {
+      "identifier": "tenant_acl",
+      "status": "unknown"
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "status": "supported",
+      "description": "Known device detection and device intelligence."
+    },
+    {
+      "identifier": "per_org_branding",
+      "status": "unknown"
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "hosted_login_page",
+      "status": "supported",
+      "description": "Hosted journey mode."
+    },
+    {
+      "identifier": "embedded_login",
+      "status": "supported",
+      "description": "Embedded and native journey modes."
+    },
+    {
+      "identifier": "white_label",
+      "status": "unknown"
+    },
+    {
+      "identifier": "localization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "status": "supported",
+      "description": "No-code components and customer experience canvas."
+    },
+    {
+      "identifier": "login_analytics",
+      "status": "supported",
+      "description": "Analytics and insights on sign-ups, sign-ins and security events."
+    },
+    {
+      "identifier": "sdk_coverage",
+      "status": "supported",
+      "description": "JavaScript and mobile SDKs."
+    },
+    {
+      "identifier": "management_api",
+      "status": "supported",
+      "description": "Admin API."
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "actions_extensibility",
+      "status": "unknown"
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_domain",
+      "status": "unknown"
+    },
+    {
+      "identifier": "deploy_cli",
+      "status": "unknown"
+    },
+    {
+      "identifier": "terraform_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_database_connections",
+      "status": "unknown"
+    },
+    {
+      "identifier": "native_webhooks",
+      "status": "supported",
+      "description": "Lifecycle event hooks."
+    },
+    {
+      "identifier": "universal_login_customization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_email_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "email_templates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "status": "unknown"
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "status": "supported",
+      "description": "Identity orchestration with a no-code journey canvas."
+    },
+    {
+      "identifier": "identity_proofing",
+      "status": "supported",
+      "description": "Government ID, biometric liveness and knowledge-based verification, billed per transaction."
+    },
+    {
+      "identifier": "decentralized_identity",
+      "status": "unknown"
+    },
+    {
+      "identifier": "billing_integration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "agentic_identity",
+      "status": "supported",
+      "description": "Governance of AI agents, MCP server integration and consent-based access."
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "status": "unknown"
+    }
+  ],
+  "oidc": {
+    "features": [
+      {
+        "identifier": "implicit_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "links": ["https://docs.strivacity.com/docs/oidc-support"]
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported",
+        "links": ["https://docs.strivacity.com/docs/oidc-support"]
+      },
+      {
+        "identifier": "par_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "password_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported",
+        "links": ["https://docs.strivacity.com/docs/oidc-support"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "supported",
+        "links": ["https://docs.strivacity.com/docs/oidc-support"]
+      },
+      {
+        "identifier": "dpop",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jarm",
+        "status": "unknown"
+      }
+    ]
+  }
+}
