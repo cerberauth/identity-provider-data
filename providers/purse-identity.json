@@ -8,7 +8,7 @@
   "targetAudience": ["b2c", "ciam"],
   "tags": ["european", "digital-identity", "customer-identity", "wallet"],
   "icon": {
-    "contentUrl": "https://nacho.cerberauth.com/logos/purse-identity.png"
+    "contentUrl": "https://nacho.cerberauth.com/logos/purse-identity.svg"
   },
   "website": "https://purse.eu/en/products/purse-identity",
   "license": "Proprietary",

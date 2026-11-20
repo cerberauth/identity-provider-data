@@ -1,0 +1,728 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "Dex",
+  "abstract": "Open-source OpenID Connect identity service written in Go that fronts other identity providers through pluggable connectors (LDAP, SAML 2.0, GitHub, GitLab, Google, Microsoft, LinkedIn, upstream OIDC and OAuth 2.0, and others). Applications and Kubernetes only need to speak OpenID Connect, and Dex issues the signed ID tokens. It is a federation layer rather than a user directory, with a local password connector for simple setups, customizable login templates, a gRPC API, and storage on PostgreSQL, MySQL, SQLite, etcd or Kubernetes CRDs. Self-hosted only, under Apache-2.0.",
+  "identifier": "dex",
+  "status": "active",
+  "deploymentModels": ["self_hosted"],
+  "targetAudience": ["developer", "workforce"],
+  "tags": ["go", "kubernetes", "federation", "connectors", "oidc-proxy"],
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/dex.svg"
+  },
+  "website": "https://dexidp.io",
+  "documentationUrl": "https://dexidp.io/docs/",
+  "changelogUrl": "https://github.com/dexidp/dex/releases",
+  "github": "https://github.com/dexidp/dex",
+  "license": "Apache-2.0",
+  "licenseUrl": "https://github.com/dexidp/dex/blob/master/LICENSE",
+  "openSource": {
+    "isOpenSource": true,
+    "model": "fully_open"
+  },
+  "pricing": {
+    "hasFreeTier": true,
+    "freeTierLimit": "Free and open source, no usage limits.",
+    "pricingModel": "open-source",
+    "pricingUrl": "https://dexidp.io",
+    "hasEnterprisePlan": false,
+    "contactSalesRequired": false,
+    "plans": [
+      {
+        "name": "Open source",
+        "price": "Free"
+      }
+    ]
+  },
+  "hosting": {
+    "selfHostRequirements": {
+      "runtime": "Go",
+      "database": ["PostgreSQL", "MySQL", "SQLite", "etcd", "Kubernetes CRDs"],
+      "container": ["Docker", "Kubernetes"]
+    }
+  },
+  "supportChannels": ["community", "slack"],
+  "lastVerified": "2026-10-24",
+  "repositories": [
+    {
+      "url": "https://github.com/dexidp/dex",
+      "platform": "github",
+      "role": "core",
+      "stars": 11208,
+      "contributors": 317,
+      "latestVersion": "v2.46.1",
+      "lastRelease": "2026-10-21",
+      "statsUpdatedAt": "2026-10-24"
+    }
+  ],
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "status": "partial",
+      "description": "Static passwords in the configuration or the built-in local connector. There is no self-service sign-up or password reset.",
+      "links": ["https://dexidp.io/docs/"]
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "status": "supported",
+      "description": "Connectors for GitHub, GitLab, Google, LinkedIn, Microsoft, Bitbucket Cloud and Gitea, plus generic OAuth 2.0.",
+      "links": ["https://dexidp.io/docs/"]
+    },
+    {
+      "identifier": "passkey_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "totp_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "hotp_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "u2f_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "email_code_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "step_up_authentication",
+      "status": "unknown"
+    },
+    {
+      "identifier": "oidc_protocol",
+      "status": "supported",
+      "description": "OpenID Connect provider that issues signed JWT ID tokens.",
+      "links": ["https://dexidp.io/docs/"]
+    },
+    {
+      "identifier": "saml2_protocol",
+      "status": "not_supported",
+      "description": "Dex is an OIDC provider only. SAML is supported as an upstream connector."
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "status": "unknown"
+    },
+    {
+      "identifier": "machine_to_machine",
+      "status": "supported",
+      "description": "Client credentials grant.",
+      "links": ["https://github.com/dexidp/dex/tree/master/server"]
+    },
+    {
+      "identifier": "oidc_federation",
+      "status": "supported",
+      "description": "Upstream OpenID Connect connector.",
+      "links": ["https://dexidp.io/docs/"]
+    },
+    {
+      "identifier": "saml_federation",
+      "status": "partial",
+      "description": "Upstream SAML 2.0 connector. The README warns it is unmaintained and likely vulnerable to authentication bypasses, and it issues no refresh tokens.",
+      "links": ["https://github.com/dexidp/dex#connectors"]
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "status": "supported",
+      "description": "LDAP connector, rated stable.",
+      "links": ["https://dexidp.io/docs/"]
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "password_hash_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "status": "unknown"
+    },
+    {
+      "identifier": "upsert_on_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "legacy_username_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "status": "unknown"
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "scim_groups",
+      "status": "unknown"
+    },
+    {
+      "identifier": "jit_provisioning",
+      "status": "unknown"
+    },
+    {
+      "identifier": "lazy_migration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "status": "unknown"
+    },
+    {
+      "identifier": "account_linking",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_blocking",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "app_metadata",
+      "status": "unknown"
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "user_search",
+      "status": "unknown"
+    },
+    {
+      "identifier": "rbac",
+      "status": "unknown"
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "password_strength_policy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "username_restrictions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "progressive_profiling",
+      "status": "unknown"
+    },
+    {
+      "identifier": "abac",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "api_authorization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "soc2_type2",
+      "status": "unknown"
+    },
+    {
+      "identifier": "iso_27001",
+      "status": "unknown"
+    },
+    {
+      "identifier": "hipaa_baa",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pci_dss",
+      "status": "unknown"
+    },
+    {
+      "identifier": "csa_star",
+      "status": "unknown"
+    },
+    {
+      "identifier": "fedramp",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "status": "unknown"
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "status": "unknown"
+    },
+    {
+      "identifier": "consent_management",
+      "status": "unknown"
+    },
+    {
+      "identifier": "region_deployment",
+      "status": "unknown"
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "status": "supported",
+      "description": "Runs on any Kubernetes cluster, with Kubernetes CRDs or an SQL database as storage.",
+      "links": ["https://github.com/dexidp/dex"]
+    },
+    {
+      "identifier": "audit_log_retention",
+      "status": "unknown"
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "status": "unknown"
+    },
+    {
+      "identifier": "security_center",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "status": "unknown"
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "status": "unknown"
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "status": "unknown"
+    },
+    {
+      "identifier": "bot_detection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "brute_force_protection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "status": "unknown"
+    },
+    {
+      "identifier": "breached_password_detection",
+      "status": "unknown"
+    },
+    {
+      "identifier": "credential_guard",
+      "status": "unknown"
+    },
+    {
+      "identifier": "tenant_acl",
+      "status": "unknown"
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "status": "unknown"
+    },
+    {
+      "identifier": "per_org_branding",
+      "status": "unknown"
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "status": "unknown"
+    },
+    {
+      "identifier": "hosted_login_page",
+      "status": "supported",
+      "description": "Connector selection and login pages served by Dex.",
+      "links": ["https://dexidp.io/docs/"]
+    },
+    {
+      "identifier": "embedded_login",
+      "status": "unknown"
+    },
+    {
+      "identifier": "white_label",
+      "status": "unknown"
+    },
+    {
+      "identifier": "localization",
+      "status": "unknown"
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "status": "unknown"
+    },
+    {
+      "identifier": "login_analytics",
+      "status": "unknown"
+    },
+    {
+      "identifier": "sdk_coverage",
+      "status": "unknown"
+    },
+    {
+      "identifier": "management_api",
+      "status": "supported",
+      "description": "gRPC API to manage clients and passwords.",
+      "links": ["https://dexidp.io/docs/"]
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "status": "unknown"
+    },
+    {
+      "identifier": "actions_extensibility",
+      "status": "unknown"
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_domain",
+      "status": "unknown"
+    },
+    {
+      "identifier": "deploy_cli",
+      "status": "unknown"
+    },
+    {
+      "identifier": "terraform_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_database_connections",
+      "status": "unknown"
+    },
+    {
+      "identifier": "native_webhooks",
+      "status": "unknown"
+    },
+    {
+      "identifier": "universal_login_customization",
+      "status": "supported",
+      "description": "Login templates can be customized.",
+      "links": ["https://dexidp.io/docs/"]
+    },
+    {
+      "identifier": "custom_email_provider",
+      "status": "unknown"
+    },
+    {
+      "identifier": "email_templates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "status": "unknown"
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "status": "unknown"
+    },
+    {
+      "identifier": "identity_proofing",
+      "status": "unknown"
+    },
+    {
+      "identifier": "decentralized_identity",
+      "status": "unknown"
+    },
+    {
+      "identifier": "billing_integration",
+      "status": "unknown"
+    },
+    {
+      "identifier": "agentic_identity",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "status": "unknown"
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "status": "unknown"
+    }
+  ],
+  "oidc": {
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported",
+        "description": "Refresh token support depends on the connector. The SAML connector issues none.",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "supported",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "supported",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "supported",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "unknown"
+      },
+      {
+        "identifier": "password_grant",
+        "status": "supported",
+        "description": "Available for connectors that can verify a username and password, such as LDAP.",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "supported",
+        "description": "The discovery document advertises end_session_endpoint, plus back-channel logout.",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported",
+        "description": "Code challenge methods are configurable.",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "par_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "unknown"
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "supported",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "supported",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "supported",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "supported",
+        "description": "Served at /device/code.",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "unknown"
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "supported",
+        "description": "Public clients.",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "supported",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "supported",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "not_supported",
+        "description": "The discovery document has no registration_endpoint. Clients are static or created through the gRPC API.",
+        "links": ["https://github.com/dexidp/dex/tree/master/server"]
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "unknown"
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "unknown"
+      },
+      {
+        "identifier": "dpop",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "unknown"
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "unknown"
+      },
+      {
+        "identifier": "jarm",
+        "status": "unknown"
+      }
+    ]
+  }
+}
