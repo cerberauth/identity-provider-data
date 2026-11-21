@@ -808,6 +808,26 @@
       "identifier": "pq_stateful_hash_signatures",
       "status": "unknown",
       "description": "Not documented in SAP CIAM's public product or technical documentation."
+    },
+    {
+      "identifier": "macaroon_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "paseto_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "cwt_cose_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "biscuit_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
     }
   ],
   "oidc": {

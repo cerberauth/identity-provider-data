@@ -690,6 +690,28 @@
       "status": "not_supported",
       "category": "post_quantum_cryptography",
       "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
+    },
+    {
+      "identifier": "macaroon_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "paseto_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "cwt_cose_tokens",
+      "status": "supported",
+      "category": "token_formats",
+      "description": "Authlete supports CBOR Web Tokens (CWT - RFC 8392) and CBOR Object Signing and Encryption (COSE - RFC 9052) via the authlete/cbor library, including CWT-based key proofs for OpenID for Verifiable Credential Issuance (OID4VCI) and ISO/IEC 18013-5 mdoc mobile credentials.",
+      "links": ["https://www.authlete.com/developers/articles/oid4vci-key-proofs/", "https://github.com/authlete/cbor"]
+    },
+    {
+      "identifier": "biscuit_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
     }
   ],
   "oidc": {

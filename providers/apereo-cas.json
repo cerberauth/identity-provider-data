@@ -528,6 +528,28 @@
     {
       "identifier": "pq_stateful_hash_signatures",
       "status": "unknown"
+    },
+    {
+      "identifier": "macaroon_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "paseto_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
+    },
+    {
+      "identifier": "cwt_cose_tokens",
+      "status": "supported",
+      "category": "token_formats",
+      "description": "Apereo CAS supports CBOR and COSE for issuing and verifying ISO/IEC 18013-5 mdoc credentials and mobile driving licenses in OpenID4VCI and OpenID4VP implementations via the Authlete cbor library.",
+      "links": ["https://apereo.github.io/cas/development/release_notes/RC1.html"]
+    },
+    {
+      "identifier": "biscuit_tokens",
+      "status": "not_supported",
+      "category": "token_formats"
     }
   ],
   "oidc": {

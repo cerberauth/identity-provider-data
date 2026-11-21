@@ -881,6 +881,44 @@
       "category": "post_quantum_cryptography",
       "tier": "enterprise",
       "status": "supported"
+    },
+    {
+      "name": "Macaroon Tokens",
+      "description": "Support for Macaroon tokens as a bearer credential alternative to JWTs, providing decentralized authorization with contextual caveats and offline permission attenuation.",
+      "identifier": "macaroon_tokens",
+      "category": "token_formats",
+      "tier": "advanced",
+      "status": "supported",
+      "links": [
+        "https://research.google/pubs/macaroons-cookies-with-contextual-caveats-for-decentralized-authorization-in-the-cloud/"
+      ]
+    },
+    {
+      "name": "Platform-Agnostic Security Tokens (PASETO)",
+      "description": "Support for Platform-Agnostic Security Tokens (PASETO) as a secure alternative to JWT/JOSE, providing tamper-proof tokens with strong cryptographic defaults and avoiding algorithm agility vulnerabilities.",
+      "identifier": "paseto_tokens",
+      "category": "token_formats",
+      "tier": "standard",
+      "status": "supported",
+      "links": ["https://paseto.io/"]
+    },
+    {
+      "name": "CBOR Web Token (CWT) and COSE",
+      "description": "Support for CBOR Web Tokens (CWT - RFC 8392) and CBOR Object Signing and Encryption (COSE - RFC 9052) as a compact binary serialization alternative to JSON Web Tokens (JWT) and JOSE.",
+      "identifier": "cwt_cose_tokens",
+      "category": "token_formats",
+      "tier": "standard",
+      "status": "supported",
+      "links": ["https://datatracker.ietf.org/doc/html/rfc8392", "https://datatracker.ietf.org/doc/html/rfc9052"]
+    },
+    {
+      "name": "Biscuit Tokens",
+      "description": "Support for Biscuit authorization tokens as an alternative to JWTs, featuring decentralized capability-based authorization, offline cryptographic attenuation, and embedded Datalog-based policy verification.",
+      "identifier": "biscuit_tokens",
+      "category": "token_formats",
+      "tier": "advanced",
+      "status": "supported",
+      "links": ["https://www.biscuitsec.org/"]
     }
   ]
 }

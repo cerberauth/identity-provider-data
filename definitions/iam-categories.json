@@ -54,5 +54,9 @@
   {
     "identifier": "post_quantum_cryptography",
     "translationKey": "post_quantum_cryptography"
+  },
+  {
+    "identifier": "token_formats",
+    "translationKey": "token_formats"
   }
 ]
