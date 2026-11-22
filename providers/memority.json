@@ -46,7 +46,8 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/supported-authentication-factors",
         "https://doc.memority.eu/configuration-guide/latest/authentication-modules"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "social_sign_in_authentication",
@@ -55,7 +56,8 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/federation",
         "https://www.memority.eu/en/access-identity-management-customers/"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "passkey_authentication",
@@ -64,7 +66,8 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/webauthn",
         "https://doc.memority.eu/capabilities/latest/supported-authentication-factors"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "email_passwordless_authentication",
@@ -73,7 +76,8 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/authentication-modules",
         "https://www.memority.eu/en/offers/my-access-manage-access"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "phone_passwordless_authentication",
@@ -82,17 +86,20 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/authentication-modules",
         "https://www.memority.eu/en/offers/my-access-manage-access"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "magic_link_authentication",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "anonymous_authentication",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
@@ -101,12 +108,14 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/supported-authentication-factors",
         "https://doc.memority.eu/capabilities/latest/my-keys"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "hotp_mfa",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
@@ -115,7 +124,8 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/webauthn",
         "https://doc.memority.eu/capabilities/latest/supported-authentication-factors"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "webauthn_mfa",
@@ -124,24 +134,28 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/authentication-modules",
         "https://doc.memority.eu/configuration-guide/latest/authentication-mechanisms"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "email_code_mfa",
       "status": "supported",
       "description": "OTP by mail module with configurable maximum registrations, OTP length (default 4), lifetime (default 1 minute), and send/validate quota policies.",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "phone_code_mfa",
       "status": "supported",
       "description": "OTP by SMS module with configurable maximum registrations, OTP length (default 4), lifetime (default 1 minute), and send/validate quota policies.",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "recovery_code_mfa",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "push_notification_mfa",
@@ -150,7 +164,8 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/authentication-modules",
         "https://doc.memority.eu/capabilities/latest/my-keys"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "adaptive_mfa",
@@ -159,7 +174,8 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/risk-based-authentication",
         "https://doc.memority.eu/configuration-guide/latest/access-risk"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "cisco_duo_mfa",
@@ -168,7 +184,8 @@
       "links": [
         "https://www.memority.eu/en/offers/my-keys-management-second-authentication-factors",
         "https://doc.memority.eu/capabilities/latest/supported-authentication-factors"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
@@ -177,7 +194,8 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/risk-based-authentication",
         "https://doc.memority.eu/configuration-guide/latest/authentication-mechanisms"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "oidc_protocol",
@@ -186,19 +204,22 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/federation",
         "https://doc.memority.eu/configuration-guide/latest/oauth2"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "saml2_protocol",
       "status": "supported",
       "description": "SAML 2.0 identity provider federations with configurable NameID, additional attributes, signed assertions, requests, and logout messages, and downloadable IdP metadata.",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "ws_federation_protocol",
       "status": "supported",
       "description": "WS-Federation relying-party federations with realm, assertion consumer URLs, NameID, additional attributes, and signed assertions.",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "machine_to_machine",
@@ -207,7 +228,8 @@
       "links": [
         "https://doc.memority.eu/setup-guide/latest/apis-usage",
         "https://doc.memority.eu/configuration-guide/latest/federation"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "oidc_federation",
@@ -216,7 +238,8 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/authentication-modules",
         "https://doc.memority.eu/capabilities/latest/federation"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "saml_federation",
@@ -225,7 +248,8 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/authentication-modules",
         "https://doc.memority.eu/capabilities/latest/federation"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "active_directory_ldap",
@@ -234,7 +258,8 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/authentication-modules",
         "https://doc.memority.eu/setup-guide/latest/activedirectory-provisioning"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "azure_ad_integration",
@@ -243,7 +268,8 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/federation",
         "https://www.memority.eu/en/offers/my-discovery-identity-visibility"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "bulk_user_import",
@@ -252,24 +278,28 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/automated-provisioning-and-synchronization",
         "https://doc.memority.eu/configuration-guide/latest/idm-rest-bulk-api-specification"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "password_hash_import",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "bulk_user_export",
       "status": "partial",
       "description": "Reports can be exported to CSV or XLSX and audit data can be pulled through a REST API; a dedicated bulk identity export is not documented.",
-      "links": ["https://doc.memority.eu/capabilities/latest/reporting"]
+      "links": ["https://doc.memority.eu/capabilities/latest/reporting"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "bulk_user_update_delete",
       "status": "supported",
       "description": "The REST bulk API supports PATCH and DELETE on objects targeted by id, id list, or search expression, in transactional batches of 5000 operations by default.",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/idm-rest-bulk-api-specification"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/idm-rest-bulk-api-specification"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "upsert_on_import",
@@ -278,23 +308,27 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/idm-rest-bulk-api-specification",
         "https://doc.memority.eu/capabilities/latest/automated-provisioning-and-synchronization"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "legacy_username_import",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "mfa_enrollment_import",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "inbound_scim_provisioning",
       "status": "unknown",
       "description": "SCIM is not mentioned in the documentation; inbound identity flows use CSV reconciliation, native connectors, and the Memority REST APIs.",
-      "links": ["https://doc.memority.eu/capabilities/latest/automated-provisioning-and-synchronization"]
+      "links": ["https://doc.memority.eu/capabilities/latest/automated-provisioning-and-synchronization"],
+      "plans": []
     },
     {
       "identifier": "outbound_scim_provisioning",
@@ -303,56 +337,66 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/automated-provisioning-and-synchronization",
         "https://doc.memority.eu/setup-guide/latest/rest-provisioning"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "scim_groups",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "jit_provisioning",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "lazy_migration",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "self_service_profile_management",
       "status": "supported",
       "description": "Users edit their profile, change or reset their password, enroll devices and MFA, and answer security questions from the self-service portal.",
-      "links": ["https://doc.memority.eu/capabilities/latest/self-service-features"]
+      "links": ["https://doc.memority.eu/capabilities/latest/self-service-features"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "account_linking",
       "status": "partial",
       "description": "Identities authenticated through an external OIDC or SAML provider are mapped to Memority identities through an account mapping attribute; manual linking by users is not documented.",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "user_blocking",
       "status": "supported",
       "description": "Identities can be suspended (blocked) as an emergency measure, deactivated, soft deleted, and reactivated.",
-      "links": ["https://doc.memority.eu/capabilities/latest/complete-identities-lifecycle"]
+      "links": ["https://doc.memority.eu/capabilities/latest/complete-identities-lifecycle"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "user_metadata",
       "status": "supported",
       "description": "Attributes are fully configurable per object type (Identity, Organization, Resource, Role, Role Publication), with translations, help texts, and reference tables.",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/data-model"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/data-model"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "app_metadata",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "metadata_size_limits",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "user_search",
@@ -361,7 +405,8 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/idm-rest-bulk-api-specification",
         "https://doc.memority.eu/capabilities/latest/traceability"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "rbac",
@@ -370,7 +415,8 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/manage-user-access-request",
         "https://doc.memority.eu/configuration-guide/latest/policies"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "organizations_multitenancy",
@@ -379,25 +425,29 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/complete-identities-lifecycle",
         "https://www.memority.eu/en/architecture-security"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "password_strength_policy",
       "status": "supported",
       "description": "Password policies set length (2 to 128), character classes and per-class minimums, repeated characters, regular expressions, history and reuse delay, expiry with grace period, and dictionaries.",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/password-policies"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/password-policies"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "username_restrictions",
       "status": "supported",
       "description": "Logins may only contain a-z, A-Z, 0-9 and the characters . - _ + ~ @.",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "progressive_profiling",
       "status": "supported",
       "description": "Progressive data collection during customer journeys, limited to what each step requires.",
-      "links": ["https://www.memority.eu/en/access-identity-management-customers/"]
+      "links": ["https://www.memority.eu/en/access-identity-management-customers/"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "abac",
@@ -406,7 +456,8 @@
       "links": [
         "https://www.memority.eu/en/offers/my-access-manage-access",
         "https://doc.memority.eu/configuration-guide/latest/federation"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "fine_grained_authorization",
@@ -415,7 +466,8 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/delegated-administration",
         "https://doc.memority.eu/configuration-guide/latest/api-guardian-guide"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "api_authorization",
@@ -424,52 +476,61 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/api-guardian-guide",
         "https://doc.memority.eu/setup-guide/latest/apis-usage"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "soc2_type2",
       "status": "planned",
       "description": "SOC 2 Type II is a stated compliance goal, not yet a held certification.",
-      "links": ["https://www.memority.eu/en/presentation"]
+      "links": ["https://www.memority.eu/en/presentation"],
+      "plans": []
     },
     {
       "identifier": "iso_27001",
       "status": "supported",
       "description": "Memority is certified ISO 27001, along with ISO 27701 and AirCyber Gold.",
-      "links": ["https://www.memority.eu/en/architecture-security", "https://www.memority.eu/en/presentation"]
+      "links": ["https://www.memority.eu/en/architecture-security", "https://www.memority.eu/en/presentation"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "hipaa_baa",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "pci_dss",
       "status": "planned",
       "description": "PCI-DSS compatibility is a stated compliance goal, not yet a held certification.",
-      "links": ["https://www.memority.eu/en/presentation"]
+      "links": ["https://www.memority.eu/en/presentation"],
+      "plans": []
     },
     {
       "identifier": "csa_star",
       "status": "planned",
       "description": "CSA STAR level 2 is a stated compliance goal, not yet a held certification.",
-      "links": ["https://www.memority.eu/en/presentation"]
+      "links": ["https://www.memority.eu/en/presentation"],
+      "plans": []
     },
     {
       "identifier": "fedramp",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "partial",
       "description": "Identities go through soft delete (archived for a configurable 6 to 12 months) and hard delete (irreversible wipe); GDPR-specific anonymization is not documented.",
-      "links": ["https://doc.memority.eu/capabilities/latest/complete-identities-lifecycle"]
+      "links": ["https://doc.memority.eu/capabilities/latest/complete-identities-lifecycle"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "consent_management",
@@ -478,24 +539,28 @@
       "links": [
         "https://www.memority.eu/en/offers/my-access-manage-access",
         "https://www.memority.eu/en/access-identity-management-customers/"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "region_deployment",
       "status": "supported",
       "description": "Hosting regions Paris and Dublin on a provider of choice among AWS, S3NS, and GCP; the S3NS cloud is SecNumCloud 3.2 qualified.",
-      "links": ["https://www.memority.eu/en/architecture-security"]
+      "links": ["https://www.memority.eu/en/architecture-security"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "private_cloud_deployment",
       "status": "partial",
       "description": "A shared or dedicated platform option is offered, hosted on a public trusted cloud rather than customer-managed infrastructure.",
-      "links": ["https://www.memority.eu/en/architecture-security"]
+      "links": ["https://www.memority.eu/en/architecture-security"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "audit_log_retention",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "audit_log_streaming",
@@ -504,12 +569,14 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/traceability",
         "https://doc.memority.eu/capabilities/latest/reporting"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "security_center",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "encryption_at_rest",
@@ -518,7 +585,8 @@
       "links": [
         "https://www.memority.eu/en/architecture-security",
         "https://doc.memority.eu/setup-guide/latest/security-best-practices"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "encryption_in_transit",
@@ -527,45 +595,53 @@
       "links": [
         "https://www.memority.eu/en/architecture-security",
         "https://doc.memority.eu/setup-guide/latest/security-best-practices"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "customer_managed_keys",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "bot_detection",
       "status": "partial",
       "description": "A captcha can be displayed on the first page of public access flows such as password recovery; broader bot detection is not documented.",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/public-access"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/public-access"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "brute_force_protection",
       "status": "partial",
       "description": "OTP modules have send and validate quota policies limiting attempts per time window; account lockout is not documented.",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "suspicious_ip_throttling",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "breached_password_detection",
       "status": "supported",
       "description": "Password policies can enable leaked-password detection, with a block or allow strategy when the checking service is unavailable (disabled by default).",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/password-policies"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/password-policies"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "credential_guard",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "device_fingerprinting",
@@ -574,12 +650,14 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/access-risk",
         "https://doc.memority.eu/capabilities/latest/self-service-features"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "per_org_branding",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "per_org_mfa_policy",
@@ -588,7 +666,8 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/policies",
         "https://doc.memority.eu/configuration-guide/latest/authentication-mechanisms"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "hosted_login_page",
@@ -597,12 +676,14 @@
       "links": [
         "https://www.memority.eu/en/access-identity-management-customers/",
         "https://doc.memority.eu/capabilities/latest/memority-portals"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "embedded_login",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "white_label",
@@ -611,7 +692,8 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/memority-portals",
         "https://doc.memority.eu/configuration-guide/latest/customization"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "localization",
@@ -620,23 +702,27 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/memority-portals",
         "https://doc.memority.eu/configuration-guide/latest/customization"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "prebuilt_ui_components",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "login_analytics",
       "status": "supported",
       "description": "Dashboards filterable by perimeter, role, or population, out-of-the-box authentication reports, and personal self-driven dashboards, with CSV and XLSX export.",
-      "links": ["https://doc.memority.eu/capabilities/latest/reporting"]
+      "links": ["https://doc.memority.eu/capabilities/latest/reporting"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "sdk_coverage",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "management_api",
@@ -645,29 +731,34 @@
       "links": [
         "https://doc.memority.eu/setup-guide/latest/apis-usage",
         "https://doc.memority.eu/configuration-guide/latest/api-guardian-guide"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "authentication_api_rate_limits",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "actions_extensibility",
       "status": "supported",
       "description": "Groovy 2.5 rules and actions attach to business policies, object policies, features, and workflows, in a sandbox limited to 500 ms for synchronous rules and 1 minute for asynchronous ones.",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/rules-actions-api"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/rules-actions-api"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "typescript_in_actions",
       "status": "not_supported",
       "description": "Groovy is the only supported scripting language for rules and actions.",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/rules-actions-api"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/rules-actions-api"],
+      "plans": []
     },
     {
       "identifier": "custom_domain",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "deploy_cli",
@@ -676,18 +767,21 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/memority-portals",
         "https://doc.memority.eu/configuration-guide/latest/system"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "terraform_provider",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "custom_database_connections",
       "status": "partial",
       "description": "Authentication can be delegated to an existing Active Directory or LDAP directory, or to external OIDC and SAML providers; scripted custom database connections are not documented.",
-      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"]
+      "links": ["https://doc.memority.eu/configuration-guide/latest/authentication-modules"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "native_webhooks",
@@ -696,7 +790,8 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/groovy-http-client",
         "https://doc.memority.eu/configuration-guide/latest/notifications"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "universal_login_customization",
@@ -705,12 +800,14 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/authentication-customization",
         "https://doc.memority.eu/configuration-guide/latest/customization"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "custom_email_provider",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "email_templates",
@@ -719,7 +816,8 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/notifications",
         "https://doc.memority.eu/setup-guide/latest/mail-notification-template"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "custom_oidc_claims",
@@ -728,7 +826,8 @@
       "links": [
         "https://doc.memority.eu/configuration-guide/latest/federation",
         "https://doc.memority.eu/configuration-guide/latest/oauth2"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "nocode_flow_builder",
@@ -737,7 +836,8 @@
       "links": [
         "https://doc.memority.eu/capabilities/latest/workflow",
         "https://doc.memority.eu/configuration-guide/latest/login-tasks"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "identity_proofing",
@@ -746,73 +846,87 @@
       "links": [
         "https://www.memority.eu/en/access-identity-management-customers/",
         "https://doc.memority.eu/capabilities/latest/self-service-features"
-      ]
+      ],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "decentralized_identity",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
       "status": "partial",
       "description": "Non-human identities, including service accounts, software robots, and AI agents, are covered by the identity governance platform.",
-      "links": ["https://www.memority.eu/en/offers/my-identity-governing-identities"]
+      "links": ["https://www.memority.eu/en/offers/my-identity-governing-identities"],
+      "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
     },
     {
       "identifier": "pq_hybrid_key_exchange",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
       "status": "unknown",
-      "description": "Not documented in Memority's public product, security, or technical documentation."
+      "description": "Not documented in Memority's public product, security, or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -821,7 +935,8 @@
         "identifier": "authorization_code_grant",
         "status": "supported",
         "description": "The Authorization Code flow is an optional authorized flow per federation (enabled by default).",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
       },
       {
         "identifier": "refresh_token_grant",
@@ -830,7 +945,8 @@
         "links": [
           "https://doc.memority.eu/configuration-guide/latest/oauth2",
           "https://doc.memority.eu/configuration-guide/latest/federation"
-        ]
+        ],
+        "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
       },
       {
         "identifier": "client_credentials_grant",
@@ -839,25 +955,29 @@
         "links": [
           "https://doc.memority.eu/configuration-guide/latest/federation",
           "https://doc.memority.eu/setup-guide/latest/apis-usage"
-        ]
+        ],
+        "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
       },
       {
         "identifier": "implicit_grant",
         "status": "supported",
         "description": "The Implicit flow is an optional authorized flow per federation (enabled by default).",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
@@ -866,61 +986,71 @@
         "links": [
           "https://doc.memority.eu/configuration-guide/latest/oauth2",
           "https://doc.memority.eu/configuration-guide/latest/federation"
-        ]
+        ],
+        "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
         "status": "supported",
         "description": "The JWT Bearer flow is an optional authorized flow per federation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "password_grant",
         "status": "supported",
         "description": "The Resource Owner Password Credentials flow is an optional authorized flow per federation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
       },
       {
         "identifier": "rp_initiated_logout",
         "status": "supported",
         "description": "Federations declare authorized post-logout redirect URIs, and the id_token_hint can be verified against the client's JWKS URL.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
       },
       {
         "identifier": "pkce_extension",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "par_extension",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "rar_extension",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "jar_extension",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
         "status": "supported",
         "description": "The authorization endpoint is part of the OAuth2/OpenID Connect federation; endpoints are displayed from the federation form.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
       },
       {
         "identifier": "token_endpoint",
@@ -929,169 +1059,197 @@
         "links": [
           "https://doc.memority.eu/setup-guide/latest/apis-usage",
           "https://doc.memority.eu/configuration-guide/latest/federation"
-        ]
+        ],
+        "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
       },
       {
         "identifier": "userinfo_endpoint",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "token_revocation_endpoint",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "token_introspection_endpoint",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "device_authorization_endpoint",
         "status": "supported",
         "description": "Supported as part of the Device Authorization Grant.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/oauth2"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/oauth2"],
+        "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "none_prompt",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "login_prompt",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "consent_prompt",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "select_account_prompt",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "create_prompt",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
         "status": "supported",
         "description": "Federations can be declared as Public clients, which have no client secret.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": ["Memority Identity Factory (MY-Identity, MY-Access, MY-Keys, MY-Discovery)"]
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration_management",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "dpop",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_baseline",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       },
       {
         "identifier": "jarm",
         "status": "unknown",
         "description": "Memority supports OAuth2 and OpenID Connect, but this specific capability is not documented in its public technical documentation.",
-        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"]
+        "links": ["https://doc.memority.eu/configuration-guide/latest/federation"],
+        "plans": []
       }
     ]
   }

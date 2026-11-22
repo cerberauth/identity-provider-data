@@ -33,7 +33,7 @@
   },
   "pricing": {
     "hasFreeTier": true,
-    "freeTierLimit": "50,000 MRU",
+    "freeTierLimit": "50,000 MRU per app (Hobby plan)",
     "freeTierMau": 50000,
     "pricingModel": "mau",
     "pricingUrl": "https://clerk.com/pricing",
@@ -43,119 +43,78 @@
     "plans": [
       {
         "name": "Free",
-        "price": "Free",
+        "price": "Free (Hobby plan: 50,000 monthly retained users, 1-day logs, no MFA or passkeys)",
         "amount": 0,
-        "mauIncluded": 50000
+        "deployment": "saas",
+        "usage": {
+          "metric": "mau",
+          "included": 50000,
+          "max": 50000
+        }
       },
       {
         "name": "Pro",
-        "price": "$20/month (annual) / $25/month",
+        "price": "$25/month ($20/month billed annually); 50,000 MRU included, then $0.02 to $0.012 per MRU",
         "amount": 25,
         "period": "month",
-        "featuresIncluded": [
-          "passkey_authentication",
-          "totp_mfa",
-          "u2f_mfa",
-          "webauthn_mfa",
-          "phone_code_mfa",
-          "recovery_code_mfa",
-          "oidc_protocol",
-          "saml2_protocol",
-          "oidc_federation",
-          "saml_federation",
-          "azure_ad_integration",
-          "password_hash_import",
-          "inbound_scim_provisioning",
-          "scim_groups",
-          "jit_provisioning",
-          "lazy_migration",
-          "user_blocking",
-          "rbac",
-          "organizations_multitenancy",
-          "password_strength_policy",
-          "progressive_profiling",
-          "api_authorization",
-          "audit_log_retention",
-          "per_org_branding",
-          "white_label",
-          "custom_domain",
-          "terraform_provider",
-          "billing_integration"
-        ]
+        "deployment": "saas",
+        "usage": {
+          "metric": "mau",
+          "included": 50000,
+          "rates": [
+            {
+              "upTo": 100000,
+              "amount": 0.02
+            },
+            {
+              "upTo": 1000000,
+              "amount": 0.018
+            },
+            {
+              "upTo": 10000000,
+              "amount": 0.015
+            },
+            {
+              "amount": 0.012
+            }
+          ]
+        }
       },
       {
         "name": "Business",
-        "price": "$250/month (annual) / $300/month",
+        "price": "$300/month ($250/month billed annually); same MRU rates as Pro, SOC 2 report, 30-day logs",
         "amount": 300,
         "period": "month",
-        "featuresIncluded": [
-          "passkey_authentication",
-          "totp_mfa",
-          "u2f_mfa",
-          "webauthn_mfa",
-          "phone_code_mfa",
-          "recovery_code_mfa",
-          "oidc_protocol",
-          "saml2_protocol",
-          "oidc_federation",
-          "saml_federation",
-          "azure_ad_integration",
-          "password_hash_import",
-          "inbound_scim_provisioning",
-          "scim_groups",
-          "jit_provisioning",
-          "lazy_migration",
-          "user_blocking",
-          "rbac",
-          "organizations_multitenancy",
-          "password_strength_policy",
-          "progressive_profiling",
-          "api_authorization",
-          "hipaa_baa",
-          "audit_log_retention",
-          "per_org_branding",
-          "white_label",
-          "custom_domain",
-          "terraform_provider",
-          "billing_integration"
-        ]
+        "deployment": "saas",
+        "usage": {
+          "metric": "mau",
+          "included": 50000,
+          "rates": [
+            {
+              "upTo": 100000,
+              "amount": 0.02
+            },
+            {
+              "upTo": 1000000,
+              "amount": 0.018
+            },
+            {
+              "upTo": 10000000,
+              "amount": 0.015
+            },
+            {
+              "amount": 0.012
+            }
+          ]
+        }
       },
       {
         "name": "Enterprise",
-        "price": "Custom",
-        "featuresIncluded": [
-          "passkey_authentication",
-          "totp_mfa",
-          "u2f_mfa",
-          "webauthn_mfa",
-          "phone_code_mfa",
-          "recovery_code_mfa",
-          "oidc_protocol",
-          "saml2_protocol",
-          "oidc_federation",
-          "saml_federation",
-          "azure_ad_integration",
-          "password_hash_import",
-          "inbound_scim_provisioning",
-          "scim_groups",
-          "jit_provisioning",
-          "lazy_migration",
-          "user_blocking",
-          "rbac",
-          "organizations_multitenancy",
-          "password_strength_policy",
-          "progressive_profiling",
-          "api_authorization",
-          "hipaa_baa",
-          "audit_log_retention",
-          "per_org_branding",
-          "white_label",
-          "custom_domain",
-          "terraform_provider",
-          "billing_integration"
-        ]
+        "price": "Custom (annual commitment, 99.99% SLA, HIPAA BAA, SIEM log sinks, premium support)",
+        "deployment": "saas"
       }
-    ]
+    ],
+    "pricingLastVerified": "2026-11-21"
   },
   "sla": {
     "uptimePercent": 99.99,
@@ -231,13 +190,15 @@
     {
       "identifier": "username_and_password_authentication",
       "status": "supported",
-      "links": ["https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options"]
+      "links": ["https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
       "description": "20+ OAuth providers. Free plan limited to 3 social connections; Pro and above allow unlimited connections.",
-      "links": ["https://clerk.com/docs/authentication/social-connections/overview"]
+      "links": ["https://clerk.com/docs/authentication/social-connections/overview"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "passkey_authentication",
@@ -249,23 +210,27 @@
     {
       "identifier": "email_passwordless_authentication",
       "status": "supported",
-      "links": ["https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options"]
+      "links": ["https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "supported",
-      "links": ["https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options"]
+      "links": ["https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "magic_link_authentication",
       "status": "supported",
-      "links": ["https://clerk.com/docs/custom-flows/email-links"]
+      "links": ["https://clerk.com/docs/custom-flows/email-links"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "anonymous_authentication",
       "status": "not_supported",
       "description": "Anonymous/guest authentication is not supported. It is listed on Clerk's product roadmap.",
-      "links": ["https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options"]
+      "links": ["https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options"],
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
@@ -282,7 +247,8 @@
       "description": "Not supported. Clerk favors TOTP and WebAuthn/Passkeys.",
       "links": [
         "https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options#multi-factor-authentication"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
@@ -304,7 +270,8 @@
     },
     {
       "identifier": "email_code_mfa",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "phone_code_mfa",
@@ -329,14 +296,16 @@
       "status": "not_supported",
       "links": [
         "https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options#multi-factor-authentication"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "adaptive_mfa",
       "status": "not_supported",
       "links": [
         "https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options#multi-factor-authentication"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "cisco_duo_mfa",
@@ -344,13 +313,15 @@
       "description": "No native Cisco Duo integration. Duo can be used as a generic TOTP authenticator app but there is no dedicated Duo MFA provider.",
       "links": [
         "https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options#multi-factor-authentication"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
       "status": "supported",
       "description": "Supported via Clerk's Reverification feature, which requires users to re-verify their identity before performing sensitive actions.",
-      "links": ["https://clerk.com/docs/guides/reverification"]
+      "links": ["https://clerk.com/docs/guides/reverification"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "oidc_protocol",
@@ -364,50 +335,90 @@
       "status": "supported",
       "description": "SAML SSO as identity provider and service provider. Available on Pro plan and above.",
       "links": ["https://clerk.com/docs/authentication/enterprise-connections/saml/overview"],
-      "plans": ["Pro", "Business", "Enterprise"]
+      "plans": ["Pro", "Business", "Enterprise"],
+      "addOn": {
+        "name": "Enterprise SSO connections",
+        "price": "$75/month per extra connection (1 included, $60 from the 16th, $48 from the 101st)",
+        "amount": 75,
+        "period": "month",
+        "unit": "connection",
+        "included": 1,
+        "plans": ["Pro", "Business"]
+      }
     },
     {
       "identifier": "ws_federation_protocol",
       "status": "not_supported",
-      "links": ["https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options"]
+      "links": ["https://clerk.com/docs/authentication/configuration/sign-up-sign-in-options"],
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
       "status": "supported",
       "description": "M2M tokens are generally available (since October 2025). Supports opaque tokens and JWTs for authenticating requests between backend services.",
-      "links": ["https://clerk.com/docs/guides/development/machine-auth/overview"]
+      "links": ["https://clerk.com/docs/guides/development/machine-auth/overview"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "oidc_federation",
       "status": "supported",
       "description": "OIDC enterprise SSO connections per organization. Available on Pro plan and above.",
       "links": ["https://clerk.com/docs/guides/configure/auth-strategies/enterprise-connections/overview"],
-      "plans": ["Pro", "Business", "Enterprise"]
+      "plans": ["Pro", "Business", "Enterprise"],
+      "addOn": {
+        "name": "Enterprise SSO connections",
+        "price": "$75/month per extra connection (1 included, $60 from the 16th, $48 from the 101st)",
+        "amount": 75,
+        "period": "month",
+        "unit": "connection",
+        "included": 1,
+        "plans": ["Pro", "Business"]
+      }
     },
     {
       "identifier": "saml_federation",
       "status": "supported",
       "description": "SAML enterprise SSO connections per organization. Available on Pro plan and above.",
       "links": ["https://clerk.com/docs/authentication/enterprise-connections/saml/overview"],
-      "plans": ["Pro", "Business", "Enterprise"]
+      "plans": ["Pro", "Business", "Enterprise"],
+      "addOn": {
+        "name": "Enterprise SSO connections",
+        "price": "$75/month per extra connection (1 included, $60 from the 16th, $48 from the 101st)",
+        "amount": 75,
+        "period": "month",
+        "unit": "connection",
+        "included": 1,
+        "plans": ["Pro", "Business"]
+      }
     },
     {
       "identifier": "active_directory_ldap",
       "status": "not_supported",
       "description": "No native LDAP/Active Directory protocol support. Microsoft Entra ID is supported via SAML/OIDC enterprise connections.",
-      "links": ["https://clerk.com/docs/authentication/enterprise-connections/overview"]
+      "links": ["https://clerk.com/docs/authentication/enterprise-connections/overview"],
+      "plans": []
     },
     {
       "identifier": "azure_ad_integration",
       "status": "supported",
       "description": "Microsoft Entra ID SSO via SAML/OIDC enterprise connections. Available on Pro plan and above.",
       "links": ["https://clerk.com/docs/authentication/enterprise-connections/saml/azure"],
-      "plans": ["Pro", "Business", "Enterprise"]
+      "plans": ["Pro", "Business", "Enterprise"],
+      "addOn": {
+        "name": "Enterprise SSO connections",
+        "price": "$75/month per extra connection (1 included, $60 from the 16th, $48 from the 101st)",
+        "amount": 75,
+        "period": "month",
+        "unit": "connection",
+        "included": 1,
+        "plans": ["Pro", "Business"]
+      }
     },
     {
       "identifier": "bulk_user_import",
       "status": "supported",
-      "links": ["https://clerk.com/docs/references/backend/overview"]
+      "links": ["https://clerk.com/docs/references/backend/overview"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "password_hash_import",
@@ -419,50 +430,74 @@
     {
       "identifier": "bulk_user_export",
       "status": "supported",
-      "links": ["https://clerk.com/docs/deployments/exporting-users"]
+      "links": ["https://clerk.com/docs/deployments/exporting-users"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "bulk_user_update_delete",
       "status": "not_supported",
       "description": "Bulk update and delete are not available. Only individual user operations are supported via the Backend API. Bulk operations are on the roadmap.",
-      "links": ["https://clerk.com/docs/references/backend/user/delete-user"]
+      "links": ["https://clerk.com/docs/references/backend/user/delete-user"],
+      "plans": []
     },
     {
       "identifier": "upsert_on_import",
       "status": "not_supported",
       "description": "No native upsert semantics on import. User creation via createUser() does not support upsert; separate create and update calls are required.",
-      "links": ["https://clerk.com/docs/references/backend/user/create-user"]
+      "links": ["https://clerk.com/docs/references/backend/user/create-user"],
+      "plans": []
     },
     {
       "identifier": "legacy_username_import",
       "status": "not_supported",
       "description": "Clerk enforces username restrictions: Latin-based characters only (4-64 chars), no special characters (^$!.#+~). Legacy usernames with special characters or non-Latin scripts cannot be imported.",
-      "links": ["https://clerk.com/docs/authentication/configuration/restrictions"]
+      "links": ["https://clerk.com/docs/authentication/configuration/restrictions"],
+      "plans": []
     },
     {
       "identifier": "mfa_enrollment_import",
       "status": "not_supported",
       "description": "Importing TOTP/MFA enrollments with user data is not supported. Users must enroll MFA after being imported.",
-      "links": ["https://clerk.com/docs/references/backend/user/create-user"]
+      "links": ["https://clerk.com/docs/references/backend/user/create-user"],
+      "plans": []
     },
     {
       "identifier": "inbound_scim_provisioning",
       "status": "partial",
       "description": "SCIM available as part of the B2B Auth add-on. Available on Pro plan and above.",
-      "plans": ["Pro", "Business", "Enterprise"]
+      "plans": ["Pro", "Business", "Enterprise"],
+      "addOn": {
+        "name": "Directory Sync connections",
+        "price": "$75/month per extra connection (1 included); billing starts 2027-01-01",
+        "amount": 75,
+        "period": "month",
+        "unit": "connection",
+        "included": 1,
+        "plans": ["Pro", "Business"]
+      }
     },
     {
       "identifier": "outbound_scim_provisioning",
       "status": "not_supported",
       "description": "Clerk only supports inbound SCIM provisioning (IdP pushes to Clerk). Outbound provisioning (Clerk pushing changes to external apps) is not supported.",
-      "links": ["https://clerk.com/docs/authentication/enterprise-connections/directory-sync"]
+      "links": ["https://clerk.com/docs/authentication/enterprise-connections/directory-sync"],
+      "plans": []
     },
     {
       "identifier": "scim_groups",
       "status": "partial",
       "description": "Group/role sync via SCIM B2B Auth add-on. IdP groups are mapped to Clerk roles. Available on Pro plan and above.",
       "links": ["https://clerk.com/docs/authentication/enterprise-connections/directory-sync"],
-      "plans": ["Pro", "Business", "Enterprise"]
+      "plans": ["Pro", "Business", "Enterprise"],
+      "addOn": {
+        "name": "Directory Sync connections",
+        "price": "$75/month per extra connection (1 included); billing starts 2027-01-01",
+        "amount": 75,
+        "period": "month",
+        "unit": "connection",
+        "included": 1,
+        "plans": ["Pro", "Business"]
+      }
     },
     {
       "identifier": "jit_provisioning",
@@ -482,12 +517,14 @@
       "identifier": "self_service_profile_management",
       "status": "supported",
       "description": "Built-in <UserProfile /> component for self-service account management.",
-      "links": ["https://clerk.com/docs/components/user/user-profile"]
+      "links": ["https://clerk.com/docs/components/user/user-profile"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "account_linking",
       "status": "supported",
-      "links": ["https://clerk.com/docs/authentication/social-connections/account-linking"]
+      "links": ["https://clerk.com/docs/authentication/social-connections/account-linking"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "user_blocking",
@@ -500,38 +537,54 @@
       "identifier": "user_metadata",
       "status": "supported",
       "description": "Public and private metadata stored per user.",
-      "links": ["https://clerk.com/docs/users/metadata"]
+      "links": ["https://clerk.com/docs/users/metadata"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "app_metadata",
       "status": "supported",
       "description": "Unsafe (server-only writable) metadata for app-managed data.",
-      "links": ["https://clerk.com/docs/users/metadata"]
+      "links": ["https://clerk.com/docs/users/metadata"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "metadata_size_limits",
       "status": "supported",
       "description": "Metadata is limited to 8KB per user. When stored as custom session token claims, the recommended limit is 1.2KB to avoid cookie size issues.",
-      "links": ["https://clerk.com/docs/users/metadata"]
+      "links": ["https://clerk.com/docs/users/metadata"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "user_search",
       "status": "supported",
-      "links": ["https://clerk.com/docs/references/backend/user/get-user-list"]
+      "links": ["https://clerk.com/docs/references/backend/user/get-user-list"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "rbac",
       "status": "supported",
       "description": "Role-based permissions within organizations. Available on Pro plan and above.",
       "links": ["https://clerk.com/docs/organizations/roles-permissions"],
-      "plans": ["Pro", "Business", "Enterprise"]
+      "plans": ["Pro", "Business", "Enterprise"],
+      "addOn": {
+        "name": "B2B Authentication Enhanced",
+        "price": "$100/month ($85/month annually) for custom roles and rolesets",
+        "amount": 100,
+        "period": "month"
+      }
     },
     {
       "identifier": "organizations_multitenancy",
       "status": "supported",
       "description": "B2B organization model with member management, roles, and invitations. Available on Pro plan and above.",
       "links": ["https://clerk.com/docs/organizations/overview"],
-      "plans": ["Pro", "Business", "Enterprise"]
+      "plans": ["Pro", "Business", "Enterprise"],
+      "addOn": {
+        "name": "B2B Authentication Enhanced",
+        "price": "$100/month ($85/month annually) for unlimited members, verified domains and custom roles; 100 organizations included then $1 each",
+        "amount": 100,
+        "period": "month"
+      }
     },
     {
       "identifier": "password_strength_policy",
@@ -544,7 +597,8 @@
       "identifier": "username_restrictions",
       "status": "supported",
       "description": "Usernames must be 4-64 characters, Latin-based only. Special characters (^$!.#+~) and non-Latin scripts are not allowed to prevent Unicode spoofing attacks.",
-      "links": ["https://clerk.com/docs/authentication/configuration/restrictions"]
+      "links": ["https://clerk.com/docs/authentication/configuration/restrictions"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "progressive_profiling",
@@ -555,11 +609,13 @@
     },
     {
       "identifier": "abac",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "fine_grained_authorization",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "api_authorization",
@@ -571,13 +627,15 @@
     {
       "identifier": "soc2_type2",
       "status": "supported",
-      "links": ["https://clerk.com/security"]
+      "links": ["https://clerk.com/security"],
+      "plans": ["Business", "Enterprise"]
     },
     {
       "identifier": "iso_27001",
       "status": "not_supported",
       "description": "Clerk has implemented an ISMS aligned with ISO/IEC 27001:2022 and its infrastructure providers (AWS, Google Cloud) are ISO 27001 certified, but Clerk itself does not hold a third-party ISO 27001 certification.",
-      "links": ["https://clerk.com/security"]
+      "links": ["https://clerk.com/security"],
+      "plans": []
     },
     {
       "identifier": "hipaa_baa",
@@ -590,38 +648,46 @@
       "identifier": "pci_dss",
       "status": "not_supported",
       "description": "Clerk does not hold a PCI DSS certification or attestation of compliance.",
-      "links": ["https://clerk.com/security"]
+      "links": ["https://clerk.com/security"],
+      "plans": []
     },
     {
       "identifier": "csa_star",
       "status": "not_supported",
       "description": "Clerk does not hold a CSA STAR certification.",
-      "links": ["https://clerk.com/security"]
+      "links": ["https://clerk.com/security"],
+      "plans": []
     },
     {
       "identifier": "fedramp",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
-      "status": "supported"
+      "status": "supported",
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "gdpr_right_to_erasure",
-      "status": "supported"
+      "status": "supported",
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "consent_management",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "region_deployment",
       "status": "not_supported",
-      "description": "Clerk is a SaaS-only product with no data residency selection."
+      "description": "Clerk is a SaaS-only product with no data residency selection.",
+      "plans": []
     },
     {
       "identifier": "private_cloud_deployment",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "audit_log_retention",
@@ -632,68 +698,87 @@
     {
       "identifier": "audit_log_streaming",
       "status": "not_supported",
-      "description": "Audit log streaming to external SIEM or data pipelines is not supported. Audit logs are viewable in the Clerk Dashboard only."
+      "description": "Audit log streaming to external SIEM or data pipelines is not supported. Audit logs are viewable in the Clerk Dashboard only.",
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "security_center",
       "status": "not_supported",
       "description": "No dedicated threat monitoring or security center dashboard. Security features are distributed across the Clerk Dashboard.",
-      "links": ["https://clerk.com/docs/security/overview"]
+      "links": ["https://clerk.com/docs/security/overview"],
+      "plans": []
     },
     {
       "identifier": "encryption_at_rest",
       "status": "supported",
-      "links": ["https://clerk.com/security"]
+      "links": ["https://clerk.com/security"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "encryption_in_transit",
       "status": "supported",
-      "links": ["https://clerk.com/security"]
+      "links": ["https://clerk.com/security"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "customer_managed_keys",
       "status": "not_supported",
       "description": "Clerk does not support customer-managed encryption keys (BYOK). Encryption keys are managed by Clerk.",
-      "links": ["https://clerk.com/security"]
+      "links": ["https://clerk.com/security"],
+      "plans": []
     },
     {
       "identifier": "bot_detection",
       "status": "supported",
-      "links": ["https://clerk.com/docs/security/overview"]
+      "links": ["https://clerk.com/docs/security/overview"],
+      "addOn": {
+        "name": "Protect",
+        "price": "10,000 checks free per month, then $0.002 per check",
+        "amount": 0.002,
+        "period": "month",
+        "unit": "event"
+      },
+      "plans": []
     },
     {
       "identifier": "brute_force_protection",
       "status": "supported",
-      "links": ["https://clerk.com/docs/guides/protect/user-lockout"]
+      "links": ["https://clerk.com/docs/guides/protect/user-lockout"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "suspicious_ip_throttling",
       "status": "not_supported",
       "description": "No dedicated suspicious IP throttling feature. Clerk applies general rate limits per IP for the Frontend API.",
-      "links": ["https://clerk.com/docs/security/overview"]
+      "links": ["https://clerk.com/docs/security/overview"],
+      "plans": []
     },
     {
       "identifier": "breached_password_detection",
       "status": "supported",
-      "links": ["https://clerk.com/docs/security/overview"]
+      "links": ["https://clerk.com/docs/security/overview"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "credential_guard",
       "status": "not_supported",
       "description": "No standalone credential guard or dark web monitoring product. Compromised password detection via HaveIBeenPwned is covered under breached_password_detection.",
-      "links": ["https://clerk.com/docs/security/password-protection"]
+      "links": ["https://clerk.com/docs/security/password-protection"],
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
       "status": "not_supported",
       "description": "No IP-based access control lists. Clerk supports email/phone-based allowlists and blocklists for sign-up and sign-in restrictions.",
-      "links": ["https://clerk.com/docs/authentication/configuration/restrictions"]
+      "links": ["https://clerk.com/docs/authentication/configuration/restrictions"],
+      "plans": []
     },
     {
       "identifier": "device_fingerprinting",
       "status": "not_supported",
       "description": "No user-facing device fingerprinting feature. Clerk uses device/network analysis internally for bot detection.",
-      "links": ["https://clerk.com/docs/security/overview"]
+      "links": ["https://clerk.com/docs/security/overview"],
+      "plans": []
     },
     {
       "identifier": "per_org_branding",
@@ -706,19 +791,22 @@
       "identifier": "per_org_mfa_policy",
       "status": "not_supported",
       "description": "MFA can be enforced globally for the entire application but not configured independently per organization.",
-      "links": ["https://clerk.com/docs/authentication/configuration/force-mfa"]
+      "links": ["https://clerk.com/docs/authentication/configuration/force-mfa"],
+      "plans": []
     },
     {
       "identifier": "hosted_login_page",
       "status": "supported",
       "description": "Clerk's Account Portal provides a hosted sign-in/sign-up page.",
-      "links": ["https://clerk.com/docs/account-portal/overview"]
+      "links": ["https://clerk.com/docs/account-portal/overview"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "embedded_login",
       "status": "supported",
       "description": "Best-in-class prebuilt React components: <SignIn />, <SignUp />, <UserButton />, etc.",
-      "links": ["https://clerk.com/docs/components/authentication/sign-in"]
+      "links": ["https://clerk.com/docs/components/authentication/sign-in"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "white_label",
@@ -731,46 +819,54 @@
       "identifier": "localization",
       "status": "supported",
       "description": "Built-in i18n support with localizations for many languages.",
-      "links": ["https://clerk.com/docs/customization/localization"]
+      "links": ["https://clerk.com/docs/customization/localization"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "prebuilt_ui_components",
       "status": "supported",
       "description": "Prebuilt React, Next.js, Remix, and Expo components for all auth flows.",
-      "links": ["https://clerk.com/docs/components/overview"]
+      "links": ["https://clerk.com/docs/components/overview"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "login_analytics",
       "status": "supported",
       "description": "Dashboard analytics for sign-ins, sign-ups, and active users.",
-      "links": ["https://dashboard.clerk.com"]
+      "links": ["https://dashboard.clerk.com"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "sdk_coverage",
       "status": "supported",
       "description": "SDKs for React, Next.js, Remix, Expo, React Native, and backend SDKs for Node.js, Go, Python, Ruby, and more.",
-      "links": ["https://clerk.com/docs/quickstarts/overview"]
+      "links": ["https://clerk.com/docs/quickstarts/overview"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "management_api",
       "status": "supported",
-      "links": ["https://clerk.com/docs/references/backend/overview"]
+      "links": ["https://clerk.com/docs/references/backend/overview"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "authentication_api_rate_limits",
       "status": "supported",
-      "links": ["https://clerk.com/docs/backend-requests/resources/rate-limits"]
+      "links": ["https://clerk.com/docs/backend-requests/resources/rate-limits"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "actions_extensibility",
       "status": "partial",
       "description": "Webhooks and backend SDK override hooks. No server-side action pipeline.",
-      "links": ["https://clerk.com/docs/integrations/webhooks/overview"]
+      "links": ["https://clerk.com/docs/integrations/webhooks/overview"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "typescript_in_actions",
       "status": "supported",
-      "description": "Clerk's backend SDKs are fully TypeScript-native."
+      "description": "Clerk's backend SDKs are fully TypeScript-native.",
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "custom_domain",
@@ -783,7 +879,8 @@
       "identifier": "deploy_cli",
       "status": "partial",
       "description": "Clerk CLI supports config pull/patch for managing instance settings as code. A dedicated 'clerk deploy' command for syncing configuration to production is in development.",
-      "links": ["https://clerk.com/docs/cli"]
+      "links": ["https://clerk.com/docs/cli"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "terraform_provider",
@@ -794,47 +891,56 @@
     },
     {
       "identifier": "custom_database_connections",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "native_webhooks",
       "status": "supported",
-      "links": ["https://clerk.com/docs/integrations/webhooks/overview"]
+      "links": ["https://clerk.com/docs/integrations/webhooks/overview"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "universal_login_customization",
       "status": "supported",
       "description": "Full visual customization via the Clerk Dashboard appearance settings.",
-      "links": ["https://clerk.com/docs/customization/overview"]
+      "links": ["https://clerk.com/docs/customization/overview"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "custom_email_provider",
       "status": "partial",
       "description": "Clerk's built-in email delivery (SendGrid) can be disabled. Custom email delivery is handled by listening to the emails.created webhook and managing dispatch yourself. No native SMTP configuration.",
-      "links": ["https://clerk.com/docs/guides/customizing-clerk/email-sms-templates"]
+      "links": ["https://clerk.com/docs/guides/customizing-clerk/email-sms-templates"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "email_templates",
       "status": "supported",
-      "links": ["https://clerk.com/docs/guides/customizing-clerk/email-sms-templates"]
+      "links": ["https://clerk.com/docs/guides/customizing-clerk/email-sms-templates"],
+      "plans": ["Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "custom_oidc_claims",
       "status": "supported",
       "description": "Custom claims can be added to session tokens and JWT templates via the Clerk Dashboard. Supports shortcodes for dynamic user attribute values.",
-      "links": ["https://clerk.com/docs/backend-requests/resources/session-tokens"]
+      "links": ["https://clerk.com/docs/backend-requests/resources/session-tokens"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "nocode_flow_builder",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "identity_proofing",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "decentralized_identity",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
@@ -847,257 +953,312 @@
       "identifier": "agentic_identity",
       "status": "supported",
       "description": "Clerk supports MCP server authentication, the @clerk/agent-toolkit for Vercel AI SDK and LangChain, and OAuth-secured MCP endpoints for AI agent identity.",
-      "links": ["https://clerk.com/docs/guides/ai/mcp/clerk-mcp-server"]
+      "links": ["https://clerk.com/docs/guides/ai/mcp/clerk-mcp-server"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "pq_hybrid_key_exchange",
       "status": "partial",
       "category": "post_quantum_cryptography",
       "description": "No direct vendor statement on PQC TLS support found. Clerk's public API (api.clerk.com) responds with 'server: cloudflare' and Cloudflare request-tracing headers, and a Clerk engineer's 2024 blog post describes shifting Clerk's critical-path traffic onto Cloudflare Workers/KV/Durable Objects. Cloudflare enabled hybrid PQC key exchange (X25519+ML-KEM) by default for TLS 1.3 in 2023-2024, but this is infrastructure-inherited, not a Clerk-specific commitment - Cloudflare does not appear on Clerk's own published GDPR subprocessor list (which lists only AWS).",
-      "links": ["https://thekevinwang.com/2024/05/11/on-durable-objects", "https://trust.clerk.io/gdpr/sub-processors"]
+      "links": ["https://thekevinwang.com/2024/05/11/on-durable-objects", "https://trust.clerk.io/gdpr/sub-processors"],
+      "plans": ["Free", "Pro", "Business", "Enterprise"]
     },
     {
       "identifier": "pq_signature_algorithms",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
       "description": "No public evidence Clerk supports ML-DSA/Dilithium, SLH-DSA/SPHINCS+, or FN-DSA/Falcon for JWT/OIDC token signing. A Clerk-published article mentions 'quantum-resistant cryptography preparation' only as generic industry advice, not as a Clerk product capability or commitment.",
-      "links": ["https://clerk.com/articles/authentication-security-in-web-applications"]
+      "links": ["https://clerk.com/articles/authentication-security-in-web-applications"],
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
       "status": "unknown",
       "category": "post_quantum_cryptography",
       "description": "No public roadmap, whitepaper, or trust-center statement found describing a Clerk-specific plan or timeline for migrating to FIPS 203/204/205 algorithms.",
-      "links": ["https://trust.clerk.io/"]
+      "links": ["https://trust.clerk.io/"],
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
+      "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets.",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
+      "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints.",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
+      "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS).",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
     "features": [
       {
         "identifier": "implicit_grant",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "authorization_code_grant",
         "status": "supported",
-        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"]
+        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"],
+        "plans": ["Free", "Pro", "Business", "Enterprise"]
       },
       {
         "identifier": "pkce_extension",
         "status": "supported",
-        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"]
+        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"],
+        "plans": ["Free", "Pro", "Business", "Enterprise"]
       },
       {
         "identifier": "jar_extension",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "par_extension",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "rar_extension",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "client_credentials_grant",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "password_grant",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "refresh_token_grant",
         "status": "supported",
-        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"]
+        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"],
+        "plans": ["Free", "Pro", "Business", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
         "status": "supported",
-        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"]
+        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"],
+        "plans": ["Free", "Pro", "Business", "Enterprise"]
       },
       {
         "identifier": "token_endpoint",
         "status": "supported",
-        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"]
+        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"],
+        "plans": ["Free", "Pro", "Business", "Enterprise"]
       },
       {
         "identifier": "userinfo_endpoint",
         "status": "supported",
-        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"]
+        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"],
+        "plans": ["Free", "Pro", "Business", "Enterprise"]
       },
       {
         "identifier": "token_revocation_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "token_introspection_endpoint",
         "status": "supported",
-        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"]
+        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"],
+        "plans": ["Free", "Pro", "Business", "Enterprise"]
       },
       {
         "identifier": "device_authorization_endpoint",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "supported",
-        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"]
+        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"],
+        "plans": ["Free", "Pro", "Business", "Enterprise"]
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_prompt",
         "status": "supported",
-        "links": ["https://clerk.com/changelog/2025-02-13-clerk-oidc"]
+        "links": ["https://clerk.com/changelog/2025-02-13-clerk-oidc"],
+        "plans": ["Free", "Pro", "Business", "Enterprise"]
       },
       {
         "identifier": "login_prompt",
         "status": "supported",
-        "links": ["https://clerk.com/changelog/2025-02-13-clerk-oidc"]
+        "links": ["https://clerk.com/changelog/2025-02-13-clerk-oidc"],
+        "plans": ["Free", "Pro", "Business", "Enterprise"]
       },
       {
         "identifier": "consent_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "select_account_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "create_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"]
+        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"],
+        "plans": ["Free", "Pro", "Business", "Enterprise"]
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"]
+        "links": ["https://clerk.com/docs/advanced-usage/clerk-idp"],
+        "plans": ["Free", "Pro", "Business", "Enterprise"]
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "rp_initiated_logout",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dpop",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       }
     ]
   }

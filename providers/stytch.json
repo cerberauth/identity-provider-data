@@ -47,19 +47,35 @@
         "name": "Free",
         "price": "Free (10K MAU)",
         "amount": 0,
-        "mauIncluded": 10000
+        "deployment": "saas",
+        "usage": {
+          "metric": "mau",
+          "included": 10000,
+          "max": 10000
+        }
       },
       {
         "name": "Growth",
-        "price": "$0.04/MAU",
-        "featuresIncluded": ["hipaa_baa", "custom_email_provider"]
+        "price": "$0.04/MAU beyond the 10K free MAU",
+        "amount": 0,
+        "deployment": "saas",
+        "usage": {
+          "metric": "mau",
+          "included": 10000,
+          "rates": [
+            {
+              "amount": 0.04
+            }
+          ]
+        }
       },
       {
         "name": "Enterprise",
         "price": "Custom",
-        "featuresIncluded": ["hipaa_baa", "audit_log_streaming", "custom_email_provider"]
+        "deployment": "saas"
       }
-    ]
+    ],
+    "pricingLastVerified": "2026-11-21"
   },
   "migrationTools": [
     {
@@ -134,14 +150,16 @@
       "status": "supported",
       "category": "authentication_methods",
       "description": "Email-and-password authentication via Stytch Passwords API. Uses zxcvbn (strength score 0–4) for password quality checking with configurable minimum strength. Supports both synchronous strength validation and async HaveIBeenPwned breach checking at signup. Password reset via email magic link or OTP. bcrypt hashing internally. Minimum 8 characters required by default.",
-      "links": ["https://stytch.com/docs/consumer/guides/passwords/overview", "https://stytch.com/docs/api/passwords"]
+      "links": ["https://stytch.com/docs/consumer/guides/passwords/overview", "https://stytch.com/docs/api/passwords"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "OAuth 2.0 social login with 15+ built-in providers: Google, Apple, Facebook, GitHub, Microsoft, Discord, Slack, GitLab, LinkedIn, Spotify, TikTok, Twitter/X, Amazon, Coinbase, and Salesforce. Custom OAuth providers can be added via the Generic OAuth flow. Social accounts are automatically linked to an existing user profile if the email matches. All social providers are included on all plans.",
-      "links": ["https://stytch.com/docs/consumer/guides/oauth/overview", "https://stytch.com/docs/api/oauth-overview"]
+      "links": ["https://stytch.com/docs/consumer/guides/oauth/overview", "https://stytch.com/docs/api/oauth-overview"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "passkey_authentication",
@@ -151,7 +169,8 @@
       "links": [
         "https://stytch.com/docs/consumer/guides/webauthn/overview",
         "https://stytch.com/docs/api/webauthn-register"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "email_passwordless_authentication",
@@ -161,14 +180,19 @@
       "links": [
         "https://stytch.com/docs/consumer/guides/email-otp/overview",
         "https://stytch.com/docs/api/otps-email-send"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "6-digit OTP codes delivered via SMS. WhatsApp OTP also supported as an alternative delivery channel. Uses Stytch's built-in SMS sending (Twilio-backed) by default. Custom SMS provider configuration available. International phone numbers supported. Rate limiting applied per phone number to prevent abuse. Available on all plans.",
-      "links": ["https://stytch.com/docs/consumer/guides/sms-otp/overview", "https://stytch.com/docs/api/otps-sms-send"]
+      "links": [
+        "https://stytch.com/docs/consumer/guides/sms-otp/overview",
+        "https://stytch.com/docs/api/otps-sms-send"
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "magic_link_authentication",
@@ -178,28 +202,32 @@
       "links": [
         "https://stytch.com/docs/consumer/guides/magic-links/overview",
         "https://stytch.com/docs/api/magic-links-email-send"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "anonymous_authentication",
       "status": "not_supported",
       "category": "authentication_methods",
       "description": "Stytch does not support anonymous or guest authentication as a first-class flow. All users must authenticate with a real credential. Developers can implement a guest-like experience by issuing short-lived sessions gated on full authentication, but there is no API for creating an anonymous user identity.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
       "status": "supported",
       "category": "mfa",
       "description": "TOTP (RFC 6238) MFA using authenticator apps (Google Authenticator, Authy, 1Password, Microsoft Authenticator). QR code + manual secret provided at enrollment. 30-second time window with 1-window clock drift tolerance. Upon enrollment, 10 single-use backup codes are automatically generated. TOTP seed is 160-bit (SHA-1 HMAC per standard). Available on all plans.",
-      "links": ["https://stytch.com/docs/consumer/guides/mfa/totp", "https://stytch.com/docs/api/totp-create"]
+      "links": ["https://stytch.com/docs/consumer/guides/mfa/totp", "https://stytch.com/docs/api/totp-create"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "hotp_mfa",
       "status": "not_supported",
       "category": "mfa",
       "description": "HOTP (counter-based OTP per RFC 4226) is not natively supported as an MFA factor. Stytch implements only TOTP (time-based). Custom HOTP logic can be implemented server-side outside of Stytch but cannot be surfaced as a first-class Stytch MFA factor.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
@@ -209,7 +237,8 @@
       "links": [
         "https://stytch.com/docs/api/webauthn-register",
         "https://stytch.com/docs/consumer/guides/webauthn/overview"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "webauthn_mfa",
@@ -219,35 +248,40 @@
       "links": [
         "https://stytch.com/docs/consumer/guides/webauthn/overview",
         "https://stytch.com/docs/api/webauthn-register"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "email_code_mfa",
       "status": "supported",
       "category": "mfa",
       "description": "Email OTP as a second factor. 6-digit code sent to the user's verified email address. Configurable expiration (default 10 minutes). Cannot simultaneously use email OTP as primary factor and as MFA factor in the same session flow without careful session management. Available on all plans.",
-      "links": ["https://stytch.com/docs/consumer/guides/mfa/overview", "https://stytch.com/docs/api/otps-email-send"]
+      "links": ["https://stytch.com/docs/consumer/guides/mfa/overview", "https://stytch.com/docs/api/otps-email-send"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "phone_code_mfa",
       "status": "supported",
       "category": "mfa",
       "description": "SMS OTP as a second factor. 6-digit code sent to the user's verified phone number. WhatsApp delivery also available. Configurable expiration. Rate limiting applied per phone number. Using the same phone number for both primary passwordless auth and MFA is technically possible but requires session flow design to avoid confusion. Available on all plans.",
-      "links": ["https://stytch.com/docs/consumer/guides/mfa/sms", "https://stytch.com/docs/api/otps-sms-send"]
+      "links": ["https://stytch.com/docs/consumer/guides/mfa/sms", "https://stytch.com/docs/api/otps-sms-send"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "recovery_code_mfa",
       "status": "supported",
       "category": "mfa",
       "description": "10 single-use backup codes automatically generated when a user enrolls in TOTP MFA. Each code is a 12-character alphanumeric string. Codes are shown once and must be saved by the user. Individual codes can be used to recover access. New codes can be regenerated (invalidating all previous ones) via the /backup_codes/rotate endpoint.",
-      "links": ["https://stytch.com/docs/api/backup-codes-create", "https://stytch.com/docs/api/backup-codes-recover"]
+      "links": ["https://stytch.com/docs/api/backup-codes-create", "https://stytch.com/docs/api/backup-codes-recover"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "push_notification_mfa",
       "status": "partial",
       "category": "mfa",
       "description": "Stytch has no native push notification MFA app or SDK. Push-based MFA can be achieved by configuring Cisco Duo or another push MFA provider as an upstream SAML or OIDC identity provider within Stytch's B2B SSO flow, allowing Duo to handle the push challenge before issuing a SAML assertion to Stytch. This is an integration pattern, not a built-in Stytch MFA factor.",
-      "links": ["https://stytch.com/docs/b2b/guides/saml/overview"]
+      "links": ["https://stytch.com/docs/b2b/guides/saml/overview"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "adaptive_mfa",
@@ -257,14 +291,16 @@
       "links": [
         "https://stytch.com/docs/device-intelligence/overview",
         "https://stytch.com/docs/consumer/guides/mfa/step-up-auth"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "cisco_duo_mfa",
       "status": "partial",
       "category": "mfa",
       "description": "Cisco Duo can be integrated with Stytch via SAML or OIDC federation in the B2B product, where Duo acts as the upstream identity provider and handles MFA challenges (including Duo Push) before returning a signed SAML assertion to Stytch. This is a federation integration pattern, not a native Duo API integration. Stytch does not call the Duo API directly; the user is redirected to Duo's hosted authentication page.",
-      "links": ["https://stytch.com/docs/b2b/guides/saml/overview"]
+      "links": ["https://stytch.com/docs/b2b/guides/saml/overview"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "step_up_authentication",
@@ -274,14 +310,16 @@
       "links": [
         "https://stytch.com/docs/consumer/guides/mfa/step-up-auth",
         "https://stytch.com/docs/api/sessions-authenticate"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "oidc_protocol",
       "status": "supported",
       "category": "integration_protocols",
       "description": "Stytch acts as an OAuth 2.0 authorization server and OpenID Connect identity provider. Supports Authorization Code flow (with PKCE), Client Credentials (M2M), and token refresh. Issues signed JWTs for access tokens and ID tokens. OIDC Discovery document available at the tenant's /.well-known/openid-configuration endpoint. Supports custom claims enrichment. Available on all plans.",
-      "links": ["https://stytch.com/docs/consumer/guides/oidc/overview", "https://stytch.com/docs/api/oauth-overview"]
+      "links": ["https://stytch.com/docs/consumer/guides/oidc/overview", "https://stytch.com/docs/api/oauth-overview"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "saml2_protocol",
@@ -291,21 +329,32 @@
       "links": [
         "https://stytch.com/docs/b2b/guides/saml/overview",
         "https://stytch.com/docs/api/saml-create-connection"
-      ]
+      ],
+      "plans": ["Enterprise"],
+      "addOn": {
+        "name": "Enterprise SSO",
+        "price": "$50/connection/month",
+        "amount": 50,
+        "period": "month",
+        "unit": "connection",
+        "plans": ["Free", "Growth"]
+      }
     },
     {
       "identifier": "ws_federation_protocol",
       "status": "not_supported",
       "category": "integration_protocols",
       "description": "WS-Federation protocol is not supported by Stytch. Stytch's federation and SSO capabilities are built exclusively on SAML 2.0 and OIDC. Organizations requiring WS-Federation integration (e.g., legacy Microsoft environments using ADFS) must use SAML 2.0 as the integration protocol instead.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
       "status": "supported",
       "category": "integration_protocols",
       "description": "M2M tokens via OAuth 2.0 Client Credentials grant. M2M clients are issued a client ID and secret and can request access tokens with specific scopes. Stytch's M2M API supports custom scopes, configurable token TTL, and multiple clients per project. Tokens are signed JWTs verifiable locally or via the /m2m/authenticate endpoint. Available on all plans.",
-      "links": ["https://stytch.com/docs/api/m2m-client", "https://stytch.com/docs/api/m2m-access-token"]
+      "links": ["https://stytch.com/docs/api/m2m-client", "https://stytch.com/docs/api/m2m-access-token"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "oidc_federation",
@@ -315,7 +364,8 @@
       "links": [
         "https://stytch.com/docs/b2b/guides/oidc/overview",
         "https://stytch.com/docs/api/oidc-create-connection"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "saml_federation",
@@ -325,21 +375,32 @@
       "links": [
         "https://stytch.com/docs/b2b/guides/saml/overview",
         "https://stytch.com/docs/api/saml-create-connection"
-      ]
+      ],
+      "plans": ["Enterprise"],
+      "addOn": {
+        "name": "Enterprise SSO",
+        "price": "$50/connection/month",
+        "amount": 50,
+        "period": "month",
+        "unit": "connection",
+        "plans": ["Free", "Growth"]
+      }
     },
     {
       "identifier": "active_directory_ldap",
       "status": "not_supported",
       "category": "identity_federation",
       "description": "Stytch does not support direct on-premises Active Directory or LDAP directory integration. There is no connector agent for AD/LDAP synchronization. Organizations using on-premises AD can integrate via SAML 2.0 (using ADFS, Azure AD Connect, or similar as the SAML IdP) or migrate users via bulk import.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "azure_ad_integration",
       "status": "supported",
       "category": "identity_federation",
       "description": "Microsoft Entra ID (Azure AD) is supported as an upstream SSO provider via both OIDC and SAML 2.0 connections. In the B2B product, each org can link its Entra ID tenant as the SSO connection. Attribute mapping from Entra ID claims to Stytch profile fields is configurable. SCIM provisioning from Entra ID is also supported for automatic user lifecycle management.",
-      "links": ["https://stytch.com/docs/b2b/guides/saml/overview", "https://stytch.com/docs/b2b/guides/scim/overview"]
+      "links": ["https://stytch.com/docs/b2b/guides/saml/overview", "https://stytch.com/docs/b2b/guides/scim/overview"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "bulk_user_import",
@@ -349,7 +410,8 @@
       "links": [
         "https://stytch.com/docs/api/migrate-user",
         "https://stytch.com/docs/consumer/guides/passwords/migration"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "password_hash_import",
@@ -359,42 +421,48 @@
       "links": [
         "https://stytch.com/docs/api/migrate-user",
         "https://stytch.com/docs/consumer/guides/passwords/migration"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "bulk_user_export",
       "status": "supported",
       "category": "user_management",
       "description": "User data can be exported via the Search Users API (/users/search) which supports paginated retrieval of all users with filtering by email, phone, name, creation date, and metadata fields. No dedicated single-click export UI or file generation — developers must paginate through results using the cursor returned in the response. JSON format only.",
-      "links": ["https://stytch.com/docs/api/user-search"]
+      "links": ["https://stytch.com/docs/api/user-search"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "bulk_user_update_delete",
       "status": "partial",
       "category": "user_management",
       "description": "Individual user update and delete operations are fully supported via the Management API (PUT /users/{user_id} and DELETE /users/{user_id}). There is no native batch or bulk update/delete endpoint — each operation must be called per user. High-volume operations must be scripted against individual API calls subject to rate limiting. User metadata can be partially updated (PATCH semantics for metadata fields).",
-      "links": ["https://stytch.com/docs/api/update-user", "https://stytch.com/docs/api/delete-user"]
+      "links": ["https://stytch.com/docs/api/update-user", "https://stytch.com/docs/api/delete-user"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "upsert_on_import",
       "status": "supported",
       "category": "user_management",
       "description": "The /passwords/migrate and user creation endpoints support upsert semantics: if a user with the given email already exists in Stytch, the request links the new authentication factor (or updates the password hash) to the existing user rather than creating a duplicate. Metadata provided during upsert is merged with existing metadata by default.",
-      "links": ["https://stytch.com/docs/api/migrate-user"]
+      "links": ["https://stytch.com/docs/api/migrate-user"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "legacy_username_import",
       "status": "partial",
       "category": "user_management",
       "description": "Stytch's primary user identifier is email address; username-as-identifier is not a first-class concept. Username authentication exists via the Passwords API where an email is always required. Users with legacy usernames that are not valid email addresses must be mapped to an email-format identifier or use an alternative authentication method. Special characters are generally not an issue since the identifier is typically an email.",
-      "links": ["https://stytch.com/docs/api/migrate-user"]
+      "links": ["https://stytch.com/docs/api/migrate-user"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "mfa_enrollment_import",
       "status": "partial",
       "category": "user_management",
       "description": "TOTP seeds can be imported alongside user accounts during migration using the /totps/migrate endpoint, which allows supplying the existing TOTP secret so users do not need to re-enroll their authenticator app. Phone numbers (for SMS MFA) are imported as part of user profile import. Importing pre-existing WebAuthn authenticator registrations is not supported — users must re-enroll WebAuthn after migration.",
-      "links": ["https://stytch.com/docs/api/totp-migrate"]
+      "links": ["https://stytch.com/docs/api/totp-migrate"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "inbound_scim_provisioning",
@@ -404,21 +472,32 @@
       "links": [
         "https://stytch.com/docs/b2b/guides/scim/overview",
         "https://stytch.com/docs/api/scim-create-connection"
-      ]
+      ],
+      "plans": ["Enterprise"],
+      "addOn": {
+        "name": "SCIM",
+        "price": "$50/connection/month",
+        "amount": 50,
+        "period": "month",
+        "unit": "connection",
+        "plans": ["Free", "Growth"]
+      }
     },
     {
       "identifier": "outbound_scim_provisioning",
       "status": "not_supported",
       "category": "user_management",
       "description": "Stytch does not support outbound SCIM 2.0 provisioning from Stytch to third-party applications. Stytch is a SCIM consumer (inbound), not a SCIM provider (outbound). Propagating user changes from Stytch to downstream systems requires custom webhook-based automation.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "scim_groups",
       "status": "supported",
       "category": "user_management",
       "description": "SCIM Groups are supported in the B2B product. Groups synced from the enterprise IdP via SCIM are mapped to Stytch Organization member roles using configurable group-to-role mapping rules. Adding a user to or removing them from a group in the upstream IdP automatically updates their role assignment in the Stytch Organization.",
-      "links": ["https://stytch.com/docs/b2b/guides/scim/overview"]
+      "links": ["https://stytch.com/docs/b2b/guides/scim/overview"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "jit_provisioning",
@@ -428,7 +507,8 @@
       "links": [
         "https://stytch.com/docs/b2b/guides/saml/jit-provisioning",
         "https://stytch.com/docs/b2b/guides/oidc/overview"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "lazy_migration",
@@ -438,14 +518,16 @@
       "links": [
         "https://stytch.com/docs/consumer/guides/passwords/migration",
         "https://stytch.com/docs/api/migrate-user"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "self_service_profile_management",
       "status": "partial",
       "category": "user_management",
       "description": "The B2B product includes a prebuilt embeddable Admin Portal where organization administrators can manage members, configure SSO, and update organization settings without developer effort. There is no equivalent end-user self-service profile portal for B2C — developers must build their own profile management UI using the Stytch Management API (update user, manage MFA factors, etc.).",
-      "links": ["https://stytch.com/docs/b2b/guides/admin-portal/overview"]
+      "links": ["https://stytch.com/docs/b2b/guides/admin-portal/overview"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "account_linking",
@@ -455,49 +537,56 @@
       "links": [
         "https://stytch.com/docs/consumer/guides/oauth/account-linking",
         "https://stytch.com/docs/api/update-user"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "user_blocking",
       "status": "supported",
       "category": "user_management",
       "description": "Users can be blocked (revoked) via the Management API. A revoked user cannot authenticate and all active sessions for that user are invalidated. The user record and associated data remain intact for audit purposes. Revocation takes effect immediately and is reflected in all session validation calls. Users can be re-activated via API.",
-      "links": ["https://stytch.com/docs/api/revoke-user", "https://stytch.com/docs/api/delete-user"]
+      "links": ["https://stytch.com/docs/api/revoke-user", "https://stytch.com/docs/api/delete-user"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "user_metadata",
       "status": "supported",
       "category": "user_management",
       "description": "Stytch distinguishes two metadata types: untrusted_metadata (user-editable, suitable for non-sensitive preferences) and trusted_metadata (admin-only, never writeable via client SDKs). Both are stored as arbitrary JSON objects on the user profile. Metadata is returned in session and user GET responses. Metadata fields can be targeted in user search queries.",
-      "links": ["https://stytch.com/docs/api/update-user", "https://stytch.com/docs/consumer/guides/users/metadata"]
+      "links": ["https://stytch.com/docs/api/update-user", "https://stytch.com/docs/consumer/guides/users/metadata"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "app_metadata",
       "status": "supported",
       "category": "user_management",
       "description": "Stytch's trusted_metadata field is the equivalent of application metadata — it is admin-only and cannot be written by client-side SDK calls or by the user. It is set exclusively via the backend Management API (requires a secret API key). Use cases include internal user flags, subscription tier, feature flags, and compliance attributes.",
-      "links": ["https://stytch.com/docs/api/update-user", "https://stytch.com/docs/consumer/guides/users/metadata"]
+      "links": ["https://stytch.com/docs/api/update-user", "https://stytch.com/docs/consumer/guides/users/metadata"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "metadata_size_limits",
       "status": "partial",
       "category": "user_management",
       "description": "Stytch stores both trusted_metadata and untrusted_metadata as JSON objects. Both fields accept arbitrary JSON. Specific per-field or total size limits are not prominently documented in the public docs as of mid-2025. Overly large metadata objects may cause issues with JWT claim sizes if metadata is embedded in tokens. Developers should keep metadata lean for session-performance reasons.",
-      "links": ["https://stytch.com/docs/consumer/guides/users/metadata"]
+      "links": ["https://stytch.com/docs/consumer/guides/users/metadata"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "user_search",
       "status": "supported",
       "category": "user_management",
       "description": "The /users/search endpoint supports paginated full-text and field-specific search. Operators include exact match, contains, and range filters on fields: email, phone number, name, creation date, and arbitrary metadata keys. Results are cursor-paginated (100 users/page by default). Suitable for admin tooling and user management dashboards; not intended for use in authentication hot paths.",
-      "links": ["https://stytch.com/docs/api/user-search"]
+      "links": ["https://stytch.com/docs/api/user-search"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "rbac",
       "status": "supported",
       "category": "user_management",
       "description": "Full RBAC available in the B2B product via the Stytch RBAC API. Custom roles with arbitrary permission sets can be created per project. Members are assigned one or more roles within an Organization. SCIM group-to-role mapping is supported for SSO-based provisioning. Permissions are embedded in session JWTs and can be enforced server-side via the /sessions/authenticate endpoint which returns the effective permissions list. B2C RBAC via custom RBAC API also available.",
-      "links": ["https://stytch.com/docs/b2b/guides/rbac/overview", "https://stytch.com/docs/api/rbac-policy-get"]
+      "links": ["https://stytch.com/docs/b2b/guides/rbac/overview", "https://stytch.com/docs/api/rbac-policy-get"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "organizations_multitenancy",
@@ -507,7 +596,8 @@
       "links": [
         "https://stytch.com/docs/b2b/guides/organizations/overview",
         "https://stytch.com/docs/api/b2b-organizations-create"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "password_strength_policy",
@@ -517,54 +607,65 @@
       "links": [
         "https://stytch.com/docs/consumer/guides/passwords/strength-policy",
         "https://stytch.com/docs/api/passwords-strength-check"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "username_restrictions",
       "status": "partial",
       "category": "user_management",
       "description": "Stytch's primary identifier is email address, not a traditional username. The Passwords API requires a valid email address format as the user identifier. There is no separate username field in the core user schema. Developers can store a display username in user_metadata, but authentication always uses email. This means organizations requiring non-email usernames (e.g., alphanumeric handles) must implement identifier-to-email mapping at the application layer.",
-      "links": ["https://stytch.com/docs/api/passwords"]
+      "links": ["https://stytch.com/docs/api/passwords"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "progressive_profiling",
       "status": "partial",
       "category": "user_management",
       "description": "Stytch does not have a built-in no-code progressive profiling form builder. Developers implement progressive data collection by updating the user's untrusted_metadata or trusted_metadata via the Management API after each login or at dedicated profile-completion steps in the app. The API-first design means any form logic and conditional collection must be implemented in the application frontend and backend.",
-      "links": ["https://stytch.com/docs/consumer/guides/users/metadata", "https://stytch.com/docs/api/update-user"]
+      "links": ["https://stytch.com/docs/consumer/guides/users/metadata", "https://stytch.com/docs/api/update-user"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "abac",
       "status": "not_supported",
       "category": "access_control",
       "description": "Stytch does not offer a native attribute-based access control (ABAC) policy engine. Access control decisions based on user, resource, and environment attributes must be implemented in the application layer using Stytch's RBAC permissions as a starting point, combined with custom logic in the developer's backend.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "fine_grained_authorization",
       "status": "not_supported",
       "category": "access_control",
       "description": "Fine-grained authorization (ReBAC/Zanzibar-style object-level permissions) is not offered by Stytch. Developers requiring FGA must integrate a dedicated authorization service (e.g., Permit.io, OpenFGA, SpiceDB) alongside Stytch for identity.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "api_authorization",
       "status": "supported",
       "category": "access_control",
       "description": "OAuth 2.0 scopes and permissions are supported for API authorization. M2M clients can request specific scopes. B2B RBAC permissions are embedded in session tokens and exposed via the /sessions/authenticate endpoint's authorization_check parameter, which evaluates whether the authenticated user has the required resource-action permission. Custom scopes can be defined per project.",
-      "links": ["https://stytch.com/docs/api/sessions-authenticate", "https://stytch.com/docs/b2b/guides/rbac/overview"]
+      "links": [
+        "https://stytch.com/docs/api/sessions-authenticate",
+        "https://stytch.com/docs/b2b/guides/rbac/overview"
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "soc2_type2",
       "status": "supported",
       "category": "compliance",
-      "description": "Stytch maintains SOC 2 Type II certification covering the Security trust service criterion. Annual independent audit. SOC 2 report is available under NDA to customers on Growth and Enterprise plans."
+      "description": "Stytch maintains SOC 2 Type II certification covering the Security trust service criterion. Annual independent audit. SOC 2 report is available under NDA to customers on Growth and Enterprise plans.",
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "iso_27001",
       "status": "partial",
       "category": "compliance",
-      "description": "ISO 27001 certification status could not be confirmed from publicly available Stytch documentation as of mid-2025. Stytch's security page highlights SOC 2 Type II and HIPAA as primary compliance frameworks. Customers with ISO 27001 requirements should contact Stytch directly to request current certification status."
+      "description": "ISO 27001 certification status could not be confirmed from publicly available Stytch documentation as of mid-2025. Stytch's security page highlights SOC 2 Type II and HIPAA as primary compliance frameworks. Customers with ISO 27001 requirements should contact Stytch directly to request current certification status.",
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "hipaa_baa",
@@ -578,117 +679,133 @@
       "status": "not_supported",
       "category": "compliance",
       "description": "Stytch does not specifically advertise PCI DSS compliance or offer a PCI-scoped deployment option. As a CIAM platform, Stytch does not process payment card data and is not in scope for PCI DSS in typical deployments. Organizations requiring PCI DSS-compliant authentication infrastructure should consult with Stytch to assess applicability.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "csa_star",
       "status": "not_supported",
       "category": "compliance",
-      "description": "CSA STAR certification is not listed among Stytch's published compliance certifications. Stytch's publicly documented compliance posture focuses on SOC 2 Type II and HIPAA."
+      "description": "CSA STAR certification is not listed among Stytch's published compliance certifications. Stytch's publicly documented compliance posture focuses on SOC 2 Type II and HIPAA.",
+      "plans": []
     },
     {
       "identifier": "fedramp",
       "status": "not_supported",
       "category": "compliance",
       "description": "Stytch does not hold FedRAMP authorization (Moderate or High). Stytch is a commercial SaaS platform not targeting US federal government workloads. US federal agencies requiring FedRAMP-authorized identity solutions should evaluate purpose-built government offerings.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
       "status": "supported",
       "category": "compliance",
       "description": "User data export to fulfill GDPR Article 20 (right to data portability) is supported via the Management API. The /users/{user_id} GET endpoint returns the full user profile including all metadata, linked authentication factors, and creation/update timestamps in JSON format. Developers are responsible for aggregating data from external systems if user data is stored across multiple locations.",
-      "links": ["https://stytch.com/docs/api/get-user"]
+      "links": ["https://stytch.com/docs/api/get-user"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "supported",
       "category": "compliance",
       "description": "User deletion (right to erasure, GDPR Article 17) is supported via the DELETE /users/{user_id} endpoint. Deletion permanently removes the user profile, all linked authentication factors, and active sessions from Stytch's system. Audit log entries referencing the user's identifier may be retained for a period per Stytch's data retention policy. Developers are responsible for deleting user data in downstream systems.",
-      "links": ["https://stytch.com/docs/api/delete-user"]
+      "links": ["https://stytch.com/docs/api/delete-user"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "consent_management",
       "status": "not_supported",
       "category": "compliance",
       "description": "Stytch does not offer built-in consent management for marketing opt-ins, terms of service acceptance, or granular data processing consent. OAuth scope consent screens are available for standard OAuth flows, but custom consent collection and management must be implemented in the application layer. User consent preferences can be stored in trusted_metadata as a workaround.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "region_deployment",
       "status": "not_supported",
       "category": "compliance",
-      "description": "Stytch's multi-tenant SaaS infrastructure is hosted in the United States (AWS us-east-1 primary). There is no self-service option to select an EU, APAC, or other regional deployment for data residency requirements. Enterprise customers with strict data residency requirements should discuss private deployment options with Stytch."
+      "description": "Stytch's multi-tenant SaaS infrastructure is hosted in the United States (AWS us-east-1 primary). There is no self-service option to select an EU, APAC, or other regional deployment for data residency requirements. Enterprise customers with strict data residency requirements should discuss private deployment options with Stytch.",
+      "plans": []
     },
     {
       "identifier": "private_cloud_deployment",
       "status": "not_supported",
       "category": "compliance",
       "description": "Stytch is a SaaS-only platform with no single-tenant private cloud deployment offering available as a standard product. Enterprise customers with isolation requirements should inquire with Stytch's enterprise team about custom deployment options.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "audit_log_retention",
       "status": "supported",
       "category": "security",
       "description": "Authentication event logs (login, signup, MFA, session creation/revocation, etc.) are retained and accessible via the Stytch dashboard and API. The specific retention window varies by plan. Enterprise customers can configure extended retention or stream logs to external SIEM platforms. Log events include IP address, user agent, geographic location, and authentication method.",
-      "links": ["https://stytch.com/docs/api/logs-search"]
+      "links": ["https://stytch.com/docs/api/logs-search"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "audit_log_streaming",
       "status": "supported",
       "category": "security",
       "description": "Audit log streaming to external platforms (Datadog, Splunk, custom SIEM via webhooks) is supported on Enterprise plans. Events are delivered in real time or near-real time. Streaming is configured via the Stytch dashboard or API. Available on Enterprise plan.",
-      "plans": ["Enterprise"],
-      "tier": "enterprise"
+      "tier": "enterprise",
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "security_center",
       "status": "partial",
       "category": "security",
       "description": "Stytch provides a Device Intelligence dashboard showing fraud signals, bot activity, device fingerprint trends, and risky login events. There is no dedicated 'Security Center' threat monitoring product comparable to Auth0's or Okta's security event feed. Authentication analytics and Device Intelligence metrics are viewable in the Stytch dashboard. Full-featured security monitoring requires streaming logs to an external SIEM.",
-      "links": ["https://stytch.com/docs/device-intelligence/overview"]
+      "links": ["https://stytch.com/docs/device-intelligence/overview"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "encryption_at_rest",
       "status": "supported",
       "category": "security",
-      "description": "All user data, credentials, and session data stored by Stytch are encrypted at rest using AES-256. Stytch's infrastructure is hosted on AWS with native AWS KMS-managed encryption for storage volumes and RDS instances."
+      "description": "All user data, credentials, and session data stored by Stytch are encrypted at rest using AES-256. Stytch's infrastructure is hosted on AWS with native AWS KMS-managed encryption for storage volumes and RDS instances.",
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "encryption_in_transit",
       "status": "supported",
       "category": "security",
       "description": "All API communications with Stytch require HTTPS with TLS 1.2 or higher. TLS 1.3 is supported and preferred. Stytch-issued JWTs for sessions and access tokens use RS256 (RSA-SHA256) signing. Public JWKS endpoints allow local token verification without calling back to Stytch on every request.",
-      "links": ["https://stytch.com/docs/consumer/guides/sessions/jwts"]
+      "links": ["https://stytch.com/docs/consumer/guides/sessions/jwts"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "customer_managed_keys",
       "status": "not_supported",
       "category": "security",
       "description": "Stytch does not offer bring-your-own-key (BYOK) or customer-managed encryption key support. All encryption keys are managed by Stytch using AWS KMS. Organizations requiring control over their encryption keys should discuss custom enterprise arrangements with Stytch.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "bot_detection",
       "status": "supported",
       "category": "security",
       "description": "Stytch Device Intelligence includes invisible ML-based bot detection that does not require CAPTCHA challenges. The bot probability score (0.0–1.0) is returned alongside device fingerprint data in the Device Intelligence API response. Developers can gate authentication actions on this score. Bot detection analyzes behavioral signals, browser characteristics, and network patterns. First 10,000 Device Intelligence lookups are free; $0.005 per lookup thereafter.",
-      "links": ["https://stytch.com/docs/device-intelligence/overview", "https://stytch.com/pricing"]
+      "links": ["https://stytch.com/docs/device-intelligence/overview", "https://stytch.com/pricing"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "brute_force_protection",
       "status": "supported",
       "category": "security",
       "description": "Brute force protection is built into all Stytch authentication endpoints. Repeated failed authentication attempts from the same IP or for the same email address trigger rate limiting and lockouts. For passwords specifically, Stytch applies progressive delays and temporary lockouts after repeated failures. Email and SMS OTP codes expire (default 10 minutes) and are single-use, inherently limiting brute force surface. Available on all plans.",
-      "links": ["https://stytch.com/docs/consumer/guides/passwords/overview"]
+      "links": ["https://stytch.com/docs/consumer/guides/passwords/overview"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "suspicious_ip_throttling",
       "status": "supported",
       "category": "security",
       "description": "Stytch applies suspicious IP throttling to authentication endpoints. IPs generating abnormally high request volumes (login attempts, OTP sends, etc.) are rate limited. The Device Intelligence layer also flags IPs associated with proxies, VPNs, and known malicious infrastructure in the risk score. Developers can use the Device Intelligence IP risk signal to apply additional verification for suspicious IPs.",
-      "links": ["https://stytch.com/docs/device-intelligence/overview"]
+      "links": ["https://stytch.com/docs/device-intelligence/overview"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "breached_password_detection",
@@ -698,28 +815,32 @@
       "links": [
         "https://stytch.com/docs/api/passwords-strength-check",
         "https://stytch.com/docs/consumer/guides/passwords/strength-policy"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "credential_guard",
       "status": "not_supported",
       "category": "security",
       "description": "Stytch does not offer proactive dark web monitoring or continuous credential guard for compromised user credentials beyond the HIBP breach check at password creation/reset. Real-time breach monitoring across all users is not an offered product feature.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
       "status": "partial",
       "category": "security",
       "description": "IP-based access restriction is available at the Organization level in the B2B product: organizations can be configured to restrict which allowed domains and email patterns members may use. Project-level IP allowlisting for API access is available for Enterprise plans. Stytch does not currently offer geographic blocking or TLS fingerprint-based ACLs as a standard product feature.",
-      "links": ["https://stytch.com/docs/b2b/guides/organizations/overview"]
+      "links": ["https://stytch.com/docs/b2b/guides/organizations/overview"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "device_fingerprinting",
       "status": "supported",
       "category": "security",
       "description": "Device fingerprinting is a core Stytch product sold as Device Intelligence (formerly Stytch Device Fingerprinting). Each device lookup generates a persistent device_id and a structured verdict including: browser fingerprint signals, bot probability, IP risk level, new/known device status, and impossible travel detection. Fingerprints persist across browser sessions. First 10,000 lookups per month are free; $0.005 per lookup thereafter, billed separately from MAU.",
-      "links": ["https://stytch.com/docs/device-intelligence/overview", "https://stytch.com/pricing"]
+      "links": ["https://stytch.com/docs/device-intelligence/overview", "https://stytch.com/pricing"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "per_org_branding",
@@ -729,7 +850,8 @@
       "links": [
         "https://stytch.com/docs/b2b/guides/organizations/overview",
         "https://stytch.com/docs/api/b2b-organizations-update"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "per_org_mfa_policy",
@@ -739,7 +861,8 @@
       "links": [
         "https://stytch.com/docs/b2b/guides/mfa/overview",
         "https://stytch.com/docs/api/b2b-organizations-update"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "hosted_login_page",
@@ -749,7 +872,8 @@
       "links": [
         "https://stytch.com/docs/sdks/javascript-sdk/ui-components",
         "https://stytch.com/docs/consumer/guides/ui"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "embedded_login",
@@ -759,21 +883,24 @@
       "links": [
         "https://stytch.com/docs/sdks/javascript-sdk/ui-components",
         "https://stytch.com/docs/b2b/guides/admin-portal/overview"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "white_label",
       "status": "partial",
       "category": "branding_ux",
       "description": "Stytch's headless API approach means the authentication UX is fully controlled by the developer without Stytch branding by default when using the API directly. The prebuilt StytchUI components may include 'Powered by Stytch' branding in their default configuration; removing this branding is available as a paid add-on. Developers who build fully custom UI using the Stytch API achieve true white-label without extra cost.",
-      "links": ["https://stytch.com/pricing"]
+      "links": ["https://stytch.com/pricing"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "localization",
       "status": "supported",
       "category": "branding_ux",
       "description": "Stytch's frontend SDKs (JavaScript/React, React Native, iOS, Android) support internationalization (i18n) with configurable string overrides for all authentication UI text. Developers can supply locale-specific string maps. Multiple languages are supported in the prebuilt UI components. Server-side email templates also support localization via customizable template content.",
-      "links": ["https://stytch.com/docs/sdks/javascript-sdk/ui-components"]
+      "links": ["https://stytch.com/docs/sdks/javascript-sdk/ui-components"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "prebuilt_ui_components",
@@ -783,14 +910,16 @@
       "links": [
         "https://stytch.com/docs/sdks/javascript-sdk/ui-components",
         "https://stytch.com/docs/b2b/guides/admin-portal/overview"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "login_analytics",
       "status": "supported",
       "category": "analytics",
       "description": "Stytch's dashboard includes authentication analytics: daily/weekly/monthly active user counts, authentication success and failure rates by method, new signup trends, and MFA enrollment rates. The Logs API (/logs) supports querying authentication events programmatically for custom analytics pipelines. Device Intelligence adds fraud and risk signal trends to the analytics view.",
-      "links": ["https://stytch.com/docs/api/logs-search"]
+      "links": ["https://stytch.com/docs/api/logs-search"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "sdk_coverage",
@@ -812,70 +941,80 @@
         ".NET",
         "Swift",
         "Kotlin"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "management_api",
       "status": "supported",
       "category": "developer_integration",
       "description": "Stytch provides a comprehensive REST Management API covering all identity resources: users, sessions, authentication factors, organizations, RBAC, SSO connections, SCIM connections, and M2M clients. API uses secret/public key pair authentication. Rate limits apply per project. All endpoints return structured JSON responses with consistent error codes.",
-      "links": ["https://stytch.com/docs/api"]
+      "links": ["https://stytch.com/docs/api"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "authentication_api_rate_limits",
       "status": "supported",
       "category": "developer_integration",
       "description": "Stytch enforces rate limits on all API endpoints. Authentication endpoints (OTP send, magic link send, authenticate) are rate-limited per user and per IP to prevent abuse. Exact rate limit thresholds vary by endpoint type and plan tier. Enterprise plans have elevated rate limits. Rate limit responses return HTTP 429 with a Retry-After header. Specific per-endpoint limits are documented in the API reference.",
-      "links": ["https://stytch.com/docs/api"]
+      "links": ["https://stytch.com/docs/api"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "actions_extensibility",
       "status": "partial",
       "category": "developer_integration",
       "description": "Stytch is API-first and does not have a hosted extensibility runtime (no Auth0-style 'Actions' where Stytch executes your code). Extensibility is achieved via: (1) webhooks for event-driven post-authentication workflows, (2) composing Stytch API calls with custom backend logic before/after authentication, and (3) using Stytch as an OIDC/SAML provider that a downstream orchestration layer can hook into. There is no visual flow builder or sandboxed code execution environment.",
-      "links": ["https://stytch.com/docs/api/webhooks-overview"]
+      "links": ["https://stytch.com/docs/api/webhooks-overview"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "typescript_in_actions",
       "status": "not_supported",
       "category": "developer_integration",
       "description": "Stytch does not have a hosted extensibility runtime where developer code is executed (no Actions system). TypeScript is fully supported for all client and server-side Stytch SDK code that developers write and host themselves — the SDKs ship with native TypeScript types. However, the concept of 'TypeScript in Actions' (hosted extensibility scripts) is not applicable as Stytch has no such hosted execution environment.",
-      "links": ["https://stytch.com/docs/sdks"]
+      "links": ["https://stytch.com/docs/sdks"],
+      "plans": []
     },
     {
       "identifier": "custom_domain",
       "status": "supported",
       "category": "developer_integration",
       "description": "Custom domains are supported for all API endpoints and hosted login pages. Setting a custom domain is required for WebAuthn/passkey relying party ID configuration (which must match the origin domain). Custom domain TLS certificates are managed by Stytch via automated certificate provisioning. Available on all plans.",
-      "links": ["https://stytch.com/docs/consumer/guides/custom-domain"]
+      "links": ["https://stytch.com/docs/consumer/guides/custom-domain"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "deploy_cli",
       "status": "not_supported",
       "category": "developer_integration",
       "description": "Stytch does not offer an official deploy CLI for exporting and importing project configuration as code. Project settings (SSO connections, SCIM connections, RBAC policies) are managed via the dashboard UI or the Management API. CI/CD teams must script configuration changes using the REST API directly.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "terraform_provider",
       "status": "not_supported",
       "category": "developer_integration",
       "description": "There is no official Stytch Terraform provider. Infrastructure-as-code management of Stytch project configuration must be done via the REST Management API, scripted with tools like Terraform's http provider or custom solutions.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "custom_database_connections",
       "status": "not_supported",
       "category": "developer_integration",
       "description": "Stytch does not support custom database connections (Auth0-style scripts that proxy authentication to a legacy database). The equivalent capability is Stytch's lazy migration flow via the /passwords/migrate endpoint, which calls a developer-managed webhook to verify credentials against the legacy system on first login. This achieves the same migration outcome but Stytch does not run scripts inside the platform.",
-      "links": ["https://stytch.com/docs/consumer/guides/passwords/migration"]
+      "links": ["https://stytch.com/docs/consumer/guides/passwords/migration"],
+      "plans": []
     },
     {
       "identifier": "native_webhooks",
       "status": "supported",
       "category": "developer_integration",
       "description": "Stytch natively supports webhooks for key authentication and lifecycle events: login, signup, MFA completion, session creation, user deletion, SSO connection events, SCIM provisioning events, and more. Webhook endpoints are registered via the Stytch dashboard. Payloads are signed with an HMAC-SHA256 signature for verification. Retry logic with exponential backoff is applied on non-2xx responses.",
-      "links": ["https://stytch.com/docs/api/webhooks-overview"]
+      "links": ["https://stytch.com/docs/api/webhooks-overview"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "universal_login_customization",
@@ -885,7 +1024,8 @@
       "links": [
         "https://stytch.com/docs/sdks/javascript-sdk/ui-components",
         "https://stytch.com/docs/consumer/guides/ui"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "custom_email_provider",
@@ -900,7 +1040,8 @@
       "status": "supported",
       "category": "developer_integration",
       "description": "Stytch provides customizable HTML email templates for all authentication emails: magic links, email OTP codes, password reset, and invitations. Templates support variable substitution for user name, OTP code, and expiration time. Custom templates are configured via the Stytch dashboard. Multiple template variants per email type allow A/B testing or locale-specific content.",
-      "links": ["https://stytch.com/docs/consumer/guides/emails/custom-templates"]
+      "links": ["https://stytch.com/docs/consumer/guides/emails/custom-templates"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "custom_oidc_claims",
@@ -910,42 +1051,48 @@
       "links": [
         "https://stytch.com/docs/consumer/guides/sessions/jwts",
         "https://stytch.com/docs/api/sessions-authenticate"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "nocode_flow_builder",
       "status": "not_supported",
       "category": "advanced",
       "description": "Stytch does not offer a no-code or low-code visual flow builder for authentication journeys. Stytch is intentionally code-first and API-first. Authentication flows are composed by developers using the Stytch SDK and REST API calls in their own application code. Teams requiring a visual flow orchestration tool would need to build on top of Stytch's APIs.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "identity_proofing",
       "status": "not_supported",
       "category": "advanced",
       "description": "Stytch does not offer built-in government ID verification, biometric liveness checking, or identity document proofing. Developers needing identity verification can integrate a third-party service (Persona, Onfido, Jumio, etc.) alongside Stytch, then store the verification result in trusted_metadata.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "decentralized_identity",
       "status": "not_supported",
       "category": "advanced",
       "description": "Stytch does not support W3C Verifiable Credentials, Decentralized Identifiers (DIDs), or wallet-based authentication. Stytch's identity model is centralized around email-as-identifier.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "billing_integration",
       "status": "not_supported",
       "category": "advanced",
       "description": "Stytch does not offer native billing or subscription management integration. Monetizing application features via the identity platform requires a separate billing solution (Stripe, Chargebee, etc.). Subscription state can be stored in Stytch trusted_metadata as a workaround for surfacing subscription tier in session tokens.",
-      "links": []
+      "links": [],
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
       "status": "not_supported",
       "category": "advanced",
       "description": "Stytch has not released dedicated authentication support for AI agents or MCP (Model Context Protocol) servers as of mid-2025. M2M tokens (Client Credentials) are available for service-to-service auth and can be used in agentic contexts, but there is no MCP-specific auth product, token exchange for delegated agent permissions, or agent identity primitive.",
-      "links": ["https://stytch.com/docs/api/m2m-client"]
+      "links": ["https://stytch.com/docs/api/m2m-client"],
+      "plans": []
     },
     {
       "identifier": "pq_hybrid_key_exchange",
@@ -955,58 +1102,68 @@
       "links": [
         "https://stytch.com/blog/remote-mcp-stytch-cloudflare/",
         "https://stytch.com/docs/resources/security-and-trust/security"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found that Stytch supports ML-DSA, SLH-DSA, or FN-DSA for JWT/OIDC/SAML signing."
+      "description": "No public evidence found that Stytch supports ML-DSA, SLH-DSA, or FN-DSA for JWT/OIDC/SAML signing.",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
       "status": "unknown",
       "category": "post_quantum_cryptography",
       "description": "No public PQC roadmap, whitepaper, or trust-center statement was found for Stytch. Their security/trust docs describe SOC 2 Type II, ISO 27001, and HIPAA compliance but do not mention quantum readiness.",
-      "links": ["https://stytch.com/docs/resources/security-and-trust/compliance"]
+      "links": ["https://stytch.com/docs/resources/security-and-trust/compliance"],
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
+      "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets.",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
+      "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints.",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
+      "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS).",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -1014,181 +1171,225 @@
       {
         "identifier": "authorization_code_grant",
         "status": "supported",
-        "description": "Provided by Connected Apps, Stytch's OAuth 2.0 and OIDC provider."
+        "description": "Provided by Connected Apps, Stytch's OAuth 2.0 and OIDC provider.",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "refresh_token_grant",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "client_credentials_grant",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "implicit_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
         "status": "supported",
-        "description": "Used by Cross App Access (ID-JAG) to exchange a JWT from a trusted workforce identity provider."
+        "description": "Used by Cross App Access (ID-JAG) to exchange a JWT from a trusted workforce identity provider.",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "password_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "rp_initiated_logout",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "pkce_extension",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "par_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "rar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "token_endpoint",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "userinfo_endpoint",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "token_revocation_endpoint",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "token_introspection_endpoint",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "device_authorization_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "login_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "consent_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "select_account_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "create_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
         "status": "supported",
-        "description": "Public clients."
+        "description": "Public clients.",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dpop",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       }
     ]
   }

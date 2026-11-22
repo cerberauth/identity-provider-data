@@ -54,46 +54,52 @@
   },
   "pricing": {
     "hasFreeTier": true,
-    "freeTierLimit": "Starter plan: 10,000 MAU and 2 projects",
+    "freeTierLimit": "Unlimited (self-hosted) / 10,000 MAU (Starter cloud)",
     "freeTierMau": 10000,
     "pricingModel": "mau",
     "pricingUrl": "https://www.hanko.io/pricing",
     "hasEnterprisePlan": true,
     "contactSalesRequired": true,
     "currency": "USD",
-    "pricingLastVerified": "2026-10-03",
+    "pricingLastVerified": "2026-11-21",
     "plans": [
       {
-        "name": "Starter",
-        "price": "Free",
+        "name": "Open Source",
+        "price": "Free (self-hosted)",
         "amount": 0,
-        "mauIncluded": 10000
+        "deployment": "self_hosted"
+      },
+      {
+        "name": "Starter",
+        "price": "Free (10,000 MAU)",
+        "amount": 0,
+        "deployment": "saas",
+        "usage": {
+          "metric": "mau",
+          "included": 10000,
+          "max": 10000
+        }
       },
       {
         "name": "Pro",
-        "price": "$29/month with 10,000 MAU included, then $0.01 per additional MAU, plus $49/month per SAML SSO connection",
+        "price": "$29/month with 10,000 MAU included, then $0.01 per additional MAU",
         "amount": 29,
         "period": "month",
-        "mauIncluded": 10000,
-        "featuresIncluded": [
-          "saml2_protocol",
-          "saml_federation",
-          "management_api",
-          "native_webhooks",
-          "custom_email_provider"
-        ]
+        "deployment": "saas",
+        "usage": {
+          "metric": "mau",
+          "included": 10000,
+          "rates": [
+            {
+              "amount": 0.01
+            }
+          ]
+        }
       },
       {
         "name": "Enterprise",
         "price": "Custom",
-        "featuresIncluded": [
-          "saml2_protocol",
-          "saml_federation",
-          "private_cloud_deployment",
-          "management_api",
-          "native_webhooks",
-          "custom_email_provider"
-        ]
+        "deployment": "saas"
       }
     ]
   },
@@ -137,7 +143,8 @@
       "identifier": "username_and_password_authentication",
       "status": "supported",
       "description": "Password sign-in with an optional username next to the email identifier. Disabled by default on self-hosted instances and enabled with password.enabled.",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#enabling-password-authentication"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#enabling-password-authentication"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "social_sign_in_authentication",
@@ -146,123 +153,160 @@
       "links": [
         "https://docs.hanko.io/guides/social-sso/google",
         "https://github.com/teamhanko/hanko/blob/main/backend/README.md#social-connections"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "passkey_authentication",
       "status": "supported",
       "description": "Passkeys are the default method, backed by a FIDO2 / WebAuthn server. The number of passkeys per user is configurable (10 by default).",
-      "links": ["https://docs.hanko.io/introduction"]
+      "links": ["https://docs.hanko.io/introduction"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "email_passwordless_authentication",
       "status": "supported",
       "description": "Email passcodes (one-time codes) for sign-in, email verification and password recovery. Passcodes expire after 300 seconds by default.",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "not_supported",
-      "description": "No SMS delivery. Email and username are the only login identifiers."
+      "description": "No SMS delivery. Email and username are the only login identifiers.",
+      "plans": []
     },
     {
       "identifier": "magic_link_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "anonymous_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
       "status": "supported",
       "description": "TOTP authenticator apps as a second factor.",
-      "links": ["https://docs.hanko.io/guides/session-management"]
+      "links": ["https://docs.hanko.io/guides/session-management"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "hotp_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "webauthn_mfa",
       "status": "supported",
       "description": "Security keys as a second factor, with a configurable attestation preference and limit per user.",
-      "links": ["https://docs.hanko.io/guides/session-management"]
+      "links": ["https://docs.hanko.io/guides/session-management"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "email_code_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "phone_code_mfa",
       "status": "not_supported",
-      "description": "No SMS delivery."
+      "description": "No SMS delivery.",
+      "plans": []
     },
     {
       "identifier": "recovery_code_mfa",
       "status": "not_supported",
-      "description": "The MFA flows only offer TOTP and security keys. There is no recovery code step."
+      "description": "The MFA flows only offer TOTP and security keys. There is no recovery code step.",
+      "plans": []
     },
     {
       "identifier": "push_notification_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "adaptive_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "cisco_duo_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "oidc_protocol",
       "status": "not_supported",
       "description": "Hanko is not an OpenID Provider. It issues its own RS256 session JWTs and exposes a JWKS endpoint, but has no authorization, token or discovery endpoint.",
-      "links": ["https://docs.hanko.io/guides/session-management"]
+      "links": ["https://docs.hanko.io/guides/session-management"],
+      "plans": []
     },
     {
       "identifier": "saml2_protocol",
       "status": "partial",
       "description": "Service provider only. Hanko signs users in through external SAML 2.0 identity providers and cannot act as a SAML identity provider.",
       "links": ["https://docs.hanko.io/guides/enterprise-sso/introduction", "https://www.hanko.io/pricing"],
-      "plans": ["Pro", "Enterprise"]
+      "plans": ["Open Source", "Enterprise"],
+      "addOn": {
+        "name": "SAML SSO",
+        "price": "$49/month per SAML SSO connection",
+        "amount": 49,
+        "period": "month",
+        "unit": "connection",
+        "plans": ["Pro"]
+      }
     },
     {
       "identifier": "ws_federation_protocol",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
       "status": "not_supported",
       "description": "No OAuth 2.0 client credentials grant. Backends call the Admin API with an API key.",
-      "links": ["https://docs.hanko.io/api-reference/admin/introduction"]
+      "links": ["https://docs.hanko.io/api-reference/admin/introduction"],
+      "plans": []
     },
     {
       "identifier": "oidc_federation",
       "status": "supported",
       "description": "Custom OIDC providers with OIDC Discovery or manually configured endpoints, next to the built-in social providers.",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#custom-oauthoidc-providers"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#custom-oauthoidc-providers"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "saml_federation",
       "status": "supported",
       "description": "SAML 2.0 enterprise SSO with domain-based routing, tested with Okta, Auth0, Microsoft Entra ID and Google Workspace. On Hanko Cloud, attribute mapping, Single Logout and metadata file upload are not available, only a metadata URL.",
       "links": ["https://docs.hanko.io/guides/enterprise-sso/introduction", "https://www.hanko.io/pricing"],
-      "plans": ["Pro", "Enterprise"],
-      "addOnCost": "$49/month per connection"
+      "plans": ["Open Source", "Enterprise"],
+      "addOn": {
+        "name": "SAML SSO",
+        "price": "$49/month per SAML SSO connection",
+        "amount": 49,
+        "period": "month",
+        "unit": "connection",
+        "plans": ["Pro"]
+      }
     },
     {
       "identifier": "active_directory_ldap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "azure_ad_integration",
@@ -271,7 +315,8 @@
       "links": [
         "https://docs.hanko.io/guides/enterprise-sso/entra",
         "https://docs.hanko.io/guides/social-sso/microsoft"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "bulk_user_import",
@@ -280,13 +325,15 @@
       "links": [
         "https://github.com/teamhanko/hanko/blob/main/backend/README.md#user-import",
         "https://docs.hanko.io/guides/import_export/import-export-users"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "password_hash_import",
       "status": "partial",
       "description": "The import file accepts a password credential per user. The supported hash formats are not documented.",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#user-import"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#user-import"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "bulk_user_export",
@@ -295,127 +342,151 @@
       "links": [
         "https://docs.hanko.io/community-support/faq",
         "https://docs.hanko.io/guides/import_export/import-export-users"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "bulk_user_update_delete",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "upsert_on_import",
       "status": "not_supported",
       "description": "The whole import is aborted when a user_id already exists in the target tenant.",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#user-import"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#user-import"],
+      "plans": []
     },
     {
       "identifier": "legacy_username_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "mfa_enrollment_import",
       "status": "supported",
       "description": "The import file accepts TOTP secrets and WebAuthn credentials, including passkeys and MFA credentials.",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#user-import"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#user-import"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "inbound_scim_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "outbound_scim_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "scim_groups",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "jit_provisioning",
       "status": "supported",
       "description": "An account is created on the first SAML or social sign-in unless self-service account creation is disabled.",
-      "links": ["https://docs.hanko.io/guides/enterprise-sso/introduction"]
+      "links": ["https://docs.hanko.io/guides/enterprise-sso/introduction"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "lazy_migration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "self_service_profile_management",
       "status": "supported",
       "description": "The Profile component lets users manage emails, username, password, passkeys, MFA credentials and active sessions.",
-      "links": ["https://docs.hanko.io/guides/hanko-elements/profile-component"]
+      "links": ["https://docs.hanko.io/guides/hanko-elements/profile-component"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "account_linking",
       "status": "supported",
       "description": "Automatic linking by email address, controlled per provider with allow_linking. Email verification is recommended to avoid account takeover.",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#account-linking"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#account-linking"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "user_blocking",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_metadata",
       "status": "supported",
       "description": "Private, public and unsafe metadata. Unsafe metadata is writable by the end user, the other two only through the Admin API.",
-      "links": ["https://docs.hanko.io/guides/user-data/user-metadata"]
+      "links": ["https://docs.hanko.io/guides/user-data/user-metadata"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "app_metadata",
       "status": "supported",
       "description": "Private metadata is only readable and writable through the Admin API. Public metadata is readable by the client but only writable through the Admin API.",
-      "links": ["https://docs.hanko.io/guides/user-data/user-metadata"]
+      "links": ["https://docs.hanko.io/guides/user-data/user-metadata"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "metadata_size_limits",
       "status": "supported",
       "description": "Each metadata type is limited to 3,000 characters of compact JSON.",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#user-metadata"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#user-metadata"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "user_search",
       "status": "partial",
       "description": "The Admin API list endpoint filters by user ID and email and sorts by creation date. There is no search on username or metadata.",
-      "links": ["https://docs.hanko.io/api-reference/admin/user-management/get-a-list-of-users"]
+      "links": ["https://docs.hanko.io/api-reference/admin/user-management/get-a-list-of-users"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "rbac",
       "status": "partial",
       "description": "Roles are scoped to organizations and managed through the Admin API. A session can check its own roles through the public API. There is no dashboard UI documented for it.",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#organizations-and-roles"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#organizations-and-roles"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "organizations_multitenancy",
       "status": "partial",
       "description": "Organizations, memberships and role bindings through the Admin API, plus a multi-tenancy mode for self-hosted instances. Organization endpoints do not emit audit logs or webhooks yet.",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#organizations-and-roles"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#organizations-and-roles"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "password_strength_policy",
       "status": "partial",
       "description": "Only a minimum length is configurable (password.min_length, 8 by default).",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "username_restrictions",
       "status": "partial",
       "description": "Minimum and maximum length are configurable (3 and 32 by default).",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "progressive_profiling",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "abac",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fine_grained_authorization",
       "status": "not_supported",
       "description": "Not built in. A guide covers integrating Permit.io.",
-      "links": ["https://docs.hanko.io/integrations/permit"]
+      "links": ["https://docs.hanko.io/integrations/permit"],
+      "plans": []
     },
     {
       "identifier": "api_authorization",
@@ -424,39 +495,47 @@
       "links": [
         "https://docs.hanko.io/guides/session-management",
         "https://github.com/teamhanko/hanko/blob/main/backend/README.md#organizations-and-roles"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "soc2_type2",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "iso_27001",
       "status": "planned",
       "description": "Listed as in progress on the Hanko Trust Center.",
-      "links": ["https://trust.hanko.io"]
+      "links": ["https://trust.hanko.io"],
+      "plans": []
     },
     {
       "identifier": "hipaa_baa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pci_dss",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "csa_star",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fedramp",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
       "status": "partial",
       "description": "User data is retrievable through the Admin API, without password hashes or TOTP secrets. The complete dataset has to be requested from Hanko.",
-      "links": ["https://docs.hanko.io/community-support/faq"]
+      "links": ["https://docs.hanko.io/community-support/faq"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "gdpr_right_to_erasure",
@@ -465,17 +544,20 @@
       "links": [
         "https://docs.hanko.io/api-reference/admin/user-management/delete-a-user-by-id",
         "https://trust.hanko.io"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "consent_management",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "region_deployment",
       "status": "partial",
       "description": "Hanko Cloud only runs in the AWS Frankfurt region in Germany. Self-hosted instances can run in any region.",
-      "links": ["https://www.hanko.io/pricing"]
+      "links": ["https://www.hanko.io/pricing"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "private_cloud_deployment",
@@ -491,67 +573,82 @@
       "links": [
         "https://github.com/teamhanko/hanko/blob/main/backend/README.md#audit-logs",
         "https://www.hanko.io/pricing"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "audit_log_streaming",
       "status": "partial",
       "description": "Self-hosted instances write audit events to stdout by default, for collection by an external log pipeline. There is no built-in SIEM streaming.",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#audit-logs"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#audit-logs"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "security_center",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "encryption_at_rest",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "encryption_in_transit",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "customer_managed_keys",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bot_detection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "brute_force_protection",
       "status": "supported",
       "description": "Rate limiting on the passcode, password, OTP and token endpoints (3 attempts per minute by default), per user and IP, with an in-memory or Redis store.",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#rate-limiting"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#rate-limiting"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "suspicious_ip_throttling",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "breached_password_detection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "credential_guard",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "device_fingerprinting",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "per_org_branding",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "per_org_mfa_policy",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "hosted_login_page",
@@ -560,7 +657,8 @@
       "links": [
         "https://docs.hanko.io/guides/hanko-elements/introduction",
         "https://docs.hanko.io/using-the-api/build-a-custom-login-page"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "embedded_login",
@@ -569,50 +667,57 @@
       "links": [
         "https://docs.hanko.io/guides/hanko-elements/introduction",
         "https://docs.hanko.io/using-the-api/understanding-the-flow-api"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "white_label",
       "status": "supported",
       "description": "Hanko Elements are MIT-licensed and their appearance is customizable, and the backend can be self-hosted.",
-      "links": ["https://docs.hanko.io/guides/hanko-elements/customize-appearance"]
+      "links": ["https://docs.hanko.io/guides/hanko-elements/customize-appearance"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "localization",
       "status": "supported",
       "description": "Built-in translations for Hanko Elements, with support for custom translations.",
-      "links": ["https://docs.hanko.io/guides/hanko-elements/translations"]
+      "links": ["https://docs.hanko.io/guides/hanko-elements/translations"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "prebuilt_ui_components",
       "status": "supported",
       "description": "Hanko Elements: auth, login, registration, profile and events web components that work with any framework.",
-      "links": ["https://docs.hanko.io/guides/hanko-elements/introduction"]
+      "links": ["https://docs.hanko.io/guides/hanko-elements/introduction"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "login_analytics",
       "status": "partial",
       "description": "Hanko Cloud is described as including analytics. The available reports are not documented.",
-      "links": ["https://docs.hanko.io/community-support/faq"]
+      "links": ["https://docs.hanko.io/community-support/faq"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "sdk_coverage",
       "status": "partial",
       "description": "JavaScript Frontend SDK and Hanko Elements, with quickstarts for Next.js, Nuxt, Remix, SvelteKit, React, Vue, Angular, Solid and Svelte, and backend guides for Go, JavaScript, Java, Python and Rust. Mobile SDKs are not available yet.",
-      "links": ["https://docs.hanko.io/quickstarts/overview"]
+      "links": ["https://docs.hanko.io/quickstarts/overview"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "management_api",
       "status": "supported",
       "description": "Admin API with API key authentication and an OpenAPI specification. It covers users, emails, passwords, passkeys, TOTP, sessions, metadata, webhooks, organizations, roles and audit logs. Admin API access is part of the Pro plan on Hanko Cloud.",
       "links": ["https://docs.hanko.io/api-reference/admin/introduction", "https://www.hanko.io/pricing"],
-      "plans": ["Pro", "Enterprise"]
+      "plans": ["Open Source", "Pro", "Enterprise"]
     },
     {
       "identifier": "authentication_api_rate_limits",
       "status": "partial",
       "description": "Limits are configurable per endpoint family. The limits that apply on Hanko Cloud are not published.",
-      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#rate-limiting"]
+      "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#rate-limiting"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "actions_extensibility",
@@ -621,37 +726,43 @@
       "links": [
         "https://docs.hanko.io/guides/webhooks",
         "https://github.com/teamhanko/hanko/blob/main/backend/README.md#session-jwt-templates"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "typescript_in_actions",
       "status": "not_supported",
-      "description": "No inline code execution, only webhooks and JWT templates."
+      "description": "No inline code execution, only webhooks and JWT templates.",
+      "plans": []
     },
     {
       "identifier": "custom_domain",
       "status": "supported",
       "description": "Included in every plan, including the free Starter plan.",
-      "links": ["https://docs.hanko.io/guides/custom-domain/custom-domain", "https://www.hanko.io/pricing"]
+      "links": ["https://docs.hanko.io/guides/custom-domain/custom-domain", "https://www.hanko.io/pricing"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "deploy_cli",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "terraform_provider",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_database_connections",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "native_webhooks",
       "status": "supported",
       "description": "HTTP callbacks carrying a signed JWT for user, email, username, login and custom claim events, with parent and sub-event filtering. Webhooks are part of the Pro plan on Hanko Cloud.",
       "links": ["https://docs.hanko.io/guides/webhooks", "https://www.hanko.io/pricing"],
-      "plans": ["Pro", "Enterprise"]
+      "plans": ["Open Source", "Pro", "Enterprise"]
     },
     {
       "identifier": "universal_login_customization",
@@ -660,20 +771,22 @@
       "links": [
         "https://docs.hanko.io/guides/hanko-elements/customize-appearance",
         "https://docs.hanko.io/using-the-api/build-a-custom-login-page"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "custom_email_provider",
       "status": "supported",
       "description": "Emails can be sent through your own SMTP server. Custom SMTP is part of the Pro plan on Hanko Cloud.",
       "links": ["https://docs.hanko.io/guides/email-delivery/custom-smtp-server", "https://www.hanko.io/pricing"],
-      "plans": ["Pro", "Enterprise"]
+      "plans": ["Open Source", "Pro", "Enterprise"]
     },
     {
       "identifier": "email_templates",
       "status": "supported",
       "description": "Email content can be customized.",
-      "links": ["https://docs.hanko.io/guides/email-delivery/email-delivery"]
+      "links": ["https://docs.hanko.io/guides/email-delivery/email-delivery"],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "custom_oidc_claims",
@@ -682,71 +795,87 @@
       "links": [
         "https://docs.hanko.io/guides/session-management",
         "https://github.com/teamhanko/hanko/blob/main/backend/README.md#custom-claims"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Pro", "Enterprise"]
     },
     {
       "identifier": "nocode_flow_builder",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "identity_proofing",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "decentralized_identity",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -755,191 +884,235 @@
         "identifier": "authorization_code_grant",
         "status": "not_supported",
         "description": "Hanko is not an OpenID Provider. It acts as an OIDC and OAuth 2.0 client for social and custom providers and issues its own session JWTs. Third-party sign-in uses the authorization code flow as a relying party only.",
-        "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#social-connections"]
+        "links": ["https://github.com/teamhanko/hanko/blob/main/backend/README.md#social-connections"],
+        "plans": []
       },
       {
         "identifier": "refresh_token_grant",
         "status": "not_supported",
         "description": "Sessions are JWTs backed by a server-side session, with no refresh token mechanism.",
-        "links": ["https://docs.hanko.io/guides/session-management"]
+        "links": ["https://docs.hanko.io/guides/session-management"],
+        "plans": []
       },
       {
         "identifier": "client_credentials_grant",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "implicit_grant",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
         "status": "not_supported",
         "description": "The token_exchange endpoint of the Flow API turns a one-time token from a social login into a session. It is not RFC 8693.",
-        "links": ["https://docs.hanko.io/api-reference/flow/token-exchange"]
+        "links": ["https://docs.hanko.io/api-reference/flow/token-exchange"],
+        "plans": []
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "password_grant",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "rp_initiated_logout",
         "status": "not_supported",
         "description": "Sessions end through a Hanko-specific logout endpoint, not an OIDC end_session_endpoint.",
-        "links": ["https://docs.hanko.io/api-reference/public/user-management/log-out-the-current-user"]
+        "links": ["https://docs.hanko.io/api-reference/public/user-management/log-out-the-current-user"],
+        "plans": []
       },
       {
         "identifier": "pkce_extension",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "par_extension",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "rar_extension",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "jar_extension",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "token_endpoint",
         "status": "not_supported",
         "description": "Tokens are issued by the Flow API and validated through the session validation endpoint, not an OAuth 2.0 token endpoint.",
-        "links": ["https://docs.hanko.io/guides/session-management"]
+        "links": ["https://docs.hanko.io/guides/session-management"],
+        "plans": []
       },
       {
         "identifier": "userinfo_endpoint",
         "status": "not_supported",
         "description": "The /me endpoint returns the current user ID, it is not an OIDC userinfo endpoint.",
-        "links": ["https://docs.hanko.io/api-reference/public/user-management/get-the-current-user-id"]
+        "links": ["https://docs.hanko.io/api-reference/public/user-management/get-the-current-user-id"],
+        "plans": []
       },
       {
         "identifier": "token_revocation_endpoint",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "token_introspection_endpoint",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "device_authorization_endpoint",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "not_supported",
         "description": "Only a JWKS endpoint (/.well-known/jwks.json) is exposed, for verifying session JWT signatures. There is no openid-configuration document.",
-        "links": ["https://docs.hanko.io/api-reference/public/well-known/get-json-web-key-set"]
+        "links": ["https://docs.hanko.io/api-reference/public/well-known/get-json-web-key-set"],
+        "plans": []
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "none_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "login_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "consent_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "select_account_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "create_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "dpop",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       }
     ]
   }

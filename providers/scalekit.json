@@ -40,27 +40,34 @@
         "name": "Free",
         "price": "Free (25K MAUs, 25 organizations, 1 SSO and 1 SCIM connection; Scalekit branding on widgets and emails)",
         "amount": 0,
-        "mauIncluded": 25000
+        "usage": {
+          "metric": "mau",
+          "included": 25000,
+          "max": 25000
+        },
+        "limits": {
+          "connections": 1,
+          "organizations": 25
+        }
       },
       {
         "name": "Growth",
         "price": "$99/month (100K MAUs and 100 organizations included, then $0.05 per MAU and $1 per organization; SSO and SCIM connections beyond the first $60/connection/month, down to $30 at volume)",
         "amount": 99,
         "period": "month",
-        "mauIncluded": 100000,
-        "featuresIncluded": ["audit_log_retention", "white_label"]
+        "usage": {
+          "metric": "mau",
+          "included": 100000,
+          "rates": [
+            {
+              "amount": 0.05
+            }
+          ]
+        }
       },
       {
         "name": "Enterprise",
-        "price": "Custom (volume pricing for 1M+ MAUs, 99.99% SLA, VPC/on-prem, SIEM streaming, HIPAA BAA, EU and US data residency)",
-        "featuresIncluded": [
-          "audit_log_retention",
-          "audit_log_streaming",
-          "hipaa_baa",
-          "private_cloud_deployment",
-          "region_deployment",
-          "white_label"
-        ]
+        "price": "Custom (volume pricing for 1M+ MAUs, 99.99% SLA, VPC/on-prem, SIEM streaming, HIPAA BAA, EU and US data residency)"
       }
     ]
   },
@@ -142,13 +149,15 @@
       "identifier": "username_and_password_authentication",
       "status": "unknown",
       "description": "The documented login methods are magic link / email OTP, social login, passkeys and enterprise SSO. Password login is not documented.",
-      "links": ["https://docs.scalekit.com/authenticate/auth-methods/authentication-flow/"]
+      "links": ["https://docs.scalekit.com/authenticate/auth-methods/authentication-flow/"],
+      "plans": []
     },
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
       "description": "Google, GitHub, Microsoft, GitLab, LinkedIn, Salesforce and more via OAuth 2.0. Google is pre-configured in development environments; other providers use your own credentials.",
-      "links": ["https://docs.scalekit.com/authenticate/auth-methods/social-logins/"]
+      "links": ["https://docs.scalekit.com/authenticate/auth-methods/social-logins/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "passkey_authentication",
@@ -157,74 +166,90 @@
       "links": [
         "https://docs.scalekit.com/authenticate/auth-methods/passwordless/",
         "https://docs.scalekit.com/authenticate/auth-methods/authentication-flow/"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "email_passwordless_authentication",
       "status": "supported",
       "description": "Six-digit email verification code, switchable to magic link without code changes.",
-      "links": ["https://docs.scalekit.com/authenticate/auth-methods/passwordless/"]
+      "links": ["https://docs.scalekit.com/authenticate/auth-methods/passwordless/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "unknown",
-      "description": "SMS or phone login is not documented."
+      "description": "SMS or phone login is not documented.",
+      "plans": []
     },
     {
       "identifier": "magic_link_authentication",
       "status": "supported",
       "description": "Magic link, verification code, or both, with a configurable expiry. Selected in the dashboard under Authentication > Auth methods.",
-      "links": ["https://docs.scalekit.com/authenticate/auth-methods/passwordless/"]
+      "links": ["https://docs.scalekit.com/authenticate/auth-methods/passwordless/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "anonymous_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
       "status": "unknown",
-      "description": "MFA is not covered in the documentation."
+      "description": "MFA is not covered in the documentation.",
+      "plans": []
     },
     {
       "identifier": "hotp_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "webauthn_mfa",
       "status": "unknown",
-      "description": "Passkeys are a login method. A dedicated second-factor flow is not documented."
+      "description": "Passkeys are a login method. A dedicated second-factor flow is not documented.",
+      "plans": []
     },
     {
       "identifier": "email_code_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "phone_code_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "recovery_code_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "push_notification_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "adaptive_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "cisco_duo_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "oidc_protocol",
@@ -233,17 +258,20 @@
       "links": [
         "https://docs.scalekit.com/authenticate/fsa/implement-login/",
         "https://docs.scalekit.com/authenticate/fsa/complete-login/"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "saml2_protocol",
       "status": "supported",
       "description": "SAML 2.0 as a service provider for enterprise SSO connections to customer identity providers. Acting as a SAML identity provider is not documented.",
-      "links": ["https://docs.scalekit.com/authenticate/auth-methods/enterprise-sso/"]
+      "links": ["https://docs.scalekit.com/authenticate/auth-methods/enterprise-sso/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "ws_federation_protocol",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
@@ -252,7 +280,8 @@
       "links": [
         "https://docs.scalekit.com/authenticate/m2m/api-auth-quickstart/",
         "https://docs.scalekit.com/authenticate/m2m/api-keys/"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "oidc_federation",
@@ -261,7 +290,8 @@
       "links": [
         "https://docs.scalekit.com/authenticate/auth-methods/enterprise-sso/",
         "https://docs.scalekit.com/authenticate/sso/add-modular-sso/"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "saml_federation",
@@ -270,12 +300,14 @@
       "links": [
         "https://docs.scalekit.com/authenticate/sso/add-modular-sso/",
         "https://www.scalekit.com/pricing/auth-for-saas"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "active_directory_ldap",
       "status": "unknown",
-      "description": "LDAP and Active Directory are not documented. Directories connect through SCIM and enterprise SSO."
+      "description": "LDAP and Active Directory are not documented. Directories connect through SCIM and enterprise SSO.",
+      "plans": []
     },
     {
       "identifier": "azure_ad_integration",
@@ -284,40 +316,48 @@
       "links": [
         "https://docs.scalekit.com/authenticate/sso/add-modular-sso/",
         "https://docs.scalekit.com/directory/scim/quickstart/"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "bulk_user_import",
       "status": "supported",
       "description": "Organizations and users are imported through the API or SDKs, with batching recommended within rate limits.",
-      "links": ["https://docs.scalekit.com/fsa/guides/migration-guide/"]
+      "links": ["https://docs.scalekit.com/fsa/guides/migration-guide/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "password_hash_import",
       "status": "unknown",
-      "description": "The migration guide covers user records, verification status, organizations and role assignments. Password hash import is not documented."
+      "description": "The migration guide covers user records, verification status, organizations and role assignments. Password hash import is not documented.",
+      "plans": []
     },
     {
       "identifier": "bulk_user_export",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bulk_user_update_delete",
       "status": "partial",
       "description": "Users and organizations can be updated and deleted individually through the API. A dedicated bulk endpoint is not documented.",
-      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/delete-users-and-organizations/"]
+      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/delete-users-and-organizations/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "upsert_on_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "legacy_username_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "mfa_enrollment_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "inbound_scim_provisioning",
@@ -327,62 +367,74 @@
         "https://docs.scalekit.com/directory/scim/quickstart/",
         "https://docs.scalekit.com/authenticate/manage-users-orgs/scim-provisioning/",
         "https://www.scalekit.com/pricing/auth-for-saas"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "outbound_scim_provisioning",
       "status": "not_supported",
-      "description": "Scalekit receives SCIM from customer directories and delivers directory events to your app by webhook. It does not push users to downstream apps."
+      "description": "Scalekit receives SCIM from customer directories and delivers directory events to your app by webhook. It does not push users to downstream apps.",
+      "plans": []
     },
     {
       "identifier": "scim_groups",
       "status": "supported",
       "description": "SCIM groups are synced, and directory groups can be mapped to application roles automatically.",
-      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/scim-provisioning/"]
+      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/scim-provisioning/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "jit_provisioning",
       "status": "supported",
       "description": "Accounts are created on first SSO login when the email domain matches a verified organization domain. Enabled by default once an SSO connection is on.",
-      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/jit-provisioning/"]
+      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/jit-provisioning/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "lazy_migration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "self_service_profile_management",
       "status": "supported",
       "description": "Hosted user widgets for profile and security (including passkeys), plus organization widgets for members, SSO, SCIM, domains and session policy.",
-      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/hosted-widgets/"]
+      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/hosted-widgets/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "account_linking",
       "status": "supported",
       "description": "Identities from different login methods are merged into one user using the verified email address as the identifier.",
-      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/merge-identities/"]
+      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/merge-identities/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "user_blocking",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_metadata",
       "status": "supported",
       "description": "Custom user profile attributes created in the dashboard or API and synced from enterprise identity providers.",
-      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/custom-user-attributes/"]
+      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/custom-user-attributes/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "app_metadata",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "metadata_size_limits",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_search",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "rbac",
@@ -391,7 +443,8 @@
       "links": [
         "https://docs.scalekit.com/authenticate/authz/overview/",
         "https://docs.scalekit.com/authenticate/authz/create-roles-permissions/"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "organizations_multitenancy",
@@ -400,45 +453,54 @@
       "links": [
         "https://docs.scalekit.com/authenticate/manage-users-orgs/create-organization/",
         "https://docs.scalekit.com/authenticate/manage-users-orgs/organization-switching/"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "password_strength_policy",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "username_restrictions",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "progressive_profiling",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "abac",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fine_grained_authorization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "api_authorization",
       "status": "supported",
       "description": "Scoped OAuth 2.0 client-credentials tokens for APIs, with JWT validation through the SDKs.",
-      "links": ["https://docs.scalekit.com/authenticate/m2m/api-auth-quickstart/"]
+      "links": ["https://docs.scalekit.com/authenticate/m2m/api-auth-quickstart/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "soc2_type2",
       "status": "supported",
       "description": "SOC 2 Type II certified. Reports are available through the trust center.",
-      "links": ["https://www.scalekit.com/trust-center"]
+      "links": ["https://www.scalekit.com/trust-center"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "iso_27001",
       "status": "supported",
       "description": "ISO 27001 certified.",
-      "links": ["https://www.scalekit.com/trust-center"]
+      "links": ["https://www.scalekit.com/trust-center"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "hipaa_baa",
@@ -449,29 +511,35 @@
     },
     {
       "identifier": "pci_dss",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "csa_star",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fedramp",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "supported",
       "description": "Users and organizations can be permanently deleted, with sessions and memberships cleaned up automatically. The deletion guide names GDPR requests as a use case.",
-      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/delete-users-and-organizations/"]
+      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/delete-users-and-organizations/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "consent_management",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "region_deployment",
@@ -479,8 +547,12 @@
       "description": "Dedicated clusters in the EU (Frankfurt) and the US (Los Angeles). EU data residency is a $99/month add-on on Growth and included in Enterprise.",
       "links": ["https://www.scalekit.com/pricing/auth-for-saas", "https://www.scalekit.com/trust-center"],
       "plans": ["Enterprise"],
-      "addOnCost": "$99/month (EU data residency, Growth plan)",
-      "values": ["EU", "US"]
+      "values": ["EU", "US"],
+      "addOn": {
+        "price": "$99/month (EU data residency, Growth plan)",
+        "amount": 99,
+        "period": "month"
+      }
     },
     {
       "identifier": "private_cloud_deployment",
@@ -508,59 +580,72 @@
     },
     {
       "identifier": "security_center",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "encryption_at_rest",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "encryption_in_transit",
       "status": "supported",
       "description": "HTTPS with TLS 1.3.",
-      "links": ["https://www.scalekit.com/trust-center"]
+      "links": ["https://www.scalekit.com/trust-center"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "customer_managed_keys",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bot_detection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "brute_force_protection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "suspicious_ip_throttling",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "breached_password_detection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "credential_guard",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "device_fingerprinting",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "per_org_branding",
       "status": "supported",
       "description": "Organization logo and name on the login page and admin portal.",
-      "links": ["https://docs.scalekit.com/fsa/guides/organization-branding/"]
+      "links": ["https://docs.scalekit.com/fsa/guides/organization-branding/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "per_org_mfa_policy",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "hosted_login_page",
@@ -569,12 +654,14 @@
       "links": [
         "https://docs.scalekit.com/authenticate/fsa/implement-login/",
         "https://docs.scalekit.com/authenticate/auth-methods/authentication-flow/"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "embedded_login",
       "status": "not_supported",
-      "description": "Login is a redirect to the hosted page. Embedding the login form in the application is not documented."
+      "description": "Login is a redirect to the hosted page. Embedding the login form in the application is not documented.",
+      "plans": []
     },
     {
       "identifier": "white_label",
@@ -585,37 +672,43 @@
     },
     {
       "identifier": "localization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "prebuilt_ui_components",
       "status": "supported",
       "description": "Hosted widgets for user profile, security and organization settings, plus an embeddable admin portal for SSO, SCIM and domain verification.",
-      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/hosted-widgets/"]
+      "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/hosted-widgets/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "login_analytics",
       "status": "partial",
       "description": "Authentication logs show events, status and method per user. No analytics dashboards are documented.",
-      "links": ["https://docs.scalekit.com/guides/dashboard/auth-logs/"]
+      "links": ["https://docs.scalekit.com/guides/dashboard/auth-logs/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "sdk_coverage",
       "status": "supported",
       "description": "Official SDKs for Node.js, Python, Go and Java, plus React, Vue, Expo and iOS. Quickstarts for Express, Next.js, Flask, FastAPI, Django and Spring Boot.",
-      "links": ["https://docs.scalekit.com/saaskit/sdks/"]
+      "links": ["https://docs.scalekit.com/saaskit/sdks/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "management_api",
       "status": "supported",
       "description": "REST API for organizations, users, connections, directories, roles, sessions and domains.",
-      "links": ["https://docs.scalekit.com/saaskit/apis/"]
+      "links": ["https://docs.scalekit.com/saaskit/apis/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "authentication_api_rate_limits",
       "status": "supported",
       "description": "Per-environment request rate limit measured in requests per minute, returning HTTP 429. Limits can be raised on request.",
-      "links": ["https://docs.scalekit.com/reference/rate-limits/"]
+      "links": ["https://docs.scalekit.com/reference/rate-limits/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "actions_extensibility",
@@ -624,32 +717,38 @@
       "links": [
         "https://docs.scalekit.com/authenticate/interceptors/auth-flow-interceptors/",
         "https://docs.scalekit.com/reference/interceptors/triggers/"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "typescript_in_actions",
       "status": "not_supported",
-      "description": "Interceptors call your own endpoint, so there is no hosted code runtime."
+      "description": "Interceptors call your own endpoint, so there is no hosted code runtime.",
+      "plans": []
     },
     {
       "identifier": "custom_domain",
       "status": "supported",
       "description": "Branded custom domain through a DNS CNAME, used for the login page, admin portal, SSO and directory setup and REST endpoints.",
-      "links": ["https://docs.scalekit.com/guides/custom-domain/"]
+      "links": ["https://docs.scalekit.com/guides/custom-domain/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "deploy_cli",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "terraform_provider",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_database_connections",
       "status": "not_supported",
       "description": "Users are stored in Scalekit. Bring-your-own-auth mode keeps your own sessions and uses Scalekit only for SSO and SCIM.",
-      "links": ["https://www.scalekit.com/pricing/auth-for-saas"]
+      "links": ["https://www.scalekit.com/pricing/auth-for-saas"],
+      "plans": []
     },
     {
       "identifier": "native_webhooks",
@@ -658,45 +757,54 @@
       "links": [
         "https://docs.scalekit.com/authenticate/implement-workflows/implement-webhooks/",
         "https://docs.scalekit.com/guides/webhooks-best-practices/"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "universal_login_customization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_email_provider",
       "status": "supported",
       "description": "Authentication emails go through Scalekit by default, or through your own SMTP provider.",
-      "links": ["https://docs.scalekit.com/guides/email-providers/"]
+      "links": ["https://docs.scalekit.com/guides/email-providers/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "email_templates",
       "status": "supported",
       "description": "Customizable authentication email templates.",
-      "links": ["https://docs.scalekit.com/guides/dashboard/custom-email-templates/"]
+      "links": ["https://docs.scalekit.com/guides/dashboard/custom-email-templates/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "custom_oidc_claims",
       "status": "supported",
       "description": "Custom claims can be added to session tokens.",
-      "links": ["https://docs.scalekit.com/authenticate/fsa/session-token-claims/"]
+      "links": ["https://docs.scalekit.com/authenticate/fsa/session-token-claims/"],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "nocode_flow_builder",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "identity_proofing",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "decentralized_identity",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
@@ -706,51 +814,62 @@
         "https://docs.scalekit.com/authenticate/mcp/overview/",
         "https://docs.scalekit.com/mcp/auth-methods/xaa/",
         "https://docs.scalekit.com/agentkit/mcp/overview/"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Enterprise"]
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -758,195 +877,239 @@
       {
         "identifier": "authorization_code_grant",
         "status": "supported",
-        "links": ["https://docs.scalekit.com/authenticate/fsa/implement-login/"]
+        "links": ["https://docs.scalekit.com/authenticate/fsa/implement-login/"],
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "refresh_token_grant",
         "status": "supported",
         "description": "Refresh tokens are issued when the offline_access scope is requested.",
-        "links": ["https://docs.scalekit.com/authenticate/fsa/implement-login/"]
+        "links": ["https://docs.scalekit.com/authenticate/fsa/implement-login/"],
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "client_credentials_grant",
         "status": "supported",
-        "links": ["https://docs.scalekit.com/authenticate/m2m/api-auth-quickstart/"]
+        "links": ["https://docs.scalekit.com/authenticate/m2m/api-auth-quickstart/"],
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "implicit_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "password_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "rp_initiated_logout",
         "status": "supported",
         "description": "Logout through the /oidc/logout endpoint with a registered post-logout redirect URI.",
-        "links": ["https://docs.scalekit.com/authenticate/fsa/logout/"]
+        "links": ["https://docs.scalekit.com/authenticate/fsa/logout/"],
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "pkce_extension",
         "status": "supported",
         "description": "S256 code challenge for public clients such as SPAs and mobile apps.",
-        "links": ["https://docs.scalekit.com/authenticate/fsa/multiapp/single-page-app/"]
+        "links": ["https://docs.scalekit.com/authenticate/fsa/multiapp/single-page-app/"],
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "par_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "rar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
         "status": "supported",
         "description": "/oauth/authorize",
-        "links": ["https://docs.scalekit.com/authenticate/fsa/implement-login/"]
+        "links": ["https://docs.scalekit.com/authenticate/fsa/implement-login/"],
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "token_endpoint",
         "status": "supported",
         "description": "/oauth/token",
-        "links": ["https://docs.scalekit.com/authenticate/fsa/complete-login/"]
+        "links": ["https://docs.scalekit.com/authenticate/fsa/complete-login/"],
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "userinfo_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "token_revocation_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "token_introspection_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "device_authorization_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "supported",
-        "description": "/.well-known/openid-configuration on the environment URL. JWKS keys are published at /keys."
+        "description": "/.well-known/openid-configuration on the environment URL. JWKS keys are published at /keys.",
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "login_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "consent_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "select_account_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "create_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
         "status": "supported",
         "description": "Public clients use PKCE without a client secret.",
-        "links": ["https://docs.scalekit.com/authenticate/fsa/multiapp/manage-apps/"]
+        "links": ["https://docs.scalekit.com/authenticate/fsa/multiapp/manage-apps/"],
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
         "status": "supported",
         "description": "Supported for MCP Auth so MCP hosts can register themselves. Client ID Metadata Documents (CIMD) are also supported, with DCR as fallback.",
-        "links": ["https://docs.scalekit.com/authenticate/mcp/quickstart/"]
+        "links": ["https://docs.scalekit.com/authenticate/mcp/quickstart/"],
+        "plans": ["Free", "Growth", "Enterprise"]
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dpop",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       }
     ]
   }

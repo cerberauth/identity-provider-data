@@ -66,32 +66,46 @@
       {
         "name": "Janssen Project (self-hosted)",
         "price": "Free (open source, Apache 2.0)",
-        "amount": 0
+        "amount": 0,
+        "deployment": "self_hosted"
       },
       {
         "name": "Flex License - Core",
         "price": "$500/month (up to 100 MAU)",
         "amount": 500,
         "period": "month",
-        "mauIncluded": 100
+        "usage": {
+          "metric": "mau",
+          "included": 100
+        },
+        "deployment": "self_hosted"
       },
       {
         "name": "Flex License - Growth",
         "price": "$1,750/month (up to 400 MAU)",
         "amount": 1750,
         "period": "month",
-        "mauIncluded": 400
+        "usage": {
+          "metric": "mau",
+          "included": 400
+        },
+        "deployment": "self_hosted"
       },
       {
         "name": "Flex License - Scale",
         "price": "$6,125/month (up to 1,600 MAU)",
         "amount": 6125,
         "period": "month",
-        "mauIncluded": 1600
+        "usage": {
+          "metric": "mau",
+          "included": 1600
+        },
+        "deployment": "self_hosted"
       },
       {
         "name": "Flex Hosting (Planet/Star/Galaxy)",
-        "price": "$500-$4,000/month per location"
+        "price": "$500-$4,000/month per location",
+        "deployment": "saas"
       }
     ]
   },
@@ -108,624 +122,1206 @@
       "identifier": "username_and_password_authentication",
       "status": "supported",
       "description": "Core authentication against the configured persistence layer (LDAP, MySQL, PostgreSQL, Couchbase, or Spanner).",
-      "links": ["https://docs.jans.io/head/janssen-server/reference/database/"]
+      "links": ["https://docs.jans.io/head/janssen-server/reference/database/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
-      "description": "Inbound identity from Google, Facebook, Apple, and other providers historically via the Passport.js module; configurable today via Agama or custom interception scripts."
+      "description": "Inbound identity from Google, Facebook, Apple, and other providers historically via the Passport.js module; configurable today via Agama or custom interception scripts.",
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "passkey_authentication",
       "status": "supported",
       "description": "FIDO2/WebAuthn passkey enrollment and authentication via the jans-fido2 component.",
-      "links": ["https://docs.jans.io/head/janssen-server/fido/"]
+      "links": ["https://docs.jans.io/head/janssen-server/fido/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "email_passwordless_authentication",
       "status": "partial",
       "description": "No built-in email-OTP authenticator; achievable via a custom Agama flow or person authentication script.",
-      "links": ["https://gluu.org/agama-lab"]
+      "links": ["https://gluu.org/agama-lab"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "partial",
       "description": "No built-in SMS-OTP passwordless authenticator; achievable via custom Agama flow integrating an SMS provider.",
-      "links": ["https://gluu.org/agama-lab"]
+      "links": ["https://gluu.org/agama-lab"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "magic_link_authentication",
       "status": "unknown",
-      "description": "Not documented as a built-in authenticator; would require a custom script."
+      "description": "Not documented as a built-in authenticator; would require a custom script.",
+      "plans": []
     },
     {
       "identifier": "anonymous_authentication",
       "status": "not_supported",
-      "description": "Gluu requires an identified user or client for authentication; no anonymous/guest session concept."
+      "description": "Gluu requires an identified user or client for authentication; no anonymous/guest session concept.",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
       "status": "supported",
       "description": "TOTP one-time password authenticator, enrollable via Gluu Casa self-service portal.",
-      "links": ["https://gluu.org/casa/"]
+      "links": ["https://gluu.org/casa/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "hotp_mfa",
       "status": "supported",
       "description": "OTP interception script supports both HOTP and TOTP modes.",
-      "links": ["https://docs.jans.io/head/janssen-server/"]
+      "links": ["https://docs.jans.io/head/janssen-server/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "u2f_mfa",
       "status": "partial",
       "description": "Legacy FIDO U2F devices supported for migration; new enrollments use FIDO2/WebAuthn.",
-      "links": ["https://docs.jans.io/head/janssen-server/fido/"]
+      "links": ["https://docs.jans.io/head/janssen-server/fido/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "webauthn_mfa",
       "status": "supported",
-      "links": ["https://docs.jans.io/head/janssen-server/fido/"]
+      "links": ["https://docs.jans.io/head/janssen-server/fido/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "email_code_mfa",
       "status": "partial",
-      "description": "Achievable via custom person authentication script; no built-in email-code authenticator."
+      "description": "Achievable via custom person authentication script; no built-in email-code authenticator.",
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "phone_code_mfa",
       "status": "partial",
-      "description": "SMS OTP as a second factor achievable via custom script/Agama flow rather than a built-in authenticator."
+      "description": "SMS OTP as a second factor achievable via custom script/Agama flow rather than a built-in authenticator.",
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "recovery_code_mfa",
       "status": "unknown",
-      "description": "Not documented as a built-in feature."
+      "description": "Not documented as a built-in feature.",
+      "plans": []
     },
     {
       "identifier": "push_notification_mfa",
       "status": "supported",
       "description": "Super Gluu is Gluu's free mobile app providing out-of-band push-notification 2FA, backed by FIDO U2F key enrollment.",
-      "links": ["https://gluu.org/docs/supergluu/"]
+      "links": ["https://gluu.org/docs/supergluu/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "adaptive_mfa",
       "status": "supported",
       "description": "Context-based/risk-based authentication flows configurable through Agama low-code workflows and interception scripts.",
-      "links": ["https://gluu.org/agama-lab"]
+      "links": ["https://gluu.org/agama-lab"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "cisco_duo_mfa",
       "status": "supported",
       "description": "Duo Security interception script available for MFA integration.",
-      "links": ["https://github.com/JanssenProject/jans/tree/main/docs/script-catalog"]
+      "links": ["https://github.com/JanssenProject/jans/tree/main/docs/script-catalog"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "step_up_authentication",
       "status": "supported",
       "description": "ACR (Authentication Context Class Reference) values let relying parties request a stronger authentication method for a given transaction.",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "oidc_protocol",
       "status": "supported",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "saml2_protocol",
       "status": "supported",
       "description": "SAML 2.0 IdP support via the bundled Shibboleth Identity Provider module.",
-      "links": ["https://docs.jans.io/nightly/janssen-server/shibboleth-idp/"]
+      "links": ["https://docs.jans.io/nightly/janssen-server/shibboleth-idp/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "ws_federation_protocol",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
       "status": "supported",
       "description": "OAuth 2.0 client credentials grant, plus UMA 2.0 for API resource protection.",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "oidc_federation",
       "status": "supported",
       "description": "Inbound OIDC identity provider federation configurable via Agama or interception scripts.",
-      "links": ["https://gluu.org/agama-lab"]
+      "links": ["https://gluu.org/agama-lab"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "saml_federation",
       "status": "supported",
       "description": "SAML federation via the Shibboleth IdP module, including third-party SP/IdP metadata exchange.",
-      "links": ["https://docs.jans.io/nightly/janssen-server/shibboleth-idp/"]
+      "links": ["https://docs.jans.io/nightly/janssen-server/shibboleth-idp/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "active_directory_ldap",
       "status": "supported",
       "description": "LDAP is one of the pluggable persistence backends, with direct Active Directory bind supported.",
-      "links": ["https://docs.jans.io/head/janssen-server/reference/database/"]
+      "links": ["https://docs.jans.io/head/janssen-server/reference/database/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "azure_ad_integration",
       "status": "supported",
       "description": "Azure AD/Entra ID federation via generic OIDC or SAML identity provider configuration.",
-      "links": ["https://docs.jans.io/nightly/janssen-server/shibboleth-idp/"]
+      "links": ["https://docs.jans.io/nightly/janssen-server/shibboleth-idp/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "bulk_user_import",
       "status": "supported",
       "description": "Bulk user import via the SCIM 2.0 API or direct persistence-layer import (LDIF/SQL).",
-      "links": ["https://docs.jans.io/head/janssen-server/scim/"]
+      "links": ["https://docs.jans.io/head/janssen-server/scim/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "password_hash_import",
       "status": "supported",
       "description": "Legacy password hash/credential migration supported via a custom person authentication (\"lazy migration\") script.",
-      "links": ["https://github.com/JanssenProject/jans/tree/main/docs/script-catalog"]
+      "links": ["https://github.com/JanssenProject/jans/tree/main/docs/script-catalog"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "bulk_user_export",
       "status": "supported",
       "description": "Bulk user export via the SCIM 2.0 API.",
-      "links": ["https://docs.jans.io/head/janssen-server/scim/"]
+      "links": ["https://docs.jans.io/head/janssen-server/scim/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "bulk_user_update_delete",
       "status": "supported",
       "description": "SCIM 2.0 PATCH/DELETE operations for bulk update and delete.",
-      "links": ["https://docs.jans.io/head/janssen-server/scim/"]
+      "links": ["https://docs.jans.io/head/janssen-server/scim/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "upsert_on_import",
       "status": "supported",
       "description": "SCIM 2.0 PATCH supports upsert-style updates.",
-      "links": ["https://docs.jans.io/head/janssen-server/scim/"]
+      "links": ["https://docs.jans.io/head/janssen-server/scim/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "legacy_username_import",
       "status": "partial",
-      "description": "Username constraints depend on the configured persistence backend; no universal normalization built in."
+      "description": "Username constraints depend on the configured persistence backend; no universal normalization built in.",
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "mfa_enrollment_import",
       "status": "unknown",
-      "description": "Not documented as a bulk import API; MFA devices are typically enrolled per-user via Casa or Super Gluu."
+      "description": "Not documented as a bulk import API; MFA devices are typically enrolled per-user via Casa or Super Gluu.",
+      "plans": []
     },
     {
       "identifier": "inbound_scim_provisioning",
       "status": "supported",
       "description": "SCIM 2.0 server (RFC 7642/7643/7644) exposes CRUD endpoints for Users and Groups.",
-      "links": ["https://docs.jans.io/head/janssen-server/scim/"]
+      "links": ["https://docs.jans.io/head/janssen-server/scim/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "outbound_scim_provisioning",
       "status": "unknown",
-      "description": "Janssen ships a SCIM server; acting as a SCIM client to provision downstream systems is not documented."
+      "description": "Janssen ships a SCIM server; acting as a SCIM client to provision downstream systems is not documented.",
+      "plans": []
     },
     {
       "identifier": "scim_groups",
       "status": "supported",
-      "links": ["https://docs.jans.io/head/janssen-server/scim/"]
+      "links": ["https://docs.jans.io/head/janssen-server/scim/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "jit_provisioning",
       "status": "supported",
-      "description": "Just-in-time user creation on first federated (social/SAML/OIDC) login via interception scripts or Agama flows."
+      "description": "Just-in-time user creation on first federated (social/SAML/OIDC) login via interception scripts or Agama flows.",
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "lazy_migration",
       "status": "supported",
       "description": "Custom person authentication script pattern validates credentials against a legacy system and migrates the user on first login.",
-      "links": ["https://github.com/JanssenProject/jans/tree/main/docs/script-catalog"]
+      "links": ["https://github.com/JanssenProject/jans/tree/main/docs/script-catalog"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "self_service_profile_management",
       "status": "supported",
       "description": "Gluu Casa is a self-service portal for password reset and credential (FIDO2, TOTP, Super Gluu, SMS, X.509) management.",
-      "links": ["https://gluu.org/casa/"]
+      "links": ["https://gluu.org/casa/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "account_linking",
       "status": "partial",
-      "description": "Achievable via custom interception scripts during federated login; no built-in account-linking UI."
+      "description": "Achievable via custom interception scripts during federated login; no built-in account-linking UI.",
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "user_blocking",
       "status": "supported",
       "description": "User accounts can be disabled via SCIM (active=false) or the admin UI/TUI.",
-      "links": ["https://docs.jans.io/head/janssen-server/scim/"]
+      "links": ["https://docs.jans.io/head/janssen-server/scim/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "user_metadata",
       "status": "supported",
       "description": "Custom user attributes stored in the configured persistence backend and exposed via SCIM.",
-      "links": ["https://docs.jans.io/head/janssen-server/reference/database/"]
+      "links": ["https://docs.jans.io/head/janssen-server/reference/database/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "app_metadata",
       "status": "supported",
       "description": "Custom client attributes configurable via the Config API/TUI.",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/client-management/client-configuration/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/client-management/client-configuration/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "metadata_size_limits",
       "status": "unknown",
-      "description": "Determined by the configured persistence backend; no universal documented limit."
+      "description": "Determined by the configured persistence backend; no universal documented limit.",
+      "plans": []
     },
     {
       "identifier": "user_search",
       "status": "supported",
       "description": "User search via SCIM 2.0 filter queries.",
-      "links": ["https://docs.jans.io/head/janssen-server/scim/"]
+      "links": ["https://docs.jans.io/head/janssen-server/scim/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "rbac",
       "status": "supported",
       "description": "Role-based access via OAuth scopes and Cedarling Cedar policies.",
-      "links": ["https://docs.jans.io/v1.16.0/cedarling/"]
+      "links": ["https://docs.jans.io/v1.16.0/cedarling/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "organizations_multitenancy",
       "status": "unknown",
-      "description": "No documented multi-organization/tenant management model; each deployment is effectively single-tenant."
+      "description": "No documented multi-organization/tenant management model; each deployment is effectively single-tenant.",
+      "plans": []
     },
     {
       "identifier": "password_strength_policy",
       "status": "supported",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "username_restrictions",
       "status": "supported",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "progressive_profiling",
       "status": "unknown",
-      "description": "Not documented as a built-in feature; would require a custom Agama flow."
+      "description": "Not documented as a built-in feature; would require a custom Agama flow.",
+      "plans": []
     },
     {
       "identifier": "abac",
       "status": "supported",
       "description": "Cedarling is an embeddable Policy Decision Point built on the Rust Cedar engine, supporting attribute-based access control policies.",
-      "links": ["https://docs.jans.io/v1.16.0/cedarling/"]
+      "links": ["https://docs.jans.io/v1.16.0/cedarling/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "fine_grained_authorization",
       "status": "supported",
       "description": "Cedarling delivers fine-grained authorization decisions in under 50 microseconds, embeddable client- or server-side.",
-      "links": ["https://docs.jans.io/v1.16.0/cedarling/"]
+      "links": ["https://docs.jans.io/v1.16.0/cedarling/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "api_authorization",
       "status": "supported",
       "description": "OAuth 2.0 scopes and UMA 2.0 for centralized API/resource access management, a founding use case of the platform.",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "soc2_type2",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "iso_27001",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "hipaa_baa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pci_dss",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "csa_star",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fedramp",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
       "status": "supported",
       "description": "User data export via the SCIM 2.0 API.",
-      "links": ["https://docs.jans.io/head/janssen-server/scim/"]
+      "links": ["https://docs.jans.io/head/janssen-server/scim/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "supported",
       "description": "User deletion via SCIM DELETE.",
-      "links": ["https://docs.jans.io/head/janssen-server/scim/"]
+      "links": ["https://docs.jans.io/head/janssen-server/scim/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "consent_management",
       "status": "supported",
       "description": "OAuth 2.0 consent screen plus post-authentication consent workflows configurable via Agama.",
-      "links": ["https://gluu.org/"]
+      "links": ["https://gluu.org/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "region_deployment",
       "status": "supported",
       "description": "Self-hosted deployment in any region; Flex hosting supports multiple geographic locations per plan.",
-      "links": ["https://gluu.org/"]
+      "links": ["https://gluu.org/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "private_cloud_deployment",
       "status": "supported",
       "description": "Self-hosted via VM installers, Docker, or Helm charts for Kubernetes.",
-      "links": ["https://github.com/JanssenProject/jans/tree/main/charts/janssen"]
+      "links": ["https://github.com/JanssenProject/jans/tree/main/charts/janssen"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "audit_log_retention",
       "status": "supported",
       "description": "Server and authorization decision logging; retention is operator-configured.",
-      "links": ["https://docs.jans.io/head/janssen-server/"]
+      "links": ["https://docs.jans.io/head/janssen-server/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "audit_log_streaming",
       "status": "supported",
       "description": "Cedarling decision logs can be connected to ITDR/SIEM platforms for real-time monitoring.",
-      "links": ["https://gluu.org/"]
+      "links": ["https://gluu.org/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "security_center",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "encryption_at_rest",
       "status": "partial",
-      "description": "Depends on the configured persistence backend's own encryption-at-rest support; not a built-in Janssen feature."
+      "description": "Depends on the configured persistence backend's own encryption-at-rest support; not a built-in Janssen feature.",
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "encryption_in_transit",
       "status": "supported",
       "description": "TLS enforced for all endpoints; mutual TLS supported for client authentication.",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "customer_managed_keys",
       "status": "supported",
       "description": "Full key management control via self-hosted deployment.",
-      "links": ["https://docs.jans.io/head/janssen-server/vm-ops/managing-key-rotation/"]
+      "links": ["https://docs.jans.io/head/janssen-server/vm-ops/managing-key-rotation/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "bot_detection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "brute_force_protection",
       "status": "supported",
       "description": "Account lockout and rate-limiting configuration for authentication endpoints.",
-      "links": ["https://docs.jans.io/head/janssen-server/planning/security-best-practices/"]
+      "links": ["https://docs.jans.io/head/janssen-server/planning/security-best-practices/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "suspicious_ip_throttling",
       "status": "partial",
-      "description": "Rate limiting configurable at the endpoint level; no dedicated IP-reputation engine documented."
+      "description": "Rate limiting configurable at the endpoint level; no dedicated IP-reputation engine documented.",
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "breached_password_detection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "credential_guard",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "device_fingerprinting",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "per_org_branding",
       "status": "partial",
-      "description": "Login page and templates are customizable per deployment; no multi-organization branding model."
+      "description": "Login page and templates are customizable per deployment; no multi-organization branding model.",
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "per_org_mfa_policy",
       "status": "partial",
-      "description": "MFA/ACR policy configurable per client via scopes and interception scripts; not scoped to a multi-org model."
+      "description": "MFA/ACR policy configurable per client via scopes and interception scripts; not scoped to a multi-org model.",
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "hosted_login_page",
       "status": "supported",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "embedded_login",
       "status": "unknown",
-      "description": "Not documented as a distinct SDK-driven embedded flow beyond redirect-based OIDC."
+      "description": "Not documented as a distinct SDK-driven embedded flow beyond redirect-based OIDC.",
+      "plans": []
     },
     {
       "identifier": "white_label",
       "status": "supported",
       "description": "Login pages, Casa portal, and email templates are fully themeable.",
-      "links": ["https://gluu.org/casa/"]
+      "links": ["https://gluu.org/casa/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "localization",
       "status": "supported",
       "description": "Multi-language login pages and email templates.",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "prebuilt_ui_components",
       "status": "partial",
       "description": "Casa provides a prebuilt self-service UI; no separate general-purpose UI component library.",
-      "links": ["https://gluu.org/casa/"]
+      "links": ["https://gluu.org/casa/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "login_analytics",
       "status": "partial",
-      "description": "Structured audit/decision logs feed external SIEM/ITDR tools; no built-in analytics dashboard."
+      "description": "Structured audit/decision logs feed external SIEM/ITDR tools; no built-in analytics dashboard.",
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "sdk_coverage",
       "status": "supported",
       "description": "jans-client libraries plus Cedarling SDKs (Rust core with WASM, Python, Java, and mobile bindings).",
-      "links": ["https://docs.jans.io/v1.16.0/cedarling/"]
+      "links": ["https://docs.jans.io/v1.16.0/cedarling/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "management_api",
       "status": "supported",
       "description": "Config REST API, CLI, and Text-based UI (TUI) for server configuration and client management.",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/client-management/client-configuration/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/client-management/client-configuration/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "authentication_api_rate_limits",
       "status": "partial",
-      "description": "Rate limiting configurable per endpoint; no dedicated per-tenant quota system."
+      "description": "Rate limiting configurable per endpoint; no dedicated per-tenant quota system.",
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "actions_extensibility",
       "status": "supported",
       "description": "Interception scripts (Python/Java via Jython) and Agama low-code flows for custom authentication and authorization logic.",
-      "links": ["https://gluu.org/agama-lab"]
+      "links": ["https://gluu.org/agama-lab"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "typescript_in_actions",
       "status": "not_supported",
-      "description": "Custom logic is written in Python/Java (interception scripts) or the Agama DSL, not TypeScript/JavaScript."
+      "description": "Custom logic is written in Python/Java (interception scripts) or the Agama DSL, not TypeScript/JavaScript.",
+      "plans": []
     },
     {
       "identifier": "custom_domain",
       "status": "supported",
       "description": "Self-hosted deployment supports any custom domain.",
-      "links": ["https://gluu.org/"]
+      "links": ["https://gluu.org/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "deploy_cli",
       "status": "supported",
       "description": "Janssen CLI and Text-based UI (TUI) for scripted configuration; Helm charts for Kubernetes CI/CD.",
-      "links": ["https://github.com/JanssenProject/jans/tree/main/charts/janssen"]
+      "links": ["https://github.com/JanssenProject/jans/tree/main/charts/janssen"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "terraform_provider",
       "status": "supported",
       "description": "Official JanssenProject/terraform-provider-jans manages auth server configuration, clients, scopes, users, and scripts as code.",
-      "links": ["https://github.com/JanssenProject/terraform-provider-jans"]
+      "links": ["https://github.com/JanssenProject/terraform-provider-jans"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "custom_database_connections",
       "status": "supported",
       "description": "Pluggable persistence layer supports LDAP, MySQL, PostgreSQL, Couchbase, and Spanner, including hybrid combinations per data category.",
-      "links": ["https://docs.jans.io/head/janssen-server/reference/database/"]
+      "links": ["https://docs.jans.io/head/janssen-server/reference/database/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "native_webhooks",
       "status": "unknown",
-      "description": "Not documented as a first-class feature beyond SIEM/ITDR log streaming."
+      "description": "Not documented as a first-class feature beyond SIEM/ITDR log streaming.",
+      "plans": []
     },
     {
       "identifier": "universal_login_customization",
       "status": "supported",
       "description": "Full HTML/CSS customization of the hosted login pages.",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "custom_email_provider",
       "status": "supported",
       "description": "Configurable SMTP server for outbound notifications.",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "email_templates",
       "status": "supported",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "custom_oidc_claims",
       "status": "supported",
       "description": "Custom scopes and claims via dynamic scopes and interception scripts.",
-      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+      "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "nocode_flow_builder",
       "status": "supported",
       "description": "Agama Lab provides a drag-and-drop designer for building multi-step, multi-factor authentication workflows without coding.",
-      "links": ["https://gluu.org/agama-lab"]
+      "links": ["https://gluu.org/agama-lab"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "identity_proofing",
       "status": "unknown",
-      "description": "No general document/identity verification integration documented."
+      "description": "No general document/identity verification integration documented.",
+      "plans": []
     },
     {
       "identifier": "decentralized_identity",
       "status": "unknown",
-      "description": "Not a documented feature of the current Janssen/Cedarling stack."
+      "description": "Not a documented feature of the current Janssen/Cedarling stack.",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
       "status": "supported",
       "description": "Gluu Flex mints scoped JWTs for both workload and person identity, and Cedarling is positioned for AI agent authorization decisions as part of a Token-Based Access Control (TBAC) model.",
-      "links": ["https://gluu.org/"]
+      "links": ["https://gluu.org/"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "pq_hybrid_key_exchange",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
       "description": "The Janssen auth-server (Gluu's open-source successor) runs on Java. Java's own hybrid PQC TLS 1.3 support (JEP 527) only reached JDK 27 early-access builds in 2026 and is not yet GA; even once available it would be a JVM/runtime capability, not a documented Janssen/Gluu vendor feature, and TLS termination is typically handled by an operator-controlled reverse proxy in front of the auth server.",
-      "links": ["https://openjdk.org/jeps/527", "https://github.com/JanssenProject/jans"]
+      "links": ["https://openjdk.org/jeps/527", "https://github.com/JanssenProject/jans"],
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
       "description": "No PQC JWA signing support is shipped. There is one open GitHub feature request in the Janssen Project repo (issue #14253, 'enable post quantum algorithms on AS', milestone 2.6.0), but it has no linked PR, no specified algorithms, and is unimplemented.",
-      "links": ["https://github.com/JanssenProject/jans/issues/14253"]
+      "links": ["https://github.com/JanssenProject/jans/issues/14253"],
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
       "status": "partial",
       "category": "post_quantum_cryptography",
       "description": "The only public roadmap signal is GitHub issue #14253 in JanssenProject/jans, an open, milestone-tagged (2.6.0) feature request to enable post-quantum algorithms on the Auth Server. This is a maintainer-filed backlog item, not a published roadmap document, blog post, or whitepaper; no timeline or algorithm scope has been disclosed.",
-      "links": ["https://github.com/JanssenProject/jans/issues/14253"]
+      "links": ["https://github.com/JanssenProject/jans/issues/14253"],
+      "plans": [
+        "Janssen Project (self-hosted)",
+        "Flex License - Core",
+        "Flex License - Growth",
+        "Flex License - Scale",
+        "Flex Hosting (Planet/Star/Galaxy)"
+      ]
     },
     {
       "identifier": "pq_token_encryption",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
+      "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets.",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
+      "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints.",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
+      "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS).",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -733,225 +1329,485 @@
       {
         "identifier": "authorization_code_grant",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "refresh_token_grant",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/tokens/oauth-refresh-tokens/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/tokens/oauth-refresh-tokens/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "client_credentials_grant",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "implicit_grant",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/oauth-features/token-exchange/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/oauth-features/token-exchange/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/oauth-features/device-grant/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/oauth-features/device-grant/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
         "status": "supported",
         "description": "JWT bearer grant type is one of the grant types configurable at the token endpoint.",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "password_grant",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "rp_initiated_logout",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "pkce_extension",
         "status": "supported",
         "description": "Supports both plain and S256 code challenge methods.",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/oauth-features/pkce/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/oauth-features/pkce/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "par_extension",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/oauth-features/par/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/oauth-features/par/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "rar_extension",
         "status": "supported",
         "description": "Rich Authorization Requests via the authorization_details parameter.",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/authz-details/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/authz-details/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "jar_extension",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/authorization/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/authorization/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "authorization_endpoint",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/authorization/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/authorization/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "token_endpoint",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "userinfo_endpoint",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "token_revocation_endpoint",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "token_introspection_endpoint",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "device_authorization_endpoint",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/oauth-features/device-grant/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/oauth-features/device-grant/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "none_prompt",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/authorization/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/authorization/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "login_prompt",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/authorization/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/authorization/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "consent_prompt",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/authorization/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/authorization/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "select_account_prompt",
         "status": "unknown",
-        "description": "Not explicitly documented as a supported prompt value."
+        "description": "Not explicitly documented as a supported prompt value.",
+        "plans": []
       },
       {
         "identifier": "create_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/client-management/client-authn/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/client-management/client-authn/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/client-management/client-authn/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/client-management/client-authn/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/client-management/client-authn/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/client-management/client-authn/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/client-management/client-authn/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/client-management/client-authn/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/client-management/client-authn/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/client-management/client-authn/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
         "status": "supported",
         "description": "Mutual TLS client authentication, referenced via the mtlsTokenEndpoint configuration property.",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/endpoints/token/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "dynamic_client_registration",
         "status": "supported",
-        "links": ["https://docs.jans.io/stable/janssen-server/auth-server/endpoints/client-registration/"]
+        "links": ["https://docs.jans.io/stable/janssen-server/auth-server/endpoints/client-registration/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "dynamic_client_registration_management",
         "status": "supported",
-        "links": ["https://docs.jans.io/stable/janssen-server/auth-server/endpoints/client-registration/"]
+        "links": ["https://docs.jans.io/stable/janssen-server/auth-server/endpoints/client-registration/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "refresh_token_rotation",
         "status": "supported",
         "description": "Refresh tokens rotate on use; the refreshTokenExtendLifetimeOnRotation property controls whether lifetime extends on rotation.",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/tokens/oauth-refresh-tokens/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/tokens/oauth-refresh-tokens/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "dpop",
         "status": "supported",
         "description": "DPoP proof-of-possession at the application layer, including dpop_jkt authorization code binding and DPoP-Nonce replay mitigation.",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/oauth-features/dpop/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/oauth-features/dpop/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "fapi_1_0_baseline",
         "status": "supported",
         "description": "Auth Server targets OpenID FAPI OpenID Provider conformance profiles.",
-        "links": ["https://docs.jans.io/head/janssen-server/auth-server/"]
+        "links": ["https://docs.jans.io/head/janssen-server/auth-server/"],
+        "plans": [
+          "Janssen Project (self-hosted)",
+          "Flex License - Core",
+          "Flex License - Growth",
+          "Flex License - Scale",
+          "Flex Hosting (Planet/Star/Galaxy)"
+        ]
       },
       {
         "identifier": "fapi_1_0_advanced",
         "status": "unknown",
-        "description": "FAPI-CIBA/advanced profile is referenced in documentation goals; certification status is not published."
+        "description": "FAPI-CIBA/advanced profile is referenced in documentation goals; certification status is not published.",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
         "status": "unknown",
-        "description": "Not documented as certified; core building blocks (PAR, DPoP, JAR, mTLS) are implemented."
+        "description": "Not documented as certified; core building blocks (PAR, DPoP, JAR, mTLS) are implemented.",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jarm",
         "status": "unknown",
-        "description": "JWT Secured Authorization Response Mode is not documented as a supported response mode."
+        "description": "JWT Secured Authorization Response Mode is not documented as a supported response mode.",
+        "plans": []
       }
     ],
     "certified": {

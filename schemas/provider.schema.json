@@ -357,17 +357,17 @@
             "properties": {
               "name": {
                 "type": "string",
-                "description": "Name of the pricing plan.",
+                "description": "Name of the pricing plan. Referenced by the plans of features and add-ons, so it must be unique within the provider.",
                 "minLength": 1
               },
               "price": {
                 "type": "string",
-                "description": "Price or pricing description for the plan.",
+                "description": "Human-readable price or pricing description of the plan, as displayed by the vendor.",
                 "minLength": 1
               },
               "amount": {
                 "type": "number",
-                "description": "Machine-readable flat fee of the plan in pricing.currency, charged every period. Omitted for per-unit, usage-based, ranged and custom prices, which stay in price.",
+                "description": "Machine-readable flat base fee of the plan in pricing.currency, charged every period. 0 for free plans and plans that only bill usage. Omitted when the price is custom (contact sales) or quote-only.",
                 "minimum": 0
               },
               "period": {
@@ -375,19 +375,102 @@
                 "description": "Billing period the amount covers. Required when amount is greater than zero.",
                 "enum": ["month", "year", "one_time"]
               },
-              "mauIncluded": {
-                "type": "integer",
-                "description": "Monthly active users included in the plan price.",
-                "minimum": 0
+              "deployment": {
+                "type": "string",
+                "description": "How the plan is delivered. Open-source products that can be self-hosted or bought as a managed service list one plan per deployment, so a plan can be selected by deployment model.",
+                "enum": ["saas", "self_hosted", "hybrid", "embedded"]
               },
-              "featuresIncluded": {
-                "type": "array",
-                "description": "Identifiers of the features that list this plan in their plans. Features available on every plan are not repeated here.",
-                "items": {
-                  "type": "string",
-                  "minLength": 1
+              "usage": {
+                "type": "object",
+                "description": "Usage-based billing of the plan: units included in the base fee and the rates charged beyond them. Used to estimate the cost of a given number of users.",
+                "properties": {
+                  "metric": {
+                    "type": "string",
+                    "description": "Billed unit. \"mau\" monthly active users, \"dau\" daily active users, \"user\" registered or licensed users, \"organization\" B2B organizations, \"connection\" enterprise SSO connections.",
+                    "enum": ["mau", "dau", "user", "organization", "connection"]
+                  },
+                  "included": {
+                    "type": "integer",
+                    "description": "Units covered by the base fee.",
+                    "minimum": 0
+                  },
+                  "min": {
+                    "type": "integer",
+                    "description": "Minimum billable units (seat or volume commitment).",
+                    "minimum": 1
+                  },
+                  "max": {
+                    "type": "integer",
+                    "description": "Hard limit of the plan. Above it the plan is no longer available and a higher plan or custom contract is needed.",
+                    "minimum": 1
+                  },
+                  "period": {
+                    "type": "string",
+                    "description": "Billing period of the rates. Defaults to the period of the plan, or month.",
+                    "enum": ["month", "year"]
+                  },
+                  "rates": {
+                    "type": "array",
+                    "description": "Graduated rates applied to the units above included, in ascending order of upTo. Each rate bills the units between the previous upTo and its own.",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "upTo": {
+                          "type": "integer",
+                          "description": "Upper bound (inclusive) of units billed at this rate. Omitted for the last, open-ended rate.",
+                          "minimum": 1
+                        },
+                        "amount": {
+                          "type": "number",
+                          "description": "Price in pricing.currency per period for each block of per units.",
+                          "minimum": 0
+                        },
+                        "per": {
+                          "type": "integer",
+                          "description": "Block size the amount is charged for (1 for a unit price, 1000 for a price per thousand). Defaults to 1.",
+                          "minimum": 1
+                        }
+                      },
+                      "required": ["amount"],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1
+                  }
                 },
-                "uniqueItems": true
+                "required": ["metric"],
+                "additionalProperties": false
+              },
+              "limits": {
+                "type": "object",
+                "description": "Hard caps of the plan. A plan whose cap is below the requested usage is not a candidate.",
+                "properties": {
+                  "connections": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Enterprise SSO / directory connections."
+                  },
+                  "organizations": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "B2B organizations or tenants."
+                  },
+                  "applications": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Applications / clients."
+                  },
+                  "projects": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Projects or environments."
+                  },
+                  "events": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Events per month."
+                  }
+                },
+                "additionalProperties": false
               }
             },
             "required": ["name", "price"],
@@ -601,11 +684,12 @@
           },
           "plans": {
             "type": "array",
-            "description": "List of plan names that include or enable this feature.",
+            "description": "Names of the pricing plans that include the feature, all of them when it is on every plan. Empty when no plan includes it: the feature is not supported, planned or unknown, or only sold as an add-on. Plan names must exist in pricing.plans.",
             "items": {
               "type": "string",
               "minLength": 1
-            }
+            },
+            "uniqueItems": true
           },
           "values": {
             "type": "array",
@@ -630,13 +714,11 @@
             "description": "Release stage of the feature. Defaults to \"ga\" when omitted.",
             "enum": ["ga", "beta", "preview", "experimental"]
           },
-          "addOnCost": {
-            "type": "string",
-            "description": "Price of the feature when it is a paid add-on outside the plans (e.g. \"$25/month\").",
-            "minLength": 1
+          "addOn": {
+            "$ref": "#/$defs/addOn"
           }
         },
-        "required": ["identifier", "status"],
+        "required": ["identifier", "status", "plans"],
         "additionalProperties": false
       }
     },
@@ -687,11 +769,6 @@
                 "description": "Release stage of the feature. Defaults to \"ga\" when omitted.",
                 "enum": ["ga", "beta", "preview", "experimental"]
               },
-              "addOnCost": {
-                "type": "string",
-                "description": "Price of the feature when it is a paid add-on outside the plans (e.g. \"$25/month\").",
-                "minLength": 1
-              },
               "values": {
                 "type": "array",
                 "description": "Supported options for this feature (e.g. signing algorithms).",
@@ -699,9 +776,21 @@
                   "type": "string",
                   "minLength": 1
                 }
+              },
+              "addOn": {
+                "$ref": "#/$defs/addOn"
+              },
+              "plans": {
+                "type": "array",
+                "description": "Names of the pricing plans that include the feature, all of them when it is on every plan. Empty when no plan includes it: the feature is not supported, planned or unknown, or only sold as an add-on. Plan names must exist in pricing.plans.",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
               }
             },
-            "required": ["identifier", "status"],
+            "required": ["identifier", "status", "plans"],
             "additionalProperties": false
           }
         },
@@ -739,5 +828,82 @@
     }
   },
   "required": ["name", "abstract", "identifier", "icon", "website", "license", "features", "oidc"],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$defs": {
+    "addOn": {
+      "type": "object",
+      "description": "Price of a paid add-on. On a plan that does not include the feature it is the price of unlocking it. On a plan that includes the feature it is the fee for units above the included ones (extra connections, applications...).",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the add-on when it bundles several features (e.g. \"Multi-factor authentication\"). Features that share the same name are one purchase and are billed once. Defaults to the feature identifier.",
+          "minLength": 1
+        },
+        "price": {
+          "type": "string",
+          "description": "Human-readable price of the add-on (e.g. \"$48/month\").",
+          "minLength": 1
+        },
+        "amount": {
+          "type": "number",
+          "description": "Machine-readable price of the add-on in pricing.currency. Omitted for custom or quote-only prices.",
+          "minimum": 0
+        },
+        "period": {
+          "type": "string",
+          "description": "Billing period the amount covers. Required when amount is greater than zero.",
+          "enum": ["month", "year", "one_time"]
+        },
+        "unit": {
+          "type": "string",
+          "description": "What the amount is charged for. Omitted for a flat fee per account. \"connection\" per enterprise connection, \"application\" per application, \"project\" per project or environment, \"organization\" per organization, \"mau\" or \"user\" per active or registered user, \"event\" per event.",
+          "enum": ["connection", "application", "project", "organization", "mau", "user", "event"]
+        },
+        "per": {
+          "type": "integer",
+          "description": "Block size of units the amount is charged for (e.g. 1000000 events). Defaults to 1.",
+          "minimum": 1
+        },
+        "plans": {
+          "type": "array",
+          "description": "Plans the add-on can be bought on. Omitted when it can be bought on every plan.",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "included": {
+          "description": "Units of unit covered before the amount is charged. A number for every plan, or a map from plan name to number when plans include different amounts.",
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          ]
+        }
+      },
+      "required": ["price"],
+      "additionalProperties": false,
+      "if": {
+        "required": ["amount"],
+        "properties": {
+          "amount": {
+            "exclusiveMinimum": 0
+          }
+        }
+      },
+      "then": {
+        "required": ["period"]
+      }
+    }
+  }
 }

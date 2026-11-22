@@ -111,50 +111,44 @@
         "name": "Free",
         "price": "Free (up to 25,000 MAU, unlimited total users)",
         "amount": 0,
-        "mauIncluded": 25000
+        "usage": {
+          "metric": "mau",
+          "included": 25000,
+          "max": 25000
+        }
       },
       {
         "name": "Business Pro",
         "price": "From $120/month for 25,000 MAU, $200 for 50,000, $380 for 100,000, $900 for 250,000, $1,700 for 500,000, $3,200 for 1,000,000 and $6,000 for 2,000,000 (usage above the tier is $0.06 per MAU)",
-        "featuresIncluded": [
-          "username_and_password_authentication",
-          "passkey_authentication",
-          "phone_passwordless_authentication",
-          "totp_mfa",
-          "u2f_mfa",
-          "webauthn_mfa",
-          "email_code_mfa",
-          "phone_code_mfa",
-          "recovery_code_mfa",
-          "bot_detection",
-          "custom_domain",
-          "custom_email_provider"
-        ]
+        "amount": 120,
+        "period": "month",
+        "usage": {
+          "metric": "mau",
+          "included": 25000,
+          "max": 500000,
+          "rates": [
+            {
+              "upTo": 50000,
+              "amount": 0.0032
+            },
+            {
+              "upTo": 100000,
+              "amount": 0.0036
+            },
+            {
+              "upTo": 250000,
+              "amount": 0.003467
+            },
+            {
+              "upTo": 500000,
+              "amount": 0.0032
+            }
+          ]
+        }
       },
       {
         "name": "Enterprise",
-        "price": "Custom (private cloud, no MAU cap, up to 15,000 requests per second)",
-        "featuresIncluded": [
-          "username_and_password_authentication",
-          "passkey_authentication",
-          "phone_passwordless_authentication",
-          "totp_mfa",
-          "hotp_mfa",
-          "u2f_mfa",
-          "webauthn_mfa",
-          "email_code_mfa",
-          "phone_code_mfa",
-          "recovery_code_mfa",
-          "adaptive_mfa",
-          "rbac",
-          "hipaa_baa",
-          "private_cloud_deployment",
-          "bot_detection",
-          "device_fingerprinting",
-          "white_label",
-          "custom_domain",
-          "custom_email_provider"
-        ]
+        "price": "Custom (private cloud, no MAU cap, up to 15,000 requests per second)"
       }
     ]
   },
@@ -242,7 +236,8 @@
       "links": [
         "https://mojoauth.com/docs/authentication/social-login/",
         "https://mojoauth.com/docs/authentication/add-custom-social-login/"
-      ]
+      ],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "passkey_authentication",
@@ -255,7 +250,8 @@
       "identifier": "email_passwordless_authentication",
       "status": "supported",
       "description": "Email OTP, available on every plan.",
-      "links": ["https://mojoauth.com/docs/"]
+      "links": ["https://mojoauth.com/docs/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "phone_passwordless_authentication",
@@ -268,11 +264,13 @@
       "identifier": "magic_link_authentication",
       "status": "supported",
       "description": "Magic links by email, available on every plan.",
-      "links": ["https://mojoauth.com/docs/"]
+      "links": ["https://mojoauth.com/docs/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "anonymous_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
@@ -325,7 +323,8 @@
     },
     {
       "identifier": "push_notification_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "adaptive_mfa",
@@ -336,137 +335,166 @@
     },
     {
       "identifier": "cisco_duo_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
       "status": "partial",
       "description": "OTP can be added as a step-up check on top of an existing login. No dedicated step-up API is documented.",
-      "links": ["https://mojoauth.com/"]
+      "links": ["https://mojoauth.com/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "oidc_protocol",
       "status": "supported",
       "description": "MojoAuth acts as an OpenID Provider for OIDC applications: authorization code with PKCE, refresh tokens, discovery, JWKS and UserInfo.",
-      "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+      "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "saml2_protocol",
       "status": "supported",
       "description": "MojoAuth acts as a SAML 2.0 identity provider (Applications as IdP): SP and IdP-initiated SSO, single logout, attribute mapping, NameID formats, and assertion and response signing and encryption.",
-      "links": ["https://mojoauth.com/docs/applications/saml-connections/"]
+      "links": ["https://mojoauth.com/docs/applications/saml-connections/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "ws_federation_protocol",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "oidc_federation",
       "status": "supported",
       "description": "Social login works with any OpenID Connect provider through custom social login.",
-      "links": ["https://mojoauth.com/docs/authentication/add-custom-social-login/"]
+      "links": ["https://mojoauth.com/docs/authentication/add-custom-social-login/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "saml_federation",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "active_directory_ldap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "azure_ad_integration",
       "status": "partial",
       "description": "Entra ID (Azure AD) is one of the 11 enterprise SSO integrations with a dedicated guide.",
-      "links": ["https://mojoauth.com/docs/sso-integrations/overview"]
+      "links": ["https://mojoauth.com/docs/sso-integrations/overview"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "bulk_user_import",
       "status": "supported",
       "description": "CSV import in the dashboard for smaller datasets and a REST API for larger or automated migrations.",
-      "links": ["https://mojoauth.com/docs/data-migration/migration-overview/"]
+      "links": ["https://mojoauth.com/docs/data-migration/migration-overview/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "password_hash_import",
       "status": "partial",
       "description": "Possible according to the migration overview, but only through support and depending on a compatible hashing algorithm.",
-      "links": ["https://mojoauth.com/docs/data-migration/migration-overview/"]
+      "links": ["https://mojoauth.com/docs/data-migration/migration-overview/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "bulk_user_export",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bulk_user_update_delete",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "upsert_on_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "legacy_username_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "mfa_enrollment_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "inbound_scim_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "outbound_scim_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "scim_groups",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "jit_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "lazy_migration",
       "status": "supported",
       "description": "Progressive migration runs the old and new login side by side. Guides exist for Auth0, Cognito, Firebase, Azure B2C, Stytch and Akamai.",
-      "links": ["https://mojoauth.com/docs/data-migration/migration-overview/"]
+      "links": ["https://mojoauth.com/docs/data-migration/migration-overview/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "self_service_profile_management",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "account_linking",
       "status": "supported",
       "description": "Links several identities into one account.",
-      "links": ["https://mojoauth.com/docs/authentication/account-linking/"]
+      "links": ["https://mojoauth.com/docs/authentication/account-linking/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "user_blocking",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_metadata",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "app_metadata",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "metadata_size_limits",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_search",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "rbac",
@@ -477,43 +505,52 @@
     },
     {
       "identifier": "organizations_multitenancy",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "password_strength_policy",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "username_restrictions",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "progressive_profiling",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "abac",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fine_grained_authorization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "api_authorization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "soc2_type2",
       "status": "supported",
       "description": "SOC 2 Type II is stated on the website and pricing page.",
-      "links": ["https://mojoauth.com/pricing"]
+      "links": ["https://mojoauth.com/pricing"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "iso_27001",
       "status": "supported",
       "description": "ISO 27001 is stated on the website and pricing page.",
-      "links": ["https://mojoauth.com/pricing"]
+      "links": ["https://mojoauth.com/pricing"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "hipaa_baa",
@@ -526,35 +563,42 @@
       "identifier": "pci_dss",
       "status": "supported",
       "description": "PCI DSS is listed among the compliance claims.",
-      "links": ["https://mojoauth.com/llms-full.txt"]
+      "links": ["https://mojoauth.com/llms-full.txt"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "csa_star",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fedramp",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_right_to_erasure",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "consent_management",
       "status": "partial",
       "description": "OIDC applications show a consent screen unless skip consent is enabled. No wider consent management is documented.",
-      "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+      "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "region_deployment",
       "status": "supported",
       "description": "Standard cloud data residency in the US, EU and Asia-Pacific.",
-      "links": ["https://mojoauth.com/"]
+      "links": ["https://mojoauth.com/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "private_cloud_deployment",
@@ -565,31 +609,37 @@
     },
     {
       "identifier": "audit_log_retention",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "audit_log_streaming",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "security_center",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "encryption_at_rest",
       "status": "supported",
       "description": "Tokens and data are stated to be encrypted at rest.",
-      "links": ["https://mojoauth.com/docs/attack-prevention/oidc-security/"]
+      "links": ["https://mojoauth.com/docs/attack-prevention/oidc-security/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "encryption_in_transit",
       "status": "supported",
       "description": "Tokens and data are stated to be encrypted in transit, and webhooks recommend HTTPS.",
-      "links": ["https://mojoauth.com/docs/attack-prevention/oidc-security/"]
+      "links": ["https://mojoauth.com/docs/attack-prevention/oidc-security/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "customer_managed_keys",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bot_detection",
@@ -602,27 +652,32 @@
       "identifier": "brute_force_protection",
       "status": "supported",
       "description": "Brute-force protection has its own Attack Prevention page.",
-      "links": ["https://mojoauth.com/docs/attack-prevention/oidc-security/"]
+      "links": ["https://mojoauth.com/docs/attack-prevention/oidc-security/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "suspicious_ip_throttling",
       "status": "supported",
       "description": "Suspicious IP throttling has its own Attack Prevention page.",
-      "links": ["https://mojoauth.com/docs/attack-prevention/oidc-security/"]
+      "links": ["https://mojoauth.com/docs/attack-prevention/oidc-security/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "breached_password_detection",
       "status": "supported",
       "description": "Breached password detection has its own Attack Prevention page.",
-      "links": ["https://mojoauth.com/docs/attack-prevention/oidc-security/"]
+      "links": ["https://mojoauth.com/docs/attack-prevention/oidc-security/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "credential_guard",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "device_fingerprinting",
@@ -633,23 +688,27 @@
     },
     {
       "identifier": "per_org_branding",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "per_org_mfa_policy",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "hosted_login_page",
       "status": "supported",
       "description": "Hosted login page on every plan, plus a JavaScript widget loaded from a CDN.",
-      "links": ["https://mojoauth.com/docs/hosted-login-page/"]
+      "links": ["https://mojoauth.com/docs/hosted-login-page/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "embedded_login",
       "status": "supported",
       "description": "A JavaScript widget and SDKs let the login flow live inside the application.",
-      "links": ["https://mojoauth.com/docs/"]
+      "links": ["https://mojoauth.com/docs/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "white_label",
@@ -660,39 +719,47 @@
     },
     {
       "identifier": "localization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "prebuilt_ui_components",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "login_analytics",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "sdk_coverage",
       "status": "supported",
       "description": "Claims SDKs in 22+ languages. Documented ones include .NET, Android, Go, iOS, Java, Node.js and PHP, with quickstarts for React, Angular, Vue, Svelte, Next.js, Flutter and React Native.",
-      "links": ["https://mojoauth.com/docs/sdks/nodejs/"]
+      "links": ["https://mojoauth.com/docs/sdks/nodejs/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "management_api",
       "status": "partial",
       "description": "REST API reference covering the authentication and user endpoints.",
-      "links": ["https://mojoauth.com/docs/api-reference"]
+      "links": ["https://mojoauth.com/docs/api-reference"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "authentication_api_rate_limits",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "actions_extensibility",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "typescript_in_actions",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_domain",
@@ -703,27 +770,32 @@
     },
     {
       "identifier": "deploy_cli",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "terraform_provider",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_database_connections",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "native_webhooks",
       "status": "supported",
       "description": "Webhooks for user.created, user.updated, user.deleted, passkey and login events, signed with HMAC-SHA256 and retried with exponential backoff.",
-      "links": ["https://mojoauth.com/docs/webhooks/"]
+      "links": ["https://mojoauth.com/docs/webhooks/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "universal_login_customization",
       "status": "supported",
       "description": "Branding of the hosted login page.",
-      "links": ["https://mojoauth.com/docs/branding/branding/"]
+      "links": ["https://mojoauth.com/docs/branding/branding/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "custom_email_provider",
@@ -736,79 +808,96 @@
       "identifier": "email_templates",
       "status": "supported",
       "description": "Customizable email, SMS and WhatsApp templates.",
-      "links": ["https://mojoauth.com/docs/branding/branding/"]
+      "links": ["https://mojoauth.com/docs/branding/branding/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "custom_oidc_claims",
       "status": "supported",
       "description": "Custom claims map a user field or a constant value to a claim name. Reserved claims such as iss, sub, aud, exp, iat, auth_time and nonce are blocked.",
-      "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+      "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "nocode_flow_builder",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "identity_proofing",
       "status": "partial",
       "description": "Identity verification integrations for document and liveness checks.",
-      "links": ["https://mojoauth.com/llms-full.txt"]
+      "links": ["https://mojoauth.com/llms-full.txt"],
+      "plans": ["Free", "Business Pro", "Enterprise"]
     },
     {
       "identifier": "decentralized_identity",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -817,59 +906,70 @@
         "identifier": "authorization_code_grant",
         "status": "supported",
         "description": "Enabled per OIDC application, with PKCE.",
-        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+        "plans": ["Free", "Business Pro", "Enterprise"]
       },
       {
         "identifier": "refresh_token_grant",
         "status": "supported",
         "description": "Enabled per OIDC application through the refresh_token grant type.",
-        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+        "plans": ["Free", "Business Pro", "Enterprise"]
       },
       {
         "identifier": "client_credentials_grant",
         "status": "not_supported",
         "description": "The OIDC application settings only offer authorization_code and refresh_token.",
-        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+        "plans": []
       },
       {
         "identifier": "implicit_grant",
         "status": "not_supported",
         "description": "The OIDC application settings only offer authorization_code and refresh_token.",
-        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
         "status": "not_supported",
         "description": "The OIDC application settings only offer authorization_code and refresh_token.",
-        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "password_grant",
         "status": "not_supported",
         "description": "The OIDC application settings only offer authorization_code and refresh_token.",
-        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+        "plans": []
       },
       {
         "identifier": "rp_initiated_logout",
         "status": "supported",
         "description": "/oauth/logout with client_id, checked against the registered post-logout redirect URLs.",
-        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+        "plans": ["Free", "Business Pro", "Enterprise"]
       },
       {
         "identifier": "pkce_extension",
@@ -878,149 +978,182 @@
         "links": [
           "https://mojoauth.com/docs/applications/oidc-applications/",
           "https://mojoauth.com/docs/attack-prevention/oidc-security/"
-        ]
+        ],
+        "plans": ["Free", "Business Pro", "Enterprise"]
       },
       {
         "identifier": "par_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "rar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
         "status": "supported",
         "description": "/oauth/authorize",
-        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+        "plans": ["Free", "Business Pro", "Enterprise"]
       },
       {
         "identifier": "token_endpoint",
         "status": "supported",
         "description": "/oauth/token",
-        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+        "plans": ["Free", "Business Pro", "Enterprise"]
       },
       {
         "identifier": "userinfo_endpoint",
         "status": "supported",
         "description": "/oauth/userinfo, with openid, profile, email and phone scopes.",
-        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+        "plans": ["Free", "Business Pro", "Enterprise"]
       },
       {
         "identifier": "token_revocation_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "token_introspection_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "device_authorization_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "supported",
         "description": "/.well-known/openid-configuration, with keys at /.well-known/jwks.json.",
-        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+        "plans": ["Free", "Business Pro", "Enterprise"]
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "login_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "consent_prompt",
         "status": "partial",
         "description": "A consent screen is shown unless skip consent is enabled on the application.",
-        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+        "plans": ["Free", "Business Pro", "Enterprise"]
       },
       {
         "identifier": "select_account_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "create_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
         "status": "supported",
         "description": "Public clients leave out the secret and send the PKCE code_verifier.",
-        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+        "plans": ["Free", "Business Pro", "Enterprise"]
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
         "status": "supported",
         "description": "The documented token request sends client_id and client_secret in the POST body.",
-        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"]
+        "links": ["https://mojoauth.com/docs/applications/oidc-applications/"],
+        "plans": ["Free", "Business Pro", "Enterprise"]
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dpop",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       }
     ]
   }

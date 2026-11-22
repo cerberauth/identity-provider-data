@@ -28,8 +28,17 @@ Connect protocol support.
   - `hosting` — `regions` (data residency, ISO country codes or `EU`, `APAC`, `SAM`, `MEA`) and
     `selfHostRequirements` (`runtime`, `database`, `container`).
   - `sla` — `{ uptimePercent, url, scope }` for published uptime commitments.
-  - `pricing.freeTierMau`, `hasEnterprisePlan`, `contactSalesRequired`, and per plan `mauIncluded` and
-    `featuresIncluded` (the gated features whose `plans` name that plan; the validator keeps both in sync).
+  - `pricing.freeTierMau`, `hasEnterprisePlan`, `contactSalesRequired`, and per plan:
+    - `deployment` (`saas`, `self_hosted`, `hybrid`, `embedded`) — products that can be self-hosted or bought
+      managed get one plan per deployment (e.g. Ory "Open Source" vs "Production").
+    - `amount` / `period` — flat base fee. `usage` — `{ metric, included, min, max, rates[] }` graduated rates per
+      MAU, DAU, user, ... A `usage` without `rates` means overage prices are not published (cost shown as a lower bound).
+    - `limits` — hard caps (`connections`, `organizations`, ...) that rule a plan out.
+  - `features[].plans` — required on every feature: the plans that include it (all of them when it is on every plan, none when unsupported or add-on only). The plans live on the
+    feature, there is no per-plan feature list.
+  - `features[].addOn` — paid add-on: `{ name, price, amount, period, unit, per, included, plans }`. On a plan that
+    lacks the feature it unlocks it; on a plan that has it, it is the fee for units above `included`. Features with the
+    same `name` are one purchase.
   - `features[]` and `oidc.features[]` may also carry `tier` (`basic`, `standard`, `advanced`, `enterprise`),
     `sinceVersion` and `betaStatus` (`ga`, `beta`, `preview`, `experimental`).
   - `aliases`, `tags` — optional former or alternate names, and free-form lowercase search keywords.
@@ -44,8 +53,7 @@ Connect protocol support.
     rechecked, `lastVerified` covers the rest of the file.
   - `oidc.discoveryUrl` — optional fixed public discovery document URL, left out when it depends on a tenant or domain.
   - `oidc.certified` — optional `{ profile, version, certificationUrl }` OpenID Foundation OP certification.
-  - `addOnCost` on `features[]` and `oidc.features[]` — price of a paid add-on outside the plans. `oidc.features[].values`
-    lists supported options, like `features[].values`.
+  - `oidc.features[].values` lists supported options, like `features[].values`.
   - `sdks` — optional list of `{ language, framework, url, official }` SDKs.
   - `lastVerified` — optional date (`YYYY-MM-DD`) the file was last checked.
   - `nationality` — country of the vendor. Left out for community projects without a company behind them

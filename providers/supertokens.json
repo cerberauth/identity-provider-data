@@ -52,23 +52,28 @@
       {
         "name": "Self-hosted",
         "price": "Free",
-        "amount": 0
+        "amount": 0,
+        "deployment": "self_hosted"
       },
       {
         "name": "Managed Cloud",
-        "price": "$0.02/MAU (min $100/month after 5K MAU)"
+        "price": "$0.02/MAU (min $100/month after 5K MAU)",
+        "deployment": "saas",
+        "amount": 0,
+        "usage": {
+          "metric": "mau",
+          "included": 5000,
+          "rates": [
+            {
+              "amount": 0.02
+            }
+          ]
+        }
       },
       {
         "name": "Enterprise",
         "price": "Custom",
-        "featuresIncluded": [
-          "machine_to_machine",
-          "oidc_federation",
-          "saml_federation",
-          "bot_detection",
-          "suspicious_ip_throttling",
-          "breached_password_detection"
-        ]
+        "deployment": "saas"
       }
     ]
   },
@@ -142,147 +147,168 @@
       "status": "supported",
       "category": "authentication_methods",
       "description": "Email/password authentication via the EmailPassword recipe. Supports sign-up, sign-in, email verification, and password reset flows. Username-based auth also available via the EmailPassword recipe with username as the login identifier. Pre-built React and React Native UI components included.",
-      "links": ["https://supertokens.com/docs/authentication/email-password/introduction"]
+      "links": ["https://supertokens.com/docs/authentication/email-password/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "Social login via the ThirdParty recipe. Built-in providers: Google, GitHub, Facebook, Apple, GitLab, Twitter/X, Discord, Bitbucket, LinkedIn, Okta, Active Directory, and any generic OIDC/OAuth2 provider. Can be combined with email/password via the ThirdPartyEmailPassword recipe.",
-      "links": ["https://supertokens.com/docs/authentication/social/introduction"]
+      "links": ["https://supertokens.com/docs/authentication/social/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "passkey_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "Passkeys (FIDO2/WebAuthn) supported as a primary authentication method via the WebAuthn recipe. Users can register and authenticate with biometric authenticators (Touch ID, Face ID, Windows Hello) or hardware security keys. Auth runs on the developer's own domain.",
-      "links": ["https://supertokens.com/docs/authentication/passkeys/introduction"]
+      "links": ["https://supertokens.com/docs/authentication/passkeys/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "email_passwordless_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "Email OTP (one-time code) for passwordless sign-in via the Passwordless recipe. Configurable code expiry and length. Can be combined with magic links in the same flow. SMTP configuration required.",
-      "links": ["https://supertokens.com/docs/passwordless/introduction"]
+      "links": ["https://supertokens.com/docs/passwordless/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "Phone/SMS OTP for passwordless sign-in via the Passwordless recipe. Requires a configured SMS provider (Twilio, AWS SNS, or custom). Can be used alongside email OTP or standalone.",
-      "links": ["https://supertokens.com/docs/passwordless/introduction"]
+      "links": ["https://supertokens.com/docs/passwordless/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "magic_link_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "Email magic link sign-in via the Passwordless recipe. One-time-use links sent to the user's email. Configurable expiry. Can be combined with OTP codes in the same flow (user sees both options).",
-      "links": ["https://supertokens.com/docs/passwordless/introduction"]
+      "links": ["https://supertokens.com/docs/passwordless/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "anonymous_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "Anonymous sessions supported via the Session recipe — a session cookie is issued without requiring login. Developers track anonymous activity server-side and can link the session to a real user account upon sign-up. No dedicated 'anonymous user' record is created until conversion.",
-      "links": ["https://supertokens.com/docs/session/introduction"]
+      "links": ["https://supertokens.com/docs/session/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "totp_mfa",
       "status": "supported",
       "category": "mfa",
       "description": "TOTP (Time-based One-Time Password) MFA via the TOTP recipe, part of the MFA module. Self-hosted: included at no extra cost. Managed cloud: +$0.01/MAU add-on (minimum $100/month). Works with any TOTP authenticator app (Google Authenticator, Authy, etc.).",
-      "links": ["https://supertokens.com/docs/mfa/introduction"]
+      "links": ["https://supertokens.com/docs/mfa/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "hotp_mfa",
       "status": "not_supported",
       "category": "mfa",
       "description": "Counter-based HOTP is not supported. The MFA module supports TOTP (time-based), email OTP, and phone/SMS OTP as second factors.",
-      "links": ["https://supertokens.com/docs/mfa/introduction"]
+      "links": ["https://supertokens.com/docs/mfa/introduction"],
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
       "status": "not_supported",
       "category": "mfa",
       "description": "U2F hardware security keys are not supported as a standalone MFA factor. WebAuthn/passkeys are available as a primary authentication method (not as a second factor). U2F is the predecessor spec to WebAuthn and not separately implemented.",
-      "links": ["https://supertokens.com/docs/mfa/introduction"]
+      "links": ["https://supertokens.com/docs/mfa/introduction"],
+      "plans": []
     },
     {
       "identifier": "webauthn_mfa",
       "status": "not_supported",
       "category": "mfa",
       "description": "WebAuthn/passkeys are implemented as a primary authentication method in the WebAuthn recipe, not as an MFA second factor. Step-up to a passkey challenge as a second factor is not natively supported in the MFA module.",
-      "links": ["https://supertokens.com/docs/authentication/passkeys/introduction"]
+      "links": ["https://supertokens.com/docs/authentication/passkeys/introduction"],
+      "plans": []
     },
     {
       "identifier": "email_code_mfa",
       "status": "supported",
       "category": "mfa",
       "description": "Email OTP as a second factor via the MFA module (Passwordless recipe as an MFA step). Self-hosted: included. Managed cloud: +$0.01/MAU add-on for the MFA module.",
-      "links": ["https://supertokens.com/docs/mfa/introduction"]
+      "links": ["https://supertokens.com/docs/mfa/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "phone_code_mfa",
       "status": "supported",
       "category": "mfa",
       "description": "Phone/SMS OTP as a second factor via the MFA module. Requires a configured SMS provider (Twilio, AWS SNS, custom). Self-hosted: free. Managed cloud: +$0.01/MAU add-on for the MFA module.",
-      "links": ["https://supertokens.com/docs/mfa/introduction"]
+      "links": ["https://supertokens.com/docs/mfa/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "recovery_code_mfa",
       "status": "not_supported",
       "category": "mfa",
       "description": "Recovery/backup codes are not natively supported as a built-in MFA fallback. Developers must implement a custom recovery flow.",
-      "links": ["https://supertokens.com/docs/mfa/introduction"]
+      "links": ["https://supertokens.com/docs/mfa/introduction"],
+      "plans": []
     },
     {
       "identifier": "push_notification_mfa",
       "status": "not_supported",
       "category": "mfa",
       "description": "Push notification MFA (e.g., Duo push, custom push) is not natively supported. Not in the MFA module.",
-      "links": ["https://supertokens.com/docs/mfa/introduction"]
+      "links": ["https://supertokens.com/docs/mfa/introduction"],
+      "plans": []
     },
     {
       "identifier": "adaptive_mfa",
       "status": "not_supported",
       "category": "mfa",
       "description": "Risk-based or adaptive MFA is not natively supported. Custom adaptive logic can be implemented by overriding the MFA recipe functions in the backend SDK to evaluate risk signals before requiring a second factor.",
-      "links": ["https://supertokens.com/docs/mfa/introduction"]
+      "links": ["https://supertokens.com/docs/mfa/introduction"],
+      "plans": []
     },
     {
       "identifier": "cisco_duo_mfa",
       "status": "not_supported",
       "category": "mfa",
       "description": "No native Cisco Duo integration. Duo can be reached indirectly via SAML/OIDC SSO federation (Enterprise plan only).",
-      "links": ["https://supertokens.com/docs/authentication/enterprise/saml"]
+      "links": ["https://supertokens.com/docs/authentication/enterprise/saml"],
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
       "status": "partial",
       "category": "mfa",
       "description": "Step-up authentication can be implemented by inspecting the session's completed_factors claim and requiring additional MFA factors for sensitive operations. No built-in declarative step-up policy — requires custom logic in the backend SDK overrides.",
-      "links": ["https://supertokens.com/docs/mfa/introduction"]
+      "links": ["https://supertokens.com/docs/mfa/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "oidc_protocol",
       "status": "supported",
       "category": "integration_protocols",
       "description": "SuperTokens acts as an OIDC/OAuth 2.1 provider. Issues JWTs with customizable claims for downstream service authorization. Standard OIDC endpoints available. Custom OIDC/OAuth2 providers can be added as social login via the ThirdParty recipe.",
-      "links": ["https://supertokens.com/docs/authentication/social/introduction"]
+      "links": ["https://supertokens.com/docs/authentication/social/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "saml2_protocol",
       "status": "supported",
       "category": "integration_protocols",
       "description": "SAML 2.0 support available via the dedicated SAML recipe. Can act as a SAML SP connecting to external IdPs. Enterprise plan required for the SSO/SAML functionality in the managed cloud.",
-      "links": ["https://supertokens.com/docs/authentication/enterprise/saml"]
+      "links": ["https://supertokens.com/docs/authentication/enterprise/saml"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "ws_federation_protocol",
       "status": "not_supported",
       "category": "integration_protocols",
       "description": "WS-Federation is not supported. SuperTokens supports OIDC and SAML 2.0 as federation protocols.",
-      "links": ["https://supertokens.com/docs/authentication/enterprise/saml"]
+      "links": ["https://supertokens.com/docs/authentication/enterprise/saml"],
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
@@ -316,266 +342,304 @@
       "status": "not_supported",
       "category": "identity_federation",
       "description": "No native LDAP or Active Directory connector. AD can be federated via SAML 2.0 or OIDC using Microsoft Entra ID (Azure AD) as an IdP via the ThirdParty recipe.",
-      "links": ["https://supertokens.com/docs/authentication/enterprise/saml"]
+      "links": ["https://supertokens.com/docs/authentication/enterprise/saml"],
+      "plans": []
     },
     {
       "identifier": "azure_ad_integration",
       "status": "supported",
       "category": "identity_federation",
       "description": "Microsoft Entra ID (Azure AD) supported as a social login provider via the ThirdParty recipe (OAuth2/OIDC). For enterprise SSO with SAML or OIDC federation, the Enterprise plan (or self-hosted) is required.",
-      "links": ["https://supertokens.com/docs/authentication/social/introduction"]
+      "links": ["https://supertokens.com/docs/authentication/social/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "bulk_user_import",
       "status": "supported",
       "category": "user_management",
       "description": "Bulk user import via the User Import API — accepts arrays of users with credentials, metadata, and roles. Supports importing users without triggering sign-up hooks. Available on all plans.",
-      "links": ["https://supertokens.com/docs/references/cdi/bulk-import/addbulkimportusers"]
+      "links": ["https://supertokens.com/docs/references/cdi/bulk-import/addbulkimportusers"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "password_hash_import",
       "status": "supported",
       "category": "user_management",
       "description": "Password hash import supported for bcrypt, Argon2, and Firebase scrypt hashes. Users can sign in with their original passwords immediately post-migration without a reset step.",
-      "links": ["https://supertokens.com/docs/references/cdi/bulk-import/addbulkimportusers"]
+      "links": ["https://supertokens.com/docs/references/cdi/bulk-import/addbulkimportusers"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "bulk_user_export",
       "status": "not_supported",
       "category": "user_management",
       "description": "No dedicated REST API for bulk user export. On self-hosted deployments, users can be exported by querying the SuperTokens database (PostgreSQL or MySQL) directly. No export tooling provided out of the box.",
-      "links": ["https://supertokens.com/docs/references/cdi/bulk-import/addbulkimportusers"]
+      "links": ["https://supertokens.com/docs/references/cdi/bulk-import/addbulkimportusers"],
+      "plans": []
     },
     {
       "identifier": "bulk_user_update_delete",
       "status": "supported",
       "category": "user_management",
       "description": "Bulk user operations available via the Admin API (Node.js, Python, Go, Java, .NET). Delete, update metadata, and revoke sessions for multiple users programmatically. No single batch endpoint — requires scripted individual API calls.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "upsert_on_import",
       "status": "not_supported",
       "category": "user_management",
       "description": "The import API does not support upsert semantics. Importing a user whose email already exists will result in a duplicate or error. Pre-check for existing users before importing.",
-      "links": ["https://supertokens.com/docs/references/cdi/bulk-import/addbulkimportusers"]
+      "links": ["https://supertokens.com/docs/references/cdi/bulk-import/addbulkimportusers"],
+      "plans": []
     },
     {
       "identifier": "legacy_username_import",
       "status": "not_supported",
       "category": "user_management",
       "description": "No special handling for importing legacy usernames with non-standard characters. The EmailPassword recipe uses email as the primary login identifier. Username-based auth requires using the username field which enforces alphanumeric constraints.",
-      "links": ["https://supertokens.com/docs/references/cdi/bulk-import/addbulkimportusers"]
+      "links": ["https://supertokens.com/docs/references/cdi/bulk-import/addbulkimportusers"],
+      "plans": []
     },
     {
       "identifier": "mfa_enrollment_import",
       "status": "not_supported",
       "category": "user_management",
       "description": "Importing pre-existing TOTP secrets or MFA enrollments is not supported. Users must re-enroll in MFA after migration.",
-      "links": ["https://supertokens.com/docs/references/cdi/bulk-import/addbulkimportusers"]
+      "links": ["https://supertokens.com/docs/references/cdi/bulk-import/addbulkimportusers"],
+      "plans": []
     },
     {
       "identifier": "inbound_scim_provisioning",
       "status": "not_supported",
       "category": "user_management",
       "description": "SCIM 2.0 is not supported. User provisioning from enterprise IdPs must use the SuperTokens Admin API directly or a custom integration layer.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"],
+      "plans": []
     },
     {
       "identifier": "outbound_scim_provisioning",
       "status": "not_supported",
       "category": "user_management",
       "description": "No outbound SCIM provisioning to downstream applications.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"],
+      "plans": []
     },
     {
       "identifier": "scim_groups",
       "status": "not_supported",
       "category": "user_management",
       "description": "No SCIM group management. Groups and roles are managed via the User Roles recipe.",
-      "links": ["https://supertokens.com/docs/userroles/introduction"]
+      "links": ["https://supertokens.com/docs/userroles/introduction"],
+      "plans": []
     },
     {
       "identifier": "jit_provisioning",
       "status": "supported",
       "category": "user_management",
       "description": "Just-in-time provisioning: users are automatically created on first social/ThirdParty login. The sign-up override hook allows custom logic during provisioning (e.g., role assignment, metadata enrichment).",
-      "links": ["https://supertokens.com/docs/authentication/social/introduction"]
+      "links": ["https://supertokens.com/docs/authentication/social/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "lazy_migration",
       "status": "supported",
       "category": "user_management",
       "description": "Zero-downtime lazy migration supported: the EmailPassword sign-in override intercepts failed local auth, falls back to the legacy system to verify credentials, then creates the user locally on success. Bulk import API provides an alternative for pre-migration. Works on all plan tiers (self-hosted and managed cloud).",
-      "links": ["https://supertokens.com/docs/migration/account-migration"]
+      "links": ["https://supertokens.com/docs/migration/account-migration"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "self_service_profile_management",
       "status": "partial",
       "category": "user_management",
       "description": "No built-in self-service profile management page. Users can update their own metadata and password via the SDK. Developers must build profile management UI using the supertokens-auth-react components or a custom implementation.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "account_linking",
       "status": "supported",
       "category": "user_management",
       "description": "Account linking supported via the Account Linking recipe — merges multiple login methods (email/password, social, passwordless) into a single user record. Managed cloud: +$0.005/MAU add-on. Self-hosted: included at no extra cost.",
-      "links": ["https://supertokens.com/docs/post-authentication/account-linking/introduction"]
+      "links": ["https://supertokens.com/docs/post-authentication/account-linking/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "user_blocking",
       "status": "supported",
       "category": "user_management",
       "description": "Users can be banned/disabled via the Admin API or the built-in user management dashboard. Banned users have their active sessions revoked and cannot create new sessions.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "user_metadata",
       "status": "supported",
       "category": "user_management",
       "description": "Arbitrary user metadata stored via the User Metadata recipe (a dedicated key-value store per user). Accessible from both the backend SDK and the frontend SDK (with appropriate permissions). Available on all plans.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/user-metadata"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/user-metadata"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "app_metadata",
       "status": "supported",
       "category": "user_management",
       "description": "Admin-controlled metadata stored via the User Metadata recipe. Server-side update ensures that sensitive app metadata (e.g., roles, plan info) cannot be modified by the end user. Custom JWT claims include this metadata.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/user-metadata"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/user-metadata"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "metadata_size_limits",
       "status": "partial",
       "category": "user_management",
       "description": "No officially documented metadata size limit. On self-hosted deployments, metadata is stored in the SuperTokens database (PostgreSQL or MySQL) as a JSON blob. Practical limits depend on database configuration. Large metadata payloads included in JWTs should be kept under 8 KB to avoid HTTP header issues.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/user-metadata"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/user-metadata"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "user_search",
       "status": "supported",
       "category": "user_management",
       "description": "User search available via the built-in Admin Dashboard (filter by email, phone, recipe type) and via the Admin API. Search by email, phone number, and thirdparty provider supported. Available on all plans.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "rbac",
       "status": "supported",
       "category": "user_management",
       "description": "Role-Based Access Control via the User Roles recipe. Create roles, assign permissions to roles, assign roles to users and tenants. Roles and permissions included in session JWTs. Built-in API for role/permission management. Dashboard for admin management. Available on all plans.",
-      "links": ["https://supertokens.com/docs/userroles/introduction"]
+      "links": ["https://supertokens.com/docs/userroles/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "organizations_multitenancy",
       "status": "supported",
       "category": "user_management",
       "description": "Multi-tenancy via the Multi-tenancy recipe. Each tenant has isolated user pools, login methods, and SSO configurations. Supports tenant creation/deletion via Admin API, per-tenant login page, and shared users across tenants. Available on all plans.",
-      "links": ["https://supertokens.com/docs/multitenancy/introduction"]
+      "links": ["https://supertokens.com/docs/multitenancy/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "password_strength_policy",
       "status": "supported",
       "category": "user_management",
       "description": "Password strength policy configurable in the EmailPassword recipe initialization: minimum length, require uppercase/lowercase/numbers/special characters. Custom validators can be added via the override mechanism for more complex policies.",
-      "links": ["https://supertokens.com/docs/authentication/email-password/introduction"]
+      "links": ["https://supertokens.com/docs/authentication/email-password/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "username_restrictions",
       "status": "supported",
       "category": "user_management",
       "description": "Username format restrictions configurable in the EmailPassword recipe. Custom username validators can be added via the override mechanism. Uniqueness is enforced natively.",
-      "links": ["https://supertokens.com/docs/authentication/email-password/introduction"]
+      "links": ["https://supertokens.com/docs/authentication/email-password/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "progressive_profiling",
       "status": "not_supported",
       "category": "user_management",
       "description": "No built-in progressive profiling flow. Can be implemented at the application layer using User Metadata and custom UI.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/user-metadata"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/user-metadata"],
+      "plans": []
     },
     {
       "identifier": "abac",
       "status": "not_supported",
       "category": "access_control",
       "description": "No native attribute-based access control policy engine. Custom ABAC can be implemented by including user attributes in JWT claims and enforcing policies in application middleware.",
-      "links": ["https://supertokens.com/docs/userroles/introduction"]
+      "links": ["https://supertokens.com/docs/userroles/introduction"],
+      "plans": []
     },
     {
       "identifier": "fine_grained_authorization",
       "status": "not_supported",
       "category": "access_control",
       "description": "No relationship-based or fine-grained authorization engine (no ReBAC, no OpenFGA integration). Authorization beyond RBAC must be implemented at the application layer.",
-      "links": ["https://supertokens.com/docs/userroles/introduction"]
+      "links": ["https://supertokens.com/docs/userroles/introduction"],
+      "plans": []
     },
     {
       "identifier": "api_authorization",
       "status": "supported",
       "category": "access_control",
       "description": "Session JWT validation for API authorization. Backend SDKs provide middleware for all major frameworks (Express, FastAPI, Django, Spring, etc.) to verify sessions and check roles/permissions on each request.",
-      "links": ["https://supertokens.com/docs/session/introduction"]
+      "links": ["https://supertokens.com/docs/session/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "soc2_type2",
       "status": "supported",
       "category": "compliance",
       "description": "SuperTokens is SOC 2 Type 2 certified. The certification covers the managed cloud service.",
-      "links": ["https://supertokens.com/security"]
+      "links": ["https://supertokens.com/security"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "iso_27001",
       "status": "not_supported",
       "category": "compliance",
       "description": "ISO 27001 certification is not held by SuperTokens. Self-hosted deployments rely on the developer's own infrastructure compliance.",
-      "links": ["https://supertokens.com/security"]
+      "links": ["https://supertokens.com/security"],
+      "plans": []
     },
     {
       "identifier": "hipaa_baa",
       "status": "not_supported",
       "category": "compliance",
       "description": "HIPAA BAA is not available. For HIPAA-regulated workloads, self-hosted deployment on HIPAA-compliant infrastructure is the recommended path.",
-      "links": ["https://supertokens.com/security"]
+      "links": ["https://supertokens.com/security"],
+      "plans": []
     },
     {
       "identifier": "pci_dss",
       "status": "not_supported",
       "category": "compliance",
       "description": "PCI DSS compliance is not certified. SuperTokens is an authentication service and does not process payment data.",
-      "links": ["https://supertokens.com/security"]
+      "links": ["https://supertokens.com/security"],
+      "plans": []
     },
     {
       "identifier": "csa_star",
       "status": "not_supported",
       "category": "compliance",
       "description": "CSA STAR certification not held by SuperTokens.",
-      "links": ["https://supertokens.com/security"]
+      "links": ["https://supertokens.com/security"],
+      "plans": []
     },
     {
       "identifier": "fedramp",
       "status": "not_supported",
       "category": "compliance",
       "description": "FedRAMP authorization not held by SuperTokens. Self-hosted deployment on FedRAMP-authorized cloud infrastructure is required for federal government use cases.",
-      "links": ["https://supertokens.com/security"]
+      "links": ["https://supertokens.com/security"],
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
       "status": "supported",
       "category": "compliance",
       "description": "User data export via the Admin API (get user by ID, list sessions, get metadata). On self-hosted deployments, direct database access enables bulk export. Developers are responsible for exporting data from all related application tables.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "supported",
       "category": "compliance",
       "description": "User deletion via the Admin API deletes the SuperTokens user record, sessions, metadata, roles, and third-party identities. Application data in external databases must be deleted separately.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "consent_management",
       "status": "not_supported",
       "category": "compliance",
       "description": "No built-in consent management module. Consent must be captured and stored at the application layer using User Metadata.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/user-metadata"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/user-metadata"],
+      "plans": []
     },
     {
       "identifier": "region_deployment",
@@ -583,7 +647,8 @@
       "category": "compliance",
       "description": "Self-hosted deployments give full data residency control — deploy anywhere. Managed cloud region selection available (US and EU). For strict data residency requirements, self-hosting is recommended.",
       "links": ["https://supertokens.com/docs/deployment/self-host-supertokens"],
-      "values": ["US", "EU", "Self-hosted"]
+      "values": ["US", "EU", "Self-hosted"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "private_cloud_deployment",
@@ -591,49 +656,56 @@
       "category": "compliance",
       "description": "Open-source core is self-hostable on any cloud provider or on-premises with PostgreSQL or MySQL as the backend database. Docker images and Helm charts available. Enterprise plan provides SLA-backed managed deployments with multiple availability zones.",
       "links": ["https://supertokens.com/docs/deployment/self-host-supertokens"],
-      "values": ["AWS", "Azure", "GCP", "On-premises"]
+      "values": ["AWS", "Azure", "GCP", "On-premises"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "audit_log_retention",
       "status": "partial",
       "category": "security",
       "description": "On self-hosted deployments, auth events are written to the SuperTokens database tables — retention is controlled by the operator. Managed cloud has limited built-in log visibility. No dedicated audit log retention policy or configurable retention period on managed cloud.",
-      "links": ["https://supertokens.com/docs/deployment/self-host-supertokens"]
+      "links": ["https://supertokens.com/docs/deployment/self-host-supertokens"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "audit_log_streaming",
       "status": "not_supported",
       "category": "security",
       "description": "No native audit log streaming to external SIEM or logging platforms. On self-hosted, logs can be captured from the database or application server and forwarded to external systems at the infrastructure level.",
-      "links": ["https://supertokens.com/docs/deployment/self-host-supertokens"]
+      "links": ["https://supertokens.com/docs/deployment/self-host-supertokens"],
+      "plans": []
     },
     {
       "identifier": "security_center",
       "status": "not_supported",
       "category": "security",
       "description": "No dedicated security monitoring dashboard or threat intelligence center. Auth events visible in the built-in user management dashboard but no real-time security alerting.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"],
+      "plans": []
     },
     {
       "identifier": "encryption_at_rest",
       "status": "supported",
       "category": "security",
       "description": "Managed cloud: data encrypted at rest by the underlying cloud provider. Self-hosted: encryption at rest is the responsibility of the operator's infrastructure (e.g., encrypted EBS volumes, RDS encryption).",
-      "links": ["https://supertokens.com/security"]
+      "links": ["https://supertokens.com/security"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "encryption_in_transit",
       "status": "supported",
       "category": "security",
       "description": "All SuperTokens Core API connections use TLS. Backend SDK to Core communication can be configured with API keys over HTTPS. Self-hosted: TLS must be configured by the operator at the reverse proxy or application level.",
-      "links": ["https://supertokens.com/security"]
+      "links": ["https://supertokens.com/security"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "customer_managed_keys",
       "status": "not_supported",
       "category": "security",
       "description": "Customer-managed encryption keys not available on the managed cloud. Self-hosted deployments give full control over encryption keys at the database and storage level.",
-      "links": ["https://supertokens.com/security"]
+      "links": ["https://supertokens.com/security"],
+      "plans": []
     },
     {
       "identifier": "bot_detection",
@@ -649,7 +721,8 @@
       "status": "supported",
       "category": "security",
       "description": "Built-in rate limiting on sign-in attempts via the EmailPassword recipe. Failed attempts are tracked and throttled. Configurable via the recipe initialization. Available on all plans.",
-      "links": ["https://supertokens.com/docs/authentication/email-password/introduction"]
+      "links": ["https://supertokens.com/docs/authentication/email-password/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "suspicious_ip_throttling",
@@ -674,77 +747,88 @@
       "status": "not_supported",
       "category": "security",
       "description": "No proactive dark web monitoring or credential stuffing guard. Breached password detection at sign-up/change is available on Enterprise plan only.",
-      "links": ["https://supertokens.com/docs/additional-verification/attack-protection-suite/introduction"]
+      "links": ["https://supertokens.com/docs/additional-verification/attack-protection-suite/introduction"],
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
       "status": "not_supported",
       "category": "security",
       "description": "No tenant-level access control lists for restricting auth traffic by IP or geography. Access control must be enforced at the reverse proxy or application layer.",
-      "links": ["https://supertokens.com/docs/multitenancy/introduction"]
+      "links": ["https://supertokens.com/docs/multitenancy/introduction"],
+      "plans": []
     },
     {
       "identifier": "device_fingerprinting",
       "status": "not_supported",
       "category": "security",
       "description": "No built-in device fingerprinting. Sessions are cookie/JWT based without device-level identification. Third-party fingerprinting libraries can be integrated at the application layer.",
-      "links": ["https://supertokens.com/docs/session/introduction"]
+      "links": ["https://supertokens.com/docs/session/introduction"],
+      "plans": []
     },
     {
       "identifier": "per_org_branding",
       "status": "not_supported",
       "category": "multi_tenancy",
       "description": "No per-tenant branding support. The pre-built React UI uses global theme configuration. Per-tenant custom UI requires building a fully custom authentication flow.",
-      "links": ["https://supertokens.com/docs/multitenancy/introduction"]
+      "links": ["https://supertokens.com/docs/multitenancy/introduction"],
+      "plans": []
     },
     {
       "identifier": "per_org_mfa_policy",
       "status": "not_supported",
       "category": "multi_tenancy",
       "description": "MFA policies are configured globally, not per tenant. Per-tenant MFA enforcement requires custom logic in the MFA recipe override.",
-      "links": ["https://supertokens.com/docs/multitenancy/introduction"]
+      "links": ["https://supertokens.com/docs/multitenancy/introduction"],
+      "plans": []
     },
     {
       "identifier": "hosted_login_page",
       "status": "not_supported",
       "category": "branding_ux",
       "description": "SuperTokens is embedded-only by design — a core architectural differentiator. There is no hosted login page or redirect-based auth flow. Auth UI runs entirely on the developer's own domain, eliminating the vendor's subdomain from the user journey.",
-      "links": ["https://supertokens.com/docs/guides"]
+      "links": ["https://supertokens.com/docs/guides"],
+      "plans": []
     },
     {
       "identifier": "embedded_login",
       "status": "supported",
       "category": "branding_ux",
       "description": "Core product feature: auth runs on the developer's own domain with no redirects. Pre-built React and React Native UI components provided. The backend SDK exposes API routes that the frontend components communicate with directly. No cross-domain auth flow.",
-      "links": ["https://supertokens.com/docs/guides"]
+      "links": ["https://supertokens.com/docs/guides"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "white_label",
       "status": "supported",
       "category": "branding_ux",
       "description": "Full white-labeling by design — auth runs on the developer's own domain with no SuperTokens branding. The open-source UI components are fully customizable. CSS and component overrides supported. No paid brand-removal add-on required.",
-      "links": ["https://supertokens.com/docs/guides"]
+      "links": ["https://supertokens.com/docs/guides"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "localization",
       "status": "partial",
       "category": "branding_ux",
       "description": "Pre-built UI components have limited built-in i18n support. Translation strings can be overridden in the component configuration for supported languages. Full localization for all languages requires building a custom UI.",
-      "links": ["https://supertokens.com/docs/guides"]
+      "links": ["https://supertokens.com/docs/guides"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "prebuilt_ui_components",
       "status": "supported",
       "category": "branding_ux",
       "description": "Pre-built UI provided as supertokens-auth-react (React) and supertokens-react-native (React Native). Components for sign-in, sign-up, password reset, email verification, MFA enrollment, and session management. Customizable via theme overrides and override components.",
-      "links": ["https://supertokens.com/docs/guides"]
+      "links": ["https://supertokens.com/docs/guides"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "login_analytics",
       "status": "partial",
       "category": "analytics",
       "description": "Built-in admin dashboard shows user counts, active sessions, and basic user activity. No dedicated authentication analytics (funnel rates, MAU trends, geographic distribution). Detailed analytics require exporting data from the database on self-hosted, or integrating an external analytics platform.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "sdk_coverage",
@@ -766,190 +850,219 @@
         "Swift",
         "Kotlin",
         "Flutter"
-      ]
+      ],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "management_api",
       "status": "supported",
       "category": "developer_integration",
       "description": "SuperTokens Core exposes a REST API (accessible only from the backend SDK or with an API key). Full user management: CRUD operations, session management, roles/permissions, metadata, MFA enrollment, tenant management. Swagger-documented.",
-      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"]
+      "links": ["https://supertokens.com/docs/post-authentication/user-management/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "authentication_api_rate_limits",
       "status": "supported",
       "category": "developer_integration",
       "description": "Rate limits on sign-in attempts configurable in the EmailPassword recipe. Core API has built-in rate limiting on failed auth attempts. Self-hosted: additional infrastructure-level rate limiting (Nginx, load balancer) controlled by the operator.",
-      "links": ["https://supertokens.com/docs/session/introduction"]
+      "links": ["https://supertokens.com/docs/session/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "actions_extensibility",
       "status": "supported",
       "category": "developer_integration",
       "description": "Override any recipe function in the backend SDK: sign-up, sign-in, token creation, session refresh, sign-out, etc. Full control over all auth lifecycle events without limits on execution environment. Overrides are written in the same language as the backend SDK (Node.js, Python, Go, Java, .NET).",
-      "links": ["https://supertokens.com/docs/guides"]
+      "links": ["https://supertokens.com/docs/guides"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "typescript_in_actions",
       "status": "supported",
       "category": "developer_integration",
       "description": "Node.js backend SDK is written in TypeScript with full TypeScript support for all recipe overrides. Python, Go, Java, and .NET SDKs support their respective type systems.",
-      "links": ["https://supertokens.com/docs/guides"]
+      "links": ["https://supertokens.com/docs/guides"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "custom_domain",
       "status": "supported",
       "category": "developer_integration",
       "description": "Auth runs on the developer's own domain by default — no configuration required. The SuperTokens Core API is deployed at a developer-specified URL (typically an internal service URL). The frontend SDK is configured to point to the developer's own backend routes.",
-      "links": ["https://supertokens.com/docs/guides"]
+      "links": ["https://supertokens.com/docs/guides"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "deploy_cli",
       "status": "not_supported",
       "category": "developer_integration",
       "description": "No official CLI tool for SuperTokens deployment or configuration management. Infrastructure is managed via Docker, Helm charts, or cloud provider tooling. Configuration is done via environment variables and the backend SDK initialization.",
-      "links": ["https://supertokens.com/docs/deployment/self-host-supertokens"]
+      "links": ["https://supertokens.com/docs/deployment/self-host-supertokens"],
+      "plans": []
     },
     {
       "identifier": "terraform_provider",
       "status": "not_supported",
       "category": "developer_integration",
       "description": "No official Terraform provider for SuperTokens. Infrastructure provisioning is managed via standard cloud infrastructure tools. Community contributions exist but are not officially maintained.",
-      "links": ["https://supertokens.com/docs/deployment/self-host-supertokens"]
+      "links": ["https://supertokens.com/docs/deployment/self-host-supertokens"],
+      "plans": []
     },
     {
       "identifier": "custom_database_connections",
       "status": "supported",
       "category": "developer_integration",
       "description": "SuperTokens Core requires PostgreSQL or MySQL as the backend database. Self-hosted deployments use the operator's existing database infrastructure. No custom connector scripts needed — SuperTokens manages its own schema within the configured database.",
-      "links": ["https://supertokens.com/docs/deployment/self-host-supertokens"]
+      "links": ["https://supertokens.com/docs/deployment/self-host-supertokens"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "native_webhooks",
       "status": "supported",
       "category": "developer_integration",
       "description": "Webhooks supported via the recipe override mechanism and outgoing HTTP calls from backend SDK overrides. Any auth lifecycle event can trigger an outbound webhook. No hosted webhook management UI — implemented in backend code.",
-      "links": ["https://supertokens.com/docs/guides"]
+      "links": ["https://supertokens.com/docs/guides"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "universal_login_customization",
       "status": "not_supported",
       "category": "developer_integration",
       "description": "No hosted login page to customize. SuperTokens is embedded-only — the developer owns the entire UI. Customization is done via component override props and CSS in the supertokens-auth-react library.",
-      "links": ["https://supertokens.com/docs/guides"]
+      "links": ["https://supertokens.com/docs/guides"],
+      "plans": []
     },
     {
       "identifier": "custom_email_provider",
       "status": "supported",
       "category": "developer_integration",
       "description": "Custom email provider configurable in recipe initialization via the emailDelivery.override field. Send email via any SMTP server or HTTP API (SendGrid, SES, Mailgun, Postmark, etc.) by overriding the sendEmail function in the backend SDK.",
-      "links": ["https://supertokens.com/docs/authentication/email-password/introduction"]
+      "links": ["https://supertokens.com/docs/authentication/email-password/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "email_templates",
       "status": "supported",
       "category": "developer_integration",
       "description": "Built-in email templates for email verification, password reset, magic link, and OTP flows. Fully customizable — override the sendEmail function to modify subject, body, and sender. HTML and plaintext templates supported.",
-      "links": ["https://supertokens.com/docs/authentication/email-password/introduction"]
+      "links": ["https://supertokens.com/docs/authentication/email-password/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "custom_oidc_claims",
       "status": "supported",
       "category": "developer_integration",
       "description": "Custom JWT/session claims added via the Session recipe override (createNewSession or getAccessTokenPayload). Any additional data can be included in the access token payload. Session claim validators enforce claim presence/value on the frontend.",
-      "links": ["https://supertokens.com/docs/session/introduction"]
+      "links": ["https://supertokens.com/docs/session/introduction"],
+      "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
     },
     {
       "identifier": "nocode_flow_builder",
       "status": "not_supported",
       "category": "advanced",
       "description": "No visual/no-code authentication flow builder. Auth flows are configured programmatically in the backend SDK recipe initialization.",
-      "links": ["https://supertokens.com/docs/guides"]
+      "links": ["https://supertokens.com/docs/guides"],
+      "plans": []
     },
     {
       "identifier": "identity_proofing",
       "status": "not_supported",
       "category": "advanced",
       "description": "No built-in identity document verification or biometric liveness proofing. Must be integrated at the application layer via third-party services.",
-      "links": ["https://supertokens.com/docs/guides"]
+      "links": ["https://supertokens.com/docs/guides"],
+      "plans": []
     },
     {
       "identifier": "decentralized_identity",
       "status": "not_supported",
       "category": "advanced",
       "description": "No support for W3C Verifiable Credentials, DIDs, or wallet-based authentication.",
-      "links": ["https://supertokens.com/docs/guides"]
+      "links": ["https://supertokens.com/docs/guides"],
+      "plans": []
     },
     {
       "identifier": "billing_integration",
       "status": "not_supported",
       "category": "advanced",
       "description": "No native billing or subscription management integration. Must be handled at the application layer via third-party billing services.",
-      "links": ["https://supertokens.com/docs/guides"]
+      "links": ["https://supertokens.com/docs/guides"],
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
       "status": "not_supported",
       "category": "advanced",
       "description": "No native MCP (Model Context Protocol) authorization or AI agent identity flows. OAuth 2.1 M2M tokens (Enterprise plan) can be used for machine-to-machine agent authentication but without dedicated MCP-spec tooling.",
-      "links": ["https://supertokens.com/docs/authentication/m2m/introduction"]
+      "links": ["https://supertokens.com/docs/authentication/m2m/introduction"],
+      "plans": []
     },
     {
       "identifier": "pq_hybrid_key_exchange",
       "status": "unknown",
       "category": "post_quantum_cryptography",
-      "description": "SuperTokens Core is a Java-based HTTP microservice. Like Keycloak, it would be subject to OpenJDK's TLS provider not yet supporting ML-KEM/PQC TLS groups (JEP 527 targets JDK 27, not GA). In practice, SuperTokens Core typically sits behind the developer's own backend/reverse proxy rather than being directly internet-facing, so effective TLS PQC support depends entirely on the operator's own proxy - no SuperTokens-specific documentation on TLS stack or PQC was found."
+      "description": "SuperTokens Core is a Java-based HTTP microservice. Like Keycloak, it would be subject to OpenJDK's TLS provider not yet supporting ML-KEM/PQC TLS groups (JEP 527 targets JDK 27, not GA). In practice, SuperTokens Core typically sits behind the developer's own backend/reverse proxy rather than being directly internet-facing, so effective TLS PQC support depends entirely on the operator's own proxy - no SuperTokens-specific documentation on TLS stack or PQC was found.",
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of ML-DSA/SLH-DSA/Falcon support for session JWT signing in SuperTokens. No GitHub issues or blog posts on PQC signature algorithms were found in the supertokens-core or related repositories."
+      "description": "No public evidence found of ML-DSA/SLH-DSA/Falcon support for session JWT signing in SuperTokens. No GitHub issues or blog posts on PQC signature algorithms were found in the supertokens-core or related repositories.",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
       "status": "unknown",
       "category": "post_quantum_cryptography",
       "description": "No public roadmap, blog post, or GitHub discussion found. SuperTokens' public product roadmap contains no mention of post-quantum or quantum-safe cryptography.",
-      "links": ["https://supertokens.com/product-roadmap"]
+      "links": ["https://supertokens.com/product-roadmap"],
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
+      "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets.",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
+      "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints.",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
+      "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS).",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -957,183 +1070,227 @@
       {
         "identifier": "authorization_code_grant",
         "status": "supported",
-        "description": "Provided by the OAuth2 provider recipe, which is built on Ory Hydra."
+        "description": "Provided by the OAuth2 provider recipe, which is built on Ory Hydra.",
+        "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
       },
       {
         "identifier": "refresh_token_grant",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
       },
       {
         "identifier": "client_credentials_grant",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
       },
       {
         "identifier": "implicit_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
         "status": "not_supported",
-        "description": "SuperTokens documents the device code grant as not supported natively."
+        "description": "SuperTokens documents the device code grant as not supported natively.",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "password_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "rp_initiated_logout",
         "status": "supported",
-        "description": "Handled by the OAuth2 provider logout API."
+        "description": "Handled by the OAuth2 provider logout API.",
+        "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
       },
       {
         "identifier": "pkce_extension",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
       },
       {
         "identifier": "par_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "rar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
       },
       {
         "identifier": "token_endpoint",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
       },
       {
         "identifier": "userinfo_endpoint",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
       },
       {
         "identifier": "token_revocation_endpoint",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
       },
       {
         "identifier": "token_introspection_endpoint",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
       },
       {
         "identifier": "device_authorization_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "login_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "consent_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "select_account_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "create_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
         "status": "not_supported",
-        "description": "Clients are created through the Core admin API."
+        "description": "Clients are created through the Core admin API.",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
         "status": "supported",
-        "description": "Enabled per client."
+        "description": "Enabled per client.",
+        "plans": ["Self-hosted", "Managed Cloud", "Enterprise"]
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dpop",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       }
     ]
   }

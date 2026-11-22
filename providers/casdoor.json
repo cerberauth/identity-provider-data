@@ -88,27 +88,29 @@
       {
         "name": "Open Source",
         "price": "Free (self-hosted)",
-        "amount": 0
+        "amount": 0,
+        "deployment": "self_hosted"
       },
       {
         "name": "Starter",
         "price": "$25/month, dedicated managed instance on a casdoor.com subdomain, Singapore or Japan, ticket support",
         "amount": 25,
-        "period": "month"
+        "period": "month",
+        "deployment": "saas"
       },
       {
         "name": "Professional",
         "price": "$59/month, custom domain, 23 regions, 8x5 support",
         "amount": 59,
         "period": "month",
-        "featuresIncluded": ["custom_domain"]
+        "deployment": "saas"
       },
       {
         "name": "Enterprise",
         "price": "$149/month, priority 8x5 support, onboarding and migration help",
         "amount": 149,
         "period": "month",
-        "featuresIncluded": ["custom_domain"]
+        "deployment": "saas"
       }
     ]
   },
@@ -234,39 +236,46 @@
       "identifier": "username_and_password_authentication",
       "status": "supported",
       "description": "Username, email or phone number with a password. Each organization picks its password hashing algorithm.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/cred", "https://casdoor.ai/docs/basic/public-api"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/cred", "https://casdoor.ai/docs/basic/public-api"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
       "description": "Over 100 identity providers, including Google, GitHub, Facebook, WeChat and DingTalk, plus generic OAuth, OIDC and custom providers.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/idp", "https://casdoor.ai/docs/provider/overview"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/idp", "https://casdoor.ai/docs/provider/overview"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "passkey_authentication",
       "status": "supported",
       "description": "WebAuthn sign-in and registration.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "email_passwordless_authentication",
       "status": "supported",
       "description": "Sign-in with a verification code sent by email.",
-      "links": ["https://github.com/casdoor/casdoor#-features"]
+      "links": ["https://github.com/casdoor/casdoor#-features"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "supported",
       "description": "Sign-in with a verification code sent by SMS.",
-      "links": ["https://github.com/casdoor/casdoor#-features"]
+      "links": ["https://github.com/casdoor/casdoor#-features"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "magic_link_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "anonymous_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
@@ -275,61 +284,73 @@
       "links": [
         "https://github.com/casdoor/casdoor/blob/master/object/mfa_totp.go",
         "https://github.com/casdoor/casdoor-authenticator"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "hotp_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "webauthn_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "email_code_mfa",
       "status": "supported",
       "description": "One-time code sent by email.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/mfa_sms.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/mfa_sms.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "phone_code_mfa",
       "status": "supported",
       "description": "One-time code sent by SMS.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/mfa_sms.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/mfa_sms.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "recovery_code_mfa",
       "status": "supported",
       "description": "Recovery codes are generated when TOTP is enrolled.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/mfa_totp.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/mfa_totp.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "push_notification_mfa",
       "status": "not_supported",
       "description": "A push MFA type exists, but the code states that approval on the device cannot be verified yet, so it cannot be used as a factor.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/mfa_push.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/mfa_push.go"],
+      "plans": []
     },
     {
       "identifier": "adaptive_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "cisco_duo_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "oidc_protocol",
       "status": "supported",
       "description": "OpenID Connect provider with a per-application discovery document and JWKS.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "saml2_protocol",
@@ -338,29 +359,34 @@
       "links": [
         "https://github.com/casdoor/casdoor/blob/master/object/saml_idp.go",
         "https://github.com/casdoor/casdoor/blob/master/object/saml_slo.go"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "ws_federation_protocol",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
       "status": "supported",
       "description": "Client credentials grant for applications.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "oidc_federation",
       "status": "supported",
       "description": "Generic OIDC identity provider, plus Okta, GitLab, Google and others as pre-built providers.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/idp/oidc.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/idp/oidc.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "saml_federation",
       "status": "supported",
       "description": "SAML identity providers can be added as sign-in providers.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/saml_sp.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/saml_sp.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "active_directory_ldap",
@@ -369,7 +395,8 @@
       "links": [
         "https://github.com/casdoor/casdoor/blob/master/ldap",
         "https://github.com/casdoor/casdoor/blob/master/object/syncer_activedirectory.go"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "azure_ad_integration",
@@ -378,13 +405,15 @@
       "links": [
         "https://github.com/casdoor/casdoor/blob/master/idp/azuread_b2c.go",
         "https://github.com/casdoor/casdoor/blob/master/object/syncer_azuread.go"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "bulk_user_import",
       "status": "supported",
       "description": "Users, groups and roles can be uploaded from a spreadsheet through the console or the API.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "password_hash_import",
@@ -394,87 +423,113 @@
         "https://github.com/casdoor/casdoor/blob/master/cred",
         "https://github.com/casdoor/casdoor/blob/master/object/check.go"
       ],
-      "values": ["Argon2id", "Bcrypt", "MD5 (user salt)", "PBKDF2", "PBKDF2 (Django)", "SHA256 (salt)", "SHA512 (salt)"]
+      "values": [
+        "Argon2id",
+        "Bcrypt",
+        "MD5 (user salt)",
+        "PBKDF2",
+        "PBKDF2 (Django)",
+        "SHA256 (salt)",
+        "SHA512 (salt)"
+      ],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "bulk_user_export",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bulk_user_update_delete",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "upsert_on_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "legacy_username_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "mfa_enrollment_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "inbound_scim_provisioning",
       "status": "supported",
       "description": "SCIM 2.0 server at /scim for users and groups.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/scim"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/scim"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "outbound_scim_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "scim_groups",
       "status": "supported",
       "description": "SCIM group resources are served next to users.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/scim/group_handler.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/scim/group_handler.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "jit_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "lazy_migration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "self_service_profile_management",
       "status": "supported",
       "description": "Users edit their own profile and security settings in the account page, with fields controlled per organization.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/organization.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/organization.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "account_linking",
       "status": "supported",
       "description": "Social identities can be linked to and unlinked from a user.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "user_blocking",
       "status": "supported",
       "description": "Users can be marked as forbidden, which blocks sign-in.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/user.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/user.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "user_metadata",
       "status": "supported",
       "description": "Free-form key-value properties on each user.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/user.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/user.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "app_metadata",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "metadata_size_limits",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_search",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "rbac",
@@ -483,91 +538,109 @@
       "links": [
         "https://github.com/casdoor/casdoor/blob/master/object/role.go",
         "https://github.com/casdoor/casdoor/blob/master/object/permission.go"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "organizations_multitenancy",
       "status": "supported",
       "description": "Independent organizations, each with its own users, applications, password policy and branding.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/organization.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/organization.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "password_strength_policy",
       "status": "supported",
       "description": "Password complexity options per organization, plus password expiry in days.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/organization.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/organization.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "username_restrictions",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "progressive_profiling",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "abac",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fine_grained_authorization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "api_authorization",
       "status": "supported",
       "description": "Custom scopes per application, with audience and resource parameters on the token endpoint.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "soc2_type2",
       "status": "not_supported",
       "description": "Casdoor Cloud states it has no SOC 2 certification today.",
-      "links": ["https://www.casdoor.com"]
+      "links": ["https://www.casdoor.com"],
+      "plans": []
     },
     {
       "identifier": "iso_27001",
       "status": "not_supported",
       "description": "Casdoor Cloud states it has no ISO 27001 certification today.",
-      "links": ["https://www.casdoor.com"]
+      "links": ["https://www.casdoor.com"],
+      "plans": []
     },
     {
       "identifier": "hipaa_baa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pci_dss",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "csa_star",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fedramp",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "supported",
       "description": "Users can be deleted from the console or the API.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "consent_management",
       "status": "supported",
       "description": "OAuth consent screens per application, with stored consent records that users can revoke.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/user_scope.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/user_scope.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "region_deployment",
       "status": "supported",
       "description": "Casdoor Cloud runs in 23 regions across the Americas, Europe, Oceania, the Middle East and Asia. Starter is limited to Singapore or Japan.",
-      "links": ["https://www.casdoor.com"]
+      "links": ["https://www.casdoor.com"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "private_cloud_deployment",
@@ -578,95 +651,114 @@
         "https://github.com/casdoor/casdoor-helm",
         "https://github.com/casdoor/casdoor-operator"
       ],
-      "values": ["Binary", "Docker", "Kubernetes", "Helm"]
+      "values": ["Binary", "Docker", "Kubernetes", "Helm"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "audit_log_retention",
       "status": "supported",
       "description": "Audit records are kept forever by default, and an organization can set a retention period in days.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/record_cleanup.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/record_cleanup.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "audit_log_streaming",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "security_center",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "encryption_at_rest",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "encryption_in_transit",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "customer_managed_keys",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bot_detection",
       "status": "supported",
       "description": "CAPTCHA with reCAPTCHA, hCaptcha, Cloudflare Turnstile, GeeTest or Aliyun.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/captcha"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/captcha"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "brute_force_protection",
       "status": "supported",
       "description": "Sign-in is locked after repeated failures, 5 attempts for 15 minutes by default, and the limits are configurable.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/check.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/check.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "suspicious_ip_throttling",
       "status": "supported",
       "description": "Rules engine with IP rate limiting, IP allow and block lists, user agent and WAF rules.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/rule"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/rule"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "breached_password_detection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "credential_guard",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
       "status": "supported",
       "description": "Organizations can set an IP whitelist.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/organization.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/organization.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "device_fingerprinting",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "per_org_branding",
       "status": "supported",
       "description": "Each organization has its own logo, favicon and theme.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/organization.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/organization.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "per_org_mfa_policy",
       "status": "supported",
       "description": "MFA methods and the remember-device period are set per organization.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/organization.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/organization.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "hosted_login_page",
       "status": "supported",
       "description": "Hosted sign-in and sign-up pages with password, code, WebAuthn and Face ID tabs.",
-      "links": ["https://github.com/casdoor/casdoor#-features"]
+      "links": ["https://github.com/casdoor/casdoor#-features"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "embedded_login",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "white_label",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "localization",
@@ -675,39 +767,47 @@
       "links": [
         "https://github.com/casdoor/casdoor/blob/master/web/src/locales",
         "https://github.com/casdoor/casdoor/blob/master/object/organization.go"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "prebuilt_ui_components",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "login_analytics",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "sdk_coverage",
       "status": "supported",
       "description": "Official client SDKs for Go, Java, Python, Node.js, .NET, PHP, Rust, Ruby, JavaScript, React, Vue, Angular, Flutter, iOS and Android.",
-      "links": ["https://github.com/casdoor", "https://casdoor.ai/docs/category/integrations"]
+      "links": ["https://github.com/casdoor", "https://casdoor.ai/docs/category/integrations"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "management_api",
       "status": "supported",
       "description": "REST API that covers every console action, with a Swagger UI.",
-      "links": ["https://casdoor.ai/docs/basic/public-api", "https://door.casdoor.net/swagger"]
+      "links": ["https://casdoor.ai/docs/basic/public-api", "https://door.casdoor.net/swagger"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "authentication_api_rate_limits",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "actions_extensibility",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "typescript_in_actions",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_domain",
@@ -718,15 +818,18 @@
     },
     {
       "identifier": "deploy_cli",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "terraform_provider",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_database_connections",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "native_webhooks",
@@ -735,33 +838,39 @@
       "links": [
         "https://github.com/casdoor/casdoor/blob/master/object/webhook.go",
         "https://github.com/casdoor/casdoor/blob/master/object/webhook_event.go"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "universal_login_customization",
       "status": "supported",
       "description": "Per-application logo, theme, custom CSS and custom header, footer and sign-in HTML.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/application.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/application.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "custom_email_provider",
       "status": "supported",
       "description": "Email providers for SMTP, SendGrid, Resend and Azure Communication Services, plus a custom HTTP provider.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/email"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/email"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "email_templates",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_oidc_claims",
       "status": "supported",
       "description": "Choose the user fields in tokens, and add custom token attributes per application.",
-      "links": ["https://github.com/casdoor/casdoor/blob/master/object/application.go"]
+      "links": ["https://github.com/casdoor/casdoor/blob/master/object/application.go"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "nocode_flow_builder",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "identity_proofing",
@@ -770,11 +879,13 @@
       "links": [
         "https://github.com/casdoor/casdoor/blob/master/idv",
         "https://github.com/casdoor/casdoor/blob/master/faceId"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "decentralized_identity",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
@@ -783,57 +894,69 @@
       "links": [
         "https://github.com/casdoor/casdoor/blob/master/object/subscription.go",
         "https://github.com/casdoor/casdoor/blob/master/object/payment.go"
-      ]
+      ],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "agentic_identity",
       "status": "supported",
       "description": "Built-in MCP server and MCP gateway, OAuth 2.1 with dynamic client registration for AI agents, and agent-to-agent support.",
-      "links": ["https://casdoor.ai/", "https://github.com/casdoor/casdoor#-features"]
+      "links": ["https://casdoor.ai/", "https://github.com/casdoor/casdoor#-features"],
+      "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -841,57 +964,67 @@
       {
         "identifier": "authorization_code_grant",
         "status": "supported",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "refresh_token_grant",
         "status": "supported",
         "description": "Refresh tokens are issued with the offline_access scope.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "client_credentials_grant",
         "status": "supported",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "implicit_grant",
         "status": "supported",
         "description": "Token and id_token response types, enabled per application.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
         "status": "supported",
         "description": "RFC 8693 token exchange.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
         "status": "not_supported",
-        "description": "Not listed in the discovery grant types and not found in the source."
+        "description": "Not listed in the discovery grant types and not found in the source.",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
         "status": "supported",
         "description": "Device authorization flow.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
         "status": "supported",
         "description": "JWT bearer assertion grant, enabled per application.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "password_grant",
         "status": "supported",
         "description": "Resource owner password credentials grant, enabled per application.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "rp_initiated_logout",
@@ -900,102 +1033,121 @@
         "links": [
           "https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go",
           "https://github.com/casdoor/casdoor/blob/master/object/token_logout.go"
-        ]
+        ],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "pkce_extension",
         "status": "supported",
         "description": "S256 only. Public clients can authenticate with a code verifier instead of a client secret.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "par_extension",
         "status": "not_supported",
-        "description": "No pushed authorization request endpoint in the discovery document or the source."
+        "description": "No pushed authorization request endpoint in the discovery document or the source.",
+        "plans": []
       },
       {
         "identifier": "rar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jar_extension",
         "status": "partial",
         "description": "Request objects are accepted through the request parameter, signed with HS256, HS384 or HS512 only.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "authorization_endpoint",
         "status": "supported",
         "description": "Served at /login/oauth/authorize.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "token_endpoint",
         "status": "supported",
         "description": "Served at /api/login/oauth/access_token.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "userinfo_endpoint",
         "status": "supported",
         "description": "Served at /api/userinfo.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "token_revocation_endpoint",
         "status": "not_supported",
         "description": "No RFC 7009 revocation endpoint in the discovery document or the router.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"],
+        "plans": []
       },
       {
         "identifier": "token_introspection_endpoint",
         "status": "supported",
         "description": "Served at /api/login/oauth/introspect.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "device_authorization_endpoint",
         "status": "supported",
         "description": "Served at /api/device-auth.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "supported",
         "description": "Served at /.well-known/openid-configuration, and per application at /.well-known/<application>/openid-configuration.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
         "status": "supported",
         "description": "Served at /.well-known/oauth-authorization-server, and per application.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "none_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "login_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "consent_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "select_account_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "create_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
         "status": "supported",
         "description": "Public clients using PKCE.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
@@ -1004,73 +1156,88 @@
         "links": [
           "https://github.com/casdoor/casdoor/blob/master/controllers/token.go",
           "https://github.com/casdoor/casdoor/blob/master/object/oauth_dcr.go"
-        ]
+        ],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
         "status": "supported",
         "description": "Client credentials can be sent in the request body.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/controllers/token.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/controllers/token.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
         "status": "supported",
         "description": "JWT client assertions as defined in RFC 7523.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth_util.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/token_oauth_util.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
         "status": "supported",
         "description": "Registration endpoint at /api/oauth/register.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/oauth_dcr.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/oauth_dcr.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "dynamic_client_registration_management",
         "status": "supported",
         "description": "Registered clients can be read, updated and deleted at /api/oauth/register/<clientId>.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/routers/router.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "refresh_token_rotation",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dpop",
         "status": "supported",
         "description": "DPoP proofs are accepted at the token endpoint, and the discovery document lists the signing algorithms.",
-        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"]
+        "links": ["https://github.com/casdoor/casdoor/blob/master/object/wellknown_oidc_discovery.go"],
+        "plans": ["Open Source", "Starter", "Professional", "Enterprise"]
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       }
     ]
   }

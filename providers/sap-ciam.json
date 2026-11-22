@@ -46,18 +46,15 @@
       },
       {
         "name": "SAP Customer Identity and Access Management for B2C Core, enhanced option",
-        "price": "USD 494 per month, in blocks of 10,000 active users (requires B2C Core)",
-        "featuresIncluded": ["security_center"]
+        "price": "USD 494 per month, in blocks of 10,000 active users (requires B2C Core)"
       },
       {
         "name": "SAP Customer Identity and Access Management for B2C Core, consent option",
-        "price": "USD 280 per month, in blocks of 10,000 active users (requires B2C Core)",
-        "featuresIncluded": ["consent_management"]
+        "price": "USD 280 per month, in blocks of 10,000 active users (requires B2C Core)"
       },
       {
         "name": "SAP Customer Identity and Access Management for B2B, contacts",
-        "price": "USD 5,456 per month, in blocks of 50,000 contacts",
-        "featuresIncluded": ["organizations_multitenancy", "fine_grained_authorization"]
+        "price": "USD 5,456 per month, in blocks of 50,000 contacts"
       }
     ]
   },
@@ -111,6 +108,12 @@
       "links": [
         "https://www.sap.com/products/technology-platform/customer-identity.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -120,6 +123,12 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167afe370b21014bbc5a10ce4041860.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -130,6 +139,12 @@
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/e2ecb2a009e94460bc67d748ce06442f.html",
         "https://www.sap.com/products/technology-platform/customer-identity.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -139,6 +154,12 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/47006b8cd6ec4292b8fa6321a90328b7.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -148,6 +169,12 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ace3f07635bd4c69b4349f9402075d7b.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -157,12 +184,19 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/47006b8cd6ec4292b8fa6321a90328b7.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/465e0de25d684993a481515ff707d86f.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "anonymous_authentication",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
@@ -171,12 +205,19 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/0f7fe8d9e37c4c429323819b3d4d0f02.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/d19c6ec0bdf44f21ac2822dd879a0991.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "hotp_mfa",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
@@ -184,7 +225,8 @@
       "description": "FIDO is documented as a passwordless login method; legacy U2F as a second factor is not named explicitly.",
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "webauthn_mfa",
@@ -193,7 +235,8 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/e2ecb2a009e94460bc67d748ce06442f.html"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "email_code_mfa",
@@ -202,6 +245,12 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/d19c6ec0bdf44f21ac2822dd879a0991.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/0f7fe8d9e37c4c429323819b3d4d0f02.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -212,12 +261,19 @@
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/d19c6ec0bdf44f21ac2822dd879a0991.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/0f7fe8d9e37c4c429323819b3d4d0f02.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/2d36f51bdad44b18a26b1efdddf43a8b.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "recovery_code_mfa",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "push_notification_mfa",
@@ -226,6 +282,12 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/0f7fe8d9e37c4c429323819b3d4d0f02.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -236,12 +298,19 @@
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/65e7d0dd8df14405b7ff8209a2a067b0.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/0f7fe8d9e37c4c429323819b3d4d0f02.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/72aae0dec03a4f54a9e8a493a6bdb155.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "cisco_duo_mfa",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
@@ -250,6 +319,12 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/d19c6ec0bdf44f21ac2822dd879a0991.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/0f7fe8d9e37c4c429323819b3d4d0f02.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -259,6 +334,12 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167afe370b21014bbc5a10ce4041860.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -268,12 +349,19 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/7a9fc28c370646eea22811dcb7e3bad1.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4158935f70b21014bbc5a10ce4041860.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "ws_federation_protocol",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
@@ -282,6 +370,12 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4166c7e270b21014bbc5a10ce4041860.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -291,6 +385,12 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167afe370b21014bbc5a10ce4041860.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -300,82 +400,103 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4158935f70b21014bbc5a10ce4041860.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/7a9fc28c370646eea22811dcb7e3bad1.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "active_directory_ldap",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "azure_ad_integration",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "bulk_user_import",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "password_hash_import",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "bulk_user_export",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "bulk_user_update_delete",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "upsert_on_import",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "legacy_username_import",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "mfa_enrollment_import",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "inbound_scim_provisioning",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "outbound_scim_provisioning",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "scim_groups",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "jit_provisioning",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "lazy_migration",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "self_service_profile_management",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "account_linking",
@@ -384,37 +505,49 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/2a4dabf377414d0b92a29ffba5f0970a.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/7a9fc28c370646eea22811dcb7e3bad1.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "user_blocking",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "user_metadata",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "app_metadata",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "metadata_size_limits",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "user_search",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "rbac",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "organizations_multitenancy",
@@ -429,12 +562,14 @@
     {
       "identifier": "password_strength_policy",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "username_restrictions",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "progressive_profiling",
@@ -443,12 +578,19 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4d83300f0ac949828f9604a8abb44065.html",
         "https://www.sap.com/products/technology-platform/customer-identity.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "abac",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "fine_grained_authorization",
@@ -465,47 +607,61 @@
       "description": "Permission scopes (prefixed perm:) can be assigned per OIDC relying party to control which Customer Data Cloud API endpoints an access token may call, limited to the platform's own account APIs.",
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/b3d9bb8ec786494b8cb61d89d0df896c.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "soc2_type2",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "iso_27001",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "hipaa_baa",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "pci_dss",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "csa_star",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "fedramp",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "consent_management",
@@ -524,22 +680,31 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167afe370b21014bbc5a10ce4041860.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "private_cloud_deployment",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "audit_log_retention",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "audit_log_streaming",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "security_center",
@@ -551,17 +716,20 @@
     {
       "identifier": "encryption_at_rest",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "encryption_in_transit",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "customer_managed_keys",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "bot_detection",
@@ -570,6 +738,12 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/72aae0dec03a4f54a9e8a493a6bdb155.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4143babf70b21014bbc5a10ce4041860.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -578,12 +752,19 @@
       "description": "A CAPTCHA challenge is required once the failed-login threshold set in the site policy is reached; broader lockout behavior is not described.",
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/72aae0dec03a4f54a9e8a493a6bdb155.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "suspicious_ip_throttling",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "breached_password_detection",
@@ -591,32 +772,43 @@
       "description": "Passwords are validated against the Have I Been Pwned database to detect or block compromised passwords, enabled in the console password settings.",
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/b790e3484ec54cd8991d41691026adeb.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "credential_guard",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "device_fingerprinting",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "per_org_branding",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "per_org_mfa_policy",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "hosted_login_page",
@@ -625,6 +817,12 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/28ffca6ba4d547268688a8b14bcc1b82.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/c4cd7de1166045c3a23e9760eca93361.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -634,17 +832,25 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/417fa48b70b21014bbc5a10ce4041860.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "white_label",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "localization",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "prebuilt_ui_components",
@@ -653,12 +859,19 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/1953bd89795f4e769b34ef780acb8c29.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "login_analytics",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "sdk_coverage",
@@ -667,6 +880,12 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/417fa48b70b21014bbc5a10ce4041860.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/413128b070b21014bbc5a10ce4041860.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -676,22 +895,31 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/413128b070b21014bbc5a10ce4041860.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "authentication_api_rate_limits",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "actions_extensibility",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "typescript_in_actions",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "custom_domain",
@@ -700,27 +928,37 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/c4cd7de1166045c3a23e9760eca93361.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167afe370b21014bbc5a10ce4041860.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "deploy_cli",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "terraform_provider",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "custom_database_connections",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "native_webhooks",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "universal_login_customization",
@@ -728,12 +966,19 @@
       "description": "Login and registration screens are customized through screen-sets and hosted pages.",
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/28ffca6ba4d547268688a8b14bcc1b82.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "custom_email_provider",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "email_templates",
@@ -742,6 +987,12 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/47006b8cd6ec4292b8fa6321a90328b7.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/2d36f51bdad44b18a26b1efdddf43a8b.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
@@ -751,83 +1002,109 @@
       "links": [
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html",
         "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/b3d9bb8ec786494b8cb61d89d0df896c.html"
+      ],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
       ]
     },
     {
       "identifier": "nocode_flow_builder",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "identity_proofing",
       "status": "supported",
       "description": "ID verification is included in the B2C Core plan.",
-      "links": ["https://www.sap.com/products/technology-platform/customer-identity.html"]
+      "links": ["https://www.sap.com/products/technology-platform/customer-identity.html"],
+      "plans": [
+        "SAP Customer Identity and Access Management for B2C Core",
+        "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+        "SAP Customer Identity and Access Management for B2C Core, consent option",
+        "SAP Customer Identity and Access Management for B2B, contacts"
+      ]
     },
     {
       "identifier": "decentralized_identity",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "pq_hybrid_key_exchange",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
       "status": "unknown",
-      "description": "Not documented in SAP CIAM's public product or technical documentation."
+      "description": "Not documented in SAP CIAM's public product or technical documentation.",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -838,6 +1115,12 @@
         "description": "The OIDC provider supports the authorization code flow, along with implicit and hybrid flows using the code, token, and id_token response types.",
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html"
+        ],
+        "plans": [
+          "SAP Customer Identity and Access Management for B2C Core",
+          "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+          "SAP Customer Identity and Access Management for B2C Core, consent option",
+          "SAP Customer Identity and Access Management for B2B, contacts"
         ]
       },
       {
@@ -847,6 +1130,12 @@
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html",
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/b3d9bb8ec786494b8cb61d89d0df896c.html"
+        ],
+        "plans": [
+          "SAP Customer Identity and Access Management for B2C Core",
+          "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+          "SAP Customer Identity and Access Management for B2C Core, consent option",
+          "SAP Customer Identity and Access Management for B2B, contacts"
         ]
       },
       {
@@ -856,6 +1145,12 @@
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html",
           "https://datatracker.ietf.org/doc/html/rfc6749#section-4.4"
+        ],
+        "plans": [
+          "SAP Customer Identity and Access Management for B2C Core",
+          "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+          "SAP Customer Identity and Access Management for B2C Core, consent option",
+          "SAP Customer Identity and Access Management for B2B, contacts"
         ]
       },
       {
@@ -864,6 +1159,12 @@
         "description": "The implicit flow is supported with the id_token and token response types.",
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html"
+        ],
+        "plans": [
+          "SAP Customer Identity and Access Management for B2C Core",
+          "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+          "SAP Customer Identity and Access Management for B2C Core, consent option",
+          "SAP Customer Identity and Access Management for B2B, contacts"
         ]
       },
       {
@@ -873,12 +1174,19 @@
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/b3d9bb8ec786494b8cb61d89d0df896c.html",
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/715f24d459b5456990c622066b790da5.html"
+        ],
+        "plans": [
+          "SAP Customer Identity and Access Management for B2C Core",
+          "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+          "SAP Customer Identity and Access Management for B2C Core, consent option",
+          "SAP Customer Identity and Access Management for B2B, contacts"
         ]
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
@@ -886,22 +1194,31 @@
         "description": "The OIDC device flow (RFC 8628) is supported for all relying parties, with configurable code expiry, polling interval, and verification URI.",
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html"
+        ],
+        "plans": [
+          "SAP Customer Identity and Access Management for B2C Core",
+          "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+          "SAP Customer Identity and Access Management for B2C Core, consent option",
+          "SAP Customer Identity and Access Management for B2B, contacts"
         ]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "password_grant",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "rp_initiated_logout",
@@ -909,27 +1226,37 @@
         "description": "The provider exposes an end_session_endpoint that accepts id_token_hint and a trusted post logout redirect URI, letting the user sign out of the RP only or of the OP and all connected RPs.",
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/1953bd89795f4e769b34ef780acb8c29.html"
+        ],
+        "plans": [
+          "SAP Customer Identity and Access Management for B2C Core",
+          "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+          "SAP Customer Identity and Access Management for B2C Core, consent option",
+          "SAP Customer Identity and Access Management for B2B, contacts"
         ]
       },
       {
         "identifier": "pkce_extension",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "par_extension",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "rar_extension",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "jar_extension",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
@@ -938,6 +1265,12 @@
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html",
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html"
+        ],
+        "plans": [
+          "SAP Customer Identity and Access Management for B2C Core",
+          "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+          "SAP Customer Identity and Access Management for B2C Core, consent option",
+          "SAP Customer Identity and Access Management for B2B, contacts"
         ]
       },
       {
@@ -946,6 +1279,12 @@
         "description": "The token endpoint is available at https://fidm.<data-center>/oidc/op/v1.0/<API key>/token.",
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html"
+        ],
+        "plans": [
+          "SAP Customer Identity and Access Management for B2C Core",
+          "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+          "SAP Customer Identity and Access Management for B2C Core, consent option",
+          "SAP Customer Identity and Access Management for B2B, contacts"
         ]
       },
       {
@@ -954,17 +1293,25 @@
         "description": "Access tokens can be used at the userinfo endpoint as specified in the OpenID Connect specification.",
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html"
+        ],
+        "plans": [
+          "SAP Customer Identity and Access Management for B2C Core",
+          "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+          "SAP Customer Identity and Access Management for B2C Core, consent option",
+          "SAP Customer Identity and Access Management for B2B, contacts"
         ]
       },
       {
         "identifier": "token_revocation_endpoint",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "token_introspection_endpoint",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "device_authorization_endpoint",
@@ -972,6 +1319,12 @@
         "description": "The device_authorization endpoint is listed in the OP metadata.",
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html"
+        ],
+        "plans": [
+          "SAP Customer Identity and Access Management for B2C Core",
+          "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+          "SAP Customer Identity and Access Management for B2C Core, consent option",
+          "SAP Customer Identity and Access Management for B2B, contacts"
         ]
       },
       {
@@ -981,42 +1334,55 @@
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/ad049cec269b475886a1a3fdabeba202.html",
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html"
+        ],
+        "plans": [
+          "SAP Customer Identity and Access Management for B2C Core",
+          "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+          "SAP Customer Identity and Access Management for B2C Core, consent option",
+          "SAP Customer Identity and Access Management for B2B, contacts"
         ]
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "none_prompt",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "login_prompt",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "consent_prompt",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "select_account_prompt",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "create_prompt",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
@@ -1024,6 +1390,12 @@
         "description": "Confidential clients authenticate to the token endpoint with Basic authorization, as in the token exchange flow.",
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/715f24d459b5456990c622066b790da5.html"
+        ],
+        "plans": [
+          "SAP Customer Identity and Access Management for B2C Core",
+          "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+          "SAP Customer Identity and Access Management for B2C Core, consent option",
+          "SAP Customer Identity and Access Management for B2B, contacts"
         ]
       },
       {
@@ -1032,22 +1404,31 @@
         "description": "The client credentials example sends client_id and client_secret in the token request body.",
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html"
+        ],
+        "plans": [
+          "SAP Customer Identity and Access Management for B2C Core",
+          "SAP Customer Identity and Access Management for B2C Core, enhanced option",
+          "SAP Customer Identity and Access Management for B2C Core, consent option",
+          "SAP Customer Identity and Access Management for B2B, contacts"
         ]
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
@@ -1055,52 +1436,62 @@
         "description": "Relying parties are registered through the proprietary fidm.oidc.op.createRP API; RFC 7591 dynamic registration is not documented.",
         "links": [
           "https://help.sap.com/docs/SAP_CUSTOMER_DATA_CLOUD/8b8d6fffe113457094a17701f63e3d6a/4167d5cb70b21014bbc5a10ce4041860.html"
-        ]
+        ],
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration_management",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "dpop",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_baseline",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       },
       {
         "identifier": "jarm",
         "status": "unknown",
-        "description": "Not documented in SAP CIAM's public product or technical documentation."
+        "description": "Not documented in SAP CIAM's public product or technical documentation.",
+        "plans": []
       }
     ]
   }

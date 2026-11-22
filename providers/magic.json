@@ -101,30 +101,24 @@
         "name": "Developer",
         "price": "Free (1,000 monthly active wallets and 50,000 signatures, then $0.045 per additional wallet and $0.005 per additional signature)",
         "amount": 0,
-        "mauIncluded": 1000
+        "usage": {
+          "metric": "mau",
+          "included": 1000
+        }
       },
       {
         "name": "Startup",
         "price": "$99/month (2,500 monthly active wallets and 50,000 signatures, then $0.04 per additional wallet and $0.005 per additional signature; up to 5 team seats; 10% off with annual billing)",
         "amount": 99,
         "period": "month",
-        "mauIncluded": 2500,
-        "featuresIncluded": ["totp_mfa", "webauthn_mfa", "recovery_code_mfa", "bulk_user_export"]
+        "usage": {
+          "metric": "mau",
+          "included": 2500
+        }
       },
       {
         "name": "Enterprise",
-        "price": "Custom (wallet volume, signatures and overage fees negotiated; dedicated Slack channel, custom SLAs and onboarding support)",
-        "featuresIncluded": [
-          "totp_mfa",
-          "webauthn_mfa",
-          "recovery_code_mfa",
-          "adaptive_mfa",
-          "step_up_authentication",
-          "bulk_user_export",
-          "white_label",
-          "custom_email_provider",
-          "email_templates"
-        ]
+        "price": "Custom (wallet volume, signatures and overage fees negotiated; dedicated Slack channel, custom SLAs and onboarding support)"
       }
     ]
   },
@@ -178,25 +172,29 @@
       "identifier": "username_and_password_authentication",
       "status": "not_supported",
       "description": "Magic is passwordless only. The documented login methods are email OTP, SMS OTP, social login, passkeys, Farcaster and external wallets.",
-      "links": ["https://docs.magic.link/embedded-wallets/authentication/overview.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/authentication/overview.md"],
+      "plans": []
     },
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
       "description": "Google, Facebook, X, Apple, Discord, GitHub, LinkedIn, Bitbucket, Twitch, Microsoft, GitLab, Telegram and Steam through OAuth. Email-based access control only works for providers that return the email address.",
-      "links": ["https://docs.magic.link/embedded-wallets/authentication/login/oauth/implementation.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/authentication/login/oauth/implementation.md"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "passkey_authentication",
       "status": "supported",
       "description": "WebAuthn passkeys through the Passkey extension of the web SDK: register, log in, and list, add, rename or remove passkeys. No other SDK is documented for passkeys.",
-      "links": ["https://docs.magic.link/embedded-wallets/authentication/login/passkey.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/authentication/login/passkey.md"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "email_passwordless_authentication",
       "status": "supported",
       "description": "Email one-time passcode login on the web, React Native, iOS, Android and Flutter SDKs, with a prebuilt modal or a custom UI.",
-      "links": ["https://docs.magic.link/embedded-wallets/authentication/login/email-otp.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/authentication/login/email-otp.md"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "phone_passwordless_authentication",
@@ -205,17 +203,20 @@
       "links": [
         "https://docs.magic.link/embedded-wallets/authentication/login/sms.md",
         "https://docs.magic.link/home/faq.md"
-      ]
+      ],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "magic_link_authentication",
       "status": "unknown",
       "description": "The FAQ and some pages still mention a login link in the email next to the OTP, but the documentation index no longer has a magic link login page. Email OTP is the documented method.",
-      "links": ["https://docs.magic.link/home/faq.md"]
+      "links": ["https://docs.magic.link/home/faq.md"],
+      "plans": []
     },
     {
       "identifier": "anonymous_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
@@ -226,11 +227,13 @@
     },
     {
       "identifier": "hotp_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "webauthn_mfa",
@@ -241,13 +244,18 @@
     },
     {
       "identifier": "email_code_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "phone_code_mfa",
       "status": "unknown",
       "description": "The MFA documentation says SMS is not available as a second factor, while the pricing page lists SMS under Enterprise advanced MFA.",
-      "links": ["https://docs.magic.link/embedded-wallets/authentication/features/mfa.md", "https://magic.link/pricing"]
+      "links": [
+        "https://docs.magic.link/embedded-wallets/authentication/features/mfa.md",
+        "https://magic.link/pricing"
+      ],
+      "plans": []
     },
     {
       "identifier": "recovery_code_mfa",
@@ -261,7 +269,8 @@
     },
     {
       "identifier": "push_notification_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "adaptive_mfa",
@@ -272,7 +281,8 @@
     },
     {
       "identifier": "cisco_duo_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
@@ -288,51 +298,61 @@
       "links": [
         "https://docs.magic.link/server-wallets/express-api/identity-provider.md",
         "https://docs.magic.link/embedded-wallets/authentication/login/email-otp.md"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "saml2_protocol",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "ws_federation_protocol",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "oidc_federation",
       "status": "partial",
       "description": "The Server Wallets Express API accepts JWTs from external OIDC providers (Auth0, Firebase Auth or any custom issuer), configured with issuer, audience and JWKS URI. Embedded Wallets login does not federate to OIDC providers other than the listed social logins.",
-      "links": ["https://docs.magic.link/server-wallets/express-api/identity-provider.md"]
+      "links": ["https://docs.magic.link/server-wallets/express-api/identity-provider.md"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "saml_federation",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "active_directory_ldap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "azure_ad_integration",
       "status": "partial",
       "description": "Microsoft is available as a social login provider. There is no Entra ID directory or enterprise SSO integration.",
-      "links": ["https://docs.magic.link/embedded-wallets/authentication/overview.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/authentication/overview.md"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "bulk_user_import",
       "status": "not_supported",
       "description": "Magic does not support importing user data.",
-      "links": ["https://docs.magic.link/home/faq.md"]
+      "links": ["https://docs.magic.link/home/faq.md"],
+      "plans": []
     },
     {
       "identifier": "password_hash_import",
       "status": "not_supported",
       "description": "Magic is passwordless and does not import users.",
-      "links": ["https://docs.magic.link/home/faq.md"]
+      "links": ["https://docs.magic.link/home/faq.md"],
+      "plans": []
     },
     {
       "identifier": "bulk_user_export",
@@ -348,45 +368,54 @@
       "links": [
         "https://docs.magic.link/embedded-wallets/authentication/data/deletion-request.md",
         "https://docs.magic.link/home/faq.md"
-      ]
+      ],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "upsert_on_import",
       "status": "not_supported",
       "description": "User import is not supported.",
-      "links": ["https://docs.magic.link/home/faq.md"]
+      "links": ["https://docs.magic.link/home/faq.md"],
+      "plans": []
     },
     {
       "identifier": "legacy_username_import",
       "status": "not_supported",
       "description": "User import is not supported.",
-      "links": ["https://docs.magic.link/home/faq.md"]
+      "links": ["https://docs.magic.link/home/faq.md"],
+      "plans": []
     },
     {
       "identifier": "mfa_enrollment_import",
       "status": "not_supported",
       "description": "User import is not supported.",
-      "links": ["https://docs.magic.link/home/faq.md"]
+      "links": ["https://docs.magic.link/home/faq.md"],
+      "plans": []
     },
     {
       "identifier": "inbound_scim_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "outbound_scim_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "scim_groups",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "jit_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "lazy_migration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "self_service_profile_management",
@@ -395,105 +424,127 @@
       "links": [
         "https://docs.magic.link/embedded-wallets/authentication/features/mfa.md",
         "https://docs.magic.link/embedded-wallets/authentication/features/account-recovery.md"
-      ]
+      ],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "account_linking",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_blocking",
       "status": "partial",
       "description": "Blocklists of up to 20k emails or domains stop new sessions without ending active ones. Blocking is by email or domain pattern, not by user account.",
-      "links": ["https://docs.magic.link/embedded-wallets/authentication/security/access-control.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/authentication/security/access-control.md"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "user_metadata",
       "status": "not_supported",
       "description": "Magic only stores the email, public address and issuer of a user, and recommends keeping custom data in your own database.",
-      "links": ["https://docs.magic.link/home/faq.md"]
+      "links": ["https://docs.magic.link/home/faq.md"],
+      "plans": []
     },
     {
       "identifier": "app_metadata",
       "status": "not_supported",
       "description": "Magic does not store custom user data.",
-      "links": ["https://docs.magic.link/home/faq.md"]
+      "links": ["https://docs.magic.link/home/faq.md"],
+      "plans": []
     },
     {
       "identifier": "metadata_size_limits",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_search",
       "status": "partial",
       "description": "Users can be searched by email in the dashboard Users section. No search API is documented.",
-      "links": ["https://docs.magic.link/embedded-wallets/authentication/features/mfa.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/authentication/features/mfa.md"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "rbac",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "organizations_multitenancy",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "password_strength_policy",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "username_restrictions",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "progressive_profiling",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "abac",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fine_grained_authorization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "api_authorization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "soc2_type2",
       "status": "supported",
       "description": "SOC 2 Type 2 audited annually. The report is available under NDA, and a public SOC 3 report is also available.",
-      "links": ["https://docs.magic.link/home/security/security-compliance.md", "https://trust.magic.link/"]
+      "links": ["https://docs.magic.link/home/security/security-compliance.md", "https://trust.magic.link/"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "iso_27001",
       "status": "supported",
       "description": "ISO 27001 certified. The certificate is available under NDA on the trust center. Magic's site cites the 2022 edition and the documentation cites 2013.",
-      "links": ["https://docs.magic.link/home/security/security-compliance.md", "https://trust.magic.link/"]
+      "links": ["https://docs.magic.link/home/security/security-compliance.md", "https://trust.magic.link/"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "hipaa_baa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pci_dss",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "csa_star",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fedramp",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
       "status": "partial",
       "description": "The dashboard exports basic user attributes as CSV. Wallet data is not part of the documented export.",
-      "links": ["https://docs.magic.link/embedded-wallets/authentication/data/data-export.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/authentication/data/data-export.md"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "gdpr_right_to_erasure",
@@ -502,66 +553,81 @@
       "links": [
         "https://docs.magic.link/embedded-wallets/authentication/data/deletion-request.md",
         "https://docs.magic.link/home/faq.md"
-      ]
+      ],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "consent_management",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "region_deployment",
       "status": "unknown",
-      "description": "Data residency and regions are not documented."
+      "description": "Data residency and regions are not documented.",
+      "plans": []
     },
     {
       "identifier": "private_cloud_deployment",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "audit_log_retention",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "audit_log_streaming",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "security_center",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "encryption_at_rest",
       "status": "partial",
       "description": "Wallet key shards are encrypted and protected in trusted execution environments with AWS KMS. Encryption of other stored data is not documented.",
-      "links": ["https://docs.magic.link/home/security/product-security.md"]
+      "links": ["https://docs.magic.link/home/security/product-security.md"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "encryption_in_transit",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "customer_managed_keys",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bot_detection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "brute_force_protection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "suspicious_ip_throttling",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "breached_password_detection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "credential_guard",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
@@ -570,29 +636,34 @@
       "links": [
         "https://docs.magic.link/embedded-wallets/authentication/security/access-control.md",
         "https://docs.magic.link/home/faq.md"
-      ]
+      ],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "device_fingerprinting",
       "status": "partial",
       "description": "Device registration asks returning email OTP and SMS users to approve logins from an unrecognized device or browser. It can be disabled per app.",
-      "links": ["https://docs.magic.link/embedded-wallets/authentication/security/device-registration.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/authentication/security/device-registration.md"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "per_org_branding",
       "status": "not_supported",
       "description": "Magic has no organization concept. Branding is set per app.",
-      "links": ["https://docs.magic.link/embedded-wallets/authentication/overview.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/authentication/overview.md"],
+      "plans": []
     },
     {
       "identifier": "per_org_mfa_policy",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "hosted_login_page",
       "status": "partial",
       "description": "A Magic-hosted modal handles login, branded with a logo and colors from the dashboard. It runs inside the app rather than on a redirect login page.",
-      "links": ["https://docs.magic.link/embedded-wallets/authentication/customization/login-ui.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/authentication/customization/login-ui.md"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "embedded_login",
@@ -601,7 +672,8 @@
       "links": [
         "https://docs.magic.link/embedded-wallets/authentication/customization/login-ui.md",
         "https://docs.magic.link/embedded-wallets/introduction.md"
-      ]
+      ],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "white_label",
@@ -617,7 +689,8 @@
       "identifier": "localization",
       "status": "supported",
       "description": "The login modal, emails and confirmation screens are available in 30+ languages, set with the locale option of the SDK.",
-      "links": ["https://docs.magic.link/embedded-wallets/authentication/customization/localization.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/authentication/customization/localization.md"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "prebuilt_ui_components",
@@ -626,19 +699,22 @@
       "links": [
         "https://docs.magic.link/embedded-wallets/wallets/customization/widget-ui.md",
         "https://docs.magic.link/embedded-wallets/authentication/customization/login-ui.md"
-      ]
+      ],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "login_analytics",
       "status": "unknown",
       "description": "The dashboard has email logs. Authentication analytics are not documented.",
-      "links": ["https://docs.magic.link/embedded-wallets/authentication/data/email-logs.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/authentication/data/email-logs.md"],
+      "plans": []
     },
     {
       "identifier": "sdk_coverage",
       "status": "supported",
       "description": "Client SDKs for JavaScript, React Native, iOS, Android and Flutter, and Admin SDKs for Node.js and Python. Wallets support 30+ blockchains.",
-      "links": ["https://docs.magic.link/embedded-wallets/sdk/overview.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/sdk/overview.md"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "management_api",
@@ -647,50 +723,60 @@
       "links": [
         "https://docs.magic.link/embedded-wallets/sdk/server-side/overview.md",
         "https://docs.magic.link/server-wallets/express-api/identity-provider.md"
-      ]
+      ],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "authentication_api_rate_limits",
       "status": "supported",
       "description": "Default of 500 requests per minute per application, returning HTTP 429 beyond it. Custom limits are available through sales.",
-      "links": ["https://docs.magic.link/embedded-wallets/sdk/resources/rate-limit.md"]
+      "links": ["https://docs.magic.link/embedded-wallets/sdk/resources/rate-limit.md"],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "actions_extensibility",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "typescript_in_actions",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "custom_domain",
       "status": "unknown",
       "description": "Custom domains are not documented. Domain allowlists control which origins can use an API key.",
-      "links": ["https://docs.magic.link/home/faq.md"]
+      "links": ["https://docs.magic.link/home/faq.md"],
+      "plans": []
     },
     {
       "identifier": "deploy_cli",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "terraform_provider",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_database_connections",
       "status": "not_supported",
       "description": "Users and wallets are stored in Magic, which only keeps the email, public address and issuer.",
-      "links": ["https://docs.magic.link/home/faq.md"]
+      "links": ["https://docs.magic.link/home/faq.md"],
+      "plans": []
     },
     {
       "identifier": "native_webhooks",
       "status": "unknown",
-      "description": "Webhooks are not documented."
+      "description": "Webhooks are not documented.",
+      "plans": []
     },
     {
       "identifier": "universal_login_customization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_email_provider",
@@ -711,15 +797,18 @@
     },
     {
       "identifier": "custom_oidc_claims",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "nocode_flow_builder",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "identity_proofing",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "decentralized_identity",
@@ -728,11 +817,13 @@
       "links": [
         "https://docs.magic.link/embedded-wallets/authentication/features/decentralized-id.md",
         "https://docs.magic.link/embedded-wallets/authentication/login/siwe.md"
-      ]
+      ],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "billing_integration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
@@ -741,51 +832,62 @@
       "links": [
         "https://docs.magic.link/server-wallets/introduction.md",
         "https://docs.magic.link/home/ai-assisted-docs.md"
-      ]
+      ],
+      "plans": ["Developer", "Startup", "Enterprise"]
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -793,179 +895,223 @@
       {
         "identifier": "authorization_code_grant",
         "status": "not_supported",
-        "description": "Magic is not an OpenID Provider. Login returns a DID token."
+        "description": "Magic is not an OpenID Provider. Login returns a DID token.",
+        "plans": []
       },
       {
         "identifier": "refresh_token_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_credentials_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "implicit_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "password_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "rp_initiated_logout",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "pkce_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "par_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "rar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "token_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "userinfo_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "token_revocation_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "token_introspection_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "device_authorization_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "login_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "consent_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "select_account_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "create_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dpop",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       }
     ]
   }
