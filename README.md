@@ -1,7 +1,34 @@
-# identity-provider-data
+[![Validate](https://img.shields.io/github/actions/workflow/status/cerberauth/identity-provider-data/validate.yml?branch=main&label=validate&style=for-the-badge)](https://github.com/cerberauth/identity-provider-data/actions/workflows/validate.yml)
+[![Join Discord](https://img.shields.io/discord/1242773130137833493?label=Discord&style=for-the-badge)](https://vulnapi.cerberauth.com/discord)
+[![Github Repo Stars](https://img.shields.io/github/stars/cerberauth/identity-provider-data?style=for-the-badge)](https://github.com/cerberauth/identity-provider-data)
 
-Structured data about identity providers: IAM / CIAM capabilities and OpenID
-Connect protocol support.
+# Identity Provider Comparison
+
+Compare identity providers: features, pricing, licensing and OpenID Connect support.
+
+An open dataset comparing 70 identity providers (Auth0, Okta, Keycloak, Clerk, Cognito, Entra ID, Ory,
+Zitadel…): IAM / CIAM features, pricing, licensing, self-hosting and OpenID Connect support.
+
+The data is open and maintained by [CerberAuth](https://www.cerberauth.com). It powers the benchmarks
+published on [Nacho](https://nacho.cerberauth.com/).
+
+## Table of Contents
+
+- [Benchmarks](#benchmarks)
+- [Layout](#layout)
+- [Development](#development)
+- [Contributing](#contributing)
+- [About CerberAuth](#about-cerberauth)
+- [License](#license)
+
+## Benchmarks
+
+Browse and compare this data on [Nacho](https://nacho.cerberauth.com/):
+
+- [IAM / CIAM providers benchmark](https://nacho.cerberauth.com/iam/providers) — features, pricing,
+  deployment models and licensing of identity providers.
+- [OpenID Connect providers benchmark](https://nacho.cerberauth.com/openid/providers) — which OpenID
+  Connect specifications and features each provider supports.
 
 ## Layout
 
@@ -70,3 +97,26 @@ Connect protocol support.
 - `i18n/<locale>.json` — translations for category and feature names /
   descriptions, split into `iam` and `oidc`. English is the canonical fallback
   and mirrors the catalogs; other locales only carry overrides.
+
+## Contributing
+
+Found a missing provider, a wrong price or an outdated feature? Please fork the repository and open a
+pull request, or [open an issue](https://github.com/cerberauth/identity-provider-data/issues). Run
+`npm test` before submitting to make sure the data is valid.
+
+## About CerberAuth
+
+[CerberAuth](https://www.cerberauth.com) builds open source tools around API and authentication
+security, including:
+
+- [VulnAPI](https://vulnapi.cerberauth.com) — open source API vulnerability scanner.
+- [Nacho](https://nacho.cerberauth.com/) — OAuth 2.0 and OpenID Connect client creation helper, with
+  identity provider benchmarks built on this data.
+- [AUMS](https://www.cerberauth.com/aums/) — admin dashboard to manage users, organizations and audit
+  logs on top of your existing CIAM provider.
+- [Taco](https://www.cerberauth.com/taco/) — one dashboard for all your OAuth 2.0, OpenID Connect and
+  SAML clients.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more information.
