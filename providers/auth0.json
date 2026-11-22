@@ -36,7 +36,7 @@
   },
   "pricing": {
     "hasFreeTier": true,
-    "freeTierLimit": "25,000 MAU",
+    "freeTierLimit": "25,000 MAU (B2C and B2B), 1 custom domain, 5 organizations, 1 enterprise connection",
     "freeTierMau": 25000,
     "pricingModel": "mau",
     "pricingUrl": "https://auth0.com/pricing",
@@ -46,106 +46,139 @@
     "plans": [
       {
         "name": "Free",
-        "price": "Free",
+        "price": "Free (up to 25,000 MAU)",
         "amount": 0,
-        "mauIncluded": 25000
+        "deployment": "saas",
+        "usage": {
+          "metric": "mau",
+          "included": 25000,
+          "max": 25000
+        },
+        "limits": {
+          "connections": 1,
+          "organizations": 5
+        }
       },
       {
         "name": "B2C Essentials",
-        "price": "$35/month",
-        "amount": 35,
-        "period": "month",
-        "featuresIncluded": [
-          "totp_mfa",
-          "step_up_authentication",
-          "audit_log_streaming",
-          "suspicious_ip_throttling",
-          "breached_password_detection",
-          "white_label"
-        ]
+        "price": "From $35/month for 500 MAU ($0.07 per MAU up to 50,000)",
+        "deployment": "saas",
+        "amount": 0,
+        "usage": {
+          "metric": "mau",
+          "min": 500,
+          "max": 50000,
+          "rates": [
+            {
+              "amount": 0.07
+            }
+          ]
+        },
+        "limits": {
+          "connections": 0,
+          "organizations": 10
+        }
       },
       {
         "name": "B2C Professional",
-        "price": "$240/month",
+        "price": "From $240/month for 1,000 MAU (about $0.16 per MAU at 10,000, up to 20,000)",
         "amount": 240,
         "period": "month",
-        "featuresIncluded": [
-          "totp_mfa",
-          "u2f_mfa",
-          "webauthn_mfa",
-          "push_notification_mfa",
-          "cisco_duo_mfa",
-          "step_up_authentication",
-          "audit_log_streaming",
-          "suspicious_ip_throttling",
-          "breached_password_detection",
-          "custom_database_connections",
-          "white_label"
-        ]
+        "deployment": "saas",
+        "usage": {
+          "metric": "mau",
+          "included": 1000,
+          "max": 20000,
+          "rates": [
+            {
+              "upTo": 5000,
+              "amount": 0.19
+            },
+            {
+              "upTo": 7500,
+              "amount": 0.08
+            },
+            {
+              "upTo": 20000,
+              "amount": 0.16
+            }
+          ]
+        },
+        "limits": {
+          "connections": 0,
+          "organizations": 10
+        }
       },
       {
         "name": "B2B Essentials",
-        "price": "$150/month",
-        "amount": 150,
-        "period": "month",
-        "featuresIncluded": [
-          "totp_mfa",
-          "step_up_authentication",
-          "audit_log_streaming",
-          "suspicious_ip_throttling",
-          "breached_password_detection",
-          "white_label"
-        ]
+        "price": "From $150/month for 500 MAU (about $0.21 per MAU at 10,000, up to 20,000)",
+        "deployment": "saas",
+        "amount": 0,
+        "usage": {
+          "metric": "mau",
+          "min": 500,
+          "max": 20000,
+          "rates": [
+            {
+              "upTo": 1000,
+              "amount": 0.3
+            },
+            {
+              "upTo": 2500,
+              "amount": 0.2667
+            },
+            {
+              "upTo": 5000,
+              "amount": 0.24
+            },
+            {
+              "upTo": 7500,
+              "amount": 0.17
+            },
+            {
+              "upTo": 10000,
+              "amount": 0.15
+            },
+            {
+              "upTo": 20000,
+              "amount": 0.17
+            }
+          ]
+        }
       },
       {
         "name": "B2B Professional",
-        "price": "$800/month",
+        "price": "From $800/month for 1,000 MAU (about $0.24 per MAU at 10,000)",
         "amount": 800,
         "period": "month",
-        "featuresIncluded": [
-          "totp_mfa",
-          "u2f_mfa",
-          "webauthn_mfa",
-          "push_notification_mfa",
-          "cisco_duo_mfa",
-          "step_up_authentication",
-          "audit_log_streaming",
-          "security_center",
-          "suspicious_ip_throttling",
-          "breached_password_detection",
-          "custom_database_connections",
-          "white_label"
-        ]
+        "deployment": "saas",
+        "usage": {
+          "metric": "mau",
+          "included": 1000,
+          "max": 10000,
+          "rates": [
+            {
+              "upTo": 2500,
+              "amount": 0.2667
+            },
+            {
+              "upTo": 7500,
+              "amount": 0.12
+            },
+            {
+              "upTo": 10000,
+              "amount": 0.24
+            }
+          ]
+        }
       },
       {
         "name": "Enterprise",
-        "price": "Custom",
-        "featuresIncluded": [
-          "totp_mfa",
-          "u2f_mfa",
-          "webauthn_mfa",
-          "push_notification_mfa",
-          "adaptive_mfa",
-          "cisco_duo_mfa",
-          "step_up_authentication",
-          "hipaa_baa",
-          "pci_dss",
-          "private_cloud_deployment",
-          "audit_log_streaming",
-          "security_center",
-          "customer_managed_keys",
-          "suspicious_ip_throttling",
-          "breached_password_detection",
-          "credential_guard",
-          "tenant_acl",
-          "custom_database_connections",
-          "fine_grained_authorization",
-          "device_fingerprinting",
-          "per_org_mfa_policy",
-          "white_label"
-        ]
+        "price": "Custom (annual contract, 99.99% SLA, private cloud)",
+        "deployment": "saas"
       }
-    ]
+    ],
+    "pricingLastVerified": "2026-11-21"
   },
   "hosting": {
     "regions": ["US", "EU", "AU", "JP", "GB", "CA"]
@@ -262,35 +295,40 @@
       "status": "supported",
       "category": "authentication_methods",
       "description": "Standard database connection authentication with username/email and password. Auth0's primary built-in connection type.",
-      "links": ["https://auth0.com/docs/authenticate/database-connections"]
+      "links": ["https://auth0.com/docs/authenticate/database-connections"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "30+ built-in social providers (Google, Facebook, Apple, GitHub, LinkedIn, etc.) plus custom OAuth2/OIDC. Free plan limited to 2 social connections. Dashboard shows only 1 connection per social strategy; additional connections require Management API.",
-      "links": ["https://auth0.com/docs/authenticate/identity-providers/social-identity-providers"]
+      "links": ["https://auth0.com/docs/authenticate/identity-providers/social-identity-providers"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "passkey_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "Passkeys (FIDO2/WebAuthn) supported as a primary factor for database connections. Custom Relying Party ID is in Early Access. Requires Identifier First authentication profile. Account recovery falls back to password reset.",
-      "links": ["https://auth0.com/docs/authenticate/database-connections/passkeys"]
+      "links": ["https://auth0.com/docs/authenticate/database-connections/passkeys"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "email_passwordless_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "Email OTP code works with Universal Login. Configurable expiry and code length. Locks out after 3 incorrect attempts.",
-      "links": ["https://auth0.com/docs/authenticate/passwordless"]
+      "links": ["https://auth0.com/docs/authenticate/passwordless"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "supported",
       "category": "authentication_methods",
       "description": "SMS OTP passwordless login. Requires customer-configured Twilio or custom SMS provider for production. Auth0's built-in SMS provider is test-only. Rate limit of 10 messages/hour/user.",
-      "links": ["https://auth0.com/docs/authenticate/passwordless/authentication-methods/sms-otp"]
+      "links": ["https://auth0.com/docs/authenticate/passwordless/authentication-methods/sms-otp"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "magic_link_authentication",
@@ -301,7 +339,8 @@
         "https://auth0.com/docs/authenticate/passwordless/authentication-methods/email-magic-link",
         "https://auth0.com/docs/authenticate/passwordless/passwordless-connection-limitations",
         "https://auth0.com/docs/troubleshoot/product-lifecycle/deprecations-and-migrations"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
@@ -318,7 +357,8 @@
       "status": "partial",
       "category": "mfa",
       "description": "HOTP (counter-based OTP) is not natively supported as a standalone MFA factor. Auth0 focuses on TOTP. Custom implementation possible via Actions.",
-      "links": ["https://auth0.com/docs/secure/multi-factor-authentication"]
+      "links": ["https://auth0.com/docs/secure/multi-factor-authentication"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "u2f_mfa",
@@ -345,7 +385,8 @@
       "description": "Email OTP as an MFA factor. Cannot be the sole MFA factor if email is also the primary authentication channel. Requires external SMTP for production.",
       "links": [
         "https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-email-notifications-for-mfa"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "phone_code_mfa",
@@ -354,14 +395,16 @@
       "description": "SMS OTP as a second factor. Rate limit of 10 messages/hour/user. Requires Twilio or custom provider for production use.",
       "links": [
         "https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "recovery_code_mfa",
       "status": "supported",
       "category": "mfa",
       "description": "One-time backup codes generated at MFA enrollment for account recovery. Supported alongside all MFA factors.",
-      "links": ["https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors"]
+      "links": ["https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "push_notification_mfa",
@@ -379,8 +422,12 @@
       "category": "mfa",
       "description": "ML-based confidence score evaluated at login using new device detection, impossible travel, and IP reputation signals. Requires Enterprise plan with Adaptive MFA add-on. Not supported for SAML IdP-initiated flows or ROPG. All users must have an email address.",
       "links": ["https://auth0.com/docs/secure/multi-factor-authentication/adaptive-mfa"],
+      "tier": "enterprise",
       "plans": ["Enterprise"],
-      "tier": "enterprise"
+      "addOn": {
+        "price": "Advanced Security add-on on Enterprise (custom)",
+        "name": "Advanced Security"
+      }
     },
     {
       "identifier": "cisco_duo_mfa",
@@ -403,33 +450,74 @@
       "status": "supported",
       "category": "integration_protocols",
       "description": "Core protocol — Auth0 is fundamentally built on OIDC/OAuth 2.0. OIDC Discovery supported. OpenID-certified.",
-      "links": ["https://auth0.com/docs/authenticate/protocols/openid-connect-protocol"]
+      "links": ["https://auth0.com/docs/authenticate/protocols/openid-connect-protocol"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "saml2_protocol",
       "status": "supported",
       "category": "integration_protocols",
       "description": "Full SAML 2.0 support as both Identity Provider and Service Provider. Custom attribute mappings via Actions. Max 100 attributes, 1 KB names, 2 KB values, 10 KB total assertions. Cannot enable both SAML and WS-Fed addons on the same client application.",
-      "links": ["https://auth0.com/docs/authenticate/protocols/saml"]
+      "links": ["https://auth0.com/docs/authenticate/protocols/saml"],
+      "plans": ["Free", "B2B Essentials", "B2B Professional", "Enterprise"],
+      "addOn": {
+        "name": "Enterprise connections",
+        "price": "$100/month per extra enterprise connection (3 included on B2B Essentials, 5 on B2B Professional, 1 on Free not extendable)",
+        "amount": 100,
+        "period": "month",
+        "unit": "connection",
+        "included": {
+          "B2B Essentials": 3,
+          "B2B Professional": 5
+        },
+        "plans": ["B2B Essentials", "B2B Professional"]
+      }
     },
     {
       "identifier": "ws_federation_protocol",
       "status": "supported",
       "category": "integration_protocols",
       "description": "Auto-assigned WS-Fed endpoints for every application. Cannot combine with SAML addon on the same client. Not compatible with the Organizations feature.",
-      "links": ["https://auth0.com/docs/authenticate/protocols/ws-fed-protocol"]
+      "links": ["https://auth0.com/docs/authenticate/protocols/ws-fed-protocol"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "oidc_federation",
       "status": "supported",
       "category": "identity_federation",
-      "links": ["https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/oidc"]
+      "links": ["https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/oidc"],
+      "plans": ["Free", "B2B Essentials", "B2B Professional", "Enterprise"],
+      "addOn": {
+        "name": "Enterprise connections",
+        "price": "$100/month per extra enterprise connection (3 included on B2B Essentials, 5 on B2B Professional, 1 on Free not extendable)",
+        "amount": 100,
+        "period": "month",
+        "unit": "connection",
+        "included": {
+          "B2B Essentials": 3,
+          "B2B Professional": 5
+        },
+        "plans": ["B2B Essentials", "B2B Professional"]
+      }
     },
     {
       "identifier": "saml_federation",
       "status": "supported",
       "category": "identity_federation",
-      "links": ["https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/saml"]
+      "links": ["https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/saml"],
+      "plans": ["Free", "B2B Essentials", "B2B Professional", "Enterprise"],
+      "addOn": {
+        "name": "Enterprise connections",
+        "price": "$100/month per extra enterprise connection (3 included on B2B Essentials, 5 on B2B Professional, 1 on Free not extendable)",
+        "amount": 100,
+        "period": "month",
+        "unit": "connection",
+        "included": {
+          "B2B Essentials": 3,
+          "B2B Professional": 5
+        },
+        "plans": ["B2B Essentials", "B2B Professional"]
+      }
     },
     {
       "identifier": "active_directory_ldap",
@@ -438,7 +526,8 @@
       "description": "Supported via on-premises AD/LDAP Connector agent. Supports Kerberos SSO for seamless desktop login. Not recommended for customer-side installation in B2B scenarios.",
       "links": [
         "https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/active-directory-ldap"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "azure_ad_integration",
@@ -447,42 +536,60 @@
       "description": "Native connection type supporting OIDC and SAML federation with Microsoft Entra ID (formerly Azure AD).",
       "links": [
         "https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/azure-active-directory/v2"
-      ]
+      ],
+      "plans": ["Free", "B2B Essentials", "B2B Professional", "Enterprise"],
+      "addOn": {
+        "name": "Enterprise connections",
+        "price": "$100/month per extra enterprise connection (3 included on B2B Essentials, 5 on B2B Professional, 1 on Free not extendable)",
+        "amount": 100,
+        "period": "month",
+        "unit": "connection",
+        "included": {
+          "B2B Essentials": 3,
+          "B2B Professional": 5
+        },
+        "plans": ["B2B Essentials", "B2B Professional"]
+      }
     },
     {
       "identifier": "bulk_user_import",
       "status": "supported",
       "category": "user_management",
       "description": "JSON format import via Management API. Max 500 KB file size per job and 2 concurrent jobs (429 error if exceeded). Recommended batch size is ~1,000 users. Import job data auto-deleted after 24 hours.",
-      "links": ["https://auth0.com/docs/manage-users/user-migration/bulk-user-imports"]
+      "links": ["https://auth0.com/docs/manage-users/user-migration/bulk-user-imports"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "password_hash_import",
       "status": "supported",
       "category": "user_management",
       "description": "Supported hash formats: bcrypt ($2a$/$2b$/$2y$, NOT $2$ or $2x$), argon2, PBKDF2, scrypt, SHA1/256/512, MD4/MD5, HMAC, LDAP, custom PHC format. bcrypt processes max 72 bytes. The crypt scheme is NOT supported.",
-      "links": ["https://auth0.com/docs/manage-users/user-migration/bulk-user-import-schema"]
+      "links": ["https://auth0.com/docs/manage-users/user-migration/bulk-user-import-schema"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "bulk_user_export",
       "status": "supported",
       "category": "user_management",
       "description": "JSON (NDJSON) and CSV export via Management API. Must convert NDJSON to JSON for re-import compatibility. Field selection supported. Export format sometimes incompatible with import schema (community-reported).",
-      "links": ["https://auth0.com/docs/manage-users/user-migration/bulk-user-exports"]
+      "links": ["https://auth0.com/docs/manage-users/user-migration/bulk-user-exports"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "bulk_user_update_delete",
       "status": "not_supported",
       "category": "user_management",
       "description": "No native bulk update or delete operations. All user modifications require individual per-user Management API calls subject to rate limits (2–50 RPS depending on plan).",
-      "links": ["https://auth0.com/docs/manage-users/user-migration/bulk-user-imports"]
+      "links": ["https://auth0.com/docs/manage-users/user-migration/bulk-user-imports"],
+      "plans": []
     },
     {
       "identifier": "upsert_on_import",
       "status": "partial",
       "category": "user_management",
       "description": "Available but slower than insert-only mode. Does NOT merge metadata on upsert — existing metadata is completely overwritten.",
-      "links": ["https://auth0.com/docs/manage-users/user-migration/bulk-user-imports"]
+      "links": ["https://auth0.com/docs/manage-users/user-migration/bulk-user-imports"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "legacy_username_import",
@@ -492,21 +599,24 @@
       "links": [
         "https://support.auth0.com/center/s/article/How-to-Import-Legacy-Usernames-with-Non-Allowed-Characters",
         "https://auth0.com/docs/authenticate/database-connections/require-username"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "mfa_enrollment_import",
       "status": "supported",
       "category": "user_management",
       "description": "Phone SMS/voice and email OTP MFA enrollments can be included during bulk user import.",
-      "links": ["https://auth0.com/docs/manage-users/user-migration/bulk-user-imports"]
+      "links": ["https://auth0.com/docs/manage-users/user-migration/bulk-user-imports"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "inbound_scim_provisioning",
       "status": "supported",
       "category": "user_management",
       "description": "SCIM 2.0 inbound provisioning from enterprise IdPs (Azure AD, Okta, etc.) into Auth0. Now available on all plans including Free.",
-      "links": ["https://auth0.com/docs/authenticate/protocols/scim"]
+      "links": ["https://auth0.com/docs/authenticate/protocols/scim"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "outbound_scim_provisioning",
@@ -515,7 +625,8 @@
       "description": "No native outbound SCIM provisioning from Auth0 to third-party applications. Requires custom implementation via Actions or external tooling.",
       "links": [
         "https://community.auth0.com/t/enable-outbound-scim-provisioning-to-sync-users-and-roles-from-auth0-to-a-third-party-application/182503"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "scim_groups",
@@ -523,21 +634,24 @@
       "category": "user_management",
       "description": "SCIM Group sync is currently in Limited Early Access — not generally available. Critical for enterprise B2B access control use cases.",
       "links": ["https://auth0.com/docs/authenticate/protocols/scim"],
-      "betaStatus": "preview"
+      "betaStatus": "preview",
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "jit_provisioning",
       "status": "supported",
       "category": "user_management",
       "description": "Automatic user creation in Auth0 on first enterprise SSO login. Configurable via connection settings.",
-      "links": ["https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers"]
+      "links": ["https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "lazy_migration",
       "status": "supported",
       "category": "user_management",
       "description": "Users migrated on first login from a custom database connection without forcing password resets. Legacy database must remain accessible online. One-at-a-time migration pace. Cannot easily combine with Organizations feature. No automatic completion notification.",
-      "links": ["https://auth0.com/docs/manage-users/user-migration/configure-automatic-migration-from-your-database"]
+      "links": ["https://auth0.com/docs/manage-users/user-migration/configure-automatic-migration-from-your-database"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "self_service_profile_management",
@@ -548,14 +662,16 @@
         "https://auth0.com/docs/api/myaccount/",
         "https://auth0.com/docs/get-started/architecture-scenarios/business-to-consumer/profile-management"
       ],
-      "betaStatus": "preview"
+      "betaStatus": "preview",
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "account_linking",
       "status": "supported",
       "category": "user_management",
       "description": "Supported via Management API. Metadata from the secondary account is discarded upon linking — must manually merge before calling the link endpoint. No automatic profile merging. Both accounts must be authenticated first. setPrimaryUser can only be called once per transaction in Actions.",
-      "links": ["https://auth0.com/docs/manage-users/user-accounts/user-account-linking"]
+      "links": ["https://auth0.com/docs/manage-users/user-accounts/user-account-linking"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "user_blocking",
@@ -565,28 +681,32 @@
       "links": [
         "https://auth0.com/docs/manage-users/user-accounts/block-and-unblock-users",
         "https://community.auth0.com/t/prevent-password-reset-for-blocked-users/42466"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "user_metadata",
       "status": "supported",
       "category": "user_management",
       "description": "User-editable custom attributes. Signup API limit: 10 string fields, max 500 characters each. Field names cannot contain . or $. 16 MB total combined metadata limit. 1 MB searchable limit — profiles exceeding 1 MB have attributes over 256 chars excluded from search index.",
-      "links": ["https://auth0.com/docs/manage-users/user-accounts/metadata/metadata-fields-data"]
+      "links": ["https://auth0.com/docs/manage-users/user-accounts/metadata/metadata-fields-data"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "app_metadata",
       "status": "supported",
       "category": "user_management",
       "description": "Admin-only custom attributes not editable by end users. Cannot contain reserved properties (blocked, email, identities, password_hash, etc.). Subject to combined 16 MB total metadata limit.",
-      "links": ["https://auth0.com/docs/manage-users/user-accounts/metadata"]
+      "links": ["https://auth0.com/docs/manage-users/user-accounts/metadata"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "metadata_size_limits",
       "status": "partial",
       "category": "user_management",
       "description": "Combined metadata hard limits: 16 MB total, 1 MB searchable, 32 KB per Actions session. Recommended to keep individual fields under 2 KB for search performance. These overlapping limits are a common source of production surprises.",
-      "links": ["https://auth0.com/docs/manage-users/user-accounts/metadata/metadata-fields-data"]
+      "links": ["https://auth0.com/docs/manage-users/user-accounts/metadata/metadata-fields-data"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "user_search",
@@ -596,7 +716,8 @@
       "links": [
         "https://auth0.com/docs/manage-users/user-search/user-search-query-syntax",
         "https://auth0.com/docs/manage-users/user-search/user-search-best-practices"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "rbac",
@@ -606,14 +727,16 @@
       "links": [
         "https://auth0.com/docs/manage-users/access-control/rbac",
         "https://auth0.com/docs/troubleshoot/customer-support/operational-policies/entity-limit-policy"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "organizations_multitenancy",
       "status": "supported",
       "category": "user_management",
       "description": "100,000 orgs per tenant (expandable to 2M on Enterprise). 10 connections per org, 50 role assignments per org member. Universal Login only — not compatible with ROPG, Device Flow, or WS-Federation. No per-org custom domains.",
-      "links": ["https://auth0.com/docs/manage-users/organizations/organizations-overview"]
+      "links": ["https://auth0.com/docs/manage-users/organizations/organizations-overview"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "password_strength_policy",
@@ -623,7 +746,8 @@
       "links": [
         "https://auth0.com/docs/authenticate/database-connections/password-strength",
         "https://community.auth0.com/t/feature-request-password-policy-require-4-of-4-requirements/68992"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "username_restrictions",
@@ -633,28 +757,32 @@
       "links": [
         "https://auth0.com/docs/authenticate/database-connections/require-username",
         "https://support.auth0.com/center/s/article/How-to-Import-Legacy-Usernames-with-Non-Allowed-Characters"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "progressive_profiling",
       "status": "supported",
       "category": "user_management",
       "description": "Visual no-code Forms builder for collecting data during authentication flows. 500 Forms and 500 Flows per tenant. Supports conditional logic and external API calls.",
-      "links": ["https://auth0.com/docs/manage-users/user-accounts/user-profiles/progressive-profiling"]
+      "links": ["https://auth0.com/docs/manage-users/user-accounts/user-profiles/progressive-profiling"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "soc2_type2",
       "status": "supported",
       "category": "compliance",
       "description": "Annually audited, covering all 5 Trust Services Criteria.",
-      "links": ["https://auth0.com/docs/secure/data-privacy-and-compliance"]
+      "links": ["https://auth0.com/docs/secure/data-privacy-and-compliance"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "iso_27001",
       "status": "supported",
       "category": "compliance",
       "description": "Cloud information security and privacy controls. Annually audited.",
-      "links": ["https://auth0.com/docs/secure/data-privacy-and-compliance"]
+      "links": ["https://auth0.com/docs/secure/data-privacy-and-compliance"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "hipaa_baa",
@@ -662,8 +790,8 @@
       "category": "compliance",
       "description": "HIPAA BAA is available upon request for Enterprise plans. Auth0 acts as a Business Associate under HIPAA/HITECH. BAA is not available for Azure-hosted deployments. Contact account team via the Support Center to request the agreement.",
       "links": ["https://auth0.com/docs/secure/data-privacy-and-compliance"],
-      "plans": ["Enterprise"],
-      "tier": "enterprise"
+      "tier": "enterprise",
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "pci_dss",
@@ -671,15 +799,16 @@
       "category": "compliance",
       "description": "PCI DSS compliance available as an add-on for Auth0 Private Cloud deployment. Annual independent audit. Attestation of Compliance (AOC) and SAQ-D available upon request via the Support Center. Enterprise plan only.",
       "links": ["https://auth0.com/docs/secure/data-privacy-and-compliance"],
-      "plans": ["Enterprise"],
-      "tier": "enterprise"
+      "tier": "enterprise",
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "csa_star",
       "status": "supported",
       "category": "compliance",
       "description": "Cloud Security Alliance STAR Gold certification for cloud security practices.",
-      "links": ["https://auth0.com/docs/secure/data-privacy-and-compliance"]
+      "links": ["https://auth0.com/docs/secure/data-privacy-and-compliance"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "gdpr_data_export",
@@ -688,14 +817,16 @@
       "description": "User data export (Article 20) available via Dashboard or Management API in JSON format.",
       "links": [
         "https://auth0.com/docs/secure/data-privacy-and-compliance/gdpr/gdpr-right-to-access-correct-and-erase-data"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "supported",
       "category": "compliance",
       "description": "User deletion supported via Dashboard or Management API. Customer is responsible for removing user data stored in external systems, logs, or backups.",
-      "links": ["https://auth0.com/docs/secure/data-privacy-and-compliance/gdpr"]
+      "links": ["https://auth0.com/docs/secure/data-privacy-and-compliance/gdpr"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "consent_management",
@@ -704,7 +835,8 @@
       "description": "OAuth consent dialog supported for third-party application scopes. No dedicated consent management module for custom consent purposes (marketing opt-in, ToS acceptance). Custom consent must be stored in user_metadata or an external system. Auth0 Forms can handle Terms of Service acceptance flows.",
       "links": [
         "https://auth0.com/docs/get-started/applications/third-party-applications/user-consent-and-third-party-applications"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "region_deployment",
@@ -714,7 +846,8 @@
       "links": [
         "https://auth0.com/docs/troubleshoot/customer-support/operational-policies/public-cloud-service-endpoints"
       ],
-      "values": ["US", "EU", "AU", "JP", "UK", "CA"]
+      "values": ["US", "EU", "AU", "JP", "UK", "CA"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "private_cloud_deployment",
@@ -722,16 +855,17 @@
       "category": "compliance",
       "description": "Single-tenant Private Cloud deployment on AWS (13+ regions) or Azure (60+ regions). Enterprise add-on with separate pricing.",
       "links": ["https://auth0.com/docs/deploy-monitor/deploy-private-cloud"],
-      "plans": ["Enterprise"],
       "values": ["AWS", "Azure"],
-      "tier": "enterprise"
+      "tier": "enterprise",
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "audit_log_retention",
       "status": "partial",
       "category": "security",
       "description": "Log retention is critically short: Free = 1 day, Essentials = 5 days, Professional = 10 days, Enterprise = 30 days. No option to extend retention within Auth0 on lower tiers. Log streaming to external SIEM is required for any compliance use case.",
-      "links": ["https://auth0.com/docs/deploy-monitor/logs/log-data-retention"]
+      "links": ["https://auth0.com/docs/deploy-monitor/logs/log-data-retention"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "audit_log_streaming",
@@ -747,21 +881,23 @@
       "category": "security",
       "description": "Near real-time threat monitoring dashboard with custom alert configuration. Available on B2B Professional plan and above for B2B; Enterprise only for B2C.",
       "links": ["https://auth0.com/docs/secure/attack-protection"],
-      "plans": ["B2B Professional", "Enterprise"]
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "encryption_at_rest",
       "status": "supported",
       "category": "security",
       "description": "AES-256 GCM envelope encryption for all stored data and backups.",
-      "links": ["https://auth0.com/docs/secure/highly-regulated-identity/customer-managed-keys"]
+      "links": ["https://auth0.com/docs/secure/highly-regulated-identity/customer-managed-keys"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "encryption_in_transit",
       "status": "supported",
       "category": "security",
       "description": "TLS 1.2 or higher required for all connections to Auth0 endpoints. Cipher suites include ECDHE/AES-GCM variants. TLS 1.2 weak cipher suites reach end-of-support June 2026. mTLS (mutual TLS) also supported for client authentication.",
-      "links": ["https://auth0.com/docs/customize/custom-domains/self-managed-certificates/tls-ssl"]
+      "links": ["https://auth0.com/docs/customize/custom-domains/self-managed-certificates/tls-ssl"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "customer_managed_keys",
@@ -769,22 +905,24 @@
       "category": "security",
       "description": "FIPS 140-2 Level 3 HSM-backed key management. Key rotation via Management API. Requires Enterprise plan with Highly Regulated Identity add-on.",
       "links": ["https://auth0.com/docs/secure/highly-regulated-identity/customer-managed-keys"],
-      "plans": ["Enterprise"],
-      "tier": "enterprise"
+      "tier": "enterprise",
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "bot_detection",
       "status": "supported",
       "category": "security",
       "description": "ML-based detection with Auth Challenge (CAPTCHA-free), reCAPTCHA, hCaptcha, and Friendly Captcha. Enhanced bot detection requires Professional plan or above. IP allowlist supports up to 100 entries.",
-      "links": ["https://auth0.com/docs/secure/attack-protection/bot-detection"]
+      "links": ["https://auth0.com/docs/secure/attack-protection/bot-detection"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "brute_force_protection",
       "status": "supported",
       "category": "security",
       "description": "Blocks a single IP address after a configurable number of failed login attempts. Enabled by default on all plans. Blocks by IP only — no per-account lockout mechanism.",
-      "links": ["https://auth0.com/docs/secure/attack-protection/brute-force-protection"]
+      "links": ["https://auth0.com/docs/secure/attack-protection/brute-force-protection"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "suspicious_ip_throttling",
@@ -808,8 +946,8 @@
       "category": "security",
       "description": "Proactive continuous dark web monitoring for compromised credentials. Enterprise add-on with separate pricing beyond standard breached password detection.",
       "links": ["https://auth0.com/docs/secure/attack-protection/breached-password-detection"],
-      "plans": ["Enterprise"],
-      "tier": "enterprise"
+      "tier": "enterprise",
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "tenant_acl",
@@ -817,9 +955,9 @@
       "category": "security",
       "description": "Up to 10 ACL rules supporting IPv4/IPv6, geographic filtering, and JA3/JA4 TLS fingerprints. Currently in Early Access. Requires Enterprise plan with Attack Protection add-on.",
       "links": ["https://auth0.com/docs/secure/tenant-access-control-list/use-cases"],
-      "plans": ["Enterprise"],
       "tier": "enterprise",
-      "betaStatus": "preview"
+      "betaStatus": "preview",
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "sdk_coverage",
@@ -845,7 +983,8 @@
         "Kotlin",
         "React Native",
         "Flutter"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "management_api",
@@ -855,14 +994,16 @@
       "links": [
         "https://auth0.com/docs/api/management/v2",
         "https://auth0.com/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "authentication_api_rate_limits",
       "status": "partial",
       "category": "developer_integration",
       "description": "300 req/min on Free, 100 RPS on paid plans. 20 login attempts/min per IP before throttling to 10. Burst multiplier add-ons (2x–4x) available for Enterprise.",
-      "links": ["https://auth0.com/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy"]
+      "links": ["https://auth0.com/docs/troubleshoot/customer-support/operational-policies/rate-limit-policy"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "actions_extensibility",
@@ -872,14 +1013,16 @@
       "links": [
         "https://auth0.com/docs/customize/actions/flows-and-triggers",
         "https://auth0.com/docs/customize/actions/limitations"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "typescript_in_actions",
       "status": "not_supported",
       "category": "developer_integration",
       "description": "Actions runtime is Node.js only. TypeScript is not supported — code must be written in plain JavaScript. This is increasingly out of step with modern JavaScript ecosystem norms.",
-      "links": ["https://auth0.com/docs/customize/actions/limitations"]
+      "links": ["https://auth0.com/docs/customize/actions/limitations"],
+      "plans": []
     },
     {
       "identifier": "rules_deprecated",
@@ -890,7 +1033,8 @@
         "https://auth0.com/docs/troubleshoot/product-lifecycle/deprecations-and-migrations",
         "https://auth0.com/blog/preparing-for-rules-and-hooks-end-of-life/",
         "https://stytch.com/blog/auth0-rules-and-hooks-deprecation-disadvantages/"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "hooks_deprecated",
@@ -900,7 +1044,8 @@
       "links": [
         "https://auth0.com/docs/customize/hooks",
         "https://auth0.com/docs/troubleshoot/product-lifecycle/deprecations-and-migrations"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "custom_domain",
@@ -910,14 +1055,16 @@
       "links": [
         "https://auth0.com/docs/customize/custom-domains",
         "https://auth0.com/docs/customize/custom-domains/self-managed-certificates"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "deploy_cli",
       "status": "supported",
       "category": "developer_integration",
       "description": "Official auth0-deploy-cli npm package for full tenant configuration export and import as YAML or JSON. Supports multi-environment workflows and CI/CD pipeline integration. Can be destructive — testing on dev tenants is strongly recommended.",
-      "links": ["https://github.com/auth0/auth0-deploy-cli"]
+      "links": ["https://github.com/auth0/auth0-deploy-cli"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "terraform_provider",
@@ -927,7 +1074,8 @@
       "links": [
         "https://auth0.com/docs/deploy-monitor/auth0-terraform-provider",
         "https://registry.terraform.io/providers/auth0/auth0/latest/docs"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "custom_database_connections",
@@ -942,56 +1090,64 @@
       "status": "partial",
       "category": "developer_integration",
       "description": "No native event webhook system. Webhooks are implemented either via Custom Log Streams (async, post-event) or Actions (sync, in-flow). Log stream webhooks have retry logic but are not traditional push webhooks.",
-      "links": ["https://auth0.com/docs/customize/log-streams/custom-log-streams"]
+      "links": ["https://auth0.com/docs/customize/log-streams/custom-log-streams"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "universal_login_customization",
       "status": "supported",
       "category": "developer_integration",
       "description": "Three tiers of customization: no-code theme editor (all plans), page templates with Liquid syntax (requires custom domain), and Advanced Custom UI Layer (ACUL) full client-rendered SDK (Early Access). Classic Login is deprecated and reached EOL in July 2025. Universal Login always defaults to the sign-in screen — cannot default to sign-up.",
-      "links": ["https://auth0.com/docs/customize/login-pages/universal-login/customize-themes"]
+      "links": ["https://auth0.com/docs/customize/login-pages/universal-login/customize-themes"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "custom_email_provider",
       "status": "supported",
       "category": "developer_integration",
       "description": "External SMTP or custom email provider required for production email sending (verification, password reset, MFA). Auth0's built-in email sending is limited and not suitable for production.",
-      "links": ["https://auth0.com/docs/customize/email"]
+      "links": ["https://auth0.com/docs/customize/email"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "email_templates",
       "status": "supported",
       "category": "developer_integration",
       "description": "10+ template types with HTML and Liquid syntax. Only 1 template per type — per-application branding requires Liquid conditionals. ~64 KB practical template size limit.",
-      "links": ["https://auth0.com/docs/customize/email/email-templates"]
+      "links": ["https://auth0.com/docs/customize/email/email-templates"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "custom_oidc_claims",
       "status": "supported",
       "category": "developer_integration",
       "description": "Custom claims added to access and ID tokens via Actions using api.accessToken.setCustomClaim(). Both namespaced and non-namespaced claims now supported. Up to 1,000 custom scopes per API resource server.",
-      "links": ["https://auth0.com/docs/troubleshoot/product-lifecycle/past-migrations/custom-claims-migration"]
+      "links": ["https://auth0.com/docs/troubleshoot/product-lifecycle/past-migrations/custom-claims-migration"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "anonymous_authentication",
       "status": "not_supported",
       "category": "authentication_methods",
       "description": "Auth0 does not support anonymous/guest authentication. Users must always authenticate with a registered credential. Workarounds require custom M2M tokens or external logic.",
-      "links": ["https://community.auth0.com/t/anonymous-user-flow/73792"]
+      "links": ["https://community.auth0.com/t/anonymous-user-flow/73792"],
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
       "status": "supported",
       "category": "integration_protocols",
       "description": "OAuth 2.0 Client Credentials grant for M2M. M2M app token requests are counted and billed. Free tier includes 1,000 tokens/month.",
-      "links": ["https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow"]
+      "links": ["https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-credentials-flow"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "abac",
       "status": "partial",
       "category": "access_control",
       "description": "Attribute-based policies can be implemented via Actions rules and token claims, but there is no native ABAC policy engine. Available via OpenFGA on Enterprise.",
-      "links": ["https://auth0.com/docs/manage-users/access-control"]
+      "links": ["https://auth0.com/docs/manage-users/access-control"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "fine_grained_authorization",
@@ -999,15 +1155,16 @@
       "category": "access_control",
       "description": "Auth0 FGA is powered by OpenFGA (open-source Zanzibar implementation). Available as an Enterprise add-on.",
       "links": ["https://auth0.com/fine-grained-authorization"],
-      "plans": ["Enterprise"],
-      "tier": "enterprise"
+      "tier": "enterprise",
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "api_authorization",
       "status": "supported",
       "category": "access_control",
       "description": "Define API resource servers with scopes and permissions. Integrate with RBAC and token claims for authorization.",
-      "links": ["https://auth0.com/docs/get-started/apis"]
+      "links": ["https://auth0.com/docs/get-started/apis"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "device_fingerprinting",
@@ -1018,30 +1175,32 @@
         "https://auth0.com/docs/secure/multi-factor-authentication/adaptive-mfa",
         "https://auth0.com/docs/secure/attack-protection"
       ],
-      "plans": ["Enterprise"],
-      "tier": "enterprise"
+      "tier": "enterprise",
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "per_org_branding",
       "status": "supported",
       "category": "multi_tenancy",
       "description": "Per-organization logo, primary color, and background color via the Organizations API. Custom domain per org requires a workaround.",
-      "links": ["https://auth0.com/docs/manage-users/organizations/login-flows-for-organizations"]
+      "links": ["https://auth0.com/docs/manage-users/organizations/login-flows-for-organizations"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "per_org_mfa_policy",
       "status": "supported",
       "category": "multi_tenancy",
       "description": "MFA policies can be enforced per organization via Actions and organization-level configuration. Enterprise plan required.",
-      "plans": ["Enterprise"],
-      "tier": "enterprise"
+      "tier": "enterprise",
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "embedded_login",
       "status": "supported",
       "category": "branding_ux",
       "description": "Auth0's Advanced Custom UI Layer (ACUL) allows embedding the auth flow via a client-rendered React SDK. Classic embedded login was deprecated.",
-      "links": ["https://auth0.com/docs/customize/login-pages/universal-login"]
+      "links": ["https://auth0.com/docs/customize/login-pages/universal-login"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "white_label",
@@ -1049,14 +1208,15 @@
       "category": "branding_ux",
       "description": "Full white-labeling with custom domain, custom branding, and removal of Auth0 branding is possible on paid plans.",
       "links": ["https://auth0.com/docs/customize/custom-domains"],
-      "plans": ["B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "localization",
       "status": "supported",
       "category": "branding_ux",
       "description": "Universal Login supports 40+ languages via text dictionaries. Custom locale overrides supported.",
-      "links": ["https://auth0.com/docs/customize/login-pages/universal-login/customize-text-elements"]
+      "links": ["https://auth0.com/docs/customize/login-pages/universal-login/customize-text-elements"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "prebuilt_ui_components",
@@ -1066,54 +1226,62 @@
       "links": [
         "https://auth0.com/docs/authenticate/login/auth0-universal-login",
         "https://auth0.com/docs/libraries/lock"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "hosted_login_page",
       "status": "supported",
       "category": "branding_ux",
       "description": "Universal Login is Auth0's centrally hosted login page. Customizable via themes, templates, or ACUL.",
-      "links": ["https://auth0.com/docs/authenticate/login/auth0-universal-login"]
+      "links": ["https://auth0.com/docs/authenticate/login/auth0-universal-login"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "login_analytics",
       "status": "supported",
       "category": "analytics",
       "description": "Dashboard with login success/failure rates, active users, and sign-up trends. Available on Professional plan and above.",
-      "links": ["https://auth0.com/docs/deploy-monitor/monitor"]
+      "links": ["https://auth0.com/docs/deploy-monitor/monitor"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "nocode_flow_builder",
       "status": "partial",
       "category": "advanced",
       "description": "Auth0 Forms (Progressive Profiling) and Actions provide event-driven extensibility, but no visual drag-and-drop flow orchestration engine.",
-      "links": ["https://auth0.com/docs/customize/forms"]
+      "links": ["https://auth0.com/docs/customize/forms"],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "identity_proofing",
       "status": "not_supported",
       "category": "advanced",
-      "description": "Auth0 does not offer native built-in identity document verification or biometric liveness proofing. Identity verification is supported via third-party integrations in the Auth0 Marketplace (such as Persona, Veriff, Trulioo, and IDology)."
+      "description": "Auth0 does not offer native built-in identity document verification or biometric liveness proofing. Identity verification is supported via third-party integrations in the Auth0 Marketplace (such as Persona, Veriff, Trulioo, and IDology).",
+      "plans": []
     },
     {
       "identifier": "decentralized_identity",
       "status": "not_supported",
       "category": "advanced",
-      "description": "Auth0 does not natively support W3C Verifiable Credentials, Decentralized Identifiers (DIDs), or decentralized wallet-based authentication flows."
+      "description": "Auth0 does not natively support W3C Verifiable Credentials, Decentralized Identifiers (DIDs), or decentralized wallet-based authentication flows.",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
       "status": "not_supported",
       "category": "advanced",
       "description": "Auth0 does not offer native billing or subscription management integration. Organizations requiring billing must integrate third-party solutions (e.g., Stripe, Stigg) alongside Auth0.",
-      "links": ["https://auth0.com/blog/auth0-stigg-integration/"]
+      "links": ["https://auth0.com/blog/auth0-stigg-integration/"],
+      "plans": []
     },
     {
       "identifier": "fedramp",
       "status": "not_supported",
       "category": "compliance",
       "description": "Auth0 (the developer CIAM platform) is not FedRAMP authorized. FedRAMP High JAB authorization is held separately by Okta for Government, a dedicated workforce identity product.",
-      "links": ["https://auth0.com/docs/secure/data-privacy-and-compliance"]
+      "links": ["https://auth0.com/docs/secure/data-privacy-and-compliance"],
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
@@ -1123,7 +1291,8 @@
       "links": [
         "https://auth0.com/ai/docs/auth-for-mcp",
         "https://auth0.com/blog/auth0-auth-for-mcp-servers-generally-available/"
-      ]
+      ],
+      "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
     },
     {
       "identifier": "pq_hybrid_key_exchange",
@@ -1133,7 +1302,8 @@
       "links": [
         "https://auth0.com/blog/auth0-architecture-running-in-multiple-cloud-providers-and-regions/",
         "https://aws.amazon.com/about-aws/whats-new/2025/11/network-load-balancers-post-quantum-key-exchange-tls"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
@@ -1142,14 +1312,16 @@
       "description": "Auth0 signs ID tokens/JWTs with RS256 (or HS256); no ML-DSA/SLH-DSA option is documented. Auth0's community forum has open, unanswered questions asking whether JOSE will ever support PQC signature algorithms, confirming no current support.",
       "links": [
         "https://community.auth0.com/t/will-jwt-support-pqc-post-quantum-cryptography-replace-rsa-and-ecdsa-as-a-new-standard/192970"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
       "status": "unknown",
       "category": "post_quantum_cryptography",
       "description": "Auth0 published one educational blog post explaining PQC concepts (NIST FIPS 203/204/205, ML-KEM/ML-DSA/SLH-DSA), written by a member of Auth0's IAM-Core-Crypto team, but it contains no Auth0-specific migration timeline, roadmap, or platform commitment - no product roadmap statement found.",
-      "links": ["https://auth0.com/blog/post-quantum-cryptography/"]
+      "links": ["https://auth0.com/blog/post-quantum-cryptography/"],
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
@@ -1159,7 +1331,8 @@
       "links": [
         "https://auth0.com/docs/secure/security-guidance/data-security",
         "https://auth0.com/blog/post-quantum-cryptography/"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
@@ -1169,34 +1342,40 @@
       "links": [
         "https://auth0.com/docs/customize/custom-domains/self-managed-certificates/tls-ssl",
         "https://auth0.com/blog/post-quantum-cryptography/"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
       "description": "Auth0 does not support NIST SP 800-208 stateful hash-based signature schemes (LMS/HSS, XMSS).",
-      "links": ["https://auth0.com/blog/post-quantum-cryptography/", "https://csrc.nist.gov/pubs/sp/800/208/final"]
+      "links": ["https://auth0.com/blog/post-quantum-cryptography/", "https://csrc.nist.gov/pubs/sp/800/208/final"],
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -1204,222 +1383,266 @@
       {
         "identifier": "implicit_grant",
         "status": "supported",
-        "links": ["https://auth0.com/docs/flows/implicit-flow-with-form-post"]
+        "links": ["https://auth0.com/docs/flows/implicit-flow-with-form-post"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "authorization_code_grant",
         "status": "supported",
-        "links": ["https://auth0.com/docs/flows/authorization-code-flow"]
+        "links": ["https://auth0.com/docs/flows/authorization-code-flow"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "pkce_extension",
         "status": "supported",
         "links": [
           "https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce"
-        ]
+        ],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "jar_extension",
         "status": "supported",
-        "links": ["https://auth0.com/docs/secure/application-credentials#jwt-secured-authorization-request-jar-"]
+        "links": ["https://auth0.com/docs/secure/application-credentials#jwt-secured-authorization-request-jar-"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "par_extension",
         "status": "supported",
         "links": [
           "https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-par"
-        ]
+        ],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "rar_extension",
         "status": "supported",
         "links": [
           "https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-rar"
-        ]
+        ],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "client_credentials_grant",
         "status": "supported",
-        "links": ["https://auth0.com/docs/flows/client-credentials-flow"]
+        "links": ["https://auth0.com/docs/flows/client-credentials-flow"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "password_grant",
         "status": "supported",
-        "links": ["https://auth0.com/docs/flows/resource-owner-password-flow"]
+        "links": ["https://auth0.com/docs/flows/resource-owner-password-flow"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "refresh_token_grant",
         "status": "supported",
-        "links": ["https://auth0.com/docs/tokens/refresh-tokens/use-refresh-tokens"]
+        "links": ["https://auth0.com/docs/tokens/refresh-tokens/use-refresh-tokens"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
         "status": "supported",
-        "links": ["https://auth0.com/docs/flows/device-authorization-flow"]
+        "links": ["https://auth0.com/docs/flows/device-authorization-flow"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
         "status": "supported",
-        "links": ["https://auth0.com/docs/authenticate/custom-token-exchange"]
+        "links": ["https://auth0.com/docs/authenticate/custom-token-exchange"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
         "status": "supported",
         "links": [
           "https://auth0.com/docs/get-started/authentication-and-authorization-flow/client-initiated-backchannel-authentication-flow"
-        ]
+        ],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
         "status": "supported",
-        "links": ["https://auth0.com/docs/api/authentication#authorize-endpoint"]
+        "links": ["https://auth0.com/docs/api/authentication#authorize-endpoint"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "token_endpoint",
         "status": "supported",
-        "links": ["https://auth0.com/docs/api/authentication#-post-oauth-token-"]
+        "links": ["https://auth0.com/docs/api/authentication#-post-oauth-token-"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "userinfo_endpoint",
         "status": "supported",
-        "links": ["https://auth0.com/docs/api/authentication#get-user-info"]
+        "links": ["https://auth0.com/docs/api/authentication#get-user-info"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "token_revocation_endpoint",
         "status": "partial",
         "description": "Auth0 support only revocation of refresh tokens",
-        "links": ["https://auth0.com/docs/api/authentication#revoke-refresh-token"]
+        "links": ["https://auth0.com/docs/api/authentication#revoke-refresh-token"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "token_introspection_endpoint",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "device_authorization_endpoint",
         "status": "supported",
-        "links": ["https://auth0.com/docs/api/authentication/device-authorization-flow/authorize-device"]
+        "links": ["https://auth0.com/docs/api/authentication/device-authorization-flow/authorize-device"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "supported",
-        "links": ["https://auth0.com/docs/get-started/applications/configure-applications-with-oidc-discovery"]
+        "links": ["https://auth0.com/docs/get-started/applications/configure-applications-with-oidc-discovery"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
         "status": "partial",
         "description": "Supports through OpenID Connect Discovery",
-        "links": ["https://auth0.com/docs/get-started/applications/configure-applications-with-oidc-discovery"]
+        "links": ["https://auth0.com/docs/get-started/applications/configure-applications-with-oidc-discovery"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "none_prompt",
         "status": "supported",
-        "links": ["https://auth0.com/docs/api/authentication#authorize"]
+        "links": ["https://auth0.com/docs/api/authentication#authorize"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "login_prompt",
         "status": "supported",
-        "links": ["https://auth0.com/docs/api/authentication#authorize"]
+        "links": ["https://auth0.com/docs/api/authentication#authorize"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "consent_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "select_account_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "create_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://auth0.com/docs/secure/application-credentials"]
+        "links": ["https://auth0.com/docs/secure/application-credentials"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://auth0.com/docs/secure/application-credentials"]
+        "links": ["https://auth0.com/docs/secure/application-credentials"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://auth0.com/docs/secure/application-credentials"]
+        "links": ["https://auth0.com/docs/secure/application-credentials"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
         "status": "not_supported",
-        "links": ["https://auth0.com/docs/secure/application-credentials"]
+        "links": ["https://auth0.com/docs/secure/application-credentials"],
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://auth0.com/docs/secure/application-credentials"]
+        "links": ["https://auth0.com/docs/secure/application-credentials"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://auth0.com/docs/secure/application-credentials"]
+        "links": ["https://auth0.com/docs/secure/application-credentials"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "dynamic_client_registration",
         "status": "supported",
-        "links": ["https://auth0.com/docs/get-started/applications/dynamic-client-registration"]
+        "links": ["https://auth0.com/docs/get-started/applications/dynamic-client-registration"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
         "status": "supported",
-        "links": ["https://auth0.com/docs/secure/tokens/refresh-tokens/refresh-token-rotation"]
+        "links": ["https://auth0.com/docs/secure/tokens/refresh-tokens/refresh-token-rotation"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
         "status": "supported",
-        "links": ["https://auth0.com/docs/secure/tokens/refresh-tokens/refresh-token-rotation#rotation-overlap-period"]
+        "links": ["https://auth0.com/docs/secure/tokens/refresh-tokens/refresh-token-rotation#rotation-overlap-period"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "rp_initiated_logout",
         "status": "supported",
-        "links": ["https://auth0.com/docs/authenticate/login/logout/log-users-out-of-auth0"]
+        "links": ["https://auth0.com/docs/authenticate/login/logout/log-users-out-of-auth0"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "dpop",
         "status": "supported",
-        "links": ["https://auth0.com/docs/secure/sender-constraining/demonstrating-proof-of-possession-dpop"]
+        "links": ["https://auth0.com/docs/secure/sender-constraining/demonstrating-proof-of-possession-dpop"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
         "status": "supported",
-        "links": ["https://auth0.com/docs/get-started/applications/configure-fapi-compliance"]
+        "links": ["https://auth0.com/docs/get-started/applications/configure-fapi-compliance"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "fapi_2_0_security_profile",
         "status": "supported",
-        "links": ["https://auth0.com/docs/get-started/applications/configure-fapi-compliance"]
+        "links": ["https://auth0.com/docs/get-started/applications/configure-fapi-compliance"],
+        "plans": ["Free", "B2C Essentials", "B2C Professional", "B2B Essentials", "B2B Professional", "Enterprise"]
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       }
     ],
     "certified": {

@@ -59,50 +59,43 @@
   "foundedYear": 2021,
   "pricing": {
     "hasFreeTier": true,
-    "freeTierLimit": "Free plan: up to 50K MAU, 3 applications, 1 M2M app, 3 social connectors, 3 days of audit logs",
+    "freeTierLimit": "50K MAU, 3 applications, 1 M2M app, 3 social connectors, 3 days of audit logs",
     "freeTierMau": 50000,
     "pricingModel": "subscription",
     "pricingUrl": "https://logto.io/pricing",
     "hasEnterprisePlan": true,
     "contactSalesRequired": true,
     "currency": "USD",
-    "pricingLastVerified": "2026-10-03",
+    "pricingLastVerified": "2026-11-21",
     "plans": [
       {
-        "name": "Free",
-        "price": "Free",
+        "name": "Open Source",
+        "price": "Free (self-hosted, MPL-2.0; every feature included)",
         "amount": 0,
-        "mauIncluded": 50000
+        "deployment": "self_hosted"
+      },
+      {
+        "name": "Free",
+        "price": "Free (Logto Cloud: 50K tokens, 3 applications, 3-day audit logs)",
+        "amount": 0,
+        "deployment": "saas",
+        "usage": {
+          "metric": "mau",
+          "included": 50000,
+          "max": 50000
+        }
       },
       {
         "name": "Pro",
-        "price": "From $24/month, plus add-ons (RBAC $32, Organizations $48, MFA $48, Enterprise SSO $48 per connector, Advanced security $48)",
-        "featuresIncluded": [
-          "passkey_authentication",
-          "saml2_protocol",
-          "progressive_profiling",
-          "api_authorization",
-          "embedded_login",
-          "white_label",
-          "custom_oidc_claims"
-        ]
+        "price": "From $24/month (50K tokens included, then $0.08 per 100 tokens); features billed as add-ons",
+        "amount": 24,
+        "period": "month",
+        "deployment": "saas"
       },
       {
         "name": "Enterprise",
-        "price": "Custom",
-        "featuresIncluded": [
-          "passkey_authentication",
-          "saml2_protocol",
-          "lazy_migration",
-          "progressive_profiling",
-          "api_authorization",
-          "hipaa_baa",
-          "embedded_login",
-          "white_label",
-          "actions_extensibility",
-          "typescript_in_actions",
-          "custom_oidc_claims"
-        ]
+        "price": "Custom (SLA, private cloud, HIPAA BAA, custom data region)",
+        "deployment": "saas"
       }
     ]
   },
@@ -170,145 +163,222 @@
       "identifier": "username_and_password_authentication",
       "status": "supported",
       "description": "Username, email or phone number sign-in with a password. Sign-up and sign-in identifiers are configurable.",
-      "links": ["https://docs.logto.io/end-user-flows/sign-up-and-sign-in"]
+      "links": ["https://docs.logto.io/end-user-flows/sign-up-and-sign-in"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
       "description": "Social connectors such as Google, Apple, GitHub, Discord, Slack and LinkedIn, plus generic OIDC and OAuth 2.0 connectors. The Free plan is limited to 3 social connectors.",
-      "links": ["https://docs.logto.io/connectors", "https://github.com/logto-io/logto/tree/master/packages/connectors"]
+      "links": [
+        "https://docs.logto.io/connectors",
+        "https://github.com/logto-io/logto/tree/master/packages/connectors"
+      ],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "passkey_authentication",
       "status": "supported",
       "description": "Passkey sign-in. Not available on the Free plan.",
       "links": ["https://docs.logto.io/end-user-flows", "https://logto.io/pricing"],
-      "plans": ["Pro", "Enterprise"]
+      "plans": ["Open Source", "Pro", "Enterprise"]
     },
     {
       "identifier": "email_passwordless_authentication",
       "status": "supported",
       "description": "Verification code sent by email, through the email connectors.",
-      "links": ["https://docs.logto.io/connectors"]
+      "links": ["https://docs.logto.io/connectors"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "supported",
       "description": "Verification code sent by SMS, through the SMS connectors.",
-      "links": ["https://docs.logto.io/connectors"]
+      "links": ["https://docs.logto.io/connectors"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "magic_link_authentication",
       "status": "supported",
       "description": "Email magic links, available on every plan.",
-      "links": ["https://docs.logto.io/", "https://logto.io/pricing"]
+      "links": ["https://docs.logto.io/", "https://logto.io/pricing"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "anonymous_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
       "status": "supported",
       "description": "Authenticator app one-time passwords. MFA is a paid add-on on the Pro plan.",
       "links": ["https://docs.logto.io/end-user-flows/mfa/authenticator-app-otp", "https://logto.io/pricing"],
-      "addOnCost": "$48/month"
+      "addOn": {
+        "name": "Multi-factor authentication",
+        "price": "$48/month (all factors)",
+        "amount": 48,
+        "period": "month",
+        "plans": ["Pro"]
+      },
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "hotp_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "webauthn_mfa",
       "status": "supported",
       "description": "Passkeys, security keys and biometrics as a second factor.",
       "links": ["https://docs.logto.io/end-user-flows/mfa/webauthn"],
-      "addOnCost": "$48/month"
+      "addOn": {
+        "name": "Multi-factor authentication",
+        "price": "$48/month (all factors)",
+        "amount": 48,
+        "period": "month",
+        "plans": ["Pro"]
+      },
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "email_code_mfa",
       "status": "supported",
       "description": "One-time code sent by email.",
       "links": ["https://docs.logto.io/end-user-flows/mfa/email-mfa"],
-      "addOnCost": "$48/month"
+      "addOn": {
+        "name": "Multi-factor authentication",
+        "price": "$48/month (all factors)",
+        "amount": 48,
+        "period": "month",
+        "plans": ["Pro"]
+      },
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "phone_code_mfa",
       "status": "supported",
       "description": "One-time code sent by SMS.",
       "links": ["https://docs.logto.io/end-user-flows/mfa/sms-mfa"],
-      "addOnCost": "$48/month"
+      "addOn": {
+        "name": "Multi-factor authentication",
+        "price": "$48/month (all factors)",
+        "amount": 48,
+        "period": "month",
+        "plans": ["Pro"]
+      },
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "recovery_code_mfa",
       "status": "supported",
       "description": "One-time backup codes for emergency access.",
       "links": ["https://docs.logto.io/end-user-flows/mfa/backup-codes"],
-      "addOnCost": "$48/month"
+      "addOn": {
+        "name": "Multi-factor authentication",
+        "price": "$48/month (all factors)",
+        "amount": 48,
+        "period": "month",
+        "plans": ["Pro"]
+      },
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "push_notification_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "adaptive_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "cisco_duo_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
       "status": "supported",
       "description": "Security verification asks the user to verify again before sensitive actions.",
-      "links": ["https://docs.logto.io/end-user-flows/security-verification"]
+      "links": ["https://docs.logto.io/end-user-flows/security-verification"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "oidc_protocol",
       "status": "supported",
       "description": "OpenID Connect and OAuth 2.0 provider built on node-oidc-provider. Third-party OIDC applications cost $8 each on the Pro plan.",
-      "links": ["https://github.com/logto-io/logto", "https://docs.logto.io/quick-starts"]
+      "links": ["https://github.com/logto-io/logto", "https://docs.logto.io/quick-starts"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "saml2_protocol",
       "status": "supported",
       "description": "SAML applications with Logto acting as the identity provider. Not on the Free plan; $96 per SAML app on Pro.",
       "links": ["https://logto.io/pricing", "https://docs.logto.io/integrate-logto"],
-      "plans": ["Pro", "Enterprise"],
-      "addOnCost": "$96/app/month"
+      "plans": ["Open Source", "Enterprise"],
+      "addOn": {
+        "name": "SAML applications",
+        "price": "$96/month per SAML application",
+        "amount": 96,
+        "period": "month",
+        "unit": "application",
+        "plans": ["Pro"]
+      }
     },
     {
       "identifier": "ws_federation_protocol",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
       "status": "supported",
       "description": "Machine-to-machine applications use the client credentials grant. The Free plan includes 1 M2M app, and extra apps cost $8 each on Pro.",
-      "links": ["https://docs.logto.io/quick-starts"]
+      "links": ["https://docs.logto.io/quick-starts"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "oidc_federation",
       "status": "supported",
       "description": "Enterprise SSO connectors for any OIDC provider, plus a generic OIDC social connector. Enterprise SSO is a paid add-on on Pro.",
       "links": ["https://docs.logto.io/end-user-flows/enterprise-sso"],
-      "addOnCost": "$48/connector/month"
+      "addOn": {
+        "name": "Enterprise SSO",
+        "price": "$48/month per connector",
+        "amount": 48,
+        "period": "month",
+        "unit": "connection",
+        "plans": ["Pro"]
+      },
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "saml_federation",
       "status": "supported",
       "description": "Enterprise SSO connectors for any SAML provider, with SP-initiated and IdP-initiated SSO and email-domain routing.",
       "links": ["https://docs.logto.io/end-user-flows/enterprise-sso"],
-      "addOnCost": "$48/connector/month"
+      "addOn": {
+        "name": "Enterprise SSO",
+        "price": "$48/month per connector",
+        "amount": 48,
+        "period": "month",
+        "unit": "connection",
+        "plans": ["Pro"]
+      },
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "active_directory_ldap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "azure_ad_integration",
@@ -318,52 +388,70 @@
         "https://docs.logto.io/end-user-flows/enterprise-sso",
         "https://github.com/logto-io/logto/tree/master/packages/connectors/connector-azuread"
       ],
-      "addOnCost": "$48/connector/month"
+      "addOn": {
+        "name": "Enterprise SSO",
+        "price": "$48/month per connector",
+        "amount": 48,
+        "period": "month",
+        "unit": "connection",
+        "plans": ["Pro"]
+      },
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "bulk_user_import",
       "status": "partial",
       "description": "Users are imported one by one with the Management API create user endpoint, which is rate limited. There is no dedicated bulk or file import.",
-      "links": ["https://docs.logto.io/user-management/user-migration"]
+      "links": ["https://docs.logto.io/user-management/user-migration"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "password_hash_import",
       "status": "supported",
       "description": "Argon2 is the native format. Bcrypt, MD5, SHA1, SHA256 and PBKDF2 hashes are accepted, and the Legacy format covers any hash algorithm supported by Node.js. Imported hashes are rehashed with Argon2 on first sign-in.",
       "links": ["https://docs.logto.io/user-management/user-migration"],
-      "values": ["Argon2", "Bcrypt", "MD5", "SHA1", "SHA256", "PBKDF2"]
+      "values": ["Argon2", "Bcrypt", "MD5", "SHA1", "SHA256", "PBKDF2"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "bulk_user_export",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bulk_user_update_delete",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "upsert_on_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "legacy_username_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "mfa_enrollment_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "inbound_scim_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "outbound_scim_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "scim_groups",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "jit_provisioning",
@@ -372,20 +460,22 @@
       "links": [
         "https://docs.logto.io/organizations/just-in-time-provisioning",
         "https://docs.logto.io/end-user-flows/enterprise-sso"
-      ]
+      ],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "lazy_migration",
       "status": "supported",
       "description": "The Post first-factor verification Action checks credentials against a legacy system on first password sign-in, then stores a Logto password hash. Actions are only on Logto Cloud Enterprise plans.",
       "links": ["https://docs.logto.io/user-management/user-migration", "https://docs.logto.io/developers/actions"],
-      "plans": ["Enterprise"]
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "self_service_profile_management",
       "status": "supported",
       "description": "Account center, with Account APIs for building a custom profile page. Included on every plan.",
-      "links": ["https://docs.logto.io/", "https://logto.io/pricing"]
+      "links": ["https://docs.logto.io/", "https://logto.io/pricing"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "account_linking",
@@ -394,89 +484,115 @@
       "links": [
         "https://docs.logto.io/user-management/manage-users",
         "https://docs.logto.io/end-user-flows/enterprise-sso"
-      ]
+      ],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "user_blocking",
       "status": "supported",
       "description": "Users can be suspended from the Console or the Management API.",
-      "links": ["https://docs.logto.io/security"]
+      "links": ["https://docs.logto.io/security"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "user_metadata",
       "status": "supported",
       "description": "Custom data field on each user, readable and writable through the Console and Management API.",
-      "links": ["https://docs.logto.io/user-management/user-data"]
+      "links": ["https://docs.logto.io/user-management/user-data"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "app_metadata",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "metadata_size_limits",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_search",
       "status": "supported",
       "description": "Search by username, ID, full name, phone number or email in the Console, and advanced search through the Management API.",
-      "links": ["https://docs.logto.io/user-management", "https://docs.logto.io/user-management/advanced-user-search"]
+      "links": ["https://docs.logto.io/user-management", "https://docs.logto.io/user-management/advanced-user-search"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "rbac",
       "status": "supported",
       "description": "User roles and M2M roles with permissions. A paid add-on on Pro; the Free plan has no RBAC.",
       "links": ["https://docs.logto.io/authorization", "https://logto.io/pricing"],
-      "addOnCost": "$32/month"
+      "addOn": {
+        "name": "Role-based access control",
+        "price": "$32/month",
+        "amount": 32,
+        "period": "month",
+        "plans": ["Pro"]
+      },
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "organizations_multitenancy",
       "status": "supported",
       "description": "Organizations with members, invitations, organization roles and permissions, JIT provisioning and organization-level MFA. A paid add-on on Pro.",
       "links": ["https://docs.logto.io/organizations", "https://logto.io/pricing"],
-      "addOnCost": "$48/month"
+      "addOn": {
+        "name": "Organizations",
+        "price": "$48/month",
+        "amount": 48,
+        "period": "month",
+        "plans": ["Pro"]
+      },
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "password_strength_policy",
       "status": "supported",
       "description": "Minimum length, character types, repetition, user information and custom word rules, plus a Have I Been Pwned check.",
-      "links": ["https://docs.logto.io/security/password-policy"]
+      "links": ["https://docs.logto.io/security/password-policy"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "username_restrictions",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "progressive_profiling",
       "status": "partial",
       "description": "Optional collection of user profile fields during sign-up, on Pro and above. There is no multi-step progressive profiling after sign-in.",
       "links": ["https://logto.io/pricing"],
-      "plans": ["Pro", "Enterprise"]
+      "plans": ["Open Source", "Pro", "Enterprise"]
     },
     {
       "identifier": "abac",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fine_grained_authorization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "api_authorization",
       "status": "supported",
       "description": "API resources with permissions, requested through the resource indicator and scopes. API resources are not on the Free plan; Pro includes 3 and charges $4 per extra one.",
       "links": ["https://docs.logto.io/authorization", "https://logto.io/pricing"],
-      "plans": ["Pro", "Enterprise"]
+      "plans": ["Open Source", "Pro", "Enterprise"]
     },
     {
       "identifier": "soc2_type2",
       "status": "supported",
       "description": "Logto states it is SOC 2 Type II certified for Security, Availability and Confidentiality.",
-      "links": ["https://logto.io/trust-and-security"]
+      "links": ["https://logto.io/trust-and-security"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "iso_27001",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "hipaa_baa",
@@ -487,211 +603,264 @@
     },
     {
       "identifier": "pci_dss",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "csa_star",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fedramp",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
       "status": "partial",
       "description": "Logto says it helps customers export their data. User data can be read through the Management API, but no dedicated export tool is documented.",
-      "links": ["https://logto.io/trust-and-security"]
+      "links": ["https://logto.io/trust-and-security"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "supported",
       "description": "Users can be deleted from the Console or the Management API.",
-      "links": ["https://docs.logto.io/user-management", "https://logto.io/trust-and-security"]
+      "links": ["https://docs.logto.io/user-management", "https://logto.io/trust-and-security"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "consent_management",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "region_deployment",
       "status": "supported",
       "description": "Logto Cloud tenants can be hosted in Europe, Australia or the US. Custom data regions are an Enterprise option.",
-      "links": ["https://logto.io/trust-and-security", "https://logto.io/pricing"]
+      "links": ["https://logto.io/trust-and-security", "https://logto.io/pricing"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "private_cloud_deployment",
       "status": "supported",
       "description": "Self-hosted OSS with Docker Compose or Node.js and PostgreSQL, and Logto Private Cloud on the Enterprise plan.",
       "links": ["https://docs.logto.io/logto-oss", "https://logto.io/pricing"],
-      "values": ["Docker", "Node.js", "Logto Private Cloud"]
+      "values": ["Docker", "Node.js", "Logto Private Cloud"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "audit_log_retention",
       "status": "supported",
       "description": "Retention is 3 days on Free and 14 days on Pro. Enterprise is custom.",
-      "links": ["https://docs.logto.io/developers/audit-logs", "https://logto.io/pricing"]
+      "links": ["https://docs.logto.io/developers/audit-logs", "https://logto.io/pricing"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "audit_log_streaming",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "security_center",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "encryption_at_rest",
       "status": "supported",
       "description": "Databases are encrypted at rest.",
-      "links": ["https://logto.io/trust-and-security"]
+      "links": ["https://logto.io/trust-and-security"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "encryption_in_transit",
       "status": "supported",
       "description": "TLS is required.",
-      "links": ["https://logto.io/trust-and-security"]
+      "links": ["https://logto.io/trust-and-security"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "customer_managed_keys",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bot_detection",
       "status": "supported",
       "description": "CAPTCHA with Google reCAPTCHA or Cloudflare Turnstile, part of the Advanced security bundle add-on on Pro.",
       "links": ["https://docs.logto.io/security/captcha", "https://logto.io/pricing"],
-      "addOnCost": "$48/month"
+      "addOn": {
+        "name": "Advanced security",
+        "price": "$48/month",
+        "amount": 48,
+        "period": "month",
+        "plans": ["Pro"]
+      },
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "brute_force_protection",
       "status": "supported",
       "description": "Identifier lockout after repeated failed attempts, part of the Advanced security bundle add-on on Pro.",
       "links": ["https://docs.logto.io/security/identifier-lockout", "https://logto.io/pricing"],
-      "addOnCost": "$48/month"
+      "addOn": {
+        "name": "Advanced security",
+        "price": "$48/month",
+        "amount": 48,
+        "period": "month",
+        "plans": ["Pro"]
+      },
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "suspicious_ip_throttling",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "breached_password_detection",
       "status": "supported",
       "description": "The password policy can reject passwords exposed in data breaches, using Have I Been Pwned.",
-      "links": ["https://docs.logto.io/security/password-policy"]
+      "links": ["https://docs.logto.io/security/password-policy"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "credential_guard",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "device_fingerprinting",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "per_org_branding",
       "status": "partial",
       "description": "The docs mention dedicated sign-in pages for specific applications or organizations, without further detail.",
-      "links": ["https://docs.logto.io/customization"]
+      "links": ["https://docs.logto.io/customization"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "per_org_mfa_policy",
       "status": "supported",
       "description": "Organization-level MFA is included with the Organizations add-on.",
       "links": ["https://logto.io/pricing"],
-      "addOnCost": "$48/month"
+      "addOn": {
+        "name": "Organizations",
+        "price": "$48/month",
+        "amount": 48,
+        "period": "month",
+        "plans": ["Pro"]
+      },
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "hosted_login_page",
       "status": "supported",
       "description": "Hosted sign-in experience with sign-up and sign-in flows, social, SSO and MFA.",
-      "links": ["https://docs.logto.io/end-user-flows", "https://docs.logto.io/customization"]
+      "links": ["https://docs.logto.io/end-user-flows", "https://docs.logto.io/customization"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "embedded_login",
       "status": "partial",
       "description": "Bring-your-UI lets you upload a custom sign-in front end that Logto Cloud hosts, backed by the Experience API. It is not an embeddable component library.",
       "links": ["https://docs.logto.io/customization/bring-your-ui"],
-      "plans": ["Pro", "Enterprise"]
+      "plans": ["Open Source", "Pro", "Enterprise"]
     },
     {
       "identifier": "white_label",
       "status": "supported",
       "description": "Logto branding can be hidden. Not available on the Free plan.",
       "links": ["https://logto.io/pricing"],
-      "plans": ["Pro", "Enterprise"]
+      "plans": ["Open Source", "Pro", "Enterprise"]
     },
     {
       "identifier": "localization",
       "status": "supported",
       "description": "15 languages by default, with additional languages and editable translations.",
-      "links": ["https://docs.logto.io/customization/localized-languages"]
+      "links": ["https://docs.logto.io/customization/localized-languages"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "prebuilt_ui_components",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "login_analytics",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "sdk_coverage",
       "status": "supported",
       "description": "SDKs and quick starts for 30+ frameworks, including React, Next.js, Angular, Vue, Nuxt, SvelteKit, Express, Flutter, iOS, Android, .NET, Go, Python, PHP, Ruby and Java Spring Boot.",
-      "links": ["https://docs.logto.io/quick-starts", "https://github.com/logto-io/js"]
+      "links": ["https://docs.logto.io/quick-starts", "https://github.com/logto-io/js"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "management_api",
       "status": "supported",
       "description": "REST Management API with an OpenAPI reference, plus Experience and Account APIs.",
-      "links": ["https://openapi.logto.io/", "https://docs.logto.io/"]
+      "links": ["https://openapi.logto.io/", "https://docs.logto.io/"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "authentication_api_rate_limits",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "actions_extensibility",
       "status": "supported",
       "description": "Actions run trusted JavaScript synchronously at Post first-factor verification and Post sign-in. Only on Logto Cloud Enterprise plans.",
       "links": ["https://docs.logto.io/developers/actions"],
-      "plans": ["Enterprise"]
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "typescript_in_actions",
       "status": "partial",
       "description": "The Actions editor provides TypeScript type information, but the saved script runs as JavaScript.",
       "links": ["https://docs.logto.io/developers/actions"],
-      "plans": ["Enterprise"]
+      "plans": ["Open Source", "Enterprise"]
     },
     {
       "identifier": "custom_domain",
       "status": "supported",
       "description": "Custom domain for sign-in and sign-up URLs. 1 is included on Free and Pro, and Pro adds up to 10 for $48.",
-      "links": ["https://docs.logto.io/logto-cloud/custom-domain", "https://logto.io/pricing"]
+      "links": ["https://docs.logto.io/logto-cloud/custom-domain", "https://logto.io/pricing"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "deploy_cli",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "terraform_provider",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_database_connections",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "native_webhooks",
       "status": "supported",
       "description": "Asynchronous webhooks for user, role, permission, organization and user-interaction events. Free allows 1 webhook and Pro allows 10.",
-      "links": ["https://docs.logto.io/developers/webhooks", "https://logto.io/pricing"]
+      "links": ["https://docs.logto.io/developers/webhooks", "https://logto.io/pricing"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "universal_login_customization",
@@ -701,90 +870,111 @@
         "https://docs.logto.io/customization/match-your-brand",
         "https://docs.logto.io/customization/custom-css",
         "https://docs.logto.io/customization/bring-your-ui"
-      ]
+      ],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "custom_email_provider",
       "status": "supported",
       "description": "Email connectors for SMTP, SendGrid, Mailgun, Postmark, AWS SES and others, plus an HTTP email connector.",
-      "links": ["https://docs.logto.io/connectors", "https://github.com/logto-io/logto/tree/master/packages/connectors"]
+      "links": [
+        "https://docs.logto.io/connectors",
+        "https://github.com/logto-io/logto/tree/master/packages/connectors"
+      ],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "email_templates",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_oidc_claims",
       "status": "supported",
       "description": "Custom claims for access tokens (JWT or opaque) through a getCustomJwtClaims script, and for ID tokens. Not available on the Free plan.",
       "links": ["https://docs.logto.io/developers/custom-token-claims", "https://logto.io/pricing"],
-      "plans": ["Pro", "Enterprise"]
+      "plans": ["Open Source", "Pro", "Enterprise"]
     },
     {
       "identifier": "nocode_flow_builder",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "identity_proofing",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "decentralized_identity",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
       "status": "partial",
       "description": "Positioned for Model Context Protocol and agent-based architectures as an OIDC and OAuth 2.1 provider. A Logto MCP server manages Logto Cloud tenants from AI tools. MCP-specific authorization flows were not verified.",
-      "links": ["https://github.com/logto-io/logto", "https://docs.logto.io/"]
+      "links": ["https://github.com/logto-io/logto", "https://docs.logto.io/"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise"]
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -792,25 +982,29 @@
       {
         "identifier": "authorization_code_grant",
         "status": "supported",
-        "links": ["https://docs.logto.io/quick-starts"]
+        "links": ["https://docs.logto.io/quick-starts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "refresh_token_grant",
         "status": "supported",
         "description": "Needs the offline_access scope. Rotation is enabled by default.",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "client_credentials_grant",
         "status": "supported",
         "description": "Used by machine-to-machine applications.",
-        "links": ["https://docs.logto.io/quick-starts"]
+        "links": ["https://docs.logto.io/quick-starts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "implicit_grant",
         "status": "not_supported",
         "description": "Logto only registers the authorization code, refresh token, client credentials, token exchange and device code grants.",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/schemas/src/types/oidc-config.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/schemas/src/types/oidc-config.ts"],
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
@@ -819,190 +1013,230 @@
         "links": [
           "https://docs.logto.io/developers/user-impersonation",
           "https://docs.logto.io/developers/service-to-service-delegation"
-        ]
+        ],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
         "status": "supported",
-        "links": ["https://docs.logto.io/quick-starts"]
+        "links": ["https://docs.logto.io/quick-starts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "password_grant",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "rp_initiated_logout",
         "status": "supported",
         "description": "End-session endpoint, plus OIDC back-channel logout.",
-        "links": ["https://docs.logto.io/end-user-flows/sign-out"]
+        "links": ["https://docs.logto.io/end-user-flows/sign-out"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "pkce_extension",
         "status": "supported",
         "description": "S256 only. Required for every client that does not use client_secret_basic.",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "par_extension",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "rar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jar_extension",
         "status": "not_supported",
-        "description": "The discovery document advertises request_uri_parameter_supported as false."
+        "description": "The discovery document advertises request_uri_parameter_supported as false.",
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
         "status": "supported",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "token_endpoint",
         "status": "supported",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "userinfo_endpoint",
         "status": "supported",
         "description": "Served at /oidc/me.",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "token_revocation_endpoint",
         "status": "supported",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "token_introspection_endpoint",
         "status": "supported",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "device_authorization_endpoint",
         "status": "supported",
         "description": "Served at /oidc/device/auth.",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "supported",
         "description": "Per-tenant document at /oidc/.well-known/openid-configuration.",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
         "status": "not_supported",
-        "description": "No RFC 8414 document was found at /.well-known/oauth-authorization-server on a default tenant."
+        "description": "No RFC 8414 document was found at /.well-known/oauth-authorization-server on a default tenant.",
+        "plans": []
       },
       {
         "identifier": "none_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "login_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "consent_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "select_account_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "create_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
         "status": "supported",
         "description": "Public clients such as SPAs and native apps, using PKCE.",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
         "status": "supported",
         "description": "Used by traditional web and machine-to-machine applications.",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
         "status": "not_supported",
         "description": "The registration feature is not enabled. Client ID Metadata Documents are supported instead.",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"],
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
         "status": "supported",
         "description": "Configurable per application.",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise"]
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dpop",
         "status": "not_supported",
         "description": "DPoP is explicitly disabled until Logto officially supports it.",
-        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"]
+        "links": ["https://github.com/logto-io/logto/blob/master/packages/core/src/oidc/init.ts"],
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       }
     ]
   }

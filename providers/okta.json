@@ -41,25 +41,59 @@
     "plans": [
       {
         "name": "Starter",
-        "price": "US$6/user/month (SSO + MFA + Universal Directory)"
+        "price": "US$6/user/month (SSO + MFA + Universal Directory), annual contract minimum",
+        "deployment": "saas",
+        "amount": 0,
+        "usage": {
+          "metric": "user",
+          "min": 21,
+          "rates": [
+            {
+              "amount": 6
+            }
+          ]
+        }
       },
       {
         "name": "Core Essentials",
-        "price": "US$14/user/month"
+        "price": "US$14/user/month",
+        "deployment": "saas",
+        "amount": 0,
+        "usage": {
+          "metric": "user",
+          "rates": [
+            {
+              "amount": 14
+            }
+          ]
+        }
       },
       {
         "name": "Essentials",
-        "price": "US$17/user/month (Adaptive MFA, Lifecycle Management, Access Governance)"
+        "price": "US$17/user/month (Adaptive MFA, Lifecycle Management, Access Governance)",
+        "deployment": "saas",
+        "amount": 0,
+        "usage": {
+          "metric": "user",
+          "rates": [
+            {
+              "amount": 17
+            }
+          ]
+        }
       },
       {
         "name": "Professional",
-        "price": "Custom (Device Access, Identity Threat Protection)"
+        "price": "Custom (Device Access, Identity Threat Protection)",
+        "deployment": "saas"
       },
       {
         "name": "Enterprise",
-        "price": "Custom (API Access Management, Access Gateway)"
+        "price": "Custom (API Access Management, Access Gateway)",
+        "deployment": "saas"
       }
-    ]
+    ],
+    "pricingLastVerified": "2026-11-21"
   },
   "hosting": {
     "regions": ["US", "EU", "CA", "AU"]
@@ -152,19 +186,22 @@
     {
       "identifier": "username_and_password_authentication",
       "status": "supported",
-      "links": ["https://help.okta.com/en-us/content/topics/security/security_authentication.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/security_authentication.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
       "description": "Pre-built social IdP integrations for Google, Facebook, Apple, LinkedIn, Microsoft, GitHub, and any generic OIDC/SAML provider via the App Integration Network.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/idp-social.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/idp-social.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "passkey_authentication",
       "status": "supported",
       "description": "FIDO2/WebAuthn passkeys as a first-factor passwordless method via Okta Identity Engine. Supports platform authenticators (Face ID, Touch ID, Windows Hello) and roaming security keys. Also available through Okta FastPass for device-bound authentication.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/mfa-webauthn.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/mfa-webauthn.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "email_passwordless_authentication",
@@ -172,13 +209,15 @@
       "description": "Email magic link or one-time passcode for passwordless sign-in via the Email Authenticator.",
       "links": [
         "https://help.okta.com/oie/en-us/content/topics/identity-engine/authenticators/configure-email-authenticator.htm"
-      ]
+      ],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "supported",
       "description": "SMS or voice OTP as a passwordless first-factor authenticator.",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/authenticators/configure-phone.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/authenticators/configure-phone.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "magic_link_authentication",
@@ -186,35 +225,41 @@
       "description": "Email magic link for passwordless sign-in via the Email Authenticator. Users receive a link that signs them in without entering a password.",
       "links": [
         "https://help.okta.com/oie/en-us/content/topics/identity-engine/authenticators/configure-email-authenticator.htm"
-      ]
+      ],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "anonymous_authentication",
       "status": "not_supported",
-      "description": "Okta requires authenticated user identity. Anonymous or guest sessions are not a built-in feature."
+      "description": "Okta requires authenticated user identity. Anonymous or guest sessions are not a built-in feature.",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
       "status": "supported",
       "description": "Time-based OTP via Okta Verify app or any TOTP-compatible authenticator (Google Authenticator, Authy, Microsoft Authenticator, etc.).",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/authenticators/configure-okta-verify.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/authenticators/configure-okta-verify.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "hotp_mfa",
       "status": "not_supported",
-      "description": "Only TOTP (time-based OTP) is natively supported. HOTP (counter-based OTP) is not available."
+      "description": "Only TOTP (time-based OTP) is natively supported. HOTP (counter-based OTP) is not available.",
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
       "status": "supported",
       "description": "FIDO2/WebAuthn security keys (YubiKey, etc.) as a second factor.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/mfa-webauthn.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/mfa-webauthn.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "webauthn_mfa",
       "status": "supported",
       "description": "WebAuthn as second factor, supporting both platform authenticators and roaming security keys.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/mfa-webauthn.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/mfa-webauthn.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "email_code_mfa",
@@ -222,163 +267,191 @@
       "description": "One-time passcode sent via email as a second factor.",
       "links": [
         "https://help.okta.com/oie/en-us/content/topics/identity-engine/authenticators/configure-email-authenticator.htm"
-      ]
+      ],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "phone_code_mfa",
       "status": "supported",
       "description": "SMS or voice OTP as a second factor.",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/authenticators/configure-phone.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/authenticators/configure-phone.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "recovery_code_mfa",
       "status": "not_supported",
-      "description": "Okta does not provide dedicated one-time backup/recovery codes. Account recovery is handled via email or phone factors."
+      "description": "Okta does not provide dedicated one-time backup/recovery codes. Account recovery is handled via email or phone factors.",
+      "plans": []
     },
     {
       "identifier": "push_notification_mfa",
       "status": "supported",
       "description": "Okta Verify push notifications: users approve sign-in requests with a single tap on the Okta Verify mobile app. Number challenge support available to prevent MFA fatigue attacks.",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/authenticators/configure-okta-verify.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/authenticators/configure-okta-verify.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "adaptive_mfa",
       "status": "supported",
       "description": "Okta Adaptive MFA evaluates risk signals (device context, network zone, location, behavior analytics via ThreatInsight) and dynamically requires step-up authentication for high-risk sign-in attempts.",
-      "links": ["https://www.okta.com/products/adaptive-multi-factor-authentication/"]
+      "links": ["https://www.okta.com/products/adaptive-multi-factor-authentication/"],
+      "plans": ["Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "cisco_duo_mfa",
       "status": "not_supported",
-      "description": "Okta does not natively integrate with Cisco Duo. Okta Verify is Okta's own push MFA product and competes with Cisco Duo."
+      "description": "Okta does not natively integrate with Cisco Duo. Okta Verify is Okta's own push MFA product and competes with Cisco Duo.",
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
       "status": "supported",
       "description": "Step-up authentication via authentication policies with assurance levels and ACR (Authentication Context Class Reference) values, requiring re-authentication or additional factors for sensitive resources.",
-      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/policies/about-app-sign-on-policies.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/identity-engine/policies/about-app-sign-on-policies.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "oidc_protocol",
       "status": "supported",
-      "links": ["https://developer.okta.com/docs/concepts/oauth-openid/"]
+      "links": ["https://developer.okta.com/docs/concepts/oauth-openid/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "saml2_protocol",
       "status": "supported",
       "description": "SAML 2.0 Identity Provider for enterprise SSO. Supports SP-initiated and IdP-initiated flows with 7,000+ pre-built app integrations.",
-      "links": ["https://developer.okta.com/docs/concepts/saml/"]
+      "links": ["https://developer.okta.com/docs/concepts/saml/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "ws_federation_protocol",
       "status": "supported",
       "description": "WS-Federation support for Microsoft AD FS integration. Okta can act as a WS-Federation Identity Provider for SharePoint, Dynamics, and other WS-Fed-aware apps.",
-      "links": ["https://help.okta.com/en-us/content/topics/apps/apps_configuring_ws-federation.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/apps/apps_configuring_ws-federation.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "machine_to_machine",
       "status": "supported",
       "description": "OAuth 2.0 Client Credentials grant for service-to-service and machine-to-machine authentication. Enterprise tier adds dedicated M2M Token management.",
-      "links": ["https://developer.okta.com/docs/guides/implement-grant-type/clientcreds/main/"]
+      "links": ["https://developer.okta.com/docs/guides/implement-grant-type/clientcreds/main/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "oidc_federation",
       "status": "supported",
       "description": "Generic OIDC identity provider federation for connecting per-tenant enterprise IdPs. Pre-built templates for Google Workspace, Salesforce, LinkedIn, GitHub, and others.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/idp-social.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/idp-social.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "saml_federation",
       "status": "supported",
       "description": "SAML 2.0 identity provider federation via Okta's Identity Provider Routing Rules for per-tenant enterprise SSO.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/configure-routing-rules.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/configure-routing-rules.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "active_directory_ldap",
       "status": "supported",
       "description": "Native Okta Active Directory Agent for bidirectional AD sync with delegated authentication. Okta LDAP Interface exposes a virtual LDAP directory backed by Universal Directory for legacy LDAP-dependent apps.",
-      "links": ["https://help.okta.com/en-us/content/topics/directory/ad-agent-main.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/directory/ad-agent-main.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "azure_ad_integration",
       "status": "supported",
       "description": "Native Okta integration with Microsoft Entra ID (Azure AD) for bidirectional user sync, OIDC federation, and SAML SSO.",
-      "links": ["https://help.okta.com/en-us/content/topics/apps/apps_moving_microsoft.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/apps/apps_moving_microsoft.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "bulk_user_import",
       "status": "supported",
       "description": "Bulk user import via CSV upload in the admin console or via the Users API.",
-      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-import-users-main.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-import-users-main.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "password_hash_import",
       "status": "supported",
       "description": "Import users with existing password hashes via the Users API. Supported formats: bcrypt, SHA-512, SHA-256, SHA-1, MD5. Hashes are re-hashed on first successful login.",
-      "links": ["https://developer.okta.com/docs/reference/api/users/#create-user-with-imported-hashed-password"]
+      "links": ["https://developer.okta.com/docs/reference/api/users/#create-user-with-imported-hashed-password"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "bulk_user_export",
       "status": "supported",
       "description": "Export users via the Users API with pagination and filtering support.",
-      "links": ["https://developer.okta.com/docs/reference/api/users/"]
+      "links": ["https://developer.okta.com/docs/reference/api/users/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "bulk_user_update_delete",
       "status": "supported",
       "description": "Bulk user update and delete operations via the Users API and Okta admin console.",
-      "links": ["https://developer.okta.com/docs/reference/api/users/"]
+      "links": ["https://developer.okta.com/docs/reference/api/users/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "upsert_on_import",
       "status": "supported",
-      "description": "CSV imports and API operations support upsert behavior — creating new users or updating existing ones based on a matching identifier."
+      "description": "CSV imports and API operations support upsert behavior — creating new users or updating existing ones based on a matching identifier.",
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "legacy_username_import",
       "status": "partial",
-      "description": "Username format is constrained by Okta's Universal Directory login format rules. Usernames with special characters may require transformation during migration."
+      "description": "Username format is constrained by Okta's Universal Directory login format rules. Usernames with special characters may require transformation during migration.",
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "mfa_enrollment_import",
       "status": "not_supported",
-      "description": "MFA enrollments (TOTP secrets, WebAuthn credentials) cannot be imported from external systems. Users must re-enroll in Okta authenticators after migration."
+      "description": "MFA enrollments (TOTP secrets, WebAuthn credentials) cannot be imported from external systems. Users must re-enroll in Okta authenticators after migration.",
+      "plans": []
     },
     {
       "identifier": "inbound_scim_provisioning",
       "status": "supported",
       "description": "Okta supports inbound SCIM 2.0 provisioning from external identity sources to push users and groups into Universal Directory.",
-      "links": ["https://developer.okta.com/docs/concepts/scim/"]
+      "links": ["https://developer.okta.com/docs/concepts/scim/"],
+      "plans": ["Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "outbound_scim_provisioning",
       "status": "supported",
       "description": "Okta acts as a SCIM 2.0 client to push user lifecycle changes (create, update, deactivate) to SCIM-enabled downstream applications. Core feature of Okta Lifecycle Management.",
-      "links": ["https://help.okta.com/en-us/content/topics/apps/provisioning_deprovisioning_overview.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/apps/provisioning_deprovisioning_overview.htm"],
+      "plans": ["Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "scim_groups",
       "status": "supported",
       "description": "Group Push synchronizes Okta groups to SCIM-enabled apps for access control.",
-      "links": ["https://help.okta.com/en-us/content/topics/apps/provisioning_deprovisioning_overview.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/apps/provisioning_deprovisioning_overview.htm"],
+      "plans": ["Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "jit_provisioning",
       "status": "supported",
       "description": "Just-in-time user provisioning creates Okta user accounts on first login via federated IdP without pre-provisioning.",
-      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-add-users-jit.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-add-users-jit.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "lazy_migration",
       "status": "supported",
       "description": "Trickle migration via the Okta Password Import Inline Hook: on first login, Okta delegates password validation to a legacy system endpoint, migrates the credential on success, and re-hashes it in Universal Directory — no forced password reset.",
-      "links": ["https://developer.okta.com/docs/reference/password-hook/"]
+      "links": ["https://developer.okta.com/docs/reference/password-hook/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "self_service_profile_management",
       "status": "supported",
       "description": "Okta End-User Dashboard for managing profile information, connected apps, MFA device enrollment, and security settings.",
-      "links": ["https://help.okta.com/eu/en-us/content/topics/end-user/ov-overview.htm"]
+      "links": ["https://help.okta.com/eu/en-us/content/topics/end-user/ov-overview.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "account_linking",
@@ -386,58 +459,68 @@
       "description": "Link multiple authentication identities (social, enterprise, local) to a single Okta user account via profile enrollment policies.",
       "links": [
         "https://help.okta.com/oie/en-us/content/topics/identity-engine/policies/about-profile-enrollment-policies.htm"
-      ]
+      ],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "user_blocking",
       "status": "supported",
       "description": "Users can be deactivated (preventing all sign-in) or suspended (temporary block) via the admin console or Users API.",
-      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-deactivate-user-account.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-deactivate-user-account.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "user_metadata",
       "status": "supported",
-      "description": "Universal Directory custom attributes: store arbitrary user-editable profile attributes beyond the standard Okta schema."
+      "description": "Universal Directory custom attributes: store arbitrary user-editable profile attributes beyond the standard Okta schema.",
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "app_metadata",
       "status": "supported",
-      "description": "Per-user app profile attributes store app-specific metadata not exposed to end users."
+      "description": "Per-user app profile attributes store app-specific metadata not exposed to end users.",
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "metadata_size_limits",
       "status": "supported",
       "description": "Universal Directory limits: up to 100 custom attributes per schema (base + app profiles), string attributes max 1,024 characters. Limits are documented in the developer reference.",
-      "links": ["https://developer.okta.com/docs/reference/api/schemas/"]
+      "links": ["https://developer.okta.com/docs/reference/api/schemas/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "user_search",
       "status": "supported",
       "description": "Universal Directory search with filtering by any profile attribute, group membership, and status via the admin console and Users API.",
-      "links": ["https://developer.okta.com/docs/reference/api/users/#list-users-with-search"]
+      "links": ["https://developer.okta.com/docs/reference/api/users/#list-users-with-search"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "rbac",
       "status": "supported",
       "description": "Role-based access control via Okta Groups and admin roles. Groups are surfaced in tokens as claims. Custom admin roles provide fine-grained admin RBAC.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/administrators-admin-comparison.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/administrators-admin-comparison.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "organizations_multitenancy",
       "status": "partial",
       "description": "Okta is architected as a single-org, single-tenant platform per customer. B2B multi-tenancy is typically implemented via separate Okta orgs per tenant (Hub-and-Spoke) or using groups/attributes within a single org. No native first-class 'Organization' isolation concept within a single Okta tenant.",
-      "links": ["https://developer.okta.com/docs/concepts/multi-tenancy/"]
+      "links": ["https://developer.okta.com/docs/concepts/multi-tenancy/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "password_strength_policy",
       "status": "supported",
-      "description": "Configurable password policies: minimum length, complexity requirements, history, lockout, and expiration at the org or group level."
+      "description": "Configurable password policies: minimum length, complexity requirements, history, lockout, and expiration at the org or group level.",
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "username_restrictions",
       "status": "supported",
       "description": "Login format restrictions configurable via the Profile Editor. Okta enforces email format by default; alternate username formats can be configured.",
-      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-main.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-main.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "progressive_profiling",
@@ -445,334 +528,391 @@
       "description": "Progressive profiling via Identity Engine Profile Enrollment Policies: collect additional user attributes at sign-up or on subsequent logins based on policy conditions.",
       "links": [
         "https://help.okta.com/oie/en-us/content/topics/identity-engine/policies/about-profile-enrollment-policies.htm"
-      ]
+      ],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "abac",
       "status": "supported",
       "description": "Attribute-based access control via Okta Expression Language in Group Rules, authentication policies, and Sign-On Policies. Evaluate user profile attributes, device context, network zone, and risk level in access decisions.",
-      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-group-rules-main.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/users-groups-profiles/usgp-group-rules-main.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "fine_grained_authorization",
       "status": "partial",
       "description": "Okta Identity Governance includes entitlement management and access certification. A dedicated Fine-Grained Authorization (FGA) capability is in development. No built-in Zanzibar-style ReBAC engine in the standard platform.",
-      "links": ["https://www.okta.com/products/identity-governance/"]
+      "links": ["https://www.okta.com/products/identity-governance/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "api_authorization",
       "status": "supported",
       "description": "Okta API Access Management: custom OAuth 2.0 authorization servers with configurable scopes, claims, and access policies for API protection.",
-      "links": ["https://developer.okta.com/docs/concepts/auth-servers/"]
+      "links": ["https://developer.okta.com/docs/concepts/auth-servers/"],
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "soc2_type2",
       "status": "supported",
-      "links": ["https://security.okta.com/"]
+      "links": ["https://security.okta.com/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "iso_27001",
       "status": "supported",
       "description": "ISO/IEC 27001:2022, ISO 27017:2015 (cloud security), and ISO 27018:2019 (cloud privacy) certified.",
-      "links": ["https://security.okta.com/"]
+      "links": ["https://security.okta.com/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "hipaa_baa",
       "status": "supported",
-      "links": ["https://security.okta.com/"]
+      "links": ["https://security.okta.com/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "pci_dss",
       "status": "supported",
       "description": "PCI DSS v4.0 compliant.",
-      "links": ["https://security.okta.com/"]
+      "links": ["https://security.okta.com/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "csa_star",
       "status": "supported",
       "description": "CSA STAR Level 1 and Level 2 certified. CSA Trusted Cloud Provider.",
-      "links": ["https://security.okta.com/"]
+      "links": ["https://security.okta.com/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "fedramp",
       "status": "supported",
-      "description": "FedRAMP Authorized (Class C and Class D) via Okta Government product. Also holds DoD IL4 authorization."
+      "description": "FedRAMP Authorized (Class C and Class D) via Okta Government product. Also holds DoD IL4 authorization.",
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "gdpr_data_export",
       "status": "supported",
       "description": "User data exportable via the Users API and admin console for GDPR Article 20 portability requests.",
-      "links": ["https://www.okta.com/gdpr/"]
+      "links": ["https://www.okta.com/gdpr/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "supported",
       "description": "Users can be fully deleted via the Users API or admin console to satisfy GDPR Article 17 right to erasure.",
-      "links": ["https://www.okta.com/gdpr/"]
+      "links": ["https://www.okta.com/gdpr/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "consent_management",
       "status": "supported",
-      "description": "OAuth 2.0 consent screen presented during authorization. Privacy consent management available via Okta's Privacy module."
+      "description": "OAuth 2.0 consent screen presented during authorization. Privacy consent management available via Okta's Privacy module.",
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "region_deployment",
       "status": "supported",
       "description": "Available in US, EU, Canada, and Australia regions for data residency requirements.",
       "links": ["https://www.okta.com/trust/"],
-      "values": ["US", "EU", "Canada", "Australia"]
+      "values": ["US", "EU", "Canada", "Australia"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "private_cloud_deployment",
       "status": "not_supported",
-      "description": "Okta is SaaS-only with no self-hosted or on-premises deployment option. Enterprise customers can request dedicated cell infrastructure, but the platform is fully managed by Okta."
+      "description": "Okta is SaaS-only with no self-hosted or on-premises deployment option. Enterprise customers can request dedicated cell infrastructure, but the platform is fully managed by Okta.",
+      "plans": []
     },
     {
       "identifier": "audit_log_retention",
       "status": "supported",
       "description": "Okta System Log retains events for 90 days by default; longer retention configurable via Log Streaming to external storage.",
-      "links": ["https://help.okta.com/en-us/content/topics/reports/reports_syslog.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/reports/reports_syslog.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "audit_log_streaming",
       "status": "supported",
       "description": "Log Streaming natively pushes System Log events to AWS EventBridge, Splunk Cloud, and Sumo Logic in real time.",
-      "links": ["https://help.okta.com/en-us/content/topics/reports/log-streaming/about-log-streams.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/reports/log-streaming/about-log-streams.htm"],
+      "plans": ["Professional", "Enterprise"]
     },
     {
       "identifier": "security_center",
       "status": "supported",
       "description": "Security Dashboard with authentication analytics and ThreatInsight threat monitoring, showing suspicious activity, attack patterns, and blocked sign-in attempts.",
-      "links": ["https://help.okta.com/en-us/content/topics/dashboard/monitor-org-security.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/dashboard/monitor-org-security.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "encryption_at_rest",
       "status": "supported",
       "description": "All data encrypted at rest. Okta manages encryption keys using AES-256.",
-      "links": ["https://security.okta.com/"]
+      "links": ["https://security.okta.com/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "encryption_in_transit",
       "status": "supported",
       "description": "All endpoints enforced over TLS 1.2+.",
-      "links": ["https://security.okta.com/"]
+      "links": ["https://security.okta.com/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "customer_managed_keys",
       "status": "partial",
       "description": "Bring-your-own-key (BYOK) available for Enterprise tier customers with AWS KMS-managed encryption keys. Not available on standard tiers.",
-      "links": ["https://help.okta.com/en-us/content/topics/apps/manage-signing-certificates.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/apps/manage-signing-certificates.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "bot_detection",
       "status": "supported",
       "description": "Okta ThreatInsight uses ML-based signals to detect and block bot activity, credential stuffing, and automated attacks on authentication endpoints.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/threat-insight/ti-index.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/threat-insight/ti-index.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "brute_force_protection",
       "status": "supported",
-      "description": "Configurable account lockout after failed attempts. ThreatInsight adds IP-level blocking for coordinated brute force attacks."
+      "description": "Configurable account lockout after failed attempts. ThreatInsight adds IP-level blocking for coordinated brute force attacks.",
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "suspicious_ip_throttling",
       "status": "supported",
       "description": "Okta ThreatInsight detects and automatically throttles or blocks sign-in attempts from IPs associated with credential stuffing and other threats.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/threat-insight/ti-index.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/threat-insight/ti-index.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "breached_password_detection",
       "status": "partial",
       "description": "Okta ThreatInsight monitors for suspicious authentication patterns associated with credential compromise. No direct integration with breach databases (e.g., Have I Been Pwned) for password validation.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/threat-insight/ti-index.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/threat-insight/ti-index.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "credential_guard",
       "status": "partial",
       "description": "Okta Identity Threat Protection (Professional/Enterprise) detects compromised credentials using continuous risk evaluation. Dedicated dark web monitoring is not available as a built-in feature.",
-      "links": ["https://www.okta.com/products/identity-threat-protection/"]
+      "links": ["https://www.okta.com/products/identity-threat-protection/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "tenant_acl",
       "status": "supported",
       "description": "Network Zones: define IP allowlists, blocklists, and geographic zones to restrict or enforce authentication from specific IP ranges. Dynamic Zones integrate with threat intelligence feeds.",
-      "links": ["https://help.okta.com/en-us/content/topics/security/network/network-zones.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/security/network/network-zones.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "device_fingerprinting",
       "status": "supported",
       "description": "Okta Device Trust tracks registered devices and evaluates device health signals (managed status, OS version, disk encryption) in authentication policies. Device context is available as a risk signal in Adaptive MFA.",
-      "links": ["https://help.okta.com/oie/en-us/content/topics/identity-engine/devices/config-device-mgmt-mobile.htm"]
+      "links": ["https://help.okta.com/oie/en-us/content/topics/identity-engine/devices/config-device-mgmt-mobile.htm"],
+      "plans": ["Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "per_org_branding",
       "status": "supported",
       "description": "Custom branding (logo, colors, background, domain) configurable per application. Supports separate branded experiences for different B2B tenants.",
-      "links": ["https://help.okta.com/en-us/content/topics/settings/customizations-index.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/settings/customizations-index.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "per_org_mfa_policy",
       "status": "supported",
       "description": "Authentication policies configurable per application and per group, allowing different MFA requirements for different tenants or user populations.",
-      "links": ["https://help.okta.com/oie/en-us/content/topics/identity-engine/policies/about-policies.htm"]
+      "links": ["https://help.okta.com/oie/en-us/content/topics/identity-engine/policies/about-policies.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "hosted_login_page",
       "status": "supported",
       "description": "Okta-hosted Sign-In Page with full HTML/CSS/JavaScript customization. Redirect-based flow managed by Okta.",
-      "links": ["https://help.okta.com/en-us/content/topics/settings/settings-customization-general.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/settings/settings-customization-general.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "embedded_login",
       "status": "supported",
       "description": "Okta Sign-In Widget can be embedded directly in the application for an inline login experience without redirect. Okta Identity Engine also provides an Embedded SDK for building fully custom UI.",
-      "links": ["https://developer.okta.com/docs/guides/embedded-siw/main/"]
+      "links": ["https://developer.okta.com/docs/guides/embedded-siw/main/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "white_label",
       "status": "supported",
       "description": "Full white-labeling: custom logos, colors, fonts, domain, and removal of Okta branding from the sign-in experience.",
-      "links": ["https://help.okta.com/en-us/content/topics/settings/customizations-index.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/settings/customizations-index.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "localization",
       "status": "supported",
       "description": "Okta Sign-In Widget supports multiple languages with built-in translations and custom i18n string overrides.",
-      "links": ["https://help.okta.com/en-us/content/topics/settings/settings-customization-general.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/settings/settings-customization-general.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "prebuilt_ui_components",
       "status": "supported",
       "description": "Okta Sign-In Widget (JavaScript), Auth JS SDK, and framework-specific SDKs (React, Angular, Vue) provide prebuilt UI components for rapid integration.",
-      "links": ["https://developer.okta.com/code/"]
+      "links": ["https://developer.okta.com/code/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "login_analytics",
       "status": "supported",
       "description": "System Log reports, Security Dashboard, and Reports section provide authentication success rates, active users, MFA adoption, suspicious activity, and sign-in funnel metrics.",
-      "links": ["https://help.okta.com/en-us/content/topics/reports/report-types.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/reports/report-types.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "sdk_coverage",
       "status": "supported",
       "description": "Official SDKs for JavaScript/TypeScript, iOS/Swift, Android/Kotlin, Java, .NET, Python, Go, React, Angular, and Vue.",
-      "links": ["https://developer.okta.com/code/"]
+      "links": ["https://developer.okta.com/code/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "management_api",
       "status": "supported",
       "description": "Comprehensive Okta REST API for managing users, groups, applications, policies, and all IAM resources.",
-      "links": ["https://developer.okta.com/docs/reference/"]
+      "links": ["https://developer.okta.com/docs/reference/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "authentication_api_rate_limits",
       "status": "supported",
       "description": "Per-endpoint rate limits documented and enforced. Rate limit headers returned in all API responses. Dynamic Scale add-on available for high-traffic scenarios.",
-      "links": ["https://developer.okta.com/docs/reference/rate-limits/"]
+      "links": ["https://developer.okta.com/docs/reference/rate-limits/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "actions_extensibility",
       "status": "supported",
       "description": "Okta Hooks: Event Hooks push authentication events to external endpoints; Inline Hooks intercept flows (token, import, password, SAML, registration) for real-time customization.",
-      "links": ["https://developer.okta.com/docs/concepts/event-hooks/"]
+      "links": ["https://developer.okta.com/docs/concepts/event-hooks/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "typescript_in_actions",
       "status": "not_supported",
-      "description": "Okta Hooks are external HTTP endpoints with no restrictions on implementation language, but Okta does not provide a managed TypeScript/JavaScript runtime for hooks — you host the endpoint yourself."
+      "description": "Okta Hooks are external HTTP endpoints with no restrictions on implementation language, but Okta does not provide a managed TypeScript/JavaScript runtime for hooks — you host the endpoint yourself.",
+      "plans": []
     },
     {
       "identifier": "custom_domain",
       "status": "supported",
       "description": "Custom domain for the Okta Sign-In Page and authentication endpoints.",
-      "links": ["https://help.okta.com/en-us/content/topics/settings/settings-customization-general.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/settings/settings-customization-general.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "deploy_cli",
       "status": "supported",
       "description": "Okta CLI for scaffolding and managing Okta resources. Okta Terraform provider enables full infrastructure-as-code configuration.",
-      "links": ["https://cli.okta.com/"]
+      "links": ["https://cli.okta.com/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "terraform_provider",
       "status": "supported",
       "description": "Official Okta Terraform provider (registry.terraform.io/providers/okta/okta) for managing all Okta resources as code.",
-      "links": ["https://registry.terraform.io/providers/okta/okta/latest/docs"]
+      "links": ["https://registry.terraform.io/providers/okta/okta/latest/docs"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "custom_database_connections",
       "status": "supported",
       "description": "Okta Password Import Inline Hook enables delegated authentication to a legacy credential store. On first login, Okta calls a hosted endpoint to validate the password, then migrates the credential to Universal Directory.",
-      "links": ["https://developer.okta.com/docs/reference/password-hook/"]
+      "links": ["https://developer.okta.com/docs/reference/password-hook/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "native_webhooks",
       "status": "supported",
       "description": "Okta Event Hooks deliver real-time event notifications to external HTTP endpoints.",
-      "links": ["https://developer.okta.com/docs/concepts/event-hooks/"]
+      "links": ["https://developer.okta.com/docs/concepts/event-hooks/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "universal_login_customization",
       "status": "supported",
       "description": "Okta-hosted Sign-In Page supports full HTML/CSS/JavaScript customization including Okta Sign-In Widget configuration.",
-      "links": ["https://help.okta.com/en-us/content/topics/settings/customizations-index.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/settings/customizations-index.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "custom_email_provider",
       "status": "partial",
       "description": "Custom email sender domain supported via verified domain configuration. Sending via a fully custom SMTP relay requires additional setup and is not available on all tiers.",
-      "links": ["https://help.okta.com/en-us/content/topics/settings/settings_email.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/settings/settings_email.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "email_templates",
       "status": "supported",
       "description": "Fully customizable email templates for OTP, activation, password reset, and notification flows via the Email Template editor.",
-      "links": ["https://help.okta.com/en-us/content/topics/settings/settings_email.htm"]
+      "links": ["https://help.okta.com/en-us/content/topics/settings/settings_email.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "custom_oidc_claims",
       "status": "supported",
       "description": "Custom claims added to access tokens and ID tokens via Okta Expression Language or Token Inline Hook for dynamic, real-time claim enrichment.",
-      "links": ["https://developer.okta.com/docs/guides/customize-tokens-returned-from-okta/main/"]
+      "links": ["https://developer.okta.com/docs/guides/customize-tokens-returned-from-okta/main/"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "nocode_flow_builder",
       "status": "supported",
       "description": "Okta Workflows: no-code automation platform with 600+ pre-built connectors for building identity lifecycle and event-driven automation flows without writing code.",
-      "links": ["https://help.okta.com/wf/en-us/content/topics/workflows/workflows-main.htm"]
+      "links": ["https://help.okta.com/wf/en-us/content/topics/workflows/workflows-main.htm"],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "identity_proofing",
       "status": "supported",
-      "description": "Okta Identity Verification add-on: government-issued document verification and biometric liveness checks powered by Persona."
+      "description": "Okta Identity Verification add-on: government-issued document verification and biometric liveness checks powered by Persona.",
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "decentralized_identity",
       "status": "not_supported",
-      "description": "No built-in support for W3C Verifiable Credentials or decentralized identity (DID) standards."
+      "description": "No built-in support for W3C Verifiable Credentials or decentralized identity (DID) standards.",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
       "status": "not_supported",
-      "description": "No built-in billing or subscription management integration."
+      "description": "No built-in billing or subscription management integration.",
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
       "status": "partial",
-      "description": "Okta for AI Agents provides OAuth 2.0 M2M tokens and Cross App Access Protocol (CAAP) for AI agent authentication. Dedicated agentic identity features (agent governance, MCP server auth) are actively being developed."
+      "description": "Okta for AI Agents provides OAuth 2.0 M2M tokens and Cross App Access Protocol (CAAP) for AI agent authentication. Dedicated agentic identity features (agent governance, MCP server auth) are actively being developed.",
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "pq_hybrid_key_exchange",
       "status": "unknown",
       "category": "post_quantum_cryptography",
       "description": "No public vendor statement found on PQC TLS support for Okta's authentication endpoints. Okta's published architecture describes self-managed 'cell-based' infrastructure hosted on AWS and GCP with its own load balancers, not a documented reliance on Cloudflare or CloudFront/Front Door - so no infra-inheritance argument applies either.",
-      "links": ["https://www.okta.com/sites/default/files/2020-10/Okta's-Architecture-eBook.pdf"]
+      "links": ["https://www.okta.com/sites/default/files/2020-10/Okta's-Architecture-eBook.pdf"],
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "Okta signs OIDC ID tokens and SAML assertions with RS256; no public documentation of ML-DSA/SLH-DSA signature support was found."
+      "description": "Okta signs OIDC ID tokens and SAML assertions with RS256; no public documentation of ML-DSA/SLH-DSA signature support was found.",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
@@ -782,45 +922,53 @@
       "links": [
         "https://www.okta.com/blog/customers-and-partners/okta-ventures-request-for-builders-five-key-focus-areas-in-identity-and-security/",
         "https://www.okta.com/identity-101/what-is-non-human-identity-security/"
-      ]
+      ],
+      "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
     },
     {
       "identifier": "pq_token_encryption",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
+      "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets.",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
+      "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints.",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
+      "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS).",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -828,239 +976,283 @@
       {
         "identifier": "implicit_grant",
         "status": "deprecated",
-        "links": ["https://developer.okta.com/docs/concepts/oauth-openid/#implicit-flow"]
+        "links": ["https://developer.okta.com/docs/concepts/oauth-openid/#implicit-flow"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "authorization_code_grant",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/concepts/oauth-openid/#authorization-code-flow-with-pkce-flow"]
+        "links": ["https://developer.okta.com/docs/concepts/oauth-openid/#authorization-code-flow-with-pkce-flow"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "pkce_extension",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/concepts/oauth-openid/#authorization-code-flow-with-pkce-flow"]
+        "links": ["https://developer.okta.com/docs/concepts/oauth-openid/#authorization-code-flow-with-pkce-flow"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "par_extension",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/CustomAS/"]
+        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/CustomAS/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "rar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_credentials_grant",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/concepts/oauth-openid/#client-credentials-flow"]
+        "links": ["https://developer.okta.com/docs/concepts/oauth-openid/#client-credentials-flow"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "password_grant",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/concepts/oauth-openid/#resource-owner-password-flow"]
+        "links": ["https://developer.okta.com/docs/concepts/oauth-openid/#resource-owner-password-flow"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "refresh_token_grant",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/guides/refresh-tokens/main/"]
+        "links": ["https://developer.okta.com/docs/guides/refresh-tokens/main/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/guides/device-authorization-grant/main/"]
+        "links": ["https://developer.okta.com/docs/guides/device-authorization-grant/main/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/guides/set-up-token-exchange/-/main/"]
+        "links": ["https://developer.okta.com/docs/guides/set-up-token-exchange/-/main/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/guides/configure-ciba/main/"]
+        "links": ["https://developer.okta.com/docs/guides/configure-ciba/main/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/overview/"]
+        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/overview/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/concepts/oauth-openid/#saml-2-0-assertion-flow"]
+        "links": ["https://developer.okta.com/docs/concepts/oauth-openid/#saml-2-0-assertion-flow"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "authorization_endpoint",
         "status": "supported",
         "links": [
           "https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/OrgAS/#tag/OrgAS/operation/authorize"
-        ]
+        ],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "token_endpoint",
         "status": "supported",
         "links": [
           "https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/OrgAS/#tag/OrgAS/operation/tokenOptions"
-        ]
+        ],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "userinfo_endpoint",
         "status": "supported",
         "links": [
           "https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/OrgAS/#tag/OrgAS/operation/userinfo"
-        ]
+        ],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "token_revocation_endpoint",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/OrgAS/#tag/OrgAS/operation/revoke"]
+        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/OrgAS/#tag/OrgAS/operation/revoke"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "token_introspection_endpoint",
         "status": "supported",
         "links": [
           "https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/OrgAS/#tag/OrgAS/operation/introspect"
-        ]
+        ],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "device_authorization_endpoint",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/guides/device-authorization-grant/main/"]
+        "links": ["https://developer.okta.com/docs/guides/device-authorization-grant/main/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "supported",
         "links": [
           "https://developer.okta.com/docs/concepts/auth-servers/#discovery-endpoints-org-authorization-servers"
-        ]
+        ],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
         "status": "supported",
         "links": [
           "https://developer.okta.com/docs/concepts/auth-servers/#discovery-endpoints-org-authorization-servers"
-        ]
+        ],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "none_prompt",
         "status": "supported",
         "links": [
           "https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/OrgAS/#tag/OrgAS/operation/authorize!in=query&path=prompt&t=request"
-        ]
+        ],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "login_prompt",
         "status": "supported",
         "links": [
           "https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/OrgAS/#tag/OrgAS/operation/authorize!in=query&path=prompt&t=request"
-        ]
+        ],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "consent_prompt",
         "status": "supported",
         "links": [
           "https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/OrgAS/#tag/OrgAS/operation/authorize!in=query&path=prompt&t=request"
-        ]
+        ],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "select_account_prompt",
         "status": "not_supported",
         "links": [
           "https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/OrgAS/#tag/OrgAS/operation/authorize!in=query&path=prompt&t=request"
-        ]
+        ],
+        "plans": []
       },
       {
         "identifier": "create_prompt",
         "status": "not_supported",
         "links": [
           "https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/OrgAS/#tag/OrgAS/operation/authorize!in=query&path=prompt&t=request"
-        ]
+        ],
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/guides/client-auth/"]
+        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/guides/client-auth/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/guides/client-auth/"]
+        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/guides/client-auth/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/guides/client-auth/"]
+        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/guides/client-auth/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/guides/client-auth/"]
+        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/guides/client-auth/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/guides/client-auth/"]
+        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/guides/client-auth/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/Client/"]
+        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/Client/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "dynamic_client_registration_management",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/Client/"]
+        "links": ["https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/Client/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "refresh_token_rotation",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/guides/refresh-tokens/main/#refresh-token-rotation"]
+        "links": ["https://developer.okta.com/docs/guides/refresh-tokens/main/#refresh-token-rotation"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/guides/refresh-tokens/main/#refresh-token-rotation"]
+        "links": ["https://developer.okta.com/docs/guides/refresh-tokens/main/#refresh-token-rotation"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "rp_initiated_logout",
         "status": "supported",
         "links": [
           "https://developer.okta.com/docs/api/openapi/okta-oauth/oauth/tag/CustomAS/#tag/CustomAS/operation/logoutCustomAS"
-        ]
+        ],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "dpop",
         "status": "supported",
-        "links": ["https://developer.okta.com/docs/guides/dpop/nonoktaresourceserver/main/"]
+        "links": ["https://developer.okta.com/docs/guides/dpop/nonoktaresourceserver/main/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
         "status": "supported",
-        "links": ["https://www.okta.com/products/regulated-identity/"]
+        "links": ["https://www.okta.com/products/regulated-identity/"],
+        "plans": ["Starter", "Core Essentials", "Essentials", "Professional", "Enterprise"]
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       }
     ]
   }

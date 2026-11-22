@@ -35,58 +35,50 @@
     "hasEnterprisePlan": true,
     "contactSalesRequired": true,
     "currency": "USD",
-    "pricingLastVerified": "2026-10-03",
+    "pricingLastVerified": "2026-11-21",
     "plans": [
       {
         "name": "Free",
-        "price": "Free (10K MAUs, unlimited organizations, custom domain, passwords, magic links, social login, TOTP 2FA and RBAC; PropelAuth branding, no SSO, no API keys, 30 day audit logs)",
+        "price": "Free (10K MAUs, unlimited organizations, custom domain; no SSO, no API keys, 30 day audit logs)",
         "amount": 0,
-        "mauIncluded": 10000
+        "deployment": "saas",
+        "usage": {
+          "metric": "mau",
+          "included": 10000,
+          "max": 10000
+        }
       },
       {
         "name": "Growth",
-        "price": "$150/month (10K MAUs included, then $0.05 per MAU; unlimited SAML/OIDC SSO, API keys and MCP authentication with 1.5M validations each, then $0.0001 per validation)",
+        "price": "$150/month (10K MAUs included, then $0.05 per MAU; unlimited SAML/OIDC SSO, API keys and MCP authentication)",
         "amount": 150,
         "period": "month",
-        "mauIncluded": 10000,
-        "featuresIncluded": [
-          "phone_code_mfa",
-          "step_up_authentication",
-          "machine_to_machine",
-          "oidc_federation",
-          "saml_federation",
-          "jit_provisioning",
-          "user_metadata",
-          "white_label",
-          "custom_email_provider",
-          "agentic_identity"
-        ]
+        "deployment": "saas",
+        "usage": {
+          "metric": "mau",
+          "included": 10000,
+          "rates": [
+            {
+              "amount": 0.05
+            }
+          ]
+        }
       },
       {
         "name": "Growth Plus",
-        "price": "$500/month (10K MAUs included, volume discounts beyond; SCIM at $100 per connection, per-organization MFA and session rules, 90 day audit logs)",
+        "price": "$500/month (10K MAUs included, volume discounts beyond; SCIM at $100 per connection, per-organization MFA, 90 day audit logs)",
         "amount": 500,
         "period": "month",
-        "mauIncluded": 10000,
-        "featuresIncluded": [
-          "phone_code_mfa",
-          "step_up_authentication",
-          "machine_to_machine",
-          "oidc_federation",
-          "saml_federation",
-          "inbound_scim_provisioning",
-          "scim_groups",
-          "jit_provisioning",
-          "user_metadata",
-          "per_org_mfa_policy",
-          "white_label",
-          "custom_email_provider",
-          "agentic_identity"
-        ]
+        "deployment": "saas",
+        "usage": {
+          "metric": "mau",
+          "included": 10000
+        }
       },
       {
         "name": "Enterprise",
-        "price": "Custom (volume discounts, custom terms, feature acceleration, custom SLAs)"
+        "price": "Custom (volume discounts, custom terms, feature acceleration, custom SLAs)",
+        "deployment": "saas"
       }
     ]
   },
@@ -195,7 +187,8 @@
       "identifier": "username_and_password_authentication",
       "status": "supported",
       "description": "Password login is the default for a new project. Common passwords and breached passwords are blocked, and failed logins are rate-limited.",
-      "links": ["https://docs.propelauth.com/overview/authentication/login-methods"]
+      "links": ["https://docs.propelauth.com/overview/authentication/login-methods"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "social_sign_in_authentication",
@@ -204,13 +197,15 @@
       "links": [
         "https://docs.propelauth.com/sso/social-login",
         "https://docs.propelauth.com/overview/authentication/login-methods"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "passkey_authentication",
       "status": "unknown",
       "description": "Passkeys are listed for the self-hosted BYO Auth sidecar. They are not documented for the hosted login pages.",
-      "links": ["https://byo.propelauth.com"]
+      "links": ["https://byo.propelauth.com"],
+      "plans": []
     },
     {
       "identifier": "email_passwordless_authentication",
@@ -219,12 +214,14 @@
       "links": [
         "https://docs.propelauth.com/overview/authentication/login-methods",
         "https://docs.propelauth.com/integrations/webhooks"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "unknown",
-      "description": "SMS or phone login is not documented."
+      "description": "SMS or phone login is not documented.",
+      "plans": []
     },
     {
       "identifier": "magic_link_authentication",
@@ -233,34 +230,41 @@
       "links": [
         "https://docs.propelauth.com/overview/authentication/login-methods",
         "https://docs.propelauth.com/reference/api/user"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "anonymous_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
       "status": "supported",
       "description": "TOTP through an authenticator app is the default MFA type and needs no setup. Users can optionally be remembered on a device for 7 to 90 days.",
-      "links": ["https://docs.propelauth.com/overview/authentication/mfa"]
+      "links": ["https://docs.propelauth.com/overview/authentication/mfa"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "hotp_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "webauthn_mfa",
       "status": "unknown",
-      "description": "Passkeys and security keys are not documented as a second factor."
+      "description": "Passkeys and security keys are not documented as a second factor.",
+      "plans": []
     },
     {
       "identifier": "email_code_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "phone_code_mfa",
@@ -273,19 +277,23 @@
       "identifier": "recovery_code_mfa",
       "status": "supported",
       "description": "Users can view their backup codes from the hosted account page.",
-      "links": ["https://docs.propelauth.com/overview/authentication/mfa"]
+      "links": ["https://docs.propelauth.com/overview/authentication/mfa"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "push_notification_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "adaptive_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "cisco_duo_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
@@ -301,17 +309,20 @@
       "links": [
         "https://docs.propelauth.com/reference/api/oauth2",
         "https://docs.propelauth.com/mcp-authentication/overview"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "saml2_protocol",
       "status": "supported",
       "description": "SAML 2.0 as a service provider for customer enterprise SSO connections. Acting as a SAML identity provider is not documented.",
-      "links": ["https://docs.propelauth.com/overview/authentication/saml"]
+      "links": ["https://docs.propelauth.com/overview/authentication/saml"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "ws_federation_protocol",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
@@ -336,65 +347,91 @@
     },
     {
       "identifier": "active_directory_ldap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "azure_ad_integration",
       "status": "supported",
       "description": "Entra ID is supported for SAML and OIDC enterprise SSO and for SCIM provisioning.",
-      "links": ["https://docs.propelauth.com/overview/authentication/saml"]
+      "links": ["https://docs.propelauth.com/overview/authentication/saml"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "bulk_user_import",
       "status": "supported",
       "description": "CSV import from the dashboard Users page, plus a migration API that creates one user per call.",
-      "links": ["https://docs.propelauth.com/migrations", "https://docs.propelauth.com/reference/api/user"]
+      "links": ["https://docs.propelauth.com/migrations", "https://docs.propelauth.com/reference/api/user"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "password_hash_import",
       "status": "supported",
       "description": "Imported users keep their password through bcrypt, argon2id, pbkdf2_sha256, pbkdf2_sha256_b64 and pbkdf2_sha512 hashes.",
-      "links": ["https://docs.propelauth.com/migrations", "https://docs.propelauth.com/reference/api/user"]
+      "links": ["https://docs.propelauth.com/migrations", "https://docs.propelauth.com/reference/api/user"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "bulk_user_export",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bulk_user_update_delete",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "upsert_on_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "legacy_username_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "mfa_enrollment_import",
       "status": "supported",
       "description": "The migration API accepts a base32 TOTP secret, which enables MFA automatically so existing authenticator codes keep working.",
-      "links": ["https://docs.propelauth.com/migrations"]
+      "links": ["https://docs.propelauth.com/migrations"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "inbound_scim_provisioning",
       "status": "supported",
       "description": "SCIM directory sync from Okta, Entra ID, OneLogin, JumpCloud and generic SCIM providers, managed by PropelAuth. Enterprise SSO must be set up first. $100 per connection on Growth Plus.",
       "links": ["https://docs.propelauth.com/overview/authentication/saml", "https://www.propelauth.com/pricing"],
-      "plans": ["Growth Plus"]
+      "plans": ["Growth Plus", "Enterprise"],
+      "addOn": {
+        "name": "SCIM",
+        "price": "$100/connection/month",
+        "amount": 100,
+        "period": "month",
+        "unit": "connection",
+        "plans": ["Growth Plus"]
+      }
     },
     {
       "identifier": "outbound_scim_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "scim_groups",
       "status": "supported",
       "description": "SCIM group events are delivered by webhook, such as org.scim_group_created and user.added_to_scim_group.",
       "links": ["https://docs.propelauth.com/integrations/webhooks"],
-      "plans": ["Growth Plus"]
+      "plans": ["Growth Plus", "Enterprise"],
+      "addOn": {
+        "name": "SCIM",
+        "price": "$100/connection/month",
+        "amount": 100,
+        "period": "month",
+        "unit": "connection",
+        "plans": ["Growth Plus"]
+      }
     },
     {
       "identifier": "jit_provisioning",
@@ -407,7 +444,8 @@
       "identifier": "lazy_migration",
       "status": "partial",
       "description": "The migrateUserFromExternalSource backend call can move a user over on demand, and the original ID is kept as legacy_user_id. A dedicated login-time migration flow is not documented.",
-      "links": ["https://docs.propelauth.com/migrations"]
+      "links": ["https://docs.propelauth.com/migrations"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "self_service_profile_management",
@@ -416,7 +454,8 @@
       "links": [
         "https://docs.propelauth.com/overview/basics/hosted-pages",
         "https://docs.propelauth.com/overview/authentication/login-methods"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "account_linking",
@@ -425,7 +464,8 @@
       "links": [
         "https://docs.propelauth.com/overview/authentication/login-methods",
         "https://docs.propelauth.com/sso/social-login"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "user_blocking",
@@ -434,7 +474,8 @@
       "links": [
         "https://docs.propelauth.com/reference/api/user",
         "https://docs.propelauth.com/overview/authentication/login-methods"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "user_metadata",
@@ -445,17 +486,20 @@
     },
     {
       "identifier": "app_metadata",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "metadata_size_limits",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_search",
       "status": "supported",
       "description": "Paginated query by partial email or username, or by legacy user ID, with a maximum page size of 100.",
-      "links": ["https://docs.propelauth.com/reference/api/user"]
+      "links": ["https://docs.propelauth.com/reference/api/user"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "rbac",
@@ -464,7 +508,8 @@
       "links": [
         "https://docs.propelauth.com/overview/authorization/managing-roles-permissions",
         "https://www.propelauth.com/pricing"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "organizations_multitenancy",
@@ -473,7 +518,8 @@
       "links": [
         "https://docs.propelauth.com/overview/basics/hosted-pages",
         "https://docs.propelauth.com/overview/authorization/managing-roles-permissions"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "password_strength_policy",
@@ -482,23 +528,28 @@
       "links": [
         "https://docs.propelauth.com/overview/authentication/login-methods",
         "https://www.propelauth.com/pricing"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "username_restrictions",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "progressive_profiling",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "abac",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fine_grained_authorization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "api_authorization",
@@ -507,63 +558,79 @@
       "links": [
         "https://docs.propelauth.com/overview/authorization/managing-roles-permissions",
         "https://docs.propelauth.com/mcp-authentication/overview"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "soc2_type2",
       "status": "supported",
       "description": "SOC 2 Type 2 certified after an external audit. The report is available by email and is gated to paid plans.",
-      "links": ["https://www.propelauth.com/security", "https://www.propelauth.com/pricing"]
+      "links": ["https://www.propelauth.com/security", "https://www.propelauth.com/pricing"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "iso_27001",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "hipaa_baa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pci_dss",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "csa_star",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fedramp",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "supported",
       "description": "Deleting a user through the API or dashboard is permanent and removes their data. PropelAuth signs DPAs on request.",
-      "links": ["https://docs.propelauth.com/reference/api/user", "https://www.propelauth.com/security"]
+      "links": ["https://docs.propelauth.com/reference/api/user", "https://www.propelauth.com/security"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "consent_management",
       "status": "partial",
       "description": "MCP clients show a consent screen for scopes, and consent granted or revoked is audited. General data processing consent is not documented.",
-      "links": ["https://docs.propelauth.com/mcp-authentication/overview"]
+      "links": ["https://docs.propelauth.com/mcp-authentication/overview"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "region_deployment",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "private_cloud_deployment",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "audit_log_retention",
       "status": "supported",
       "description": "User and organization audit logs, filterable by event type and source. Retention is 30 days on Free, 60 on Growth and 90 on Growth Plus. Organizations can view their own logs.",
-      "links": ["https://docs.propelauth.com/overview/user-management/audit-logs", "https://www.propelauth.com/pricing"]
+      "links": [
+        "https://docs.propelauth.com/overview/user-management/audit-logs",
+        "https://www.propelauth.com/pricing"
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "audit_log_streaming",
@@ -573,23 +640,35 @@
         "https://docs.propelauth.com/overview/user-management/audit-logs",
         "https://www.propelauth.com/pricing"
       ],
-      "addOnCost": "$50/connection (Growth and Growth Plus)"
+      "addOn": {
+        "name": "Audit log streaming",
+        "price": "$50/connection/month",
+        "amount": 50,
+        "period": "month",
+        "unit": "connection",
+        "plans": ["Growth", "Growth Plus"]
+      },
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "security_center",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "encryption_at_rest",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "encryption_in_transit",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "customer_managed_keys",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bot_detection",
@@ -598,7 +677,8 @@
       "links": [
         "https://www.propelauth.com/pricing",
         "https://docs.propelauth.com/overview/authentication/login-methods"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "brute_force_protection",
@@ -607,37 +687,44 @@
       "links": [
         "https://docs.propelauth.com/overview/authentication/login-methods",
         "https://www.propelauth.com/security"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "suspicious_ip_throttling",
       "status": "partial",
       "description": "Known spam IPs, and specific IPs or CIDR ranges, can be blocked at signup. Throttling of suspicious IPs at login is not documented.",
-      "links": ["https://docs.propelauth.com/overview/authentication/login-methods"]
+      "links": ["https://docs.propelauth.com/overview/authentication/login-methods"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "breached_password_detection",
       "status": "supported",
       "description": "The default password policy rejects passwords that appeared in a known breach.",
-      "links": ["https://docs.propelauth.com/overview/authentication/login-methods"]
+      "links": ["https://docs.propelauth.com/overview/authentication/login-methods"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "credential_guard",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
       "status": "partial",
       "description": "Signup can be restricted by IP address or CIDR range. Access control by location or TLS fingerprint is not documented.",
-      "links": ["https://docs.propelauth.com/overview/authentication/login-methods"]
+      "links": ["https://docs.propelauth.com/overview/authentication/login-methods"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "device_fingerprinting",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "per_org_branding",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "per_org_mfa_policy",
@@ -653,13 +740,15 @@
       "links": [
         "https://docs.propelauth.com/overview/basics/hosted-pages",
         "https://docs.propelauth.com/getting-started/deploy-to-prod"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "embedded_login",
       "status": "unknown",
       "description": "Hosted pages are the default. Your own login pages can be built with the frontend APIs, but pre-built embeddable login components are not documented.",
-      "links": ["https://docs.propelauth.com/overview/basics/hosted-pages"]
+      "links": ["https://docs.propelauth.com/overview/basics/hosted-pages"],
+      "plans": []
     },
     {
       "identifier": "white_label",
@@ -670,13 +759,15 @@
     },
     {
       "identifier": "localization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "prebuilt_ui_components",
       "status": "supported",
       "description": "Hosted organization management UIs for invitations, members, roles, API keys and audit logs, plus a React library.",
-      "links": ["https://docs.propelauth.com/overview/basics/hosted-pages", "https://www.propelauth.com/pricing"]
+      "links": ["https://docs.propelauth.com/overview/basics/hosted-pages", "https://www.propelauth.com/pricing"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "login_analytics",
@@ -685,13 +776,15 @@
       "links": [
         "https://docs.propelauth.com/overview/user-management/user-insights",
         "https://docs.propelauth.com/overview/user-management/audit-logs"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "sdk_coverage",
       "status": "supported",
       "description": "Official libraries for React, Next.js, Node, Express, Python, Flask, FastAPI, Django REST Framework, Go, Rust, .NET and Ruby.",
-      "links": ["https://github.com/PropelAuth"]
+      "links": ["https://github.com/PropelAuth"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "management_api",
@@ -700,53 +793,63 @@
       "links": [
         "https://docs.propelauth.com/reference/api/getting-started",
         "https://docs.propelauth.com/reference/api/user"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "authentication_api_rate_limits",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "actions_extensibility",
       "status": "unknown",
       "description": "Webhooks notify your backend after events. Synchronous hooks inside the authentication flow are not documented.",
-      "links": ["https://docs.propelauth.com/integrations/webhooks"]
+      "links": ["https://docs.propelauth.com/integrations/webhooks"],
+      "plans": []
     },
     {
       "identifier": "typescript_in_actions",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_domain",
       "status": "supported",
       "description": "Custom authentication domain such as auth.yourdomain.com through a TXT verification record and a CNAME. Available on every plan.",
-      "links": ["https://docs.propelauth.com/getting-started/deploy-to-prod"]
+      "links": ["https://docs.propelauth.com/getting-started/deploy-to-prod"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "deploy_cli",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "terraform_provider",
       "status": "supported",
       "description": "Official MIT-licensed Terraform provider to manage the PropelAuth integration.",
-      "links": ["https://github.com/PropelAuth/terraform-provider-propelauth"]
+      "links": ["https://github.com/PropelAuth/terraform-provider-propelauth"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "custom_database_connections",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "native_webhooks",
       "status": "supported",
       "description": "Webhooks delivered through Svix for user, organization and email events, with separate test and production endpoints.",
-      "links": ["https://docs.propelauth.com/integrations/webhooks"]
+      "links": ["https://docs.propelauth.com/integrations/webhooks"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "universal_login_customization",
       "status": "supported",
       "description": "Look and feel settings for the external login and signup pages and the internal account pages, including split-screen layouts, dark mode and user properties on signup.",
-      "links": ["https://docs.propelauth.com/overview/basics/hosted-pages"]
+      "links": ["https://docs.propelauth.com/overview/basics/hosted-pages"],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "custom_email_provider",
@@ -762,27 +865,33 @@
       "links": [
         "https://docs.propelauth.com/overview/basics/transactional-emails",
         "https://docs.propelauth.com/overview/authentication/login-methods"
-      ]
+      ],
+      "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
     },
     {
       "identifier": "custom_oidc_claims",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "nocode_flow_builder",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "identity_proofing",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "decentralized_identity",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
@@ -793,47 +902,57 @@
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -841,109 +960,131 @@
       {
         "identifier": "authorization_code_grant",
         "status": "supported",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "refresh_token_grant",
         "status": "supported",
         "description": "Returns a new access token and refresh token.",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "client_credentials_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "implicit_grant",
         "status": "not_supported",
         "description": "The discovery document lists only the code response type.",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "password_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "rp_initiated_logout",
         "status": "partial",
         "description": "Logout is a backend POST that invalidates the refresh token and signs the user out of the hosted pages. It is not the standard end_session endpoint and may not work with OIDC libraries.",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "pkce_extension",
         "status": "supported",
         "description": "S256 is the only supported challenge method.",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "par_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "rar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
         "status": "supported",
         "description": "/propelauth/oauth/authorize",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "token_endpoint",
         "status": "supported",
         "description": "/propelauth/oauth/token",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "userinfo_endpoint",
         "status": "supported",
         "description": "/propelauth/oauth/userinfo",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "token_revocation_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "token_introspection_endpoint",
         "status": "partial",
         "description": "Available for MCP access tokens, with dedicated credentials created on the MCP page.",
-        "links": ["https://docs.propelauth.com/mcp-authentication/overview"]
+        "links": ["https://docs.propelauth.com/mcp-authentication/overview"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "device_authorization_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "supported",
         "description": "/.well-known/openid-configuration on the auth URL. The JWKS is published at /.well-known/jwks.json.",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
@@ -952,103 +1093,125 @@
         "links": [
           "https://docs.propelauth.com/mcp-authentication/overview",
           "https://github.com/api-evangelist/propelauth"
-        ]
+        ],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "none_prompt",
         "status": "supported",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "login_prompt",
         "status": "supported",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "consent_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "select_account_prompt",
         "status": "supported",
         "description": "The default prompt value.",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "create_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
         "status": "supported",
         "description": "Public clients use PKCE and omit the Authorization header.",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
         "status": "supported",
         "description": "The only method listed in the discovery document.",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
         "status": "partial",
         "description": "Only for MCP clients. It is deprecated in favour of Client ID Metadata Documents and off unless enabled.",
-        "links": ["https://docs.propelauth.com/mcp-authentication/overview"]
+        "links": ["https://docs.propelauth.com/mcp-authentication/overview"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
         "status": "supported",
         "description": "A refresh request returns a new refresh token alongside the new access token.",
-        "links": ["https://docs.propelauth.com/reference/api/oauth2"]
+        "links": ["https://docs.propelauth.com/reference/api/oauth2"],
+        "plans": ["Free", "Growth", "Growth Plus", "Enterprise"]
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dpop",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       }
     ]
   }

@@ -61,31 +61,48 @@ for (const schemaFile of schemaFiles) {
 function checkProvider(provider) {
   const errors = []
   const plans = provider.pricing?.plans ?? []
-  if (!provider.pricing?.currency && plans.some((plan) => plan.amount > 0)) {
-    errors.push('/pricing/currency: required when a plan has a non-zero amount')
+  const needsCurrency = (value) => value?.amount > 0
+  const features = [...provider.features, ...(provider.oidc?.features ?? [])]
+  if (
+    !provider.pricing?.currency &&
+    (plans.some(needsCurrency) || features.some((feature) => needsCurrency(feature.addOn)))
+  ) {
+    errors.push('/pricing/currency: required when a plan or add-on has a non-zero amount')
   }
-  const planNames = new Set(plans.map((plan) => plan.name))
-  const featureIds = new Set(provider.features.map((feature) => feature.identifier))
-  for (const feature of provider.features) {
-    for (const planName of feature.plans ?? []) {
+
+  const planNames = new Set()
+  for (const plan of plans) {
+    if (planNames.has(plan.name)) errors.push(`/pricing/plans/${plan.name}: duplicate plan name`)
+    planNames.add(plan.name)
+    let previous = 0
+    for (const rate of plan.usage?.rates ?? []) {
+      if (rate.upTo !== undefined && rate.upTo <= previous) {
+        errors.push(`/pricing/plans/${plan.name}/usage/rates: upTo must be in ascending order`)
+      }
+      previous = rate.upTo ?? Infinity
+    }
+    if (plan.usage?.rates?.slice(0, -1).some((rate) => rate.upTo === undefined)) {
+      errors.push(`/pricing/plans/${plan.name}/usage/rates: only the last rate can omit upTo`)
+    }
+  }
+
+  const seen = new Set()
+  for (const feature of features) {
+    if (seen.has(feature.identifier)) errors.push(`/features/${feature.identifier}: duplicate feature`)
+    seen.add(feature.identifier)
+    const listed = [
+      ...(feature.plans ?? []).map((name) => ['plans', name]),
+      ...(feature.addOn?.plans ?? []).map((name) => ['addOn/plans', name]),
+    ]
+    for (const [field, planName] of listed) {
       if (!planNames.has(planName)) {
-        errors.push(`/features/${feature.identifier}/plans: "${planName}" is not a plan in pricing.plans`)
+        errors.push(`/features/${feature.identifier}/${field}: "${planName}" is not a plan in pricing.plans`)
       }
     }
-  }
-  for (const plan of plans) {
-    if (!plan.featuresIncluded) continue
-    const listed = new Set(
-      provider.features.filter((feature) => feature.plans?.includes(plan.name)).map((f) => f.identifier),
-    )
-    for (const id of plan.featuresIncluded) {
-      if (!featureIds.has(id)) errors.push(`/pricing/plans/${plan.name}/featuresIncluded: unknown feature "${id}"`)
-      else if (!listed.has(id))
-        errors.push(`/pricing/plans/${plan.name}/featuresIncluded: "${id}" does not list this plan in its plans`)
-    }
-    for (const id of listed) {
-      if (!plan.featuresIncluded.includes(id))
-        errors.push(`/pricing/plans/${plan.name}/featuresIncluded: missing "${id}"`)
+    for (const planName of Object.keys(feature.addOn?.included ?? {})) {
+      if (!planNames.has(planName)) {
+        errors.push(`/features/${feature.identifier}/addOn/included: "${planName}" is not a plan in pricing.plans`)
+      }
     }
   }
   return errors

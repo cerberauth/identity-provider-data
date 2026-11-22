@@ -124,7 +124,8 @@
       "identifier": "username_and_password_authentication",
       "status": "supported",
       "description": "Email and password login, listed among the connection types of the hosted login.",
-      "links": ["https://authress.io/knowledge-base/docs/authentication/user-authentication"]
+      "links": ["https://authress.io/knowledge-base/docs/authentication/user-authentication"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "social_sign_in_authentication",
@@ -133,7 +134,8 @@
       "links": [
         "https://authress.io",
         "https://authress.io/knowledge-base/docs/authentication/user-oauth-authentication-quick-start"
-      ]
+      ],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "passkey_authentication",
@@ -142,7 +144,8 @@
       "links": [
         "https://authress.io/knowledge-base/docs/authentication/user-authentication/adding-multifactor-authentication",
         "https://authress.io/knowledge-base/release-notes"
-      ]
+      ],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "email_passwordless_authentication",
@@ -151,11 +154,13 @@
       "links": [
         "https://authress.io/knowledge-base/docs/authentication/user-authentication",
         "https://authress.io/knowledge-base/docs/authentication/custom-passwordless-login"
-      ]
+      ],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "phone_passwordless_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "magic_link_authentication",
@@ -164,11 +169,13 @@
       "links": [
         "https://authress.io/knowledge-base/docs/authentication/user-authentication",
         "https://authress.io/knowledge-base/docs/authentication/custom-passwordless-login"
-      ]
+      ],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "anonymous_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
@@ -176,15 +183,18 @@
       "description": "TOTP authenticator apps can be added to any connection, social connections included.",
       "links": [
         "https://authress.io/knowledge-base/docs/authentication/user-authentication/adding-multifactor-authentication"
-      ]
+      ],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "hotp_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "webauthn_mfa",
@@ -192,35 +202,43 @@
       "description": "Security keys such as YubiKeys and passkeys as a second factor. Users can register several keys.",
       "links": [
         "https://authress.io/knowledge-base/docs/authentication/user-authentication/adding-multifactor-authentication"
-      ]
+      ],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "email_code_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "phone_code_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "recovery_code_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "push_notification_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "adaptive_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "cisco_duo_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "oidc_protocol",
@@ -229,15 +247,18 @@
       "links": [
         "https://authress.io/knowledge-base/docs/authentication/validating-jwts",
         "https://authress.io/knowledge-base/docs/authentication/user-authentication/user-sessions"
-      ]
+      ],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "saml2_protocol",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "ws_federation_protocol",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
@@ -246,7 +267,8 @@
       "links": [
         "https://authress.io/knowledge-base/docs/authorization/service-clients",
         "https://authress.io/knowledge-base/docs/authentication/api-authentication"
-      ]
+      ],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "oidc_federation",
@@ -255,101 +277,124 @@
       "links": [
         "https://authress.io/knowledge-base/docs/authentication/connecting-providers-idp",
         "https://authress.io/knowledge-base/docs/authentication/oidc-trusted-identities"
-      ]
+      ],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "saml_federation",
       "status": "supported",
       "description": "SAML is listed among the SSO integrations on the homepage. The tenant docs only detail OIDC and OAuth connections.",
-      "links": ["https://authress.io", "https://authress.io/knowledge-base/docs/authentication/tenants"]
+      "links": ["https://authress.io", "https://authress.io/knowledge-base/docs/authentication/tenants"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "active_directory_ldap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "azure_ad_integration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bulk_user_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "password_hash_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bulk_user_export",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bulk_user_update_delete",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "upsert_on_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "legacy_username_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "mfa_enrollment_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "inbound_scim_provisioning",
       "status": "unknown",
       "description": "SCIM and IdP syncing are listed as supported login strategies, but no setup guide was found.",
-      "links": ["https://authress.io/knowledge-base/docs/authentication/user-authentication"]
+      "links": ["https://authress.io/knowledge-base/docs/authentication/user-authentication"],
+      "plans": []
     },
     {
       "identifier": "outbound_scim_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "scim_groups",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "jit_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "lazy_migration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "self_service_profile_management",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "account_linking",
       "status": "supported",
       "description": "User accounts can be linked, with multiple sessions per device.",
-      "links": ["https://authress.io/knowledge-base/docs/authentication/linked-user-accounts"]
+      "links": ["https://authress.io/knowledge-base/docs/authentication/linked-user-accounts"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "user_blocking",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_metadata",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "app_metadata",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "metadata_size_limits",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_search",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "rbac",
@@ -358,29 +403,35 @@
       "links": [
         "https://authress.io/knowledge-base/docs/authorization/permissions",
         "https://authress.io/knowledge-base/docs/authorization/access-records"
-      ]
+      ],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "organizations_multitenancy",
       "status": "supported",
       "description": "Tenants separate the users of each customer, each with its own SSO connection, email-domain or subdomain routing, and tenant-scoped tokens.",
-      "links": ["https://authress.io/knowledge-base/docs/authentication/tenants"]
+      "links": ["https://authress.io/knowledge-base/docs/authentication/tenants"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "password_strength_policy",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "username_restrictions",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "progressive_profiling",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "abac",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fine_grained_authorization",
@@ -389,470 +440,581 @@
       "links": [
         "https://authress.io/knowledge-base/docs/authorization",
         "https://authress.io/knowledge-base/docs/authorization/access-records"
-      ]
+      ],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "api_authorization",
       "status": "supported",
       "description": "Permission checks against a user, a resource and a permission, through the SDKs or the REST API.",
-      "links": ["https://authress.io/knowledge-base/docs/authorization"]
+      "links": ["https://authress.io/knowledge-base/docs/authorization"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "soc2_type2",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "iso_27001",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "hipaa_baa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pci_dss",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "csa_star",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fedramp",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_right_to_erasure",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "consent_management",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "region_deployment",
       "status": "supported",
       "description": "User data residency is set per identity connection. The list of regions is only shown in the management portal.",
-      "links": ["https://authress.io/knowledge-base/docs/authentication/user-authentication/selecting-data-residencies"]
+      "links": [
+        "https://authress.io/knowledge-base/docs/authentication/user-authentication/selecting-data-residencies"
+      ],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "private_cloud_deployment",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "audit_log_retention",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "audit_log_streaming",
       "status": "supported",
       "description": "Access changes are captured in an audit trail that can be streamed to a SIEM through AWS EventBridge.",
-      "links": ["https://authress.io/knowledge-base/docs/account-management/aws-event-bridge-audit-trail"]
+      "links": ["https://authress.io/knowledge-base/docs/account-management/aws-event-bridge-audit-trail"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "security_center",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "encryption_at_rest",
       "status": "supported",
       "description": "Data is encrypted at rest.",
-      "links": ["https://authress.io"]
+      "links": ["https://authress.io"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "encryption_in_transit",
       "status": "supported",
       "description": "Data is encrypted in transit.",
-      "links": ["https://authress.io"]
+      "links": ["https://authress.io"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "customer_managed_keys",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bot_detection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "brute_force_protection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "suspicious_ip_throttling",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "breached_password_detection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "credential_guard",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "device_fingerprinting",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "per_org_branding",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "per_org_mfa_policy",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "hosted_login_page",
       "status": "supported",
       "description": "Hosted login box with custom domain support.",
-      "links": ["https://authress.io/knowledge-base/docs/authentication/user-authentication"]
+      "links": ["https://authress.io/knowledge-base/docs/authentication/user-authentication"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "embedded_login",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "white_label",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "localization",
       "status": "supported",
       "description": "The login UI is translated into 26+ languages.",
-      "links": ["https://authress.io"]
+      "links": ["https://authress.io"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "prebuilt_ui_components",
       "status": "supported",
       "description": "Customizable React components for user management and role changes.",
-      "links": ["https://github.com/Authress/component-library.js"]
+      "links": ["https://github.com/Authress/component-library.js"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "login_analytics",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "sdk_coverage",
       "status": "supported",
       "description": "SDKs for JavaScript, Python, C#, Go, Ruby, PHP, Kotlin and Rust, plus a login SDK and React Native library.",
-      "links": ["https://github.com/Authress"]
+      "links": ["https://github.com/Authress"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "management_api",
       "status": "supported",
       "description": "REST API with an interactive reference, and a management portal.",
-      "links": ["https://authress.io/app/#/api"]
+      "links": ["https://authress.io/app/#/api"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "authentication_api_rate_limits",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "actions_extensibility",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "typescript_in_actions",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_domain",
       "status": "supported",
       "description": "A custom domain is recommended and used for API calls and as the token issuer. It needs a CNAME record.",
-      "links": ["https://authress.io/knowledge-base/docs/introduction/getting-started-with-authress"]
+      "links": ["https://authress.io/knowledge-base/docs/introduction/getting-started-with-authress"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "deploy_cli",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "terraform_provider",
       "status": "supported",
       "description": "Official Terraform provider, plus a Pulumi provider.",
-      "links": ["https://github.com/Authress/terraform-provider-authress"]
+      "links": ["https://github.com/Authress/terraform-provider-authress"],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "custom_database_connections",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "native_webhooks",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "universal_login_customization",
       "status": "supported",
       "description": "The login box can be customized.",
-      "links": ["https://authress.io/knowledge-base/docs/authentication/user-authentication/customizing-your-login-box"]
+      "links": [
+        "https://authress.io/knowledge-base/docs/authentication/user-authentication/customizing-your-login-box"
+      ],
+      "plans": ["Pay as you go"]
     },
     {
       "identifier": "custom_email_provider",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "email_templates",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_oidc_claims",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "nocode_flow_builder",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "identity_proofing",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "decentralized_identity",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
     "features": [
       {
         "identifier": "authorization_code_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_grant",
         "status": "unknown",
         "description": "Sessions use a proprietary authress-session token, rotated on every use, instead of OAuth refresh tokens.",
-        "links": ["https://authress.io/knowledge-base/docs/authentication/user-authentication/user-sessions"]
+        "links": ["https://authress.io/knowledge-base/docs/authentication/user-authentication/user-sessions"],
+        "plans": []
       },
       {
         "identifier": "client_credentials_grant",
         "status": "unknown",
         "description": "Service clients are described as OAuth2 compatible, with a client ID and a secret created from an access key. The grant itself is not documented.",
-        "links": ["https://authress.io/knowledge-base/docs/authorization/service-clients"]
+        "links": ["https://authress.io/knowledge-base/docs/authorization/service-clients"],
+        "plans": []
       },
       {
         "identifier": "implicit_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "password_grant",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "rp_initiated_logout",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "pkce_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "par_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "rar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jar_extension",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "token_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "userinfo_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "token_revocation_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "token_introspection_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "device_authorization_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "unknown",
         "description": "Public keys are served under /.well-known/openid-configuration/jwks on the account domain. The discovery document itself was not confirmed.",
-        "links": ["https://authress.io/knowledge-base/docs/authentication/validating-jwts"]
+        "links": ["https://authress.io/knowledge-base/docs/authentication/validating-jwts"],
+        "plans": []
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "login_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "consent_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "select_account_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "create_prompt",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "dpop",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       }
     ]
   }

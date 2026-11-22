@@ -127,18 +127,20 @@
       {
         "name": "Professional",
         "price": "From $0.05 per MAU per month on an annual commitment with a minimum (up to 20,000 MAUs; no per-verification charges; passkeys, email OTP, SMS OTP, TOTP and push; custom domains and branded screens; email and live chat support)",
-        "mauIncluded": 20000
+        "usage": {
+          "metric": "mau",
+          "included": 0,
+          "max": 20000,
+          "rates": [
+            {
+              "amount": 0.05
+            }
+          ]
+        }
       },
       {
         "name": "Enterprise",
-        "price": "Custom, annual commitment (20,000+ MAUs; adds WhatsApp OTP, biometrics, identity proofing, Flows, log shipping, Terraform, PSD2 SCA, SLAs, DPA and BAA, and a dedicated account manager)",
-        "featuresIncluded": [
-          "hipaa_baa",
-          "audit_log_streaming",
-          "terraform_provider",
-          "nocode_flow_builder",
-          "identity_proofing"
-        ]
+        "price": "Custom, annual commitment (20,000+ MAUs; adds WhatsApp OTP, biometrics, identity proofing, Flows, log shipping, Terraform, PSD2 SCA, SLAs, DPA and BAA, and a dedicated account manager)"
       }
     ]
   },
@@ -227,11 +229,13 @@
       "identifier": "username_and_password_authentication",
       "status": "not_supported",
       "description": "Authsignal does not store or check passwords. The existing identity provider keeps the first factor, or Authsignal replaces it with passkeys, OTP or magic links.",
-      "links": ["https://docs.authsignal.com/actions-rules/actions/passwordless-login"]
+      "links": ["https://docs.authsignal.com/actions-rules/actions/passwordless-login"],
+      "plans": []
     },
     {
       "identifier": "social_sign_in_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "passkey_authentication",
@@ -240,7 +244,8 @@
       "links": [
         "https://docs.authsignal.com/authentication-methods/passkey/prebuilt-ui",
         "https://docs.authsignal.com/authentication-methods/passkey/web-sdk"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "email_passwordless_authentication",
@@ -249,7 +254,8 @@
       "links": [
         "https://docs.authsignal.com/actions-rules/actions/passwordless-login",
         "https://docs.authsignal.com/authentication-methods/email/otp"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "phone_passwordless_authentication",
@@ -258,7 +264,8 @@
       "links": [
         "https://docs.authsignal.com/actions-rules/actions/passwordless-login",
         "https://docs.authsignal.com/authentication-methods/sms-otp"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "magic_link_authentication",
@@ -267,11 +274,13 @@
       "links": [
         "https://docs.authsignal.com/authentication-methods/email/magic-link",
         "https://docs.authsignal.com/knowledge-base/faqs"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "anonymous_authentication",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
@@ -280,15 +289,18 @@
       "links": [
         "https://docs.authsignal.com/authentication-methods/totp",
         "https://docs.authsignal.com/knowledge-base/faqs"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "hotp_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "webauthn_mfa",
@@ -297,7 +309,8 @@
       "links": [
         "https://docs.authsignal.com/sdks/client/web/security-key",
         "https://docs.authsignal.com/authentication-methods/passkey/web-sdk"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "email_code_mfa",
@@ -306,7 +319,8 @@
       "links": [
         "https://docs.authsignal.com/authentication-methods/email/otp",
         "https://docs.authsignal.com/knowledge-base/faqs"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "phone_code_mfa",
@@ -316,11 +330,13 @@
         "https://docs.authsignal.com/authentication-methods/sms-otp",
         "https://docs.authsignal.com/authentication-methods/whatsapp-otp",
         "https://www.authsignal.com/pricing"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "recovery_code_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "push_notification_mfa",
@@ -329,7 +345,8 @@
       "links": [
         "https://docs.authsignal.com/authentication-methods/app-verification/push",
         "https://docs.authsignal.com/authentication-methods/app-verification/qr-code"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "adaptive_mfa",
@@ -338,11 +355,13 @@
       "links": [
         "https://docs.authsignal.com/actions-rules/rules/adaptive-mfa",
         "https://docs.authsignal.com/actions-rules/rules/getting-started"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "cisco_duo_mfa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
@@ -351,7 +370,8 @@
       "links": [
         "https://docs.authsignal.com/actions-rules/actions/getting-started",
         "https://docs.authsignal.com/actions-rules/actions/implementing-mfa"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "oidc_protocol",
@@ -360,33 +380,40 @@
       "links": [
         "https://docs.authsignal.com/getting-started/overview",
         "https://docs.authsignal.com/integrations/auth0"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "saml2_protocol",
       "status": "unknown",
       "description": "SAML 2.0 is documented only for signing in to the Authsignal Portal. Acting as a SAML identity provider for end users is not documented.",
-      "links": ["https://docs.authsignal.com/knowledge-base/administration/single-sign-on"]
+      "links": ["https://docs.authsignal.com/knowledge-base/administration/single-sign-on"],
+      "plans": []
     },
     {
       "identifier": "ws_federation_protocol",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "oidc_federation",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "saml_federation",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "active_directory_ldap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "azure_ad_integration",
@@ -395,57 +422,70 @@
       "links": [
         "https://docs.authsignal.com/integrations/entra-id-eam",
         "https://docs.authsignal.com/integrations/azure-ad-b2c/azure-ad-b2c-mfa"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "bulk_user_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "password_hash_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bulk_user_export",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bulk_user_update_delete",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "upsert_on_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "legacy_username_import",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "mfa_enrollment_import",
       "status": "partial",
       "description": "Existing passkeys can be imported in batches of up to 1000 through the Batch Enroll Verified Authenticators API, using the credential ID and public key. Other authenticator types are not documented for batch import.",
-      "links": ["https://docs.authsignal.com/api-reference/server-api/batch-enroll-verified-authenticators"]
+      "links": ["https://docs.authsignal.com/api-reference/server-api/batch-enroll-verified-authenticators"],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "inbound_scim_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "outbound_scim_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "scim_groups",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "jit_provisioning",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "lazy_migration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "self_service_profile_management",
@@ -454,27 +494,33 @@
       "links": [
         "https://docs.authsignal.com/implementation-options/prebuilt-ui/enrolling-authenticators",
         "https://docs.authsignal.com/implementation-options/prebuilt-ui/removing-authenticators"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "account_linking",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_blocking",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_metadata",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "app_metadata",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "metadata_size_limits",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "user_search",
@@ -483,53 +529,64 @@
       "links": [
         "https://docs.authsignal.com/api-reference/server-api/query-users",
         "https://docs.authsignal.com/knowledge-base/administration/view-user-activity"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "rbac",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "organizations_multitenancy",
       "status": "unknown",
       "description": "Tenants separate environments and products inside an Authsignal account, and MAUs are counted at the account level. An end-customer organization model is not documented.",
-      "links": ["https://www.authsignal.com/pricing"]
+      "links": ["https://www.authsignal.com/pricing"],
+      "plans": []
     },
     {
       "identifier": "password_strength_policy",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "username_restrictions",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "progressive_profiling",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "abac",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fine_grained_authorization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "api_authorization",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "soc2_type2",
       "status": "supported",
       "description": "SOC 2 Type II certified.",
-      "links": ["https://www.authsignal.com", "https://www.authsignal.com/pricing"]
+      "links": ["https://www.authsignal.com", "https://www.authsignal.com/pricing"],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "iso_27001",
       "status": "supported",
       "description": "ISO 27001 certified.",
-      "links": ["https://www.authsignal.com", "https://www.authsignal.com/pricing"]
+      "links": ["https://www.authsignal.com", "https://www.authsignal.com/pricing"],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "hipaa_baa",
@@ -540,47 +597,56 @@
     },
     {
       "identifier": "pci_dss",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "csa_star",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fedramp",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "supported",
       "description": "The Delete User API permanently removes a user with their authenticators and actions. Deletion is asynchronous and can take a few minutes.",
-      "links": ["https://docs.authsignal.com/api-reference/server-api/delete-user"]
+      "links": ["https://docs.authsignal.com/api-reference/server-api/delete-user"],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "consent_management",
       "status": "partial",
       "description": "The pre-built UI can show an opt-in checkbox with a per-language message before SMS enrollment, for 10DLC, TCPA and similar messaging consent rules. General consent management is not documented.",
-      "links": ["https://docs.authsignal.com/implementation-options/prebuilt-ui/opt-in-consent"]
+      "links": ["https://docs.authsignal.com/implementation-options/prebuilt-ui/opt-in-consent"],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "region_deployment",
       "status": "supported",
       "description": "Tenants are created in one of five regions: US (Oregon), AU (Sydney), EU (Ireland), CA (Montreal) and UK (London), each with its own API URL.",
-      "links": ["https://docs.authsignal.com/knowledge-base/faqs"]
+      "links": ["https://docs.authsignal.com/knowledge-base/faqs"],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "private_cloud_deployment",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "audit_log_retention",
       "status": "supported",
       "description": "The Portal shows the previous 3 months of action data, with an event timeline for each challenge, the rules that fired and the device and IP context used for the decision.",
-      "links": ["https://docs.authsignal.com/knowledge-base/administration/view-user-activity"]
+      "links": ["https://docs.authsignal.com/knowledge-base/administration/view-user-activity"],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "audit_log_streaming",
@@ -594,49 +660,59 @@
     },
     {
       "identifier": "security_center",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "encryption_at_rest",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "encryption_in_transit",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "customer_managed_keys",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "bot_detection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "brute_force_protection",
       "status": "partial",
       "description": "Built-in limits on OTP sends and verification attempts. Exceeding the verification limit can move an action to CHALLENGE_FAILED. Account lockout is not documented.",
-      "links": ["https://docs.authsignal.com/knowledge-base/faqs"]
+      "links": ["https://docs.authsignal.com/knowledge-base/faqs"],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "suspicious_ip_throttling",
       "status": "partial",
       "description": "Rules can challenge or block based on IP country, VPN detection and IP reputation. Throttling of suspicious IPs is not documented.",
-      "links": ["https://docs.authsignal.com/actions-rules/rules/adaptive-mfa"]
+      "links": ["https://docs.authsignal.com/actions-rules/rules/adaptive-mfa"],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "breached_password_detection",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "credential_guard",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
       "status": "partial",
       "description": "Rules can allow, challenge or block by IP country and high-risk regions. TLS fingerprint rules are not documented.",
-      "links": ["https://docs.authsignal.com/actions-rules/rules/adaptive-mfa"]
+      "links": ["https://docs.authsignal.com/actions-rules/rules/adaptive-mfa"],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "device_fingerprinting",
@@ -645,15 +721,18 @@
       "links": [
         "https://docs.authsignal.com/sdks/client/web/device-tracking",
         "https://docs.authsignal.com/actions-rules/rules/adaptive-mfa"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "per_org_branding",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "per_org_mfa_policy",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "hosted_login_page",
@@ -662,7 +741,8 @@
       "links": [
         "https://docs.authsignal.com/implementation-options/prebuilt-ui/overview",
         "https://docs.authsignal.com/implementation-options/prebuilt-ui/custom-domains"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "embedded_login",
@@ -671,7 +751,8 @@
       "links": [
         "https://docs.authsignal.com/implementation-options/prebuilt-ui/overview",
         "https://docs.authsignal.com/sdks/client/react"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "white_label",
@@ -680,19 +761,25 @@
       "links": [
         "https://docs.authsignal.com/implementation-options/prebuilt-ui/custom-branding",
         "https://www.authsignal.com/pricing"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "localization",
       "status": "supported",
       "description": "The pre-built UI ships in 9 languages: English, French, Canadian French, German, Spanish, Italian, Dutch, Polish and Brazilian Portuguese. It follows the browser language, or a locale passed with the action.",
-      "links": ["https://docs.authsignal.com/implementation-options/prebuilt-ui/localization"]
+      "links": ["https://docs.authsignal.com/implementation-options/prebuilt-ui/localization"],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "prebuilt_ui_components",
       "status": "supported",
       "description": "The hosted pre-built UI covers enrollment and challenges for every authenticator, and headless components are available for custom UIs.",
-      "links": ["https://docs.authsignal.com/implementation-options/prebuilt-ui/overview", "https://www.authsignal.com"]
+      "links": [
+        "https://docs.authsignal.com/implementation-options/prebuilt-ui/overview",
+        "https://www.authsignal.com"
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "login_analytics",
@@ -701,7 +788,8 @@
       "links": [
         "https://docs.authsignal.com/knowledge-base/administration/view-user-activity",
         "https://www.authsignal.com/pricing"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "sdk_coverage",
@@ -711,19 +799,22 @@
         "https://docs.authsignal.com/sdks/server/overview",
         "https://docs.authsignal.com/sdks/client/mobile/setup",
         "https://github.com/authsignal"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "management_api",
       "status": "supported",
       "description": "Management API for tenant settings, action configurations, authenticator configurations, rules, custom lists, custom data points, themes and message overrides.",
-      "links": ["https://docs.authsignal.com/api-reference/management-api/overview"]
+      "links": ["https://docs.authsignal.com/api-reference/management-api/overview"],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "authentication_api_rate_limits",
       "status": "supported",
       "description": "Documented limits: 12 email sends and 6 SMS sends per 10 minutes, and 10 verification attempts per 5 minutes for email OTP, SMS OTP and TOTP. The limits are fixed and exceeding them returns too_many_requests.",
-      "links": ["https://docs.authsignal.com/knowledge-base/faqs"]
+      "links": ["https://docs.authsignal.com/knowledge-base/faqs"],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "actions_extensibility",
@@ -732,11 +823,13 @@
       "links": [
         "https://docs.authsignal.com/advanced-usage/webhooks/event-types",
         "https://docs.authsignal.com/advanced-usage/webhooks/action-verify"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "typescript_in_actions",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "custom_domain",
@@ -746,11 +839,13 @@
         "https://docs.authsignal.com/implementation-options/prebuilt-ui/custom-domains",
         "https://docs.authsignal.com/advanced-usage/custom-api-domains",
         "https://www.authsignal.com/pricing"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "deploy_cli",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "terraform_provider",
@@ -765,7 +860,8 @@
     },
     {
       "identifier": "custom_database_connections",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "native_webhooks",
@@ -775,7 +871,8 @@
         "https://docs.authsignal.com/advanced-usage/webhooks/introduction",
         "https://docs.authsignal.com/advanced-usage/webhooks/event-types",
         "https://docs.authsignal.com/advanced-usage/webhooks/verify-requests"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "universal_login_customization",
@@ -784,7 +881,8 @@
       "links": [
         "https://docs.authsignal.com/implementation-options/prebuilt-ui/custom-branding",
         "https://docs.authsignal.com/implementation-options/prebuilt-ui/message-overrides"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "custom_email_provider",
@@ -793,17 +891,20 @@
       "links": [
         "https://docs.authsignal.com/advanced-usage/webhooks/email-created",
         "https://docs.authsignal.com/advanced-usage/webhooks/sms-created"
-      ]
+      ],
+      "plans": ["Free trial", "Professional", "Enterprise"]
     },
     {
       "identifier": "email_templates",
       "status": "unknown",
       "description": "Message overrides only cover text in the pre-built UI. Email subjects and bodies are not documented as customizable.",
-      "links": ["https://docs.authsignal.com/implementation-options/prebuilt-ui/message-overrides"]
+      "links": ["https://docs.authsignal.com/implementation-options/prebuilt-ui/message-overrides"],
+      "plans": []
     },
     {
       "identifier": "custom_oidc_claims",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "nocode_flow_builder",
@@ -824,61 +925,74 @@
     },
     {
       "identifier": "decentralized_identity",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
       "status": "unknown",
       "description": "The website announces a trust layer for AI agents covering passkeys, step-up, consent and token vaulting. It is not documented yet.",
-      "links": ["https://www.authsignal.com"]
+      "links": ["https://www.authsignal.com"],
+      "plans": []
     },
     {
       "identifier": "pq_hybrid_key_exchange",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -887,185 +1001,229 @@
         "identifier": "authorization_code_grant",
         "status": "not_supported",
         "description": "Authsignal is not an OpenID Provider. It does not issue authorization codes.",
-        "links": ["https://docs.authsignal.com/getting-started/overview"]
+        "links": ["https://docs.authsignal.com/getting-started/overview"],
+        "plans": []
       },
       {
         "identifier": "refresh_token_grant",
         "status": "not_supported",
         "description": "The Session API has single-use refresh tokens, but not through an OAuth token endpoint.",
-        "links": ["https://docs.authsignal.com/advanced-usage/session-management"]
+        "links": ["https://docs.authsignal.com/advanced-usage/session-management"],
+        "plans": []
       },
       {
         "identifier": "client_credentials_grant",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "implicit_grant",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "password_grant",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "rp_initiated_logout",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "pkce_extension",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "par_extension",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "rar_extension",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "jar_extension",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "token_endpoint",
         "status": "not_supported",
         "description": "Challenge results are validated through the Server API, and sessions through createSession.",
-        "links": ["https://docs.authsignal.com/api-reference/server-api/validate-action"]
+        "links": ["https://docs.authsignal.com/api-reference/server-api/validate-action"],
+        "plans": []
       },
       {
         "identifier": "userinfo_endpoint",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "token_revocation_endpoint",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "token_introspection_endpoint",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "device_authorization_endpoint",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "not_supported",
         "description": "No discovery document. Session tokens are verified against a tenant JWKS URL.",
-        "links": ["https://docs.authsignal.com/advanced-usage/session-management"]
+        "links": ["https://docs.authsignal.com/advanced-usage/session-management"],
+        "plans": []
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "none_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "login_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "consent_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "select_account_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "create_prompt",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "dpop",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       }
     ]
   }

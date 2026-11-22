@@ -44,15 +44,18 @@
       {
         "name": "Trial",
         "price": "Free (30 days)",
-        "amount": 0
+        "amount": 0,
+        "deployment": "saas"
       },
       {
         "name": "PingOne",
-        "price": "Custom"
+        "price": "Custom",
+        "deployment": "saas"
       },
       {
         "name": "Enterprise",
-        "price": "Custom"
+        "price": "Custom",
+        "deployment": "saas"
       }
     ]
   },
@@ -99,55 +102,64 @@
     {
       "identifier": "username_and_password_authentication",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/authentication/p1_passwordpolicies.html"]
+      "links": ["https://docs.pingidentity.com/pingone/authentication/p1_passwordpolicies.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_authentication_methods_overview.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "passkey_authentication",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_strong_auth_configuring_fido.html"]
+      "links": ["https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_strong_auth_configuring_fido.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "email_passwordless_authentication",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_authentication_methods_overview.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_authentication_methods_overview.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "magic_link_authentication",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_authentication_methods_overview.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "anonymous_authentication",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingid/pingid_service_management/cxe1564020450447.html"]
+      "links": ["https://docs.pingidentity.com/pingid/pingid_service_management/cxe1564020450447.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "hotp_mfa",
       "status": "supported",
       "description": "PingID supports HOTP (counter-based OTP) in addition to TOTP, also used for offline PingID authentication.",
-      "links": ["https://docs.pingidentity.com/pingid/pingid_service_management/cxe1564020450447.html"]
+      "links": ["https://docs.pingidentity.com/pingid/pingid_service_management/cxe1564020450447.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "u2f_mfa",
@@ -155,38 +167,44 @@
       "description": "FIDO2 security keys with backward compatibility for U2F.",
       "links": [
         "https://docs.pingidentity.com/pingid/pingid_service_management/pid_configuring_fido2_authentication_method.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "webauthn_mfa",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_strong_auth_configuring_fido.html"]
+      "links": ["https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_strong_auth_configuring_fido.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "email_code_mfa",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_authentication_methods_overview.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "phone_code_mfa",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_authentication_methods_overview.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "recovery_code_mfa",
       "status": "supported",
       "description": "Recovery codes supported in PingOne Advanced Identity Cloud and via admin device reset in PingID.",
-      "links": ["https://docs.pingidentity.com/auth-node-ref/8/auth-node-recovery-code-display.html"]
+      "links": ["https://docs.pingidentity.com/auth-node-ref/8/auth-node-recovery-code-display.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "push_notification_mfa",
       "status": "supported",
       "description": "PingID push notifications.",
-      "links": ["https://www.pingidentity.com/en/product/pingid.html"]
+      "links": ["https://www.pingidentity.com/en/product/pingid.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "adaptive_mfa",
@@ -194,200 +212,236 @@
       "description": "PingOne Protect AI-driven risk-based adaptive MFA.",
       "links": [
         "https://docs.pingidentity.com/pingone/threat_protection_using_pingone_protect/p1_protect_overview.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "cisco_duo_mfa",
       "status": "supported",
       "description": "Cisco Duo integration via the Duo Security Integration Kit for PingFederate and a Duo Connector for PingOne DaVinci.",
-      "links": ["https://docs.pingidentity.com/connectors/duo_connector.html"]
+      "links": ["https://docs.pingidentity.com/connectors/duo_connector.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "step_up_authentication",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/authentication/p1_stepup_authentication_for_apis.html"]
+      "links": ["https://docs.pingidentity.com/pingone/authentication/p1_stepup_authentication_for_apis.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "oidc_protocol",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingfederate/13.0/introduction_to_pingfederate/pf_intro_to_pf.html"]
+      "links": ["https://docs.pingidentity.com/pingfederate/13.0/introduction_to_pingfederate/pf_intro_to_pf.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "saml2_protocol",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingfederate/13.0/introduction_to_pingfederate/pf_intro_to_pf.html"]
+      "links": ["https://docs.pingidentity.com/pingfederate/13.0/introduction_to_pingfederate/pf_intro_to_pf.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "ws_federation_protocol",
       "status": "supported",
       "description": "PingFederate supports full WS-Federation Passive Requestor Profile, including interoperability with Microsoft ADFS.",
-      "links": ["https://docs.pingidentity.com/pingfederate/13.0/introduction_to_pingfederate/pf_ws_fed.html"]
+      "links": ["https://docs.pingidentity.com/pingfederate/13.0/introduction_to_pingfederate/pf_ws_fed.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "machine_to_machine",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/developer_tools/p1_api_reference.html"]
+      "links": ["https://docs.pingidentity.com/pingone/developer_tools/p1_api_reference.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "oidc_federation",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingoneaic/use-cases/use-case-sso-oidc-entra-id.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/use-cases/use-case-sso-oidc-entra-id.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "saml_federation",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingfederate/13.0/introduction_to_pingfederate/pf_intro_to_pf.html"]
+      "links": ["https://docs.pingidentity.com/pingfederate/13.0/introduction_to_pingfederate/pf_intro_to_pf.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "active_directory_ldap",
       "status": "supported",
       "description": "PingDirectory and PingFederate LDAP connectors.",
-      "links": ["https://docs.pingidentity.com/pingfederate/13.0/introduction_to_pingfederate/pf_intro_to_pf.html"]
+      "links": ["https://docs.pingidentity.com/pingfederate/13.0/introduction_to_pingfederate/pf_intro_to_pf.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "azure_ad_integration",
       "status": "supported",
       "description": "Native integration: PingOne can act as external MFA for Entra ID, provision users from Entra via MS Graph, and use Entra as OIDC provider.",
-      "links": ["https://docs.pingidentity.com/pingone/integrations/p1_add_idp_microsoft_entra.html"]
+      "links": ["https://docs.pingidentity.com/pingone/integrations/p1_add_idp_microsoft_entra.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "bulk_user_import",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingoneaic/latest/identities/bulk-import-identities.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/latest/identities/bulk-import-identities.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "password_hash_import",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingds/7.5/use-cases/change-password-storage.html"]
+      "links": ["https://docs.pingidentity.com/pingds/7.5/use-cases/change-password-storage.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "bulk_user_export",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingoneaic/latest/idm-rest-api/endpoints/rest-managed-users.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/latest/idm-rest-api/endpoints/rest-managed-users.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "bulk_user_update_delete",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/directory/p1_deleteuser.html"]
+      "links": ["https://docs.pingidentity.com/pingone/directory/p1_deleteuser.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "upsert_on_import",
       "status": "supported",
       "description": "Bulk import supports conflict handling with upsert semantics.",
-      "links": ["https://docs.pingidentity.com/pingoneaic/latest/identities/bulk-import-identities.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/latest/identities/bulk-import-identities.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "legacy_username_import",
       "status": "supported",
       "description": "PingOne import API treats usernames as plain string fields with minimal restrictions at import time.",
-      "links": ["https://github.com/pingidentity/pingone-user-import-tool"]
+      "links": ["https://github.com/pingidentity/pingone-user-import-tool"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "mfa_enrollment_import",
       "status": "supported",
-      "description": "TOTP secrets and phone numbers can be set via the PingOne MFA API during migration."
+      "description": "TOTP secrets and phone numbers can be set via the PingOne MFA API during migration.",
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "inbound_scim_provisioning",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/integrations/p1_scim_provisioning_features.html"]
+      "links": ["https://docs.pingidentity.com/pingone/integrations/p1_scim_provisioning_features.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "outbound_scim_provisioning",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/integrations/p1_provisioning_configuring_outbound_group_provisioning.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "scim_groups",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/integrations/p1_scim_provisioning_features.html"]
+      "links": ["https://docs.pingidentity.com/pingone/integrations/p1_scim_provisioning_features.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "jit_provisioning",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/directory/p1_provision_external_groups.html"]
+      "links": ["https://docs.pingidentity.com/pingone/directory/p1_provision_external_groups.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "lazy_migration",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingoneaic/identities/pass-through-authentication.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/identities/pass-through-authentication.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "self_service_profile_management",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/managing_your_pingone_user_profile/p1_self_service_start.html"]
+      "links": ["https://docs.pingidentity.com/pingone/managing_your_pingone_user_profile/p1_self_service_start.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "account_linking",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_authentication_methods_overview.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "user_blocking",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/directory/p1_enable_a_user.html"]
+      "links": ["https://docs.pingidentity.com/pingone/directory/p1_enable_a_user.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "user_metadata",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/directory/p1_adduserattributes.html"]
+      "links": ["https://docs.pingidentity.com/pingone/directory/p1_adduserattributes.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "app_metadata",
       "status": "supported",
       "description": "Admin-managed custom attributes prefixed with `custom_` on user objects, accessible via API.",
-      "links": ["https://docs.pingidentity.com/pingone/directory/p1_adduserattributes.html"]
+      "links": ["https://docs.pingidentity.com/pingone/directory/p1_adduserattributes.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "metadata_size_limits",
       "status": "supported",
       "description": "Up to 200 custom string and JSON attributes per environment.",
-      "links": ["https://docs.pingidentity.com/pingone/getting_started_with_pingone/p1_platform_limits.html"]
+      "links": ["https://docs.pingidentity.com/pingone/getting_started_with_pingone/p1_platform_limits.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "user_search",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/directory/p1_user_attributes.html"]
+      "links": ["https://docs.pingidentity.com/pingone/directory/p1_user_attributes.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "rbac",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/directory/p1_attribute_access_control_user_atts.html"]
+      "links": ["https://docs.pingidentity.com/pingone/directory/p1_attribute_access_control_user_atts.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "organizations_multitenancy",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/directory/p1_groups_vs_populations.html"]
+      "links": ["https://docs.pingidentity.com/pingone/directory/p1_groups_vs_populations.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "password_strength_policy",
       "status": "supported",
       "description": "Built-in password policy templates (Standard, Passphrase, Basic) with configurable complexity.",
-      "links": ["https://docs.pingidentity.com/pingone/authentication/p1_passwordpolicies.html"]
+      "links": ["https://docs.pingidentity.com/pingone/authentication/p1_passwordpolicies.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "username_restrictions",
       "status": "supported",
       "description": "PingOne enforces username policies including MIN_LENGTH, VALID_TYPE, UNIQUE, and CANNOT_CONTAIN_CHARACTERS.",
-      "links": ["https://docs.pingidentity.com/pingone/getting_started_with_pingone/p1_platform_limits.html"]
+      "links": ["https://docs.pingidentity.com/pingone/getting_started_with_pingone/p1_platform_limits.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "progressive_profiling",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_authentication_methods_overview.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "abac",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/authorization_using_pingone_authorize/p1_az_generated_attributes.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "fine_grained_authorization",
@@ -395,87 +449,102 @@
       "description": "PingOne Authorize add-on.",
       "links": [
         "https://docs.pingidentity.com/pingone/authorization_using_pingone_authorize/p1_az_generated_attributes.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "api_authorization",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/developer_tools/p1_api_reference.html"]
+      "links": ["https://docs.pingidentity.com/pingone/developer_tools/p1_api_reference.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "soc2_type2",
       "status": "supported",
-      "links": ["https://www.pingidentity.com/en/legal/trust-center.html"]
+      "links": ["https://www.pingidentity.com/en/legal/trust-center.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "iso_27001",
       "status": "supported",
       "description": "Ping Identity holds ISO 27001, ISO 27017, and ISO 27018 certifications.",
-      "links": ["https://docs.pingidentity.com/pingoneaic/product-information/security-compliance.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/product-information/security-compliance.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "hipaa_baa",
       "status": "supported",
       "description": "PingOne Advanced Identity Cloud complies with HIPAA/HITECH.",
-      "links": ["https://docs.pingidentity.com/pingoneaic/product-information/security-compliance.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/product-information/security-compliance.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "pci_dss",
       "status": "supported",
       "description": "Self-hosted/on-premises PingFederate + PingDirectory deployment can be configured for PCI DSS.",
-      "links": ["https://www.pingidentity.com/en/legal/trust-center.html"]
+      "links": ["https://www.pingidentity.com/en/legal/trust-center.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "csa_star",
       "status": "supported",
       "description": "Ping Identity holds CSA STAR Level 2 Attestation.",
-      "links": ["https://docs.pingidentity.com/pingoneaic/product-information/security-compliance.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/product-information/security-compliance.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "fedramp",
       "status": "supported",
       "description": "Ping Government Identity Cloud is FedRAMP High authorized and DoD IL5 certified.",
-      "links": ["https://www.pingidentity.com/en/platform/solutions/fedramp-solutions-for-government.html"]
+      "links": ["https://www.pingidentity.com/en/platform/solutions/fedramp-solutions-for-government.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "gdpr_data_export",
       "status": "supported",
-      "links": ["https://www.pingidentity.com/en/legal/data-privacy-addendum.html"]
+      "links": ["https://www.pingidentity.com/en/legal/data-privacy-addendum.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/directory/p1_deleteuser.html"]
+      "links": ["https://docs.pingidentity.com/pingone/directory/p1_deleteuser.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "consent_management",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_authentication_methods_overview.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "region_deployment",
       "status": "supported",
       "description": "SaaS multi-region plus self-hosted option for full control.",
-      "links": ["https://www.pingidentity.com/en/platform/pingone-advanced-identity-cloud.html"]
+      "links": ["https://www.pingidentity.com/en/platform/pingone-advanced-identity-cloud.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "private_cloud_deployment",
       "status": "supported",
       "description": "PingOne runs on AWS; PingFederate self-hosted deployable on any cloud.",
       "links": ["https://www.pingidentity.com/en/platform/pingone-advanced-identity-cloud.html"],
-      "values": ["AWS", "Azure", "GCP"]
+      "values": ["AWS", "Azure", "GCP"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "audit_log_retention",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingoneaic/latest/tenants/audit-debug-logs.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/latest/tenants/audit-debug-logs.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "audit_log_streaming",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingoneaic/tenants/audit-debug-logs-push.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/tenants/audit-debug-logs-push.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "security_center",
@@ -483,23 +552,27 @@
       "description": "PingOne Protect has a dedicated Threat Protection Dashboard under Monitoring → Threat Protection.",
       "links": [
         "https://docs.pingidentity.com/pingone/threat_protection_using_pingone_protect/p1_protect_dashboard.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "encryption_at_rest",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingoneaic/product-information/security-compliance.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/product-information/security-compliance.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "encryption_in_transit",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingoneaic/product-information/security-compliance.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/product-information/security-compliance.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "customer_managed_keys",
       "status": "supported",
       "description": "Supported in Advanced Identity Cloud via ESV-mapped signing/encryption keys. Self-hosted PingFederate/PingDirectory gives full key control.",
-      "links": ["https://docs.pingidentity.com/pingoneaic/tenants/esvs-signing-encryption.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/tenants/esvs-signing-encryption.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "bot_detection",
@@ -507,185 +580,218 @@
       "description": "PingOne Protect AI-driven bot detection.",
       "links": [
         "https://docs.pingidentity.com/pingone/threat_protection_using_pingone_protect/p1_protect_introduction.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "brute_force_protection",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/authentication/p1_resolve_lockout.html"]
+      "links": ["https://docs.pingidentity.com/pingone/authentication/p1_resolve_lockout.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "suspicious_ip_throttling",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/settings/p1_rate_limits.html"]
+      "links": ["https://docs.pingidentity.com/pingone/settings/p1_rate_limits.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "breached_password_detection",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/threat_protection_using_pingone_protect/p1_protect_risk_predictors.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "credential_guard",
       "status": "not_supported",
-      "description": "No dedicated dark web monitoring product. Breached password detection via PingOne Protect covers known credential compromise checking."
+      "description": "No dedicated dark web monitoring product. Breached password detection via PingOne Protect covers known credential compromise checking.",
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
       "status": "supported",
       "description": "PingOne Advanced Identity Cloud Proxy Connect provides IP-based access control and HTTP header rules restricting network access per tenant environment.",
-      "links": ["https://docs.pingidentity.com/pingoneaic/tenants/proxy-connect.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/tenants/proxy-connect.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "device_fingerprinting",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/threat_protection_using_pingone_protect/p1_protect_risk_predictors.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "per_org_branding",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_authentication_methods_overview.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "per_org_mfa_policy",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/authentication/p1_mfa_policies.html"]
+      "links": ["https://docs.pingidentity.com/pingone/authentication/p1_mfa_policies.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "hosted_login_page",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_authentication_methods_overview.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "embedded_login",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/sdks/latest/sdks/use-cases/how-to-manage-user-profiles.html"]
+      "links": ["https://docs.pingidentity.com/sdks/latest/sdks/use-cases/how-to-manage-user-profiles.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "white_label",
       "status": "supported",
-      "links": ["https://www.pingidentity.com/en/platform/pingone-advanced-identity-cloud.html"]
+      "links": ["https://www.pingidentity.com/en/platform/pingone-advanced-identity-cloud.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "localization",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_authentication_methods_overview.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "prebuilt_ui_components",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/sdks/latest/sdks/use-cases/how-to-manage-user-profiles.html"]
+      "links": ["https://docs.pingidentity.com/sdks/latest/sdks/use-cases/how-to-manage-user-profiles.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "login_analytics",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/monitoring/p1_dashboards.html"]
+      "links": ["https://docs.pingidentity.com/pingone/monitoring/p1_dashboards.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "sdk_coverage",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/sdks/latest/sdks/use-cases/how-to-manage-user-profiles.html"]
+      "links": ["https://docs.pingidentity.com/sdks/latest/sdks/use-cases/how-to-manage-user-profiles.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "management_api",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/developer_tools/p1_api_reference.html"]
+      "links": ["https://docs.pingidentity.com/pingone/developer_tools/p1_api_reference.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "authentication_api_rate_limits",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/settings/p1_rate_limits.html"]
+      "links": ["https://docs.pingidentity.com/pingone/settings/p1_rate_limits.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "actions_extensibility",
       "status": "supported",
       "description": "DaVinci orchestration flows and scripted hooks.",
-      "links": ["https://docs.pingidentity.com/davinci/connectors/davinci_connections.html"]
+      "links": ["https://docs.pingidentity.com/davinci/connectors/davinci_connections.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "typescript_in_actions",
       "status": "not_supported",
-      "description": "DaVinci Code Snippet and Functions connectors use JavaScript only, not TypeScript."
+      "description": "DaVinci Code Snippet and Functions connectors use JavaScript only, not TypeScript.",
+      "plans": []
     },
     {
       "identifier": "custom_domain",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/settings/p1_rate_limits.html"]
+      "links": ["https://docs.pingidentity.com/pingone/settings/p1_rate_limits.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "deploy_cli",
       "status": "supported",
       "description": "Ping CLI (pingcli) supports platform export with Terraform HCL output for IaC workflows.",
-      "links": ["https://developer.pingidentity.com/pingcli/pingcli_landing_page.html"]
+      "links": ["https://developer.pingidentity.com/pingcli/pingcli_landing_page.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "terraform_provider",
       "status": "supported",
-      "links": ["https://registry.terraform.io/providers/pingidentity/pingone/latest/docs"]
+      "links": ["https://registry.terraform.io/providers/pingidentity/pingone/latest/docs"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "custom_database_connections",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingoneaic/identities/pass-through-authentication.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/identities/pass-through-authentication.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "native_webhooks",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/integrations/p1_webhooks.html"]
+      "links": ["https://docs.pingidentity.com/pingone/integrations/p1_webhooks.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "universal_login_customization",
       "status": "supported",
       "links": [
         "https://docs.pingidentity.com/pingone/strong_authentication_mfa/p1_authentication_methods_overview.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "custom_email_provider",
       "status": "supported",
       "description": "PingOne allows configuration of a custom SMTP server or MS Graph API email provider.",
-      "links": ["https://docs.pingidentity.com/pingone/settings/p1_configure_custom_smtp_server.html"]
+      "links": ["https://docs.pingidentity.com/pingone/settings/p1_configure_custom_smtp_server.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "email_templates",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingoneaic/tenants/email-templates.html"]
+      "links": ["https://docs.pingidentity.com/pingoneaic/tenants/email-templates.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "custom_oidc_claims",
       "status": "supported",
-      "links": ["https://docs.pingidentity.com/pingone/applications/p1_editcustomidtokenmapping.html"]
+      "links": ["https://docs.pingidentity.com/pingone/applications/p1_editcustomidtokenmapping.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "nocode_flow_builder",
       "status": "supported",
       "description": "DaVinci drag-and-drop no-code orchestration.",
-      "links": ["https://docs.pingidentity.com/davinci/connectors/davinci_connections.html"]
+      "links": ["https://docs.pingidentity.com/davinci/connectors/davinci_connections.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "identity_proofing",
       "status": "supported",
       "description": "PingOne Verify with document and biometric verification.",
-      "links": ["https://www.pingidentity.com/en/product/pingone-credentials.html"]
+      "links": ["https://www.pingidentity.com/en/product/pingone-credentials.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "decentralized_identity",
       "status": "supported",
       "description": "PingOne Neo verifiable credentials.",
-      "links": ["https://www.pingidentity.com/en/product/pingone-credentials.html"]
+      "links": ["https://www.pingidentity.com/en/product/pingone-credentials.html"],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "billing_integration",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
@@ -694,7 +800,8 @@
       "links": [
         "https://www.pingidentity.com/en/product/agent-iam-core.html",
         "https://developer.pingidentity.com/identity-for-ai/agents/idai-securing-mcp-servers.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "pq_hybrid_key_exchange",
@@ -703,13 +810,15 @@
       "description": "No public statement found on PQC hybrid TLS key exchange for PingOne/PingFederate endpoints. Ping's 2026 press release on extending 'Runtime Identity' for AI agents across AWS, Google Cloud, and Cloudflare relates to a newer agentic-identity product line, not confirmed evidence of PQC-enabled TLS on core PingOne SSO/authentication endpoints.",
       "links": [
         "https://press.pingidentity.com/2026-06-16-Ping-Identity-Extends-Runtime-Identity-TM-for-AI-Agents-Across-AWS,-Google-Cloud,-and-Cloudflare"
-      ]
+      ],
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of ML-DSA/SLH-DSA support for signing JWTs, SAML assertions, or tokens in PingOne/PingFederate. Ping's public PQC content is limited to threat-education and guidance, not product cryptography changes."
+      "description": "No public evidence found of ML-DSA/SLH-DSA support for signing JWTs, SAML assertions, or tokens in PingOne/PingFederate. Ping's public PQC content is limited to threat-education and guidance, not product cryptography changes.",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
@@ -719,25 +828,29 @@
       "links": [
         "https://www.pingidentity.com/en/resources/blog/post/quantum-threat-us-fed-gov.html",
         "https://www.pingidentity.com/en/resources/blog/post/identity-foundation-secure-quantum-innovation.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "pq_token_encryption",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
+      "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets.",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
+      "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints.",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
+      "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS).",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
@@ -747,22 +860,26 @@
       "links": [
         "https://docs.pingidentity.com/advanced-identity-cloud/am-tokens/macaroons.html",
         "https://docs.pingidentity.com/pingam/7.5/oauth2-oidc/macaroons.html"
-      ]
+      ],
+      "plans": ["Trial", "PingOne", "Enterprise"]
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -770,266 +887,310 @@
       {
         "identifier": "implicit_grant",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/pingone/applications/p1_grant_types.html"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_grant_types.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "authorization_code_grant",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/pingone/applications/p1_grant_types.html"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_grant_types.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "client_credentials_grant",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/pingone/applications/p1_grant_types.html"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_grant_types.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "password_grant",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/pingone/applications/p1_grant_types.html"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_grant_types.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "refresh_token_grant",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/pingone/applications/p1_refresh_tokens.html"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_refresh_tokens.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_oauth_grant_type_param.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_oauth_grant_type_param.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_oauth_grant_type_param.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_oauth_grant_type_param.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_oauth_grant_type_param.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "pkce_extension",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_authorization_endpoint.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "par_extension",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_pushed_authoriz_request_endpoint.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "rar_extension",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/administrators_reference_guide/pf_oauth_rich_authorization_requests.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "jar_extension",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_authorization_endpoint.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "authorization_endpoint",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_authorization_endpoint.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "token_endpoint",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_token_endpoint.html"]
+        "links": ["https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_token_endpoint.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "userinfo_endpoint",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_user_auth_endpoint.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "token_revocation_endpoint",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_token_revoc_endpoint.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "token_introspection_endpoint",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_introspec_endpoint.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "device_authorization_endpoint",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_device_auth_endpoint.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/12.3/developers_reference_guide/pf_openid_provider_config_endpoint.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/12.3/developers_reference_guide/pf_oauth_authorization_server_metadata_endpoint.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "none_prompt",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_authorization_endpoint.html#openid-connect-parameters"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "login_prompt",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_authorization_endpoint.html#openid-connect-parameters"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "consent_prompt",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_authorization_endpoint.html#openid-connect-parameters"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "select_account_prompt",
         "status": "not_supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_authorization_endpoint.html#openid-connect-parameters"
-        ]
+        ],
+        "plans": []
       },
       {
         "identifier": "create_prompt",
         "status": "not_supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_authorization_endpoint.html#openid-connect-parameters"
-        ]
+        ],
+        "plans": []
       },
       {
         "identifier": "none_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_token_endpoint_authentication_methods.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_token_endpoint.html"]
+        "links": ["https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_token_endpoint.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "rp_initiated_logout",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_openid_connect_rp_logout_endpoint.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "dynamic_client_registration",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_dynamic_registra_endpoint.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "dynamic_client_registration_management",
         "status": "supported",
         "links": [
           "https://docs.pingidentity.com/pingfederate/13.0/developers_reference_guide/pf_dynamic_registra_endpoint.html"
-        ]
+        ],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "refresh_token_rotation",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/pingone/applications/p1_refresh_token_rotation.html"]
+        "links": ["https://docs.pingidentity.com/pingone/applications/p1_refresh_token_rotation.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "dpop",
-        "status": "supported"
+        "status": "supported",
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
         "status": "supported",
-        "links": ["https://www.pingidentity.com/en/resources/blog/post/ping-achieves-fapi2-certification.html"]
+        "links": ["https://www.pingidentity.com/en/resources/blog/post/ping-achieves-fapi2-certification.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "fapi_2_0_security_profile",
         "status": "supported",
-        "links": ["https://www.pingidentity.com/en/resources/blog/post/ping-achieves-fapi2-certification.html"]
+        "links": ["https://www.pingidentity.com/en/resources/blog/post/ping-achieves-fapi2-certification.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "unknown"
+        "status": "unknown",
+        "plans": []
       },
       {
         "identifier": "jarm",
         "status": "supported",
-        "links": ["https://docs.pingidentity.com/pingfederate/latest/release_notes/pf_release_notes_121.html"]
+        "links": ["https://docs.pingidentity.com/pingfederate/latest/release_notes/pf_release_notes_121.html"],
+        "plans": ["Trial", "PingOne", "Enterprise"]
       }
     ]
   }

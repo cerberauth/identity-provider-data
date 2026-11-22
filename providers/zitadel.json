@@ -64,26 +64,45 @@
     "currency": "USD",
     "plans": [
       {
+        "name": "Open Source",
+        "price": "Free (self-hosted, AGPL-3.0)",
+        "amount": 0,
+        "deployment": "self_hosted"
+      },
+      {
         "name": "Free",
-        "price": "US$0/month (100 DAU, cloud)",
-        "amount": 0
+        "price": "US$0/month (100 daily active users, cloud)",
+        "amount": 0,
+        "deployment": "saas",
+        "usage": {
+          "metric": "dau",
+          "included": 100,
+          "max": 100
+        }
       },
       {
         "name": "Pro",
-        "price": "US$100/month (25,000 DAU, cloud)",
+        "price": "US$100/month (25,000 daily active users, cloud, custom domain); overage rates not published",
         "amount": 100,
-        "period": "month"
+        "period": "month",
+        "deployment": "saas",
+        "usage": {
+          "metric": "dau",
+          "included": 25000
+        }
       },
       {
         "name": "Enterprise",
-        "price": "Custom (cloud or self-hosted)"
+        "price": "Custom (cloud, unlimited DAU, 99.99% uptime, TAM)",
+        "deployment": "saas"
       },
       {
-        "name": "Open Source",
-        "price": "Free (self-hosted)",
-        "amount": 0
+        "name": "Enterprise Self-Hosted",
+        "price": "Custom (commercial license, own infrastructure)",
+        "deployment": "self_hosted"
       }
-    ]
+    ],
+    "pricingLastVerified": "2026-11-21"
   },
   "hosting": {
     "regions": ["EU", "US", "CH", "AU"],
@@ -142,651 +161,765 @@
     {
       "identifier": "username_and_password_authentication",
       "status": "supported",
-      "links": ["https://zitadel.com/docs/guides/manage/console/users"]
+      "links": ["https://zitadel.com/docs/guides/manage/console/users"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "social_sign_in_authentication",
       "status": "supported",
       "description": "Built-in templates for Google, GitHub, GitLab, Apple, Entra ID, Okta, and any generic OIDC or SAML 2.0 identity provider.",
-      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/introduction"]
+      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/introduction"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "passkey_authentication",
       "status": "supported",
       "description": "FIDO2/WebAuthn passkeys as a first-factor passwordless method. Supports platform authenticators (Face ID, Touch ID, Windows Hello) and roaming security keys.",
-      "links": ["https://zitadel.com/docs/concepts/features/passkeys"]
+      "links": ["https://zitadel.com/docs/concepts/features/passkeys"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "email_passwordless_authentication",
       "status": "supported",
       "description": "One-time passcode sent to email for passwordless login.",
-      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"]
+      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "phone_passwordless_authentication",
       "status": "supported",
       "description": "SMS OTP for passwordless phone-based authentication.",
-      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"]
+      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "magic_link_authentication",
       "status": "partial",
       "description": "Email OTP can be used as a one-time login link. No dedicated magic-link authenticator out of the box.",
-      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"]
+      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "anonymous_authentication",
       "status": "not_supported",
-      "description": "Zitadel requires authenticated user identity. Anonymous or guest sessions are not a built-in feature."
+      "description": "Zitadel requires authenticated user identity. Anonymous or guest sessions are not a built-in feature.",
+      "plans": []
     },
     {
       "identifier": "totp_mfa",
       "status": "supported",
       "description": "Time-based OTP via any TOTP-compatible authenticator app (Google Authenticator, Authy, etc.).",
-      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"]
+      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "hotp_mfa",
       "status": "not_supported",
-      "description": "Only TOTP (time-based) is supported. HOTP (counter-based OTP) is not available."
+      "description": "Only TOTP (time-based) is supported. HOTP (counter-based OTP) is not available.",
+      "plans": []
     },
     {
       "identifier": "u2f_mfa",
       "status": "supported",
       "description": "FIDO2/WebAuthn security keys (YubiKey, etc.) as a second factor.",
-      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"]
+      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "webauthn_mfa",
       "status": "supported",
       "description": "WebAuthn as second factor, supporting both platform authenticators and roaming security keys.",
-      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"]
+      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "email_code_mfa",
       "status": "supported",
       "description": "One-time code sent via email as a second factor.",
-      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"]
+      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "phone_code_mfa",
       "status": "supported",
       "description": "SMS OTP as a second factor.",
-      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"]
+      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "recovery_code_mfa",
       "status": "supported",
       "description": "Single-use recovery codes generated at MFA enrollment for account recovery.",
-      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"]
+      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/mfa"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "push_notification_mfa",
       "status": "not_supported",
-      "description": "No built-in push notification MFA. Not available as a native feature."
+      "description": "No built-in push notification MFA. Not available as a native feature.",
+      "plans": []
     },
     {
       "identifier": "adaptive_mfa",
       "status": "partial",
       "description": "Login Policies allow enforcing MFA at the instance or per-organization level. No risk-based or fully adaptive MFA engine built in.",
-      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"]
+      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "cisco_duo_mfa",
       "status": "not_supported",
-      "description": "No native Cisco Duo integration."
+      "description": "No native Cisco Duo integration.",
+      "plans": []
     },
     {
       "identifier": "step_up_authentication",
       "status": "supported",
       "description": "Step-up authentication via ACR values and Login Policies that enforce re-authentication or additional factors for sensitive operations.",
-      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"]
+      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "oidc_protocol",
       "status": "supported",
-      "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints"]
+      "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "saml2_protocol",
       "status": "supported",
       "description": "SAML 2.0 Identity Provider support for enterprise SSO.",
-      "links": ["https://zitadel.com/docs/guides/integrate/login/saml"]
+      "links": ["https://zitadel.com/docs/guides/integrate/login/saml"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "ws_federation_protocol",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "machine_to_machine",
       "status": "supported",
       "description": "Service users with OAuth 2.0 client credentials grant for M2M and backend-to-backend authentication.",
-      "links": ["https://zitadel.com/docs/guides/integrate/service-accounts/authenticate-service-accounts"]
+      "links": ["https://zitadel.com/docs/guides/integrate/service-accounts/authenticate-service-accounts"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "oidc_federation",
       "status": "supported",
       "description": "Generic OIDC identity provider template for federating with any OpenID Connect provider. Pre-built templates for Google, GitHub, GitLab, Apple, Entra ID, Okta.",
-      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/introduction"]
+      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/introduction"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "saml_federation",
       "status": "supported",
       "description": "SAML 2.0 identity provider federation for enterprise SSO. Pre-built templates for Entra ID and Okta SAML.",
-      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/introduction"]
+      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/introduction"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "active_directory_ldap",
       "status": "supported",
       "description": "LDAP identity provider for federating with Active Directory and LDAP-compatible directories.",
-      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/introduction"]
+      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/introduction"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "azure_ad_integration",
       "status": "supported",
       "description": "Built-in Entra ID (Azure AD) identity provider templates for both OIDC and SAML 2.0 federation.",
-      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/azure-ad-oidc"]
+      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/azure-ad-oidc"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "bulk_user_import",
       "status": "supported",
       "description": "Bulk import via the admin import API endpoint supporting multiple users, organizations, and associated data simultaneously.",
-      "links": ["https://zitadel.com/docs/guides/migrate/users"]
+      "links": ["https://zitadel.com/docs/guides/migrate/users"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "password_hash_import",
       "status": "supported",
       "description": "Import users with existing password hashes. Supported formats: bcrypt, argon2, PBKDF2, and MD5 via legacy verifiers. Hashes are transparently re-hashed on first login.",
-      "links": ["https://zitadel.com/docs/guides/migrate/users"]
+      "links": ["https://zitadel.com/docs/guides/migrate/users"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "bulk_user_export",
       "status": "supported",
       "description": "Export users via the management API.",
-      "links": ["https://zitadel.com/docs/apis/resources/mgmt"]
+      "links": ["https://zitadel.com/docs/apis/resources/mgmt"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "bulk_user_update_delete",
       "status": "supported",
       "description": "Bulk user update and delete operations via the management and admin APIs.",
-      "links": ["https://zitadel.com/docs/apis/resources/mgmt"]
+      "links": ["https://zitadel.com/docs/apis/resources/mgmt"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "upsert_on_import",
       "status": "supported",
       "description": "ImportHumanUser endpoint supports creating or updating existing users during import.",
-      "links": ["https://zitadel.com/docs/guides/migrate/users"]
+      "links": ["https://zitadel.com/docs/guides/migrate/users"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "legacy_username_import",
       "status": "partial",
-      "description": "Username constraints depend on instance configuration. No built-in universal legacy username normalization for special characters."
+      "description": "Username constraints depend on instance configuration. No built-in universal legacy username normalization for special characters.",
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "mfa_enrollment_import",
       "status": "partial",
       "description": "OTP (TOTP) secrets can be imported alongside user accounts during migration. Passkey migration is not supported via direct import.",
-      "links": ["https://zitadel.com/docs/guides/migrate/users"]
+      "links": ["https://zitadel.com/docs/guides/migrate/users"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "inbound_scim_provisioning",
       "status": "supported",
       "description": "SCIM 2.0 server for inbound user provisioning. Enables automated user creation, updates, deactivation, and deprovisioning from external IdPs (e.g., Okta). Currently in preview.",
       "links": ["https://zitadel.com/docs/guides/manage/user/scim2"],
-      "betaStatus": "preview"
+      "betaStatus": "preview",
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "outbound_scim_provisioning",
       "status": "not_supported",
-      "description": "Outbound SCIM provisioning (acting as a SCIM client) is on the roadmap but not yet released."
+      "description": "Outbound SCIM provisioning (acting as a SCIM client) is on the roadmap but not yet released.",
+      "plans": []
     },
     {
       "identifier": "scim_groups",
       "status": "partial",
       "description": "SCIM 2.0 implementation is primarily user-focused. Group synchronization support is limited in the current preview.",
       "links": ["https://zitadel.com/docs/guides/manage/user/scim2"],
-      "betaStatus": "preview"
+      "betaStatus": "preview",
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "jit_provisioning",
       "status": "supported",
       "description": "Users are automatically created on first login via a federated identity provider without pre-provisioning.",
-      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/introduction"]
+      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/introduction"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "lazy_migration",
       "status": "partial",
       "description": "Lazy migration from a legacy user store can be implemented via Zitadel Actions (JavaScript hooks). No built-in lazy migration UI or credential proxy feature.",
-      "links": ["https://zitadel.com/docs/concepts/features/actions"]
+      "links": ["https://zitadel.com/docs/concepts/features/actions"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "self_service_profile_management",
       "status": "supported",
       "description": "Built-in self-service account management for end users including profile, MFA device enrollment, and passkey management.",
-      "links": ["https://zitadel.com/docs/guides/manage/console/overview"]
+      "links": ["https://zitadel.com/docs/guides/manage/console/overview"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "account_linking",
       "status": "supported",
       "description": "Link external identity providers (social, enterprise, LDAP) to an existing Zitadel user account.",
-      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/introduction"]
+      "links": ["https://zitadel.com/docs/guides/integrate/identity-providers/introduction"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "user_blocking",
       "status": "supported",
       "description": "User accounts can be deactivated via the management API or admin console, preventing authentication.",
-      "links": ["https://zitadel.com/docs/guides/manage/console/users"]
+      "links": ["https://zitadel.com/docs/guides/manage/console/users"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "user_metadata",
       "status": "supported",
       "description": "Custom key-value metadata can be stored on user accounts via the management API.",
-      "links": ["https://zitadel.com/docs/apis/resources/mgmt"]
+      "links": ["https://zitadel.com/docs/apis/resources/mgmt"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "app_metadata",
       "status": "supported",
       "description": "Custom metadata can be stored at the project and application level.",
-      "links": ["https://zitadel.com/docs/apis/resources/mgmt"]
+      "links": ["https://zitadel.com/docs/apis/resources/mgmt"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "metadata_size_limits",
       "status": "partial",
-      "description": "Metadata key and value size limits exist but are not prominently documented for all tiers."
+      "description": "Metadata key and value size limits exist but are not prominently documented for all tiers.",
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "user_search",
       "status": "supported",
       "description": "Search and filter users by profile attributes via the management API and admin console.",
-      "links": ["https://zitadel.com/docs/apis/resources/mgmt"]
+      "links": ["https://zitadel.com/docs/apis/resources/mgmt"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "rbac",
       "status": "supported",
       "description": "Role-based access control via project roles assigned to users and organizations. Roles are surfaced in tokens as claims.",
-      "links": ["https://zitadel.com/docs/guides/manage/console/projects"]
+      "links": ["https://zitadel.com/docs/guides/manage/console/projects"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "organizations_multitenancy",
       "status": "supported",
       "description": "First-class multi-tenancy via Organizations. Each org can have isolated users, identity providers, branding, and login policies. Supports B2B SaaS with self-service enterprise federation.",
-      "links": ["https://zitadel.com/docs/concepts/structure/organizations"]
+      "links": ["https://zitadel.com/docs/concepts/structure/organizations"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "password_strength_policy",
       "status": "supported",
       "description": "Configurable password complexity policies (minimum length, character requirements) at instance and organization level.",
-      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"]
+      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "username_restrictions",
       "status": "supported",
       "description": "Username format and character restrictions configurable via login policies.",
-      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"]
+      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "progressive_profiling",
       "status": "not_supported",
-      "description": "No built-in progressive profiling flow. Custom Actions can trigger additional data collection during login, but there is no native visual form builder."
+      "description": "No built-in progressive profiling flow. Custom Actions can trigger additional data collection during login, but there is no native visual form builder.",
+      "plans": []
     },
     {
       "identifier": "abac",
       "status": "partial",
       "description": "Attribute-based access control can be built using user metadata and custom claims injected via Actions, but there is no native ABAC policy engine.",
-      "links": ["https://zitadel.com/docs/concepts/features/actions"]
+      "links": ["https://zitadel.com/docs/concepts/features/actions"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "fine_grained_authorization",
       "status": "not_supported",
-      "description": "No built-in ReBAC or fine-grained authorization engine (e.g., Google Zanzibar-style). Authorization is scope and role-based."
+      "description": "No built-in ReBAC or fine-grained authorization engine (e.g., Google Zanzibar-style). Authorization is scope and role-based.",
+      "plans": []
     },
     {
       "identifier": "api_authorization",
       "status": "supported",
       "description": "OAuth 2.0 scopes and project roles for API authorization. Supports token introspection for API resource servers.",
-      "links": ["https://zitadel.com/docs/guides/integrate/token-introspection/"]
+      "links": ["https://zitadel.com/docs/guides/integrate/token-introspection/"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "soc2_type2",
       "status": "supported",
-      "links": ["https://trust.zitadel.com/"]
+      "links": ["https://trust.zitadel.com/"],
+      "plans": ["Enterprise"]
     },
     {
       "identifier": "iso_27001",
       "status": "supported",
-      "links": ["https://zitadel.com/blog/zitadel-iso-27001-certified"]
+      "links": ["https://zitadel.com/blog/zitadel-iso-27001-certified"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "hipaa_baa",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "pci_dss",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "csa_star",
-      "status": "unknown"
+      "status": "unknown",
+      "plans": []
     },
     {
       "identifier": "fedramp",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "gdpr_data_export",
       "status": "supported",
       "description": "User data exportable via management API. Immutable event store enables full audit history export.",
-      "links": ["https://zitadel.com/docs/apis/resources/mgmt"]
+      "links": ["https://zitadel.com/docs/apis/resources/mgmt"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "gdpr_right_to_erasure",
       "status": "supported",
       "description": "Users can be fully deleted via the management API to satisfy GDPR right to erasure.",
-      "links": ["https://zitadel.com/docs/apis/resources/mgmt"]
+      "links": ["https://zitadel.com/docs/apis/resources/mgmt"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "consent_management",
       "status": "supported",
       "description": "OAuth 2.0 consent screen presented to users during authorization. Consent can be configured per project.",
-      "links": ["https://zitadel.com/docs/guides/manage/console/projects"]
+      "links": ["https://zitadel.com/docs/guides/manage/console/projects"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "region_deployment",
       "status": "supported",
       "description": "Zitadel Cloud available in EU, US, Switzerland, and Australia regions for data residency requirements.",
       "links": ["https://zitadel.com/pricing"],
-      "values": ["EU", "US", "Switzerland", "Australia"]
+      "values": ["EU", "US", "Switzerland", "Australia"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "private_cloud_deployment",
       "status": "supported",
       "description": "Self-hosted deployment on any cloud provider (AWS, GCP, Azure) or on-premises via Docker or Kubernetes (Helm chart). Full data sovereignty.",
       "links": ["https://zitadel.com/docs/self-hosting/deploy/overview"],
-      "values": ["AWS", "GCP", "Azure", "On-premises"]
+      "values": ["AWS", "GCP", "Azure", "On-premises"],
+      "plans": ["Open Source", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "audit_log_retention",
       "status": "supported",
       "description": "Immutable append-only event store retains all changes and authentication events for an unlimited period.",
-      "links": ["https://zitadel.com/features"]
+      "links": ["https://zitadel.com/features"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "audit_log_streaming",
       "status": "supported",
       "description": "Event streaming via webhooks and the event API. Supports integration with external SIEM and observability platforms.",
-      "links": ["https://zitadel.com/docs/concepts/features/actions"]
+      "links": ["https://zitadel.com/docs/concepts/features/actions"],
+      "plans": ["Open Source", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "security_center",
       "status": "not_supported",
-      "description": "No dedicated security center or threat monitoring dashboard. Authentication events are accessible via the event store and admin console."
+      "description": "No dedicated security center or threat monitoring dashboard. Authentication events are accessible via the event store and admin console.",
+      "plans": []
     },
     {
       "identifier": "encryption_at_rest",
       "status": "supported",
       "description": "Data encrypted at rest. Keys managed by the cloud provider for Zitadel Cloud; fully operator-controlled for self-hosted.",
-      "links": ["https://trust.zitadel.com/"]
+      "links": ["https://trust.zitadel.com/"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "encryption_in_transit",
       "status": "supported",
       "description": "All endpoints enforced over TLS 1.2+.",
-      "links": ["https://trust.zitadel.com/"]
+      "links": ["https://trust.zitadel.com/"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "customer_managed_keys",
       "status": "partial",
-      "description": "Full customer-managed key control available in self-hosted deployments. Zitadel Cloud does not offer BYOK/customer-managed keys."
+      "description": "Full customer-managed key control available in self-hosted deployments. Zitadel Cloud does not offer BYOK/customer-managed keys.",
+      "plans": ["Open Source", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "bot_detection",
       "status": "not_supported",
-      "description": "No built-in CAPTCHA or ML-based bot detection. DDoS mitigation is provided at the infrastructure level for Zitadel Cloud."
+      "description": "No built-in CAPTCHA or ML-based bot detection. DDoS mitigation is provided at the infrastructure level for Zitadel Cloud.",
+      "plans": []
     },
     {
       "identifier": "brute_force_protection",
       "status": "supported",
       "description": "Configurable lockout policy: lock user accounts after a defined number of failed login attempts.",
-      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"]
+      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "suspicious_ip_throttling",
       "status": "partial",
-      "description": "Rate limiting at infrastructure level for Zitadel Cloud. No per-IP suspicious activity detection built into the application layer."
+      "description": "Rate limiting at infrastructure level for Zitadel Cloud. No per-IP suspicious activity detection built into the application layer.",
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "breached_password_detection",
       "status": "not_supported",
-      "description": "No built-in integration with breach databases (e.g., Have I Been Pwned)."
+      "description": "No built-in integration with breach databases (e.g., Have I Been Pwned).",
+      "plans": []
     },
     {
       "identifier": "credential_guard",
-      "status": "not_supported"
+      "status": "not_supported",
+      "plans": []
     },
     {
       "identifier": "tenant_acl",
       "status": "partial",
       "description": "Allowed origins and CORS configuration available at instance level. No IP-based access control lists built into the application layer.",
-      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"]
+      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "device_fingerprinting",
       "status": "not_supported",
-      "description": "No built-in device fingerprinting or device tracking feature."
+      "description": "No built-in device fingerprinting or device tracking feature.",
+      "plans": []
     },
     {
       "identifier": "per_org_branding",
       "status": "supported",
       "description": "Full branding customization (logo, colors, fonts) independently configured per organization via the admin console.",
-      "links": ["https://zitadel.com/docs/guides/manage/customize/branding"]
+      "links": ["https://zitadel.com/docs/guides/manage/customize/branding"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "per_org_mfa_policy",
       "status": "supported",
       "description": "Login Policies configurable per organization, allowing different MFA requirements per tenant.",
-      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"]
+      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "hosted_login_page",
       "status": "supported",
       "description": "Centrally hosted login UI managed by Zitadel, fully customizable with branding settings.",
-      "links": ["https://zitadel.com/docs/guides/integrate/login/hosted-login"]
+      "links": ["https://zitadel.com/docs/guides/integrate/login/hosted-login"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "embedded_login",
       "status": "not_supported",
       "description": "No pre-built embedded login component library. Developers can build custom login UI using the Zitadel Session API.",
-      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/"]
+      "links": ["https://zitadel.com/docs/guides/integrate/login-ui/"],
+      "plans": []
     },
     {
       "identifier": "white_label",
       "status": "supported",
       "description": "Full white-labeling: custom logos, colors, fonts, and domain. Zitadel watermark can be hidden.",
-      "links": ["https://zitadel.com/docs/guides/manage/customize/branding"]
+      "links": ["https://zitadel.com/docs/guides/manage/customize/branding"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "localization",
       "status": "supported",
       "description": "Multi-language support for the hosted login UI and email communications.",
-      "links": ["https://zitadel.com/docs/guides/manage/customize/texts"]
+      "links": ["https://zitadel.com/docs/guides/manage/customize/texts"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "prebuilt_ui_components",
       "status": "partial",
       "description": "SDK quickstarts available for multiple frameworks. No comprehensive pre-built UI component library; custom login UI built using the Session and OIDC APIs.",
-      "links": ["https://zitadel.com/docs/sdk-examples/introduction"]
+      "links": ["https://zitadel.com/docs/sdk-examples/introduction"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "login_analytics",
       "status": "partial",
       "description": "Admin console shows basic authentication event data. No dedicated analytics dashboard; full event history accessible via the event store API.",
-      "links": ["https://zitadel.com/docs/guides/manage/console/overview"]
+      "links": ["https://zitadel.com/docs/guides/manage/console/overview"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "sdk_coverage",
       "status": "supported",
       "description": "Official SDKs and quickstarts for Go, TypeScript/Node.js, Python, Java, .NET, Angular, React, and more.",
-      "links": ["https://zitadel.com/docs/sdk-examples/introduction"]
+      "links": ["https://zitadel.com/docs/sdk-examples/introduction"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "management_api",
       "status": "supported",
       "description": "Full gRPC and REST management APIs for users, organizations, projects, and IAM configuration.",
-      "links": ["https://zitadel.com/docs/apis/resources/mgmt"]
+      "links": ["https://zitadel.com/docs/apis/resources/mgmt"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "authentication_api_rate_limits",
       "status": "supported",
       "description": "Rate limits enforced on authentication endpoints. Configurable per instance.",
-      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"]
+      "links": ["https://zitadel.com/docs/guides/manage/console/default-settings"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "actions_extensibility",
       "status": "supported",
       "description": "Actions: JavaScript code snippets that execute at defined hook points in authentication flows (pre/post authentication, pre token creation, custom claims, etc.).",
-      "links": ["https://zitadel.com/docs/concepts/features/actions"]
+      "links": ["https://zitadel.com/docs/concepts/features/actions"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "typescript_in_actions",
       "status": "not_supported",
       "description": "Actions use JavaScript only. TypeScript is not supported in the runtime.",
-      "links": ["https://zitadel.com/docs/concepts/features/actions"]
+      "links": ["https://zitadel.com/docs/concepts/features/actions"],
+      "plans": []
     },
     {
       "identifier": "custom_domain",
       "status": "supported",
       "description": "Custom domain supported on Pro and Enterprise plans for Zitadel Cloud; fully supported in self-hosted.",
-      "links": ["https://zitadel.com/docs/concepts/structure/instance"]
+      "links": ["https://zitadel.com/docs/concepts/structure/instance"],
+      "plans": ["Open Source", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "deploy_cli",
       "status": "supported",
       "description": "ZITADEL CLI for managing instances and configuration. Supports GitOps workflows alongside the Terraform provider.",
-      "links": ["https://zitadel.com/docs/apis/resources/mgmt"]
+      "links": ["https://zitadel.com/docs/apis/resources/mgmt"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "terraform_provider",
       "status": "supported",
       "description": "Official Terraform provider (registry.terraform.io/providers/zitadel/zitadel) for managing all Zitadel resources as code.",
-      "links": ["https://registry.terraform.io/providers/zitadel/zitadel/latest/docs"]
+      "links": ["https://registry.terraform.io/providers/zitadel/zitadel/latest/docs"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "custom_database_connections",
       "status": "not_supported",
-      "description": "Zitadel uses its own internal user store. Custom or legacy database connections for credential validation are not supported natively."
+      "description": "Zitadel uses its own internal user store. Custom or legacy database connections for credential validation are not supported natively.",
+      "plans": []
     },
     {
       "identifier": "native_webhooks",
       "status": "supported",
       "description": "Native webhook support via event-based Actions that can push data to external HTTP endpoints on authentication events.",
-      "links": ["https://zitadel.com/docs/concepts/features/actions"]
+      "links": ["https://zitadel.com/docs/concepts/features/actions"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "universal_login_customization",
       "status": "supported",
       "description": "Hosted login page fully customizable with logos, color themes, fonts, and custom text via the branding settings.",
-      "links": ["https://zitadel.com/docs/guides/manage/customize/branding"]
+      "links": ["https://zitadel.com/docs/guides/manage/customize/branding"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "custom_email_provider",
       "status": "supported",
-      "description": "Custom SMTP server configuration for sending transactional emails from your own domain."
+      "description": "Custom SMTP server configuration for sending transactional emails from your own domain.",
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "email_templates",
       "status": "supported",
       "description": "Fully customizable email templates for OTP, invitation, and notification flows.",
-      "links": ["https://zitadel.com/docs/guides/manage/customize/texts"]
+      "links": ["https://zitadel.com/docs/guides/manage/customize/texts"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "custom_oidc_claims",
       "status": "supported",
       "description": "Custom claims added to access tokens and ID tokens via Actions pre-token-creation hooks.",
-      "links": ["https://zitadel.com/docs/concepts/features/actions"]
+      "links": ["https://zitadel.com/docs/concepts/features/actions"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "nocode_flow_builder",
       "status": "not_supported",
-      "description": "No visual drag-and-drop flow builder. Authentication flow customization requires JavaScript Actions code."
+      "description": "No visual drag-and-drop flow builder. Authentication flow customization requires JavaScript Actions code.",
+      "plans": []
     },
     {
       "identifier": "identity_proofing",
       "status": "not_supported",
-      "description": "No built-in identity verification or document proofing. Can be integrated via custom Actions calling external verification services."
+      "description": "No built-in identity verification or document proofing. Can be integrated via custom Actions calling external verification services.",
+      "plans": []
     },
     {
       "identifier": "decentralized_identity",
       "status": "not_supported",
-      "description": "No built-in support for W3C Verifiable Credentials or decentralized identity (DID) standards."
+      "description": "No built-in support for W3C Verifiable Credentials or decentralized identity (DID) standards.",
+      "plans": []
     },
     {
       "identifier": "billing_integration",
       "status": "not_supported",
-      "description": "No built-in billing or subscription management integration."
+      "description": "No built-in billing or subscription management integration.",
+      "plans": []
     },
     {
       "identifier": "agentic_identity",
       "status": "partial",
       "description": "Service users with OAuth 2.0 client credentials grant and JWT profile support machine and AI agent authentication. No dedicated MCP server auth or agentic identity features.",
-      "links": ["https://zitadel.com/docs/guides/integrate/service-accounts/authenticate-service-accounts"]
+      "links": ["https://zitadel.com/docs/guides/integrate/service-accounts/authenticate-service-accounts"],
+      "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
     },
     {
       "identifier": "pq_hybrid_key_exchange",
       "status": "unknown",
       "category": "post_quantum_cryptography",
       "description": "Zitadel is written in Go and supports a native 'TLS enabled' mode where its Go HTTP/2 server serves HTTPS directly. While Go 1.24 (Feb 2025) enables X25519MLKEM768 hybrid key exchange by default in crypto/tls, no Zitadel-specific statement or documentation confirms PQC TLS support, and most self-hosted deployments use an external reverse proxy. Without vendor evidence, status is unknown.",
-      "links": ["https://github.com/golang/go/issues/69985", "https://zitadel.com/docs/self-hosting/manage/tls_modes"]
+      "links": ["https://github.com/golang/go/issues/69985", "https://zitadel.com/docs/self-hosting/manage/tls_modes"],
+      "plans": []
     },
     {
       "identifier": "pq_signature_algorithms",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of ML-DSA/SLH-DSA/Falcon support for OIDC ID token or JWT signing in Zitadel. No GitHub issues or discussions proposing PQC signature algorithms were found in the zitadel/zitadel repository."
+      "description": "No public evidence found of ML-DSA/SLH-DSA/Falcon support for OIDC ID token or JWT signing in Zitadel. No GitHub issues or discussions proposing PQC signature algorithms were found in the zitadel/zitadel repository.",
+      "plans": []
     },
     {
       "identifier": "pq_migration_roadmap",
       "status": "unknown",
       "category": "post_quantum_cryptography",
       "description": "No public roadmap, blog post, or GitHub discussion found describing PQC migration plans for Zitadel. Zitadel's Trust Center does not surface any mention of post-quantum or quantum-safe cryptography in accessible content.",
-      "links": ["https://trust.zitadel.com/"]
+      "links": ["https://trust.zitadel.com/"],
+      "plans": []
     },
     {
       "identifier": "pq_token_encryption",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets."
+      "description": "No public evidence found that the provider supports ML-KEM or HPKE (RFC 9180) for encrypting JWE tokens, SAML assertions, or user secrets.",
+      "plans": []
     },
     {
       "identifier": "pq_mtls_certificates",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints."
+      "description": "No public evidence found of post-quantum or hybrid X.509 digital certificate support for mTLS client authentication or federation endpoints.",
+      "plans": []
     },
     {
       "identifier": "pq_stateful_hash_signatures",
       "status": "not_supported",
       "category": "post_quantum_cryptography",
-      "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS)."
+      "description": "No public evidence found of NIST SP 800-208 stateful hash-based signature scheme support (LMS/HSS, XMSS).",
+      "plans": []
     },
     {
       "identifier": "macaroon_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "paseto_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "cwt_cose_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     },
     {
       "identifier": "biscuit_tokens",
       "status": "not_supported",
-      "category": "token_formats"
+      "category": "token_formats",
+      "plans": []
     }
   ],
   "oidc": {
@@ -794,207 +927,251 @@
       {
         "identifier": "implicit_grant",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#implicit"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#implicit"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "authorization_code_grant",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#authorization-code"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#authorization-code"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "pkce_extension",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#authorization-code-with-pkce"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#authorization-code-with-pkce"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "par_extension",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#pushed-authorization-request-endpoint"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#pushed-authorization-request-endpoint"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "rar_extension",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "jar_extension",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "client_credentials_grant",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#client-credentials"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#client-credentials"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "password_grant",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#password"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#password"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "refresh_token_grant",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#refresh-token"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#refresh-token"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#token-exchange"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#token-exchange"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:device_code",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#device-authorization"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#device-authorization"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "urn:openid:params:grant-type:ciba",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#jwt-profile"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#jwt-profile"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "authorization_endpoint",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#authorization_endpoint"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#authorization_endpoint"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "token_endpoint",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#token_endpoint"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#token_endpoint"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "userinfo_endpoint",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#userinfo_endpoint"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#userinfo_endpoint"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "token_revocation_endpoint",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#revocation_endpoint"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#revocation_endpoint"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "token_introspection_endpoint",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#introspection_endpoint"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#introspection_endpoint"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "device_authorization_endpoint",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#device_authorization_endpoint"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#device_authorization_endpoint"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "openid_connect_discovery_endpoint",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#discovery_endpoint"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#discovery_endpoint"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "oauth_authorization_server_metadata_endpoint",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#discovery_endpoint"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#discovery_endpoint"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "none_prompt",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/authrequest"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/authrequest"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "login_prompt",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/authrequest"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/authrequest"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "consent_prompt",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/authrequest"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/authrequest"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "select_account_prompt",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/authrequest"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/authrequest"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "create_prompt",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/authrequest"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/authrequest"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "none_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/authn-methods"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/authn-methods"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "client_secret_basic_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/authn-methods"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/authn-methods"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "client_secret_post_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/authn-methods"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/authn-methods"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "client_secret_jwt_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "private_key_jwt_token_endpoint_auth",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/authn-methods#private-key-jwt"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/authn-methods#private-key-jwt"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "tls_client_auth_token_endpoint_auth",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "dynamic_client_registration_management",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "refresh_token_rotation",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#refresh-token"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/grant-types#refresh-token"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "refresh_token_rotation_grace_period",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "rp_initiated_logout",
         "status": "supported",
-        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#end_session_endpoint"]
+        "links": ["https://zitadel.com/docs/apis/openidoauth/endpoints#end_session_endpoint"],
+        "plans": ["Open Source", "Free", "Pro", "Enterprise", "Enterprise Self-Hosted"]
       },
       {
         "identifier": "dpop",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_baseline",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_1_0_advanced",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_security_profile",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "fapi_2_0_message_signing",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       },
       {
         "identifier": "jarm",
-        "status": "not_supported"
+        "status": "not_supported",
+        "plans": []
       }
     ],
     "certified": {
