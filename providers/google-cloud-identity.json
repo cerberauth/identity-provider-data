@@ -1,0 +1,1262 @@
+{
+  "$schema": "https://schemas.cerberauth.com/identity-provider/draft/2024-09/provider.schema.json",
+  "name": "Google Cloud Identity",
+  "abstract": "Google's Identity-as-a-Service (IDaaS) and enterprise mobility management (EMM) solution that powers Google Workspace and Google Cloud. Provides centralized directory services, single sign-on (SSO) via SAML 2.0 and OIDC, multi-factor authentication with passkeys and FIDO security keys, automated user provisioning (SCIM), and Context-Aware Access.",
+  "identifier": "google-cloud-identity",
+  "aliases": ["Cloud Identity", "Google Workspace Identity", "Google Workspace"],
+  "status": "active",
+  "deploymentModels": ["saas"],
+  "targetAudience": ["workforce", "b2b"],
+  "tags": ["google", "google-workspace", "google-cloud", "idaas", "sso", "directory-sync"],
+  "icon": {
+    "contentUrl": "https://nacho.cerberauth.com/logos/google-cloud-identity.svg"
+  },
+  "website": "https://cloud.google.com/identity",
+  "documentationUrl": "https://support.google.com/cloudidentity",
+  "changelogUrl": "https://workspaceupdates.googleblog.com/",
+  "statusPageUrl": "https://www.google.com/appsstatus/dashboard/",
+  "communityUrl": "https://www.googlecloudcommunity.com/gc/Workspace/ct-p/workspace",
+  "license": "Proprietary",
+  "openSource": {
+    "isOpenSource": false
+  },
+  "governance": "vendor_led",
+  "nationality": "USA",
+  "vendor": {
+    "name": "Google",
+    "url": "https://www.google.com"
+  },
+  "foundedYear": 1998,
+  "headquarters": {
+    "country": "US",
+    "city": "Mountain View"
+  },
+  "pricing": {
+    "hasFreeTier": true,
+    "freeTierLimit": "Up to 50 user licenses included (additional free licenses on request)",
+    "pricingModel": "per_user",
+    "pricingUrl": "https://cloud.google.com/identity/pricing",
+    "hasEnterprisePlan": true,
+    "contactSalesRequired": false,
+    "currency": "USD",
+    "pricingLastVerified": "2026-11-23",
+    "trialDays": 30,
+    "plans": [
+      {
+        "name": "Free",
+        "price": "Free (up to 50 users included)",
+        "amount": 0,
+        "deployment": "saas",
+        "usage": {
+          "metric": "user",
+          "included": 50
+        }
+      },
+      {
+        "name": "Premium",
+        "price": "$6/user/month (annual commitment) or $7.20/user/month (flexible plan)",
+        "deployment": "saas",
+        "usage": {
+          "metric": "user",
+          "rates": [
+            {
+              "amount": 6,
+              "per": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "hosting": {
+    "regions": ["US", "EU", "APAC", "SAM", "MEA"]
+  },
+  "sla": {
+    "uptimePercent": 99.9,
+    "url": "https://workspace.google.com/terms/sla/",
+    "scope": "Cloud Identity Premium and Google Workspace"
+  },
+  "supportChannels": ["email", "chat", "phone", "community"],
+  "migrationTools": [
+    {
+      "from": "Microsoft Active Directory",
+      "url": "https://support.google.com/a/answer/106368"
+    },
+    {
+      "from": "Microsoft 365",
+      "url": "https://support.google.com/a/answer/9476255"
+    },
+    {
+      "from": "Exchange",
+      "url": "https://support.google.com/a/answer/6351475"
+    }
+  ],
+  "lastVerified": "2026-11-23",
+  "sdks": [
+    {
+      "language": "JavaScript",
+      "framework": "Node.js",
+      "url": "https://github.com/googleapis/google-api-nodejs-client",
+      "official": true
+    },
+    {
+      "language": "Python",
+      "url": "https://github.com/googleapis/google-api-python-client",
+      "official": true
+    },
+    {
+      "language": "Java",
+      "url": "https://github.com/googleapis/google-api-java-client",
+      "official": true
+    },
+    {
+      "language": "Go",
+      "url": "https://github.com/googleapis/google-api-go-client",
+      "official": true
+    },
+    {
+      "language": "C#",
+      "framework": ".NET",
+      "url": "https://github.com/googleapis/google-api-dotnet-client",
+      "official": true
+    },
+    {
+      "language": "PHP",
+      "url": "https://github.com/googleapis/google-api-php-client",
+      "official": true
+    }
+  ],
+  "features": [
+    {
+      "identifier": "username_and_password_authentication",
+      "status": "supported",
+      "category": "authentication_methods",
+      "description": "Standard workforce authentication using corporate Google account email and password managed in the Google Admin console.",
+      "links": ["https://support.google.com/a/answer/33310"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "social_sign_in_authentication",
+      "status": "not_supported",
+      "category": "authentication_methods",
+      "description": "Consumer social sign-in (e.g. Facebook, GitHub) is not supported for Google Workspace and Cloud Identity corporate workforce accounts.",
+      "plans": []
+    },
+    {
+      "identifier": "passkey_authentication",
+      "status": "supported",
+      "category": "authentication_methods",
+      "description": "Passkey authentication for passwordless sign-in using biometric sensors, device screen locks, or FIDO2 hardware tokens.",
+      "links": ["https://support.google.com/a/answer/13352455"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "email_passwordless_authentication",
+      "status": "not_supported",
+      "category": "authentication_methods",
+      "description": "Google Workspace accounts do not support email magic link sign-in for primary authentication.",
+      "plans": []
+    },
+    {
+      "identifier": "phone_passwordless_authentication",
+      "status": "supported",
+      "category": "authentication_methods",
+      "description": "On-device phone prompts ('Google prompt' or 'Tap Yes on your phone') allow users to sign in without entering their password.",
+      "links": ["https://support.google.com/accounts/answer/7026266"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "magic_link_authentication",
+      "status": "not_supported",
+      "category": "authentication_methods",
+      "plans": []
+    },
+    {
+      "identifier": "anonymous_authentication",
+      "status": "not_supported",
+      "category": "authentication_methods",
+      "plans": []
+    },
+    {
+      "identifier": "totp_mfa",
+      "status": "supported",
+      "category": "mfa",
+      "description": "Time-based One-Time Password (TOTP) 2-Step Verification using Google Authenticator or compatible RFC 6238 authenticator apps.",
+      "links": ["https://support.google.com/accounts/answer/1066447"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "hotp_mfa",
+      "status": "not_supported",
+      "category": "mfa",
+      "plans": []
+    },
+    {
+      "identifier": "u2f_mfa",
+      "status": "supported",
+      "category": "mfa",
+      "description": "FIDO U2F security key hardware tokens supported for 2-Step Verification.",
+      "links": ["https://support.google.com/a/answer/7514195"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "webauthn_mfa",
+      "status": "supported",
+      "category": "mfa",
+      "description": "FIDO2 / WebAuthn security keys and platform authenticators supported for phishing-resistant multi-factor authentication.",
+      "links": ["https://support.google.com/a/answer/13352455"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "email_code_mfa",
+      "status": "not_supported",
+      "category": "mfa",
+      "description": "Email verification codes are not supported as a second factor in Google 2-Step Verification.",
+      "plans": []
+    },
+    {
+      "identifier": "phone_code_mfa",
+      "status": "supported",
+      "category": "mfa",
+      "description": "SMS text message and automated voice call verification codes for 2-Step Verification.",
+      "links": ["https://support.google.com/accounts/answer/185834"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "recovery_code_mfa",
+      "status": "supported",
+      "category": "mfa",
+      "description": "Set of 10 printable, single-use backup verification codes for account recovery when primary 2SV methods are unavailable.",
+      "links": ["https://support.google.com/accounts/answer/1187538"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "push_notification_mfa",
+      "status": "supported",
+      "category": "mfa",
+      "description": "Google prompt push notifications sent to Android devices or iOS devices via Google apps to approve sign-in attempts.",
+      "links": ["https://support.google.com/accounts/answer/7026266"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "adaptive_mfa",
+      "status": "supported",
+      "category": "mfa",
+      "description": "Risk-based login challenges triggered by suspicious activity, new locations, or unfamiliar devices; Context-Aware Access provides conditional access policies.",
+      "links": ["https://support.google.com/a/answer/6002699", "https://support.google.com/a/answer/9275380"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "cisco_duo_mfa",
+      "status": "not_supported",
+      "category": "mfa",
+      "plans": []
+    },
+    {
+      "identifier": "step_up_authentication",
+      "status": "supported",
+      "category": "mfa",
+      "description": "Automatic re-authentication challenges required for sensitive actions (e.g. security changes, password modifications) and configurable session duration limits.",
+      "links": ["https://support.google.com/a/answer/9368756"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "oidc_protocol",
+      "status": "supported",
+      "category": "integration_protocols",
+      "description": "Google OpenID Connect provider support for web, mobile, and server-side applications with public discovery and UserInfo endpoints.",
+      "links": ["https://developers.google.com/identity/protocols/oauth2/openid-connect"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "saml2_protocol",
+      "status": "supported",
+      "category": "integration_protocols",
+      "description": "Google acts as a SAML 2.0 Identity Provider (IdP) for thousands of pre-integrated SaaS applications and custom SAML applications.",
+      "links": ["https://support.google.com/a/answer/6087519"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "ws_federation_protocol",
+      "status": "not_supported",
+      "category": "integration_protocols",
+      "plans": []
+    },
+    {
+      "identifier": "machine_to_machine",
+      "status": "supported",
+      "category": "integration_protocols",
+      "description": "Service accounts and OAuth 2.0 JWT bearer token assertions for server-to-server and automated system access.",
+      "links": ["https://cloud.google.com/iam/docs/service-account-overview"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "oidc_federation",
+      "status": "supported",
+      "category": "identity_federation",
+      "description": "Inbound Single Sign-On allowing users to sign in to Google Workspace and Cloud Identity using third-party OIDC identity providers.",
+      "links": ["https://support.google.com/a/answer/12032922"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "saml_federation",
+      "status": "supported",
+      "category": "identity_federation",
+      "description": "Inbound SAML 2.0 Single Sign-On allowing Google Workspace and Cloud Identity to delegate authentication to an external SAML IdP.",
+      "links": ["https://support.google.com/a/answer/60224"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "active_directory_ldap",
+      "status": "supported",
+      "category": "identity_federation",
+      "description": "Google Cloud Directory Sync (GCDS) synchronizes users and groups from Microsoft Active Directory or LDAP; Secure LDAP service provides cloud LDAP directory lookups.",
+      "links": ["https://support.google.com/a/answer/106368", "https://support.google.com/a/answer/9049060"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "azure_ad_integration",
+      "status": "supported",
+      "category": "identity_federation",
+      "description": "Federated SSO and automated provisioning integration with Microsoft Entra ID (formerly Azure Active Directory).",
+      "links": ["https://support.google.com/a/answer/6362490"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "bulk_user_import",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Bulk user creation and updates using CSV file uploads in the Google Admin console.",
+      "links": ["https://support.google.com/a/answer/40057"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "password_hash_import",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Google Admin SDK Directory API supports uploading pre-hashed user passwords using MD5, SHA-1, and crypt formats (DES, MD5, SHA-256, SHA-512).",
+      "links": ["https://developers.google.com/admin-sdk/directory/reference/rest/v1/users"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "bulk_user_export",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Download user list from the Google Admin console to Google Sheets, CSV, or JSON format.",
+      "links": ["https://support.google.com/a/answer/7348103"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "bulk_user_update_delete",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Bulk user updates and deletions supported via CSV re-upload and Admin SDK Directory API batch operations.",
+      "links": ["https://support.google.com/a/answer/40057"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "upsert_on_import",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Uploading a CSV file in the Admin console updates existing user profile information based on matching primary email addresses.",
+      "links": ["https://support.google.com/a/answer/40057"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "legacy_username_import",
+      "status": "not_supported",
+      "category": "user_management",
+      "plans": []
+    },
+    {
+      "identifier": "mfa_enrollment_import",
+      "status": "not_supported",
+      "category": "user_management",
+      "plans": []
+    },
+    {
+      "identifier": "inbound_scim_provisioning",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Inbound SCIM 2.0 provisioning API allows external Identity Providers (such as Microsoft Entra ID or Okta) to push real-time user lifecycle events into Google Workspace.",
+      "links": ["https://support.google.com/a/answer/13687258"],
+      "plans": ["Premium"]
+    },
+    {
+      "identifier": "outbound_scim_provisioning",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Automated outbound user provisioning automatically provisions and deprovisions accounts in supported SaaS applications from the Google Admin console.",
+      "links": ["https://support.google.com/a/answer/7542907"],
+      "plans": ["Premium"]
+    },
+    {
+      "identifier": "scim_groups",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Group synchronization and group membership updates via Inbound SCIM 2.0, with administrative lock-synced-groups capability.",
+      "links": ["https://support.google.com/a/answer/13687258"],
+      "plans": ["Premium"]
+    },
+    {
+      "identifier": "jit_provisioning",
+      "status": "not_supported",
+      "category": "user_management",
+      "description": "Google Workspace does not support Just-In-Time (JIT) dynamic user provisioning during SSO sign-in; users must be pre-created via Directory API, CSV, GCDS, or SCIM.",
+      "plans": []
+    },
+    {
+      "identifier": "lazy_migration",
+      "status": "not_supported",
+      "category": "user_management",
+      "plans": []
+    },
+    {
+      "identifier": "self_service_profile_management",
+      "status": "supported",
+      "category": "user_management",
+      "description": "End users can manage their security settings, 2SV methods, personal info, active sessions, and devices at myaccount.google.com.",
+      "links": ["https://support.google.com/accounts/answer/70206"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "account_linking",
+      "status": "not_supported",
+      "category": "user_management",
+      "plans": []
+    },
+    {
+      "identifier": "user_blocking",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Administrators can immediately suspend user accounts in the Admin console or via Directory API to prevent sign-in and revoke access tokens.",
+      "links": ["https://support.google.com/a/answer/33312"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "user_metadata",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Custom user attributes schema allows storing custom fields in user profiles via the Admin console and Directory API.",
+      "links": ["https://support.google.com/a/answer/1227643"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "app_metadata",
+      "status": "not_supported",
+      "category": "user_management",
+      "plans": []
+    },
+    {
+      "identifier": "metadata_size_limits",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Custom user schemas support up to 100 schemas per domain, 500 fields per schema, and up to 4 KB per field value.",
+      "links": ["https://developers.google.com/admin-sdk/directory/v1/guides/manage-schemas"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "user_search",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Granular user search in Admin console and Directory API with query filters for email, name, organizational unit, and custom attributes.",
+      "links": ["https://developers.google.com/admin-sdk/directory/v1/guides/search-users"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "rbac",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Role-Based Access Control with prebuilt administrator roles (Super Admin, User Management, etc.) and granular custom administrator roles.",
+      "links": ["https://support.google.com/a/answer/2405986", "https://support.google.com/a/answer/144871"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "organizations_multitenancy",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Hierarchical Organizational Units (OUs) for policy inheritance, combined with multi-domain support (secondary domains and domain aliases).",
+      "links": ["https://support.google.com/a/answer/43520", "https://support.google.com/a/answer/7501051"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "password_strength_policy",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Admin enforcement of minimum and maximum password length, complexity requirements, password expiration, and prevention of password reuse.",
+      "links": ["https://support.google.com/a/answer/139399"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "username_restrictions",
+      "status": "supported",
+      "category": "user_management",
+      "description": "Username guidelines enforcing allowed character sets, prefix/suffix limitations, domain association, and reserved system names.",
+      "links": ["https://support.google.com/a/answer/33386"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "progressive_profiling",
+      "status": "not_supported",
+      "category": "user_management",
+      "plans": []
+    },
+    {
+      "identifier": "abac",
+      "status": "supported",
+      "category": "access_control",
+      "description": "Attribute-Based Access Control via Context-Aware Access evaluating device state, user identity, IP subnet, and geographic location.",
+      "links": ["https://support.google.com/a/answer/9275380"],
+      "plans": ["Premium"]
+    },
+    {
+      "identifier": "fine_grained_authorization",
+      "status": "supported",
+      "category": "access_control",
+      "description": "Granular access level policies applied per application, organizational unit, and security group via Context-Aware Access.",
+      "links": ["https://support.google.com/a/answer/9275380"],
+      "plans": ["Premium"]
+    },
+    {
+      "identifier": "api_authorization",
+      "status": "supported",
+      "category": "access_control",
+      "description": "OAuth 2.0 authorization scopes, Google Cloud IAM roles, and API client access controls configured in the Admin console.",
+      "links": ["https://developers.google.com/identity/protocols/oauth2/scopes"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "soc2_type2",
+      "status": "supported",
+      "category": "compliance",
+      "description": "Google Cloud and Google Workspace undergo independent annual SOC 2 Type II audits.",
+      "links": ["https://cloud.google.com/security/compliance/soc-2"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "iso_27001",
+      "status": "supported",
+      "category": "compliance",
+      "description": "Certified compliant with ISO/IEC 27001, 27017, and 27018 standards.",
+      "links": ["https://cloud.google.com/security/compliance/iso-27001"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "hipaa_baa",
+      "status": "supported",
+      "category": "compliance",
+      "description": "Google provides a HIPAA Business Associate Amendment (BAA) for covered services.",
+      "links": ["https://workspace.google.com/terms/hipaa_baa.html"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "pci_dss",
+      "status": "supported",
+      "category": "compliance",
+      "description": "Compliant with Payment Card Industry Data Security Standard (PCI DSS) Level 1.",
+      "links": ["https://cloud.google.com/security/compliance/pci-dss"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "csa_star",
+      "status": "supported",
+      "category": "compliance",
+      "description": "CSA STAR Level 2 Certification and Attestation for cloud security assurance.",
+      "links": ["https://cloud.google.com/security/compliance/csa-star"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "fedramp",
+      "status": "supported",
+      "category": "compliance",
+      "description": "Authorized at FedRAMP High and Moderate baselines for US government compliance.",
+      "links": ["https://cloud.google.com/security/compliance/fedramp"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "gdpr_data_export",
+      "status": "supported",
+      "category": "compliance",
+      "description": "Data Export tool for organization-wide customer data export and Google Takeout for user data portability.",
+      "links": ["https://support.google.com/a/answer/100458"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "gdpr_right_to_erasure",
+      "status": "supported",
+      "category": "compliance",
+      "description": "Admin user deletion purges user profile data from Google systems in compliance with GDPR right to erasure.",
+      "links": ["https://support.google.com/a/answer/33314"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "consent_management",
+      "status": "supported",
+      "category": "compliance",
+      "description": "OAuth consent screen configuration for internal and external app authorization requests in Google Cloud Console.",
+      "links": ["https://support.google.com/cloud/answer/10311030"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "region_deployment",
+      "status": "supported",
+      "category": "compliance",
+      "description": "Data regions policy enables administrators to specify US, Europe, or Global storage locations for covered data.",
+      "links": ["https://support.google.com/a/answer/7630496"],
+      "plans": ["Premium"]
+    },
+    {
+      "identifier": "private_cloud_deployment",
+      "status": "not_supported",
+      "category": "compliance",
+      "plans": []
+    },
+    {
+      "identifier": "audit_log_retention",
+      "status": "supported",
+      "category": "security",
+      "description": "Admin console audit and investigation logs retained for 6 months across user, admin, login, and token activities.",
+      "links": ["https://support.google.com/a/answer/7061974"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "audit_log_streaming",
+      "status": "supported",
+      "category": "security",
+      "description": "Continuous export of Google Workspace and Cloud Identity audit and report logs to Google Cloud BigQuery.",
+      "links": ["https://support.google.com/a/answer/9079365"],
+      "plans": ["Premium"]
+    },
+    {
+      "identifier": "security_center",
+      "status": "supported",
+      "category": "security",
+      "description": "Security center providing a unified security dashboard, security health recommendations, and an investigation tool.",
+      "links": ["https://support.google.com/a/answer/7492348"],
+      "plans": ["Premium"]
+    },
+    {
+      "identifier": "encryption_at_rest",
+      "status": "supported",
+      "category": "security",
+      "description": "Data at rest is automatically encrypted by default using AES-256 encryption across all Google infrastructure.",
+      "links": ["https://cloud.google.com/docs/security/encryption-at-rest"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "encryption_in_transit",
+      "status": "supported",
+      "category": "security",
+      "description": "All data in transit is encrypted using TLS 1.2+ between user devices, Google data centers, and external endpoints.",
+      "links": ["https://cloud.google.com/docs/security/encryption-in-transit"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "customer_managed_keys",
+      "status": "supported",
+      "category": "security",
+      "description": "Client-side encryption (CSE) and Cloud External Key Manager (Cloud EKM) integration allowing customers to control encryption keys.",
+      "links": ["https://support.google.com/a/answer/10741897"],
+      "plans": ["Premium"]
+    },
+    {
+      "identifier": "bot_detection",
+      "status": "supported",
+      "category": "security",
+      "description": "reCAPTCHA Enterprise and automated risk engines continuously detect and mitigate automated bot sign-in attempts.",
+      "links": ["https://cloud.google.com/recaptcha"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "brute_force_protection",
+      "status": "supported",
+      "category": "security",
+      "description": "Automated account lockout, login rate limiting, and suspicious sign-in verification challenges block brute-force attacks.",
+      "links": ["https://support.google.com/a/answer/6002699"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "suspicious_ip_throttling",
+      "status": "supported",
+      "category": "security",
+      "description": "Google sign-in security analyzes IP reputation, geo-velocity, and abnormal sign-in velocity to throttle or challenge traffic.",
+      "links": ["https://support.google.com/a/answer/6002699"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "breached_password_detection",
+      "status": "supported",
+      "category": "security",
+      "description": "Password Checkup technology warns users and administrators when compromised or publicly breached credentials are used.",
+      "links": ["https://support.google.com/accounts/answer/9452538"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "credential_guard",
+      "status": "supported",
+      "category": "security",
+      "description": "Google Credential Provider for Windows (GCPW) secures Windows device logons using Google account credentials and 2SV.",
+      "links": ["https://support.google.com/a/answer/9250306"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "tenant_acl",
+      "status": "supported",
+      "category": "security",
+      "description": "Context-Aware Access rules and domain-specific access policies restrict resource access to authorized organizational contexts.",
+      "links": ["https://support.google.com/a/answer/9275380"],
+      "plans": ["Premium"]
+    },
+    {
+      "identifier": "device_fingerprinting",
+      "status": "supported",
+      "category": "security",
+      "description": "Google sign-in risk engine evaluates device signals, browser environment, operating system, and historical user sign-in behavior.",
+      "links": ["https://support.google.com/accounts/answer/7162701"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "per_org_branding",
+      "status": "supported",
+      "category": "multi_tenancy",
+      "description": "Custom corporate logo upload in the Google Admin console displayed across Google Workspace services and sign-in pages.",
+      "links": ["https://support.google.com/a/answer/96474"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "per_org_mfa_policy",
+      "status": "supported",
+      "category": "multi_tenancy",
+      "description": "2-Step Verification enforcement, grace periods, and allowed verification methods configured independently per Organizational Unit or Group.",
+      "links": ["https://support.google.com/a/answer/9176657"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "hosted_login_page",
+      "status": "supported",
+      "category": "branding_ux",
+      "description": "Centrally hosted, secure Google sign-in interface at accounts.google.com handling authentication, MFA, and recovery.",
+      "links": ["https://support.google.com/accounts/answer/183723"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "embedded_login",
+      "status": "not_supported",
+      "category": "branding_ux",
+      "description": "Google disallows OAuth authentication in embedded webviews (UIWebView/WebView) for security compliance with RFC 8252.",
+      "links": ["https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html"],
+      "plans": []
+    },
+    {
+      "identifier": "white_label",
+      "status": "partial",
+      "category": "branding_ux",
+      "description": "Custom company logos can be displayed on Google services, but login endpoints and root branding remain Google-hosted at accounts.google.com.",
+      "links": ["https://support.google.com/a/answer/96474"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "localization",
+      "status": "supported",
+      "category": "branding_ux",
+      "description": "Sign-in interface and Google Admin console localized into more than 70 languages.",
+      "links": ["https://support.google.com/a/answer/170654"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "prebuilt_ui_components",
+      "status": "supported",
+      "category": "branding_ux",
+      "description": "Google Identity Services (GIS) provides prebuilt 'Sign in with Google' and One Tap web and mobile UI components.",
+      "links": ["https://developers.google.com/identity/gsi/web/guides/overview"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "login_analytics",
+      "status": "supported",
+      "category": "analytics",
+      "description": "Comprehensive login audit logs, security charts, 2SV adoption tracking, and suspicious login reports in the Admin console.",
+      "links": ["https://support.google.com/a/answer/4580120"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "sdk_coverage",
+      "status": "supported",
+      "category": "developer_integration",
+      "description": "Official Google APIs Client Libraries available for Node.js, Python, Java, Go, C# (.NET), and PHP.",
+      "links": ["https://developers.google.com/api-client-library"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "management_api",
+      "status": "supported",
+      "category": "developer_integration",
+      "description": "Google Admin SDK (Directory API, Reports API) and Cloud Identity API for automated user, group, and device administration.",
+      "links": ["https://developers.google.com/admin-sdk"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "authentication_api_rate_limits",
+      "status": "supported",
+      "category": "developer_integration",
+      "description": "Published quotas and rate limits for Google Admin SDK Directory API, Reports API, and OAuth token endpoints.",
+      "links": ["https://developers.google.com/admin-sdk/directory/v1/limits"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "actions_extensibility",
+      "status": "supported",
+      "category": "developer_integration",
+      "description": "Google Apps Script and Cloud Functions provide event-driven triggers and extensibility for identity and directory events.",
+      "links": ["https://developers.google.com/apps-script"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "typescript_in_actions",
+      "status": "supported",
+      "category": "developer_integration",
+      "description": "The Google clasp command-line tool enables writing Google Apps Script automations in TypeScript with automated transpilation.",
+      "links": ["https://github.com/google/clasp"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "custom_domain",
+      "status": "supported",
+      "category": "developer_integration",
+      "description": "Custom URL mapping for Google Workspace service endpoints (e.g., mail.yourcompany.com, drive.yourcompany.com).",
+      "links": ["https://support.google.com/a/answer/53340"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "deploy_cli",
+      "status": "supported",
+      "category": "developer_integration",
+      "description": "Google Cloud SDK (gcloud CLI) and open-source Google Apps Manager (GAM) command-line tools for directory and identity administration.",
+      "links": ["https://cloud.google.com/sdk/gcloud"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "terraform_provider",
+      "status": "supported",
+      "category": "developer_integration",
+      "description": "Official HashiCorp Terraform Google Provider supports provisioning and managing Cloud Identity groups, memberships, and policies.",
+      "links": ["https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/cloud_identity_group"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "custom_database_connections",
+      "status": "not_supported",
+      "category": "developer_integration",
+      "plans": []
+    },
+    {
+      "identifier": "native_webhooks",
+      "status": "supported",
+      "category": "developer_integration",
+      "description": "Push notifications via webhook endpoints and Google Cloud Pub/Sub for Admin SDK Directory resource changes.",
+      "links": ["https://developers.google.com/admin-sdk/directory/v1/guides/push-notifications"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "universal_login_customization",
+      "status": "partial",
+      "category": "developer_integration",
+      "description": "Company logo customization supported; full HTML/CSS modification of accounts.google.com is disallowed for security reasons.",
+      "links": ["https://support.google.com/a/answer/96474"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "custom_email_provider",
+      "status": "supported",
+      "category": "developer_integration",
+      "description": "Gmail routing rules, custom outbound SMTP relays, and dual-delivery gateways for integration with third-party email systems.",
+      "links": ["https://support.google.com/a/answer/2685650"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "email_templates",
+      "status": "not_supported",
+      "category": "developer_integration",
+      "plans": []
+    },
+    {
+      "identifier": "custom_oidc_claims",
+      "status": "partial",
+      "category": "developer_integration",
+      "description": "Custom user schema attributes can be mapped into SAML assertions, while OIDC tokens include standard Google OpenID profile claims.",
+      "links": ["https://developers.google.com/identity/openid-connect/openid-connect#obtainuserinfo"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "nocode_flow_builder",
+      "status": "supported",
+      "category": "advanced",
+      "description": "Google AppSheet provides a no-code workflow and automation builder integrated with Google Workspace and Cloud Identity directory.",
+      "links": ["https://about.appsheet.com/home/"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "identity_proofing",
+      "status": "not_supported",
+      "category": "advanced",
+      "plans": []
+    },
+    {
+      "identifier": "decentralized_identity",
+      "status": "not_supported",
+      "category": "advanced",
+      "plans": []
+    },
+    {
+      "identifier": "billing_integration",
+      "status": "supported",
+      "category": "advanced",
+      "description": "Google Cloud Billing API and Google Workspace Admin Billing for programmatic subscription and invoice management.",
+      "links": ["https://cloud.google.com/billing/docs/reference/rest"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "agentic_identity",
+      "status": "supported",
+      "category": "advanced",
+      "description": "Workforce Identity Federation and service account impersonation provide secure identity and token exchange for AI agents and workloads.",
+      "links": ["https://cloud.google.com/iam/docs/workforce-identity-federation"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "pq_hybrid_key_exchange",
+      "status": "supported",
+      "category": "post_quantum_cryptography",
+      "description": "Google deployed hybrid post-quantum key exchange (X25519Kyber768 / ML-KEM) in Google Chrome and across Google frontends.",
+      "links": ["https://security.googleblog.com/2023/08/protecting-chrome-traffic-with-hybrid.html"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "pq_signature_algorithms",
+      "status": "not_supported",
+      "category": "post_quantum_cryptography",
+      "plans": []
+    },
+    {
+      "identifier": "pq_migration_roadmap",
+      "status": "supported",
+      "category": "post_quantum_cryptography",
+      "description": "Google published an official post-quantum cryptography transition roadmap detailing algorithmic migration phases across infrastructure.",
+      "links": ["https://cloud.google.com/blog/products/identity-security/post-quantum-cryptography-roadmap"],
+      "plans": ["Free", "Premium"]
+    },
+    {
+      "identifier": "pq_token_encryption",
+      "status": "not_supported",
+      "category": "post_quantum_cryptography",
+      "plans": []
+    },
+    {
+      "identifier": "pq_mtls_certificates",
+      "status": "not_supported",
+      "category": "post_quantum_cryptography",
+      "plans": []
+    },
+    {
+      "identifier": "pq_stateful_hash_signatures",
+      "status": "not_supported",
+      "category": "post_quantum_cryptography",
+      "plans": []
+    },
+    {
+      "identifier": "macaroon_tokens",
+      "status": "not_supported",
+      "category": "token_formats",
+      "plans": []
+    },
+    {
+      "identifier": "paseto_tokens",
+      "status": "not_supported",
+      "category": "token_formats",
+      "plans": []
+    },
+    {
+      "identifier": "cwt_cose_tokens",
+      "status": "not_supported",
+      "category": "token_formats",
+      "plans": []
+    },
+    {
+      "identifier": "biscuit_tokens",
+      "status": "not_supported",
+      "category": "token_formats",
+      "plans": []
+    }
+  ],
+  "oidc": {
+    "discoveryUrl": "https://accounts.google.com/.well-known/openid-configuration",
+    "features": [
+      {
+        "identifier": "authorization_code_grant",
+        "status": "supported",
+        "description": "OAuth 2.0 authorization code flow with OpenID Connect for user authentication.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/openid-connect"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "refresh_token_grant",
+        "status": "supported",
+        "description": "OAuth 2.0 refresh token grant for obtaining new access tokens without user interaction.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/openid-connect#refresh-tokens"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "client_credentials_grant",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "implicit_grant",
+        "status": "deprecated",
+        "description": "OAuth 2.0 implicit grant flow is supported for legacy applications but deprecated in favor of Authorization Code with PKCE.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/web-server#httprest"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:token-exchange",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "urn:openid:params:grant-type:ciba",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:device_code",
+        "status": "supported",
+        "description": "OAuth 2.0 Device Authorization Grant (RFC 8628) for limited-input devices such as smart TVs, game consoles, and CLI tools.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/limited-input-device"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        "status": "supported",
+        "description": "OAuth 2.0 JWT Bearer Token Grant (RFC 7523) for server-to-server authorization using Google service accounts.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/service-account"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "urn:ietf:params:oauth:grant-type:saml2-bearer",
+        "status": "supported",
+        "description": "SAML 2.0 Profile for OAuth 2.0 Client Authentication and Authorization Grants (RFC 7522).",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/service-account"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "password_grant",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "rp_initiated_logout",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "pkce_extension",
+        "status": "supported",
+        "description": "Proof Key for Code Exchange (PKCE - RFC 7636) supported with S256 and plain code challenge methods.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/native-app#step-2-code-exchange"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "par_extension",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "rar_extension",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "jar_extension",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "authorization_endpoint",
+        "status": "supported",
+        "description": "OAuth 2.0 authorization endpoint at https://accounts.google.com/o/oauth2/v2/auth.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/openid-connect#sendauthrequest"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "token_endpoint",
+        "status": "supported",
+        "description": "OAuth 2.0 token endpoint at https://oauth2.googleapis.com/token.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/openid-connect#exchangecode"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "userinfo_endpoint",
+        "status": "supported",
+        "description": "OpenID Connect UserInfo endpoint at https://openidconnect.googleapis.com/v1/userinfo.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/openid-connect#obtainuserinfo"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "token_revocation_endpoint",
+        "status": "supported",
+        "description": "OAuth 2.0 token revocation endpoint at https://oauth2.googleapis.com/revoke.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/web-server#tokenrevoke"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "token_introspection_endpoint",
+        "status": "supported",
+        "description": "Token validation endpoint at https://oauth2.googleapis.com/tokeninfo.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/openid-connect#validatinganidtoken"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "device_authorization_endpoint",
+        "status": "supported",
+        "description": "Device code authorization endpoint at https://oauth2.googleapis.com/device/code.",
+        "links": [
+          "https://developers.google.com/identity/protocols/oauth2/limited-input-device#step-1:-request-device-and-user-codes"
+        ],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "openid_connect_discovery_endpoint",
+        "status": "supported",
+        "description": "OpenID Connect discovery document published at https://accounts.google.com/.well-known/openid-configuration.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/openid-connect#discovery"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "oauth_authorization_server_metadata_endpoint",
+        "status": "supported",
+        "description": "Authorization server metadata published at https://accounts.google.com/.well-known/openid-configuration.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/openid-connect#discovery"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "none_prompt",
+        "status": "supported",
+        "description": "OIDC prompt=none supported for silent authentication checks.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/openid-connect#prompt"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "login_prompt",
+        "status": "supported",
+        "description": "OIDC prompt=login forces the user to re-authenticate.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/openid-connect#prompt"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "consent_prompt",
+        "status": "supported",
+        "description": "OIDC prompt=consent forces the authorization consent screen to be displayed.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/openid-connect#prompt"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "select_account_prompt",
+        "status": "supported",
+        "description": "OIDC prompt=select_account presents the account chooser interface to the user.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/openid-connect#prompt"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "create_prompt",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "none_token_endpoint_auth",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "client_secret_basic_token_endpoint_auth",
+        "status": "supported",
+        "description": "Client authentication via HTTP Basic Authorization header at the token endpoint.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/web-server#httprest"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "client_secret_post_token_endpoint_auth",
+        "status": "supported",
+        "description": "Client authentication via client_id and client_secret in the request body at the token endpoint.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/web-server#httprest"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "client_secret_jwt_token_endpoint_auth",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "private_key_jwt_token_endpoint_auth",
+        "status": "supported",
+        "description": "Service accounts authenticate using RSA private keys to sign JWT assertions sent to the token endpoint.",
+        "links": ["https://developers.google.com/identity/protocols/oauth2/service-account"],
+        "plans": ["Free", "Premium"]
+      },
+      {
+        "identifier": "tls_client_auth_token_endpoint_auth",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "dynamic_client_registration",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "dynamic_client_registration_management",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "refresh_token_rotation",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "refresh_token_rotation_grace_period",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "dpop",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "fapi_1_0_baseline",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "fapi_1_0_advanced",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "fapi_2_0_security_profile",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "fapi_2_0_message_signing",
+        "status": "not_supported",
+        "plans": []
+      },
+      {
+        "identifier": "jarm",
+        "status": "not_supported",
+        "plans": []
+      }
+    ]
+  }
+}
