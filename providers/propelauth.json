@@ -5,7 +5,7 @@
   "identifier": "propelauth",
   "status": "active",
   "deploymentModels": ["saas"],
-  "targetAudience": ["b2b", "developer"],
+  "targetAudience": ["b2b", "ciam", "developer"],
   "tags": ["b2b-saas", "multi-tenant", "mcp", "ai-agents", "impersonation", "byo-auth", "waitlist"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/propelauth.svg"

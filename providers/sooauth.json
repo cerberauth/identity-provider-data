@@ -5,7 +5,7 @@
   "identifier": "sooauth",
   "status": "active",
   "deploymentModels": ["saas", "self_hosted"],
-  "targetAudience": ["b2c", "developer"],
+  "targetAudience": ["b2c", "ciam", "developer"],
   "tags": ["go", "lightweight", "indie-hackers", "ai-assisted-development", "llms-txt"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/sooauth.svg"

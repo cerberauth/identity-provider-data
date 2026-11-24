@@ -5,7 +5,7 @@
   "identifier": "onelogin",
   "status": "active",
   "deploymentModels": ["saas"],
-  "targetAudience": ["workforce", "b2b"],
+  "targetAudience": ["workforce", "b2b", "ciam"],
   "tags": ["sso", "workforce"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/onelogin.svg"

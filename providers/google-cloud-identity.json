@@ -6,7 +6,7 @@
   "aliases": ["Cloud Identity", "Google Workspace Identity", "Google Workspace"],
   "status": "active",
   "deploymentModels": ["saas"],
-  "targetAudience": ["workforce", "b2b"],
+  "targetAudience": ["workforce"],
   "tags": ["google", "google-workspace", "google-cloud", "idaas", "sso", "directory-sync"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/google-cloud-identity.svg"

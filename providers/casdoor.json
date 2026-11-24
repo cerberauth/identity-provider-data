@@ -5,7 +5,7 @@
   "identifier": "casdoor",
   "status": "active",
   "deploymentModels": ["saas", "self_hosted"],
-  "targetAudience": ["b2c", "b2b", "workforce", "developer"],
+  "targetAudience": ["b2c", "b2b", "workforce", "ciam", "developer"],
   "tags": ["go", "react", "casbin", "cas", "mcp", "self-hosted"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/casdoor.svg"

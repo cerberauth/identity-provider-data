@@ -5,7 +5,7 @@
   "identifier": "workos",
   "status": "active",
   "deploymentModels": ["saas"],
-  "targetAudience": ["b2b", "developer"],
+  "targetAudience": ["b2b", "ciam", "developer"],
   "tags": ["enterprise-ready", "sso-api", "directory-sync", "b2b-saas"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/workos.svg"

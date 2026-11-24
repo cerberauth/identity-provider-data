@@ -6,7 +6,7 @@
   "aliases": ["GoTrue"],
   "status": "active",
   "deploymentModels": ["saas", "self_hosted"],
-  "targetAudience": ["b2c", "developer"],
+  "targetAudience": ["b2c", "ciam", "developer"],
   "tags": ["postgres", "row-level-security", "backend-as-a-service", "jwt"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/supabase-auth.svg"

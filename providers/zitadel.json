@@ -5,7 +5,7 @@
   "identifier": "zitadel",
   "status": "active",
   "deploymentModels": ["saas", "self_hosted"],
-  "targetAudience": ["b2c", "b2b", "developer"],
+  "targetAudience": ["b2c", "b2b", "ciam", "developer"],
   "tags": ["self-hosted", "multi-tenancy", "event-sourcing", "go"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/zitadel.svg"

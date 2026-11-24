@@ -5,7 +5,7 @@
   "identifier": "authress",
   "status": "active",
   "deploymentModels": ["saas"],
-  "targetAudience": ["b2b", "developer"],
+  "targetAudience": ["b2b", "ciam", "developer"],
   "tags": ["api-first", "access-control", "multi-tenant", "switzerland", "api-keys"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/authress.svg"
