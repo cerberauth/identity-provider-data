@@ -276,13 +276,14 @@
       "status": "supported",
       "description": "WorkOS can act as a SAML 2.0 Identity Provider through WorkOS Connect, in addition to supporting SAML as a Service Provider (Enterprise SSO). Supports both SP-initiated and IdP-initiated flows.",
       "links": ["https://workos.com/docs/sso"],
-      "plans": [],
+      "plans": ["Pay as You Go", "Annual Credits"],
       "addOn": {
         "name": "Single Sign-On",
         "price": "$125/connection/month ($100 from the 16th, $80 from the 31st, $65 from the 51st)",
         "amount": 125,
         "period": "month",
-        "unit": "connection"
+        "unit": "connection",
+        "included": 0
       }
     },
     {
@@ -303,13 +304,14 @@
       "status": "supported",
       "description": "Per-organization OIDC SSO connections for enterprise customers. Supports Okta, Google, PingIdentity, Generic OIDC, and many others. IT admins can self-configure connections via the Admin Portal.",
       "links": ["https://workos.com/docs/sso"],
-      "plans": [],
+      "plans": ["Pay as You Go", "Annual Credits"],
       "addOn": {
         "name": "Single Sign-On",
         "price": "$125/connection/month ($100 from the 16th, $80 from the 31st, $65 from the 51st)",
         "amount": 125,
         "period": "month",
-        "unit": "connection"
+        "unit": "connection",
+        "included": 0
       }
     },
     {
@@ -317,13 +319,14 @@
       "status": "supported",
       "description": "Per-organization SAML 2.0 SSO connections. Supports Okta, Azure AD, ADFS, Google Workspace, JumpCloud, OneLogin, PingFederate, and 20+ enterprise IdPs. SP-initiated and IdP-initiated flows supported. Admin Portal enables self-service setup.",
       "links": ["https://workos.com/docs/sso"],
-      "plans": [],
+      "plans": ["Pay as You Go", "Annual Credits"],
       "addOn": {
         "name": "Single Sign-On",
         "price": "$125/connection/month ($100 from the 16th, $80 from the 31st, $65 from the 51st)",
         "amount": 125,
         "period": "month",
-        "unit": "connection"
+        "unit": "connection",
+        "included": 0
       }
     },
     {
@@ -389,7 +392,7 @@
       "status": "supported",
       "description": "Directory Sync: enterprise identity providers (Okta, Microsoft Entra ID, Google Workspace, Workday, JumpCloud, and any SCIM 2.0-compliant directory) push user and group changes to WorkOS via SCIM 2.0.",
       "links": ["https://workos.com/docs/directory-sync"],
-      "plans": [],
+      "plans": ["Pay as You Go", "Annual Credits"],
       "addOn": {
         "name": "Directory Sync",
         "price": "$125/connection/month (same volume tiers as SSO)",
@@ -409,7 +412,7 @@
       "status": "supported",
       "description": "Directory Group sync is supported. Group membership changes from enterprise IdPs are delivered via Directory Sync events and available via the Groups API.",
       "links": ["https://workos.com/docs/directory-sync"],
-      "plans": [],
+      "plans": ["Pay as You Go", "Annual Credits"],
       "addOn": {
         "name": "Directory Sync",
         "price": "$125/connection/month (same volume tiers as SSO)",
@@ -610,19 +613,28 @@
       "status": "supported",
       "description": "Audit Logs product captures authentication and administrative events with configurable retention. Available as a separate paid add-on ($99/month per million events).",
       "links": ["https://workos.com/docs/audit-logs"],
-      "plans": ["Pay as You Go", "Annual Credits"]
+      "plans": ["Pay as You Go", "Annual Credits"],
+      "addOn": {
+        "name": "Audit Logs",
+        "price": "$99/month per million retained events",
+        "amount": 99,
+        "period": "month",
+        "unit": "event",
+        "per": 1000000
+      }
     },
     {
       "identifier": "audit_log_streaming",
       "status": "supported",
       "description": "Audit Logs can be streamed to external SIEM systems. $125/month per SIEM connection.",
       "links": ["https://workos.com/docs/audit-logs"],
-      "plans": [],
+      "plans": ["Pay as You Go", "Annual Credits"],
       "addOn": {
-        "name": "Audit Logs",
-        "price": "$125/month per SIEM connection, plus $99/month per million retained events",
+        "name": "Audit Logs SIEM streaming",
+        "price": "$125/month per SIEM connection",
         "amount": 125,
-        "period": "month"
+        "period": "month",
+        "unit": "connection"
       }
     },
     {
@@ -657,12 +669,15 @@
       "status": "supported",
       "description": "WorkOS Radar provides bot, fraud, and abuse detection for authentication flows. First 1,000 checks included free; $100/month per 50,000 additional checks.",
       "links": ["https://workos.com/docs/radar"],
-      "plans": [],
+      "plans": ["Pay as You Go", "Annual Credits"],
       "addOn": {
         "name": "Radar",
         "price": "1,000 checks free, then $100/month per 50,000 checks",
         "amount": 100,
-        "period": "month"
+        "period": "month",
+        "unit": "event",
+        "per": 50000,
+        "included": 1000
       }
     },
     {
@@ -734,7 +749,13 @@
       "status": "supported",
       "description": "Custom domain ($99/month) and full branding customization (logo, colors, background) removes WorkOS branding from the AuthKit login experience.",
       "links": ["https://workos.com/docs/user-management/branding"],
-      "plans": ["Pay as You Go", "Annual Credits"]
+      "plans": ["Pay as You Go", "Annual Credits"],
+      "addOn": {
+        "name": "Custom domain",
+        "price": "$99/month",
+        "amount": 99,
+        "period": "month"
+      }
     },
     {
       "identifier": "localization",
@@ -796,8 +817,9 @@
       "status": "supported",
       "description": "Custom domain for AuthKit login pages and authentication endpoints. Required for passkeys in production. Available as a paid add-on at $99/month.",
       "links": ["https://workos.com/docs/user-management/branding"],
-      "plans": [],
+      "plans": ["Pay as You Go", "Annual Credits"],
       "addOn": {
+        "name": "Custom domain",
         "price": "$99/month",
         "amount": 99,
         "period": "month"
