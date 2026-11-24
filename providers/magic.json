@@ -6,7 +6,7 @@
   "aliases": ["Magic Labs", "MagicLabs", "Magic Link", "Fortmatic"],
   "status": "active",
   "deploymentModels": ["saas"],
-  "targetAudience": ["b2c", "developer"],
+  "targetAudience": ["b2c", "ciam", "developer"],
   "tags": ["web3", "wallets", "embedded-wallets", "blockchain", "non-custodial", "did-token"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/magic.svg"

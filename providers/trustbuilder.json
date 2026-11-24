@@ -6,7 +6,7 @@
   "aliases": ["inWebo"],
   "status": "active",
   "deploymentModels": ["saas"],
-  "targetAudience": ["workforce", "b2c"],
+  "targetAudience": ["b2c", "workforce", "ciam"],
   "tags": ["french", "sovereignty", "deviceless", "strong-authentication"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/trustbuilder.svg"

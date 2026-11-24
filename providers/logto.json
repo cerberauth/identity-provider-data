@@ -5,7 +5,7 @@
   "identifier": "logto",
   "status": "active",
   "deploymentModels": ["saas", "self_hosted", "hybrid"],
-  "targetAudience": ["b2c", "b2b", "developer"],
+  "targetAudience": ["b2c", "b2b", "ciam", "developer"],
   "tags": ["multi-tenant", "saas", "ai-agents", "mcp", "typescript", "node"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/logto.svg"

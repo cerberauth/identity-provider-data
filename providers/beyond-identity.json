@@ -5,7 +5,7 @@
   "identifier": "beyond-identity",
   "status": "active",
   "deploymentModels": ["saas"],
-  "targetAudience": ["workforce", "b2c"],
+  "targetAudience": ["b2c", "workforce", "ciam"],
   "tags": ["passwordless", "device-trust", "zero-trust", "phishing-resistant"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/beyond-identity.svg"

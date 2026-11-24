@@ -5,7 +5,7 @@
   "identifier": "clerk",
   "status": "active",
   "deploymentModels": ["saas"],
-  "targetAudience": ["b2c", "b2b", "developer"],
+  "targetAudience": ["b2c", "b2b", "ciam", "developer"],
   "tags": ["react", "nextjs", "prebuilt-ui", "user-management"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/clerk.svg"

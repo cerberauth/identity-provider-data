@@ -5,7 +5,7 @@
   "identifier": "authentik",
   "status": "active",
   "deploymentModels": ["self_hosted"],
-  "targetAudience": ["b2c", "b2b", "workforce", "developer"],
+  "targetAudience": ["b2c", "b2b", "workforce", "ciam", "developer"],
   "tags": ["self-hosted", "homelab", "flows", "reverse-proxy", "python", "go"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/authentik.svg"

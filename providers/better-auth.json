@@ -7,7 +7,7 @@
   "languages": ["TypeScript", "JavaScript"],
   "status": "active",
   "deploymentModels": ["embedded"],
-  "targetAudience": ["b2c", "b2b", "developer"],
+  "targetAudience": ["b2c", "b2b", "ciam", "developer"],
   "tags": ["typescript", "framework-agnostic", "plugins", "self-hosted"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/better-auth.svg"

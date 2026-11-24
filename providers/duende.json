@@ -6,7 +6,7 @@
   "aliases": ["IdentityServer"],
   "status": "active",
   "deploymentModels": ["self_hosted"],
-  "targetAudience": ["developer"],
+  "targetAudience": ["ciam", "developer"],
   "tags": ["dotnet", "aspnet-core", "oauth-server", "embeddable"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/duende.svg"

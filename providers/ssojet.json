@@ -5,7 +5,7 @@
   "identifier": "ssojet",
   "status": "active",
   "deploymentModels": ["saas"],
-  "targetAudience": ["b2b", "developer"],
+  "targetAudience": ["b2b", "ciam", "developer"],
   "tags": ["enterprise-sso", "sso-api", "directory-sync", "b2b-saas", "per-connection-pricing", "mcp"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/ssojet.svg"

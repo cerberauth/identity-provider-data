@@ -5,7 +5,7 @@
   "identifier": "scalekit",
   "status": "active",
   "deploymentModels": ["saas"],
-  "targetAudience": ["b2b", "developer"],
+  "targetAudience": ["b2b", "ciam", "developer"],
   "tags": ["sso-api", "directory-sync", "b2b-saas", "mcp", "ai-agents", "oauth-2-1"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/scalekit.svg"

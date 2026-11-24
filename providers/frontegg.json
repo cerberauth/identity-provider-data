@@ -5,7 +5,7 @@
   "identifier": "frontegg",
   "status": "active",
   "deploymentModels": ["saas"],
-  "targetAudience": ["b2b", "b2c", "developer"],
+  "targetAudience": ["b2c", "b2b", "ciam", "developer"],
   "tags": ["b2b-saas", "self-service-admin", "embedded-ui", "multi-tenancy"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/frontegg.svg"

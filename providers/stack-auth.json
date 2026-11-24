@@ -6,7 +6,7 @@
   "aliases": ["Hexclave"],
   "status": "active",
   "deploymentModels": ["saas", "self_hosted"],
-  "targetAudience": ["b2c", "b2b", "developer"],
+  "targetAudience": ["b2c", "b2b", "ciam", "developer"],
   "tags": ["typescript", "nextjs", "react", "teams", "payments"],
   "icon": {
     "contentUrl": "https://nacho.cerberauth.com/logos/stack-auth.svg"
