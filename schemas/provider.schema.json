@@ -410,31 +410,8 @@
                     "enum": ["month", "year"]
                   },
                   "rates": {
-                    "type": "array",
-                    "description": "Graduated rates applied to the units above included, in ascending order of upTo. Each rate bills the units between the previous upTo and its own.",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "upTo": {
-                          "type": "integer",
-                          "description": "Upper bound (inclusive) of units billed at this rate. Omitted for the last, open-ended rate.",
-                          "minimum": 1
-                        },
-                        "amount": {
-                          "type": "number",
-                          "description": "Price in pricing.currency per period for each block of per units.",
-                          "minimum": 0
-                        },
-                        "per": {
-                          "type": "integer",
-                          "description": "Block size the amount is charged for (1 for a unit price, 1000 for a price per thousand). Defaults to 1.",
-                          "minimum": 1
-                        }
-                      },
-                      "required": ["amount"],
-                      "additionalProperties": false
-                    },
-                    "minItems": 1
+                    "$ref": "#/$defs/rates",
+                    "description": "Graduated rates applied to the units above included, in ascending order of upTo. Each rate bills the units between the previous upTo and its own."
                   }
                 },
                 "required": ["metric"],
@@ -830,6 +807,33 @@
   "required": ["name", "abstract", "identifier", "icon", "website", "license", "features", "oidc"],
   "additionalProperties": false,
   "$defs": {
+    "rates": {
+      "type": "array",
+      "description": "Graduated rates in ascending order of upTo. Each rate bills the units between the previous upTo and its own.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "upTo": {
+            "type": "integer",
+            "description": "Upper bound (inclusive) of units billed at this rate. Omitted for the last, open-ended rate.",
+            "minimum": 1
+          },
+          "amount": {
+            "type": "number",
+            "description": "Price in pricing.currency per period for each block of per units.",
+            "minimum": 0
+          },
+          "per": {
+            "type": "integer",
+            "description": "Block size the amount is charged for (1 for a unit price, 1000 for a price per thousand). Defaults to 1.",
+            "minimum": 1
+          }
+        },
+        "required": ["amount"],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
     "addOn": {
       "type": "object",
       "description": "Price of a paid add-on. On a plan that does not include the feature it is the price of unlocking it. On a plan that includes the feature it is the fee for units above the included ones (extra connections, applications...).",
@@ -863,6 +867,10 @@
           "type": "integer",
           "description": "Block size of units the amount is charged for (e.g. 1000000 events). Defaults to 1.",
           "minimum": 1
+        },
+        "rates": {
+          "$ref": "#/$defs/rates",
+          "description": "Volume pricing: graduated rates applied to the units above included, in ascending order of upTo. upTo counts all units, included ones too (with 1 included, a first rate upTo 15 bills units 2 to 15). When set it takes precedence over amount and per, and amount holds the first rate. When the last rate has an upTo, prices above it are not published (custom or quote-only)."
         },
         "plans": {
           "type": "array",

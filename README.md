@@ -63,9 +63,11 @@ Browse and compare this data on [Nacho](https://nacho.cerberauth.com/):
     - `limits` — hard caps (`connections`, `organizations`, ...) that rule a plan out.
   - `features[].plans` — required on every feature: the plans that include it (all of them when it is on every plan, none when unsupported or add-on only). The plans live on the
     feature, there is no per-plan feature list.
-  - `features[].addOn` — paid add-on: `{ name, price, amount, period, unit, per, included, plans }`. On a plan that
-    lacks the feature it unlocks it; on a plan that has it, it is the fee for units above `included`. Features with the
-    same `name` are one purchase.
+  - `features[].addOn` — paid add-on: `{ name, price, amount, period, unit, per, included, rates[], plans }`. On a plan
+    that lacks the feature it unlocks it; on a plan that has it, it is the fee for units above `included`. Features
+    with the same `name` are one purchase. Volume pricing (e.g. cheaper connections past the 15th) goes in `rates`,
+    the same graduated `{ upTo, amount, per }` shape as `usage.rates`; a last rate with `upTo` means prices above it are
+    custom.
   - `features[]` and `oidc.features[]` may also carry `tier` (`basic`, `standard`, `advanced`, `enterprise`),
     `sinceVersion` and `betaStatus` (`ga`, `beta`, `preview`, `experimental`).
   - `aliases`, `tags` — optional former or alternate names, and free-form lowercase search keywords.

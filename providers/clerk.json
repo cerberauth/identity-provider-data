@@ -338,12 +338,17 @@
       "plans": ["Pro", "Business", "Enterprise"],
       "addOn": {
         "name": "Enterprise SSO connections",
-        "price": "$75/month per extra connection (1 included, $60 from the 16th, $48 from the 101st)",
+        "price": "$75/month per extra connection (1 included; $75 for connections 2-15, $60 for 16-100, $48 for 101-250, custom above 250)",
         "amount": 75,
         "period": "month",
         "unit": "connection",
         "included": 1,
-        "plans": ["Pro", "Business"]
+        "plans": ["Pro", "Business"],
+        "rates": [
+          { "upTo": 15, "amount": 75 },
+          { "upTo": 100, "amount": 60 },
+          { "upTo": 250, "amount": 48 }
+        ]
       }
     },
     {
@@ -367,12 +372,17 @@
       "plans": ["Pro", "Business", "Enterprise"],
       "addOn": {
         "name": "Enterprise SSO connections",
-        "price": "$75/month per extra connection (1 included, $60 from the 16th, $48 from the 101st)",
+        "price": "$75/month per extra connection (1 included; $75 for connections 2-15, $60 for 16-100, $48 for 101-250, custom above 250)",
         "amount": 75,
         "period": "month",
         "unit": "connection",
         "included": 1,
-        "plans": ["Pro", "Business"]
+        "plans": ["Pro", "Business"],
+        "rates": [
+          { "upTo": 15, "amount": 75 },
+          { "upTo": 100, "amount": 60 },
+          { "upTo": 250, "amount": 48 }
+        ]
       }
     },
     {
@@ -383,12 +393,17 @@
       "plans": ["Pro", "Business", "Enterprise"],
       "addOn": {
         "name": "Enterprise SSO connections",
-        "price": "$75/month per extra connection (1 included, $60 from the 16th, $48 from the 101st)",
+        "price": "$75/month per extra connection (1 included; $75 for connections 2-15, $60 for 16-100, $48 for 101-250, custom above 250)",
         "amount": 75,
         "period": "month",
         "unit": "connection",
         "included": 1,
-        "plans": ["Pro", "Business"]
+        "plans": ["Pro", "Business"],
+        "rates": [
+          { "upTo": 15, "amount": 75 },
+          { "upTo": 100, "amount": 60 },
+          { "upTo": 250, "amount": 48 }
+        ]
       }
     },
     {
@@ -406,12 +421,17 @@
       "plans": ["Pro", "Business", "Enterprise"],
       "addOn": {
         "name": "Enterprise SSO connections",
-        "price": "$75/month per extra connection (1 included, $60 from the 16th, $48 from the 101st)",
+        "price": "$75/month per extra connection (1 included; $75 for connections 2-15, $60 for 16-100, $48 for 101-250, custom above 250)",
         "amount": 75,
         "period": "month",
         "unit": "connection",
         "included": 1,
-        "plans": ["Pro", "Business"]
+        "plans": ["Pro", "Business"],
+        "rates": [
+          { "upTo": 15, "amount": 75 },
+          { "upTo": 100, "amount": 60 },
+          { "upTo": 250, "amount": 48 }
+        ]
       }
     },
     {
@@ -468,12 +488,17 @@
       "plans": ["Pro", "Business", "Enterprise"],
       "addOn": {
         "name": "Directory Sync connections",
-        "price": "$75/month per extra connection (1 included); billing starts 2027-01-01",
+        "price": "$75/month per extra connection (1 included; $75 for connections 2-15, $60 for 16-100, $48 for 101-250, custom above 250); billing starts 2027-01-01",
         "amount": 75,
         "period": "month",
         "unit": "connection",
         "included": 1,
-        "plans": ["Pro", "Business"]
+        "plans": ["Pro", "Business"],
+        "rates": [
+          { "upTo": 15, "amount": 75 },
+          { "upTo": 100, "amount": 60 },
+          { "upTo": 250, "amount": 48 }
+        ]
       }
     },
     {
@@ -491,12 +516,17 @@
       "plans": ["Pro", "Business", "Enterprise"],
       "addOn": {
         "name": "Directory Sync connections",
-        "price": "$75/month per extra connection (1 included); billing starts 2027-01-01",
+        "price": "$75/month per extra connection (1 included; $75 for connections 2-15, $60 for 16-100, $48 for 101-250, custom above 250); billing starts 2027-01-01",
         "amount": 75,
         "period": "month",
         "unit": "connection",
         "included": 1,
-        "plans": ["Pro", "Business"]
+        "plans": ["Pro", "Business"],
+        "rates": [
+          { "upTo": 15, "amount": 75 },
+          { "upTo": 100, "amount": 60 },
+          { "upTo": 250, "amount": 48 }
+        ]
       }
     },
     {

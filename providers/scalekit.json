@@ -266,7 +266,22 @@
       "status": "supported",
       "description": "SAML 2.0 as a service provider for enterprise SSO connections to customer identity providers. Acting as a SAML identity provider is not documented.",
       "links": ["https://docs.scalekit.com/authenticate/auth-methods/enterprise-sso/"],
-      "plans": ["Free", "Growth", "Enterprise"]
+      "plans": ["Free", "Growth", "Enterprise"],
+      "addOn": {
+        "name": "SSO connections",
+        "price": "$60/connection/month for connections 2-15 ($45 for 16-30, $35 for 31-50, $30 for 51-100, custom above 100); first connection free",
+        "amount": 60,
+        "period": "month",
+        "unit": "connection",
+        "included": 1,
+        "rates": [
+          { "upTo": 15, "amount": 60 },
+          { "upTo": 30, "amount": 45 },
+          { "upTo": 50, "amount": 35 },
+          { "upTo": 100, "amount": 30 }
+        ],
+        "plans": ["Growth"]
+      }
     },
     {
       "identifier": "ws_federation_protocol",
@@ -291,7 +306,22 @@
         "https://docs.scalekit.com/authenticate/auth-methods/enterprise-sso/",
         "https://docs.scalekit.com/authenticate/sso/add-modular-sso/"
       ],
-      "plans": ["Free", "Growth", "Enterprise"]
+      "plans": ["Free", "Growth", "Enterprise"],
+      "addOn": {
+        "name": "SSO connections",
+        "price": "$60/connection/month for connections 2-15 ($45 for 16-30, $35 for 31-50, $30 for 51-100, custom above 100); first connection free",
+        "amount": 60,
+        "period": "month",
+        "unit": "connection",
+        "included": 1,
+        "rates": [
+          { "upTo": 15, "amount": 60 },
+          { "upTo": 30, "amount": 45 },
+          { "upTo": 50, "amount": 35 },
+          { "upTo": 100, "amount": 30 }
+        ],
+        "plans": ["Growth"]
+      }
     },
     {
       "identifier": "saml_federation",
@@ -301,7 +331,22 @@
         "https://docs.scalekit.com/authenticate/sso/add-modular-sso/",
         "https://www.scalekit.com/pricing/auth-for-saas"
       ],
-      "plans": ["Free", "Growth", "Enterprise"]
+      "plans": ["Free", "Growth", "Enterprise"],
+      "addOn": {
+        "name": "SSO connections",
+        "price": "$60/connection/month for connections 2-15 ($45 for 16-30, $35 for 31-50, $30 for 51-100, custom above 100); first connection free",
+        "amount": 60,
+        "period": "month",
+        "unit": "connection",
+        "included": 1,
+        "rates": [
+          { "upTo": 15, "amount": 60 },
+          { "upTo": 30, "amount": 45 },
+          { "upTo": 50, "amount": 35 },
+          { "upTo": 100, "amount": 30 }
+        ],
+        "plans": ["Growth"]
+      }
     },
     {
       "identifier": "active_directory_ldap",
@@ -368,7 +413,22 @@
         "https://docs.scalekit.com/authenticate/manage-users-orgs/scim-provisioning/",
         "https://www.scalekit.com/pricing/auth-for-saas"
       ],
-      "plans": ["Free", "Growth", "Enterprise"]
+      "plans": ["Free", "Growth", "Enterprise"],
+      "addOn": {
+        "name": "SCIM connections",
+        "price": "$60/connection/month for connections 2-15 ($45 for 16-30, $35 for 31-50, $30 for 51-100, custom above 100); first connection free",
+        "amount": 60,
+        "period": "month",
+        "unit": "connection",
+        "included": 1,
+        "rates": [
+          { "upTo": 15, "amount": 60 },
+          { "upTo": 30, "amount": 45 },
+          { "upTo": 50, "amount": 35 },
+          { "upTo": 100, "amount": 30 }
+        ],
+        "plans": ["Growth"]
+      }
     },
     {
       "identifier": "outbound_scim_provisioning",
@@ -381,7 +441,22 @@
       "status": "supported",
       "description": "SCIM groups are synced, and directory groups can be mapped to application roles automatically.",
       "links": ["https://docs.scalekit.com/authenticate/manage-users-orgs/scim-provisioning/"],
-      "plans": ["Free", "Growth", "Enterprise"]
+      "plans": ["Free", "Growth", "Enterprise"],
+      "addOn": {
+        "name": "SCIM connections",
+        "price": "$60/connection/month for connections 2-15 ($45 for 16-30, $35 for 31-50, $30 for 51-100, custom above 100); first connection free",
+        "amount": 60,
+        "period": "month",
+        "unit": "connection",
+        "included": 1,
+        "rates": [
+          { "upTo": 15, "amount": 60 },
+          { "upTo": 30, "amount": 45 },
+          { "upTo": 50, "amount": 35 },
+          { "upTo": 100, "amount": 30 }
+        ],
+        "plans": ["Growth"]
+      }
     },
     {
       "identifier": "jit_provisioning",

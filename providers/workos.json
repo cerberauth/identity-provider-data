@@ -42,7 +42,7 @@
     "plans": [
       {
         "name": "Pay as You Go",
-        "price": "Free up to 1M AuthKit MAU, then $2,500/month per additional million; SSO, Directory Sync, Audit Logs and custom domain billed as add-ons",
+        "price": "Free up to 1M AuthKit MAU, then $2,500/month per additional million; SSO, Directory Sync, Audit Logs, Radar and custom domain billed as add-ons; Scale support optional at $1,000/month",
         "amount": 0,
         "deployment": "saas",
         "usage": {
@@ -62,7 +62,7 @@
         "deployment": "saas"
       }
     ],
-    "pricingLastVerified": "2026-11-21"
+    "pricingLastVerified": "2026-11-24"
   },
   "hosting": {
     "regions": ["US"]
@@ -70,7 +70,7 @@
   "sla": {
     "uptimePercent": 99.99,
     "url": "https://workos.com/pricing",
-    "scope": "Enterprise plan"
+    "scope": "Annual Credits plan"
   },
   "migrationTools": [
     {
@@ -279,10 +279,16 @@
       "plans": ["Pay as You Go", "Annual Credits"],
       "addOn": {
         "name": "Single Sign-On",
-        "price": "$125/connection/month ($100 from the 16th, $80 from the 31st, $65 from the 51st)",
+        "price": "$125/connection/month for connections 1-15 ($100 for 16-30, $80 for 31-50, $65 for 51-100, custom pricing above 100)",
         "amount": 125,
         "period": "month",
         "unit": "connection",
+        "rates": [
+          { "upTo": 15, "amount": 125 },
+          { "upTo": 30, "amount": 100 },
+          { "upTo": 50, "amount": 80 },
+          { "upTo": 100, "amount": 65 }
+        ],
         "included": 0
       }
     },
@@ -307,10 +313,16 @@
       "plans": ["Pay as You Go", "Annual Credits"],
       "addOn": {
         "name": "Single Sign-On",
-        "price": "$125/connection/month ($100 from the 16th, $80 from the 31st, $65 from the 51st)",
+        "price": "$125/connection/month for connections 1-15 ($100 for 16-30, $80 for 31-50, $65 for 51-100, custom pricing above 100)",
         "amount": 125,
         "period": "month",
         "unit": "connection",
+        "rates": [
+          { "upTo": 15, "amount": 125 },
+          { "upTo": 30, "amount": 100 },
+          { "upTo": 50, "amount": 80 },
+          { "upTo": 100, "amount": 65 }
+        ],
         "included": 0
       }
     },
@@ -322,10 +334,16 @@
       "plans": ["Pay as You Go", "Annual Credits"],
       "addOn": {
         "name": "Single Sign-On",
-        "price": "$125/connection/month ($100 from the 16th, $80 from the 31st, $65 from the 51st)",
+        "price": "$125/connection/month for connections 1-15 ($100 for 16-30, $80 for 31-50, $65 for 51-100, custom pricing above 100)",
         "amount": 125,
         "period": "month",
         "unit": "connection",
+        "rates": [
+          { "upTo": 15, "amount": 125 },
+          { "upTo": 30, "amount": 100 },
+          { "upTo": 50, "amount": 80 },
+          { "upTo": 100, "amount": 65 }
+        ],
         "included": 0
       }
     },
@@ -395,10 +413,16 @@
       "plans": ["Pay as You Go", "Annual Credits"],
       "addOn": {
         "name": "Directory Sync",
-        "price": "$125/connection/month (same volume tiers as SSO)",
+        "price": "$125/connection/month for connections 1-15 ($100 for 16-30, $80 for 31-50, $65 for 51-100, custom pricing above 100)",
         "amount": 125,
         "period": "month",
-        "unit": "connection"
+        "unit": "connection",
+        "rates": [
+          { "upTo": 15, "amount": 125 },
+          { "upTo": 30, "amount": 100 },
+          { "upTo": 50, "amount": 80 },
+          { "upTo": 100, "amount": 65 }
+        ]
       }
     },
     {
@@ -415,10 +439,16 @@
       "plans": ["Pay as You Go", "Annual Credits"],
       "addOn": {
         "name": "Directory Sync",
-        "price": "$125/connection/month (same volume tiers as SSO)",
+        "price": "$125/connection/month for connections 1-15 ($100 for 16-30, $80 for 31-50, $65 for 51-100, custom pricing above 100)",
         "amount": 125,
         "period": "month",
-        "unit": "connection"
+        "unit": "connection",
+        "rates": [
+          { "upTo": 15, "amount": 125 },
+          { "upTo": 30, "amount": 100 },
+          { "upTo": 50, "amount": 80 },
+          { "upTo": 100, "amount": 65 }
+        ]
       }
     },
     {
