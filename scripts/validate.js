@@ -74,16 +74,7 @@ function checkProvider(provider) {
   for (const plan of plans) {
     if (planNames.has(plan.name)) errors.push(`/pricing/plans/${plan.name}: duplicate plan name`)
     planNames.add(plan.name)
-    let previous = 0
-    for (const rate of plan.usage?.rates ?? []) {
-      if (rate.upTo !== undefined && rate.upTo <= previous) {
-        errors.push(`/pricing/plans/${plan.name}/usage/rates: upTo must be in ascending order`)
-      }
-      previous = rate.upTo ?? Infinity
-    }
-    if (plan.usage?.rates?.slice(0, -1).some((rate) => rate.upTo === undefined)) {
-      errors.push(`/pricing/plans/${plan.name}/usage/rates: only the last rate can omit upTo`)
-    }
+    errors.push(...validateRates(plan.usage?.rates, `/pricing/plans/${plan.name}/usage/rates`))
   }
 
   const seen = new Set()
@@ -104,6 +95,22 @@ function checkProvider(provider) {
         errors.push(`/features/${feature.identifier}/addOn/included: "${planName}" is not a plan in pricing.plans`)
       }
     }
+    errors.push(...validateRates(feature.addOn?.rates, `/features/${feature.identifier}/addOn/rates`))
+  }
+  return errors
+}
+
+function validateRates(rates, path) {
+  const errors = []
+  let previous = 0
+  for (const rate of rates ?? []) {
+    if (rate.upTo !== undefined && rate.upTo <= previous) {
+      errors.push(`${path}: upTo must be in ascending order`)
+    }
+    previous = rate.upTo ?? Infinity
+  }
+  if (rates?.slice(0, -1).some((rate) => rate.upTo === undefined)) {
+    errors.push(`${path}: only the last rate can omit upTo`)
   }
   return errors
 }

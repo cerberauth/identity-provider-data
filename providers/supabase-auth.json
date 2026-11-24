@@ -284,7 +284,9 @@
         "price": "$75/month for the first project, $10/month per additional project",
         "amount": 75,
         "period": "month",
-        "plans": ["Pro", "Team"]
+        "plans": ["Pro", "Team"],
+        "unit": "project",
+        "rates": [{ "upTo": 1, "amount": 75 }, { "amount": 10 }]
       }
     },
     {
